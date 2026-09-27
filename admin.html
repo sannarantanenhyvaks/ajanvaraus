@@ -13,9 +13,8 @@
     --navy:#183746;
     --navy-hover:#244958;
     --background:#f4f6f7;
-    --surface:#ffffff;
+    --surface:#fff;
     --border:#d7dfe3;
-    --border-dark:#b9c5cb;
     --text:#17252d;
     --muted:#5e6c74;
     --success:#167647;
@@ -37,18 +36,15 @@ html,body{
     background:var(--background);
 }
 
-button,input,textarea,select{
-    font:inherit;
-}
-
+button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-
 .hidden{display:none!important}
 
+button{
+    border-radius:2px;
+}
 
-/* =========================================================
-   LOGIN
-========================================================= */
+/* LOGIN */
 
 #loginView{
     min-height:100vh;
@@ -62,7 +58,7 @@ button{cursor:pointer}
 
 .login-header{
     height:92px;
-    background:white;
+    background:#fff;
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
@@ -73,13 +69,12 @@ button{cursor:pointer}
     width:185px;
     max-height:64px;
     object-fit:contain;
-    object-position:left center;
 }
 
 .login-main{
     min-height:calc(100vh - 98px);
     display:grid;
-    grid-template-columns:minmax(400px,1fr) minmax(420px,620px);
+    grid-template-columns:1fr minmax(420px,620px);
 }
 
 .login-information{
@@ -106,17 +101,13 @@ button{cursor:pointer}
 
 .login-information h1{
     font-size:38px;
-    line-height:1.15;
     margin:0 0 20px;
-    font-weight:700;
 }
 
 .login-information p{
     max-width:560px;
     color:var(--muted);
     line-height:1.65;
-    font-size:16px;
-    margin:0;
 }
 
 .login-unit{
@@ -124,7 +115,6 @@ button{cursor:pointer}
     padding:15px 18px;
     background:rgba(255,255,255,.65);
     margin-top:35px;
-    max-width:500px;
 }
 
 .login-unit strong{
@@ -138,7 +128,7 @@ button{cursor:pointer}
 }
 
 .login-panel{
-    background:white;
+    background:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -159,7 +149,6 @@ button{cursor:pointer}
 .login-box-subtitle{
     color:var(--muted);
     margin-bottom:30px;
-    line-height:1.5;
 }
 
 .field{
@@ -176,15 +165,12 @@ button{cursor:pointer}
 input,textarea,select{
     width:100%;
     border:1px solid #9cabb3;
-    border-radius:2px;
     background:#fff;
     color:var(--text);
     padding:11px 12px;
 }
 
-input,select{
-    min-height:45px;
-}
+input,select{min-height:45px}
 
 textarea{
     min-height:120px;
@@ -199,36 +185,32 @@ select:focus{
     border-color:var(--primary);
 }
 
-.login-button,
-.btn-primary{
+.btn-primary,
+.login-button{
     border:1px solid var(--primary);
     background:var(--primary);
-    color:white;
+    color:#fff;
     font-weight:700;
     padding:11px 18px;
     min-height:43px;
-    border-radius:2px;
 }
 
 .login-button{
     width:100%;
-    margin-top:4px;
 }
 
-.login-button:hover,
-.btn-primary:hover{
+.btn-primary:hover,
+.login-button:hover{
     background:var(--primary-dark);
-    border-color:var(--primary-dark);
 }
 
 .btn-secondary{
     border:1px solid var(--primary);
-    background:white;
+    background:#fff;
     color:var(--primary);
     font-weight:700;
     padding:10px 17px;
     min-height:42px;
-    border-radius:2px;
 }
 
 .btn-secondary:hover{
@@ -237,15 +219,26 @@ select:focus{
 
 .btn-danger{
     border:1px solid #c98984;
-    background:white;
+    background:#fff;
     color:var(--danger);
     font-weight:700;
-    padding:9px 14px;
-    border-radius:2px;
+    padding:10px 15px;
 }
 
 .btn-danger:hover{
     background:var(--danger-bg);
+}
+
+.btn-delete{
+    border:1px solid var(--danger);
+    background:var(--danger);
+    color:#fff;
+    font-weight:700;
+    padding:10px 15px;
+}
+
+.btn-delete:hover{
+    background:#8f1c13;
 }
 
 .login-error{
@@ -254,23 +247,10 @@ select:focus{
     border-left:4px solid var(--danger);
     background:var(--danger-bg);
     color:#7c2923;
-    font-size:14px;
     margin-bottom:20px;
 }
 
-.login-security{
-    border-top:1px solid var(--border);
-    margin-top:28px;
-    padding-top:20px;
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.5;
-}
-
-
-/* =========================================================
-   APPLICATION
-========================================================= */
+/* APP */
 
 #appView{
     display:none;
@@ -279,7 +259,7 @@ select:focus{
 
 .app-header{
     height:82px;
-    background:white;
+    background:#fff;
     border-top:5px solid var(--primary);
     border-bottom:1px solid var(--border);
     position:fixed;
@@ -304,7 +284,6 @@ select:focus{
     width:175px;
     max-height:58px;
     object-fit:contain;
-    object-position:left center;
 }
 
 .header-context{
@@ -340,7 +319,6 @@ select:focus{
     background:var(--primary-light);
     color:var(--primary-dark);
     font-weight:700;
-    font-size:13px;
 }
 
 .header-user-name{
@@ -351,13 +329,9 @@ select:focus{
 .header-user-title{
     color:var(--muted);
     font-size:12px;
-    margin-top:2px;
 }
 
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
+/* SIDEBAR */
 
 .sidebar{
     position:fixed;
@@ -366,10 +340,9 @@ select:focus{
     bottom:0;
     width:265px;
     background:var(--navy);
-    color:white;
+    color:#fff;
     display:flex;
     flex-direction:column;
-    z-index:90;
 }
 
 .sidebar-unit{
@@ -408,14 +381,12 @@ select:focus{
     background:transparent;
     color:#e8f0f3;
     min-height:45px;
-    border-radius:3px;
     display:flex;
     align-items:center;
     gap:13px;
     text-align:left;
     padding:0 13px;
     margin-bottom:3px;
-    font-size:14px;
 }
 
 .nav-button:hover{
@@ -424,14 +395,8 @@ select:focus{
 
 .nav-button.active{
     background:var(--primary);
-    color:white;
+    color:#fff;
     font-weight:700;
-}
-
-.nav-icon{
-    width:21px;
-    text-align:center;
-    font-size:16px;
 }
 
 .sidebar-footer{
@@ -439,10 +404,7 @@ select:focus{
     padding:12px 10px 17px;
 }
 
-
-/* =========================================================
-   MAIN
-========================================================= */
+/* MAIN */
 
 .app-main{
     margin-left:265px;
@@ -455,13 +417,8 @@ select:focus{
     max-width:1540px;
 }
 
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 .breadcrumb{
     color:var(--muted);
@@ -471,7 +428,6 @@ select:focus{
 
 .page-header{
     display:flex;
-    align-items:flex-start;
     justify-content:space-between;
     gap:25px;
     margin-bottom:25px;
@@ -480,100 +436,35 @@ select:focus{
 .page-header h1{
     margin:0;
     font-size:29px;
-    line-height:1.2;
 }
 
 .page-description{
     color:var(--muted);
     margin-top:7px;
-    line-height:1.5;
     font-size:14px;
 }
-
-.page-actions{
-    display:flex;
-    gap:10px;
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
 
 .message{
     display:none;
     padding:14px 17px;
     margin-bottom:20px;
     border-left:4px solid;
-    background:white;
-    font-size:14px;
 }
 
 .message.error{
     border-color:var(--danger);
     background:var(--danger-bg);
-    color:#79251f;
 }
 
 .message.success{
     border-color:var(--success);
     background:var(--success-bg);
-    color:#145e39;
 }
 
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-    margin-bottom:22px;
-}
-
-.stat{
-    background:white;
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-    padding:19px 20px;
-    min-height:112px;
-}
-
-.stat-title{
-    color:var(--muted);
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.035em;
-}
-
-.stat-value{
-    font-size:31px;
-    font-weight:700;
-    margin-top:11px;
-}
-
-.stat-detail{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:4px;
-}
-
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:minmax(0,1.5fr) minmax(320px,.7fr);
-    gap:21px;
-}
-
-
-/* =========================================================
-   CARDS / TABLES
-========================================================= */
+/* CARDS */
 
 .card{
-    background:white;
+    background:#fff;
     border:1px solid var(--border);
     box-shadow:var(--shadow);
     margin-bottom:21px;
@@ -604,6 +495,39 @@ select:focus{
     padding:21px;
 }
 
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:22px;
+}
+
+.stat{
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    padding:19px 20px;
+}
+
+.stat-title{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.stat-value{
+    font-size:31px;
+    font-weight:700;
+    margin-top:11px;
+}
+
+.stat-detail{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
 .table-wrap{
     overflow-x:auto;
 }
@@ -621,19 +545,12 @@ thead th{
     padding:11px 13px;
     font-size:11px;
     text-transform:uppercase;
-    letter-spacing:.04em;
-    white-space:nowrap;
 }
 
 tbody td{
     border-bottom:1px solid #e5eaed;
     padding:13px;
     font-size:13px;
-    vertical-align:middle;
-}
-
-tbody tr:last-child td{
-    border-bottom:0;
 }
 
 .clickable-row:hover{
@@ -642,7 +559,6 @@ tbody tr:last-child td{
 }
 
 .person-name{
-    color:var(--text);
     font-weight:700;
 }
 
@@ -661,18 +577,15 @@ tbody tr:last-child td{
 .empty-state strong{
     color:var(--text);
     display:block;
-    font-size:15px;
     margin-bottom:6px;
 }
 
 .status{
     display:inline-flex;
-    align-items:center;
     padding:5px 9px;
     border-radius:20px;
     font-size:11px;
     font-weight:700;
-    white-space:nowrap;
 }
 
 .status-booked{
@@ -695,121 +608,10 @@ tbody tr:last-child td{
     color:var(--warning);
 }
 
-
-/* =========================================================
-   NEXT APPOINTMENT
-========================================================= */
-
-.next-box{
-    border-left:4px solid var(--primary);
-    background:#f2f8fc;
-    padding:20px;
-}
-
-.next-label{
-    text-transform:uppercase;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.06em;
-    color:var(--primary-dark);
-}
-
-.next-date{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:10px;
-}
-
-.next-time{
-    font-size:28px;
-    font-weight:700;
-    margin-top:4px;
-}
-
-.next-person{
-    font-size:18px;
-    font-weight:700;
-    margin-top:17px;
-}
-
-.next-group{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:3px;
-}
-
-.next-action{
-    margin-top:20px;
-}
-
-
-/* =========================================================
-   FILTER BAR
-========================================================= */
-
-.filter-bar{
-    display:flex;
-    gap:12px;
-    align-items:center;
-}
-
-.search{
-    max-width:330px;
-    min-height:39px;
-    padding:8px 11px;
-}
-
-
-/* =========================================================
-   STUDENTS
-========================================================= */
-
-.student-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.student-card{
-    border:1px solid var(--border);
-    background:white;
-    padding:17px;
-    cursor:pointer;
-}
-
-.student-card:hover{
-    border-color:var(--primary);
-    box-shadow:var(--shadow);
-}
-
-.student-card-name{
-    font-weight:700;
-    font-size:15px;
-}
-
-.student-card-meta{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:5px;
-}
-
-
-/* =========================================================
-   DETAIL / VISIT
-========================================================= */
-
-.back-link{
-    border:0;
-    background:transparent;
-    color:var(--primary);
-    padding:0;
-    font-weight:700;
-    font-size:13px;
-    margin-bottom:15px;
-}
+/* VISIT */
 
 .patient-banner{
-    background:white;
+    background:#fff;
     border:1px solid var(--border);
     border-left:5px solid var(--primary);
     box-shadow:var(--shadow);
@@ -817,8 +619,6 @@ tbody tr:last-child td{
     margin-bottom:20px;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:25px;
 }
 
 .patient-banner h1{
@@ -848,16 +648,13 @@ tbody tr:last-child td{
 
 .tabs{
     display:flex;
-    border-bottom:1px solid var(--border);
-    background:white;
-    border-left:1px solid var(--border);
-    border-right:1px solid var(--border);
-    border-top:1px solid var(--border);
+    background:#fff;
+    border:1px solid var(--border);
 }
 
 .tab-button{
     border:0;
-    background:white;
+    background:#fff;
     padding:14px 20px;
     font-weight:700;
     color:#53636b;
@@ -869,23 +666,12 @@ tbody tr:last-child td{
     border-bottom-color:var(--primary);
 }
 
-.tab-panel{
-    display:none;
-}
-
-.tab-panel.active{
-    display:block;
-}
-
-.detail-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 
 .info-grid{
     display:grid;
-    grid-template-columns:170px minmax(0,1fr);
+    grid-template-columns:170px 1fr;
     gap:13px 20px;
     font-size:13px;
 }
@@ -895,85 +681,12 @@ tbody tr:last-child td{
     font-weight:700;
 }
 
-.note-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 290px;
-    gap:20px;
-}
-
-.note-side{
-    background:#f5f8f9;
-    border:1px solid var(--border);
-    padding:18px;
-    height:max-content;
-}
-
-.note-side h3{
-    font-size:14px;
-    margin:0 0 15px;
-}
-
-.note-side-row{
-    margin-bottom:14px;
-}
-
-.note-side-label{
-    color:var(--muted);
-    font-size:11px;
-    font-weight:700;
-    text-transform:uppercase;
-}
-
-.note-side-value{
-    font-size:13px;
-    margin-top:4px;
-}
-
 .form-actions{
     display:flex;
-    justify-content:flex-end;
     gap:10px;
-    padding-top:6px;
+    justify-content:flex-end;
+    flex-wrap:wrap;
 }
-
-.note-status{
-    margin-bottom:20px;
-}
-
-
-/* =========================================================
-   NEW NOTE SELECTOR
-========================================================= */
-
-.appointment-choice{
-    border:1px solid var(--border);
-    padding:15px 17px;
-    margin-bottom:10px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    background:white;
-}
-
-.appointment-choice:hover{
-    border-color:var(--primary);
-}
-
-.choice-date{
-    font-size:12px;
-    color:var(--muted);
-}
-
-.choice-name{
-    font-weight:700;
-    margin-top:3px;
-}
-
-
-/* =========================================================
-   SLOT FORM
-========================================================= */
 
 .slot-form{
     display:grid;
@@ -982,140 +695,65 @@ tbody tr:last-child td{
     gap:14px;
 }
 
-.slot-form .field{
-    margin:0;
+.student-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-.profile-heading{
-    display:flex;
-    align-items:center;
-    gap:17px;
-    margin-bottom:24px;
+.student-card{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:17px;
+    cursor:pointer;
 }
 
-.profile-avatar{
-    width:64px;
-    height:64px;
-    border-radius:50%;
-    background:var(--primary-light);
-    color:var(--primary-dark);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
+.student-card:hover{
+    border-color:var(--primary);
+}
+
+.student-card-name{
     font-weight:700;
 }
 
-.profile-heading h2{
-    margin:0 0 4px;
-    font-size:21px;
-}
-
-.profile-heading p{
-    margin:0;
+.student-card-meta{
     color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
 }
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1100px){
-    .stats{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .dashboard-grid,
-    .note-layout{
-        grid-template-columns:1fr;
-    }
-
-    .student-grid{
-        grid-template-columns:1fr 1fr;
-    }
+.back-link{
+    border:0;
+    background:transparent;
+    color:var(--primary);
+    padding:0;
+    font-weight:700;
+    margin-bottom:15px;
 }
 
-@media(max-width:800px){
-    .login-main{
-        grid-template-columns:1fr;
-    }
-
-    .login-information{
-        display:none;
-    }
-
-    .login-panel{
-        border:0;
-        padding:35px 20px;
-    }
-
-    .app-header{
-        position:static;
-    }
-
-    .header-logo{
-        width:auto;
-        border:0;
-    }
-
-    .header-context{
-        display:none;
-    }
+@media(max-width:900px){
+    .stats{grid-template-columns:1fr 1fr}
+    .student-grid{grid-template-columns:1fr}
+    .slot-form{grid-template-columns:1fr}
 
     .sidebar{
         position:static;
         width:100%;
     }
 
-    .navigation{
-        display:flex;
-        overflow:auto;
-    }
-
-    .nav-label,
-    .sidebar-unit,
-    .sidebar-footer{
-        display:none;
-    }
-
-    .nav-button{
-        min-width:max-content;
+    .app-header{
+        position:static;
     }
 
     .app-main{
         margin:0;
         padding:0;
     }
-
-    .content{
-        padding:20px 14px;
-    }
-
-    .stats,
-    .student-grid,
-    .detail-grid,
-    .slot-form{
-        grid-template-columns:1fr;
-    }
-
-    .header-user{
-        padding-right:15px;
-    }
 }
 </style>
 </head>
 
 <body>
-
-<!-- ======================================================
-     LOGIN
-======================================================= -->
 
 <div id="loginView">
 
@@ -1128,6 +766,7 @@ tbody tr:last-child td{
     <main class="login-main">
 
         <section class="login-information">
+
             <div class="login-information-inner">
 
                 <div class="login-eyebrow">
@@ -1148,8 +787,8 @@ tbody tr:last-child td{
                 </div>
 
             </div>
-        </section>
 
+        </section>
 
         <section class="login-panel">
 
@@ -1185,33 +824,20 @@ tbody tr:last-child td{
                         >
                     </div>
 
-                    <button
-                        id="loginButton"
-                        class="login-button"
-                        type="submit"
-                    >
+                    <button class="login-button" type="submit">
                         Kirjaudu sisään
                     </button>
 
                 </form>
-
-                <div class="login-security">
-                    Käyttö on tarkoitettu vain käyttöoikeuden saaneille
-                    henkilökunnan käyttäjille. Kirjaudu omalla
-                    henkilökohtaisella käyttäjätunnuksellasi.
-                </div>
 
             </div>
 
         </section>
 
     </main>
+
 </div>
 
-
-<!-- ======================================================
-     APPLICATION
-======================================================= -->
 
 <div id="appView">
 
@@ -1225,6 +851,7 @@ tbody tr:last-child td{
         <div class="header-context-title">
             Opiskeluterveydenhuolto
         </div>
+
         <div class="header-context-sub">
             Henkilökunnan työpöytä · Muuramen lukio
         </div>
@@ -1232,13 +859,16 @@ tbody tr:last-child td{
 
     <div class="header-user">
 
-        <div class="header-avatar">SR</div>
+        <div class="header-avatar" id="headerInitials">
+            SR
+        </div>
 
         <div>
-            <div id="headerName" class="header-user-name">
+            <div class="header-user-name" id="headerName">
                 Sanna Rantanen
             </div>
-            <div id="headerTitle" class="header-user-title">
+
+            <div class="header-user-title" id="headerTitle">
                 Terveydenhoitaja
             </div>
         </div>
@@ -1251,12 +881,15 @@ tbody tr:last-child td{
 <aside class="sidebar">
 
     <div class="sidebar-unit">
+
         <div class="sidebar-unit-title">
             Muuramen lukio
         </div>
+
         <div class="sidebar-unit-sub">
             Opiskeluterveydenhuolto
         </div>
+
     </div>
 
     <nav class="navigation">
@@ -1264,41 +897,38 @@ tbody tr:last-child td{
         <div class="nav-label">Työpöytä</div>
 
         <button class="nav-button active" data-page="dashboard">
-            <span class="nav-icon">⌂</span>
             Etusivu
         </button>
 
         <button class="nav-button" data-page="appointments">
-            <span class="nav-icon">▣</span>
             Ajanvaraukset
         </button>
 
         <button class="nav-button" data-page="students">
-            <span class="nav-icon">♙</span>
             Opiskelijat
         </button>
 
         <button class="nav-button" data-page="notes">
-            <span class="nav-icon">▤</span>
             Kirjaukset
         </button>
 
         <button class="nav-button" data-page="slots">
-            <span class="nav-icon">◷</span>
             Vastaanottoajat
+        </button>
+
+        <button class="nav-button" data-page="profile">
+            Omat tiedot
         </button>
 
     </nav>
 
     <div class="sidebar-footer">
 
-        <button class="nav-button" data-page="profile">
-            <span class="nav-icon">⚙</span>
-            Omat tiedot
-        </button>
-
-        <button id="logoutButton" class="nav-button">
-            <span class="nav-icon">↪</span>
+        <button
+            id="logoutButton"
+            class="nav-button"
+            type="button"
+        >
             Kirjaudu ulos
         </button>
 
@@ -1307,17 +937,14 @@ tbody tr:last-child td{
 </aside>
 
 
-<div class="app-main">
+<main class="app-main">
 
-<main class="content">
+<div class="content">
 
-<div id="globalError" class="message error"></div>
-<div id="globalSuccess" class="message success"></div>
+<div id="message" class="message"></div>
 
 
-<!-- ======================================================
-     DASHBOARD
-======================================================= -->
+<!-- ETUSIVU -->
 
 <section id="page-dashboard" class="page active">
 
@@ -1328,98 +955,64 @@ tbody tr:last-child td{
     <div class="page-header">
 
         <div>
-            <h1>Hyvää työpäivää, <span id="welcomeName">Sanna</span></h1>
+            <h1>Etusivu</h1>
+
             <div class="page-description">
-                Vastaanottojen ja ajanvarausten yhteenveto.
+                Muuramen lukion opiskeluterveydenhuollon työpöytä
             </div>
         </div>
 
-        <div class="page-actions">
-            <button class="btn-primary" id="dashboardNewNote">
-                + Uusi kirjaus
-            </button>
-        </div>
-
     </div>
-
 
     <div class="stats">
 
         <div class="stat">
-            <div class="stat-title">Varatut vastaanotot</div>
-            <div id="statBooked" class="stat-value">0</div>
+            <div class="stat-title">Ajanvarauksia</div>
+            <div class="stat-value" id="statAppointments">0</div>
             <div class="stat-detail">Aktiiviset ajanvaraukset</div>
         </div>
 
         <div class="stat">
-            <div class="stat-title">Vapaat ajat</div>
-            <div id="statFree" class="stat-value">0</div>
-            <div class="stat-detail">Varattavissa olevat ajat</div>
+            <div class="stat-title">Opiskelijoita</div>
+            <div class="stat-value" id="statStudents">0</div>
+            <div class="stat-detail">Ajanvarauksissa</div>
         </div>
 
         <div class="stat">
-            <div class="stat-title">Valmiit käynnit</div>
-            <div id="statCompleted" class="stat-value">0</div>
-            <div class="stat-detail">Valmiiksi merkityt vastaanotot</div>
+            <div class="stat-title">Kirjauksia</div>
+            <div class="stat-value" id="statNotes">0</div>
+            <div class="stat-detail">Tallennetut kirjaukset</div>
         </div>
 
         <div class="stat">
-            <div class="stat-title">Kirjausluonnokset</div>
-            <div id="statDrafts" class="stat-value">0</div>
-            <div class="stat-detail">Keskeneräiset kirjaukset</div>
+            <div class="stat-title">Vapaita aikoja</div>
+            <div class="stat-value" id="statSlots">0</div>
+            <div class="stat-detail">Vapaana kalenterissa</div>
         </div>
 
     </div>
 
+    <div class="card">
 
-    <div class="dashboard-grid">
+        <div class="card-header">
 
-        <div class="card">
-
-            <div class="card-header">
-                <div>
-                    <h2 class="card-title">Tulevat vastaanotot</h2>
-                    <div class="card-subtitle">
-                        Seuraavat varatut vastaanottoajat
-                    </div>
-                </div>
-
-                <button
-                    class="btn-secondary"
-                    onclick="showPage('appointments')"
-                >
-                    Näytä kaikki
-                </button>
-            </div>
-
-            <div id="dashboardAppointments"></div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-header">
-                <div>
-                    <h2 class="card-title">Seuraava vastaanotto</h2>
-                    <div class="card-subtitle">
-                        Seuraava aktiivinen ajanvaraus
-                    </div>
+            <div>
+                <h2 class="card-title">Tulevat ajanvaraukset</h2>
+                <div class="card-subtitle">
+                    Seuraavat varatut vastaanottoajat
                 </div>
             </div>
 
-            <div class="card-body" id="nextAppointment"></div>
-
         </div>
+
+        <div id="dashboardAppointments"></div>
 
     </div>
 
 </section>
 
 
-<!-- ======================================================
-     APPOINTMENTS
-======================================================= -->
+<!-- AJANVARAUKSET -->
 
 <section id="page-appointments" class="page">
 
@@ -1428,46 +1021,25 @@ tbody tr:last-child td{
     </div>
 
     <div class="page-header">
+
         <div>
             <h1>Ajanvaraukset</h1>
+
             <div class="page-description">
-                Tarkastele vastaanottoajan varanneita opiskelijoita
-                ja avaa vastaanottokäynti.
+                Vastaanotolle tehdyt ajanvaraukset
             </div>
         </div>
+
     </div>
 
     <div class="card">
-
-        <div class="card-header">
-
-            <div>
-                <h2 class="card-title">Ajanvaraukset</h2>
-                <div class="card-subtitle">
-                    Avaa vastaanotto valitsemalla opiskelija.
-                </div>
-            </div>
-
-            <div class="filter-bar">
-                <input
-                    id="appointmentSearch"
-                    class="search"
-                    placeholder="Hae nimellä tai ryhmällä"
-                >
-            </div>
-
-        </div>
-
         <div id="appointmentsTable"></div>
-
     </div>
 
 </section>
 
 
-<!-- ======================================================
-     STUDENTS
-======================================================= -->
+<!-- OPISKELIJAT -->
 
 <section id="page-students" class="page">
 
@@ -1476,46 +1048,23 @@ tbody tr:last-child td{
     </div>
 
     <div class="page-header">
+
         <div>
             <h1>Opiskelijat</h1>
+
             <div class="page-description">
-                Ajanvarauksissa olevat opiskelijat ja heidän
-                vastaanottokäyntinsä.
+                Ajanvarauksissa olevat opiskelijat
             </div>
-        </div>
-    </div>
-
-    <div class="card">
-
-        <div class="card-header">
-
-            <div>
-                <h2 class="card-title">Opiskelijat</h2>
-                <div class="card-subtitle">
-                    Opiskelijat muodostuvat ajanvaraustiedoista.
-                </div>
-            </div>
-
-            <input
-                id="studentSearch"
-                class="search"
-                placeholder="Hae opiskelijaa"
-            >
-
-        </div>
-
-        <div class="card-body">
-            <div id="studentGrid" class="student-grid"></div>
         </div>
 
     </div>
+
+    <div id="studentsGrid" class="student-grid"></div>
 
 </section>
 
 
-<!-- ======================================================
-     NOTES
-======================================================= -->
+<!-- KIRJAUKSET -->
 
 <section id="page-notes" class="page">
 
@@ -1527,77 +1076,22 @@ tbody tr:last-child td{
 
         <div>
             <h1>Kirjaukset</h1>
-            <div class="page-description">
-                Vastaanottokäyntien kirjaukset ja keskeneräiset luonnokset.
-            </div>
-        </div>
 
-        <div class="page-actions">
-            <button id="newNoteButton" class="btn-primary">
-                + Uusi kirjaus
-            </button>
+            <div class="page-description">
+                Vastaanottokäyntien kirjaukset
+            </div>
         </div>
 
     </div>
 
     <div class="card">
-
-        <div class="card-header">
-            <div>
-                <h2 class="card-title">Vastaanottokirjaukset</h2>
-                <div class="card-subtitle">
-                    Valitse kirjaus avataksesi vastaanoton.
-                </div>
-            </div>
-        </div>
-
         <div id="notesTable"></div>
-
     </div>
 
 </section>
 
 
-<!-- ======================================================
-     NEW NOTE
-======================================================= -->
-
-<section id="page-new-note" class="page">
-
-    <button class="back-link" onclick="showPage('notes')">
-        ← Takaisin kirjauksiin
-    </button>
-
-    <div class="page-header">
-        <div>
-            <h1>Uusi vastaanottokirjaus</h1>
-            <div class="page-description">
-                Valitse vastaanotto, johon kirjaus tehdään.
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-
-        <div class="card-header">
-            <div>
-                <h2 class="card-title">Valitse vastaanotto</h2>
-                <div class="card-subtitle">
-                    Näytetään ajanvaraukset, joihin voidaan tehdä kirjaus.
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body" id="newNoteAppointments"></div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     SLOTS
-======================================================= -->
+<!-- VASTAANOTTOAJAT -->
 
 <section id="page-slots" class="page">
 
@@ -1606,24 +1100,21 @@ tbody tr:last-child td{
     </div>
 
     <div class="page-header">
+
         <div>
             <h1>Vastaanottoajat</h1>
+
             <div class="page-description">
-                Hallitse opiskelijoille tarjottavia vapaita vastaanottoaikoja.
+                Vapaat vastaanottoajat
             </div>
         </div>
-    </div>
 
+    </div>
 
     <div class="card">
 
         <div class="card-header">
-            <div>
-                <h2 class="card-title">Lisää vastaanottoaika</h2>
-                <div class="card-subtitle">
-                    Lisää yksittäinen varattava vastaanottoaika.
-                </div>
-            </div>
+            <h2 class="card-title">Lisää vastaanottoaika</h2>
         </div>
 
         <div class="card-body">
@@ -1655,25 +1146,14 @@ tbody tr:last-child td{
 
     </div>
 
-
     <div class="card">
-
-        <div class="card-header">
-            <div>
-                <h2 class="card-title">Vapaat vastaanottoajat</h2>
-            </div>
-        </div>
-
         <div id="slotsTable"></div>
-
     </div>
 
 </section>
 
 
-<!-- ======================================================
-     PROFILE
-======================================================= -->
+<!-- OMAT TIEDOT -->
 
 <section id="page-profile" class="page">
 
@@ -1684,9 +1164,6 @@ tbody tr:last-child td{
     <div class="page-header">
         <div>
             <h1>Omat tiedot</h1>
-            <div class="page-description">
-                Henkilökunnan käyttäjätilin tiedot.
-            </div>
         </div>
     </div>
 
@@ -1694,29 +1171,18 @@ tbody tr:last-child td{
 
         <div class="card-body">
 
-            <div class="profile-heading">
-
-                <div class="profile-avatar">SR</div>
-
-                <div>
-                    <h2 id="profileHeading">Sanna Rantanen</h2>
-                    <p id="profileHeadingTitle">Terveydenhoitaja</p>
-                </div>
-
-            </div>
-
             <div class="info-grid">
 
                 <div class="info-label">Nimi</div>
-                <div id="profileName">–</div>
+                <div id="profileName">Sanna Rantanen</div>
 
-                <div class="info-label">Ammattinimike</div>
-                <div id="profileTitle">–</div>
+                <div class="info-label">Tehtävänimike</div>
+                <div id="profileTitle">Terveydenhoitaja</div>
 
                 <div class="info-label">Toimipiste</div>
-                <div id="profileLocation">–</div>
+                <div id="profileLocation">Muuramen lukio</div>
 
-                <div class="info-label">Käyttäjätunnus</div>
+                <div class="info-label">Sähköposti</div>
                 <div id="profileEmail">–</div>
 
             </div>
@@ -1728,26 +1194,37 @@ tbody tr:last-child td{
 </section>
 
 
-<!-- ======================================================
-     APPOINTMENT / VISIT
-======================================================= -->
+<!-- VASTAANOTTOKÄYNTI -->
 
 <section id="page-visit" class="page">
 
-    <button class="back-link" onclick="showPage('appointments')">
+    <button
+        class="back-link"
+        type="button"
+        onclick="showPage('appointments')"
+    >
         ← Takaisin ajanvarauksiin
     </button>
 
     <div class="patient-banner">
 
         <div>
-            <h1 id="visitStudentName">–</h1>
-            <div id="visitStudentMeta" class="patient-banner-meta">–</div>
+
+            <h1 id="visitStudentName">Opiskelija</h1>
+
+            <div
+                id="visitStudentMeta"
+                class="patient-banner-meta"
+            ></div>
+
         </div>
 
         <div class="patient-banner-time">
+
             <strong id="visitTime">–</strong>
+
             <span id="visitDate">–</span>
+
         </div>
 
     </div>
@@ -1755,11 +1232,19 @@ tbody tr:last-child td{
 
     <div class="tabs">
 
-        <button class="tab-button active" data-tab="basic">
-            Opiskelijan tiedot
+        <button
+            class="tab-button active"
+            data-tab="basic"
+            type="button"
+        >
+            Perustiedot
         </button>
 
-        <button class="tab-button" data-tab="documentation">
+        <button
+            class="tab-button"
+            data-tab="documentation"
+            type="button"
+        >
             Vastaanottokirjaus
         </button>
 
@@ -1768,65 +1253,44 @@ tbody tr:last-child td{
 
     <div id="tab-basic" class="tab-panel active">
 
-        <div style="height:20px"></div>
+        <div class="card">
 
-        <div class="detail-grid">
-
-            <div class="card">
-
-                <div class="card-header">
-                    <h2 class="card-title">Opiskelijan tiedot</h2>
-                </div>
-
-                <div class="card-body">
-
-                    <div class="info-grid">
-
-                        <div class="info-label">Nimi</div>
-                        <div id="visitName">–</div>
-
-                        <div class="info-label">Ryhmä</div>
-                        <div id="visitGroup">–</div>
-
-                        <div class="info-label">Sähköposti</div>
-                        <div id="visitEmail">–</div>
-
-                        <div class="info-label">Puhelinnumero</div>
-                        <div id="visitPhone">–</div>
-
-                    </div>
-
-                </div>
-
+            <div class="card-header">
+                <h2 class="card-title">
+                    Ajanvarauksen tiedot
+                </h2>
             </div>
 
+            <div class="card-body">
 
-            <div class="card">
+                <div class="info-grid">
 
-                <div class="card-header">
-                    <h2 class="card-title">Vastaanoton tiedot</h2>
-                </div>
+                    <div class="info-label">Opiskelija</div>
+                    <div id="visitName">–</div>
 
-                <div class="card-body">
+                    <div class="info-label">Ryhmä</div>
+                    <div id="visitGroup">–</div>
 
-                    <div class="info-grid">
+                    <div class="info-label">Sähköposti</div>
+                    <div id="visitEmail">–</div>
 
-                        <div class="info-label">Päivämäärä</div>
-                        <div id="visitInfoDate">–</div>
+                    <div class="info-label">Puhelin</div>
+                    <div id="visitPhone">–</div>
 
-                        <div class="info-label">Kellonaika</div>
-                        <div id="visitInfoTime">–</div>
+                    <div class="info-label">Päivä</div>
+                    <div id="visitInfoDate">–</div>
 
-                        <div class="info-label">Vastaanottaja</div>
-                        <div id="visitProfessional">Sanna Rantanen</div>
+                    <div class="info-label">Aika</div>
+                    <div id="visitInfoTime">–</div>
 
-                        <div class="info-label">Toimipiste</div>
-                        <div id="visitLocation">Muuramen lukio</div>
+                    <div class="info-label">Vastaanottaja</div>
+                    <div id="visitProfessional">–</div>
 
-                        <div class="info-label">Tila</div>
-                        <div id="visitStatus">–</div>
+                    <div class="info-label">Toimipiste</div>
+                    <div id="visitLocation">–</div>
 
-                    </div>
+                    <div class="info-label">Tila</div>
+                    <div id="visitStatus">–</div>
 
                 </div>
 
@@ -1839,125 +1303,74 @@ tbody tr:last-child td{
 
     <div id="tab-documentation" class="tab-panel">
 
-        <div style="height:20px"></div>
+        <div class="card">
 
-        <div class="note-layout">
+            <div class="card-header">
 
-            <div class="card">
+                <div>
+                    <h2 class="card-title">
+                        Vastaanottokirjaus
+                    </h2>
 
-                <div class="card-header">
-                    <div>
-                        <h2 class="card-title">Vastaanottokirjaus</h2>
-                        <div class="card-subtitle">
-                            Kirjaa vastaanottokäynnin tiedot.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-
-                    <div id="noteState" class="note-status"></div>
-
-                    <div class="field">
-                        <label for="visitReason">Käynnin syy</label>
-                        <input
-                            id="visitReason"
-                            placeholder="Kirjaa käynnin syy"
-                        >
-                    </div>
-
-                    <div class="field">
-                        <label for="noteText">Kirjaus</label>
-                        <textarea
-                            id="noteText"
-                            style="min-height:220px"
-                            placeholder="Kirjaa vastaanottokäynnin keskeiset tiedot..."
-                        ></textarea>
-                    </div>
-
-                    <div class="field">
-                        <label for="followUp">Jatkosuunnitelma</label>
-                        <textarea
-                            id="followUp"
-                            placeholder="Kirjaa sovitut jatkotoimet..."
-                        ></textarea>
-                    </div>
-
-                    <div class="form-actions">
-
-                        <button
-                            id="cancelAppointmentButton"
-                            class="btn-danger"
-                            type="button"
-                        >
-                            Peru ajanvaraus
-                        </button>
-
-                        <div style="flex:1"></div>
-
-                        <button
-                            id="saveDraftButton"
-                            class="btn-secondary"
-                            type="button"
-                        >
-                            Tallenna luonnos
-                        </button>
-
-                        <button
-                            id="completeButton"
-                            class="btn-primary"
-                            type="button"
-                        >
-                            Tallenna ja merkitse käynti valmiiksi
-                        </button>
-
-                    </div>
-
+                    <div id="noteState" class="card-subtitle"></div>
                 </div>
 
             </div>
 
+            <div class="card-body">
 
-            <aside class="note-side">
-
-                <h3>Kirjauksen tiedot</h3>
-
-                <div class="note-side-row">
-                    <div class="note-side-label">Kirjaaja</div>
-                    <div id="noteAuthor" class="note-side-value">
-                        Sanna Rantanen
-                    </div>
+                <div class="field">
+                    <label for="visitReason">Käynnin syy</label>
+                    <input id="visitReason" type="text">
                 </div>
 
-                <div class="note-side-row">
-                    <div class="note-side-label">Ammattinimike</div>
-                    <div class="note-side-value">
-                        Terveydenhoitaja
-                    </div>
+                <div class="field">
+                    <label for="noteText">Kirjaus</label>
+                    <textarea id="noteText"></textarea>
                 </div>
 
-                <div class="note-side-row">
-                    <div class="note-side-label">Toimipiste</div>
-                    <div class="note-side-value">
-                        Muuramen lukio
-                    </div>
+                <div class="field">
+                    <label for="followUp">Jatkosuunnitelma</label>
+                    <textarea id="followUp"></textarea>
                 </div>
 
-                <div class="note-side-row">
-                    <div class="note-side-label">Kirjauksen tila</div>
-                    <div id="noteSideStatus" class="note-side-value">
-                        Ei aloitettu
-                    </div>
+                <div class="form-actions">
+
+                    <button
+                        id="cancelAppointmentButton"
+                        class="btn-danger"
+                        type="button"
+                    >
+                        Peru ajanvaraus
+                    </button>
+
+                    <button
+                        id="deleteAppointmentButton"
+                        class="btn-delete"
+                        type="button"
+                    >
+                        Poista testivaraus
+                    </button>
+
+                    <button
+                        id="saveDraftButton"
+                        class="btn-secondary"
+                        type="button"
+                    >
+                        Tallenna luonnos
+                    </button>
+
+                    <button
+                        id="completeButton"
+                        class="btn-primary"
+                        type="button"
+                    >
+                        Tallenna ja merkitse valmiiksi
+                    </button>
+
                 </div>
 
-                <div class="note-side-row">
-                    <div class="note-side-label">Viimeksi muokattu</div>
-                    <div id="noteUpdated" class="note-side-value">
-                        –
-                    </div>
-                </div>
-
-            </aside>
+            </div>
 
         </div>
 
@@ -1965,116 +1378,47 @@ tbody tr:last-child td{
 
 </section>
 
-
-<!-- ======================================================
-     STUDENT DETAIL
-======================================================= -->
-
-<section id="page-student-detail" class="page">
-
-    <button class="back-link" onclick="showPage('students')">
-        ← Takaisin opiskelijoihin
-    </button>
-
-    <div class="patient-banner">
-        <div>
-            <h1 id="studentDetailName">–</h1>
-            <div id="studentDetailGroupTop" class="patient-banner-meta">–</div>
-        </div>
-    </div>
-
-    <div class="detail-grid">
-
-        <div class="card">
-
-            <div class="card-header">
-                <h2 class="card-title">Perustiedot</h2>
-            </div>
-
-            <div class="card-body">
-
-                <div class="info-grid">
-
-                    <div class="info-label">Ryhmä</div>
-                    <div id="studentDetailGroup">–</div>
-
-                    <div class="info-label">Sähköposti</div>
-                    <div id="studentDetailEmail">–</div>
-
-                    <div class="info-label">Puhelinnumero</div>
-                    <div id="studentDetailPhone">–</div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="card-header">
-                <h2 class="card-title">Yhteenveto</h2>
-            </div>
-
-            <div class="card-body">
-
-                <div class="info-grid">
-                    <div class="info-label">Vastaanottokäyntejä</div>
-                    <div id="studentVisitCount">0</div>
-
-                    <div class="info-label">Kirjauksia</div>
-                    <div id="studentNoteCount">0</div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-header">
-            <h2 class="card-title">Vastaanottokäynnit</h2>
-        </div>
-
-        <div id="studentAppointments"></div>
-
-    </div>
-
-</section>
-
-</main>
 </div>
+</main>
 </div>
 
 
 <script type="module">
 
-import { createClient }
-from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import {
+    createClient
+} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
+
+/* =========================================================
+   SUPABASE
+========================================================= */
 
 const SUPABASE_URL =
-'https://bwuybksyoopuejcrlspa.supabase.co';
+    'https://bwuybksyoopuejcrlspa.supabase.co';
 
 const SUPABASE_KEY =
-'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
 
 const supabase =
-createClient(SUPABASE_URL, SUPABASE_KEY);
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-/* GAME DATE */
-
-const GAME_TODAY = '2026-08-19';
-
-
-/* STATE */
+/* =========================================================
+   STATE
+========================================================= */
 
 let currentUser = null;
-let staffProfile = null;
+
+let staffProfile = {
+    full_name:'Sanna Rantanen',
+    professional_title:'Terveydenhoitaja',
+    location:'Muuramen lukio',
+    email:''
+};
 
 let appointments = [];
 let slots = [];
@@ -2098,40 +1442,41 @@ function escapeHtml(value){
 }
 
 
-function formatDate(date){
+function formatTime(value){
 
-    if(!date) return '–';
+    if(!value) return '–';
 
-    const [y,m,d] =
-        date.split('-').map(Number);
-
-    return new Intl.DateTimeFormat(
-        'fi-FI',
-        {
-            weekday:'short',
-            day:'numeric',
-            month:'numeric',
-            year:'numeric'
-        }
-    ).format(new Date(y,m-1,d));
+    return value.substring(0,5);
 }
 
 
-function formatTime(time){
+function formatDate(value){
 
-    if(!time) return '–';
+    if(!value) return '–';
 
-    return time.substring(0,5).replace(':','.');
+    return new Date(
+        value + 'T12:00:00'
+    ).toLocaleDateString(
+        'fi-FI',
+        {
+            weekday:'long',
+            day:'numeric',
+            month:'long',
+            year:'numeric'
+        }
+    );
 }
 
 
 function statusHtml(status){
 
-    if(status === 'completed')
+    if(status === 'completed'){
         return '<span class="status status-completed">Valmis</span>';
+    }
 
-    if(status === 'cancelled')
+    if(status === 'cancelled'){
         return '<span class="status status-cancelled">Peruttu</span>';
+    }
 
     return '<span class="status status-booked">Varattu</span>';
 }
@@ -2140,57 +1485,112 @@ function statusHtml(status){
 function showMessage(type,text){
 
     const element =
-        document.getElementById(
-            type === 'error'
-            ? 'globalError'
-            : 'globalSuccess'
-        );
+        document.getElementById('message');
+
+    element.className =
+        `message ${type}`;
 
     element.textContent = text;
+
     element.style.display = 'block';
 
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
 
     setTimeout(()=>{
         element.style.display='none';
-    },5000);
+    },6000);
 }
+
+
+function showPage(name){
+
+    document
+        .querySelectorAll('.page')
+        .forEach(page=>{
+            page.classList.remove('active');
+        });
+
+    document
+        .getElementById(`page-${name}`)
+        ?.classList.add('active');
+
+
+    document
+        .querySelectorAll('.nav-button[data-page]')
+        .forEach(button=>{
+
+            button.classList.toggle(
+                'active',
+                button.dataset.page === name
+            );
+
+        });
+}
+
+
+function activateTab(name){
+
+    document
+        .querySelectorAll('.tab-button')
+        .forEach(button=>{
+
+            button.classList.toggle(
+                'active',
+                button.dataset.tab === name
+            );
+
+        });
+
+
+    document
+        .querySelectorAll('.tab-panel')
+        .forEach(panel=>{
+            panel.classList.remove('active');
+        });
+
+
+    document
+        .getElementById(`tab-${name}`)
+        ?.classList.add('active');
+}
+
+
+window.showPage = showPage;
 
 
 /* =========================================================
    NAVIGATION
 ========================================================= */
 
-window.showPage = function(name){
-
-    document
-        .querySelectorAll('.page')
-        .forEach(p=>p.classList.remove('active'));
-
-    document
-        .getElementById(`page-${name}`)
-        ?.classList.add('active');
-
-    document
-        .querySelectorAll('.nav-button[data-page]')
-        .forEach(button=>{
-            button.classList.toggle(
-                'active',
-                button.dataset.page === name
-            );
-        });
-
-    window.scrollTo({top:0});
-};
-
-
 document
 .querySelectorAll('.nav-button[data-page]')
 .forEach(button=>{
 
-    button.addEventListener('click',()=>{
-        showPage(button.dataset.page);
-    });
+    button.onclick=()=>{
+
+        showPage(
+            button.dataset.page
+        );
+
+    };
+
+});
+
+
+document
+.querySelectorAll('.tab-button')
+.forEach(button=>{
+
+    button.onclick=()=>{
+
+        activateTab(
+            button.dataset.tab
+        );
+
+    };
 
 });
 
@@ -2201,73 +1601,85 @@ document
 
 document
 .getElementById('loginForm')
-.addEventListener('submit',async event=>{
+.addEventListener(
+    'submit',
+    async event=>{
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const email =
-        document.getElementById('email').value.trim();
+        const email =
+            document
+            .getElementById('email')
+            .value
+            .trim();
 
-    const password =
-        document.getElementById('password').value;
-
-    const button =
-        document.getElementById('loginButton');
-
-    const errorBox =
-        document.getElementById('loginError');
-
-    errorBox.style.display='none';
-
-    button.disabled=true;
-    button.textContent='Kirjaudutaan...';
+        const password =
+            document
+            .getElementById('password')
+            .value;
 
 
-    const {data,error} =
+        const errorBox =
+            document
+            .getElementById('loginError');
+
+        errorBox.style.display='none';
+
+
+        const {
+            data,
+            error
+        } =
         await supabase.auth.signInWithPassword({
             email,
             password
         });
 
 
-    button.disabled=false;
-    button.textContent='Kirjaudu sisään';
+        if(error){
+
+            errorBox.textContent =
+                'Kirjautuminen epäonnistui. Tarkista sähköpostiosoite ja salasana.';
+
+            errorBox.style.display='block';
+
+            return;
+        }
 
 
-    if(error){
+        currentUser = data.user;
 
-        errorBox.textContent =
-        'Kirjautuminen epäonnistui. Tarkista sähköpostiosoite ja salasana.';
+        await startApplication();
 
-        errorBox.style.display='block';
-
-        return;
     }
+);
 
 
-    currentUser=data.user;
-
-    await startApplication();
-});
-
+/* =========================================================
+   START APPLICATION
+========================================================= */
 
 async function startApplication(){
 
-    const {data:isAdmin,error} =
-        await supabase.rpc('is_admin');
+    if(!currentUser) return;
 
 
-    if(error || isAdmin !== true){
+    const {
+        data:isAdmin,
+        error:adminError
+    } =
+    await supabase.rpc('is_admin');
+
+
+    if(adminError || !isAdmin){
 
         await supabase.auth.signOut();
 
-        const box =
-            document.getElementById('loginError');
+        alert(
+            'Tällä käyttäjällä ei ole käyttöoikeutta henkilökunnan työpöydälle.'
+        );
 
-        box.textContent =
-            'Käyttäjällä ei ole oikeutta henkilökunnan työpöydälle.';
-
-        box.style.display='block';
+        location.reload();
 
         return;
     }
@@ -2284,6 +1696,8 @@ async function startApplication(){
 
 
     await refreshData();
+
+    showPage('dashboard');
 }
 
 
@@ -2293,49 +1707,66 @@ async function startApplication(){
 
 async function loadProfile(){
 
-    const {data} =
-        await supabase
-            .from('staff_profiles')
-            .select('*')
-            .eq('user_id',currentUser.id)
-            .maybeSingle();
+    const {
+        data,
+        error
+    } =
+    await supabase
+        .from('staff_profiles')
+        .select('*')
+        .eq('user_id',currentUser.id)
+        .maybeSingle();
 
 
-    staffProfile =
-        data || {
-            full_name:'Sanna Rantanen',
-            professional_title:'Terveydenhoitaja',
-            location:'Muuramen lukio',
-            email:currentUser.email
-        };
+    if(!error && data){
+
+        staffProfile = data;
+
+    }else{
+
+        staffProfile.email =
+            currentUser.email || '';
+
+    }
 
 
-    const name =
+    document.getElementById('headerName')
+        .textContent =
         staffProfile.full_name || 'Sanna Rantanen';
 
-    const title =
+    document.getElementById('headerTitle')
+        .textContent =
         staffProfile.professional_title || 'Terveydenhoitaja';
 
-    const location =
+    document.getElementById('profileName')
+        .textContent =
+        staffProfile.full_name || 'Sanna Rantanen';
+
+    document.getElementById('profileTitle')
+        .textContent =
+        staffProfile.professional_title || 'Terveydenhoitaja';
+
+    document.getElementById('profileLocation')
+        .textContent =
         staffProfile.location || 'Muuramen lukio';
 
+    document.getElementById('profileEmail')
+        .textContent =
+        staffProfile.email ||
+        currentUser.email ||
+        '–';
 
-    document.getElementById('headerName').textContent=name;
-    document.getElementById('headerTitle').textContent=title;
 
-    document.getElementById('profileHeading').textContent=name;
-    document.getElementById('profileHeadingTitle').textContent=title;
+    const initials =
+        (staffProfile.full_name || 'Sanna Rantanen')
+        .split(/\s+/)
+        .map(part=>part[0])
+        .join('')
+        .substring(0,2)
+        .toUpperCase();
 
-    document.getElementById('profileName').textContent=name;
-    document.getElementById('profileTitle').textContent=title;
-    document.getElementById('profileLocation').textContent=location;
-    document.getElementById('profileEmail').textContent=currentUser.email;
-
-    document.getElementById('noteAuthor').textContent=name;
-
-    const firstName=name.split(' ')[0];
-
-    document.getElementById('welcomeName').textContent=firstName;
+    document.getElementById('headerInitials')
+        .textContent=initials;
 }
 
 
@@ -2351,18 +1782,21 @@ async function refreshData(){
         loadNotes()
     ]);
 
-    renderAll();
+    renderEverything();
 }
 
 
 async function loadAppointments(){
 
-    const {data,error} =
-        await supabase
+    const {
+        data,
+        error
+    } =
+    await supabase
         .from('appointments')
         .select(`
             *,
-            available_times(
+            available_times (
                 id,
                 appointment_date,
                 start_time,
@@ -2373,7 +1807,10 @@ async function loadAppointments(){
                 is_available
             )
         `)
-        .order('created_at',{ascending:false});
+        .order(
+            'created_at',
+            {ascending:false}
+        );
 
 
     if(error){
@@ -2388,63 +1825,72 @@ async function loadAppointments(){
         return;
     }
 
-    appointments=data || [];
+
+    appointments = data || [];
 }
 
 
 async function loadSlots(){
 
-    const {data,error} =
-        await supabase
+    const {
+        data,
+        error
+    } =
+    await supabase
         .from('available_times')
         .select('*')
-        .gte('appointment_date',GAME_TODAY)
-        .order('appointment_date')
-        .order('start_time');
+        .order(
+            'appointment_date',
+            {ascending:true}
+        )
+        .order(
+            'start_time',
+            {ascending:true}
+        );
 
 
     if(error){
+
         console.error(error);
+
         return;
     }
 
-    slots=data || [];
+
+    slots = data || [];
 }
 
 
 async function loadNotes(){
 
-    const {data,error} =
-        await supabase
+    const {
+        data,
+        error
+    } =
+    await supabase
         .from('visit_notes')
         .select('*')
-        .order('updated_at',{ascending:false});
+        .order(
+            'updated_at',
+            {ascending:false}
+        );
 
 
     if(error){
+
         console.error(error);
+
         return;
     }
 
-    notes=data || [];
+
+    notes = data || [];
 }
 
 
 /* =========================================================
-   RENDER
+   SORT
 ========================================================= */
-
-function renderAll(){
-
-    renderStatistics();
-    renderDashboard();
-    renderAppointments();
-    renderStudents();
-    renderNotes();
-    renderSlots();
-    renderNewNoteChoices();
-}
-
 
 function sortedAppointments(){
 
@@ -2453,22 +1899,28 @@ function sortedAppointments(){
         .sort((a,b)=>{
 
             const aa =
-                a.available_times.appointment_date +
-                a.available_times.start_time;
+                `${a.available_times.appointment_date} ${a.available_times.start_time}`;
 
             const bb =
-                b.available_times.appointment_date +
-                b.available_times.start_time;
+                `${b.available_times.appointment_date} ${b.available_times.start_time}`;
 
             return aa.localeCompare(bb);
         });
 }
 
 
-function activeAppointments(){
+/* =========================================================
+   RENDER EVERYTHING
+========================================================= */
 
-    return sortedAppointments()
-        .filter(a=>a.status==='booked');
+function renderEverything(){
+
+    renderStatistics();
+    renderDashboard();
+    renderAppointments();
+    renderStudents();
+    renderNotes();
+    renderSlots();
 }
 
 
@@ -2478,21 +1930,35 @@ function activeAppointments(){
 
 function renderStatistics(){
 
-    document.getElementById('statBooked')
-        .textContent =
-        appointments.filter(a=>a.status==='booked').length;
+    const booked =
+        appointments.filter(
+            a=>a.status==='booked'
+        );
 
-    document.getElementById('statFree')
-        .textContent =
-        slots.filter(s=>s.is_available).length;
+    const students =
+        new Set(
+            appointments.map(
+                a=>`${a.student_name}|${a.student_group || ''}`
+            )
+        );
 
-    document.getElementById('statCompleted')
-        .textContent =
-        appointments.filter(a=>a.status==='completed').length;
+    const freeSlots =
+        slots.filter(
+            s=>s.is_available
+        );
 
-    document.getElementById('statDrafts')
-        .textContent =
-        notes.filter(n=>n.status==='draft').length;
+
+    document.getElementById('statAppointments')
+        .textContent=booked.length;
+
+    document.getElementById('statStudents')
+        .textContent=students.size;
+
+    document.getElementById('statNotes')
+        .textContent=notes.length;
+
+    document.getElementById('statSlots')
+        .textContent=freeSlots.length;
 }
 
 
@@ -2502,143 +1968,33 @@ function renderStatistics(){
 
 function renderDashboard(){
 
-    const active=activeAppointments();
+    const list =
+        sortedAppointments()
+        .filter(a=>a.status==='booked')
+        .slice(0,8);
 
-    const table =
-        document.getElementById('dashboardAppointments');
+
+    const container =
+        document.getElementById(
+            'dashboardAppointments'
+        );
 
 
-    if(!active.length){
+    if(!list.length){
 
-        table.innerHTML=`
+        container.innerHTML=`
             <div class="empty-state">
-                <strong>Ei tulevia vastaanottoja</strong>
-                Varattuja vastaanottoaikoja ei tällä hetkellä ole.
+                <strong>Ei tulevia ajanvarauksia</strong>
+                Varatut vastaanottoajat näkyvät tässä.
             </div>
         `;
 
-    }else{
-
-        table.innerHTML=`
-        <div class="table-wrap">
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Päivä</th>
-                    <th>Aika</th>
-                    <th>Opiskelija</th>
-                    <th>Ryhmä</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-            ${active.slice(0,7).map(a=>`
-
-                <tr class="clickable-row"
-                    data-open="${a.id}">
-
-                    <td>
-                        ${formatDate(a.available_times.appointment_date)}
-                    </td>
-
-                    <td>
-                        <strong>
-                            ${formatTime(a.available_times.start_time)}
-                            –
-                            ${formatTime(a.available_times.end_time)}
-                        </strong>
-                    </td>
-
-                    <td>
-                        <span class="person-name">
-                            ${escapeHtml(a.student_name)}
-                        </span>
-                    </td>
-
-                    <td>
-                        ${escapeHtml(a.student_group || '–')}
-                    </td>
-
-                    <td>
-                        <button
-                            class="btn-secondary"
-                            data-open="${a.id}"
-                        >
-                            Avaa vastaanotto
-                        </button>
-                    </td>
-
-                </tr>
-
-            `).join('')}
-
-            </tbody>
-
-        </table>
-        </div>
-        `;
+        return;
     }
 
 
-    const next =
-        active[0];
-
-    const nextBox =
-        document.getElementById('nextAppointment');
-
-
-    if(!next){
-
-        nextBox.innerHTML=`
-            <div class="empty-state">
-                <strong>Ei seuraavaa vastaanottoa</strong>
-                Uutta varattua aikaa ei ole.
-            </div>
-        `;
-
-    }else{
-
-        nextBox.innerHTML=`
-
-            <div class="next-box">
-
-                <div class="next-label">
-                    Seuraava vastaanotto
-                </div>
-
-                <div class="next-date">
-                    ${formatDate(next.available_times.appointment_date)}
-                </div>
-
-                <div class="next-time">
-                    ${formatTime(next.available_times.start_time)}
-                    –
-                    ${formatTime(next.available_times.end_time)}
-                </div>
-
-                <div class="next-person">
-                    ${escapeHtml(next.student_name)}
-                </div>
-
-                <div class="next-group">
-                    ${escapeHtml(next.student_group || 'Ryhmä ei ilmoitettu')}
-                </div>
-
-                <div class="next-action">
-                    <button
-                        class="btn-primary"
-                        data-open="${next.id}"
-                    >
-                        Avaa vastaanotto
-                    </button>
-                </div>
-
-            </div>
-        `;
-    }
+    container.innerHTML =
+    renderAppointmentTable(list);
 
     bindAppointmentLinks();
 }
@@ -2648,31 +2004,19 @@ function renderDashboard(){
    APPOINTMENTS
 ========================================================= */
 
-function renderAppointments(filter=''){
+function renderAppointments(){
 
-    const element =
-        document.getElementById('appointmentsTable');
-
-    let list=sortedAppointments();
-
-
-    if(filter){
-
-        const q=filter.toLowerCase();
-
-        list=list.filter(a=>
-            a.student_name?.toLowerCase().includes(q) ||
-            a.student_group?.toLowerCase().includes(q)
+    const container =
+        document.getElementById(
+            'appointmentsTable'
         );
-    }
 
 
-    if(!list.length){
+    if(!appointments.length){
 
-        element.innerHTML=`
+        container.innerHTML=`
             <div class="empty-state">
-                <strong>Ajanvarauksia ei löytynyt</strong>
-                Hakuehdoilla ei löytynyt ajanvarauksia.
+                <strong>Ajanvarauksia ei ole</strong>
             </div>
         `;
 
@@ -2680,150 +2024,159 @@ function renderAppointments(filter=''){
     }
 
 
-    element.innerHTML=`
-    <div class="table-wrap">
-    <table>
-
-        <thead>
-            <tr>
-                <th>Päivä</th>
-                <th>Aika</th>
-                <th>Opiskelija</th>
-                <th>Ryhmä</th>
-                <th>Yhteystiedot</th>
-                <th>Tila</th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        ${list.map(a=>`
-
-            <tr class="clickable-row" data-open="${a.id}">
-
-                <td>
-                    ${formatDate(a.available_times.appointment_date)}
-                </td>
-
-                <td>
-                    <strong>
-                        ${formatTime(a.available_times.start_time)}
-                        –
-                        ${formatTime(a.available_times.end_time)}
-                    </strong>
-                </td>
-
-                <td>
-                    <span class="person-name">
-                        ${escapeHtml(a.student_name)}
-                    </span>
-                </td>
-
-                <td>
-                    ${escapeHtml(a.student_group || '–')}
-                </td>
-
-                <td>
-                    ${escapeHtml(a.student_email || '–')}
-                    <div class="secondary-text">
-                        ${escapeHtml(a.student_phone || '')}
-                    </div>
-                </td>
-
-                <td>
-                    ${statusHtml(a.status)}
-                </td>
-
-                <td>
-                    <button
-                        class="btn-secondary"
-                        data-open="${a.id}"
-                    >
-                        Avaa
-                    </button>
-                </td>
-
-            </tr>
-
-        `).join('')}
-
-        </tbody>
-
-    </table>
-    </div>
-    `;
+    container.innerHTML =
+        renderAppointmentTable(
+            sortedAppointments()
+        );
 
     bindAppointmentLinks();
 }
 
 
-document
-.getElementById('appointmentSearch')
-.addEventListener('input',event=>{
-    renderAppointments(event.target.value.trim());
-});
+function renderAppointmentTable(list){
+
+    return `
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Päivä</th>
+                    <th>Aika</th>
+                    <th>Opiskelija</th>
+                    <th>Ryhmä</th>
+                    <th>Tila</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                ${list.map(a=>{
+
+                    const slot =
+                        a.available_times;
+
+                    return `
+                    <tr
+                        class="clickable-row"
+                        data-open="${a.id}"
+                    >
+
+                        <td>
+                            ${
+                                slot
+                                ? formatDate(slot.appointment_date)
+                                : '–'
+                            }
+                        </td>
+
+                        <td>
+                            ${
+                                slot
+                                ? `${formatTime(slot.start_time)}–${formatTime(slot.end_time)}`
+                                : '–'
+                            }
+                        </td>
+
+                        <td>
+                            <span class="person-name">
+                                ${escapeHtml(a.student_name)}
+                            </span>
+                        </td>
+
+                        <td>
+                            ${escapeHtml(a.student_group || '–')}
+                        </td>
+
+                        <td>
+                            ${statusHtml(a.status)}
+                        </td>
+
+                        <td>
+                            <button
+                                class="btn-secondary"
+                                data-open="${a.id}"
+                                type="button"
+                            >
+                                Avaa
+                            </button>
+                        </td>
+
+                    </tr>
+                    `;
+
+                }).join('')}
+
+            </tbody>
+
+        </table>
+
+    </div>
+    `;
+}
 
 
 /* =========================================================
    STUDENTS
 ========================================================= */
 
-function getStudents(){
+function renderStudents(){
 
-    const map=new Map();
+    const map = new Map();
+
 
     appointments.forEach(a=>{
 
-        const key=
-            (
-                a.student_email ||
-                `${a.student_name}|${a.student_group || ''}`
-            ).toLowerCase();
+        const key =
+            `${a.student_name}|${a.student_group || ''}`;
+
 
         if(!map.has(key)){
 
-            map.set(key,{
+            map.set(
                 key,
-                name:a.student_name,
-                group:a.student_group,
-                email:a.student_email,
-                phone:a.student_phone,
-                appointments:[]
-            });
+                {
+                    name:a.student_name,
+                    group:a.student_group,
+                    email:a.student_email,
+                    phone:a.student_phone,
+                    appointments:[]
+                }
+            );
         }
 
-        map.get(key).appointments.push(a);
+
+        map.get(key)
+            .appointments
+            .push(a);
+
     });
 
-    return [...map.values()]
-        .sort((a,b)=>a.name.localeCompare(b.name,'fi'));
-}
 
-
-function renderStudents(filter=''){
-
-    let students=getStudents();
-
-    if(filter){
-
-        const q=filter.toLowerCase();
-
-        students=students.filter(s=>
-            s.name?.toLowerCase().includes(q) ||
-            s.group?.toLowerCase().includes(q)
+    const students =
+        [...map.values()]
+        .sort(
+            (a,b)=>
+            a.name.localeCompare(
+                b.name,
+                'fi'
+            )
         );
-    }
 
 
-    const grid=document.getElementById('studentGrid');
+    const container =
+        document.getElementById(
+            'studentsGrid'
+        );
 
 
     if(!students.length){
 
-        grid.innerHTML=`
+        container.innerHTML=`
             <div class="empty-state">
-                <strong>Opiskelijoita ei löytynyt</strong>
+                <strong>Opiskelijoita ei ole</strong>
             </div>
         `;
 
@@ -2831,53 +2184,33 @@ function renderStudents(filter=''){
     }
 
 
-    grid.innerHTML=students.map(student=>`
+    container.innerHTML =
+        students.map(student=>`
 
-        <div
-            class="student-card"
-            data-student="${escapeHtml(student.key)}"
-        >
+            <div class="student-card">
 
-            <div class="student-card-name">
-                ${escapeHtml(student.name)}
+                <div class="student-card-name">
+                    ${escapeHtml(student.name)}
+                </div>
+
+                <div class="student-card-meta">
+                    ${
+                        escapeHtml(
+                            student.group ||
+                            'Ryhmä ei ilmoitettu'
+                        )
+                    }
+                </div>
+
+                <div class="student-card-meta">
+                    Ajanvarauksia:
+                    ${student.appointments.length}
+                </div>
+
             </div>
 
-            <div class="student-card-meta">
-                ${escapeHtml(student.group || 'Ryhmä ei ilmoitettu')}
-            </div>
-
-            <div class="student-card-meta">
-                ${student.appointments.length} vastaanottoa
-            </div>
-
-        </div>
-
-    `).join('');
-
-
-    document
-    .querySelectorAll('[data-student]')
-    .forEach(element=>{
-
-        element.onclick=()=>{
-
-            const student=
-                students.find(
-                    s=>s.key===element.dataset.student
-                );
-
-            if(student)
-                openStudent(student);
-        };
-    });
+        `).join('');
 }
-
-
-document
-.getElementById('studentSearch')
-.addEventListener('input',event=>{
-    renderStudents(event.target.value.trim());
-});
 
 
 /* =========================================================
@@ -2886,96 +2219,79 @@ document
 
 function renderNotes(){
 
-    const element =
-        document.getElementById('notesTable');
+    const container =
+        document.getElementById(
+            'notesTable'
+        );
 
 
     if(!notes.length){
 
-        element.innerHTML=`
-
+        container.innerHTML=`
             <div class="empty-state">
-
-                <strong>Vastaanottokirjauksia ei vielä ole</strong>
-
-                Aloita ensimmäinen kirjaus valitsemalla
-                “Uusi kirjaus”.
-
-                <div style="margin-top:17px">
-
-                    <button
-                        class="btn-primary"
-                        id="emptyNewNoteButton"
-                    >
-                        + Uusi kirjaus
-                    </button>
-
-                </div>
-
+                <strong>Kirjauksia ei ole</strong>
+                Vastaanottokirjaukset näkyvät tässä.
             </div>
         `;
-
-        document.getElementById('emptyNewNoteButton')
-            .onclick=openNewNote;
 
         return;
     }
 
 
-    element.innerHTML=`
+    container.innerHTML=`
+
     <div class="table-wrap">
-    <table>
 
-        <thead>
-            <tr>
-                <th>Opiskelija</th>
-                <th>Vastaanotto</th>
-                <th>Käynnin syy</th>
-                <th>Kirjauksen tila</th>
-                <th>Viimeksi muokattu</th>
-                <th></th>
-            </tr>
-        </thead>
+        <table>
 
-        <tbody>
+            <thead>
+                <tr>
+                    <th>Opiskelija</th>
+                    <th>Käynnin syy</th>
+                    <th>Tila</th>
+                    <th>Muokattu</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-        ${notes.map(note=>{
+            <tbody>
 
-            const appointment=
-                appointments.find(
-                    a=>a.id===note.appointment_id
-                );
+            ${notes.map(note=>{
 
-            if(!appointment) return '';
+                const appointment =
+                    appointments.find(
+                        a=>
+                        a.id ===
+                        note.appointment_id
+                    );
 
-            const slot=appointment.available_times;
 
-            return `
+                if(!appointment){
+                    return '';
+                }
 
-                <tr class="clickable-row"
-                    data-open="${appointment.id}">
+
+                return `
+
+                <tr>
 
                     <td>
                         <span class="person-name">
-                            ${escapeHtml(appointment.student_name)}
+                            ${
+                                escapeHtml(
+                                    appointment.student_name
+                                )
+                            }
                         </span>
-
-                        <div class="secondary-text">
-                            ${escapeHtml(appointment.student_group || '')}
-                        </div>
                     </td>
 
                     <td>
                         ${
-                            slot
-                            ? `${formatDate(slot.appointment_date)}
-                               ${formatTime(slot.start_time)}`
-                            : '–'
+                            escapeHtml(
+                                note.visit_reason ||
+                                '–'
+                            )
                         }
-                    </td>
-
-                    <td>
-                        ${escapeHtml(note.visit_reason || '–')}
                     </td>
 
                     <td>
@@ -2987,143 +2303,65 @@ function renderNotes(){
                     </td>
 
                     <td>
-                        ${new Date(note.updated_at).toLocaleString('fi-FI')}
+                        ${
+                            new Date(
+                                note.updated_at
+                            ).toLocaleString(
+                                'fi-FI'
+                            )
+                        }
                     </td>
 
                     <td>
+
                         <button
                             class="btn-secondary"
                             data-open="${appointment.id}"
+                            type="button"
                         >
                             Avaa
                         </button>
+
                     </td>
 
                 </tr>
-            `;
+                `;
 
-        }).join('')}
+            }).join('')}
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
+
     </div>
     `;
+
 
     bindAppointmentLinks();
 }
 
 
 /* =========================================================
-   NEW NOTE
+   BIND APPOINTMENTS
 ========================================================= */
 
-function openNewNote(){
-
-    renderNewNoteChoices();
-
-    showPage('new-note');
-}
-
-
-document.getElementById('newNoteButton')
-    .onclick=openNewNote;
-
-document.getElementById('dashboardNewNote')
-    .onclick=openNewNote;
-
-
-function renderNewNoteChoices(){
-
-    const container=
-        document.getElementById('newNoteAppointments');
-
-    const list=sortedAppointments()
-        .filter(a=>a.status!=='cancelled');
-
-
-    if(!list.length){
-
-        container.innerHTML=`
-            <div class="empty-state">
-                <strong>Vastaanottoja ei ole</strong>
-                Kirjausta varten tarvitaan ajanvaraus.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML=list.map(a=>{
-
-        const note=
-            notes.find(
-                n=>n.appointment_id===a.id
-            );
-
-        return `
-
-            <div class="appointment-choice">
-
-                <div>
-
-                    <div class="choice-date">
-                        ${formatDate(a.available_times.appointment_date)}
-                        ·
-                        ${formatTime(a.available_times.start_time)}
-                        –
-                        ${formatTime(a.available_times.end_time)}
-                    </div>
-
-                    <div class="choice-name">
-                        ${escapeHtml(a.student_name)}
-                    </div>
-
-                    <div class="secondary-text">
-                        ${escapeHtml(a.student_group || 'Ryhmä ei ilmoitettu')}
-                        ${
-                            note
-                            ? ' · Kirjaus aloitettu'
-                            : ''
-                        }
-                    </div>
-
-                </div>
-
-                <button
-                    class="btn-primary"
-                    data-open="${a.id}"
-                    data-open-note="true"
-                >
-                    ${
-                        note
-                        ? 'Avaa kirjaus'
-                        : 'Aloita kirjaus'
-                    }
-                </button>
-
-            </div>
-        `;
-
-    }).join('');
-
+function bindAppointmentLinks(){
 
     document
-    .querySelectorAll('[data-open-note]')
-    .forEach(button=>{
+        .querySelectorAll('[data-open]')
+        .forEach(element=>{
 
-        button.onclick=async event=>{
+            element.onclick=event=>{
 
-            event.stopPropagation();
+                event.stopPropagation();
 
-            await openAppointment(
-                button.dataset.open
-            );
+                openAppointment(
+                    element.dataset.open
+                );
 
-            activateTab('documentation');
-        };
-    });
+            };
+
+        });
 }
 
 
@@ -3131,93 +2369,137 @@ function renderNewNoteChoices(){
    OPEN APPOINTMENT
 ========================================================= */
 
-function bindAppointmentLinks(){
-
-    document
-    .querySelectorAll('[data-open]:not([data-open-note])')
-    .forEach(element=>{
-
-        element.onclick=event=>{
-
-            event.stopPropagation();
-
-            openAppointment(
-                element.dataset.open
-            );
-        };
-    });
-}
-
-
 async function openAppointment(id){
 
-    activeAppointment=
-        appointments.find(a=>a.id===id);
-
-    if(!activeAppointment) return;
-
-
-    const a=activeAppointment;
-    const slot=a.available_times;
+    activeAppointment =
+        appointments.find(
+            a=>a.id===id
+        );
 
 
-    document.getElementById('visitStudentName')
-        .textContent=a.student_name || '–';
+    if(!activeAppointment){
+        return;
+    }
 
-    document.getElementById('visitStudentMeta')
-        .textContent=
+
+    const a =
+        activeAppointment;
+
+    const slot =
+        a.available_times;
+
+
+    document
+        .getElementById('visitStudentName')
+        .textContent =
+        a.student_name || '–';
+
+
+    document
+        .getElementById('visitStudentMeta')
+        .textContent =
         a.student_group
         ? `Ryhmä ${a.student_group}`
         : 'Ryhmä ei ilmoitettu';
 
-    document.getElementById('visitName')
-        .textContent=a.student_name || '–';
 
-    document.getElementById('visitGroup')
-        .textContent=a.student_group || '–';
+    document
+        .getElementById('visitName')
+        .textContent =
+        a.student_name || '–';
 
-    document.getElementById('visitEmail')
-        .textContent=a.student_email || '–';
 
-    document.getElementById('visitPhone')
-        .textContent=a.student_phone || '–';
+    document
+        .getElementById('visitGroup')
+        .textContent =
+        a.student_group || '–';
+
+
+    document
+        .getElementById('visitEmail')
+        .textContent =
+        a.student_email || '–';
+
+
+    document
+        .getElementById('visitPhone')
+        .textContent =
+        a.student_phone || '–';
 
 
     if(slot){
 
-        document.getElementById('visitTime')
-            .textContent=
+        document
+            .getElementById('visitTime')
+            .textContent =
             `${formatTime(slot.start_time)}–${formatTime(slot.end_time)}`;
 
-        document.getElementById('visitDate')
-            .textContent=formatDate(slot.appointment_date);
 
-        document.getElementById('visitInfoDate')
-            .textContent=formatDate(slot.appointment_date);
+        document
+            .getElementById('visitDate')
+            .textContent =
+            formatDate(
+                slot.appointment_date
+            );
 
-        document.getElementById('visitInfoTime')
-            .textContent=
+
+        document
+            .getElementById('visitInfoDate')
+            .textContent =
+            formatDate(
+                slot.appointment_date
+            );
+
+
+        document
+            .getElementById('visitInfoTime')
+            .textContent =
             `${formatTime(slot.start_time)}–${formatTime(slot.end_time)}`;
 
-        document.getElementById('visitProfessional')
-            .textContent=
-            slot.professional_name || staffProfile.full_name;
 
-        document.getElementById('visitLocation')
-            .textContent=
-            slot.location || staffProfile.location;
+        document
+            .getElementById('visitProfessional')
+            .textContent =
+            slot.professional_name ||
+            staffProfile.full_name ||
+            'Sanna Rantanen';
+
+
+        document
+            .getElementById('visitLocation')
+            .textContent =
+            slot.location ||
+            staffProfile.location ||
+            'Muuramen lukio';
     }
 
 
-    document.getElementById('visitStatus')
-        .innerHTML=statusHtml(a.status);
+    document
+        .getElementById('visitStatus')
+        .innerHTML =
+        statusHtml(a.status);
 
 
-    document.getElementById('cancelAppointmentButton')
-        .style.display=
-        a.status==='booked'
+    document
+        .getElementById(
+            'cancelAppointmentButton'
+        )
+        .style.display =
+        a.status === 'booked'
         ? ''
         : 'none';
+
+
+    /*
+      Testivarauksen poistaminen sallitaan
+      myös perutulle tai valmiille testivaraukselle.
+    */
+
+    document
+        .getElementById(
+            'deleteAppointmentButton'
+        )
+        .style.display='';
 
 
     await loadActiveNote();
@@ -3229,108 +2511,68 @@ async function openAppointment(id){
 
 
 /* =========================================================
-   TABS
-========================================================= */
-
-function activateTab(name){
-
-    document
-    .querySelectorAll('.tab-button')
-    .forEach(button=>{
-        button.classList.toggle(
-            'active',
-            button.dataset.tab===name
-        );
-    });
-
-
-    document
-    .querySelectorAll('.tab-panel')
-    .forEach(panel=>{
-        panel.classList.remove('active');
-    });
-
-
-    document
-    .getElementById(`tab-${name}`)
-    ?.classList.add('active');
-}
-
-
-document
-.querySelectorAll('.tab-button')
-.forEach(button=>{
-
-    button.onclick=()=>{
-        activateTab(button.dataset.tab);
-    };
-
-});
-
-
-/* =========================================================
-   LOAD NOTE INTO VISIT
+   LOAD NOTE
 ========================================================= */
 
 async function loadActiveNote(){
 
-    const note=
+    if(!activeAppointment){
+        return;
+    }
+
+
+    const note =
         notes.find(
-            n=>n.appointment_id===activeAppointment.id
+            n=>
+            n.appointment_id ===
+            activeAppointment.id
         );
 
 
-    document.getElementById('visitReason')
-        .value=note?.visit_reason || '';
-
-    document.getElementById('noteText')
-        .value=note?.note_text || '';
-
-    document.getElementById('followUp')
-        .value=note?.follow_up || '';
+    document
+        .getElementById('visitReason')
+        .value =
+        note?.visit_reason || '';
 
 
-    const state=
-        document.getElementById('noteState');
+    document
+        .getElementById('noteText')
+        .value =
+        note?.note_text || '';
+
+
+    document
+        .getElementById('followUp')
+        .value =
+        note?.follow_up || '';
+
+
+    const state =
+        document.getElementById(
+            'noteState'
+        );
 
 
     if(!note){
 
-        state.innerHTML=
-        '<span class="status status-draft">Ei aloitettu</span>';
-
-        document.getElementById('noteSideStatus')
-            .textContent='Ei aloitettu';
-
-        document.getElementById('noteUpdated')
-            .textContent='–';
+        state.innerHTML =
+            '<span class="status status-draft">Ei aloitettu</span>';
 
         return;
     }
 
 
-    if(note.status==='completed'){
+    if(note.status === 'completed'){
 
-        state.innerHTML=
-        '<span class="status status-completed">Kirjaus valmis</span>';
-
-        document.getElementById('noteSideStatus')
-            .textContent='Valmis';
+        state.innerHTML =
+            '<span class="status status-completed">Kirjaus valmis</span>';
 
     }else{
 
-        state.innerHTML=
-        '<span class="status status-draft">Luonnos</span>';
+        state.innerHTML =
+            '<span class="status status-draft">Luonnos</span>';
 
-        document.getElementById('noteSideStatus')
-            .textContent='Luonnos';
     }
-
-
-    document.getElementById('noteUpdated')
-        .textContent=
-        new Date(note.updated_at)
-        .toLocaleString('fi-FI');
 }
 
 
@@ -3340,27 +2582,40 @@ async function loadActiveNote(){
 
 async function saveNote(status){
 
-    if(!activeAppointment) return;
+    if(!activeAppointment){
+        return;
+    }
 
 
-    const payload={
+    const payload = {
 
         visit_reason:
-            document.getElementById('visitReason').value.trim(),
+            document
+            .getElementById('visitReason')
+            .value
+            .trim(),
 
         note_text:
-            document.getElementById('noteText').value.trim(),
+            document
+            .getElementById('noteText')
+            .value
+            .trim(),
 
         follow_up:
-            document.getElementById('followUp').value.trim(),
+            document
+            .getElementById('followUp')
+            .value
+            .trim(),
 
         status
     };
 
 
-    const existing=
+    const existing =
         notes.find(
-            n=>n.appointment_id===activeAppointment.id
+            n=>
+            n.appointment_id ===
+            activeAppointment.id
         );
 
 
@@ -3369,26 +2624,37 @@ async function saveNote(status){
 
     if(existing){
 
-        const result=
+        const result =
             await supabase
             .from('visit_notes')
             .update(payload)
-            .eq('id',existing.id);
+            .eq(
+                'id',
+                existing.id
+            );
 
-        error=result.error;
+        error =
+            result.error;
 
     }else{
 
-        const result=
+        const result =
             await supabase
             .from('visit_notes')
             .insert({
+
                 ...payload,
-                appointment_id:activeAppointment.id,
-                author_user_id:currentUser.id
+
+                appointment_id:
+                    activeAppointment.id,
+
+                author_user_id:
+                    currentUser.id
+
             });
 
-        error=result.error;
+        error =
+            result.error;
     }
 
 
@@ -3405,22 +2671,28 @@ async function saveNote(status){
     }
 
 
-    if(status==='completed' &&
-       activeAppointment.status==='booked'){
+    if(
+        status === 'completed' &&
+        activeAppointment.status === 'booked'
+    ){
 
-        const {error:completeError}=
-            await supabase.rpc(
-                'admin_complete_appointment',
-                {
-                    p_appointment_id:
-                        activeAppointment.id
-                }
-            );
+        const {
+            error:completeError
+        } =
+        await supabase.rpc(
+            'admin_complete_appointment',
+            {
+                p_appointment_id:
+                    activeAppointment.id
+            }
+        );
 
 
         if(completeError){
 
-            console.error(completeError);
+            console.error(
+                completeError
+            );
 
             showMessage(
                 'error',
@@ -3428,35 +2700,47 @@ async function saveNote(status){
             );
 
             await refreshData();
+
             return;
         }
     }
 
 
-    const activeId=activeAppointment.id;
+    const activeId =
+        activeAppointment.id;
+
 
     await refreshData();
 
-    activeAppointment=
-        appointments.find(a=>a.id===activeId);
+
+    activeAppointment =
+        appointments.find(
+            a=>a.id===activeId
+        );
+
 
     await loadActiveNote();
 
 
     showMessage(
         'success',
-        status==='completed'
+        status === 'completed'
         ? 'Kirjaus tallennettiin ja vastaanottokäynti merkittiin valmiiksi.'
         : 'Kirjaus tallennettiin luonnoksena.'
     );
 }
 
 
-document.getElementById('saveDraftButton')
-.onclick=()=>saveNote('draft');
+document
+.getElementById('saveDraftButton')
+.onclick =
+()=>saveNote('draft');
 
-document.getElementById('completeButton')
-.onclick=()=>saveNote('completed');
+
+document
+.getElementById('completeButton')
+.onclick =
+()=>saveNote('completed');
 
 
 /* =========================================================
@@ -3464,27 +2748,37 @@ document.getElementById('completeButton')
 ========================================================= */
 
 document
-.getElementById('cancelAppointmentButton')
+.getElementById(
+    'cancelAppointmentButton'
+)
 .onclick=async()=>{
 
-    if(!activeAppointment) return;
+    if(!activeAppointment){
+        return;
+    }
 
 
-    const ok=confirm(
-        `Perutaanko opiskelijan ${activeAppointment.student_name} ajanvaraus?`
-    );
-
-    if(!ok) return;
-
-
-    const {error}=
-        await supabase.rpc(
-            'admin_cancel_appointment',
-            {
-                p_appointment_id:
-                    activeAppointment.id
-            }
+    const ok =
+        confirm(
+            `Perutaanko opiskelijan ${activeAppointment.student_name} ajanvaraus?\n\nAjanvaraus jää järjestelmään peruttuna ja vastaanottoaika vapautetaan uudelleen.`
         );
+
+
+    if(!ok){
+        return;
+    }
+
+
+    const {
+        error
+    } =
+    await supabase.rpc(
+        'admin_cancel_appointment',
+        {
+            p_appointment_id:
+                activeAppointment.id
+        }
+    );
 
 
     if(error){
@@ -3500,137 +2794,101 @@ document
     }
 
 
+    activeAppointment = null;
+
     await refreshData();
+
+    showPage(
+        'appointments'
+    );
+
 
     showMessage(
         'success',
         'Ajanvaraus peruttiin ja vastaanottoaika vapautettiin uudelleen.'
     );
-
-    showPage('appointments');
 };
 
 
 /* =========================================================
-   STUDENT DETAIL
+   DELETE TEST APPOINTMENT
 ========================================================= */
 
-function openStudent(student){
+document
+.getElementById(
+    'deleteAppointmentButton'
+)
+.onclick=async()=>{
 
-    document.getElementById('studentDetailName')
-        .textContent=student.name;
-
-    document.getElementById('studentDetailGroupTop')
-        .textContent=student.group || 'Ryhmä ei ilmoitettu';
-
-    document.getElementById('studentDetailGroup')
-        .textContent=student.group || '–';
-
-    document.getElementById('studentDetailEmail')
-        .textContent=student.email || '–';
-
-    document.getElementById('studentDetailPhone')
-        .textContent=student.phone || '–';
-
-    document.getElementById('studentVisitCount')
-        .textContent=student.appointments.length;
+    if(!activeAppointment){
+        return;
+    }
 
 
-    const appointmentIds=
-        student.appointments.map(a=>a.id);
-
-    document.getElementById('studentNoteCount')
-        .textContent=
-        notes.filter(
-            n=>appointmentIds.includes(n.appointment_id)
-        ).length;
+    const studentName =
+        activeAppointment.student_name ||
+        'opiskelijan';
 
 
-    document.getElementById('studentAppointments')
-        .innerHTML=`
-
-        <div class="table-wrap">
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Päivä</th>
-                    <th>Aika</th>
-                    <th>Tila</th>
-                    <th>Kirjaus</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-            ${student.appointments
-            .filter(a=>a.available_times)
-            .map(a=>{
-
-                const note=
-                    notes.find(
-                        n=>n.appointment_id===a.id
-                    );
-
-                return `
-
-                <tr>
-
-                    <td>
-                        ${formatDate(a.available_times.appointment_date)}
-                    </td>
-
-                    <td>
-                        ${formatTime(a.available_times.start_time)}
-                        –
-                        ${formatTime(a.available_times.end_time)}
-                    </td>
-
-                    <td>
-                        ${statusHtml(a.status)}
-                    </td>
-
-                    <td>
-                        ${
-                            note
-                            ? (
-                                note.status==='completed'
-                                ? '<span class="status status-completed">Valmis</span>'
-                                : '<span class="status status-draft">Luonnos</span>'
-                              )
-                            : '–'
-                        }
-                    </td>
-
-                    <td>
-                        <button
-                            class="btn-secondary"
-                            data-open="${a.id}"
-                        >
-                            Avaa
-                        </button>
-                    </td>
-
-                </tr>
-
-                `;
-
-            }).join('')}
-
-            </tbody>
-
-        </table>
-
-        </div>
-        `;
+    const ok =
+        confirm(
+            `Poistetaanko opiskelijan ${studentName} testivaraus pysyvästi?\n\n` +
+            `Varaus ja siihen liittyvä testikirjaus poistetaan kokonaan. ` +
+            `Vastaanottoaika vapautetaan uudelleen.\n\n` +
+            `Tätä toimintoa ei voi perua.`
+        );
 
 
-    bindAppointmentLinks();
+    if(!ok){
+        return;
+    }
 
-    showPage('student-detail');
-}
+
+    const appointmentId =
+        activeAppointment.id;
+
+
+    const {
+        error
+    } =
+    await supabase.rpc(
+        'admin_delete_appointment',
+        {
+            p_appointment_id:
+                appointmentId
+        }
+    );
+
+
+    if(error){
+
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Testivarauksen poistaminen epäonnistui.'
+        );
+
+        return;
+    }
+
+
+    activeAppointment = null;
+
+
+    await refreshData();
+
+
+    showPage(
+        'appointments'
+    );
+
+
+    showMessage(
+        'success',
+        'Testivaraus poistettiin pysyvästi ja vastaanottoaika vapautettiin uudelleen.'
+    );
+};
 
 
 /* =========================================================
@@ -3639,16 +2897,21 @@ function openStudent(student){
 
 function renderSlots(){
 
-    const free=
-        slots.filter(s=>s.is_available);
+    const free =
+        slots.filter(
+            s=>s.is_available
+        );
 
-    const element=
-        document.getElementById('slotsTable');
+
+    const container =
+        document.getElementById(
+            'slotsTable'
+        );
 
 
     if(!free.length){
 
-        element.innerHTML=`
+        container.innerHTML=`
             <div class="empty-state">
                 <strong>Vapaita vastaanottoaikoja ei ole</strong>
             </div>
@@ -3658,61 +2921,81 @@ function renderSlots(){
     }
 
 
-    element.innerHTML=`
+    container.innerHTML=`
 
     <div class="table-wrap">
 
-    <table>
+        <table>
 
-        <thead>
-            <tr>
-                <th>Päivä</th>
-                <th>Aika</th>
-                <th>Vastaanottaja</th>
-                <th>Toimipiste</th>
-                <th>Tila</th>
-            </tr>
-        </thead>
+            <thead>
+                <tr>
+                    <th>Päivä</th>
+                    <th>Aika</th>
+                    <th>Vastaanottaja</th>
+                    <th>Toimipiste</th>
+                    <th>Tila</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 
-        ${free.map(slot=>`
+            ${free.map(slot=>`
 
-            <tr>
+                <tr>
 
-                <td>
-                    ${formatDate(slot.appointment_date)}
-                </td>
+                    <td>
+                        ${
+                            formatDate(
+                                slot.appointment_date
+                            )
+                        }
+                    </td>
 
-                <td>
-                    <strong>
-                        ${formatTime(slot.start_time)}
-                        –
-                        ${formatTime(slot.end_time)}
-                    </strong>
-                </td>
+                    <td>
+                        <strong>
+                            ${
+                                formatTime(
+                                    slot.start_time
+                                )
+                            }
+                            –
+                            ${
+                                formatTime(
+                                    slot.end_time
+                                )
+                            }
+                        </strong>
+                    </td>
 
-                <td>
-                    ${escapeHtml(slot.professional_name)}
-                </td>
+                    <td>
+                        ${
+                            escapeHtml(
+                                slot.professional_name
+                            )
+                        }
+                    </td>
 
-                <td>
-                    ${escapeHtml(slot.location)}
-                </td>
+                    <td>
+                        ${
+                            escapeHtml(
+                                slot.location
+                            )
+                        }
+                    </td>
 
-                <td>
-                    <span class="status status-completed">
-                        Vapaa
-                    </span>
-                </td>
+                    <td>
+                        <span class="status status-completed">
+                            Vapaa
+                        </span>
+                    </td>
 
-            </tr>
+                </tr>
 
-        `).join('')}
+            `).join('')}
 
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
 
     </div>
     `;
@@ -3725,94 +3008,114 @@ function renderSlots(){
 
 document
 .getElementById('slotForm')
-.addEventListener('submit',async event=>{
+.addEventListener(
+    'submit',
+    async event=>{
 
-    event.preventDefault();
-
-
-    const appointmentDate=
-        document.getElementById('slotDate').value;
-
-    const startTime=
-        document.getElementById('slotStart').value;
-
-    const endTime=
-        document.getElementById('slotEnd').value;
+        event.preventDefault();
 
 
-    if(endTime<=startTime){
-
-        showMessage(
-            'error',
-            'Päättymisajan täytyy olla alkamisajan jälkeen.'
-        );
-
-        return;
-    }
+        const appointmentDate =
+            document
+            .getElementById('slotDate')
+            .value;
 
 
-    const {error}=
+        const startTime =
+            document
+            .getElementById('slotStart')
+            .value;
+
+
+        const endTime =
+            document
+            .getElementById('slotEnd')
+            .value;
+
+
+        if(endTime <= startTime){
+
+            showMessage(
+                'error',
+                'Päättymisajan täytyy olla alkamisajan jälkeen.'
+            );
+
+            return;
+        }
+
+
+        const {
+            error
+        } =
         await supabase
         .from('available_times')
         .insert({
 
-            appointment_date:appointmentDate,
+            appointment_date:
+                appointmentDate,
 
-            start_time:startTime,
+            start_time:
+                startTime,
 
-            end_time:endTime,
+            end_time:
+                endTime,
 
             appointment_type:
                 'Terveydenhoitajan vastaanotto',
 
             professional_name:
-                staffProfile.full_name || 'Sanna Rantanen',
+                staffProfile.full_name ||
+                'Sanna Rantanen',
 
             location:
-                staffProfile.location || 'Muuramen lukio',
+                staffProfile.location ||
+                'Muuramen lukio',
 
             is_available:true
+
         });
 
 
-    if(error){
+        if(error){
 
-        console.error(error);
+            console.error(error);
+
+            showMessage(
+                'error',
+                'Vastaanottoajan lisääminen epäonnistui.'
+            );
+
+            return;
+        }
+
+
+        event.target.reset();
+
+
+        await refreshData();
+
 
         showMessage(
-            'error',
-            'Vastaanottoajan lisääminen epäonnistui.'
+            'success',
+            'Uusi vastaanottoaika lisättiin.'
         );
 
-        return;
     }
-
-
-    event.target.reset();
-
-    await loadSlots();
-
-    renderStatistics();
-    renderSlots();
-
-
-    showMessage(
-        'success',
-        'Uusi vastaanottoaika lisättiin.'
-    );
-});
+);
 
 
 /* =========================================================
    LOGOUT
 ========================================================= */
 
-document.getElementById('logoutButton')
+document
+.getElementById('logoutButton')
 .onclick=async()=>{
 
     await supabase.auth.signOut();
 
     location.reload();
+
 };
 
 
@@ -3820,15 +3123,19 @@ document.getElementById('logoutButton')
    SESSION RESTORE
 ========================================================= */
 
-const {data:sessionData}=
-    await supabase.auth.getSession();
+const {
+    data:sessionData
+} =
+await supabase.auth.getSession();
 
 
 if(sessionData.session){
 
-    currentUser=sessionData.session.user;
+    currentUser =
+        sessionData.session.user;
 
     await startApplication();
+
 }
 
 </script>
