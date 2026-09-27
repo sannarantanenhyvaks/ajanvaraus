@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Digitaaliset palvelut</title>
-
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
+        :root {
+            --blue: #2f679b;
+            --blue-dark: #075a96;
+            --blue-button: #2f679b;
+            --blue-button-hover: #285b8b;
+            --light-blue: #d9eef8;
+            --pink: #ffdcdc;
+            --green: #008c72;
+            --text: #101010;
+            --border: #d3d3d3;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -17,302 +28,386 @@
         body {
             margin: 0;
             min-height: 100%;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #111;
-            background: #fff;
         }
 
         body {
-            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #fff;
         }
 
-        a {
-            color: inherit;
-        }
-
-        button {
+        button,
+        input {
             font: inherit;
         }
 
-        .page {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* VASEN PUOLI */
+        /* =====================================================
+           YLÄOSA
+        ===================================================== */
 
-        .left {
-            min-height: 100vh;
-            background: #2d6598;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .left-inner {
-            width: min(560px, calc(100% - 70px));
-            margin: 0 auto;
-            padding: 58px 0 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .topbar {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .logo {
-            width: 220px;
-            max-width: 55%;
-            filter: brightness(0) invert(1);
-        }
-
-        .language {
-            border: 0;
-            background: transparent;
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .intro {
-            margin-top: 70px;
-        }
-
-        .intro h1 {
-            margin: 0 0 30px;
-            font-size: 38px;
-            line-height: 1.15;
-            font-weight: 700;
-        }
-
-        .intro p {
-            margin: 0;
-            max-width: 470px;
-            font-size: 18px;
-            line-height: 1.55;
-        }
-
-        .close-page {
-            margin-top: auto;
-            padding-top: 70px;
-            text-align: center;
-        }
-
-        .close-page a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .close-page a:hover {
-            text-decoration: underline;
-        }
-
-        /* OIKEA PUOLI */
-
-        .right {
-            min-height: 100vh;
+        .landing {
+            min-height: 565px;
             background: #fff;
         }
 
-        .right-inner {
-            width: min(560px, calc(100% - 70px));
+        .landing-inner {
+            width: min(100% - 48px, 860px);
             margin: 0 auto;
-            padding: 58px 0;
+            padding: 62px 0 55px;
         }
 
-        .right h2 {
-            margin: 0 0 12px;
-            font-size: 27px;
-            line-height: 1.2;
-        }
-
-        .lead {
-            margin: 0 0 22px;
-            max-width: 510px;
-            font-size: 17px;
-            line-height: 1.55;
-        }
-
-        .info {
-            margin: 0 0 20px;
-            padding: 17px 18px;
-            background: #d8eef8;
-            color: #075e92;
-            border-radius: 6px;
-            line-height: 1.45;
-            font-size: 15px;
-        }
-
-        .terms {
+        .landing-top {
             display: flex;
+            justify-content: space-between;
             align-items: flex-start;
-            gap: 11px;
-            margin: 18px 0;
+            margin-bottom: 52px;
         }
 
-        .terms input {
-            width: 20px;
-            height: 20px;
-            margin: 2px 0 0;
-            accent-color: #28639a;
-            flex: 0 0 auto;
-        }
-
-        .terms label {
-            line-height: 1.5;
-            font-size: 16px;
-        }
-
-        .terms a {
-            color: #075e92;
-        }
-
-        .human-check {
-            margin: 18px 0 24px;
-            border: 1px solid #d4d4d4;
-            background: #f5f5f5;
-            min-height: 58px;
+        .brand {
             display: flex;
             align-items: center;
-            padding: 10px 14px;
-            gap: 12px;
         }
 
-        .human-box {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #555;
-            background: #fff;
-            cursor: pointer;
-            flex: 0 0 auto;
+        .brand img {
+            display: block;
+            width: 160px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .human-box.checked {
-            border-color: #28639a;
-            background: #28639a;
+        /* =====================================================
+           KIELIVALIKKO
+        ===================================================== */
+
+        .language {
             position: relative;
         }
 
-        .human-box.checked::after {
-            content: "";
-            position: absolute;
-            left: 7px;
-            top: 2px;
-            width: 6px;
-            height: 12px;
-            border: solid #fff;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
+        .language-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
 
-        .human-copy {
-            flex: 1;
-        }
+            padding: 7px 4px;
 
-        .human-title {
-            display: block;
-            font-size: 15px;
-            margin-bottom: 2px;
-        }
-
-        .human-status {
-            display: block;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .continue-btn {
-            width: 100%;
-            min-height: 50px;
             border: 0;
-            border-radius: 6px;
-            background: #28639a;
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
+            background: transparent;
+
+            color: var(--blue-dark);
+
+            font-size: 15px;
+            font-weight: 600;
+
             cursor: pointer;
-            transition: background .15s ease;
         }
 
-        .continue-btn:hover {
-            background: #1f527f;
+        .language-button svg {
+            width: 13px;
+            height: 13px;
+
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+
+            transition: transform .15s ease;
         }
 
-        .continue-btn:disabled {
-            background: #9fb6c9;
-            cursor: not-allowed;
+        .language.open .language-button svg {
+            transform: rotate(180deg);
         }
 
-        .message {
+        .language-menu {
+            position: absolute;
+
+            top: calc(100% + 5px);
+            right: 0;
+
+            z-index: 20;
+
+            width: 145px;
+
             display: none;
-            margin-top: 15px;
-            padding: 13px 15px;
-            border-left: 4px solid #b42318;
-            background: #fff2f0;
-            color: #7a271a;
-            line-height: 1.45;
+
+            padding: 5px;
+
+            background: #fff;
+
+            border: 1px solid #d8dfe3;
+            border-radius: 4px;
+
+            box-shadow: 0 7px 22px rgba(0, 0, 0, .12);
         }
 
-        .privacy-note {
-            margin-top: 28px;
-            padding-top: 22px;
-            border-top: 1px solid #ddd;
+        .language.open .language-menu {
+            display: block;
         }
 
-        .privacy-note h3 {
-            margin: 0 0 9px;
-            color: #174e80;
-            font-size: 18px;
+        .language-option {
+            width: 100%;
+
+            padding: 10px 12px;
+
+            border: 0;
+            border-radius: 3px;
+
+            background: transparent;
+
+            color: #111;
+
+            text-align: left;
+
+            cursor: pointer;
         }
 
-        .privacy-note p {
-            margin: 0;
-            color: #444;
+        .language-option:hover {
+            background: #edf4f8;
+        }
+
+        .language-option.active {
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(300px, .75fr);
+            gap: 82px;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            max-width: 500px;
+
+            margin: 0 0 25px;
+
+            color: #225c92;
+
+            font-size: 35px;
+            line-height: 1.13;
+            font-weight: 700;
+        }
+
+        .hero-copy p {
+            max-width: 510px;
+
+            margin: 0 0 38px;
+
+            font-size: 15px;
             line-height: 1.55;
-            font-size: 14px;
         }
 
-        @media (max-width: 850px) {
-            .page {
-                display: block;
-            }
+        .continue-button {
+            width: 100%;
+            max-width: 485px;
+            min-height: 42px;
 
-            .left,
-            .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 8px 18px;
+
+            border: 1px solid var(--blue-button);
+            border-radius: 5px;
+
+            background: #fff;
+            color: var(--blue-dark);
+
+            font-size: 15px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition:
+                background .15s ease,
+                color .15s ease;
+        }
+
+        .continue-button:hover {
+            background: var(--blue-button);
+            color: #fff;
+        }
+
+        /* =====================================================
+           LÄÄKÄRIKUVITUS
+        ===================================================== */
+
+        .hero-art {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-art {
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            overflow: visible;
+        }
+
+        /* =====================================================
+           MOBIILISOVELLUSALUE
+        ===================================================== */
+
+        .app-section {
+            min-height: 330px;
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .app-inner {
+            width: min(100% - 48px, 860px);
+            min-height: 330px;
+
+            margin: 0 auto;
+            padding: 48px 0;
+
+            display: grid;
+            grid-template-columns: 330px minmax(0, 1fr);
+            gap: 75px;
+            align-items: center;
+        }
+
+        .phone-art {
+            width: 290px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .app-copy h2 {
+            max-width: 420px;
+
+            margin: 0 0 22px;
+
+            font-size: 25px;
+            line-height: 1.2;
+        }
+
+        .app-copy p {
+            max-width: 470px;
+
+            margin: 0 0 24px;
+
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .store-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .store-button {
+            min-width: 145px;
+            height: 47px;
+
+            padding: 5px 13px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 1px solid rgba(255,255,255,.55);
+            border-radius: 6px;
+
+            background: #050505;
+            color: #fff;
+
+            text-decoration: none;
+        }
+
+        .store-icon {
+            width: 26px;
+            height: 26px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        .store-small {
+            display: block;
+
+            margin-bottom: 1px;
+
+            font-size: 8px;
+            line-height: 1;
+        }
+
+        .store-large {
+            display: block;
+
+            font-size: 17px;
+            line-height: 1.05;
+        }
+
+        /* =====================================================
+           MOBIILI
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .landing {
                 min-height: auto;
             }
 
-            .left-inner,
-            .right-inner {
-                width: min(100% - 40px, 600px);
+            .landing-inner {
+                width: min(100% - 36px, 520px);
+                padding: 28px 0 42px;
             }
 
-            .left-inner {
-                padding: 30px 0 35px;
+            .landing-top {
+                margin-bottom: 38px;
             }
 
-            .right-inner {
-                padding: 35px 0 50px;
+            .brand img {
+                width: 145px;
             }
 
-            .intro {
-                margin-top: 50px;
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 38px;
             }
 
-            .intro h1 {
-                font-size: 32px;
+            .hero-copy h1 {
+                font-size: 30px;
             }
 
-            .close-page {
-                display: none;
+            .hero-art {
+                order: -1;
+            }
+
+            .doctor-art {
+                width: 245px;
+            }
+
+            .continue-button {
+                max-width: none;
+            }
+
+            .app-inner {
+                width: min(100% - 36px, 520px);
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 42px 0;
+            }
+
+            .phone-art {
+                width: 230px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -320,151 +415,811 @@
 
 <body>
 
-<div class="page">
+<!-- =========================================================
+     DIGITAALISET PALVELUT
+========================================================= -->
 
-    <section class="left">
-        <div class="left-inner">
+<main>
 
-            <div class="topbar">
-                <img
-                    src="hyvaks-logo.png"
-                    alt="Keski-Suomen hyvinvointialue"
-                    class="logo"
+    <section class="landing">
+
+        <div class="landing-inner">
+
+            <!-- LOGO + KIELI -->
+
+            <div class="landing-top">
+
+                <a href="index.html" class="brand">
+                    <img
+                        src="hyvaks-logo.png"
+                        alt="Keski-Suomen hyvinvointialue"
+                    >
+                </a>
+
+                <div
+                    class="language"
+                    id="languageSelector"
                 >
 
-                <button class="language" type="button">
-                    Suomi⌄
-                </button>
+                    <button
+                        type="button"
+                        class="language-button"
+                        id="languageButton"
+                        aria-expanded="false"
+                    >
+
+                        <span id="currentLanguage">
+                            Suomi
+                        </span>
+
+                        <svg viewBox="0 0 16 16">
+                            <path d="M3 6l5 5 5-5"></path>
+                        </svg>
+
+                    </button>
+
+                    <div
+                        class="language-menu"
+                        id="languageMenu"
+                    >
+
+                        <button
+                            type="button"
+                            class="language-option active"
+                            data-language="fi"
+                        >
+                            Suomi
+                        </button>
+
+                        <button
+                            type="button"
+                            class="language-option"
+                            data-language="en"
+                        >
+                            English
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="intro">
-                <h1>Tervetuloa asioimaan</h1>
+            <!-- HERO -->
 
-                <p>
-                    Tervetuloa asioimaan sosiaali- ja terveydenhuollon
-                    ammattilaisten kanssa.
-                </p>
-            </div>
+            <div class="hero">
 
-            <div class="close-page">
-                <a href="index.html">Sulje</a>
+                <div class="hero-copy">
+
+                    <h1 data-i18n="heroTitle">
+                        Keski-Suomen hyvinvointialueen digitaaliset palvelut
+                    </h1>
+
+                    <p data-i18n="heroText">
+                        Tervetuloa asioimaan sosiaali- ja
+                        terveydenhuollon ammattilaisten kanssa.
+                        Voit jatkaa palveluun ilman tunnistautumista.
+                    </p>
+
+                    <a
+                        href="chat.html"
+                        class="continue-button"
+                        data-i18n="continueAnonymous"
+                    >
+                        Jatka ilman tunnistautumista
+                    </a>
+
+                </div>
+
+                <!-- OMA SVG-KUVITUS -->
+
+                <div class="hero-art">
+
+                    <svg
+                        class="doctor-art"
+                        viewBox="0 0 360 360"
+                        role="img"
+                        aria-label="Terveydenhuollon ammattilainen"
+                    >
+
+                        <!-- vaaleanpunainen tausta -->
+
+                        <path
+                            d="
+                            M82 93
+                            C125 45 229 43 283 99
+                            C328 146 319 236 261 286
+                            C205 335 111 308 73 250
+                            C40 200 43 137 82 93Z
+                            "
+                            fill="#fbdada"
+                        />
+
+                        <!-- valintaruutu -->
+
+                        <rect
+                            x="42"
+                            y="65"
+                            width="40"
+                            height="40"
+                            rx="4"
+                            fill="#ffffff"
+                            stroke="#111"
+                            stroke-width="4"
+                        />
+
+                        <path
+                            d="M51 83l10 10 25-28"
+                            fill="none"
+                            stroke="#0066a2"
+                            stroke-width="5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <!-- pää -->
+
+                        <ellipse
+                            cx="193"
+                            cy="87"
+                            rx="31"
+                            ry="38"
+                            fill="#ffffff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- hiukset -->
+
+                        <path
+                            d="
+                            M163 83
+                            C158 52 176 35 204 37
+                            C219 38 234 43 245 49
+                            C232 50 222 53 217 58
+                            C203 50 183 51 174 62
+                            C169 68 167 76 163 83Z
+                            "
+                            fill="#111"
+                        />
+
+                        <path
+                            d="M166 74c-7-2-11 5-7 13 2 5 6 8 10 8"
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- kasvot -->
+
+                        <path
+                            d="M181 83h2"
+                            stroke="#111"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                        />
+
+                        <path
+                            d="M207 82h2"
+                            stroke="#111"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                        />
+
+                        <path
+                            d="M194 86c-1 8-1 11 3 12"
+                            fill="none"
+                            stroke="#111"
+                            stroke-width="1.7"
+                        />
+
+                        <path
+                            d="M183 105c9 8 20 7 28-1"
+                            fill="none"
+                            stroke="#111"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+
+                        <!-- kaula -->
+
+                        <path
+                            d="M181 119v25h29v-27"
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- vartalo -->
+
+                        <path
+                            d="
+                            M145 145
+                            L181 134
+                            L197 153
+                            L213 134
+                            L246 148
+                            L267 274
+                            L126 274
+                            Z
+                            "
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                            stroke-linejoin="round"
+                        />
+
+                        <!-- takin kaulukset -->
+
+                        <path
+                            d="M181 135l-17 18 25 20 8-20"
+                            fill="none"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <path
+                            d="M212 135l17 18-24 20-8-20"
+                            fill="none"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- paidan kaula -->
+
+                        <path
+                            d="M183 137l14 17 14-17"
+                            fill="none"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- kädet -->
+
+                        <path
+                            d="
+                            M148 157
+                            C129 173 126 202 130 228
+                            C132 242 140 250 152 246
+                            L188 222
+                            "
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <path
+                            d="
+                            M244 157
+                            C260 173 264 198 258 218
+                            L232 232
+                            "
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- paperi -->
+
+                        <path
+                            d="
+                            M185 179
+                            L268 185
+                            L232 246
+                            L165 225
+                            Z
+                            "
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- käsi paperilla -->
+
+                        <path
+                            d="
+                            M152 235
+                            C166 226 179 217 189 216
+                            C196 215 201 219 198 224
+                            C194 231 178 239 165 244
+                            "
+                            fill="#fff"
+                            stroke="#111"
+                            stroke-width="2"
+                        />
+
+                        <!-- pienet pisteet -->
+
+                        <circle
+                            cx="302"
+                            cy="264"
+                            r="6"
+                            fill="#111"
+                        />
+
+                        <circle
+                            cx="290"
+                            cy="277"
+                            r="3.5"
+                            fill="#111"
+                        />
+
+                    </svg>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
-    <main class="right">
-        <div class="right-inner">
+    <!-- =====================================================
+         MOBIILISOVELLUS
+    ====================================================== -->
 
-            <h2>Jatka tunnistautumatta</h2>
+    <section class="app-section">
 
-            <p class="lead">
-                Emme pyydä henkilötietoja, kun vastaanotat palveluita
-                anonyymisti. Keskusteluhistoria pysyy sinulle nimetyn
-                ammattilaisen nähtävissä palvelusta poistumiseen asti.
-            </p>
+        <div class="app-inner">
 
-            <div class="info">
-                Jotkut palvelut eivät välttämättä ole anonyymien asiakkaiden
-                saatavilla.
-            </div>
+            <div>
 
-            <div class="terms">
-                <input
-                    type="checkbox"
-                    id="terms"
+                <!-- OMA PUHELINKUVITUS -->
+
+                <svg
+                    class="phone-art"
+                    viewBox="0 0 330 270"
+                    role="img"
+                    aria-label="Digitaalinen asiointi puhelimella"
                 >
 
-                <label for="terms">
-                    Hyväksyn tietosuojaselosteen ja käyttöehdot.
-                    <br>
-                    <a href="#" onclick="return false;">Tietosuojaseloste</a>,
-                    <a href="#" onclick="return false;">Käyttöehdot</a>
-                </label>
+                    <circle
+                        cx="118"
+                        cy="145"
+                        r="93"
+                        fill="#fbdada"
+                    />
+
+                    <!-- puhelin -->
+
+                    <rect
+                        x="56"
+                        y="86"
+                        width="51"
+                        height="94"
+                        rx="8"
+                        transform="rotate(-15 56 86)"
+                        fill="#ffffff"
+                        stroke="#111"
+                        stroke-width="2"
+                    />
+
+                    <rect
+                        x="64"
+                        y="96"
+                        width="36"
+                        height="62"
+                        rx="2"
+                        transform="rotate(-15 64 96)"
+                        fill="#dcecf6"
+                    />
+
+                    <!-- henkilö -->
+
+                    <ellipse
+                        cx="130"
+                        cy="79"
+                        rx="27"
+                        ry="32"
+                        fill="#fff"
+                        stroke="#111"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="
+                        M101 78
+                        C98 48 118 31 143 38
+                        C157 41 165 52 166 67
+                        C152 57 136 56 124 64
+                        C116 70 109 77 101 78Z
+                        "
+                        fill="#111"
+                    />
+
+                    <path
+                        d="
+                        M92 219
+                        C88 171 96 127 122 111
+                        C142 98 165 102 183 119
+                        C201 137 206 179 207 219Z
+                        "
+                        fill="#fff"
+                        stroke="#111"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="
+                        M105 128
+                        C87 134 75 151 70 172
+                        "
+                        fill="none"
+                        stroke="#111"
+                        stroke-width="2"
+                    />
+
+                    <path
+                        d="
+                        M72 171
+                        C77 164 84 160 90 164
+                        C94 168 91 177 84 183
+                        "
+                        fill="#fff"
+                        stroke="#111"
+                        stroke-width="2"
+                    />
+
+                    <!-- viestikuplat -->
+
+                    <rect
+                        x="181"
+                        y="48"
+                        width="105"
+                        height="44"
+                        rx="4"
+                        fill="#f2f2f2"
+                    />
+
+                    <rect
+                        x="197"
+                        y="61"
+                        width="69"
+                        height="5"
+                        rx="2.5"
+                        fill="#d2d2d2"
+                    />
+
+                    <rect
+                        x="197"
+                        y="73"
+                        width="45"
+                        height="5"
+                        rx="2.5"
+                        fill="#d2d2d2"
+                    />
+
+                    <rect
+                        x="205"
+                        y="105"
+                        width="110"
+                        height="45"
+                        rx="3"
+                        fill="#008c72"
+                    />
+
+                    <rect
+                        x="222"
+                        y="119"
+                        width="73"
+                        height="5"
+                        rx="2.5"
+                        fill="#fff"
+                    />
+
+                    <rect
+                        x="222"
+                        y="132"
+                        width="52"
+                        height="5"
+                        rx="2.5"
+                        fill="#fff"
+                    />
+
+                </svg>
+
             </div>
 
-            <div class="human-check">
-                <button
-                    type="button"
-                    class="human-box"
-                    id="humanBox"
-                    aria-label="Vahvista, ettet ole robotti"
-                ></button>
+            <div class="app-copy">
 
-                <div class="human-copy">
-                    <span class="human-title">En ole robotti</span>
-                    <span class="human-status" id="humanStatus">
-                        Aloita vahvistus klikkaamalla
-                    </span>
-                </div>
-            </div>
+                <h2 data-i18n="appTitle">
+                    Lataa maksuton mobiilisovellus puhelimeesi
+                </h2>
 
-            <button
-                class="continue-btn"
-                id="continueBtn"
-                type="button"
-                disabled
-            >
-                Jatka ilman tunnistautumista
-            </button>
-
-            <div class="message" id="message"></div>
-
-            <div class="privacy-note">
-                <h3>Asiointi ilman tunnistautumista</h3>
-
-                <p>
-                    Älä kirjoita keskusteluun henkilötunnusta,
-                    pankkitunnuksia, salasanoja tai muita tunnistautumistietoja.
+                <p data-i18n="appText">
+                    Digitaalisten palvelujen mobiilisovelluksen
+                    avulla voit käyttää palvelua myös puhelimellasi.
                 </p>
+
+                <div class="store-buttons">
+
+                    <a
+                        href="#"
+                        class="store-button"
+                        onclick="return false;"
+                    >
+
+                        <div class="store-icon">
+                            ●
+                        </div>
+
+                        <div>
+                            <span
+                                class="store-small"
+                                data-i18n="appStoreSmall"
+                            >
+                                Lataa
+                            </span>
+
+                            <span class="store-large">
+                                App Store
+                            </span>
+                        </div>
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="store-button"
+                        onclick="return false;"
+                    >
+
+                        <div class="store-icon">
+                            ▶
+                        </div>
+
+                        <div>
+                            <span
+                                class="store-small"
+                                data-i18n="googleSmall"
+                            >
+                                Lataa
+                            </span>
+
+                            <span class="store-large">
+                                Google Play
+                            </span>
+                        </div>
+
+                    </a>
+
+                </div>
+
             </div>
 
         </div>
-    </main>
 
-</div>
+    </section>
+
+</main>
 
 <script>
-    const terms = document.getElementById("terms");
-    const humanBox = document.getElementById("humanBox");
-    const humanStatus = document.getElementById("humanStatus");
-    const continueBtn = document.getElementById("continueBtn");
-    const message = document.getElementById("message");
 
-    let humanConfirmed = false;
+    /* =====================================================
+       KIELIVERSIOT
+    ===================================================== */
 
-    function updateContinueButton() {
-        continueBtn.disabled = !(terms.checked && humanConfirmed);
-    }
+    const translations = {
 
-    terms.addEventListener("change", updateContinueButton);
+        fi: {
 
-    humanBox.addEventListener("click", function () {
-        humanConfirmed = !humanConfirmed;
+            languageName:
+                'Suomi',
 
-        humanBox.classList.toggle("checked", humanConfirmed);
+            heroTitle:
+                'Keski-Suomen hyvinvointialueen digitaaliset palvelut',
 
-        humanStatus.textContent = humanConfirmed
-            ? "Vahvistus tehty"
-            : "Aloita vahvistus klikkaamalla";
+            heroText:
+                'Tervetuloa asioimaan sosiaali- ja terveydenhuollon ammattilaisten kanssa. Voit jatkaa palveluun ilman tunnistautumista.',
 
-        updateContinueButton();
-    });
+            continueAnonymous:
+                'Jatka ilman tunnistautumista',
 
-    continueBtn.addEventListener("click", function () {
+            appTitle:
+                'Lataa maksuton mobiilisovellus puhelimeesi',
 
-        if (!terms.checked || !humanConfirmed) {
-            message.style.display = "block";
-            message.textContent =
-                "Hyväksy käyttöehdot ja tee vahvistus ennen jatkamista.";
+            appText:
+                'Digitaalisten palvelujen mobiilisovelluksen avulla voit käyttää palvelua myös puhelimellasi.',
+
+            appStoreSmall:
+                'Lataa',
+
+            googleSmall:
+                'Lataa'
+        },
+
+        en: {
+
+            languageName:
+                'English',
+
+            heroTitle:
+                'Digital services of the Wellbeing Services County of Central Finland',
+
+            heroText:
+                'Welcome to digital services with social and healthcare professionals. You can continue to the service without identification.',
+
+            continueAnonymous:
+                'Continue without identification',
+
+            appTitle:
+                'Download the free mobile application',
+
+            appText:
+                'The digital services mobile application allows you to use the service conveniently on your phone.',
+
+            appStoreSmall:
+                'Download on the',
+
+            googleSmall:
+                'Get it on'
+        }
+    };
+
+    const languageSelector =
+        document.getElementById(
+            'languageSelector'
+        );
+
+    const languageButton =
+        document.getElementById(
+            'languageButton'
+        );
+
+    const currentLanguage =
+        document.getElementById(
+            'currentLanguage'
+        );
+
+    const languageOptions =
+        document.querySelectorAll(
+            '.language-option'
+        );
+
+    languageButton.addEventListener(
+        'click',
+        event => {
+
+            event.stopPropagation();
+
+            const isOpen =
+                languageSelector.classList.toggle(
+                    'open'
+                );
+
+            languageButton.setAttribute(
+                'aria-expanded',
+                String(isOpen)
+            );
+        }
+    );
+
+    function setLanguage(language) {
+
+        const translation =
+            translations[language];
+
+        if (!translation) {
             return;
         }
 
-        /*
-         * Seuraavaksi rakennettava varsinainen keskustelusivu.
-         */
-        window.location.href = "chat.html";
+        document.documentElement.lang =
+            language;
+
+        currentLanguage.textContent =
+            translation.languageName;
+
+        document
+            .querySelectorAll('[data-i18n]')
+            .forEach(element => {
+
+                const key =
+                    element.dataset.i18n;
+
+                if (
+                    Object.prototype.hasOwnProperty.call(
+                        translation,
+                        key
+                    )
+                ) {
+                    element.textContent =
+                        translation[key];
+                }
+            });
+
+        languageOptions.forEach(option => {
+
+            option.classList.toggle(
+                'active',
+                option.dataset.language ===
+                    language
+            );
+        });
+
+        localStorage.setItem(
+            'digitalServicesLanguage',
+            language
+        );
+
+        languageSelector.classList.remove(
+            'open'
+        );
+
+        languageButton.setAttribute(
+            'aria-expanded',
+            'false'
+        );
+    }
+
+    languageOptions.forEach(option => {
+
+        option.addEventListener(
+            'click',
+            () => {
+
+                setLanguage(
+                    option.dataset.language
+                );
+            }
+        );
     });
+
+    document.addEventListener(
+        'click',
+        event => {
+
+            if (
+                !languageSelector.contains(
+                    event.target
+                )
+            ) {
+
+                languageSelector.classList.remove(
+                    'open'
+                );
+
+                languageButton.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+            }
+        }
+    );
+
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'Escape') {
+
+                languageSelector.classList.remove(
+                    'open'
+                );
+
+                languageButton.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+            }
+        }
+    );
+
+    const savedLanguage =
+        localStorage.getItem(
+            'digitalServicesLanguage'
+        );
+
+    if (
+        savedLanguage === 'fi'
+        ||
+        savedLanguage === 'en'
+    ) {
+
+        setLanguage(
+            savedLanguage
+        );
+    }
+
 </script>
 
 </body>
