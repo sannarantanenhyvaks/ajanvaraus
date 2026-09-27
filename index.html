@@ -1,1048 +1,1088 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Keski-Suomen hyvinvointialue | hyvaks.fí</title>
-    
+    <title>Keski-Suomen hyvinvointialue | hyvaks.fi</title>
+
+    <!-- Jos olet lisännyt favicon.png:n, tämä näyttää sen välilehdellä -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-<style>
-:root{
-    --blue:#2f679c;
-    --blue-dark:#07549a;
-    --blue-hover:#245987;
-
-    --green:#b8d981;
-    --news-blue:#c8e8f4;
-    --news-green:#d8ebc5;
-    --news-pink:#f7c6c8;
+    <style>
+        :root {
+            --blue: #2f679c;
+            --blue-dark: #07549a;
+            --blue-hover: #245987;
+            --green: #b8d981;
+            --news-blue: #c8e8f4;
+            --news-green: #d8ebc5;
+            --news-pink: #f7c6c8;
+            --text: #111111;
+            --muted: #53636a;
+            --border: #d8dfe2;
+            --navy: #173d4b;
+            --max-width: 1360px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.45;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .site-header {
+            background: #ffffff;
+        }
+
+        .header-top {
+            max-width: var(--max-width);
+            min-height: 112px;
+            margin: auto;
+            padding: 22px 20px 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .logo {
+            display: block;
+            width: 220px;
+            max-height: 72px;
+            object-fit: contain;
+        }
+
+        .top-search {
+            width: 340px;
+            height: 52px;
+
+            display: flex;
+
+            border: 2px solid var(--blue-dark);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .top-search input {
+            flex: 1;
+            min-width: 0;
+            padding: 0 21px;
+            border: 0;
+            outline: 0;
+            font-size: 15px;
+        }
+
+        .top-search button {
+            width: 55px;
+            border: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .top-search svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        /* =====================================================
+           NAVIGAATIO
+        ===================================================== */
+
+        .main-nav {
+            background: #ffffff;
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            min-height: 63px;
+            margin: auto;
+            padding: 0 7px;
+
+            display: flex;
+            align-items: stretch;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+
+            padding: 0 14px;
+
+            color: var(--blue-dark);
+            text-decoration: none;
+            font-size: 15px;
+            white-space: nowrap;
+
+            border-bottom: 4px solid transparent;
+        }
+
+        .nav-link:hover {
+            border-bottom-color: var(--blue-dark);
+        }
+
+        /* =====================================================
+           ETUSIVUN ALKU
+        ===================================================== */
+
+        .intro {
+            background: #ffffff;
+        }
+
+        .intro-inner {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 27px 20px 68px;
+        }
+
+        .page-title {
+            margin: 0 0 48px;
+
+            color: var(--blue-dark);
+            font-size: 30px;
+            line-height: 1.2;
+            font-weight: 500;
+        }
+
+        .intro-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(400px, .83fr)
+                minmax(500px, 1fr);
+
+            gap: 30px;
+            align-items: start;
+        }
+
+        .intro-text {
+            margin: 0 0 17px;
+            font-size: 16px;
+            line-height: 1.55;
+        }
+
+        .search-title {
+            margin: 17px 0 9px;
+            font-size: 20px;
+        }
+
+        /* =====================================================
+           PÄÄHAKU
+        ===================================================== */
+
+        .main-search {
+            height: 54px;
+            display: flex;
+
+            margin-bottom: 30px;
+
+            border: 2px solid var(--blue-dark);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .main-search input {
+            flex: 1;
+            min-width: 0;
+            padding: 0 22px;
+            border: 0;
+            outline: 0;
+            font-size: 15px;
+        }
+
+        .main-search button {
+            width: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .main-search svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .search-results {
+            display: none;
+            position: relative;
+            z-index: 10;
+
+            margin-top: -30px;
+            margin-bottom: 30px;
+
+            border: 1px solid var(--border);
+            border-top: 0;
+            background: #ffffff;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+
+        .search-result {
+            display: block;
+            padding: 13px 16px;
+
+            border-bottom: 1px solid var(--border);
+
+            text-decoration: none;
+        }
+
+        .search-result:last-child {
+            border-bottom: 0;
+        }
+
+        .search-result:hover {
+            background: #f3f7f9;
+        }
+
+        .search-result strong {
+            display: block;
+            color: var(--blue-dark);
+        }
+
+        .search-result small {
+            color: var(--muted);
+        }
+
+        /* =====================================================
+           SINISET TOIMINTOPAINIKKEET
+        ===================================================== */
+
+        .action-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .action {
+            min-height: 55px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 15px;
+
+            border-radius: 5px;
+
+            background: var(--blue);
+            color: #ffffff;
+
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .action:hover {
+            background: var(--blue-hover);
+        }
+
+        .action-text {
+            flex: 1;
+        }
+
+        .action-arrow {
+            width: 24px;
+            height: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .action-arrow::after {
+            content: "›";
+            position: relative;
+            top: -1px;
+        }
+
+        /* =====================================================
+           ENSIHOITOKUVA
+        ===================================================== */
+
+        .hero-image-box {
+            overflow: hidden;
+            border-radius: 6px;
+            background: #eeeeee;
+        }
+
+        .hero-image {
+            display: block;
+            width: 100%;
+            height: 405px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* =====================================================
+           PALVELUKUVAKKEET
+        ===================================================== */
+
+        .services {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 24px 20px 76px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 50px;
+            row-gap: 37px;
+        }
+
+        .service {
+            min-height: 120px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+            text-decoration: none;
+
+            color: var(--blue-dark);
+
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .service-circle {
+            width: 63px;
+            height: 63px;
+            margin-bottom: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .service-circle svg {
+            width: 42px;
+            height: 42px;
+
+            fill: none;
+            stroke: #0870ae;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service:hover span {
+            text-decoration: underline;
+        }
+
+        /* =====================================================
+           UUTISET
+        ===================================================== */
+
+        .news-section {
+            background: #ffffff;
+            padding: 30px 20px 65px;
+        }
+
+        .news-grid {
+            max-width: var(--max-width);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .news-column {
+            min-height: 610px;
+            padding: 23px 15px 18px;
+            border-radius: 6px;
+        }
+
+        .news-column.main {
+            background: var(--news-blue);
+        }
+
+        .news-column.latest {
+            background: var(--news-green);
+        }
+
+        .news-column.events {
+            background: var(--news-pink);
+        }
+
+        .news-heading {
+            margin: 0 7px 22px;
+
+            color: var(--blue-dark);
+            font-size: 27px;
+            font-weight: 500;
+        }
+
+        .news-content {
+            min-height: 515px;
+            padding: 14px;
+            border-radius: 6px;
+            background: #ffffff;
+        }
+
+        .news-item {
+            display: block;
+
+            padding: 0 0 20px;
+            margin: 0 0 20px;
+
+            border-bottom: 1px solid #d8d8d8;
+
+            text-decoration: none;
+        }
+
+        .news-item:last-child {
+            margin-bottom: 0;
+        }
 
-    --text:#111;
-    --muted:#53636a;
-    --border:#d8dfe2;
-    --navy:#173d4b;
+        .news-item-title {
+            margin: 0 0 9px;
 
-    --max-width:1360px;
-}
+            color: var(--blue-dark);
 
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    background:#fff;
-    color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
-    line-height:1.45;
-}
+            font-size: 17px;
+            line-height: 1.15;
+            font-weight: 500;
+        }
 
-button,
-input{
-    font:inherit;
-}
+        .news-item-date {
+            display: block;
 
-button{
-    cursor:pointer;
-}
+            color: #111111;
 
-a{
-    color:inherit;
-}
+            font-size: 12px;
+            font-weight: 700;
+        }
 
-img{
-    max-width:100%;
-}
+        .news-item-text {
+            margin: 10px 0 0;
 
-/* =========================================================
-   HEADER
-========================================================= */
+            color: #333333;
 
-.site-header{
-    background:#fff;
-}
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
-.header-top{
-    max-width:var(--max-width);
-    min-height:112px;
+        .main-news-image {
+            display: block;
 
-    margin:auto;
-    padding:22px 20px 8px;
+            width: 100%;
+            max-height: 230px;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+            margin-bottom: 15px;
 
-    gap:40px;
-}
+            object-fit: cover;
+        }
 
-.logo{
-    display:block;
-    width:220px;
-    max-height:72px;
-    object-fit:contain;
-}
+        .main-news-item {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
 
-.top-search{
-    width:340px;
-    height:52px;
+            border-bottom: 1px solid #dddddd;
+        }
 
-    display:flex;
+        .news-empty {
+            padding: 10px 2px;
 
-    border:2px solid var(--blue-dark);
-    border-radius:30px;
+            color: #53636a;
+            font-size: 14px;
+        }
 
-    overflow:hidden;
-}
+        /* =====================================================
+           NOSTOT UUTISTEN ALLA
+        ===================================================== */
 
-.top-search input{
-    flex:1;
-    min-width:0;
+        .info-highlights {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 25px 20px 95px;
+        }
 
-    padding:0 21px;
+        .info-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
 
-    border:0;
-    outline:0;
+            gap: 36px;
 
-    font-size:15px;
-}
+            margin-bottom: 55px;
+        }
 
-.top-search button{
-    width:55px;
+        .info-highlight:last-child {
+            margin-bottom: 0;
+        }
 
-    border:0;
+        .info-highlight-text {
+            padding: 20px 0;
+        }
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+        .info-highlight-text h2 {
+            margin: 0 0 18px;
 
-    background:var(--blue);
-    color:#fff;
-}
+            color: var(--blue-dark);
 
-.top-search svg{
-    width:23px;
-    height:23px;
-}
+            font-size: 21px;
+            line-height: 1.25;
+            font-weight: 600;
+        }
 
-/* =========================================================
-   NAV
-========================================================= */
+        .info-highlight-text p {
+            max-width: 520px;
 
-.main-nav{
-    background:#fff;
-}
+            margin: 0 0 26px;
 
-.nav-inner{
-    max-width:var(--max-width);
+            color: #111111;
 
-    min-height:63px;
+            font-size: 14px;
+            line-height: 1.55;
+        }
 
-    margin:auto;
-    padding:0 7px;
+        .info-highlight-text a {
+            display: inline-flex;
+            align-items: center;
 
-    display:flex;
-    align-items:stretch;
-}
+            gap: 8px;
 
-.nav-link{
-    display:flex;
-    align-items:center;
+            color: var(--blue-dark);
 
-    padding:0 14px;
+            font-size: 14px;
+            font-weight: 700;
 
-    color:var(--blue-dark);
+            text-decoration: none;
+        }
 
-    text-decoration:none;
+        .info-highlight-text a:hover {
+            text-decoration: underline;
+        }
 
-    font-size:15px;
+        .read-arrow {
+            width: 20px;
+            height: 20px;
 
-    white-space:nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-    border-bottom:4px solid transparent;
-}
+            border: 2px solid var(--blue);
+            border-radius: 50%;
 
-.nav-link:hover{
-    border-bottom-color:var(--blue-dark);
-}
+            font-size: 19px;
+            line-height: 1;
+        }
 
-/* =========================================================
-   INTRO
-========================================================= */
+        .info-highlight-image {
+            overflow: hidden;
+            border-radius: 5px;
+        }
 
-.intro{
-    background:#fff;
-}
+        .info-highlight-image img {
+            display: block;
 
-.intro-inner{
-    max-width:var(--max-width);
+            width: 100%;
+            height: 285px;
 
-    margin:auto;
+            object-fit: cover;
+        }
 
-    padding:27px 20px 68px;
-}
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
-.page-title{
-    margin:0 0 48px;
+        .footer {
+            background: var(--navy);
+            color: #ffffff;
+        }
 
-    color:var(--blue-dark);
+        .footer-inner {
+            max-width: var(--max-width);
 
-    font-size:30px;
-    line-height:1.2;
-    font-weight:500;
-}
+            margin: auto;
+            padding: 52px 20px;
 
-.intro-grid{
-    display:grid;
+            display: grid;
 
-    grid-template-columns:
-        minmax(400px,.83fr)
-        minmax(500px,1fr);
+            grid-template-columns:
+                1.5fr 1fr 1fr;
 
-    gap:30px;
+            gap: 55px;
+        }
 
-    align-items:start;
-}
+        .footer h2,
+        .footer h3 {
+            margin-top: 0;
+        }
 
-.intro-text{
-    margin:0 0 17px;
+        .footer p {
+            color: #d8e5e9;
+            font-size: 14px;
+        }
 
-    font-size:16px;
-    line-height:1.55;
-}
+        .footer a {
+            display: block;
 
-.search-title{
-    margin:17px 0 9px;
+            margin: 8px 0;
 
-    font-size:20px;
-}
+            color: #ffffff;
 
-/* =========================================================
-   MAIN SEARCH
-========================================================= */
+            text-decoration: none;
 
-.main-search{
-    height:54px;
+            font-size: 14px;
+        }
 
-    display:flex;
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-    margin-bottom:30px;
+        /* =====================================================
+           CHAT-PAINIKE
+        ===================================================== */
 
-    border:2px solid var(--blue-dark);
-    border-radius:30px;
+        .chat-button {
+            position: fixed;
 
-    overflow:hidden;
-}
+            right: 31px;
+            bottom: 27px;
 
-.main-search input{
-    flex:1;
-    min-width:0;
+            z-index: 1000;
 
-    padding:0 22px;
+            width: 66px;
+            height: 66px;
 
-    border:0;
-    outline:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    font-size:15px;
-}
+            padding: 0;
 
-.main-search button{
-    width:55px;
+            border: 0;
+            border-radius: 50%;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            background: #174e83;
+            color: #ffffff;
 
-    border:0;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, .14);
+        }
 
-    background:var(--blue);
-    color:#fff;
-}
+        .chat-button:hover {
+            background: #0f416f;
+        }
 
-.main-search svg{
-    width:24px;
-    height:24px;
-}
+        .chat-button svg {
+            width: 31px;
+            height: 31px;
 
-.search-results{
-    display:none;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-    position:relative;
-    z-index:10;
+        /* =====================================================
+           CHAT-IKKUNA
+        ===================================================== */
 
-    margin-top:-30px;
-    margin-bottom:30px;
+        .chat-window {
+            display: none;
 
-    border:1px solid var(--border);
-    border-top:0;
+            position: fixed;
 
-    background:#fff;
-}
+            right: 31px;
+            bottom: 105px;
 
-.search-results.show{
-    display:block;
-}
+            z-index: 1100;
 
-.search-result{
-    display:block;
+            width: 410px;
+            height: 600px;
 
-    padding:13px 16px;
+            max-width: calc(100vw - 30px);
+            max-height: calc(100vh - 130px);
 
-    border-bottom:1px solid var(--border);
+            background: #ffffff;
 
-    text-decoration:none;
-}
+            border: 1px solid #bdcbd1;
+            border-radius: 6px;
 
-.search-result:last-child{
-    border-bottom:0;
-}
+            overflow: hidden;
 
-.search-result:hover{
-    background:#f3f7f9;
-}
+            box-shadow:
+                0 18px 50px
+                rgba(20, 45, 60, .25);
 
-.search-result strong{
-    display:block;
+            flex-direction: column;
+        }
 
-    color:var(--blue-dark);
-}
+        .chat-window.open {
+            display: flex;
+        }
 
-.search-result small{
-    color:var(--muted);
-}
+        .chat-header {
+            padding: 18px 19px;
 
-/* =========================================================
-   ACTION BUTTONS
-========================================================= */
+            display: flex;
+            align-items: center;
 
-.action-list{
-    display:grid;
-    gap:14px;
-}
+            background: var(--blue);
+            color: #ffffff;
+        }
 
-.action{
-    min-height:55px;
+        .chat-header-text {
+            flex: 1;
+        }
 
-    display:flex;
-    align-items:center;
+        .chat-header-small {
+            font-size: 11px;
+            opacity: .85;
+        }
 
-    padding:0 15px;
+        .chat-header-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
 
-    border-radius:5px;
+        .chat-close {
+            width: 35px;
+            height: 35px;
 
-    background:var(--blue);
-    color:#fff;
+            border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: 50%;
 
-    text-decoration:none;
+            background: transparent;
+            color: #ffffff;
 
-    font-size:16px;
-    font-weight:700;
-}
+            font-size: 23px;
+        }
 
-.action:hover{
-    background:var(--blue-hover);
-}
+        .chat-body {
+            flex: 1;
 
-.action-text{
-    flex:1;
-}
+            overflow-y: auto;
 
-.action-arrow{
-    width:24px;
-    height:24px;
+            padding: 18px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+            background: #f4f6f7;
+        }
 
-    border:2px solid #fff;
-    border-radius:50%;
+        .chat-message {
+            max-width: 87%;
 
-    font-size:20px;
-    line-height:1;
-}
+            margin-bottom: 11px;
 
-.action-arrow::after{
-    content:"›";
+            padding: 11px 13px;
 
-    position:relative;
-    top:-1px;
-}
+            border-radius: 5px;
 
-/* =========================================================
-   HERO IMAGE
-========================================================= */
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
-.hero-image-box{
-    overflow:hidden;
+        .chat-message.bot {
+            margin-right: auto;
 
-    border-radius:6px;
+            background: #ffffff;
 
-    background:#eee;
-}
+            border: 1px solid #dce2e5;
+        }
 
-.hero-image{
-    display:block;
+        .chat-message.user {
+            margin-left: auto;
 
-    width:100%;
-    height:405px;
+            background: var(--blue);
 
-    object-fit:cover;
-    object-position:center;
-}
+            color: #ffffff;
+        }
 
-/* =========================================================
-   SERVICE ICON AREA
-========================================================= */
+        .chat-message a {
+            color: var(--blue-dark);
+            font-weight: 700;
+        }
 
-.services{
-    max-width:var(--max-width);
+        .chat-quick {
+            display: grid;
 
-    margin:auto;
+            gap: 7px;
 
-    padding:24px 20px 76px;
-}
+            margin-top: 10px;
+        }
 
-.service-grid{
-    display:grid;
+        .chat-quick button {
+            padding: 10px;
 
-    grid-template-columns:
-        repeat(4,1fr);
+            border: 1px solid var(--blue);
 
-    column-gap:50px;
-    row-gap:37px;
-}
+            background: #ffffff;
+            color: var(--blue-dark);
 
-.service{
-    min-height:120px;
+            text-align: left;
+            font-weight: 700;
+        }
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+        .chat-input-area {
+            padding: 11px;
 
-    text-align:center;
+            border-top: 1px solid #dddddd;
 
-    text-decoration:none;
+            background: #ffffff;
+        }
 
-    color:var(--blue-dark);
+        .chat-input-row {
+            display: flex;
+            gap: 7px;
+        }
 
-    font-size:15px;
-    font-weight:700;
-    line-height:1.45;
-}
+        .chat-input-row input {
+            flex: 1;
+            min-width: 0;
 
-.service-circle{
-    width:63px;
-    height:63px;
+            padding: 10px;
 
-    margin-bottom:13px;
+            border: 1px solid #87969d;
+        }
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+        .chat-send {
+            border: 0;
 
-    border-radius:50%;
+            padding: 0 14px;
 
-    background:var(--green);
-}
+            background: var(--blue);
+            color: #ffffff;
 
-.service-circle svg{
-    width:42px;
-    height:42px;
+            font-weight: 700;
+        }
 
-    fill:none;
+        .chat-info {
+            margin-top: 7px;
 
-    stroke:#0870ae;
-    stroke-width:1.8;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
+            color: #68777d;
 
-.service:hover span{
-    text-decoration:underline;
-}
+            font-size: 10px;
+        }
 
-/* =========================================================
-   NEWS AREA
-========================================================= */
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
 
-.news-section{
-    background:#fff;
+        @media (max-width: 1050px) {
 
-    padding:30px 20px 85px;
-}
+            .nav-inner {
+                overflow-x: auto;
+            }
 
-.news-grid{
-    max-width:var(--max-width);
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
 
-    margin:auto;
+            .hero-image {
+                height: auto;
+                max-height: 500px;
+            }
 
-    display:grid;
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-    grid-template-columns:
-        repeat(3,1fr);
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
 
-    gap:35px;
-}
+            .news-column,
+            .news-content {
+                min-height: 0;
+            }
 
-.news-column{
-    min-height:610px;
+            .footer-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-    padding:23px 15px 18px;
+        @media (max-width: 700px) {
 
-    border-radius:6px;
-}
+            .header-top {
+                min-height: 88px;
+                padding: 14px 18px;
+            }
 
-.news-column.main{
-    background:var(--news-blue);
-}
+            .logo {
+                width: 175px;
+            }
 
-.news-column.latest{
-    background:var(--news-green);
-}
+            .top-search {
+                display: none;
+            }
 
-.news-column.events{
-    background:var(--news-pink);
-}
+            .nav-inner {
+                padding: 0;
+            }
 
-.news-heading{
-    margin:0 7px 22px;
+            .nav-link {
+                padding: 0 12px;
+            }
 
-    color:var(--blue-dark);
+            .intro-inner {
+                padding: 22px 18px 45px;
+            }
 
-    font-size:27px;
-    font-weight:500;
-}
+            .page-title {
+                margin-bottom: 28px;
+                font-size: 26px;
+            }
 
-.news-content{
-    min-height:515px;
+            .intro-grid {
+                display: flex;
+                flex-direction: column;
+            }
 
-    padding:14px;
+            .hero-image-box {
+                order: -1;
+            }
 
-    border-radius:6px;
+            .hero-image {
+                height: 235px;
+            }
 
-    background:#fff;
-}
+            .services {
+                padding: 20px 18px 55px;
+            }
 
-/* =========================================================
-   NEWS ITEMS
-========================================================= */
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 15px;
+            }
 
-.news-item{
-    display:block;
+            .news-section {
+                padding: 20px 18px 50px;
+            }
 
-    padding:0 0 20px;
-    margin:0 0 20px;
+            .info-highlights {
+                padding: 10px 18px 55px;
+            }
 
-    border-bottom:1px solid #d8d8d8;
+            .info-highlight,
+            .info-highlight.reverse {
+                display: flex;
+                flex-direction: column;
 
-    text-decoration:none;
-}
+                gap: 16px;
 
-.news-item:last-child{
-    margin-bottom:0;
-}
+                margin-bottom: 45px;
+            }
 
-.news-item-title{
-    margin:0 0 9px;
+            .info-highlight-text {
+                width: 100%;
+                padding: 0;
+            }
 
-    color:var(--blue-dark);
+            .info-highlight-image {
+                width: 100%;
+            }
 
-    font-size:17px;
-    line-height:1.15;
-    font-weight:500;
-}
+            .info-highlight-image img {
+                height: auto;
+            }
 
-.news-item-date{
-    display:block;
+            .info-highlight.reverse .info-highlight-image {
+                order: 2;
+            }
 
-    color:#111;
+            .info-highlight.reverse .info-highlight-text {
+                order: 1;
+            }
 
-    font-size:12px;
-    font-weight:700;
-}
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
 
-.news-item-text{
-    margin:10px 0 0;
+            .chat-button {
+                right: 17px;
+                bottom: 17px;
 
-    color:#333;
+                width: 60px;
+                height: 60px;
+            }
 
-    font-size:14px;
-    line-height:1.5;
-}
+            .chat-window {
+                right: 15px;
+                bottom: 90px;
 
-.main-news-image{
-    display:block;
-
-    width:100%;
-    max-height:230px;
-
-    margin-bottom:15px;
-
-    object-fit:cover;
-}
-
-.main-news-item{
-    padding-bottom:20px;
-    margin-bottom:20px;
-
-    border-bottom:1px solid #ddd;
-}
-
-.news-empty{
-    padding:10px 2px;
-
-    color:#53636a;
-
-    font-size:14px;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-    background:var(--navy);
-
-    color:#fff;
-}
-
-.footer-inner{
-    max-width:var(--max-width);
-
-    margin:auto;
-
-    padding:52px 20px;
-
-    display:grid;
-
-    grid-template-columns:
-        1.5fr 1fr 1fr;
-
-    gap:55px;
-}
-
-.footer h2,
-.footer h3{
-    margin-top:0;
-}
-
-.footer p{
-    color:#d8e5e9;
-
-    font-size:14px;
-}
-
-.footer a{
-    display:block;
-
-    margin:8px 0;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-size:14px;
-}
-
-.footer a:hover{
-    text-decoration:underline;
-}
-
-/* =========================================================
-   CHAT ROUND BUTTON
-========================================================= */
-
-.chat-button{
-    position:fixed;
-
-    right:31px;
-    bottom:27px;
-
-    z-index:1000;
-
-    width:66px;
-    height:66px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:0;
-
-    border:0;
-    border-radius:50%;
-
-    background:#174e83;
-    color:#fff;
-
-    box-shadow:
-        0 5px 18px
-        rgba(0,0,0,.14);
-}
-
-.chat-button:hover{
-    background:#0f416f;
-}
-
-.chat-button svg{
-    width:31px;
-    height:31px;
-
-    fill:none;
-
-    stroke:currentColor;
-    stroke-width:1.8;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-/* =========================================================
-   CHAT WINDOW
-========================================================= */
-
-.chat-window{
-    display:none;
-
-    position:fixed;
-
-    right:31px;
-    bottom:105px;
-
-    z-index:1100;
-
-    width:410px;
-    height:600px;
-
-    max-width:
-        calc(100vw - 30px);
-
-    max-height:
-        calc(100vh - 130px);
-
-    background:#fff;
-
-    border:1px solid #bdcbd1;
-    border-radius:6px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 18px 50px
-        rgba(20,45,60,.25);
-
-    flex-direction:column;
-}
-
-.chat-window.open{
-    display:flex;
-}
-
-.chat-header{
-    padding:18px 19px;
-
-    display:flex;
-    align-items:center;
-
-    background:var(--blue);
-    color:#fff;
-}
-
-.chat-header-text{
-    flex:1;
-}
-
-.chat-header-small{
-    font-size:11px;
-
-    opacity:.85;
-}
-
-.chat-header-title{
-    font-size:18px;
-    font-weight:700;
-}
-
-.chat-close{
-    width:35px;
-    height:35px;
-
-    border:1px solid rgba(255,255,255,.55);
-    border-radius:50%;
-
-    background:transparent;
-    color:#fff;
-
-    font-size:23px;
-}
-
-.chat-body{
-    flex:1;
-
-    overflow-y:auto;
-
-    padding:18px;
-
-    background:#f4f6f7;
-}
-
-.chat-message{
-    max-width:87%;
-
-    margin-bottom:11px;
-
-    padding:11px 13px;
-
-    border-radius:5px;
-
-    font-size:14px;
-    line-height:1.5;
-}
-
-.chat-message.bot{
-    margin-right:auto;
-
-    background:#fff;
-
-    border:1px solid #dce2e5;
-}
-
-.chat-message.user{
-    margin-left:auto;
-
-    background:var(--blue);
-
-    color:#fff;
-}
-
-.chat-quick{
-    display:grid;
-
-    gap:7px;
-
-    margin-top:10px;
-}
-
-.chat-quick button{
-    padding:10px;
-
-    border:1px solid var(--blue);
-
-    background:#fff;
-    color:var(--blue-dark);
-
-    text-align:left;
-
-    font-weight:700;
-}
-
-.chat-input-area{
-    padding:11px;
-
-    border-top:1px solid #ddd;
-
-    background:#fff;
-}
-
-.chat-input-row{
-    display:flex;
-
-    gap:7px;
-}
-
-.chat-input-row input{
-    flex:1;
-    min-width:0;
-
-    padding:10px;
-
-    border:1px solid #87969d;
-}
-
-.chat-send{
-    border:0;
-
-    padding:0 14px;
-
-    background:var(--blue);
-    color:#fff;
-
-    font-weight:700;
-}
-
-.chat-info{
-    margin-top:7px;
-
-    color:#68777d;
-
-    font-size:10px;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1050px){
-
-    .nav-inner{
-        overflow-x:auto;
-    }
-
-    .intro-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero-image{
-        height:auto;
-        max-height:500px;
-    }
-
-    .service-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .news-grid{
-        grid-template-columns:1fr;
-    }
-
-    .news-column{
-        min-height:0;
-    }
-
-    .news-content{
-        min-height:0;
-    }
-
-    .footer-inner{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:700px){
-
-    .header-top{
-        min-height:88px;
-
-        padding:14px 18px;
-    }
-
-    .logo{
-        width:175px;
-    }
-
-    .top-search{
-        display:none;
-    }
-
-    .nav-inner{
-        padding:0;
-    }
-
-    .nav-link{
-        padding:0 12px;
-    }
-
-    .intro-inner{
-        padding:
-            22px 18px
-            45px;
-    }
-
-    .page-title{
-        margin-bottom:28px;
-
-        font-size:26px;
-    }
-
-    .intro-grid{
-        display:flex;
-        flex-direction:column;
-    }
-
-    .hero-image-box{
-        order:-1;
-    }
-
-    .hero-image{
-        height:235px;
-    }
-
-    .services{
-        padding:
-            20px 18px
-            55px;
-    }
-
-    .service-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-
-        column-gap:15px;
-    }
-
-    .news-section{
-        padding:
-            20px 18px
-            60px;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
-    }
-
-    .chat-button{
-        right:17px;
-        bottom:17px;
-
-        width:60px;
-        height:60px;
-    }
-
-    .chat-window{
-        right:15px;
-        bottom:90px;
-
-        width:
-            calc(100vw - 30px);
-    }
-
-}
-</style>
+                width: calc(100vw - 30px);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ======================================================
+<!-- =========================================================
      HEADER
-======================================================= -->
+========================================================= -->
 
 <header class="site-header">
 
     <div class="header-top">
 
         <a href="index.html">
-
             <img
                 src="hyvaks-logo.png"
-                alt="Keski-Suomen hyvinvointialue | hyvaks.fi"
+                alt="Keski-Suomen hyvinvointialue"
                 class="logo"
             >
-
         </a>
 
-        <form
-            class="top-search"
-            id="topSearchForm"
-        >
+        <form class="top-search" id="topSearchForm">
 
             <input
                 id="topSearchInput"
@@ -1051,10 +1091,7 @@ img{
                 aria-label="Hae sivustolta"
             >
 
-            <button
-                type="submit"
-                aria-label="Hae"
-            >
+            <button type="submit" aria-label="Hae">
 
                 <svg
                     viewBox="0 0 24 24"
@@ -1062,17 +1099,8 @@ img{
                     stroke="currentColor"
                     stroke-width="2"
                 >
-
-                    <circle
-                        cx="11"
-                        cy="11"
-                        r="7"
-                    ></circle>
-
-                    <path
-                        d="M16.5 16.5L21 21"
-                    ></path>
-
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M16.5 16.5L21 21"></path>
                 </svg>
 
             </button>
@@ -1081,71 +1109,43 @@ img{
 
     </div>
 
-
     <nav class="main-nav">
 
         <div class="nav-inner">
 
-            <a
-                href="#palvelut"
-                class="nav-link"
-            >
+            <a href="#palvelut" class="nav-link">
                 Palvelumme
             </a>
 
-            <a
-                href="#asiointi"
-                class="nav-link"
-            >
+            <a href="#asiointi" class="nav-link">
                 Asiointi
             </a>
 
-            <a
-                href="opiskeluterveydenhuolto.html"
-                class="nav-link"
-            >
+            <a href="opiskeluterveydenhuolto.html" class="nav-link">
                 Asiakkaana
             </a>
 
-            <a
-                href="#palvelut"
-                class="nav-link"
-            >
+            <a href="#palvelut" class="nav-link">
                 Sairaala Nova
             </a>
 
-            <a
-                href="opiskeluterveydenhuolto.html"
-                class="nav-link"
-            >
+            <a href="opiskeluterveydenhuolto.html" class="nav-link">
                 Hyvinvointisi tueksi
             </a>
 
-            <a
-                href="#footer"
-                class="nav-link"
-            >
+            <a href="#footer" class="nav-link">
                 Hyvinvointialue
             </a>
 
-            <a
-                href="#uutiset"
-                class="nav-link"
-            >
+            <a href="#uutiset" class="nav-link">
                 Ajankohtaista
             </a>
 
-            <a
-                href="#"
-                class="nav-link"
-            >
+            <a href="#" class="nav-link">
                 Tule työkaveriksi
             </a>
 
-            <a
-                href="#"
-                class="nav-link"
-            >
+            <a href="#" class="nav-link">
                 In English
             </a>
 
@@ -1156,20 +1156,19 @@ img{
 </header>
 
 
-<!-- ======================================================
-     INTRO
-======================================================= -->
+<!-- =========================================================
+     ETUSIVUN ALKU
+========================================================= -->
 
 <main>
 
-<section class="intro">
+<section class="intro" id="asiointi">
 
     <div class="intro-inner">
 
         <h1 class="page-title">
             Keski-Suomen hyvinvointialue | hyvaks.fi
         </h1>
-
 
         <div class="intro-grid">
 
@@ -1178,15 +1177,13 @@ img{
                 <p class="intro-text">
                     Edistämme keskisuomalaisten hyvinvointia,
                     terveyttä ja turvallisuutta.
-                    Vastaamme sosiaali-, terveys- ja
-                    pelastustoimen palveluista Keski-Suomessa.
+                    Vastaamme sosiaali-, terveys- ja pelastustoimen
+                    palveluista Keski-Suomessa.
                 </p>
-
 
                 <h2 class="search-title">
                     Hae palvelua
                 </h2>
-
 
                 <form
                     class="main-search"
@@ -1211,97 +1208,64 @@ img{
                             stroke="currentColor"
                             stroke-width="2"
                         >
-
-                            <circle
-                                cx="11"
-                                cy="11"
-                                r="7"
-                            ></circle>
-
-                            <path
-                                d="M16.5 16.5L21 21"
-                            ></path>
-
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M16.5 16.5L21 21"></path>
                         </svg>
 
                     </button>
 
                 </form>
 
-
                 <div
                     id="searchResults"
                     class="search-results"
                 ></div>
 
-
                 <div class="action-list">
 
-                    <a
-                        href="ajanvaraus.html"
-                        class="action"
-                    >
-
+                    <a href="ajanvaraus.html" class="action">
                         <span class="action-text">
                             Varaa aika
                         </span>
-
                         <span class="action-arrow"></span>
-
                     </a>
 
-
-                    <a
-                        href="oma-varaus.html"
-                        class="action"
-                    >
-
+                    <a href="oma-varaus.html" class="action">
                         <span class="action-text">
                             Oma varaus
                         </span>
-
                         <span class="action-arrow"></span>
-
                     </a>
-
 
                     <a
                         href="opiskeluterveydenhuolto.html"
                         class="action"
                     >
-
                         <span class="action-text">
                             Opiskeluterveydenhuolto
                         </span>
-
                         <span class="action-arrow"></span>
-
                     </a>
-
 
                     <a
                         href="https://sannarantanenhyvaks.github.io/terveyskysely/"
                         class="action"
                     >
-
                         <span class="action-text">
                             Terveyskysely
                         </span>
-
                         <span class="action-arrow"></span>
-
                     </a>
 
                 </div>
 
             </div>
 
-
             <div class="hero-image-box">
 
                 <img
                     src="ensihoito.jpg"
-                    alt="Ensihoito"
+                    alt="Ensihoidon ammattilaisia"
                     class="hero-image"
                 >
 
@@ -1314,91 +1278,48 @@ img{
 </section>
 
 
-<!-- ======================================================
-     SERVICE ICONS
-     EI PALVELUMME-OTSIKKOA TÄSSÄ
-======================================================= -->
+<!-- =========================================================
+     PALVELUKUVAKKEET
+     Ei erillistä "Palvelumme"-otsikkoa.
+========================================================= -->
 
-<section
-    id="palvelut"
-    class="services"
->
+<section id="palvelut" class="services">
 
     <div class="service-grid">
 
+        <!-- 1 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <circle
-                        cx="21"
-                        cy="20"
-                        r="7"
-                    />
-
-                    <circle
-                        cx="43"
-                        cy="21"
-                        r="6"
-                    />
-
-                    <path
-                        d="M8 49c1-11 6-17 13-17s13 6 14 17"
-                    />
-
-                    <path
-                        d="M35 48c1-9 4-14 9-14 6 0 10 5 11 14"
-                    />
-
+                    <circle cx="21" cy="20" r="7"/>
+                    <circle cx="43" cy="21" r="6"/>
+                    <path d="M8 49c1-11 6-17 13-17s13 6 14 17"/>
+                    <path d="M35 48c1-9 4-14 9-14 6 0 10 5 11 14"/>
                 </svg>
 
             </div>
 
             <span>
-                Perheiden, nuorten ja aikuisten
-                ohjaus ja neuvonta
+                Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
             </span>
 
         </a>
 
+        <!-- 2 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <circle
-                        cx="29"
-                        cy="18"
-                        r="8"
-                    />
-
-                    <path
-                        d="M20 49c1-13 4-20 10-20s10 7 11 20"
-                    />
-
-                    <path
-                        d="M43 31v22"
-                    />
-
-                    <path
-                        d="M43 31c0-4 5-4 5 0"
-                    />
-
-                    <path
-                        d="M43 52h7"
-                    />
-
+                    <circle cx="29" cy="18" r="8"/>
+                    <path d="M20 49c1-13 4-20 10-20s10 7 11 20"/>
+                    <path d="M43 31v22"/>
+                    <path d="M43 31c0-4 5-4 5 0"/>
+                    <path d="M43 52h7"/>
                 </svg>
 
             </div>
@@ -1409,20 +1330,14 @@ img{
 
         </a>
 
+        <!-- 3 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <path
-                        d="M21 10c-8 2-10 10-8 18 2 7 6 9 8 20 1 6 5 7 8 1l3-8 3 8c3 6 7 5 8-1 2-11 6-13 8-20 2-8 0-16-8-18-5-1-8 2-11 2s-6-3-11-2z"
-                    />
-
+                    <path d="M21 10c-8 2-10 10-8 18 2 7 6 9 8 20 1 6 5 7 8 1l3-8 3 8c3 6 7 5 8-1 2-11 6-13 8-20 2-8 0-16-8-18-5-1-8 2-11 2s-6-3-11-2z"/>
                 </svg>
 
             </div>
@@ -1433,28 +1348,16 @@ img{
 
         </a>
 
+        <!-- 4 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <path
-                        d="M25 51c-10-4-16-13-16-23 0-12 10-21 23-21s23 9 23 21c0 9-5 16-13 20"
-                    />
-
-                    <path
-                        d="M22 27c2-5 6-8 10-8 6 0 10 4 10 10"
-                    />
-
-                    <path
-                        d="M24 38c5 4 11 4 16 0"
-                    />
-
+                    <path d="M25 51c-10-4-16-13-16-23 0-12 10-21 23-21s23 9 23 21c0 9-5 16-13 20"/>
+                    <path d="M22 27c2-5 6-8 10-8 6 0 10 4 10 10"/>
+                    <path d="M24 38c5 4 11 4 16 0"/>
                 </svg>
 
             </div>
@@ -1465,26 +1368,17 @@ img{
 
         </a>
 
+        <!-- 5 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
                     <path d="M23 9h18"/>
-
-                    <path
-                        d="M28 9v17L16 48c-2 4 1 7 5 7h22c4 0 7-3 5-7L36 26V9"
-                    />
-
+                    <path d="M28 9v17L16 48c-2 4 1 7 5 7h22c4 0 7-3 5-7L36 26V9"/>
                     <path d="M21 42h23"/>
-
                     <path d="M25 36h14"/>
-
                 </svg>
 
             </div>
@@ -1495,38 +1389,18 @@ img{
 
         </a>
 
+        <!-- 6 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <circle
-                        cx="31"
-                        cy="12"
-                        r="5"
-                    />
-
-                    <path
-                        d="M30 20l-4 14h13"
-                    />
-
-                    <path
-                        d="M29 25h12"
-                    />
-
-                    <path
-                        d="M38 34l5 14"
-                    />
-
-                    <path
-                        d="M26 32c-9 1-14 6-14 13 0 8 7 14 15 14 7 0 12-4 14-10"
-                    />
-
+                    <circle cx="31" cy="12" r="5"/>
+                    <path d="M30 20l-4 14h13"/>
+                    <path d="M29 25h12"/>
+                    <path d="M38 34l5 14"/>
+                    <path d="M26 32c-9 1-14 6-14 13 0 8 7 14 15 14 7 0 12-4 14-10"/>
                 </svg>
 
             </div>
@@ -1537,11 +1411,9 @@ img{
 
         </a>
 
+        <!-- 7 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
@@ -1556,20 +1428,12 @@ img{
                     />
 
                     <path d="M27 21h10"/>
-
                     <path d="M32 16v10"/>
-
                     <path d="M20 34h7"/>
-
                     <path d="M37 34h7"/>
-
                     <path d="M20 42h7"/>
-
                     <path d="M37 42h7"/>
-
-                    <path
-                        d="M28 55V45h8v10"
-                    />
+                    <path d="M28 55V45h8v10"/>
 
                 </svg>
 
@@ -1581,24 +1445,15 @@ img{
 
         </a>
 
+        <!-- 8 -->
 
-        <a
-            href="#"
-            class="service"
-        >
+        <a href="#" class="service">
 
             <div class="service-circle">
 
                 <svg viewBox="0 0 64 64">
-
-                    <path
-                        d="M32 7c3 8 11 12 11 22 0 4-1 7-3 10 1-9-5-12-8-18-2 6-9 11-9 21 0 8 5 14 9 16 10-3 17-11 17-21 0-13-10-21-17-30z"
-                    />
-
-                    <path
-                        d="M32 56c-5-3-8-7-8-12 0-5 4-9 8-13 1 6 6 8 6 14 0 5-3 9-6 11z"
-                    />
-
+                    <path d="M32 7c3 8 11 12 11 22 0 4-1 7-3 10 1-9-5-12-8-18-2 6-9 11-9 21 0 8 5 14 9 16 10-3 17-11 17-21 0-13-10-21-17-30z"/>
+                    <path d="M32 56c-5-3-8-7-8-12 0-5 4-9 8-13 1 6 6 8 6 14 0 5-3 9-6 11z"/>
                 </svg>
 
             </div>
@@ -1614,19 +1469,15 @@ img{
 </section>
 
 
-<!-- ======================================================
-     NEWS
-======================================================= -->
+<!-- =========================================================
+     UUTISET
+========================================================= -->
 
-<section
-    id="uutiset"
-    class="news-section"
->
+<section id="uutiset" class="news-section">
 
     <div class="news-grid">
 
-
-        <!-- MAIN NEWS -->
+        <!-- PÄÄUUTISET -->
 
         <section class="news-column main">
 
@@ -1638,17 +1489,14 @@ img{
                 id="mainNews"
                 class="news-content"
             >
-
                 <div class="news-empty">
                     Ladataan uutisia...
                 </div>
-
             </div>
 
         </section>
 
-
-        <!-- LATEST -->
+        <!-- VIIMEISIMMÄT UUTISET -->
 
         <section class="news-column latest">
 
@@ -1660,17 +1508,14 @@ img{
                 id="latestNews"
                 class="news-content"
             >
-
                 <div class="news-empty">
                     Ladataan uutisia...
                 </div>
-
             </div>
 
         </section>
 
-
-        <!-- EVENTS -->
+        <!-- TAPAHTUMAT -->
 
         <section class="news-column events">
 
@@ -1682,15 +1527,129 @@ img{
                 id="events"
                 class="news-content"
             >
-
                 <div class="news-empty">
                     Ladataan tapahtumia...
                 </div>
-
             </div>
 
         </section>
 
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NOSTOT
+========================================================= -->
+
+<section class="info-highlights">
+
+    <!-- SUOMI.FI -->
+
+    <div class="info-highlight">
+
+        <div class="info-highlight-text">
+
+            <h2>
+                Suomi.fi-viestit
+            </h2>
+
+            <p>
+                Keski-Suomen hyvinvointialueen ajanvarauskirjeet
+                saapuvat osittain sähköisesti asiakkaille
+                Suomi.fi-viesteinä. Suomi.fi-viestit on
+                tietoturvallinen sähköinen postilaatikko, joka
+                korvaa paperipostitse saapuvan viranomaispostin.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+        <div class="info-highlight-image">
+
+            <img
+                src="suomifi.jpg"
+                alt="Suomi.fi-viestit"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- HUOLI LÄHEISESTÄ -->
+
+    <div class="info-highlight reverse">
+
+        <div class="info-highlight-image">
+
+            <img
+                src="huoli-laheisesta.jpg"
+                alt="Huoli läheisestä"
+            >
+
+        </div>
+
+        <div class="info-highlight-text">
+
+            <h2>
+                Huoli läheisestä
+            </h2>
+
+            <p>
+                Täältä löydät tietoa siitä, miten ilmoitat avun
+                tai tuen tarpeesta sosiaalihuoltoon Keski-Suomen
+                hyvinvointialueella. Sähköiset lomakkeet löytyvät
+                sivun oikeasta laidasta.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TERVEELLINEN SYKSY -->
+
+    <div class="info-highlight">
+
+        <div class="info-highlight-text">
+
+            <h2>
+                Hyvinvointia edistävä terveellinen syksy
+            </h2>
+
+            <p>
+                Syksy on erinomaista aikaa omasta hyvinvoinnista
+                ja terveydestä huolehtimiseen. Olemme koonneet
+                vinkkejä, miten syksy sujuu hyvinvointia ja
+                terveyttä edistäen ja turvallisuudesta huolehtien.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+        <div class="info-highlight-image">
+
+            <img
+                src="terveellinen-syksy.jpg"
+                alt="Hyvinvointia edistävä terveellinen syksy"
+            >
+
+        </div>
 
     </div>
 
@@ -1699,31 +1658,26 @@ img{
 </main>
 
 
-<!-- ======================================================
+<!-- =========================================================
      FOOTER
-======================================================= -->
+========================================================= -->
 
-<footer
-    id="footer"
-    class="footer"
->
+<footer id="footer" class="footer">
 
     <div class="footer-inner">
 
         <div>
 
             <h2>
-                Keski-Suomen hyvinvointialue | hyvaks.fi
+                Keski-Suomen hyvinvointialue
             </h2>
 
             <p>
-                Sosiaali- ja terveyspalvelut
-                sekä pelastustoimen palvelut
-                Keski-Suomessa.
+                Sosiaali- ja terveyspalvelut sekä
+                pelastustoimen palvelut Keski-Suomessa.
             </p>
 
         </div>
-
 
         <div>
 
@@ -1744,7 +1698,6 @@ img{
             </a>
 
         </div>
-
 
         <div>
 
@@ -1769,9 +1722,9 @@ img{
 </footer>
 
 
-<!-- ======================================================
-     ROUND CHAT BUTTON
-======================================================= -->
+<!-- =========================================================
+     CHAT-PAINIKE
+========================================================= -->
 
 <button
     id="chatButton"
@@ -1781,27 +1734,17 @@ img{
 >
 
     <svg viewBox="0 0 32 32">
-
-        <path
-            d="M6 7.5h20v14H14l-6 4v-4H6z"
-        ></path>
-
-        <path
-            d="M11 13h10"
-        ></path>
-
-        <path
-            d="M11 17h6"
-        ></path>
-
+        <path d="M6 7.5h20v14H14l-6 4v-4H6z"></path>
+        <path d="M11 13h10"></path>
+        <path d="M11 17h6"></path>
     </svg>
 
 </button>
 
 
-<!-- ======================================================
-     CHAT WINDOW
-======================================================= -->
+<!-- =========================================================
+     CHAT-IKKUNA
+========================================================= -->
 
 <section
     id="chatWindow"
@@ -1813,7 +1756,7 @@ img{
         <div class="chat-header-text">
 
             <div class="chat-header-small">
-                Keski-Suomen hyvinvointialue | hyvaks.fi
+                Keski-Suomen hyvinvointialue
             </div>
 
             <div class="chat-header-title">
@@ -1833,7 +1776,6 @@ img{
 
     </header>
 
-
     <div
         id="chatBody"
         class="chat-body"
@@ -1843,37 +1785,27 @@ img{
             Hei. Miten voin auttaa?
         </div>
 
-
         <div class="chat-quick">
 
-            <button
-                data-message="Haluan varata ajan"
-            >
+            <button data-message="Haluan varata ajan">
                 Varaa aika
             </button>
 
-            <button
-                data-message="Haluan tarkistaa oman varaukseni"
-            >
+            <button data-message="Haluan tarkistaa oman varaukseni">
                 Oma varaus
             </button>
 
-            <button
-                data-message="Terveyskysely"
-            >
+            <button data-message="Terveyskysely">
                 Terveyskysely
             </button>
 
-            <button
-                data-message="Opiskeluterveydenhuolto"
-            >
+            <button data-message="Opiskeluterveydenhuolto">
                 Opiskeluterveydenhuolto
             </button>
 
         </div>
 
     </div>
-
 
     <div class="chat-input-area">
 
@@ -1897,9 +1829,8 @@ img{
         </div>
 
         <div class="chat-info">
-            Älä kirjoita chatiin henkilötunnusta
-            tai muita arkaluonteisia terveystietoja.
-            Hätätilanteessa soita 112.
+            Älä kirjoita chatiin henkilötunnusta tai muita
+            arkaluonteisia terveystietoja. Hätätilanteessa soita 112.
         </div>
 
     </div>
@@ -1907,957 +1838,884 @@ img{
 </section>
 
 
-<!-- ======================================================
+<!-- =========================================================
      SUPABASE
-======================================================= -->
+========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-/* =========================================================
-   SUPABASE
-========================================================= */
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
 
-const SUPABASE_URL =
-    'https://bwuybksyoopuejcrlspa.supabase.co';
+    const SUPABASE_URL =
+        'https://bwuybksyoopuejcrlspa.supabase.co';
 
-const SUPABASE_PUBLIC_KEY =
-    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+    const SUPABASE_PUBLIC_KEY =
+        'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
 
-
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLIC_KEY
-    );
-
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-function escapeHtml(value){
-
-    return String(value ?? '')
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'","&#039;");
-
-}
-
-
-function formatDate(value){
-
-    if(!value){
-        return '';
-    }
-
-
-    const parts =
-        String(value)
-        .substring(0,10)
-        .split('-');
-
-
-    if(parts.length!==3){
-        return value;
-    }
-
-
-    return (
-        Number(parts[2])
-        +
-        '.'
-        +
-        Number(parts[1])
-        +
-        '.'
-        +
-        parts[0]
-    );
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchData = [
-
-    {
-        title:'Ajanvaraus',
-        description:
-            'Varaa aika opiskeluterveydenhuollon vastaanotolle.',
-        url:'ajanvaraus.html'
-    },
-
-    {
-        title:'Oma varaus',
-        description:
-            'Tarkista ajanvarauksesi varauskoodilla.',
-        url:'oma-varaus.html'
-    },
-
-    {
-        title:'Opiskeluterveydenhuolto',
-        description:
-            'Opiskelijoiden terveys- ja hyvinvointipalvelut.',
-        url:'opiskeluterveydenhuolto.html'
-    },
-
-    {
-        title:'Terveyskysely',
-        description:
-            'Opiskeluterveydenhuollon terveyskysely.',
-        url:
-            'https://sannarantanenhyvaks.github.io/terveyskysely/'
-    },
-
-    {
-        title:'Terveydenhoitaja',
-        description:
-            'Muuramen lukion terveydenhoitaja Sanna Rantanen.',
-        url:'opiskeluterveydenhuolto.html'
-    },
-
-    {
-        title:'Laboratorio',
-        description:
-            'Laboratoriopalvelut.',
-        url:'#palvelut'
-    },
-
-    {
-        title:'Suun terveydenhuolto',
-        description:
-            'Suun terveydenhuollon palvelut.',
-        url:'#palvelut'
-    },
-
-    {
-        title:'Sairaala Nova',
-        description:
-            'Sairaala Novan palvelut.',
-        url:'#palvelut'
-    },
-
-    {
-        title:'Pelastuslaitos',
-        description:
-            'Pelastustoimen palvelut.',
-        url:'#palvelut'
-    }
-
-];
-
-
-const mainSearchForm =
-    document.getElementById(
-        'mainSearchForm'
-    );
-
-const mainSearchInput =
-    document.getElementById(
-        'mainSearchInput'
-    );
-
-const topSearchForm =
-    document.getElementById(
-        'topSearchForm'
-    );
-
-const topSearchInput =
-    document.getElementById(
-        'topSearchInput'
-    );
-
-const searchResults =
-    document.getElementById(
-        'searchResults'
-    );
-
-
-function searchSite(query){
-
-    const clean =
-        query
-        .trim()
-        .toLocaleLowerCase('fi');
-
-
-    if(!clean){
-
-        searchResults.innerHTML='';
-
-        searchResults.classList.remove(
-            'show'
-        );
-
-        return;
-
-    }
-
-
-    const matches =
-        searchData.filter(item=>
-
-            item.title
-                .toLocaleLowerCase('fi')
-                .includes(clean)
-
-            ||
-
-            item.description
-                .toLocaleLowerCase('fi')
-                .includes(clean)
-
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLIC_KEY
         );
 
 
-    if(!matches.length){
+    /* =====================================================
+       TURVALLINEN HTML-TULOSTUS
+    ===================================================== */
 
-        searchResults.innerHTML = `
-            <div class="search-result">
+    function escapeHtml(value) {
 
-                <strong>
-                    Ei hakutuloksia
-                </strong>
+        return String(value ?? '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
 
-                <small>
-                    Kokeile toista hakusanaa.
-                </small>
+    }
 
-            </div>
-        `;
+
+    /* =====================================================
+       PÄIVÄMÄÄRÄ
+    ===================================================== */
+
+    function formatDate(value) {
+
+        if (!value) {
+            return '';
+        }
+
+        const parts =
+            String(value)
+                .substring(0, 10)
+                .split('-');
+
+        if (parts.length !== 3) {
+            return value;
+        }
+
+        return (
+            Number(parts[2])
+            + '.'
+            + Number(parts[1])
+            + '.'
+            + parts[0]
+        );
+
+    }
+
+
+    /* =====================================================
+       HAKU
+    ===================================================== */
+
+    const searchData = [
+
+        {
+            title: 'Ajanvaraus',
+            description:
+                'Varaa aika opiskeluterveydenhuollon vastaanotolle.',
+            url: 'ajanvaraus.html'
+        },
+
+        {
+            title: 'Oma varaus',
+            description:
+                'Tarkista ajanvarauksesi varauskoodilla.',
+            url: 'oma-varaus.html'
+        },
+
+        {
+            title: 'Opiskeluterveydenhuolto',
+            description:
+                'Opiskelijoiden terveys- ja hyvinvointipalvelut.',
+            url: 'opiskeluterveydenhuolto.html'
+        },
+
+        {
+            title: 'Terveyskysely',
+            description:
+                'Opiskeluterveydenhuollon terveyskysely.',
+            url:
+                'https://sannarantanenhyvaks.github.io/terveyskysely/'
+        },
+
+        {
+            title: 'Terveydenhoitaja',
+            description:
+                'Muuramen lukion terveydenhoitaja Sanna Rantanen.',
+            url: 'opiskeluterveydenhuolto.html'
+        },
+
+        {
+            title: 'Laboratorio',
+            description:
+                'Laboratoriopalvelut.',
+            url: '#palvelut'
+        },
+
+        {
+            title: 'Suun terveydenhuolto',
+            description:
+                'Suun terveydenhuollon palvelut.',
+            url: '#palvelut'
+        },
+
+        {
+            title: 'Sairaala Nova',
+            description:
+                'Sairaala Novan palvelut.',
+            url: '#palvelut'
+        },
+
+        {
+            title: 'Pelastuslaitos',
+            description:
+                'Pelastustoimen palvelut.',
+            url: '#palvelut'
+        }
+
+    ];
+
+
+    const mainSearchForm =
+        document.getElementById('mainSearchForm');
+
+    const mainSearchInput =
+        document.getElementById('mainSearchInput');
+
+    const topSearchForm =
+        document.getElementById('topSearchForm');
+
+    const topSearchInput =
+        document.getElementById('topSearchInput');
+
+    const searchResults =
+        document.getElementById('searchResults');
+
+
+    function searchSite(query) {
+
+        const clean =
+            query
+                .trim()
+                .toLocaleLowerCase('fi');
+
+        if (!clean) {
+
+            searchResults.innerHTML = '';
+
+            searchResults.classList.remove(
+                'show'
+            );
+
+            return;
+        }
+
+        const matches =
+            searchData.filter(item =>
+
+                item.title
+                    .toLocaleLowerCase('fi')
+                    .includes(clean)
+
+                ||
+
+                item.description
+                    .toLocaleLowerCase('fi')
+                    .includes(clean)
+
+            );
+
+
+        if (!matches.length) {
+
+            searchResults.innerHTML = `
+                <div class="search-result">
+                    <strong>Ei hakutuloksia</strong>
+                    <small>Kokeile toista hakusanaa.</small>
+                </div>
+            `;
+
+            searchResults.classList.add(
+                'show'
+            );
+
+            return;
+        }
+
+
+        searchResults.innerHTML =
+            matches
+                .map(item => `
+
+                    <a
+                        class="search-result"
+                        href="${escapeHtml(item.url)}"
+                    >
+
+                        <strong>
+                            ${escapeHtml(item.title)}
+                        </strong>
+
+                        <small>
+                            ${escapeHtml(item.description)}
+                        </small>
+
+                    </a>
+
+                `)
+                .join('');
+
 
         searchResults.classList.add(
             'show'
         );
 
-        return;
-
     }
 
 
-    searchResults.innerHTML =
-        matches
-        .map(item=>`
-
-            <a
-                class="search-result"
-                href="${escapeHtml(item.url)}"
-            >
-
-                <strong>
-                    ${escapeHtml(item.title)}
-                </strong>
-
-                <small>
-                    ${escapeHtml(item.description)}
-                </small>
-
-            </a>
-
-        `)
-        .join('');
-
-
-    searchResults.classList.add(
-        'show'
-    );
-
-}
-
-
-mainSearchForm.addEventListener(
-    'submit',
-    event=>{
-
-        event.preventDefault();
-
-        searchSite(
-            mainSearchInput.value
-        );
-
-    }
-);
-
-
-mainSearchInput.addEventListener(
-    'input',
-    ()=>{
-
-        searchSite(
-            mainSearchInput.value
-        );
-
-    }
-);
-
-
-topSearchForm.addEventListener(
-    'submit',
-    event=>{
-
-        event.preventDefault();
-
-
-        mainSearchInput.value =
-            topSearchInput.value;
-
-
-        mainSearchInput.scrollIntoView({
-            behavior:'smooth',
-            block:'center'
-        });
-
-
-        searchSite(
-            topSearchInput.value
-        );
-
-
-        setTimeout(
-            ()=>{
-                mainSearchInput.focus();
-            },
-            300
-        );
-
-    }
-);
-
-
-/* =========================================================
-   NEWS FROM SUPABASE
-========================================================= */
-
-const mainNewsContainer =
-    document.getElementById(
-        'mainNews'
-    );
-
-const latestNewsContainer =
-    document.getElementById(
-        'latestNews'
-    );
-
-const eventsContainer =
-    document.getElementById(
-        'events'
-    );
-
-
-async function loadNews(){
-
-    try{
-
-        const {
-            data,
-            error
-        } =
-        await supabaseClient
-            .from('site_news')
-            .select(
-                'id,title,content,category,image_url,event_date,created_at'
-            )
-            .eq(
-                'is_published',
-                true
-            )
-            .order(
-                'created_at',
-                {
-                    ascending:false
-                }
-            );
-
-
-        if(error){
-            throw error;
-        }
-
-
-        const rows =
-            data || [];
-
-
-        const main =
-            rows.filter(
-                item=>
-                    item.category==='main'
-            );
-
-
-        const latest =
-            rows.filter(
-                item=>
-                    item.category==='latest'
-            );
-
-
-        const events =
-            rows
-            .filter(
-                item=>
-                    item.category==='event'
-            )
-            .sort(
-                (a,b)=>{
-
-                    const dateA =
-                        a.event_date
-                        || a.created_at;
-
-                    const dateB =
-                        b.event_date
-                        || b.created_at;
-
-
-                    return (
-                        new Date(dateA)
-                        -
-                        new Date(dateB)
-                    );
-
-                }
-            );
-
-
-        renderMainNews(main);
-
-        renderLatestNews(latest);
-
-        renderEvents(events);
-
-    }
-    catch(error){
-
-        console.error(
-            'Uutisten lataus epäonnistui:',
-            error
-        );
-
-
-        mainNewsContainer.innerHTML = `
-            <div class="news-empty">
-                Pääuutisia ei ole julkaistu.
-            </div>
-        `;
-
-
-        latestNewsContainer.innerHTML = `
-            <div class="news-empty">
-                Uutisia ei ole julkaistu.
-            </div>
-        `;
-
-
-        eventsContainer.innerHTML = `
-            <div class="news-empty">
-                Tapahtumia ei ole julkaistu.
-            </div>
-        `;
-
-    }
-
-}
-
-
-function renderMainNews(items){
-
-    if(!items.length){
-
-        mainNewsContainer.innerHTML = `
-            <div class="news-empty">
-                Pääuutisia ei ole julkaistu.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    mainNewsContainer.innerHTML =
-        items
-        .slice(0,4)
-        .map(item=>{
-
-            const image =
-                item.image_url
-                ? `
-                    <img
-                        src="${escapeHtml(item.image_url)}"
-                        alt=""
-                        class="main-news-image"
-                    >
-                `
-                : '';
-
-
-            const text =
-                item.content
-                ? `
-                    <p class="news-item-text">
-                        ${escapeHtml(item.content)}
-                    </p>
-                `
-                : '';
-
-
-            return `
-
-                <article class="main-news-item">
-
-                    ${image}
-
-                    <h3 class="news-item-title">
-                        ${escapeHtml(item.title)}
-                    </h3>
-
-                    <time class="news-item-date">
-                        ${formatDate(item.created_at)}
-                    </time>
-
-                    ${text}
-
-                </article>
-
-            `;
-
-        })
-        .join('');
-
-}
-
-
-function renderLatestNews(items){
-
-    if(!items.length){
-
-        latestNewsContainer.innerHTML = `
-            <div class="news-empty">
-                Uutisia ei ole julkaistu.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    latestNewsContainer.innerHTML =
-        items
-        .slice(0,8)
-        .map(item=>`
-
-            <article class="news-item">
-
-                <h3 class="news-item-title">
-                    ${escapeHtml(item.title)}
-                </h3>
-
-                <time class="news-item-date">
-                    ${formatDate(item.created_at)}
-                </time>
-
-            </article>
-
-        `)
-        .join('');
-
-}
-
-
-function renderEvents(items){
-
-    if(!items.length){
-
-        eventsContainer.innerHTML = `
-            <div class="news-empty">
-                Tapahtumia ei ole julkaistu.
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    eventsContainer.innerHTML =
-        items
-        .slice(0,8)
-        .map(item=>`
-
-            <article class="news-item">
-
-                <h3 class="news-item-title">
-                    ${escapeHtml(item.title)}
-                </h3>
-
-                <time class="news-item-date">
-
-                    ${
-                        formatDate(
-                            item.event_date
-                            ||
-                            item.created_at
-                        )
-                    }
-
-                </time>
-
-            </article>
-
-        `)
-        .join('');
-
-}
-
-
-loadNews();
-
-
-/* =========================================================
-   CHAT
-========================================================= */
-
-const chatButton =
-    document.getElementById(
-        'chatButton'
-    );
-
-const chatWindow =
-    document.getElementById(
-        'chatWindow'
-    );
-
-const chatClose =
-    document.getElementById(
-        'chatClose'
-    );
-
-const chatBody =
-    document.getElementById(
-        'chatBody'
-    );
-
-const chatInput =
-    document.getElementById(
-        'chatInput'
-    );
-
-const chatSend =
-    document.getElementById(
-        'chatSend'
-    );
-
-const quickButtons =
-    document.querySelectorAll(
-        '.chat-quick button'
-    );
-
-
-chatButton.addEventListener(
-    'click',
-    ()=>{
-
-        chatWindow.classList.toggle(
-            'open'
-        );
-
-
-        if(
-            chatWindow.classList
-                .contains('open')
-        ){
-
-            setTimeout(
-                ()=>chatInput.focus(),
-                100
-            );
-
-        }
-
-    }
-);
-
-
-chatClose.addEventListener(
-    'click',
-    ()=>{
-
-        chatWindow.classList.remove(
-            'open'
-        );
-
-    }
-);
-
-
-function addMessage(
-    text,
-    sender
-){
-
-    const div =
-        document.createElement(
-            'div'
-        );
-
-
-    div.className =
-        'chat-message '+
-        sender;
-
-
-    div.textContent =
-        text;
-
-
-    chatBody.appendChild(div);
-
-
-    chatBody.scrollTop =
-        chatBody.scrollHeight;
-
-}
-
-
-function addBotHtml(html){
-
-    const div =
-        document.createElement(
-            'div'
-        );
-
-
-    div.className =
-        'chat-message bot';
-
-
-    div.innerHTML =
-        html;
-
-
-    chatBody.appendChild(div);
-
-
-    chatBody.scrollTop =
-        chatBody.scrollHeight;
-
-}
-
-
-function botResponse(message){
-
-    const text =
-        message
-        .toLocaleLowerCase('fi')
-        .trim();
-
-
-    if(
-        text.includes('112')
-        ||
-        text.includes('hätä')
-        ||
-        text.includes('tajuton')
-    ){
-
-        return {
-            html:
-                'Hätätilanteessa tai hengen ollessa vaarassa soita <strong>112</strong>.'
-        };
-
-    }
-
-
-    if(
-        text.includes('oma varaus')
-        ||
-        text.includes('varauskoodi')
-        ||
-        text.includes('peru')
-    ){
-
-        return {
-            html:
-                'Voit tarkistaa ajanvarauksesi varauskoodilla.<br><br><a href="oma-varaus.html" style="color:#07549a;font-weight:700;">Avaa oma varaus</a>'
-        };
-
-    }
-
-
-    if(
-        text.includes('varaa')
-        ||
-        text.includes('ajanvaraus')
-    ){
-
-        return {
-            html:
-                'Voit tarkastella vapaita vastaanottoaikoja ajanvarauksessa.<br><br><a href="ajanvaraus.html" style="color:#07549a;font-weight:700;">Siirry ajanvaraukseen</a>'
-        };
-
-    }
-
-
-    if(
-        text.includes('terveyskysely')
-        ||
-        text.includes('kysely')
-    ){
-
-        return {
-            html:
-                'Voit avata opiskeluterveydenhuollon terveyskyselyn tästä.<br><br><a href="https://sannarantanenhyvaks.github.io/terveyskysely/" style="color:#07549a;font-weight:700;">Avaa terveyskysely</a>'
-        };
-
-    }
-
-
-    if(
-        text.includes('opiskeluterveydenhuolto')
-        ||
-        text.includes('terveydenhoitaja')
-        ||
-        text.includes('lukio')
-    ){
-
-        return {
-            html:
-                'Opiskeluterveydenhuollon sivulla voit valita oppilaitoksen ja tarkastella palveluja.<br><br><a href="opiskeluterveydenhuolto.html" style="color:#07549a;font-weight:700;">Opiskeluterveydenhuolto</a>'
-        };
-
-    }
-
-
-    return {
-        text:
-            'Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä ja opiskeluterveydenhuollon palveluissa.'
-    };
-
-}
-
-
-function sendMessage(
-    preset=null
-){
-
-    const message =
-        (
-            preset
-            ??
-            chatInput.value
-        ).trim();
-
-
-    if(!message){
-        return;
-    }
-
-
-    addMessage(
-        message,
-        'user'
-    );
-
-
-    chatInput.value='';
-
-
-    setTimeout(
-        ()=>{
-
-            const response =
-                botResponse(
-                    message
-                );
-
-
-            if(response.html){
-
-                addBotHtml(
-                    response.html
-                );
-
-            }else{
-
-                addMessage(
-                    response.text,
-                    'bot'
-                );
-
-            }
-
-        },
-        350
-    );
-
-}
-
-
-chatSend.addEventListener(
-    'click',
-    ()=>sendMessage()
-);
-
-
-chatInput.addEventListener(
-    'keydown',
-    event=>{
-
-        if(event.key==='Enter'){
+    mainSearchForm.addEventListener(
+        'submit',
+        event => {
 
             event.preventDefault();
 
-            sendMessage();
+            searchSite(
+                mainSearchInput.value
+            );
+
+        }
+    );
+
+
+    mainSearchInput.addEventListener(
+        'input',
+        () => {
+
+            searchSite(
+                mainSearchInput.value
+            );
+
+        }
+    );
+
+
+    topSearchForm.addEventListener(
+        'submit',
+        event => {
+
+            event.preventDefault();
+
+            mainSearchInput.value =
+                topSearchInput.value;
+
+            mainSearchInput.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            searchSite(
+                topSearchInput.value
+            );
+
+            setTimeout(
+                () => {
+                    mainSearchInput.focus();
+                },
+                300
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       UUTISET SUPABASESTA
+    ===================================================== */
+
+    const mainNewsContainer =
+        document.getElementById('mainNews');
+
+    const latestNewsContainer =
+        document.getElementById('latestNews');
+
+    const eventsContainer =
+        document.getElementById('events');
+
+
+    async function loadNews() {
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from('site_news')
+                    .select(
+                        'id,title,content,category,image_url,event_date,created_at'
+                    )
+                    .eq(
+                        'is_published',
+                        true
+                    )
+                    .order(
+                        'created_at',
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            const rows =
+                data || [];
+
+
+            const main =
+                rows.filter(
+                    item =>
+                        item.category === 'main'
+                );
+
+
+            const latest =
+                rows.filter(
+                    item =>
+                        item.category === 'latest'
+                );
+
+
+            const events =
+                rows
+                    .filter(
+                        item =>
+                            item.category === 'event'
+                    )
+                    .sort(
+                        (a, b) => {
+
+                            const dateA =
+                                a.event_date
+                                || a.created_at;
+
+                            const dateB =
+                                b.event_date
+                                || b.created_at;
+
+                            return (
+                                new Date(dateA)
+                                -
+                                new Date(dateB)
+                            );
+
+                        }
+                    );
+
+
+            renderMainNews(main);
+            renderLatestNews(latest);
+            renderEvents(events);
+
+        }
+        catch (error) {
+
+            console.error(
+                'Uutisten lataus epäonnistui:',
+                error
+            );
+
+
+            mainNewsContainer.innerHTML = `
+                <div class="news-empty">
+                    Pääuutisia ei ole julkaistu.
+                </div>
+            `;
+
+
+            latestNewsContainer.innerHTML = `
+                <div class="news-empty">
+                    Uutisia ei ole julkaistu.
+                </div>
+            `;
+
+
+            eventsContainer.innerHTML = `
+                <div class="news-empty">
+                    Tapahtumia ei ole julkaistu.
+                </div>
+            `;
 
         }
 
     }
-);
 
 
-quickButtons.forEach(
-    button=>{
+    function renderMainNews(items) {
 
-        button.addEventListener(
-            'click',
-            ()=>{
+        if (!items.length) {
 
-                sendMessage(
-                    button.dataset.message
+            mainNewsContainer.innerHTML = `
+                <div class="news-empty">
+                    Pääuutisia ei ole julkaistu.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        mainNewsContainer.innerHTML =
+            items
+                .slice(0, 4)
+                .map(item => {
+
+                    const image =
+                        item.image_url
+                            ? `
+                                <img
+                                    src="${escapeHtml(item.image_url)}"
+                                    alt=""
+                                    class="main-news-image"
+                                >
+                            `
+                            : '';
+
+
+                    const text =
+                        item.content
+                            ? `
+                                <p class="news-item-text">
+                                    ${escapeHtml(item.content)}
+                                </p>
+                            `
+                            : '';
+
+
+                    return `
+
+                        <article class="main-news-item">
+
+                            ${image}
+
+                            <h3 class="news-item-title">
+                                ${escapeHtml(item.title)}
+                            </h3>
+
+                            <time class="news-item-date">
+                                ${formatDate(item.created_at)}
+                            </time>
+
+                            ${text}
+
+                        </article>
+
+                    `;
+
+                })
+                .join('');
+
+    }
+
+
+    function renderLatestNews(items) {
+
+        if (!items.length) {
+
+            latestNewsContainer.innerHTML = `
+                <div class="news-empty">
+                    Uutisia ei ole julkaistu.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        latestNewsContainer.innerHTML =
+            items
+                .slice(0, 8)
+                .map(item => `
+
+                    <article class="news-item">
+
+                        <h3 class="news-item-title">
+                            ${escapeHtml(item.title)}
+                        </h3>
+
+                        <time class="news-item-date">
+                            ${formatDate(item.created_at)}
+                        </time>
+
+                    </article>
+
+                `)
+                .join('');
+
+    }
+
+
+    function renderEvents(items) {
+
+        if (!items.length) {
+
+            eventsContainer.innerHTML = `
+                <div class="news-empty">
+                    Tapahtumia ei ole julkaistu.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        eventsContainer.innerHTML =
+            items
+                .slice(0, 8)
+                .map(item => `
+
+                    <article class="news-item">
+
+                        <h3 class="news-item-title">
+                            ${escapeHtml(item.title)}
+                        </h3>
+
+                        <time class="news-item-date">
+                            ${
+                                formatDate(
+                                    item.event_date
+                                    ||
+                                    item.created_at
+                                )
+                            }
+                        </time>
+
+                    </article>
+
+                `)
+                .join('');
+
+    }
+
+
+    loadNews();
+
+
+    /* =====================================================
+       CHAT
+    ===================================================== */
+
+    const chatButton =
+        document.getElementById('chatButton');
+
+    const chatWindow =
+        document.getElementById('chatWindow');
+
+    const chatClose =
+        document.getElementById('chatClose');
+
+    const chatBody =
+        document.getElementById('chatBody');
+
+    const chatInput =
+        document.getElementById('chatInput');
+
+    const chatSend =
+        document.getElementById('chatSend');
+
+    const quickButtons =
+        document.querySelectorAll(
+            '.chat-quick button'
+        );
+
+
+    chatButton.addEventListener(
+        'click',
+        () => {
+
+            chatWindow.classList.toggle(
+                'open'
+            );
+
+            if (
+                chatWindow.classList
+                    .contains('open')
+            ) {
+
+                setTimeout(
+                    () => chatInput.focus(),
+                    100
                 );
 
             }
-        );
 
-    }
-);
+        }
+    );
 
 
-document.addEventListener(
-    'keydown',
-    event=>{
-
-        if(event.key==='Escape'){
+    chatClose.addEventListener(
+        'click',
+        () => {
 
             chatWindow.classList.remove(
                 'open'
             );
 
         }
+    );
+
+
+    function addMessage(
+        text,
+        sender
+    ) {
+
+        const div =
+            document.createElement('div');
+
+        div.className =
+            'chat-message ' + sender;
+
+        div.textContent =
+            text;
+
+        chatBody.appendChild(div);
+
+        chatBody.scrollTop =
+            chatBody.scrollHeight;
 
     }
-);
+
+
+    function addBotHtml(html) {
+
+        const div =
+            document.createElement('div');
+
+        div.className =
+            'chat-message bot';
+
+        div.innerHTML =
+            html;
+
+        chatBody.appendChild(div);
+
+        chatBody.scrollTop =
+            chatBody.scrollHeight;
+
+    }
+
+
+    function botResponse(message) {
+
+        const text =
+            message
+                .toLocaleLowerCase('fi')
+                .trim();
+
+
+        if (
+            text.includes('112')
+            ||
+            text.includes('hätä')
+            ||
+            text.includes('tajuton')
+        ) {
+
+            return {
+                html:
+                    'Hätätilanteessa tai hengen ollessa vaarassa soita <strong>112</strong>.'
+            };
+
+        }
+
+
+        if (
+            text.includes('oma varaus')
+            ||
+            text.includes('varauskoodi')
+            ||
+            text.includes('peru')
+        ) {
+
+            return {
+                html:
+                    'Voit tarkistaa ajanvarauksesi varauskoodilla.<br><br><a href="oma-varaus.html">Avaa oma varaus</a>'
+            };
+
+        }
+
+
+        if (
+            text.includes('varaa')
+            ||
+            text.includes('ajanvaraus')
+        ) {
+
+            return {
+                html:
+                    'Voit tarkastella vapaita vastaanottoaikoja ajanvarauksessa.<br><br><a href="ajanvaraus.html">Siirry ajanvaraukseen</a>'
+            };
+
+        }
+
+
+        if (
+            text.includes('terveyskysely')
+            ||
+            text.includes('kysely')
+        ) {
+
+            return {
+                html:
+                    'Voit avata opiskeluterveydenhuollon terveyskyselyn tästä.<br><br><a href="https://sannarantanenhyvaks.github.io/terveyskysely/">Avaa terveyskysely</a>'
+            };
+
+        }
+
+
+        if (
+            text.includes('opiskeluterveydenhuolto')
+            ||
+            text.includes('terveydenhoitaja')
+            ||
+            text.includes('lukio')
+        ) {
+
+            return {
+                html:
+                    'Opiskeluterveydenhuollon sivulla voit valita oppilaitoksen ja tarkastella palveluja.<br><br><a href="opiskeluterveydenhuolto.html">Opiskeluterveydenhuolto</a>'
+            };
+
+        }
+
+
+        return {
+            text:
+                'Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä ja opiskeluterveydenhuollon palveluissa.'
+        };
+
+    }
+
+
+    function sendMessage(preset = null) {
+
+        const message =
+            (
+                preset
+                ??
+                chatInput.value
+            ).trim();
+
+
+        if (!message) {
+            return;
+        }
+
+
+        addMessage(
+            message,
+            'user'
+        );
+
+
+        chatInput.value = '';
+
+
+        setTimeout(
+            () => {
+
+                const response =
+                    botResponse(message);
+
+
+                if (response.html) {
+
+                    addBotHtml(
+                        response.html
+                    );
+
+                }
+                else {
+
+                    addMessage(
+                        response.text,
+                        'bot'
+                    );
+
+                }
+
+            },
+            350
+        );
+
+    }
+
+
+    chatSend.addEventListener(
+        'click',
+        () => sendMessage()
+    );
+
+
+    chatInput.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'Enter') {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+    );
+
+
+    quickButtons.forEach(
+        button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    sendMessage(
+                        button.dataset.message
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'Escape') {
+
+                chatWindow.classList.remove(
+                    'open'
+                );
+
+            }
+
+        }
+    );
 
 </script>
 
