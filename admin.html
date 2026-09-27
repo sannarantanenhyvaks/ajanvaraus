@@ -1,1 +1,2199 @@
 
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Ajanvarauksen hallinta – Opiskeluterveydenhuolto</title>
+
+<style>
+:root{
+    --blue:#174f86;
+    --dark:#103e6b;
+    --light:#eef5f9;
+    --border:#c9d3d8;
+    --text:#17242c;
+    --muted:#65727a;
+    --bg:#eef1f2;
+    --ok:#276749;
+    --danger:#a12a2a;
+    --warning:#946200;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.45;
+}
+
+.shell{
+    max-width:1200px;
+    margin:28px auto;
+    padding:0 18px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #d9e0e3;
+    box-shadow:0 5px 22px rgba(0,0,0,.08);
+}
+
+header{
+    padding:28px 34px 20px;
+}
+
+.head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+}
+
+.logo{
+    width:300px;
+    max-width:58%;
+}
+
+.meta{
+    text-align:right;
+    font-size:12px;
+    color:var(--muted);
+}
+
+.rule{
+    height:4px;
+    background:var(--blue);
+    margin-top:18px;
+}
+
+.content{
+    padding:10px 34px 38px;
+}
+
+h1{
+    font-size:27px;
+    color:var(--dark);
+    margin:12px 0 5px;
+}
+
+h2{
+    font-size:19px;
+    color:var(--dark);
+    margin:30px 0 13px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:8px;
+}
+
+.lead{
+    color:var(--muted);
+    margin:0 0 20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.grid3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+input,
+select{
+    width:100%;
+    border:1px solid #aebbc2;
+    border-radius:4px;
+    padding:11px 12px;
+    background:#fff;
+    font:inherit;
+    color:var(--text);
+}
+
+input:focus,
+select:focus{
+    outline:2px solid rgba(23,79,134,.15);
+    border-color:var(--blue);
+}
+
+button{
+    border:0;
+    border-radius:4px;
+    padding:10px 15px;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.primary{
+    background:var(--blue);
+    color:#fff;
+}
+
+.primary:hover{
+    background:var(--dark);
+}
+
+.secondary{
+    background:#e7edf0;
+    color:#24343c;
+}
+
+.danger{
+    background:#fff0f0;
+    color:var(--danger);
+    border:1px solid #e5bcbc;
+}
+
+.ok{
+    background:#edf8f1;
+    color:var(--ok);
+    border:1px solid #b9dbc5;
+}
+
+.small{
+    font-size:11px;
+    padding:7px 9px;
+}
+
+.notice{
+    padding:12px 14px;
+    background:var(--light);
+    border-left:4px solid var(--blue);
+    margin:14px 0 20px;
+    font-size:13px;
+}
+
+.error{
+    background:#fff1f1;
+    border-left-color:var(--danger);
+    color:#751d1d;
+}
+
+.success{
+    background:#edf8f1;
+    border-left-color:var(--ok);
+    color:#205d3e;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:22px 0;
+}
+
+.stat{
+    border:1px solid var(--border);
+    background:#f7f9fa;
+    padding:16px;
+}
+
+.stat strong{
+    display:block;
+    color:var(--dark);
+    font-size:25px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.tablewrap{
+    overflow:auto;
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+}
+
+th,
+td{
+    padding:11px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+    vertical-align:top;
+    font-size:12px;
+}
+
+th{
+    background:#eef3f6;
+    color:var(--dark);
+    white-space:nowrap;
+}
+
+tbody tr:hover{
+    background:#fafcfd;
+}
+
+tbody tr:last-child td{
+    border-bottom:0;
+}
+
+.actions{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+}
+
+.status{
+    font-weight:700;
+}
+
+.status-booked{
+    color:var(--blue);
+}
+
+.status-completed{
+    color:var(--ok);
+}
+
+.status-cancelled{
+    color:var(--danger);
+}
+
+.login{
+    max-width:520px;
+    margin:80px auto;
+}
+
+.login .content{
+    padding-top:25px;
+}
+
+.login button{
+    width:100%;
+}
+
+.footer{
+    padding:14px 34px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:11px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+@media(max-width:760px){
+
+    .shell{
+        margin:0;
+        padding:0;
+    }
+
+    .card{
+        border:0;
+        box-shadow:none;
+    }
+
+    header,
+    .content{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .head{
+        flex-direction:column;
+    }
+
+    .logo{
+        width:250px;
+        max-width:100%;
+    }
+
+    .meta{
+        text-align:left;
+    }
+
+    .grid,
+    .grid3,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .footer{
+        padding-left:20px;
+        padding-right:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ======================================================
+     KIRJAUTUMINEN
+======================================================= -->
+
+<div
+    id="loginView"
+    class="shell login">
+
+<div class="card">
+
+<header>
+
+<img
+    class="logo"
+    src="hyvaks-logo.png"
+    alt="Keski-Suomen hyvinvointialue">
+
+<div class="rule"></div>
+
+<h1>Ajanvarauksen hallinta</h1>
+
+<p class="lead">
+Kirjaudu hallintanäkymään.
+</p>
+
+</header>
+
+<div class="content">
+
+<div
+    id="loginMsg"
+    class="notice hidden">
+</div>
+
+<div class="field">
+
+<label for="loginEmail">
+Sähköposti
+</label>
+
+<input
+    id="loginEmail"
+    type="email"
+    autocomplete="username">
+
+</div>
+
+<div class="field">
+
+<label for="loginPassword">
+Salasana
+</label>
+
+<input
+    id="loginPassword"
+    type="password"
+    autocomplete="current-password">
+
+</div>
+
+<button
+    id="loginBtn"
+    class="primary">
+Kirjaudu
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     ADMIN
+======================================================= -->
+
+<div
+    id="adminView"
+    class="shell hidden">
+
+<div class="card">
+
+<header>
+
+<div class="head">
+
+<img
+    class="logo"
+    src="hyvaks-logo.png"
+    alt="Keski-Suomen hyvinvointialue">
+
+<div class="meta">
+
+<strong>
+Ajanvarauksen hallinta
+</strong>
+
+<br>
+
+<span id="adminEmail"></span>
+
+</div>
+
+</div>
+
+<div class="rule"></div>
+
+<div class="toolbar">
+
+<div>
+
+<h1>
+Opiskeluterveydenhuollon ajanvaraus
+</h1>
+
+<p class="lead">
+Hallinnoi vastaanottoaikoja ja tehtyjä ajanvarauksia.
+</p>
+
+</div>
+
+<button
+    id="logoutBtn"
+    class="secondary">
+Kirjaudu ulos
+</button>
+
+</div>
+
+</header>
+
+
+<div class="content">
+
+<div
+    id="adminMsg"
+    class="notice hidden">
+</div>
+
+
+<!-- ======================================================
+     TILASTOT
+======================================================= -->
+
+<div class="stats">
+
+<div class="stat">
+<strong id="bookingCount">0</strong>
+<span>Aktiivista varausta</span>
+</div>
+
+<div class="stat">
+<strong id="freeCount">0</strong>
+<span>Vapaata aikaa</span>
+</div>
+
+<div class="stat">
+<strong id="todayCount">0</strong>
+<span>Varausta tänään</span>
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     UUSIEN AIKOJEN LISÄÄMINEN
+======================================================= -->
+
+<h2>
+Lisää vapaita vastaanottoaikoja
+</h2>
+
+<div class="grid3">
+
+<div class="field">
+
+<label for="newDate">
+Päivämäärä
+</label>
+
+<input
+    id="newDate"
+    type="date">
+
+</div>
+
+
+<div class="field">
+
+<label for="newType">
+Vastaanottotyyppi
+</label>
+
+<select id="newType">
+
+<option>
+Terveystarkastus
+</option>
+
+<option>
+Terveydenhoitajan vastaanotto
+</option>
+
+<option>
+Rokotus
+</option>
+
+<option>
+Ohjaus ja neuvonta
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="duration">
+Yhden ajan pituus
+</label>
+
+<select id="duration">
+
+<option value="30">
+30 minuuttia
+</option>
+
+<option value="20">
+20 minuuttia
+</option>
+
+<option value="45">
+45 minuuttia
+</option>
+
+<option value="60">
+60 minuuttia
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="newStart">
+Ensimmäinen aika
+</label>
+
+<input
+    id="newStart"
+    type="time"
+    value="08:30">
+
+</div>
+
+
+<div class="field">
+
+<label for="newEnd">
+Viimeisen ajan päättymisaika
+</label>
+
+<input
+    id="newEnd"
+    type="time"
+    value="14:00">
+
+</div>
+
+
+<div class="field">
+
+<label for="professional">
+Vastaanottaja
+</label>
+
+<input
+    id="professional"
+    value="Sanna Raitanen">
+
+</div>
+
+
+<div class="field">
+
+<label for="location">
+Toimipiste
+</label>
+
+<input
+    id="location"
+    value="Muuramen lukio">
+
+</div>
+
+</div>
+
+
+<button
+    id="addSlotsBtn"
+    class="primary">
+Lisää vapaat ajat
+</button>
+
+
+<!-- ======================================================
+     VARAUKSET
+======================================================= -->
+
+<h2>
+Ajanvaraukset
+</h2>
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Aika
+</th>
+
+<th>
+Opiskelija
+</th>
+
+<th>
+Ryhmä
+</th>
+
+<th>
+Yhteystiedot
+</th>
+
+<th>
+Vastaanotto
+</th>
+
+<th>
+Tila
+</th>
+
+<th>
+Toiminnot
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="appointmentsBody">
+
+<tr>
+<td colspan="7">
+Haetaan varauksia…
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- ======================================================
+     VAPAAT AJAT
+======================================================= -->
+
+<h2>
+Vapaat vastaanottoajat
+</h2>
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Päivä
+</th>
+
+<th>
+Aika
+</th>
+
+<th>
+Vastaanotto
+</th>
+
+<th>
+Vastaanottaja
+</th>
+
+<th>
+Toimipiste
+</th>
+
+<th>
+Toiminnot
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="slotsBody">
+
+<tr>
+<td colspan="6">
+Haetaan vapaita aikoja…
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+<span>
+Keski-Suomen hyvinvointialue |
+Opiskeluterveydenhuolto
+</span>
+
+<span>
+Hallinta
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+    createClient
+}
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    'https://bwuybksyoopuejcrlspa.supabase.co';
+
+const SUPABASE_KEY =
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+
+const supabase =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================================
+   ELEMENTIT
+========================================================= */
+
+const loginView =
+    document.getElementById(
+        'loginView'
+    );
+
+const adminView =
+    document.getElementById(
+        'adminView'
+    );
+
+const loginMsg =
+    document.getElementById(
+        'loginMsg'
+    );
+
+const adminMsg =
+    document.getElementById(
+        'adminMsg'
+    );
+
+
+/* =========================================================
+   APUTOIMINNOT
+========================================================= */
+
+function esc(value){
+
+    return String(
+        value ?? ''
+    ).replace(
+        /[&<>"']/g,
+        character => ({
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":'&#039;'
+        })[character]
+    );
+
+}
+
+
+function fmtDate(date){
+
+    if(!date){
+        return '';
+    }
+
+    return new Intl.DateTimeFormat(
+        'fi-FI',
+        {
+            weekday:'short',
+            day:'numeric',
+            month:'numeric',
+            year:'numeric'
+        }
+    )
+    .format(
+        new Date(
+            date + 'T12:00:00'
+        )
+    );
+
+}
+
+
+function fmtTime(time){
+
+    return time
+        ? time.slice(0,5)
+        : '';
+
+}
+
+
+function message(
+    element,
+    text,
+    type='error'
+){
+
+    element.textContent =
+        text;
+
+    element.className =
+        'notice ' + type;
+
+    element.classList.remove(
+        'hidden'
+    );
+
+}
+
+
+function clearMessage(
+    element
+){
+
+    element.classList.add(
+        'hidden'
+    );
+
+}
+
+
+/* =========================================================
+   ADMININ TARKISTUS
+========================================================= */
+
+async function checkAdmin(){
+
+    const {
+        data:{
+            session
+        }
+    } =
+    await supabase.auth.getSession();
+
+
+    if(!session){
+
+        showLogin();
+
+        return;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+    await supabase.rpc(
+        'is_admin'
+    );
+
+
+    if(
+        error ||
+        !data
+    ){
+
+        await supabase.auth.signOut();
+
+        message(
+            loginMsg,
+            'Tällä käyttäjällä ei ole hallintaoikeutta.'
+        );
+
+        showLogin();
+
+        return;
+
+    }
+
+
+    loginView.classList.add(
+        'hidden'
+    );
+
+
+    adminView.classList.remove(
+        'hidden'
+    );
+
+
+    document
+    .getElementById(
+        'adminEmail'
+    )
+    .textContent =
+        session.user.email || '';
+
+
+    await refresh();
+
+}
+
+
+function showLogin(){
+
+    adminView.classList.add(
+        'hidden'
+    );
+
+    loginView.classList.remove(
+        'hidden'
+    );
+
+}
+
+
+/* =========================================================
+   KIRJAUTUMINEN
+========================================================= */
+
+document
+.getElementById(
+    'loginBtn'
+)
+.onclick =
+async () => {
+
+    clearMessage(
+        loginMsg
+    );
+
+
+    const email =
+        document
+        .getElementById(
+            'loginEmail'
+        )
+        .value
+        .trim();
+
+
+    const password =
+        document
+        .getElementById(
+            'loginPassword'
+        )
+        .value;
+
+
+    if(
+        !email ||
+        !password
+    ){
+
+        message(
+            loginMsg,
+            'Syötä sähköposti ja salasana.'
+        );
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+    await supabase.auth.signInWithPassword(
+        {
+            email,
+            password
+        }
+    );
+
+
+    if(error){
+
+        message(
+            loginMsg,
+            'Kirjautuminen epäonnistui: ' +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    await checkAdmin();
+
+};
+
+
+/* =========================================================
+   ULOSKIRJAUTUMINEN
+========================================================= */
+
+document
+.getElementById(
+    'logoutBtn'
+)
+.onclick =
+async () => {
+
+    await supabase.auth.signOut();
+
+    location.reload();
+
+};
+
+
+/* =========================================================
+   TIETOJEN PÄIVITYS
+========================================================= */
+
+async function refresh(){
+
+    clearMessage(
+        adminMsg
+    );
+
+
+    const today =
+        new Date()
+        .toISOString()
+        .slice(
+            0,
+            10
+        );
+
+
+    const appointmentsQuery =
+        supabase
+        .from(
+            'appointments'
+        )
+        .select(
+            `
+            id,
+            available_time_id,
+            student_name,
+            student_group,
+            student_email,
+            student_phone,
+            appointment_type,
+            status,
+            created_at,
+            available_times (
+                id,
+                appointment_date,
+                start_time,
+                end_time,
+                professional_name,
+                location
+            )
+            `
+        )
+        .order(
+            'created_at',
+            {
+                ascending:false
+            }
+        );
+
+
+    const slotsQuery =
+        supabase
+        .from(
+            'available_times'
+        )
+        .select('*')
+        .eq(
+            'is_available',
+            true
+        )
+        .gte(
+            'appointment_date',
+            today
+        )
+        .order(
+            'appointment_date'
+        )
+        .order(
+            'start_time'
+        );
+
+
+    const [
+        appointmentsResult,
+        slotsResult
+    ] =
+    await Promise.all(
+        [
+            appointmentsQuery,
+            slotsQuery
+        ]
+    );
+
+
+    if(
+        appointmentsResult.error
+    ){
+
+        message(
+            adminMsg,
+            'Varauksia ei voitu hakea: ' +
+            appointmentsResult.error.message
+        );
+
+        return;
+
+    }
+
+
+    if(
+        slotsResult.error
+    ){
+
+        message(
+            adminMsg,
+            'Vapaita aikoja ei voitu hakea: ' +
+            slotsResult.error.message
+        );
+
+        return;
+
+    }
+
+
+    const appointments =
+        appointmentsResult.data || [];
+
+
+    const slots =
+        slotsResult.data || [];
+
+
+    renderAppointments(
+        appointments
+    );
+
+
+    renderSlots(
+        slots
+    );
+
+
+    updateStats(
+        appointments,
+        slots,
+        today
+    );
+
+}
+
+
+/* =========================================================
+   TILASTOT
+========================================================= */
+
+function updateStats(
+    appointments,
+    slots,
+    today
+){
+
+    const active =
+        appointments.filter(
+            appointment =>
+                appointment.status ===
+                'booked'
+        );
+
+
+    const todayBookings =
+        active.filter(
+            appointment =>
+                appointment
+                .available_times
+                ?.appointment_date ===
+                today
+        );
+
+
+    document
+    .getElementById(
+        'bookingCount'
+    )
+    .textContent =
+        active.length;
+
+
+    document
+    .getElementById(
+        'freeCount'
+    )
+    .textContent =
+        slots.length;
+
+
+    document
+    .getElementById(
+        'todayCount'
+    )
+    .textContent =
+        todayBookings.length;
+
+}
+
+
+/* =========================================================
+   VARAUSTEN NÄYTTÄMINEN
+========================================================= */
+
+function renderAppointments(
+    rows
+){
+
+    const body =
+        document.getElementById(
+            'appointmentsBody'
+        );
+
+
+    body.innerHTML =
+        '';
+
+
+    if(!rows.length){
+
+        body.innerHTML =
+            `
+            <tr>
+                <td colspan="7">
+                    Ei ajanvarauksia.
+                </td>
+            </tr>
+            `;
+
+        return;
+
+    }
+
+
+    rows.forEach(
+        row => {
+
+            const time =
+                row.available_times || {};
+
+
+            const tr =
+                document.createElement(
+                    'tr'
+                );
+
+
+            let statusText =
+                row.status;
+
+
+            let statusClass =
+                '';
+
+
+            if(
+                row.status ===
+                'booked'
+            ){
+
+                statusText =
+                    'Varattu';
+
+                statusClass =
+                    'status-booked';
+
+            }
+
+
+            if(
+                row.status ===
+                'completed'
+            ){
+
+                statusText =
+                    'Valmis';
+
+                statusClass =
+                    'status-completed';
+
+            }
+
+
+            if(
+                row.status ===
+                'cancelled'
+            ){
+
+                statusText =
+                    'Peruttu';
+
+                statusClass =
+                    'status-cancelled';
+
+            }
+
+
+            tr.innerHTML =
+            `
+                <td>
+
+                    ${esc(
+                        time.appointment_date
+                        ? fmtDate(
+                            time.appointment_date
+                          )
+                        : ''
+                    )}
+
+                    <br>
+
+                    <strong>
+
+                    ${esc(
+                        fmtTime(
+                            time.start_time
+                        )
+                    )}
+
+                    –
+
+                    ${esc(
+                        fmtTime(
+                            time.end_time
+                        )
+                    )}
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    <strong>
+                    ${esc(
+                        row.student_name
+                    )}
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.student_group ||
+                        '—'
+                    )}
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.student_email ||
+                        '—'
+                    )}
+
+                    <br>
+
+                    ${esc(
+                        row.student_phone ||
+                        ''
+                    )}
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.appointment_type
+                    )}
+
+                </td>
+
+                <td
+                    class="
+                    status
+                    ${statusClass}
+                    ">
+
+                    ${statusText}
+
+                </td>
+
+                <td>
+
+                    <div
+                        class="actions">
+                    </div>
+
+                </td>
+            `;
+
+
+            const actions =
+                tr.querySelector(
+                    '.actions'
+                );
+
+
+            if(
+                row.status ===
+                'booked'
+            ){
+
+                const completed =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                completed.className =
+                    'ok small';
+
+
+                completed.textContent =
+                    'Merkitse valmiiksi';
+
+
+                completed.onclick =
+                    () =>
+                    setStatus(
+                        row,
+                        'completed',
+                        false
+                    );
+
+
+                const cancel =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                cancel.className =
+                    'danger small';
+
+
+                cancel.textContent =
+                    'Peruuta';
+
+
+                cancel.onclick =
+                    () =>
+                    setStatus(
+                        row,
+                        'cancelled',
+                        true
+                    );
+
+
+                actions.append(
+                    completed,
+                    cancel
+                );
+
+            }
+
+
+            body.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   VARAUKSEN TILAN MUUTTAMINEN
+========================================================= */
+
+async function setStatus(
+    row,
+    status,
+    reopen
+){
+
+    const confirmation =
+        status ===
+        'cancelled'
+
+        ? 'Perutaanko varaus ja vapautetaanko aika uudelleen varattavaksi?'
+
+        : 'Merkitäänkö tämä käynti valmiiksi?';
+
+
+    if(
+        !confirm(
+            confirmation
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+    await supabase
+        .from(
+            'appointments'
+        )
+        .update(
+            {
+                status
+            }
+        )
+        .eq(
+            'id',
+            row.id
+        );
+
+
+    if(error){
+
+        message(
+            adminMsg,
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    if(reopen){
+
+        const {
+            error:slotError
+        } =
+        await supabase
+            .from(
+                'available_times'
+            )
+            .update(
+                {
+                    is_available:true
+                }
+            )
+            .eq(
+                'id',
+                row.available_time_id
+            );
+
+
+        if(slotError){
+
+            message(
+                adminMsg,
+                slotError.message
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    message(
+        adminMsg,
+        'Muutos tallennettu.',
+        'success'
+    );
+
+
+    await refresh();
+
+}
+
+
+/* =========================================================
+   VAPAIDEN AIKOJEN NÄYTTÄMINEN
+========================================================= */
+
+function renderSlots(
+    rows
+){
+
+    const body =
+        document.getElementById(
+            'slotsBody'
+        );
+
+
+    body.innerHTML =
+        '';
+
+
+    if(!rows.length){
+
+        body.innerHTML =
+            `
+            <tr>
+                <td colspan="6">
+                    Ei vapaita vastaanottoaikoja.
+                </td>
+            </tr>
+            `;
+
+        return;
+
+    }
+
+
+    rows.forEach(
+        row => {
+
+            const tr =
+                document.createElement(
+                    'tr'
+                );
+
+
+            tr.innerHTML =
+            `
+                <td>
+
+                    ${esc(
+                        fmtDate(
+                            row.appointment_date
+                        )
+                    )}
+
+                </td>
+
+                <td>
+
+                    <strong>
+
+                    ${esc(
+                        fmtTime(
+                            row.start_time
+                        )
+                    )}
+
+                    –
+
+                    ${esc(
+                        fmtTime(
+                            row.end_time
+                        )
+                    )}
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.appointment_type
+                    )}
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.professional_name
+                    )}
+
+                </td>
+
+                <td>
+
+                    ${esc(
+                        row.location
+                    )}
+
+                </td>
+
+                <td></td>
+            `;
+
+
+            const removeButton =
+                document.createElement(
+                    'button'
+                );
+
+
+            removeButton.className =
+                'danger small';
+
+
+            removeButton.textContent =
+                'Poista aika';
+
+
+            removeButton.onclick =
+            async () => {
+
+                if(
+                    !confirm(
+                        'Poistetaanko tämä vapaa vastaanottoaika?'
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                const {
+                    error
+                } =
+                await supabase
+                    .from(
+                        'available_times'
+                    )
+                    .delete()
+                    .eq(
+                        'id',
+                        row.id
+                    );
+
+
+                if(error){
+
+                    message(
+                        adminMsg,
+                        error.message
+                    );
+
+                    return;
+
+                }
+
+
+                await refresh();
+
+            };
+
+
+            tr.lastElementChild
+            .appendChild(
+                removeButton
+            );
+
+
+            body.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   AJAN MUUNTAMINEN MINUUTEIKSI
+========================================================= */
+
+function minutes(
+    time
+){
+
+    const [
+        hour,
+        minute
+    ] =
+    time
+    .split(':')
+    .map(Number);
+
+
+    return (
+        hour * 60
+    ) + minute;
+
+}
+
+
+function hhmm(
+    total
+){
+
+    const hour =
+        Math.floor(
+            total / 60
+        );
+
+
+    const minute =
+        total % 60;
+
+
+    return (
+        String(hour)
+        .padStart(
+            2,
+            '0'
+        )
+        +
+        ':'
+        +
+        String(minute)
+        .padStart(
+            2,
+            '0'
+        )
+        +
+        ':00'
+    );
+
+}
+
+
+/* =========================================================
+   UUSIEN AIKOJEN LISÄÄMINEN
+========================================================= */
+
+document
+.getElementById(
+    'addSlotsBtn'
+)
+.onclick =
+async () => {
+
+    clearMessage(
+        adminMsg
+    );
+
+
+    const date =
+        document
+        .getElementById(
+            'newDate'
+        )
+        .value;
+
+
+    const start =
+        document
+        .getElementById(
+            'newStart'
+        )
+        .value;
+
+
+    const end =
+        document
+        .getElementById(
+            'newEnd'
+        )
+        .value;
+
+
+    const duration =
+        Number(
+            document
+            .getElementById(
+                'duration'
+            )
+            .value
+        );
+
+
+    const type =
+        document
+        .getElementById(
+            'newType'
+        )
+        .value;
+
+
+    const professional =
+        document
+        .getElementById(
+            'professional'
+        )
+        .value
+        .trim();
+
+
+    const location =
+        document
+        .getElementById(
+            'location'
+        )
+        .value
+        .trim();
+
+
+    if(
+        !date ||
+        !start ||
+        !end ||
+        !professional ||
+        !location
+    ){
+
+        message(
+            adminMsg,
+            'Täytä kaikki vastaanottoaikojen lisäämiseen tarvittavat tiedot.'
+        );
+
+        return;
+
+    }
+
+
+    let current =
+        minutes(
+            start
+        );
+
+
+    const limit =
+        minutes(
+            end
+        );
+
+
+    if(
+        current >=
+        limit
+    ){
+
+        message(
+            adminMsg,
+            'Päättymisajan pitää olla alkamisajan jälkeen.'
+        );
+
+        return;
+
+    }
+
+
+    const rows =
+        [];
+
+
+    while(
+        current +
+        duration <=
+        limit
+    ){
+
+        rows.push(
+            {
+
+                appointment_date:
+                    date,
+
+                start_time:
+                    hhmm(
+                        current
+                    ),
+
+                end_time:
+                    hhmm(
+                        current +
+                        duration
+                    ),
+
+                appointment_type:
+                    type,
+
+                professional_name:
+                    professional,
+
+                location:
+                    location,
+
+                is_available:
+                    true
+
+            }
+        );
+
+
+        current +=
+            duration;
+
+    }
+
+
+    if(
+        !rows.length
+    ){
+
+        message(
+            adminMsg,
+            'Valitulle aikavälille ei mahdu yhtään vastaanottoaikaa.'
+        );
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+    await supabase
+        .from(
+            'available_times'
+        )
+        .insert(
+            rows
+        );
+
+
+    if(error){
+
+        message(
+            adminMsg,
+            'Aikoja ei voitu lisätä: ' +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    message(
+        adminMsg,
+        rows.length +
+        ' vapaata vastaanottoaikaa lisättiin.',
+        'success'
+    );
+
+
+    await refresh();
+
+};
+
+
+/* =========================================================
+   AUTH-TILAN MUUTOKSET
+========================================================= */
+
+supabase.auth.onAuthStateChange(
+    (
+        event,
+        session
+    ) => {
+
+        if(
+            event ===
+            'SIGNED_OUT'
+        ){
+
+            showLogin();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   KÄYNNISTYS
+========================================================= */
+
+checkAdmin();
+
+</script>
+
+</body>
+</html>
