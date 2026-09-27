@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Oma ajanvaraus | Opiskeluterveydenhuolto
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+
+    --blue: #005eb8;
+    --blue-dark: #003f7d;
+    --blue-light: #eaf4fb;
+
+    --green: #178447;
+    --green-dark: #106536;
+    --green-light: #e8f5ed;
+
+    --red: #b42318;
+    --red-dark: #851b13;
+    --red-light: #fff1f0;
+
+    --grey: #66737f;
+    --grey-light: #f2f4f5;
+    --grey-border: #d8dee3;
+
+    --text: #1b252c;
+    --white: #ffffff;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f4f6f7;
+
+    color: var(--text);
+
+    line-height: 1.5;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.top-line {
+
+    height: 7px;
+
+    background: var(--blue);
+}
+
+
+header {
+
+    background: white;
+
+    border-bottom:
+        1px solid #dce2e6;
+}
+
+
+.header-inner {
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding: 22px 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+
+.brand img {
+
+    max-width: 190px;
+
+    max-height: 70px;
+
+    object-fit: contain;
+}
+
+
+.brand-text {
+
+    border-left:
+        1px solid #d5dce0;
+
+    padding-left: 22px;
+}
+
+
+.brand-text strong {
+
+    display: block;
+
+    font-size: 18px;
+}
+
+
+.brand-text span {
+
+    color: #5e6971;
+
+    font-size: 14px;
+}
+
+
+.service-label {
+
+    color: #53616b;
+
+    font-size: 14px;
+
+    text-align: right;
+}
+
+
+/* ==========================================================
+   BREADCRUMB
+========================================================== */
+
+.breadcrumb-wrap {
+
+    background: white;
+}
+
+
+.breadcrumb {
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding: 10px 24px 16px;
+
+    font-size: 13px;
+
+    color: #596771;
+}
+
+
+.breadcrumb a {
+
+    color: var(--blue);
+
+    text-decoration: none;
+}
+
+
+.breadcrumb a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   MAIN
+========================================================== */
+
+main {
+
+    max-width: 950px;
+
+    margin: 42px auto 70px;
+
+    padding: 0 24px;
+}
+
+
+.page-heading {
+
+    margin-bottom: 28px;
+}
+
+
+.page-heading h1 {
+
+    margin: 0 0 10px;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+}
+
+
+.page-heading p {
+
+    margin: 0;
+
+    max-width: 720px;
+
+    color: #53616b;
+
+    font-size: 16px;
+}
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card {
+
+    background: white;
+
+    border:
+        1px solid var(--grey-border);
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.04);
+
+    margin-bottom: 24px;
+}
+
+
+.card-header {
+
+    padding: 22px 25px;
+
+    border-bottom:
+        1px solid var(--grey-border);
+}
+
+
+.card-header h2 {
+
+    margin: 0 0 4px;
+
+    font-size: 21px;
+}
+
+
+.card-header p {
+
+    margin: 0;
+
+    color: #65727b;
+
+    font-size: 14px;
+}
+
+
+.card-body {
+
+    padding: 27px;
+}
+
+
+/* ==========================================================
+   CODE FORM
+========================================================== */
+
+.code-form {
+
+    max-width: 620px;
+}
+
+
+label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.booking-code-input {
+
+    width: 100%;
+
+    min-height: 56px;
+
+    padding: 12px 15px;
+
+    border:
+        1px solid #929da5;
+
+    border-radius: 3px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+
+.booking-code-input:focus {
+
+    outline:
+        3px solid rgba(0,94,184,.18);
+
+    border-color: var(--blue);
+}
+
+
+.help {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #65727a;
+
+    font-size: 12px;
+}
+
+
+.form-actions {
+
+    margin-top: 20px;
+}
+
+
+.primary-button {
+
+    border: 0;
+
+    border-radius: 3px;
+
+    background: var(--blue);
+
+    color: white;
+
+    padding: 13px 24px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.primary-button:hover {
+
+    background: var(--blue-dark);
+}
+
+
+.primary-button:disabled {
+
+    background: #9ca6ac;
+
+    cursor: wait;
+}
+
+
+/* ==========================================================
+   INFO
+========================================================== */
+
+.info-box {
+
+    margin-bottom: 25px;
+
+    padding: 17px 20px;
+
+    background: var(--blue-light);
+
+    border-left:
+        5px solid var(--blue);
+
+    color: #344c5b;
+
+    font-size: 14px;
+}
+
+
+.info-box strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--text);
+}
+
+
+/* ==========================================================
+   MESSAGES
+========================================================== */
+
+.message {
+
+    display: none;
+
+    margin-bottom: 22px;
+
+    padding: 17px 19px;
+
+    border-left: 5px solid;
+}
+
+
+.message.error {
+
+    background: var(--red-light);
+
+    border-color: var(--red);
+
+    color: #76211b;
+}
+
+
+.message.success {
+
+    background: var(--green-light);
+
+    border-color: var(--green);
+
+    color: #145c34;
+}
+
+
+/* ==========================================================
+   BOOKING RESULT
+========================================================== */
+
+#bookingResult {
+
+    display: none;
+}
+
+
+.status-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 23px;
+}
+
+
+.status-title {
+
+    margin: 0;
+
+    font-size: 24px;
+}
+
+
+.status-badge {
+
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+.status-booked {
+
+    background: var(--green-light);
+
+    color: var(--green-dark);
+}
+
+
+.status-cancelled {
+
+    background: #eeeeef;
+
+    color: #5e686e;
+}
+
+
+.status-completed {
+
+    background: var(--blue-light);
+
+    color: var(--blue-dark);
+}
+
+
+/* ==========================================================
+   DETAILS
+========================================================== */
+
+.detail-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    border-top:
+        1px solid var(--grey-border);
+
+    border-left:
+        1px solid var(--grey-border);
+
+    margin-bottom: 25px;
+}
+
+
+.detail {
+
+    min-height: 92px;
+
+    padding: 17px 19px;
+
+    border-right:
+        1px solid var(--grey-border);
+
+    border-bottom:
+        1px solid var(--grey-border);
+}
+
+
+.detail-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64717a;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+.detail-value {
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+.appointment-highlight {
+
+    margin-bottom: 25px;
+
+    padding: 21px;
+
+    background: var(--blue-light);
+
+    border:
+        1px solid #c8dfed;
+}
+
+
+.appointment-highlight span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #536b7b;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+}
+
+
+.appointment-highlight strong {
+
+    display: block;
+
+    color: var(--blue-dark);
+
+    font-size: 21px;
+}
+
+
+/* ==========================================================
+   CANCEL
+========================================================== */
+
+.cancel-area {
+
+    margin-top: 28px;
+
+    padding-top: 24px;
+
+    border-top:
+        1px solid var(--grey-border);
+}
+
+
+.cancel-area h3 {
+
+    margin:
+        0 0 7px;
+
+    font-size: 18px;
+}
+
+
+.cancel-area p {
+
+    margin:
+        0 0 17px;
+
+    max-width: 650px;
+
+    color: #59666f;
+
+    font-size: 14px;
+}
+
+
+.cancel-button {
+
+    border:
+        1px solid var(--red);
+
+    border-radius: 3px;
+
+    background: white;
+
+    color: var(--red);
+
+    padding: 11px 19px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.cancel-button:hover {
+
+    background: var(--red-light);
+}
+
+
+.cancel-button:disabled {
+
+    opacity: .55;
+
+    cursor: wait;
+}
+
+
+/* ==========================================================
+   CONFIRMATION PANEL
+========================================================== */
+
+.confirm-panel {
+
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border:
+        1px solid #e2c5c1;
+
+    background: #fff8f7;
+}
+
+
+.confirm-panel strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+}
+
+
+.confirm-panel p {
+
+    margin:
+        0 0 17px;
+
+    color: #644943;
+
+    font-size: 14px;
+}
+
+
+.confirm-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+.confirm-cancel {
+
+    border: 0;
+
+    border-radius: 3px;
+
+    background: var(--red);
+
+    color: white;
+
+    padding: 11px 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.confirm-cancel:hover {
+
+    background: var(--red-dark);
+}
+
+
+.keep-button {
+
+    border:
+        1px solid #9ca6ac;
+
+    border-radius: 3px;
+
+    background: white;
+
+    color: #36454e;
+
+    padding: 11px 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================================
+   NEW SEARCH
+========================================================== */
+
+.new-search {
+
+    margin-top: 25px;
+
+    text-align: right;
+}
+
+
+.link-button {
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--blue);
+
+    padding: 5px 0;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer {
+
+    margin-top: 70px;
+
+    background: #26343c;
+
+    color: white;
+}
+
+
+.footer-inner {
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding: 32px 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+footer strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+
+footer p {
+
+    margin: 0;
+
+    color: #d8e0e4;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 700px) {
+
+    .header-inner,
+    .footer-inner {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .service-label {
+
+        text-align: left;
+    }
+
+
+    .brand-text {
+
+        display: none;
+    }
+
+
+    main {
+
+        margin-top: 27px;
+
+        padding: 0 14px;
+    }
+
+
+    .page-heading h1 {
+
+        font-size: 28px;
+    }
+
+
+    .detail-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .status-row {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .card-body {
+
+        padding: 19px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="top-line"></div>
+
+
+<header>
+
+    <div class="header-inner">
+
+        <a
+            class="brand"
+            href="index.html"
+        >
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+            >
+
+            <div class="brand-text">
+
+                <strong>
+                    Opiskeluterveydenhuolto
+                </strong>
+
+                <span>
+                    Muuramen lukio
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="service-label">
+
+            Sähköinen asiointi<br>
+
+            <strong>
+                Oma ajanvaraus
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="breadcrumb-wrap">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Etusivu
+            </a>
+
+            &nbsp;›&nbsp;
+
+            <a href="index.html">
+                Opiskeluterveydenhuolto
+            </a>
+
+            &nbsp;›&nbsp;
+
+            Oma ajanvaraus
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <section class="page-heading">
+
+        <h1>
+            Oma ajanvaraus
+        </h1>
+
+        <p>
+            Tarkastele opiskeluterveydenhuoltoon tekemääsi
+            ajanvarausta varauskoodilla. Voit myös perua
+            voimassa olevan vastaanottoajan.
+        </p>
+
+    </section>
+
+
+    <div class="info-box">
+
+        <strong>
+            Tarvitset varauskoodin
+        </strong>
+
+        Varauskoodi annettiin sinulle ajanvarauksen
+        vahvistamisen yhteydessä.
+
+    </div>
+
+
+    <div
+        id="errorMessage"
+        class="message error"
+    ></div>
+
+
+    <div
+        id="successMessage"
+        class="message success"
+    ></div>
+
+
+    <!-- ====================================================
+         KOODIN SYÖTTÖ
+    ===================================================== -->
+
+    <section
+        class="card"
+        id="codeCard"
+    >
+
+        <div class="card-header">
+
+            <h2>
+                Hae ajanvaraus
+            </h2>
+
+            <p>
+                Syötä saamasi varauskoodi.
+            </p>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <form
+                id="codeForm"
+                class="code-form"
+            >
+
+                <label for="bookingCodeInput">
+                    Varauskoodi
+                </label>
+
+
+                <input
+                    id="bookingCodeInput"
+                    class="booking-code-input"
+                    type="text"
+                    placeholder="XXXX-XXXX-XXXX"
+                    maxlength="14"
+                    autocomplete="off"
+                    spellcheck="false"
+                    required
+                >
+
+
+                <span class="help">
+                    Esimerkiksi A2VS-MPD4-NK9U
+                </span>
+
+
+                <div class="form-actions">
+
+                    <button
+                        id="searchButton"
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Näytä ajanvaraus
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         VARAUKSEN TIEDOT
+    ===================================================== -->
+
+    <section
+        class="card"
+        id="bookingResult"
+    >
+
+        <div class="card-header">
+
+            <div class="status-row">
+
+                <h2 class="status-title">
+                    Ajanvarauksen tiedot
+                </h2>
+
+                <span
+                    id="statusBadge"
+                    class="status-badge"
+                ></span>
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+
+            <div class="appointment-highlight">
+
+                <span>
+                    Vastaanottoaika
+                </span>
+
+                <strong
+                    id="appointmentDate"
+                ></strong>
+
+                <div
+                    id="appointmentProfessional"
+                ></div>
+
+            </div>
+
+
+            <div class="detail-grid">
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Opiskelija
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="studentName"
+                    ></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Ryhmä
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="studentGroup"
+                    ></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Palvelu
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="appointmentType"
+                    ></span>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <span class="detail-label">
+                        Toimipiste
+                    </span>
+
+                    <span
+                        class="detail-value"
+                        id="appointmentLocation"
+                    ></span>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="cancel-area"
+                id="cancelArea"
+            >
+
+                <h3>
+                    Ajanvarauksen peruminen
+                </h3>
+
+                <p>
+                    Jos et pääse vastaanotolle, voit perua
+                    ajanvarauksen. Peruttu aika vapautuu
+                    uudelleen varattavaksi.
+                </p>
+
+
+                <button
+                    id="cancelButton"
+                    class="cancel-button"
+                    type="button"
+                >
+                    Peru ajanvaraus
+                </button>
+
+
+                <div
+                    id="confirmPanel"
+                    class="confirm-panel"
+                >
+
+                    <strong>
+                        Haluatko varmasti perua ajanvarauksen?
+                    </strong>
+
+                    <p>
+                        Perumisen jälkeen ajanvaraus ei ole enää
+                        voimassa.
+                    </p>
+
+
+                    <div class="confirm-actions">
+
+                        <button
+                            id="confirmCancelButton"
+                            class="confirm-cancel"
+                            type="button"
+                        >
+                            Kyllä, peru ajanvaraus
+                        </button>
+
+
+                        <button
+                            id="keepBookingButton"
+                            class="keep-button"
+                            type="button"
+                        >
+                            Pidä ajanvaraus
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="new-search">
+
+                <button
+                    id="newSearchButton"
+                    class="link-button"
+                    type="button"
+                >
+                    Hae toinen ajanvaraus
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+
+            <strong>
+                Opiskeluterveydenhuolto
+            </strong>
+
+            <p>
+                Muuramen lukio
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Keski-Suomen hyvinvointialue
+            </strong>
+
+            <p>
+                Sähköinen asiointi
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script type="module">
+
+
+import {
+    createClient
+}
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+
+/* ==========================================================
+   SUPABASE
+========================================================== */
+
+const SUPABASE_URL =
+    'https://bwuybksyoopuejcrlspa.supabase.co';
+
+
+const SUPABASE_KEY =
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+
+const supabase =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ==========================================================
+   STATE
+========================================================== */
+
+let activeBookingCode = null;
+
+
+/* ==========================================================
+   ELEMENTIT
+========================================================== */
+
+const codeForm =
+    document.getElementById(
+        'codeForm'
+    );
+
+
+const codeInput =
+    document.getElementById(
+        'bookingCodeInput'
+    );
+
+
+const searchButton =
+    document.getElementById(
+        'searchButton'
+    );
+
+
+const codeCard =
+    document.getElementById(
+        'codeCard'
+    );
+
+
+const bookingResult =
+    document.getElementById(
+        'bookingResult'
+    );
+
+
+const errorMessage =
+    document.getElementById(
+        'errorMessage'
+    );
+
+
+const successMessage =
+    document.getElementById(
+        'successMessage'
+    );
+
+
+/* ==========================================================
+   VARAUSKOODIN MUOTOILU
+========================================================== */
+
+codeInput.addEventListener(
+    'input',
+    () => {
+
+        let value =
+            codeInput.value
+                .toUpperCase()
+                .replace(
+                    /[^A-Z0-9]/g,
+                    ''
+                )
+                .substring(
+                    0,
+                    12
+                );
+
+
+        const parts = [];
+
+
+        for (
+            let i = 0;
+            i < value.length;
+            i += 4
+        ) {
+
+            parts.push(
+                value.substring(
+                    i,
+                    i + 4
+                )
+            );
+        }
+
+
+        codeInput.value =
+            parts.join('-');
+    }
+);
+
+
+/* ==========================================================
+   PÄIVÄMÄÄRÄ
+========================================================== */
+
+function formatFinnishDate(
+    value
+) {
+
+    const [
+        year,
+        month,
+        day
+    ] =
+        value
+            .split('-')
+            .map(Number);
+
+
+    const date =
+        new Date(
+            year,
+            month - 1,
+            day
+        );
+
+
+    return new Intl.DateTimeFormat(
+        'fi-FI',
+        {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }
+    ).format(date);
+}
+
+
+function capitalize(
+    value
+) {
+
+    if (!value) {
+        return value;
+    }
+
+
+    return (
+        value.charAt(0).toUpperCase() +
+        value.slice(1)
+    );
+}
+
+
+function formatTime(
+    value
+) {
+
+    return value
+        .substring(
+            0,
+            5
+        )
+        .replace(
+            ':',
+            '.'
+        );
+}
+
+
+/* ==========================================================
+   HAE VARAUS
+========================================================== */
+
+codeForm.addEventListener(
+    'submit',
+    async event => {
+
+        event.preventDefault();
+
+        hideMessages();
+
+
+        const code =
+            codeInput.value
+                .trim()
+                .toUpperCase();
+
+
+        if (
+            code.length !== 14
+        ) {
+
+            showError(
+                'Tarkista varauskoodi.'
+            );
+
+            return;
+        }
+
+
+        searchButton.disabled =
+            true;
+
+
+        searchButton.textContent =
+            'Haetaan ajanvarausta...';
+
+
+        const {
+            data,
+            error
+        } =
+            await supabase.rpc(
+                'get_booking_by_code',
+                {
+                    p_booking_code:
+                        code
+                }
+            );
+
+
+        searchButton.disabled =
+            false;
+
+
+        searchButton.textContent =
+            'Näytä ajanvaraus';
+
+
+        if (error) {
+
+            console.error(error);
+
+            showError(
+                'Ajanvarauksen hakeminen epäonnistui. Yritä uudelleen.'
+            );
+
+            return;
+        }
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            showError(
+                'Varauskoodilla ei löytynyt ajanvarausta. Tarkista koodi ja yritä uudelleen.'
+            );
+
+            return;
+        }
+
+
+        activeBookingCode =
+            code;
+
+
+        showBooking(
+            data[0]
+        );
+    }
+);
+
+
+/* ==========================================================
+   NÄYTÄ VARAUS
+========================================================== */
+
+function showBooking(
+    booking
+) {
+
+    codeCard.style.display =
+        'none';
+
+
+    bookingResult.style.display =
+        'block';
+
+
+    const dateText =
+        capitalize(
+            formatFinnishDate(
+                booking.appointment_date
+            )
+        ) +
+        ' klo ' +
+        formatTime(
+            booking.start_time
+        ) +
+        '–' +
+        formatTime(
+            booking.end_time
+        );
+
+
+    document.getElementById(
+        'appointmentDate'
+    ).textContent =
+        dateText;
+
+
+    document.getElementById(
+        'appointmentProfessional'
+    ).textContent =
+        booking.professional_name;
+
+
+    document.getElementById(
+        'studentName'
+    ).textContent =
+        booking.student_name || '–';
+
+
+    document.getElementById(
+        'studentGroup'
+    ).textContent =
+        booking.student_group || '–';
+
+
+    document.getElementById(
+        'appointmentType'
+    ).textContent =
+        booking.appointment_type || '–';
+
+
+    document.getElementById(
+        'appointmentLocation'
+    ).textContent =
+        booking.location || '–';
+
+
+    renderStatus(
+        booking.booking_status
+    );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+function renderStatus(
+    status
+) {
+
+    const badge =
+        document.getElementById(
+            'statusBadge'
+        );
+
+
+    const cancelArea =
+        document.getElementById(
+            'cancelArea'
+        );
+
+
+    badge.className =
+        'status-badge';
+
+
+    if (
+        status === 'booked'
+    ) {
+
+        badge.textContent =
+            'Voimassa';
+
+
+        badge.classList.add(
+            'status-booked'
+        );
+
+
+        cancelArea.style.display =
+            'block';
+
+    } else if (
+        status === 'cancelled'
+    ) {
+
+        badge.textContent =
+            'Peruttu';
+
+
+        badge.classList.add(
+            'status-cancelled'
+        );
+
+
+        cancelArea.style.display =
+            'none';
+
+    } else if (
+        status === 'completed'
+    ) {
+
+        badge.textContent =
+            'Toteutunut';
+
+
+        badge.classList.add(
+            'status-completed'
+        );
+
+
+        cancelArea.style.display =
+            'none';
+
+    } else {
+
+        badge.textContent =
+            status || '–';
+
+
+        cancelArea.style.display =
+            'none';
+    }
+}
+
+
+/* ==========================================================
+   PERUMISEN AVAAMINEN
+========================================================== */
+
+document.getElementById(
+    'cancelButton'
+).addEventListener(
+    'click',
+    () => {
+
+        document.getElementById(
+            'confirmPanel'
+        ).style.display =
+            'block';
+    }
+);
+
+
+/* ==========================================================
+   PIDÄ VARAUS
+========================================================== */
+
+document.getElementById(
+    'keepBookingButton'
+).addEventListener(
+    'click',
+    () => {
+
+        document.getElementById(
+            'confirmPanel'
+        ).style.display =
+            'none';
+    }
+);
+
+
+/* ==========================================================
+   VAHVISTA PERUMINEN
+========================================================== */
+
+document.getElementById(
+    'confirmCancelButton'
+).addEventListener(
+    'click',
+    async () => {
+
+        if (
+            !activeBookingCode
+        ) {
+            return;
+        }
+
+
+        const button =
+            document.getElementById(
+                'confirmCancelButton'
+            );
+
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            'Perutaan...';
+
+
+        hideMessages();
+
+
+        const {
+            error
+        } =
+            await supabase.rpc(
+                'cancel_booking_by_code',
+                {
+                    p_booking_code:
+                        activeBookingCode
+                }
+            );
+
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            'Kyllä, peru ajanvaraus';
+
+
+        if (error) {
+
+            console.error(error);
+
+            showError(
+                'Ajanvarauksen peruminen epäonnistui. Ajanvaraus on voitu jo perua.'
+            );
+
+            return;
+        }
+
+
+        document.getElementById(
+            'confirmPanel'
+        ).style.display =
+            'none';
+
+
+        renderStatus(
+            'cancelled'
+        );
+
+
+        showSuccess(
+            'Ajanvaraus on peruttu. Vastaanottoaika on vapautettu uudelleen varattavaksi.'
+        );
+    }
+);
+
+
+/* ==========================================================
+   UUSI HAKU
+========================================================== */
+
+document.getElementById(
+    'newSearchButton'
+).addEventListener(
+    'click',
+    () => {
+
+        activeBookingCode =
+            null;
+
+
+        bookingResult.style.display =
+            'none';
+
+
+        codeCard.style.display =
+            'block';
+
+
+        codeInput.value =
+            '';
+
+
+        document.getElementById(
+            'confirmPanel'
+        ).style.display =
+            'none';
+
+
+        hideMessages();
+
+
+        codeInput.focus();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+);
+
+
+/* ==========================================================
+   VIESTIT
+========================================================== */
+
+function hideMessages() {
+
+    errorMessage.style.display =
+        'none';
+
+    errorMessage.textContent =
+        '';
+
+
+    successMessage.style.display =
+        'none';
+
+    successMessage.textContent =
+        '';
+}
+
+
+function showError(
+    text
+) {
+
+    successMessage.style.display =
+        'none';
+
+
+    errorMessage.textContent =
+        text;
+
+
+    errorMessage.style.display =
+        'block';
+
+
+    errorMessage.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+
+function showSuccess(
+    text
+) {
+
+    errorMessage.style.display =
+        'none';
+
+
+    successMessage.textContent =
+        text;
+
+
+    successMessage.style.display =
+        'block';
+
+
+    successMessage.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+</script>
+
+
+</body>
+
+</html>
