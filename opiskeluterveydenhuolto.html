@@ -1,1 +1,1795 @@
 
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Opiskeluterveydenhuolto | Keski-Suomen hyvinvointialue</title>
+
+<style>
+:root{
+    --primary:#0067a8;
+    --primary-dark:#004f82;
+    --primary-light:#eaf4f8;
+    --text:#202a30;
+    --muted:#56636a;
+    --border:#d8e0e4;
+    --background:#ffffff;
+    --soft:#f4f7f8;
+    --footer:#173b49;
+    --success:#176746;
+    --content:1360px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.5;
+}
+
+button,
+select,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.top-line{
+    height:6px;
+    background:var(--primary);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+}
+
+.header-main{
+    max-width:var(--content);
+    min-height:104px;
+    margin:auto;
+    padding:0 34px;
+
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    width:210px;
+    max-height:72px;
+    object-fit:contain;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.header-actions{
+    margin-left:auto;
+
+    display:flex;
+    gap:27px;
+    align-items:center;
+}
+
+.header-link{
+    color:var(--primary-dark);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+}
+
+.header-link:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation{
+    border-top:1px solid #edf0f2;
+    background:#fff;
+}
+
+.navigation-inner{
+    max-width:var(--content);
+    min-height:61px;
+    margin:auto;
+    padding:0 24px;
+
+    display:flex;
+}
+
+.navigation a{
+    display:flex;
+    align-items:center;
+
+    padding:0 15px;
+
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+
+    border-bottom:4px solid transparent;
+}
+
+.navigation a:hover{
+    color:var(--primary);
+    border-bottom-color:var(--primary);
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb-wrapper{
+    background:#fff;
+    border-bottom:1px solid #edf0f2;
+}
+
+.breadcrumb{
+    max-width:var(--content);
+    margin:auto;
+    padding:15px 34px;
+
+    color:var(--muted);
+    font-size:13px;
+}
+
+.breadcrumb a{
+    color:var(--primary-dark);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    background:#eef6f7;
+    border-bottom:1px solid #dce6e8;
+}
+
+.hero-inner{
+    max-width:var(--content);
+    margin:auto;
+    padding:65px 34px 70px;
+}
+
+.hero-label{
+    margin-bottom:13px;
+
+    color:var(--primary-dark);
+    font-weight:700;
+    font-size:14px;
+}
+
+.hero h1{
+    max-width:900px;
+
+    margin:0;
+
+    font-size:45px;
+    line-height:1.14;
+}
+
+.hero p{
+    max-width:830px;
+
+    margin:22px 0 0;
+
+    color:#43555d;
+    font-size:18px;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section{
+    padding:65px 34px;
+}
+
+.section-soft{
+    background:var(--soft);
+}
+
+.section-inner{
+    max-width:var(--content);
+    margin:auto;
+}
+
+.section-heading{
+    max-width:850px;
+    margin-bottom:31px;
+}
+
+.section-heading h2{
+    margin:0 0 11px;
+    font-size:32px;
+}
+
+.section-heading p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   SCHOOL SELECTOR
+========================================================= */
+
+.school-selector-layout{
+    display:grid;
+    grid-template-columns:minmax(0,760px) minmax(300px,1fr);
+    gap:45px;
+    align-items:start;
+}
+
+.school-selector{
+    background:#fff;
+
+    border:1px solid var(--border);
+    border-top:5px solid var(--primary);
+
+    padding:30px;
+}
+
+.school-selector h2{
+    margin:0 0 11px;
+    font-size:27px;
+}
+
+.school-selector > p{
+    margin:0 0 25px;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.form-field label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+    font-size:14px;
+}
+
+.school-select{
+    width:100%;
+    min-height:50px;
+
+    border:1px solid #8e9ca3;
+    background:#fff;
+
+    padding:0 13px;
+
+    color:var(--text);
+}
+
+.school-select:focus{
+    outline:3px solid rgba(0,103,168,.14);
+    border-color:var(--primary);
+}
+
+.select-button{
+    min-height:48px;
+    margin-top:17px;
+
+    border:1px solid var(--primary);
+    background:var(--primary);
+    color:#fff;
+
+    padding:0 22px;
+
+    font-weight:700;
+}
+
+.select-button:hover{
+    background:var(--primary-dark);
+}
+
+
+/* =========================================================
+   GENERAL INFO
+========================================================= */
+
+.general-info{
+    padding:27px 29px;
+    background:#f0f6f8;
+    border-left:5px solid var(--primary);
+}
+
+.general-info h3{
+    margin:0 0 14px;
+    font-size:20px;
+}
+
+.general-info p{
+    margin:0 0 13px;
+    color:#485a62;
+    line-height:1.65;
+}
+
+.general-info p:last-child{
+    margin-bottom:0;
+}
+
+
+/* =========================================================
+   SCHOOL PAGE
+========================================================= */
+
+.school-page-header{
+    margin-bottom:35px;
+}
+
+.back-button{
+    border:0;
+    background:transparent;
+
+    color:var(--primary-dark);
+
+    padding:0;
+    margin-bottom:22px;
+
+    font-weight:700;
+}
+
+.back-button:hover{
+    text-decoration:underline;
+}
+
+.school-page-label{
+    color:var(--primary-dark);
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.school-page-header h2{
+    margin:0 0 12px;
+
+    font-size:36px;
+}
+
+.school-page-header p{
+    max-width:850px;
+
+    color:var(--muted);
+
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   SCHOOL INFORMATION
+========================================================= */
+
+.school-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr);
+    gap:35px;
+    align-items:start;
+}
+
+.content-card{
+    background:#fff;
+    border:1px solid var(--border);
+
+    margin-bottom:22px;
+}
+
+.content-card-header{
+    padding:20px 23px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.content-card-header h3{
+    margin:0;
+    font-size:21px;
+}
+
+.content-card-body{
+    padding:23px;
+}
+
+.content-card-body p{
+    margin-top:0;
+
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.service-list{
+    margin:0;
+    padding-left:21px;
+
+    color:#43545c;
+}
+
+.service-list li{
+    margin:9px 0;
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION
+========================================================= */
+
+.contact-card{
+    background:#fff;
+
+    border:1px solid var(--border);
+    border-top:5px solid var(--primary);
+
+    padding:26px;
+}
+
+.contact-card h3{
+    margin:0 0 17px;
+    font-size:21px;
+}
+
+.contact-row{
+    padding:14px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+.contact-row:last-child{
+    border-bottom:0;
+}
+
+.contact-label{
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.contact-value{
+    color:var(--muted);
+    font-size:14px;
+}
+
+
+/* =========================================================
+   ONLINE SERVICES
+========================================================= */
+
+.online-services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    border-left:1px solid var(--border);
+    border-top:1px solid var(--border);
+}
+
+.online-service{
+    min-height:210px;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:25px;
+
+    background:#fff;
+
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+
+    text-decoration:none;
+}
+
+.online-service:hover{
+    background:#f4f9fb;
+}
+
+.online-service h3{
+    margin:0 0 10px;
+
+    color:var(--primary-dark);
+    font-size:19px;
+}
+
+.online-service p{
+    margin:0;
+
+    color:var(--muted);
+    line-height:1.6;
+    font-size:14px;
+}
+
+.online-service-action{
+    margin-top:auto;
+    padding-top:18px;
+
+    color:var(--primary);
+    font-weight:700;
+    font-size:14px;
+}
+
+
+/* =========================================================
+   UNAVAILABLE SERVICES
+========================================================= */
+
+.unavailable{
+    background:#f4f6f7;
+
+    border:1px solid var(--border);
+    border-left:5px solid #75838a;
+
+    padding:24px 25px;
+}
+
+.unavailable h3{
+    margin:0 0 10px;
+    font-size:20px;
+}
+
+.unavailable p{
+    margin:0;
+
+    max-width:800px;
+
+    color:var(--muted);
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   PHONE SERVICE
+========================================================= */
+
+.phone-panel{
+    margin-top:22px;
+
+    background:#eef6fa;
+    border-left:5px solid var(--primary);
+
+    padding:22px 24px;
+}
+
+.phone-panel strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.phone-panel p{
+    margin:0;
+    color:#43565e;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:var(--footer);
+    color:#fff;
+}
+
+.footer-inner{
+    max-width:var(--content);
+    margin:auto;
+
+    padding:55px 34px;
+
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer h3{
+    margin-top:0;
+    font-size:18px;
+}
+
+.footer p{
+    color:#d2e0e5;
+    font-size:14px;
+    line-height:1.65;
+}
+
+.footer a{
+    display:block;
+
+    width:max-content;
+
+    margin:9px 0;
+
+    color:#fff;
+
+    text-decoration:none;
+    font-size:14px;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+.footer-bottom{
+    padding:18px 34px;
+
+    border-top:1px solid rgba(255,255,255,.18);
+
+    color:#cfdee3;
+    text-align:center;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .navigation-inner{
+        overflow-x:auto;
+    }
+
+    .school-selector-layout,
+    .school-layout{
+        grid-template-columns:1fr;
+    }
+
+    .online-services{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .header-main{
+        min-height:84px;
+        padding:0 20px;
+    }
+
+    .logo{
+        width:170px;
+    }
+
+    .header-actions{
+        display:none;
+    }
+
+    .navigation-inner{
+        padding:0 8px;
+    }
+
+    .navigation a{
+        padding:0 12px;
+    }
+
+    .breadcrumb{
+        padding:13px 22px;
+    }
+
+    .hero-inner{
+        padding:47px 22px 52px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section{
+        padding:48px 22px;
+    }
+
+    .school-selector{
+        padding:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-line"></div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================== -->
+
+<header class="site-header">
+
+    <div class="header-main">
+
+        <a
+            href="index.html"
+            class="logo-link"
+        >
+            <img
+                src="hyvaks-logo.png"
+                class="logo"
+                alt="Keski-Suomen hyvinvointialue"
+            >
+        </a>
+
+
+        <div class="header-actions">
+
+            <a
+                href="index.html"
+                class="header-link"
+            >
+                Etusivu
+            </a>
+
+            <a
+                href="#oppilaitos"
+                class="header-link"
+            >
+                Valitse oppilaitos
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <nav
+        class="navigation"
+        aria-label="Päävalikko"
+    >
+
+        <div class="navigation-inner">
+
+            <a href="index.html">
+                Etusivu
+            </a>
+
+            <a href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+
+            <a href="#oppilaitos">
+                Oppilaitokset
+            </a>
+
+            <a href="ajanvaraus.html">
+                Ajanvaraus
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =======================================================
+     BREADCRUMB
+======================================================== -->
+
+<div class="breadcrumb-wrapper">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Etusivu
+        </a>
+
+        &nbsp;/&nbsp;
+
+        Opiskeluterveydenhuolto
+
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     HERO
+======================================================== -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-label">
+            Opiskeluterveydenhuolto
+        </div>
+
+        <h1>
+            Opiskeluterveydenhuolto toisen asteen opiskelijoille
+        </h1>
+
+        <p>
+            Opiskeluterveydenhuolto tukee opiskelijoiden
+            terveyttä, hyvinvointia ja opiskelukykyä.
+            Valitse oma lukiosi nähdäksesi oppilaitoskohtaiset
+            palvelutiedot ja käytettävissä olevat sähköiset
+            asiointipalvelut.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SCHOOL SELECTION
+======================================================== -->
+
+<main>
+
+<section
+    id="schoolSelection"
+    class="section"
+>
+
+    <div class="section-inner">
+
+        <div class="school-selector-layout">
+
+            <div
+                id="oppilaitos"
+                class="school-selector"
+            >
+
+                <h2>
+                    Valitse oppilaitos
+                </h2>
+
+                <p>
+                    Valitse lukio, jossa opiskelet.
+                    Valinnan jälkeen näet oppilaitoksen
+                    opiskeluterveydenhuollon palvelusivun.
+                </p>
+
+
+                <div class="form-field">
+
+                    <label for="schoolSelect">
+                        Lukio
+                    </label>
+
+                    <select
+                        id="schoolSelect"
+                        class="school-select"
+                    >
+
+                        <option value="">
+                            Valitse lukio
+                        </option>
+
+                        <option value="hankasalmi">
+                            Hankasalmen lukio
+                        </option>
+
+                        <option value="joutsa">
+                            Joutsan lukio
+                        </option>
+
+                        <option value="lyseo">
+                            Jyväskylän Lyseon lukio
+                        </option>
+
+                        <option value="normaalikoulu">
+                            Jyväskylän normaalikoulun lukio
+                        </option>
+
+                        <option value="schildt">
+                            Schildtin lukio
+                        </option>
+
+                        <option value="jamsa">
+                            Jämsän lukio
+                        </option>
+
+                        <option value="karstula">
+                            Karstulan lukio
+                        </option>
+
+                        <option value="keuruu">
+                            Keuruun lukio
+                        </option>
+
+                        <option value="kinnula">
+                            Kinnulan lukio
+                        </option>
+
+                        <option value="konnevesi">
+                            Konneveden lukio
+                        </option>
+
+                        <option value="laukaa">
+                            Laukaan lukio
+                        </option>
+
+                        <option value="muurame">
+                            Muuramen lukio
+                        </option>
+
+                        <option value="petajavesi">
+                            Petäjäveden lukio
+                        </option>
+
+                        <option value="pihtipudas">
+                            Pihtiputaan lukio
+                        </option>
+
+                        <option value="saarijarvi">
+                            Saarijärven lukio
+                        </option>
+
+                        <option value="viitasaari">
+                            Viitasaaren lukio
+                        </option>
+
+                        <option value="aanekoski">
+                            Äänekosken lukio
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    id="selectSchoolButton"
+                    class="select-button"
+                    type="button"
+                >
+                    Jatka
+                </button>
+
+            </div>
+
+
+            <aside class="general-info">
+
+                <h3>
+                    Opiskeluterveydenhuollon palvelut
+                </h3>
+
+                <p>
+                    Opiskeluterveydenhuolto on tarkoitettu
+                    lukiossa ja muissa toisen asteen
+                    oppilaitoksissa opiskeleville.
+                </p>
+
+                <p>
+                    Palveluihin kuuluvat muun muassa
+                    terveystarkastukset, terveysneuvonta,
+                    sairaanhoito sekä seksuaaliterveyttä
+                    tukevat palvelut.
+                </p>
+
+                <p>
+                    Oppilaitoskohtaiset yhteystiedot ja
+                    asiointitavat voivat vaihdella.
+                </p>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SCHOOL PAGE
+======================================================== -->
+
+<section
+    id="schoolPage"
+    class="section section-soft hidden"
+>
+
+    <div class="section-inner">
+
+        <button
+            id="changeSchoolButton"
+            class="back-button"
+            type="button"
+        >
+            Vaihda oppilaitosta
+        </button>
+
+
+        <header class="school-page-header">
+
+            <div class="school-page-label">
+                Opiskeluterveydenhuolto
+            </div>
+
+            <h2 id="selectedSchoolName">
+                Oppilaitos
+            </h2>
+
+            <p>
+                Opiskeluterveydenhuollon tavoitteena on
+                tukea opiskelijan terveyttä, hyvinvointia
+                ja opiskelukykyä sekä tarjota tukea
+                mahdollisimman varhaisessa vaiheessa.
+            </p>
+
+        </header>
+
+
+        <div class="school-layout">
+
+            <div>
+
+
+                <article class="content-card">
+
+                    <div class="content-card-header">
+
+                        <h3>
+                            Opiskeluterveydenhuollon palvelut
+                        </h3>
+
+                    </div>
+
+
+                    <div class="content-card-body">
+
+                        <p>
+                            Opiskeluterveydenhuollossa
+                            saat tukea terveyteen,
+                            hyvinvointiin ja opiskelukykyyn
+                            liittyvissä asioissa.
+                        </p>
+
+                        <ul class="service-list">
+
+                            <li>
+                                terveystarkastukset
+                            </li>
+
+                            <li>
+                                terveysneuvonta
+                            </li>
+
+                            <li>
+                                sairaanhoidollinen arvio
+                                ja ohjaus
+                            </li>
+
+                            <li>
+                                mielenterveyteen ja
+                                päihteisiin liittyvä tuki
+                            </li>
+
+                            <li>
+                                seksuaaliterveyden
+                                edistäminen
+                            </li>
+
+                            <li>
+                                tarvittaessa ohjaus
+                                jatkotutkimuksiin tai
+                                muihin palveluihin
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MUURAME ONLINE SERVICES -->
+
+                <div
+                    id="muurameServices"
+                    class="hidden"
+                >
+
+                    <article class="content-card">
+
+                        <div class="content-card-header">
+
+                            <h3>
+                                Sähköinen asiointi
+                            </h3>
+
+                        </div>
+
+
+                        <div class="content-card-body">
+
+                            <p>
+                                Muuramen lukion opiskelijoille
+                                ovat käytettävissä seuraavat
+                                sähköiset asiointipalvelut.
+                            </p>
+
+
+                            <div class="online-services">
+
+
+                                <a
+                                    href="ajanvaraus.html"
+                                    class="online-service"
+                                >
+
+                                    <h3>
+                                        Ajanvaraus
+                                    </h3>
+
+                                    <p>
+                                        Tarkastele vapaita
+                                        vastaanottoaikoja ja
+                                        varaa aika
+                                        terveydenhoitajalle.
+                                    </p>
+
+                                    <div class="online-service-action">
+                                        Siirry ajanvaraukseen
+                                    </div>
+
+                                </a>
+
+
+                                <a
+                                    href="oma-varaus.html"
+                                    class="online-service"
+                                >
+
+                                    <h3>
+                                        Oma varaus
+                                    </h3>
+
+                                    <p>
+                                        Tarkastele tekemäsi
+                                        ajanvarauksen tietoja
+                                        varauskoodilla.
+                                    </p>
+
+                                    <div class="online-service-action">
+                                        Tarkastele varausta
+                                    </div>
+
+                                </a>
+
+
+                                <a
+                                    href="https://sannarantanenhyvaks.github.io/terveyskysely/"
+                                    class="online-service"
+                                >
+
+                                    <h3>
+                                        Terveyskysely
+                                    </h3>
+
+                                    <p>
+                                        Täytä
+                                        opiskeluterveydenhuollon
+                                        sähköinen terveyskysely.
+                                    </p>
+
+                                    <div class="online-service-action">
+                                        Avaa terveyskysely
+                                    </div>
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- OTHER SCHOOLS -->
+
+                <div
+                    id="otherSchoolServices"
+                    class="hidden"
+                >
+
+                    <div class="unavailable">
+
+                        <h3>
+                            Sähköinen asiointi
+                        </h3>
+
+                        <p>
+                            Tämän oppilaitoksen
+                            oppilaitoskohtaiset sähköiset
+                            asiointipalvelut eivät ole
+                            käytettävissä tässä palvelussa.
+                            Saat yhteyden
+                            opiskeluterveydenhuoltoon
+                            oppilaitoksesi omien
+                            yhteydenottokanavien kautta.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="phone-panel">
+
+                    <strong>
+                        Opiskeluterveydenhuollon
+                        keskitetty puhelinpalvelu
+                    </strong>
+
+                    <p>
+                        Keskitetystä puhelinpalvelusta
+                        saat neuvontaa ja voit hoitaa
+                        opiskeluterveydenhuollon
+                        ajanvaraukseen liittyviä asioita.
+                        Oppilaitoskohtaiset yhteystiedot
+                        voivat poiketa keskitetystä
+                        palvelusta.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT CARD -->
+
+            <aside
+                id="contactCard"
+                class="contact-card"
+            >
+
+                <h3>
+                    Oppilaitoksen tiedot
+                </h3>
+
+
+                <div class="contact-row">
+
+                    <span class="contact-label">
+                        Oppilaitos
+                    </span>
+
+                    <span
+                        id="contactSchool"
+                        class="contact-value"
+                    >
+                        –
+                    </span>
+
+                </div>
+
+
+                <div class="contact-row">
+
+                    <span class="contact-label">
+                        Palvelu
+                    </span>
+
+                    <span class="contact-value">
+                        Opiskeluterveydenhuolto
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="muurameProfessional"
+                    class="hidden"
+                >
+
+                    <div class="contact-row">
+
+                        <span class="contact-label">
+                            Terveydenhoitaja
+                        </span>
+
+                        <span class="contact-value">
+                            Sanna Raitanen
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-row">
+
+                        <span class="contact-label">
+                            Avoin vastaanotto
+                        </span>
+
+                        <span class="contact-value">
+                            klo 12.00–13.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-row">
+
+                        <span class="contact-label">
+                            Toimipiste
+                        </span>
+
+                        <span class="contact-value">
+                            Muuramen lukio
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="genericContact"
+                    class="hidden"
+                >
+
+                    <div class="contact-row">
+
+                        <span class="contact-label">
+                            Yhteystiedot
+                        </span>
+
+                        <span class="contact-value">
+                            Tarkista oman oppilaitoksesi
+                            opiskeluterveydenhuollon
+                            yhteystiedot.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div>
+
+            <h3>
+                Keski-Suomen hyvinvointialue
+            </h3>
+
+            <p>
+                Opiskeluterveydenhuolto tukee
+                opiskelijoiden terveyttä,
+                hyvinvointia ja opiskelukykyä.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Opiskeluterveydenhuolto
+            </h3>
+
+            <a href="#oppilaitos">
+                Valitse oppilaitos
+            </a>
+
+            <a href="index.html">
+                Etusivu
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Sähköinen asiointi
+            </h3>
+
+            <a href="ajanvaraus.html">
+                Ajanvaraus
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+        Keski-Suomen hyvinvointialue
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   SCHOOLS
+========================================================= */
+
+const schools = {
+
+    hankasalmi:{
+        name:'Hankasalmen lukio'
+    },
+
+    joutsa:{
+        name:'Joutsan lukio'
+    },
+
+    lyseo:{
+        name:'Jyväskylän Lyseon lukio'
+    },
+
+    normaalikoulu:{
+        name:'Jyväskylän normaalikoulun lukio'
+    },
+
+    schildt:{
+        name:'Schildtin lukio'
+    },
+
+    jamsa:{
+        name:'Jämsän lukio'
+    },
+
+    karstula:{
+        name:'Karstulan lukio'
+    },
+
+    keuruu:{
+        name:'Keuruun lukio'
+    },
+
+    kinnula:{
+        name:'Kinnulan lukio'
+    },
+
+    konnevesi:{
+        name:'Konneveden lukio'
+    },
+
+    laukaa:{
+        name:'Laukaan lukio'
+    },
+
+    muurame:{
+        name:'Muuramen lukio'
+    },
+
+    petajavesi:{
+        name:'Petäjäveden lukio'
+    },
+
+    pihtipudas:{
+        name:'Pihtiputaan lukio'
+    },
+
+    saarijarvi:{
+        name:'Saarijärven lukio'
+    },
+
+    viitasaari:{
+        name:'Viitasaaren lukio'
+    },
+
+    aanekoski:{
+        name:'Äänekosken lukio'
+    }
+
+};
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const schoolSelection =
+    document.getElementById(
+        'schoolSelection'
+    );
+
+const schoolPage =
+    document.getElementById(
+        'schoolPage'
+    );
+
+const schoolSelect =
+    document.getElementById(
+        'schoolSelect'
+    );
+
+const selectSchoolButton =
+    document.getElementById(
+        'selectSchoolButton'
+    );
+
+const changeSchoolButton =
+    document.getElementById(
+        'changeSchoolButton'
+    );
+
+const selectedSchoolName =
+    document.getElementById(
+        'selectedSchoolName'
+    );
+
+const contactSchool =
+    document.getElementById(
+        'contactSchool'
+    );
+
+const muurameServices =
+    document.getElementById(
+        'muurameServices'
+    );
+
+const otherSchoolServices =
+    document.getElementById(
+        'otherSchoolServices'
+    );
+
+const muurameProfessional =
+    document.getElementById(
+        'muurameProfessional'
+    );
+
+const genericContact =
+    document.getElementById(
+        'genericContact'
+    );
+
+
+/* =========================================================
+   OPEN SCHOOL
+========================================================= */
+
+function openSchool(){
+
+    const schoolId =
+        schoolSelect.value;
+
+
+    if(!schoolId){
+
+        schoolSelect.focus();
+
+        return;
+    }
+
+
+    const school =
+        schools[schoolId];
+
+
+    if(!school){
+        return;
+    }
+
+
+    selectedSchoolName.textContent =
+        school.name;
+
+
+    contactSchool.textContent =
+        school.name;
+
+
+    const isMuurame =
+        schoolId === 'muurame';
+
+
+    muurameServices.classList.toggle(
+        'hidden',
+        !isMuurame
+    );
+
+
+    otherSchoolServices.classList.toggle(
+        'hidden',
+        isMuurame
+    );
+
+
+    muurameProfessional.classList.toggle(
+        'hidden',
+        !isMuurame
+    );
+
+
+    genericContact.classList.toggle(
+        'hidden',
+        isMuurame
+    );
+
+
+    schoolSelection.classList.add(
+        'hidden'
+    );
+
+
+    schoolPage.classList.remove(
+        'hidden'
+    );
+
+
+    window.scrollTo({
+        top:
+            schoolPage.offsetTop - 20,
+
+        behavior:
+            'smooth'
+    });
+
+
+    /*
+        Store only the school selection.
+        No health information is stored here.
+    */
+
+    sessionStorage.setItem(
+        'selectedSchool',
+        schoolId
+    );
+
+}
+
+
+/* =========================================================
+   CHANGE SCHOOL
+========================================================= */
+
+function changeSchool(){
+
+    schoolPage.classList.add(
+        'hidden'
+    );
+
+
+    schoolSelection.classList.remove(
+        'hidden'
+    );
+
+
+    sessionStorage.removeItem(
+        'selectedSchool'
+    );
+
+
+    window.scrollTo({
+        top:
+            schoolSelection.offsetTop - 20,
+
+        behavior:
+            'smooth'
+    });
+
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+selectSchoolButton.addEventListener(
+    'click',
+    openSchool
+);
+
+
+schoolSelect.addEventListener(
+    'keydown',
+    event=>{
+
+        if(event.key === 'Enter'){
+
+            openSchool();
+
+        }
+
+    }
+);
+
+
+changeSchoolButton.addEventListener(
+    'click',
+    changeSchool
+);
+
+
+/* =========================================================
+   RESTORE SELECTION DURING SESSION
+========================================================= */
+
+const storedSchool =
+    sessionStorage.getItem(
+        'selectedSchool'
+    );
+
+
+if(
+    storedSchool &&
+    schools[storedSchool]
+){
+
+    schoolSelect.value =
+        storedSchool;
+
+    openSchool();
+
+}
+
+</script>
+
+</body>
+</html>
