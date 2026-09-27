@@ -8,23 +8,21 @@
 
 <style>
 :root{
-    --blue:#28649a;
-    --blue-dark:#075394;
-    --blue-hover:#164f80;
-    --green:#b7d77c;
-    --green-soft:#eef6df;
-    --teal:#dcefeb;
-    --navy:#173b49;
+    --blue:#2f679c;
+    --blue-dark:#07549a;
+    --blue-hover:#245987;
 
-    --text:#17252b;
-    --muted:#4e6068;
+    --green:#b8d981;
+    --news-blue:#c8e8f4;
+    --news-green:#d8ebc5;
+    --news-pink:#f7c6c8;
 
-    --border:#d9e0e4;
-    --light:#f5f7f7;
-    --light-blue:#edf6f7;
-    --white:#ffffff;
+    --text:#111;
+    --muted:#53636a;
+    --border:#d8dfe2;
+    --navy:#173d4b;
 
-    --max-width:1380px;
+    --max-width:1360px;
 }
 
 *{
@@ -40,7 +38,7 @@ body{
     background:#fff;
     color:var(--text);
     font-family:Arial,Helvetica,sans-serif;
-    line-height:1.5;
+    line-height:1.45;
 }
 
 button,
@@ -68,34 +66,30 @@ img{
     background:#fff;
 }
 
-.header-main{
+.header-top{
     max-width:var(--max-width);
-    min-height:115px;
+    min-height:112px;
 
     margin:auto;
-    padding:20px 34px 8px;
+    padding:22px 20px 8px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:40px;
 }
 
-.logo-link{
-    display:flex;
-    align-items:center;
-    text-decoration:none;
-}
-
 .logo{
-    width:225px;
-    max-height:78px;
+    display:block;
+    width:220px;
+    max-height:72px;
     object-fit:contain;
 }
 
-.header-search{
+.top-search{
     width:340px;
-    height:54px;
+    height:52px;
 
     display:flex;
 
@@ -103,184 +97,21 @@ img{
     border-radius:30px;
 
     overflow:hidden;
-    background:#fff;
 }
 
-.header-search input{
+.top-search input{
     flex:1;
     min-width:0;
+
+    padding:0 21px;
 
     border:0;
     outline:0;
 
-    padding:0 22px;
-
     font-size:15px;
 }
 
-.header-search button{
-    width:56px;
-
-    border:0;
-
-    background:var(--blue);
-    color:#fff;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.header-search button:hover{
-    background:var(--blue-hover);
-}
-
-.header-search svg{
-    width:24px;
-    height:24px;
-}
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.main-navigation{
-    background:#fff;
-}
-
-.navigation-inner{
-    max-width:var(--max-width);
-
-    min-height:65px;
-
-    margin:auto;
-    padding:0 22px;
-
-    display:flex;
-    align-items:stretch;
-}
-
-.navigation-link{
-    display:flex;
-    align-items:center;
-
-    padding:0 17px;
-
-    color:var(--blue-dark);
-
-    text-decoration:none;
-
-    font-size:15px;
-    font-weight:500;
-
-    border-bottom:4px solid transparent;
-
-    white-space:nowrap;
-}
-
-.navigation-link:hover,
-.navigation-link:focus{
-    border-bottom-color:var(--blue);
-}
-
-/* =========================================================
-   INTRO / HERO
-========================================================= */
-
-.intro-section{
-    background:#fff;
-}
-
-.intro-inner{
-    max-width:var(--max-width);
-
-    margin:auto;
-
-    padding:27px 34px 72px;
-}
-
-.intro-title{
-    margin:0 0 48px;
-
-    color:var(--blue-dark);
-
-    font-size:30px;
-    line-height:1.25;
-
-    font-weight:500;
-}
-
-.intro-layout{
-    display:grid;
-
-    grid-template-columns:
-        minmax(420px,.82fr)
-        minmax(520px,1fr);
-
-    gap:31px;
-
-    align-items:start;
-}
-
-.intro-left{
-    padding-top:0;
-}
-
-.intro-description{
-    margin:0 0 17px;
-
-    max-width:600px;
-
-    color:#111;
-
-    font-size:16px;
-    line-height:1.55;
-}
-
-.search-heading{
-    margin:17px 0 9px;
-
-    color:#111;
-
-    font-size:20px;
-    font-weight:700;
-}
-
-/* =========================================================
-   MAIN SEARCH
-========================================================= */
-
-.main-search{
-    width:100%;
-
-    display:flex;
-
-    height:54px;
-
-    margin-bottom:31px;
-
-    border:2px solid var(--blue-dark);
-    border-radius:29px;
-
-    overflow:hidden;
-
-    background:#fff;
-}
-
-.main-search input{
-    flex:1;
-
-    min-width:0;
-
-    border:0;
-    outline:0;
-
-    padding:0 23px;
-
-    font-size:15px;
-}
-
-.main-search button{
+.top-search button{
     width:55px;
 
     border:0;
@@ -293,8 +124,143 @@ img{
     color:#fff;
 }
 
-.main-search button:hover{
-    background:var(--blue-hover);
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.main-nav{
+    background:#fff;
+}
+
+.nav-inner{
+    max-width:var(--max-width);
+
+    min-height:63px;
+
+    margin:auto;
+    padding:0 7px;
+
+    display:flex;
+    align-items:stretch;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 14px;
+
+    color:var(--blue-dark);
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue-dark);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:#fff;
+}
+
+.intro-inner{
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    padding:27px 20px 68px;
+}
+
+.page-title{
+    margin:0 0 48px;
+
+    color:var(--blue-dark);
+
+    font-size:30px;
+    line-height:1.2;
+    font-weight:500;
+}
+
+.intro-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(400px,.83fr)
+        minmax(500px,1fr);
+
+    gap:30px;
+
+    align-items:start;
+}
+
+.intro-text{
+    margin:0 0 17px;
+
+    font-size:16px;
+    line-height:1.55;
+}
+
+.search-title{
+    margin:17px 0 9px;
+
+    font-size:20px;
+}
+
+/* =========================================================
+   MAIN SEARCH
+========================================================= */
+
+.main-search{
+    height:54px;
+
+    display:flex;
+
+    margin-bottom:30px;
+
+    border:2px solid var(--blue-dark);
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.main-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+}
+
+.main-search button{
+    width:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+
+    background:var(--blue);
+    color:#fff;
 }
 
 .main-search svg{
@@ -305,26 +271,26 @@ img{
 .search-results{
     display:none;
 
-    margin-top:-31px;
+    position:relative;
+    z-index:10;
+
+    margin-top:-30px;
     margin-bottom:30px;
 
     border:1px solid var(--border);
     border-top:0;
 
     background:#fff;
-
-    position:relative;
-    z-index:20;
 }
 
-.search-results.visible{
+.search-results.show{
     display:block;
 }
 
 .search-result{
     display:block;
 
-    padding:14px 17px;
+    padding:13px 16px;
 
     border-bottom:1px solid var(--border);
 
@@ -336,73 +302,58 @@ img{
 }
 
 .search-result:hover{
-    background:#f3f8fa;
+    background:#f3f7f9;
 }
 
-.search-result-title{
+.search-result strong{
     display:block;
 
     color:var(--blue-dark);
-
-    font-weight:700;
 }
 
-.search-result-description{
-    display:block;
-
-    margin-top:3px;
-
+.search-result small{
     color:var(--muted);
-
-    font-size:13px;
 }
 
 /* =========================================================
-   BLUE ACTION BUTTONS
+   ACTION BUTTONS
 ========================================================= */
 
 .action-list{
     display:grid;
-    gap:15px;
+    gap:14px;
 }
 
-.action-button{
+.action{
     min-height:55px;
 
     display:flex;
     align-items:center;
 
-    padding:0 16px;
+    padding:0 15px;
+
+    border-radius:5px;
 
     background:var(--blue);
     color:#fff;
-
-    border-radius:5px;
 
     text-decoration:none;
 
     font-size:16px;
     font-weight:700;
-
-    transition:
-        background .15s ease,
-        transform .15s ease;
 }
 
-.action-button:hover,
-.action-button:focus{
+.action:hover{
     background:var(--blue-hover);
 }
 
-.action-button-text{
+.action-text{
     flex:1;
 }
 
 .action-arrow{
-    width:25px;
-    height:25px;
-
-    margin-left:15px;
+    width:24px;
+    height:24px;
 
     display:flex;
     align-items:center;
@@ -415,7 +366,7 @@ img{
     line-height:1;
 }
 
-.action-arrow::before{
+.action-arrow::after{
     content:"›";
 
     position:relative;
@@ -423,20 +374,18 @@ img{
 }
 
 /* =========================================================
-   INTRO IMAGE
+   HERO IMAGE
 ========================================================= */
 
-.intro-image-wrap{
-    width:100%;
-
+.hero-image-box{
     overflow:hidden;
 
     border-radius:6px;
 
-    background:#e9eff0;
+    background:#eee;
 }
 
-.intro-image{
+.hero-image{
     display:block;
 
     width:100%;
@@ -447,60 +396,29 @@ img{
 }
 
 /* =========================================================
-   SERVICES
+   SERVICE ICON AREA
 ========================================================= */
 
-.services-section{
-    padding:70px 34px 78px;
-
-    background:#f5f7f6;
-
-    border-top:1px solid #edf0ef;
-}
-
-.services-inner{
+.services{
     max-width:var(--max-width);
 
     margin:auto;
+
+    padding:24px 20px 76px;
 }
 
-.section-heading{
-    max-width:850px;
-
-    margin-bottom:46px;
-}
-
-.section-heading h2{
-    margin:0 0 10px;
-
-    color:var(--blue-dark);
-
-    font-size:34px;
-    line-height:1.2;
-
-    font-weight:500;
-}
-
-.section-heading p{
-    margin:0;
-
-    color:var(--muted);
-
-    font-size:16px;
-}
-
-.service-icon-grid{
+.service-grid{
     display:grid;
 
     grid-template-columns:
         repeat(4,1fr);
 
-    column-gap:55px;
-    row-gap:52px;
+    column-gap:50px;
+    row-gap:37px;
 }
 
-.service-icon-link{
-    min-height:145px;
+.service{
+    min-height:120px;
 
     display:flex;
     flex-direction:column;
@@ -508,20 +426,20 @@ img{
 
     text-align:center;
 
-    color:var(--blue-dark);
-
     text-decoration:none;
 
-    font-size:16px;
+    color:var(--blue-dark);
+
+    font-size:15px;
     font-weight:700;
     line-height:1.45;
 }
 
-.service-icon-circle{
-    width:82px;
-    height:82px;
+.service-circle{
+    width:63px;
+    height:63px;
 
-    margin-bottom:17px;
+    margin-bottom:13px;
 
     display:flex;
     align-items:center;
@@ -532,41 +450,33 @@ img{
     background:var(--green);
 }
 
-.service-icon-link:hover span{
-    text-decoration:underline;
-}
-
-.service-icon-link:hover .service-icon-circle{
-    transform:translateY(-2px);
-}
-
-.service-icon-circle{
-    transition:transform .15s ease;
-}
-
-.service-icon-circle svg{
-    width:49px;
-    height:49px;
+.service-circle svg{
+    width:42px;
+    height:42px;
 
     fill:none;
 
-    stroke:var(--blue-dark);
+    stroke:#0870ae;
     stroke-width:1.8;
     stroke-linecap:round;
     stroke-linejoin:round;
 }
 
-/* =========================================================
-   STUDENT HEALTH
-========================================================= */
-
-.student-section{
-    padding:72px 34px;
-
-    background:#fff;
+.service:hover span{
+    text-decoration:underline;
 }
 
-.student-inner{
+/* =========================================================
+   NEWS AREA
+========================================================= */
+
+.news-section{
+    background:#fff;
+
+    padding:30px 20px 85px;
+}
+
+.news-grid{
     max-width:var(--max-width);
 
     margin:auto;
@@ -574,359 +484,163 @@ img{
     display:grid;
 
     grid-template-columns:
-        minmax(0,1.15fr)
-        minmax(350px,.85fr);
+        repeat(3,1fr);
 
-    gap:65px;
-
-    align-items:start;
+    gap:35px;
 }
 
-.student-copy h2{
-    margin:0 0 18px;
+.news-column{
+    min-height:610px;
+
+    padding:23px 15px 18px;
+
+    border-radius:6px;
+}
+
+.news-column.main{
+    background:var(--news-blue);
+}
+
+.news-column.latest{
+    background:var(--news-green);
+}
+
+.news-column.events{
+    background:var(--news-pink);
+}
+
+.news-heading{
+    margin:0 7px 22px;
 
     color:var(--blue-dark);
 
-    font-size:34px;
+    font-size:27px;
     font-weight:500;
 }
 
-.student-copy p{
-    max-width:720px;
+.news-content{
+    min-height:515px;
 
-    margin:0;
+    padding:14px;
 
-    color:var(--muted);
-
-    font-size:16px;
-    line-height:1.7;
-}
-
-.primary-button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    min-height:49px;
-
-    margin-top:25px;
-    padding:0 23px;
-
-    background:var(--blue);
-    color:#fff;
-
-    border-radius:4px;
-
-    text-decoration:none;
-
-    font-weight:700;
-}
-
-.primary-button:hover{
-    background:var(--blue-hover);
-}
-
-.information-panel{
-    padding:29px;
-
-    border:1px solid var(--border);
-    border-top:5px solid var(--blue);
+    border-radius:6px;
 
     background:#fff;
 }
 
-.information-panel h3{
-    margin:0 0 17px;
+/* =========================================================
+   NEWS ITEMS
+========================================================= */
 
-    color:var(--blue-dark);
-
-    font-size:22px;
-}
-
-.information-row{
-    padding:15px 0;
-
-    border-bottom:1px solid var(--border);
-}
-
-.information-row:last-child{
-    border-bottom:0;
-}
-
-.information-row strong{
+.news-item{
     display:block;
 
-    margin-bottom:4px;
-
-    font-size:13px;
-}
-
-.information-row span{
-    color:var(--muted);
-
-    font-size:14px;
-}
-
-/* =========================================================
-   ONLINE SERVICES
-========================================================= */
-
-.online-section{
-    padding:72px 34px;
-
-    background:var(--light-blue);
-}
-
-.online-inner{
-    max-width:var(--max-width);
-
-    margin:auto;
-}
-
-.online-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:22px;
-}
-
-.online-card{
-    min-height:230px;
-
-    padding:28px;
-
-    display:flex;
-    flex-direction:column;
-
-    background:#fff;
-
-    border:1px solid var(--border);
-}
-
-.online-label{
-    margin-bottom:10px;
-
-    color:var(--blue-dark);
-
-    font-size:12px;
-    font-weight:700;
-
-    text-transform:uppercase;
-    letter-spacing:.05em;
-}
-
-.online-card h3{
-    margin:0 0 10px;
-
-    font-size:21px;
-}
-
-.online-card p{
-    margin:0;
-
-    color:var(--muted);
-
-    font-size:14px;
-    line-height:1.65;
-}
-
-.online-card a{
-    width:max-content;
-
-    margin-top:auto;
-    padding-top:22px;
-
-    color:var(--blue-dark);
-
-    font-size:14px;
-    font-weight:700;
-
-    text-decoration:none;
-}
-
-.online-card a:hover{
-    text-decoration:underline;
-}
-
-/* =========================================================
-   CURRENT
-========================================================= */
-
-.current-section{
-    padding:72px 34px;
-
-    background:#fff;
-}
-
-.current-inner{
-    max-width:var(--max-width);
-
-    margin:auto;
-}
-
-.current-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:22px;
-}
-
-.current-card{
-    padding:28px;
-
-    border:1px solid var(--border);
-
-    background:#fff;
-}
-
-.current-label{
-    color:var(--blue-dark);
-
-    font-size:12px;
-    font-weight:700;
-
-    text-transform:uppercase;
-}
-
-.current-card h3{
-    margin:10px 0;
-
-    font-size:21px;
-}
-
-.current-card p{
+    padding:0 0 20px;
     margin:0 0 20px;
 
-    color:var(--muted);
-
-    font-size:14px;
-    line-height:1.65;
-}
-
-.current-card a{
-    color:var(--blue-dark);
+    border-bottom:1px solid #d8d8d8;
 
     text-decoration:none;
-
-    font-size:14px;
-    font-weight:700;
 }
 
-.current-card a:hover{
-    text-decoration:underline;
+.news-item:last-child{
+    margin-bottom:0;
 }
 
-/* =========================================================
-   FEEDBACK
-========================================================= */
+.news-item-title{
+    margin:0 0 9px;
 
-.feedback-section{
-    padding:68px 34px;
+    color:var(--blue-dark);
 
-    background:var(--teal);
-}
-
-.feedback-inner{
-    max-width:var(--max-width);
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:55px;
-
-    align-items:center;
-}
-
-.feedback-copy h2{
-    margin:0 0 13px;
-
-    color:var(--navy);
-
-    font-size:34px;
+    font-size:17px;
+    line-height:1.15;
     font-weight:500;
 }
 
-.feedback-copy p{
-    margin:0;
+.news-item-date{
+    display:block;
 
-    color:#36564f;
+    color:#111;
 
-    line-height:1.7;
+    font-size:12px;
+    font-weight:700;
 }
 
-.feedback-panel{
-    padding:29px;
+.news-item-text{
+    margin:10px 0 0;
 
-    background:#fff;
+    color:#333;
 
-    border:1px solid #c4ddd7;
+    font-size:14px;
+    line-height:1.5;
 }
 
-.feedback-panel h3{
-    margin:0 0 10px;
+.main-news-image{
+    display:block;
+
+    width:100%;
+    max-height:230px;
+
+    margin-bottom:15px;
+
+    object-fit:cover;
 }
 
-.feedback-panel p{
-    margin:0;
+.main-news-item{
+    padding-bottom:20px;
+    margin-bottom:20px;
 
-    color:var(--muted);
+    border-bottom:1px solid #ddd;
+}
 
-    line-height:1.65;
+.news-empty{
+    padding:10px 2px;
+
+    color:#53636a;
+
+    font-size:14px;
 }
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
-.site-footer{
+.footer{
     background:var(--navy);
 
     color:#fff;
 }
 
-.footer-main{
+.footer-inner{
     max-width:var(--max-width);
 
     margin:auto;
 
-    padding:58px 34px 49px;
+    padding:52px 20px;
 
     display:grid;
 
     grid-template-columns:
-        1.5fr 1fr 1fr 1fr;
+        1.5fr 1fr 1fr;
 
-    gap:45px;
+    gap:55px;
 }
 
-.footer-column h2,
-.footer-column h3{
-    margin:0 0 17px;
-
-    font-size:18px;
+.footer h2,
+.footer h3{
+    margin-top:0;
 }
 
-.footer-column p{
-    color:#d4e1e6;
+.footer p{
+    color:#d8e5e9;
 
     font-size:14px;
-    line-height:1.65;
 }
 
-.footer-link{
+.footer a{
     display:block;
 
-    width:max-content;
-    max-width:100%;
-
-    margin:9px 0;
+    margin:8px 0;
 
     color:#fff;
 
@@ -935,100 +649,91 @@ img{
     font-size:14px;
 }
 
-.footer-link:hover{
+.footer a:hover{
     text-decoration:underline;
 }
 
-.footer-bottom{
-    padding:19px 34px;
-
-    border-top:1px solid rgba(255,255,255,.18);
-
-    color:#d0dfe4;
-
-    text-align:center;
-
-    font-size:12px;
-}
-
 /* =========================================================
-   CHAT
+   CHAT ROUND BUTTON
 ========================================================= */
 
-.chat-launcher{
+.chat-button{
     position:fixed;
 
-    right:27px;
+    right:31px;
     bottom:27px;
 
     z-index:1000;
 
-    min-width:140px;
-    min-height:55px;
+    width:66px;
+    height:66px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    gap:9px;
+    padding:0;
 
     border:0;
-    border-radius:28px;
+    border-radius:50%;
 
-    padding:0 21px;
-
-    background:var(--blue);
+    background:#174e83;
     color:#fff;
 
     box-shadow:
-        0 9px 28px
-        rgba(0,63,105,.25);
-
-    font-weight:700;
+        0 5px 18px
+        rgba(0,0,0,.14);
 }
 
-.chat-launcher:hover{
-    background:var(--blue-hover);
+.chat-button:hover{
+    background:#0f416f;
 }
 
-.chat-status-dot{
-    width:9px;
-    height:9px;
+.chat-button svg{
+    width:31px;
+    height:31px;
 
-    border-radius:50%;
+    fill:none;
 
-    background:#c7d0d4;
+    stroke:currentColor;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
 
 .chat-window{
     display:none;
 
     position:fixed;
 
-    right:27px;
-    bottom:95px;
+    right:31px;
+    bottom:105px;
 
     z-index:1100;
 
-    width:420px;
-    height:620px;
+    width:410px;
+    height:600px;
 
     max-width:
         calc(100vw - 30px);
 
     max-height:
-        calc(100vh - 120px);
+        calc(100vh - 130px);
 
     background:#fff;
 
     border:1px solid #bdcbd1;
-    border-radius:5px;
+    border-radius:6px;
 
     overflow:hidden;
 
     box-shadow:
-        0 18px 55px
-        rgba(19,45,57,.28);
+        0 18px 50px
+        rgba(20,45,60,.25);
 
     flex-direction:column;
 }
@@ -1038,50 +743,33 @@ img{
 }
 
 .chat-header{
-    padding:19px 20px;
+    padding:18px 19px;
+
+    display:flex;
+    align-items:center;
 
     background:var(--blue);
     color:#fff;
 }
 
-.chat-header-row{
-    display:flex;
-    align-items:flex-start;
-}
-
-.chat-header-copy{
+.chat-header-text{
     flex:1;
 }
 
 .chat-header-small{
-    color:#e5f1f6;
+    font-size:11px;
 
-    font-size:12px;
+    opacity:.85;
 }
 
 .chat-header-title{
-    margin-top:3px;
-
     font-size:18px;
     font-weight:700;
 }
 
-.chat-header-status{
-    display:flex;
-    align-items:center;
-
-    gap:7px;
-
-    margin-top:8px;
-
-    color:#e7f2f7;
-
-    font-size:12px;
-}
-
 .chat-close{
-    width:37px;
-    height:37px;
+    width:35px;
+    height:35px;
 
     border:1px solid rgba(255,255,255,.55);
     border-radius:50%;
@@ -1097,22 +785,22 @@ img{
 
     overflow-y:auto;
 
-    padding:19px 18px;
+    padding:18px;
 
-    background:#f5f7f8;
+    background:#f4f6f7;
 }
 
 .chat-message{
-    max-width:88%;
+    max-width:87%;
 
-    margin-bottom:12px;
+    margin-bottom:11px;
 
-    padding:12px 14px;
+    padding:11px 13px;
 
-    border-radius:4px;
+    border-radius:5px;
 
     font-size:14px;
-    line-height:1.55;
+    line-height:1.5;
 }
 
 .chat-message.bot{
@@ -1120,7 +808,7 @@ img{
 
     background:#fff;
 
-    border:1px solid var(--border);
+    border:1px solid #dce2e5;
 }
 
 .chat-message.user{
@@ -1131,28 +819,16 @@ img{
     color:#fff;
 }
 
-.chat-notice{
-    margin-bottom:13px;
-
-    padding:13px;
-
-    background:#fff7e7;
-
-    border-left:4px solid #a66a00;
-
-    font-size:13px;
-}
-
-.quick-actions{
+.chat-quick{
     display:grid;
 
-    gap:8px;
+    gap:7px;
 
-    margin:8px 0 17px;
+    margin-top:10px;
 }
 
-.quick-action{
-    padding:11px 12px;
+.chat-quick button{
+    padding:10px;
 
     border:1px solid var(--blue);
 
@@ -1161,55 +837,49 @@ img{
 
     text-align:left;
 
-    font-size:13px;
     font-weight:700;
 }
 
 .chat-input-area{
-    padding:12px;
+    padding:11px;
+
+    border-top:1px solid #ddd;
 
     background:#fff;
-
-    border-top:1px solid var(--border);
 }
 
 .chat-input-row{
     display:flex;
 
-    gap:8px;
+    gap:7px;
 }
 
-.chat-input{
+.chat-input-row input{
     flex:1;
-
     min-width:0;
-    min-height:46px;
 
-    padding:10px 12px;
+    padding:10px;
 
     border:1px solid #87969d;
 }
 
 .chat-send{
-    min-width:78px;
-
     border:0;
+
+    padding:0 14px;
 
     background:var(--blue);
     color:#fff;
 
-    padding:0 15px;
-
     font-weight:700;
 }
 
-.chat-disclaimer{
-    margin-top:8px;
+.chat-info{
+    margin-top:7px;
 
-    color:#6c797f;
+    color:#68777d;
 
     font-size:10px;
-    line-height:1.4;
 }
 
 /* =========================================================
@@ -1218,131 +888,131 @@ img{
 
 @media(max-width:1050px){
 
-    .navigation-inner{
+    .nav-inner{
         overflow-x:auto;
     }
 
-    .intro-layout{
+    .intro-grid{
         grid-template-columns:1fr;
     }
 
-    .intro-image{
+    .hero-image{
         height:auto;
         max-height:500px;
     }
 
-    .service-icon-grid{
+    .service-grid{
         grid-template-columns:
             repeat(2,1fr);
     }
 
-    .student-inner,
-    .feedback-inner{
+    .news-grid{
         grid-template-columns:1fr;
     }
 
-    .online-grid,
-    .current-grid{
-        grid-template-columns:1fr;
+    .news-column{
+        min-height:0;
     }
 
-    .footer-main{
+    .news-content{
+        min-height:0;
+    }
+
+    .footer-inner{
         grid-template-columns:
             repeat(2,1fr);
     }
+
 }
 
 @media(max-width:700px){
 
-    .header-main{
-        min-height:90px;
+    .header-top{
+        min-height:88px;
 
-        padding:
-            16px 20px;
+        padding:14px 18px;
     }
 
     .logo{
         width:175px;
     }
 
-    .header-search{
+    .top-search{
         display:none;
     }
 
-    .navigation-inner{
-        padding:0 6px;
+    .nav-inner{
+        padding:0;
     }
 
-    .navigation-link{
+    .nav-link{
         padding:0 12px;
     }
 
     .intro-inner{
         padding:
-            22px 20px
-            50px;
+            22px 18px
+            45px;
     }
 
-    .intro-title{
-        margin-bottom:30px;
+    .page-title{
+        margin-bottom:28px;
 
-        font-size:27px;
+        font-size:26px;
     }
 
-    .intro-layout{
+    .intro-grid{
         display:flex;
         flex-direction:column;
     }
 
-    .intro-image-wrap{
+    .hero-image-box{
         order:-1;
     }
 
-    .intro-image{
-        height:245px;
+    .hero-image{
+        height:235px;
     }
 
-    .services-section,
-    .student-section,
-    .online-section,
-    .current-section,
-    .feedback-section{
-        padding-left:20px;
-        padding-right:20px;
+    .services{
+        padding:
+            20px 18px
+            55px;
     }
 
-    .service-icon-grid{
+    .service-grid{
         grid-template-columns:
             repeat(2,1fr);
 
-        column-gap:20px;
-        row-gap:35px;
+        column-gap:15px;
     }
 
-    .service-icon-circle{
-        width:74px;
-        height:74px;
+    .news-section{
+        padding:
+            20px 18px
+            60px;
     }
 
-    .footer-main{
+    .footer-inner{
         grid-template-columns:1fr;
+    }
 
-        padding-left:22px;
-        padding-right:22px;
+    .chat-button{
+        right:17px;
+        bottom:17px;
+
+        width:60px;
+        height:60px;
     }
 
     .chat-window{
         right:15px;
-        bottom:88px;
+        bottom:90px;
 
         width:
             calc(100vw - 30px);
     }
 
-    .chat-launcher{
-        right:15px;
-        bottom:18px;
-    }
 }
 </style>
 </head>
@@ -1355,26 +1025,25 @@ img{
 
 <header class="site-header">
 
-    <div class="header-main">
+    <div class="header-top">
 
-        <a
-            href="index.html"
-            class="logo-link"
-        >
+        <a href="index.html">
+
             <img
                 src="hyvaks-logo.png"
                 alt="Keski-Suomen hyvinvointialue"
                 class="logo"
             >
+
         </a>
 
         <form
-            class="header-search"
-            id="headerSearchForm"
+            class="top-search"
+            id="topSearchForm"
         >
 
             <input
-                id="headerSearchInput"
+                id="topSearchInput"
                 type="search"
                 placeholder="Hae sivustolta"
                 aria-label="Hae sivustolta"
@@ -1391,6 +1060,7 @@ img{
                     stroke="currentColor"
                     stroke-width="2"
                 >
+
                     <circle
                         cx="11"
                         cy="11"
@@ -1400,6 +1070,7 @@ img{
                     <path
                         d="M16.5 16.5L21 21"
                     ></path>
+
                 </svg>
 
             </button>
@@ -1408,72 +1079,70 @@ img{
 
     </div>
 
-    <nav
-        class="main-navigation"
-        aria-label="Päävalikko"
-    >
 
-        <div class="navigation-inner">
+    <nav class="main-nav">
+
+        <div class="nav-inner">
 
             <a
                 href="#palvelut"
-                class="navigation-link"
+                class="nav-link"
             >
                 Palvelumme
             </a>
 
             <a
                 href="#asiointi"
-                class="navigation-link"
+                class="nav-link"
             >
                 Asiointi
             </a>
 
             <a
                 href="opiskeluterveydenhuolto.html"
-                class="navigation-link"
+                class="nav-link"
             >
                 Asiakkaana
             </a>
 
             <a
                 href="#palvelut"
-                class="navigation-link"
+                class="nav-link"
             >
                 Sairaala Nova
             </a>
 
             <a
-                href="#opiskeluterveydenhuolto"
-                class="navigation-link"
+                href="opiskeluterveydenhuolto.html"
+                class="nav-link"
             >
                 Hyvinvointisi tueksi
             </a>
 
             <a
-                href="#hyvinvointialue"
-                class="navigation-link"
+                href="#footer"
+                class="nav-link"
             >
                 Hyvinvointialue
             </a>
 
             <a
-                href="#ajankohtaista"
-                class="navigation-link"
+                href="#uutiset"
+                class="nav-link"
             >
                 Ajankohtaista
             </a>
 
             <a
                 href="#"
-                class="navigation-link"
+                class="nav-link"
             >
                 Tule työkaveriksi
             </a>
 
             <a
                 href="#"
-                class="navigation-link"
+                class="nav-link"
             >
                 In English
             </a>
@@ -1491,30 +1160,31 @@ img{
 
 <main>
 
-<section class="intro-section">
+<section class="intro">
 
     <div class="intro-inner">
 
-        <h1 class="intro-title">
+        <h1 class="page-title">
             Keski-Suomen hyvinvointialue
         </h1>
 
-        <div class="intro-layout">
 
-            <!-- LEFT -->
+        <div class="intro-grid">
 
-            <div class="intro-left">
+            <div>
 
-                <p class="intro-description">
+                <p class="intro-text">
                     Edistämme keskisuomalaisten hyvinvointia,
                     terveyttä ja turvallisuutta.
                     Vastaamme sosiaali-, terveys- ja
                     pelastustoimen palveluista Keski-Suomessa.
                 </p>
 
-                <h2 class="search-heading">
+
+                <h2 class="search-title">
                     Hae palvelua
                 </h2>
+
 
                 <form
                     class="main-search"
@@ -1525,7 +1195,6 @@ img{
                         id="mainSearchInput"
                         type="search"
                         placeholder="Hae sivustolta"
-                        aria-label="Hae palvelua"
                         autocomplete="off"
                     >
 
@@ -1540,6 +1209,7 @@ img{
                             stroke="currentColor"
                             stroke-width="2"
                         >
+
                             <circle
                                 cx="11"
                                 cy="11"
@@ -1549,87 +1219,88 @@ img{
                             <path
                                 d="M16.5 16.5L21 21"
                             ></path>
+
                         </svg>
 
                     </button>
 
                 </form>
 
+
                 <div
                     id="searchResults"
                     class="search-results"
                 ></div>
 
+
                 <div class="action-list">
 
                     <a
                         href="ajanvaraus.html"
-                        class="action-button"
+                        class="action"
                     >
-                        <span class="action-button-text">
+
+                        <span class="action-text">
                             Varaa aika
                         </span>
 
-                        <span
-                            class="action-arrow"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="action-arrow"></span>
+
                     </a>
+
 
                     <a
                         href="oma-varaus.html"
-                        class="action-button"
+                        class="action"
                     >
-                        <span class="action-button-text">
+
+                        <span class="action-text">
                             Oma varaus
                         </span>
 
-                        <span
-                            class="action-arrow"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="action-arrow"></span>
+
                     </a>
+
 
                     <a
                         href="opiskeluterveydenhuolto.html"
-                        class="action-button"
+                        class="action"
                     >
-                        <span class="action-button-text">
+
+                        <span class="action-text">
                             Opiskeluterveydenhuolto
                         </span>
 
-                        <span
-                            class="action-arrow"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="action-arrow"></span>
+
                     </a>
+
 
                     <a
                         href="https://sannarantanenhyvaks.github.io/terveyskysely/"
-                        class="action-button"
+                        class="action"
                     >
-                        <span class="action-button-text">
+
+                        <span class="action-text">
                             Terveyskysely
                         </span>
 
-                        <span
-                            class="action-arrow"
-                            aria-hidden="true"
-                        ></span>
+                        <span class="action-arrow"></span>
+
                     </a>
 
                 </div>
 
             </div>
 
-            <!-- RIGHT IMAGE -->
 
-            <div class="intro-image-wrap">
+            <div class="hero-image-box">
 
                 <img
                     src="ensihoito.jpg"
                     alt="Ensihoito"
-                    class="intro-image"
+                    class="hero-image"
                 >
 
             </div>
@@ -1642,413 +1313,299 @@ img{
 
 
 <!-- ======================================================
-     SERVICES
+     SERVICE ICONS
+     EI PALVELUMME-OTSIKKOA TÄSSÄ
 ======================================================= -->
 
 <section
     id="palvelut"
-    class="services-section"
+    class="services"
 >
 
-    <div class="services-inner">
+    <div class="service-grid">
 
-        <header class="section-heading">
 
-            <h2>Palvelumme</h2>
+        <a
+            href="#"
+            class="service"
+        >
 
-            <p>
-                Löydä tarvitsemasi sosiaali-,
-                terveys- ja turvallisuuspalvelu.
-            </p>
+            <div class="service-circle">
 
-        </header>
+                <svg viewBox="0 0 64 64">
 
-        <div class="service-icon-grid">
+                    <circle
+                        cx="21"
+                        cy="20"
+                        r="7"
+                    />
 
-            <!-- 1 -->
+                    <circle
+                        cx="43"
+                        cy="21"
+                        r="6"
+                    />
 
-            <a
-                href="#"
-                class="service-icon-link"
-            >
+                    <path
+                        d="M8 49c1-11 6-17 13-17s13 6 14 17"
+                    />
 
-                <div class="service-icon-circle">
+                    <path
+                        d="M35 48c1-9 4-14 9-14 6 0 10 5 11 14"
+                    />
 
-                    <svg viewBox="0 0 64 64">
-
-                        <circle
-                            cx="21"
-                            cy="20"
-                            r="7"
-                        />
-
-                        <circle
-                            cx="43"
-                            cy="21"
-                            r="6"
-                        />
-
-                        <path
-                            d="M8 49c1-11 6-17 13-17s13 6 14 17"
-                        />
-
-                        <path
-                            d="M35 48c1-9 4-14 9-14 6 0 10 5 11 14"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Perheiden, nuorten ja aikuisten
-                    ohjaus ja neuvonta
-                </span>
-
-            </a>
-
-
-            <!-- 2 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <circle
-                            cx="29"
-                            cy="18"
-                            r="8"
-                        />
-
-                        <path
-                            d="M20 49c1-13 4-20 10-20s10 7 11 20"
-                        />
-
-                        <path
-                            d="M43 31v22"
-                        />
-
-                        <path
-                            d="M43 31c0-4 5-4 5 0"
-                        />
-
-                        <path
-                            d="M43 52h7"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Seniorineuvonta
-                </span>
-
-            </a>
-
-
-            <!-- 3 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <path
-                            d="M21 10c-8 2-10 10-8 18 2 7 6 9 8 20 1 6 5 7 8 1l3-8 3 8c3 6 7 5 8-1 2-11 6-13 8-20 2-8 0-16-8-18-5-1-8 2-11 2s-6-3-11-2z"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Suun terveydenhuolto
-                </span>
-
-            </a>
-
-
-            <!-- 4 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <path
-                            d="M25 51c-10-4-16-13-16-23 0-12 10-21 23-21s23 9 23 21c0 9-5 16-13 20"
-                        />
-
-                        <path
-                            d="M22 27c2-5 6-8 10-8 6 0 10 4 10 10"
-                        />
-
-                        <path
-                            d="M24 38c5 4 11 4 16 0"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Mielenterveys- ja
-                    riippuvuuspalvelut
-                </span>
-
-            </a>
-
-
-            <!-- 5 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <path d="M23 9h18"/>
-
-                        <path
-                            d="M28 9v17L16 48c-2 4 1 7 5 7h22c4 0 7-3 5-7L36 26V9"
-                        />
-
-                        <path d="M21 42h23"/>
-
-                        <path d="M25 36h14"/>
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Laboratorio
-                </span>
-
-            </a>
-
-
-            <!-- 6 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <circle
-                            cx="31"
-                            cy="12"
-                            r="5"
-                        />
-
-                        <path
-                            d="M30 20l-4 14h13"
-                        />
-
-                        <path
-                            d="M29 25h12"
-                        />
-
-                        <path
-                            d="M38 34l5 14"
-                        />
-
-                        <path
-                            d="M26 32c-9 1-14 6-14 13 0 8 7 14 15 14 7 0 12-4 14-10"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Vammaisten palvelut
-                </span>
-
-            </a>
-
-
-            <!-- 7 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <rect
-                            x="13"
-                            y="13"
-                            width="38"
-                            height="42"
-                            rx="2"
-                        />
-
-                        <path d="M27 21h10"/>
-
-                        <path d="M32 16v10"/>
-
-                        <path d="M20 34h7"/>
-
-                        <path d="M37 34h7"/>
-
-                        <path d="M20 42h7"/>
-
-                        <path d="M37 42h7"/>
-
-                        <path
-                            d="M28 55V45h8v10"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Sairaala Nova
-                </span>
-
-            </a>
-
-
-            <!-- 8 -->
-
-            <a
-                href="#"
-                class="service-icon-link"
-            >
-
-                <div class="service-icon-circle">
-
-                    <svg viewBox="0 0 64 64">
-
-                        <path
-                            d="M32 7c3 8 11 12 11 22 0 4-1 7-3 10 1-9-5-12-8-18-2 6-9 11-9 21 0 8 5 14 9 16 10-3 17-11 17-21 0-13-10-21-17-30z"
-                        />
-
-                        <path
-                            d="M32 56c-5-3-8-7-8-12 0-5 4-9 8-13 1 6 6 8 6 14 0 5-3 9-6 11z"
-                        />
-
-                    </svg>
-
-                </div>
-
-                <span>
-                    Pelastuslaitos
-                </span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     STUDENT HEALTH
-======================================================= -->
-
-<section
-    id="opiskeluterveydenhuolto"
-    class="student-section"
->
-
-    <div class="student-inner">
-
-        <div class="student-copy">
-
-            <h2>
-                Opiskeluterveydenhuolto
-            </h2>
-
-            <p>
-                Opiskeluterveydenhuolto tukee
-                opiskelijoiden terveyttä, hyvinvointia
-                ja opiskelukykyä. Palveluihin kuuluvat
-                muun muassa terveystarkastukset,
-                terveysneuvonta sekä tarvittaessa
-                ohjaus muihin palveluihin.
-            </p>
-
-            <a
-                href="opiskeluterveydenhuolto.html"
-                class="primary-button"
-            >
-                Siirry opiskeluterveydenhuoltoon
-            </a>
-
-        </div>
-
-        <aside class="information-panel">
-
-            <h3>
-                Muuramen lukio
-            </h3>
-
-            <div class="information-row">
-
-                <strong>
-                    Terveydenhoitaja
-                </strong>
-
-                <span>
-                    Sanna Rantanen
-                </span>
+                </svg>
 
             </div>
 
-            <div class="information-row">
+            <span>
+                Perheiden, nuorten ja aikuisten
+                ohjaus ja neuvonta
+            </span>
 
-                <strong>
-                    Avoin vastaanotto
-                </strong>
+        </a>
 
-                <span>
-                    klo 12.00–13.00
-                </span>
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <circle
+                        cx="29"
+                        cy="18"
+                        r="8"
+                    />
+
+                    <path
+                        d="M20 49c1-13 4-20 10-20s10 7 11 20"
+                    />
+
+                    <path
+                        d="M43 31v22"
+                    />
+
+                    <path
+                        d="M43 31c0-4 5-4 5 0"
+                    />
+
+                    <path
+                        d="M43 52h7"
+                    />
+
+                </svg>
 
             </div>
 
-            <div class="information-row">
+            <span>
+                Seniorineuvonta
+            </span>
 
-                <strong>
-                    Toimipiste
-                </strong>
+        </a>
 
-                <span>
-                    Muuramen lukio
-                </span>
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <path
+                        d="M21 10c-8 2-10 10-8 18 2 7 6 9 8 20 1 6 5 7 8 1l3-8 3 8c3 6 7 5 8-1 2-11 6-13 8-20 2-8 0-16-8-18-5-1-8 2-11 2s-6-3-11-2z"
+                    />
+
+                </svg>
 
             </div>
 
-        </aside>
+            <span>
+                Suun terveydenhuolto
+            </span>
+
+        </a>
+
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <path
+                        d="M25 51c-10-4-16-13-16-23 0-12 10-21 23-21s23 9 23 21c0 9-5 16-13 20"
+                    />
+
+                    <path
+                        d="M22 27c2-5 6-8 10-8 6 0 10 4 10 10"
+                    />
+
+                    <path
+                        d="M24 38c5 4 11 4 16 0"
+                    />
+
+                </svg>
+
+            </div>
+
+            <span>
+                Mielenterveys- ja riippuvuuspalvelut
+            </span>
+
+        </a>
+
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <path d="M23 9h18"/>
+
+                    <path
+                        d="M28 9v17L16 48c-2 4 1 7 5 7h22c4 0 7-3 5-7L36 26V9"
+                    />
+
+                    <path d="M21 42h23"/>
+
+                    <path d="M25 36h14"/>
+
+                </svg>
+
+            </div>
+
+            <span>
+                Laboratorio
+            </span>
+
+        </a>
+
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <circle
+                        cx="31"
+                        cy="12"
+                        r="5"
+                    />
+
+                    <path
+                        d="M30 20l-4 14h13"
+                    />
+
+                    <path
+                        d="M29 25h12"
+                    />
+
+                    <path
+                        d="M38 34l5 14"
+                    />
+
+                    <path
+                        d="M26 32c-9 1-14 6-14 13 0 8 7 14 15 14 7 0 12-4 14-10"
+                    />
+
+                </svg>
+
+            </div>
+
+            <span>
+                Vammaisten palvelut
+            </span>
+
+        </a>
+
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <rect
+                        x="13"
+                        y="13"
+                        width="38"
+                        height="42"
+                        rx="2"
+                    />
+
+                    <path d="M27 21h10"/>
+
+                    <path d="M32 16v10"/>
+
+                    <path d="M20 34h7"/>
+
+                    <path d="M37 34h7"/>
+
+                    <path d="M20 42h7"/>
+
+                    <path d="M37 42h7"/>
+
+                    <path
+                        d="M28 55V45h8v10"
+                    />
+
+                </svg>
+
+            </div>
+
+            <span>
+                Sairaala Nova
+            </span>
+
+        </a>
+
+
+        <a
+            href="#"
+            class="service"
+        >
+
+            <div class="service-circle">
+
+                <svg viewBox="0 0 64 64">
+
+                    <path
+                        d="M32 7c3 8 11 12 11 22 0 4-1 7-3 10 1-9-5-12-8-18-2 6-9 11-9 21 0 8 5 14 9 16 10-3 17-11 17-21 0-13-10-21-17-30z"
+                    />
+
+                    <path
+                        d="M32 56c-5-3-8-7-8-12 0-5 4-9 8-13 1 6 6 8 6 14 0 5-3 9-6 11z"
+                    />
+
+                </svg>
+
+            </div>
+
+            <span>
+                Pelastuslaitos
+            </span>
+
+        </a>
 
     </div>
 
@@ -2056,239 +1613,82 @@ img{
 
 
 <!-- ======================================================
-     ONLINE SERVICES
+     NEWS
 ======================================================= -->
 
 <section
-    id="asiointi"
-    class="online-section"
+    id="uutiset"
+    class="news-section"
 >
 
-    <div class="online-inner">
+    <div class="news-grid">
 
-        <header class="section-heading">
 
-            <h2>
-                Sähköinen asiointi
+        <!-- MAIN NEWS -->
+
+        <section class="news-column main">
+
+            <h2 class="news-heading">
+                Pääuutiset
             </h2>
 
-            <p>
-                Hoida opiskeluterveydenhuollon
-                asioita sähköisesti.
-            </p>
+            <div
+                id="mainNews"
+                class="news-content"
+            >
 
-        </header>
-
-        <div class="online-grid">
-
-            <article class="online-card">
-
-                <div class="online-label">
-                    Ajanvaraus
+                <div class="news-empty">
+                    Ladataan uutisia...
                 </div>
 
-                <h3>
-                    Varaa vastaanottoaika
-                </h3>
+            </div>
 
-                <p>
-                    Tarkastele vapaita
-                    vastaanottoaikoja ja tee
-                    ajanvaraus.
-                </p>
-
-                <a href="ajanvaraus.html">
-                    Siirry ajanvaraukseen
-                </a>
-
-            </article>
-
-            <article class="online-card">
-
-                <div class="online-label">
-                    Oma varaus
-                </div>
-
-                <h3>
-                    Tarkastele varaustasi
-                </h3>
-
-                <p>
-                    Tarkista ajanvarauksesi tiedot
-                    ja hallitse aktiivista varausta
-                    varauskoodilla.
-                </p>
-
-                <a href="oma-varaus.html">
-                    Avaa oma varaus
-                </a>
-
-            </article>
-
-            <article class="online-card">
-
-                <div class="online-label">
-                    Terveyskysely
-                </div>
-
-                <h3>
-                    Opiskelijan terveyskysely
-                </h3>
-
-                <p>
-                    Täytä opiskeluterveydenhuollon
-                    terveyskysely sähköisesti.
-                </p>
-
-                <a
-                    href="https://sannarantanenhyvaks.github.io/terveyskysely/"
-                >
-                    Avaa terveyskysely
-                </a>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- ======================================================
-     CURRENT
-======================================================= -->
+        <!-- LATEST -->
 
-<section
-    id="ajankohtaista"
-    class="current-section"
->
+        <section class="news-column latest">
 
-    <div class="current-inner">
-
-        <header class="section-heading">
-
-            <h2>
-                Ajankohtaista
+            <h2 class="news-heading">
+                Viimeisimmät uutiset
             </h2>
 
-            <p>
-                Tietoa palveluista ja asioinnista.
-            </p>
+            <div
+                id="latestNews"
+                class="news-content"
+            >
 
-        </header>
-
-        <div class="current-grid">
-
-            <article class="current-card">
-
-                <div class="current-label">
-                    Opiskeluterveydenhuolto
+                <div class="news-empty">
+                    Ladataan uutisia...
                 </div>
 
-                <h3>
-                    Muuramen lukion
-                    opiskeluterveydenhuolto
-                </h3>
+            </div>
 
-                <p>
-                    Tarkista opiskeluterveydenhuollon
-                    palvelut ja asiointikanavat.
-                </p>
-
-                <a
-                    href="opiskeluterveydenhuolto.html"
-                >
-                    Lue lisää
-                </a>
-
-            </article>
-
-            <article class="current-card">
-
-                <div class="current-label">
-                    Ajanvaraus
-                </div>
-
-                <h3>
-                    Vastaanottoajan varaaminen
-                </h3>
-
-                <p>
-                    Vapaita vastaanottoaikoja
-                    voi tarkastella sähköisessä
-                    ajanvarauksessa.
-                </p>
-
-                <a href="ajanvaraus.html">
-                    Varaa aika
-                </a>
-
-            </article>
-
-            <article class="current-card">
-
-                <div class="current-label">
-                    Asiointi
-                </div>
-
-                <h3>
-                    Tarkista oma varauksesi
-                </h3>
-
-                <p>
-                    Varauskoodilla voit tarkastella
-                    ajanvarauksesi tietoja.
-                </p>
-
-                <a href="oma-varaus.html">
-                    Oma varaus
-                </a>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
+        </section>
 
 
-<!-- ======================================================
-     FEEDBACK
-======================================================= -->
+        <!-- EVENTS -->
 
-<section class="feedback-section">
+        <section class="news-column events">
 
-    <div class="feedback-inner">
-
-        <div class="feedback-copy">
-
-            <h2>
-                Anna palautetta
+            <h2 class="news-heading">
+                Keski-Suomessa tapahtuu
             </h2>
 
-            <p>
-                Palautteesi auttaa kehittämään
-                palveluja ja sähköistä asiointia.
-            </p>
+            <div
+                id="events"
+                class="news-content"
+            >
 
-        </div>
+                <div class="news-empty">
+                    Ladataan tapahtumia...
+                </div>
 
-        <div class="feedback-panel">
+            </div>
 
-            <h3>
-                Palveluihin liittyvä palaute
-            </h3>
+        </section>
 
-            <p>
-                Kiireellisessä asiassa tai
-                henkilökohtaista terveyttä
-                koskevassa asiassa ota yhteyttä
-                suoraan asianomaiseen palveluun.
-            </p>
-
-        </div>
 
     </div>
 
@@ -2302,94 +1702,61 @@ img{
 ======================================================= -->
 
 <footer
-    id="hyvinvointialue"
-    class="site-footer"
+    id="footer"
+    class="footer"
 >
 
-    <div class="footer-main">
+    <div class="footer-inner">
 
-        <div class="footer-column">
+        <div>
 
             <h2>
                 Keski-Suomen hyvinvointialue
             </h2>
 
             <p>
-                Sosiaali- ja terveyspalvelut sekä
-                pelastustoimen palvelut
+                Sosiaali- ja terveyspalvelut
+                sekä pelastustoimen palvelut
                 Keski-Suomessa.
             </p>
 
         </div>
 
-        <div class="footer-column">
+
+        <div>
+
+            <h3>
+                Asiointi
+            </h3>
+
+            <a href="ajanvaraus.html">
+                Ajanvaraus
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+            <a href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+
+        </div>
+
+
+        <div>
 
             <h3>
                 Palvelut
             </h3>
 
             <a
-                href="#palvelut"
-                class="footer-link"
-            >
-                Palvelumme
-            </a>
-
-            <a
-                href="opiskeluterveydenhuolto.html"
-                class="footer-link"
-            >
-                Opiskeluterveydenhuolto
-            </a>
-
-        </div>
-
-        <div class="footer-column">
-
-            <h3>
-                Sähköinen asiointi
-            </h3>
-
-            <a
-                href="ajanvaraus.html"
-                class="footer-link"
-            >
-                Ajanvaraus
-            </a>
-
-            <a
-                href="oma-varaus.html"
-                class="footer-link"
-            >
-                Oma varaus
-            </a>
-
-            <a
                 href="https://sannarantanenhyvaks.github.io/terveyskysely/"
-                class="footer-link"
             >
                 Terveyskysely
             </a>
 
-        </div>
-
-        <div class="footer-column">
-
-            <h3>
-                Asiointi
-            </h3>
-
-            <a
-                href="index.html"
-                class="footer-link"
-            >
-                Etusivu
-            </a>
-
-            <a
-                href="admin.html"
-                class="footer-link"
-            >
+            <a href="admin.html">
                 Ammattilaisille
             </a>
 
@@ -2397,120 +1764,105 @@ img{
 
     </div>
 
-    <div class="footer-bottom">
-        Keski-Suomen hyvinvointialue
-    </div>
-
 </footer>
 
 
 <!-- ======================================================
-     CHAT
+     ROUND CHAT BUTTON
 ======================================================= -->
 
 <button
-    id="chatLauncher"
-    class="chat-launcher"
+    id="chatButton"
+    class="chat-button"
     type="button"
-    aria-expanded="false"
+    aria-label="Avaa chat"
 >
 
-    <span>
-        Chat
-    </span>
+    <svg viewBox="0 0 32 32">
 
-    <span
-        id="launcherStatus"
-        class="chat-status-dot"
-    ></span>
+        <path
+            d="M6 7.5h20v14H14l-6 4v-4H6z"
+        ></path>
+
+        <path
+            d="M11 13h10"
+        ></path>
+
+        <path
+            d="M11 17h6"
+        ></path>
+
+    </svg>
 
 </button>
 
 
+<!-- ======================================================
+     CHAT WINDOW
+======================================================= -->
+
 <section
     id="chatWindow"
     class="chat-window"
-    aria-label="Chat"
 >
 
     <header class="chat-header">
 
-        <div class="chat-header-row">
+        <div class="chat-header-text">
 
-            <div class="chat-header-copy">
-
-                <div class="chat-header-small">
-                    Keski-Suomen hyvinvointialue
-                </div>
-
-                <div class="chat-header-title">
-                    Chat
-                </div>
-
-                <div class="chat-header-status">
-
-                    <span
-                        id="chatHeaderStatusDot"
-                        class="chat-status-dot"
-                    ></span>
-
-                    <span id="chatStatusText">
-                        Tarkistetaan palveluaikaa
-                    </span>
-
-                </div>
-
+            <div class="chat-header-small">
+                Keski-Suomen hyvinvointialue
             </div>
 
-            <button
-                id="chatClose"
-                class="chat-close"
-                type="button"
-                aria-label="Sulje chat"
-            >
-                ×
-            </button>
+            <div class="chat-header-title">
+                Chat
+            </div>
 
         </div>
 
+        <button
+            id="chatClose"
+            class="chat-close"
+            type="button"
+            aria-label="Sulje chat"
+        >
+            ×
+        </button>
+
     </header>
+
 
     <div
         id="chatBody"
         class="chat-body"
     >
 
-        <div id="chatAvailability"></div>
-
         <div class="chat-message bot">
             Hei. Miten voin auttaa?
         </div>
 
-        <div class="quick-actions">
+
+        <div class="chat-quick">
 
             <button
-                class="quick-action"
                 data-message="Haluan varata ajan"
             >
                 Varaa aika
             </button>
 
             <button
-                class="quick-action"
                 data-message="Haluan tarkistaa oman varaukseni"
             >
                 Oma varaus
             </button>
 
             <button
-                class="quick-action"
                 data-message="Terveyskysely"
             >
                 Terveyskysely
             </button>
 
             <button
-                class="quick-action"
                 data-message="Opiskeluterveydenhuolto"
             >
                 Opiskeluterveydenhuolto
@@ -2520,13 +1872,13 @@ img{
 
     </div>
 
+
     <div class="chat-input-area">
 
         <div class="chat-input-row">
 
             <input
                 id="chatInput"
-                class="chat-input"
                 type="text"
                 placeholder="Kirjoita viesti"
                 autocomplete="off"
@@ -2542,7 +1894,7 @@ img{
 
         </div>
 
-        <div class="chat-disclaimer">
+        <div class="chat-info">
             Älä kirjoita chatiin henkilötunnusta
             tai muita arkaluonteisia terveystietoja.
             Hätätilanteessa soita 112.
@@ -2553,10 +1905,84 @@ img{
 </section>
 
 
+<!-- ======================================================
+     SUPABASE
+======================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
 
 /* =========================================================
-   SEARCH DATA
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    'https://bwuybksyoopuejcrlspa.supabase.co';
+
+const SUPABASE_PUBLIC_KEY =
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLIC_KEY
+    );
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+
+}
+
+
+function formatDate(value){
+
+    if(!value){
+        return '';
+    }
+
+
+    const parts =
+        String(value)
+        .substring(0,10)
+        .split('-');
+
+
+    if(parts.length!==3){
+        return value;
+    }
+
+
+    return (
+        Number(parts[2])
+        +
+        '.'
+        +
+        Number(parts[1])
+        +
+        '.'
+        +
+        parts[0]
+    );
+
+}
+
+
+/* =========================================================
+   SEARCH
 ========================================================= */
 
 const searchData = [
@@ -2585,7 +2011,7 @@ const searchData = [
     {
         title:'Terveyskysely',
         description:
-            'Opiskeluterveydenhuollon sähköinen terveyskysely.',
+            'Opiskeluterveydenhuollon terveyskysely.',
         url:
             'https://sannarantanenhyvaks.github.io/terveyskysely/'
     },
@@ -2598,23 +2024,16 @@ const searchData = [
     },
 
     {
-        title:'Suun terveydenhuolto',
-        description:
-            'Suun terveydenhuollon palvelut.',
-        url:'#palvelut'
-    },
-
-    {
-        title:'Mielenterveys- ja riippuvuuspalvelut',
-        description:
-            'Mielenterveyden ja riippuvuuksien palvelut.',
-        url:'#palvelut'
-    },
-
-    {
         title:'Laboratorio',
         description:
             'Laboratoriopalvelut.',
+        url:'#palvelut'
+    },
+
+    {
+        title:'Suun terveydenhuolto',
+        description:
+            'Suun terveydenhuollon palvelut.',
         url:'#palvelut'
     },
 
@@ -2635,10 +2054,6 @@ const searchData = [
 ];
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
 const mainSearchForm =
     document.getElementById(
         'mainSearchForm'
@@ -2649,48 +2064,36 @@ const mainSearchInput =
         'mainSearchInput'
     );
 
+const topSearchForm =
+    document.getElementById(
+        'topSearchForm'
+    );
+
+const topSearchInput =
+    document.getElementById(
+        'topSearchInput'
+    );
+
 const searchResults =
     document.getElementById(
         'searchResults'
     );
 
-const headerSearchForm =
-    document.getElementById(
-        'headerSearchForm'
-    );
 
-const headerSearchInput =
-    document.getElementById(
-        'headerSearchInput'
-    );
+function searchSite(query){
 
-
-function escapeHtml(value){
-
-    return String(value)
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'","&#039;");
-
-}
-
-
-function runSearch(query){
-
-    const cleanQuery =
+    const clean =
         query
         .trim()
         .toLocaleLowerCase('fi');
 
 
-    if(!cleanQuery){
+    if(!clean){
 
         searchResults.innerHTML='';
 
         searchResults.classList.remove(
-            'visible'
+            'show'
         );
 
         return;
@@ -2699,39 +2102,39 @@ function runSearch(query){
 
 
     const matches =
-        searchData.filter(item=>{
+        searchData.filter(item=>
 
-            return (
-                item.title
-                    .toLocaleLowerCase('fi')
-                    .includes(cleanQuery)
-                ||
-                item.description
-                    .toLocaleLowerCase('fi')
-                    .includes(cleanQuery)
-            );
+            item.title
+                .toLocaleLowerCase('fi')
+                .includes(clean)
 
-        });
+            ||
+
+            item.description
+                .toLocaleLowerCase('fi')
+                .includes(clean)
+
+        );
 
 
-    if(matches.length===0){
+    if(!matches.length){
 
         searchResults.innerHTML = `
             <div class="search-result">
 
-                <span class="search-result-title">
+                <strong>
                     Ei hakutuloksia
-                </span>
+                </strong>
 
-                <span class="search-result-description">
+                <small>
                     Kokeile toista hakusanaa.
-                </span>
+                </small>
 
             </div>
         `;
 
         searchResults.classList.add(
-            'visible'
+            'show'
         );
 
         return;
@@ -2744,17 +2147,17 @@ function runSearch(query){
         .map(item=>`
 
             <a
-                href="${escapeHtml(item.url)}"
                 class="search-result"
+                href="${escapeHtml(item.url)}"
             >
 
-                <span class="search-result-title">
+                <strong>
                     ${escapeHtml(item.title)}
-                </span>
+                </strong>
 
-                <span class="search-result-description">
+                <small>
                     ${escapeHtml(item.description)}
-                </span>
+                </small>
 
             </a>
 
@@ -2763,7 +2166,7 @@ function runSearch(query){
 
 
     searchResults.classList.add(
-        'visible'
+        'show'
     );
 
 }
@@ -2775,7 +2178,7 @@ mainSearchForm.addEventListener(
 
         event.preventDefault();
 
-        runSearch(
+        searchSite(
             mainSearchInput.value
         );
 
@@ -2787,7 +2190,7 @@ mainSearchInput.addEventListener(
     'input',
     ()=>{
 
-        runSearch(
+        searchSite(
             mainSearchInput.value
         );
 
@@ -2795,14 +2198,15 @@ mainSearchInput.addEventListener(
 );
 
 
-headerSearchForm.addEventListener(
+topSearchForm.addEventListener(
     'submit',
     event=>{
 
         event.preventDefault();
 
+
         mainSearchInput.value =
-            headerSearchInput.value;
+            topSearchInput.value;
 
 
         mainSearchInput.scrollIntoView({
@@ -2811,8 +2215,8 @@ headerSearchForm.addEventListener(
         });
 
 
-        runSearch(
-            headerSearchInput.value
+        searchSite(
+            topSearchInput.value
         );
 
 
@@ -2828,454 +2232,303 @@ headerSearchForm.addEventListener(
 
 
 /* =========================================================
-   FINNISH HOLIDAYS FOR CHAT
+   NEWS FROM SUPABASE
 ========================================================= */
 
-function easterSunday(year){
-
-    const a=year%19;
-
-    const b=
-        Math.floor(year/100);
-
-    const c=year%100;
-
-    const d=
-        Math.floor(b/4);
-
-    const e=b%4;
-
-    const f=
-        Math.floor((b+8)/25);
-
-    const g=
-        Math.floor(
-            (b-f+1)/3
-        );
-
-    const h=
-        (
-            19*a+
-            b-
-            d-
-            g+
-            15
-        )%30;
-
-    const i=
-        Math.floor(c/4);
-
-    const k=c%4;
-
-    const l=
-        (
-            32+
-            2*e+
-            2*i-
-            h-
-            k
-        )%7;
-
-    const m=
-        Math.floor(
-            (
-                a+
-                11*h+
-                22*l
-            )/451
-        );
-
-    const month=
-        Math.floor(
-            (
-                h+
-                l-
-                7*m+
-                114
-            )/31
-        );
-
-    const day=
-        (
-            (
-                h+
-                l-
-                7*m+
-                114
-            )%31
-        )+1;
-
-
-    return new Date(
-        Date.UTC(
-            year,
-            month-1,
-            day
-        )
-    );
-
-}
-
-
-function addUtcDays(
-    date,
-    days
-){
-
-    const result =
-        new Date(date);
-
-
-    result.setUTCDate(
-        result.getUTCDate()+
-        days
-    );
-
-
-    return result;
-
-}
-
-
-function utcDateKey(date){
-
-    return (
-        date.getUTCFullYear()
-        +
-        '-'
-        +
-        String(
-            date.getUTCMonth()+1
-        ).padStart(2,'0')
-        +
-        '-'
-        +
-        String(
-            date.getUTCDate()
-        ).padStart(2,'0')
-    );
-
-}
-
-
-function finnishPublicHolidays(year){
-
-    const holidays =
-        new Set();
-
-
-    function addFixed(
-        month,
-        day
-    ){
-
-        holidays.add(
-            year
-            +
-            '-'
-            +
-            String(month)
-                .padStart(2,'0')
-            +
-            '-'
-            +
-            String(day)
-                .padStart(2,'0')
-        );
-
-    }
-
-
-    addFixed(1,1);
-    addFixed(1,6);
-    addFixed(5,1);
-    addFixed(12,6);
-    addFixed(12,25);
-    addFixed(12,26);
-
-
-    const easter =
-        easterSunday(year);
-
-
-    holidays.add(
-        utcDateKey(
-            addUtcDays(
-                easter,
-                -2
-            )
-        )
-    );
-
-
-    holidays.add(
-        utcDateKey(easter)
-    );
-
-
-    holidays.add(
-        utcDateKey(
-            addUtcDays(
-                easter,
-                1
-            )
-        )
-    );
-
-
-    holidays.add(
-        utcDateKey(
-            addUtcDays(
-                easter,
-                39
-            )
-        )
-    );
-
-
-    holidays.add(
-        utcDateKey(
-            addUtcDays(
-                easter,
-                49
-            )
-        )
-    );
-
-
-    for(
-        let day=20;
-        day<=26;
-        day++
-    ){
-
-        const date =
-            new Date(
-                Date.UTC(
-                    year,
-                    5,
-                    day
-                )
-            );
-
-
-        if(
-            date.getUTCDay()===6
-        ){
-
-            holidays.add(
-                utcDateKey(date)
-            );
-
-            break;
-
-        }
-
-    }
-
-
-    for(
-        let offset=0;
-        offset<=6;
-        offset++
-    ){
-
-        const date =
-            new Date(
-                Date.UTC(
-                    year,
-                    9,
-                    31+offset
-                )
-            );
-
-
-        if(
-            date.getUTCDay()===6
-        ){
-
-            holidays.add(
-                utcDateKey(date)
-            );
-
-            break;
-
-        }
-
-    }
-
-
-    return holidays;
-
-}
-
-
-/* =========================================================
-   HELSINKI TIME
-========================================================= */
-
-function helsinkiTimeParts(
-    date=new Date()
-){
-
-    const formatter =
-        new Intl.DateTimeFormat(
-            'en-CA',
-            {
-                timeZone:
-                    'Europe/Helsinki',
-
-                year:
-                    'numeric',
-
-                month:
-                    '2-digit',
-
-                day:
-                    '2-digit',
-
-                weekday:
-                    'short',
-
-                hour:
-                    '2-digit',
-
-                minute:
-                    '2-digit',
-
-                hourCycle:
-                    'h23'
-            }
-        );
-
-
-    const values={};
-
-
-    formatter
-        .formatToParts(date)
-        .forEach(part=>{
-
-            if(
-                part.type!==
-                'literal'
-            ){
-
-                values[part.type]=
-                    part.value;
-
-            }
-
-        });
-
-
-    return {
-
-        year:
-            Number(values.year),
-
-        month:
-            Number(values.month),
-
-        day:
-            Number(values.day),
-
-        weekday:
-            values.weekday,
-
-        hour:
-            Number(values.hour),
-
-        minute:
-            Number(values.minute)
-
-    };
-
-}
-
-
-/* =========================================================
-   CHAT AVAILABILITY
-========================================================= */
-
-function getChatAvailability(){
-
-    const now =
-        helsinkiTimeParts();
-
-
-    const dateKey =
-        now.year
-        +
-        '-'
-        +
-        String(now.month)
-            .padStart(2,'0')
-        +
-        '-'
-        +
-        String(now.day)
-            .padStart(2,'0');
-
-
-    const holiday =
-        finnishPublicHolidays(
-            now.year
-        ).has(dateKey);
-
-
-    const weekend =
-        now.weekday==='Sat'
-        ||
-        now.weekday==='Sun';
-
-
-    const specialDay =
-        holiday ||
-        weekend;
-
-
-    const openingHour =
-        specialDay
-        ? 10
-        : 8;
-
-
-    const closingHour =
-        specialDay
-        ? 16
-        : 18;
-
-
-    const currentMinutes =
-        now.hour*60+
-        now.minute;
-
-
-    const open =
-        currentMinutes>=
-            openingHour*60
-        &&
-        currentMinutes<
-            closingHour*60;
-
-
-    return {
-        open,
-        openingHour,
-        closingHour
-    };
-
-}
-
-
-/* =========================================================
-   CHAT ELEMENTS
-========================================================= */
-
-const chatLauncher =
+const mainNewsContainer =
     document.getElementById(
-        'chatLauncher'
+        'mainNews'
+    );
+
+const latestNewsContainer =
+    document.getElementById(
+        'latestNews'
+    );
+
+const eventsContainer =
+    document.getElementById(
+        'events'
+    );
+
+
+async function loadNews(){
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .from('site_news')
+            .select(
+                'id,title,content,category,image_url,event_date,created_at'
+            )
+            .eq(
+                'is_published',
+                true
+            )
+            .order(
+                'created_at',
+                {
+                    ascending:false
+                }
+            );
+
+
+        if(error){
+            throw error;
+        }
+
+
+        const rows =
+            data || [];
+
+
+        const main =
+            rows.filter(
+                item=>
+                    item.category==='main'
+            );
+
+
+        const latest =
+            rows.filter(
+                item=>
+                    item.category==='latest'
+            );
+
+
+        const events =
+            rows
+            .filter(
+                item=>
+                    item.category==='event'
+            )
+            .sort(
+                (a,b)=>{
+
+                    const dateA =
+                        a.event_date
+                        || a.created_at;
+
+                    const dateB =
+                        b.event_date
+                        || b.created_at;
+
+
+                    return (
+                        new Date(dateA)
+                        -
+                        new Date(dateB)
+                    );
+
+                }
+            );
+
+
+        renderMainNews(main);
+
+        renderLatestNews(latest);
+
+        renderEvents(events);
+
+    }
+    catch(error){
+
+        console.error(
+            'Uutisten lataus epäonnistui:',
+            error
+        );
+
+
+        mainNewsContainer.innerHTML = `
+            <div class="news-empty">
+                Pääuutisia ei ole julkaistu.
+            </div>
+        `;
+
+
+        latestNewsContainer.innerHTML = `
+            <div class="news-empty">
+                Uutisia ei ole julkaistu.
+            </div>
+        `;
+
+
+        eventsContainer.innerHTML = `
+            <div class="news-empty">
+                Tapahtumia ei ole julkaistu.
+            </div>
+        `;
+
+    }
+
+}
+
+
+function renderMainNews(items){
+
+    if(!items.length){
+
+        mainNewsContainer.innerHTML = `
+            <div class="news-empty">
+                Pääuutisia ei ole julkaistu.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    mainNewsContainer.innerHTML =
+        items
+        .slice(0,4)
+        .map(item=>{
+
+            const image =
+                item.image_url
+                ? `
+                    <img
+                        src="${escapeHtml(item.image_url)}"
+                        alt=""
+                        class="main-news-image"
+                    >
+                `
+                : '';
+
+
+            const text =
+                item.content
+                ? `
+                    <p class="news-item-text">
+                        ${escapeHtml(item.content)}
+                    </p>
+                `
+                : '';
+
+
+            return `
+
+                <article class="main-news-item">
+
+                    ${image}
+
+                    <h3 class="news-item-title">
+                        ${escapeHtml(item.title)}
+                    </h3>
+
+                    <time class="news-item-date">
+                        ${formatDate(item.created_at)}
+                    </time>
+
+                    ${text}
+
+                </article>
+
+            `;
+
+        })
+        .join('');
+
+}
+
+
+function renderLatestNews(items){
+
+    if(!items.length){
+
+        latestNewsContainer.innerHTML = `
+            <div class="news-empty">
+                Uutisia ei ole julkaistu.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    latestNewsContainer.innerHTML =
+        items
+        .slice(0,8)
+        .map(item=>`
+
+            <article class="news-item">
+
+                <h3 class="news-item-title">
+                    ${escapeHtml(item.title)}
+                </h3>
+
+                <time class="news-item-date">
+                    ${formatDate(item.created_at)}
+                </time>
+
+            </article>
+
+        `)
+        .join('');
+
+}
+
+
+function renderEvents(items){
+
+    if(!items.length){
+
+        eventsContainer.innerHTML = `
+            <div class="news-empty">
+                Tapahtumia ei ole julkaistu.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    eventsContainer.innerHTML =
+        items
+        .slice(0,8)
+        .map(item=>`
+
+            <article class="news-item">
+
+                <h3 class="news-item-title">
+                    ${escapeHtml(item.title)}
+                </h3>
+
+                <time class="news-item-date">
+
+                    ${
+                        formatDate(
+                            item.event_date
+                            ||
+                            item.created_at
+                        )
+                    }
+
+                </time>
+
+            </article>
+
+        `)
+        .join('');
+
+}
+
+
+loadNews();
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+const chatButton =
+    document.getElementById(
+        'chatButton'
     );
 
 const chatWindow =
@@ -3293,26 +2546,6 @@ const chatBody =
         'chatBody'
     );
 
-const chatAvailability =
-    document.getElementById(
-        'chatAvailability'
-    );
-
-const chatStatusText =
-    document.getElementById(
-        'chatStatusText'
-    );
-
-const launcherStatus =
-    document.getElementById(
-        'launcherStatus'
-    );
-
-const chatHeaderStatusDot =
-    document.getElementById(
-        'chatHeaderStatusDot'
-    );
-
 const chatInput =
     document.getElementById(
         'chatInput'
@@ -3323,75 +2556,30 @@ const chatSend =
         'chatSend'
     );
 
-const quickActions =
+const quickButtons =
     document.querySelectorAll(
-        '.quick-action'
+        '.chat-quick button'
     );
 
 
-/* =========================================================
-   OPEN / CLOSE
-========================================================= */
-
-function openChat(){
-
-    chatWindow.classList.add(
-        'open'
-    );
-
-
-    chatLauncher.setAttribute(
-        'aria-expanded',
-        'true'
-    );
-
-
-    if(
-        getChatAvailability()
-            .open
-    ){
-
-        setTimeout(
-            ()=>{
-                chatInput.focus();
-            },
-            100
-        );
-
-    }
-
-}
-
-
-function closeChat(){
-
-    chatWindow.classList.remove(
-        'open'
-    );
-
-
-    chatLauncher.setAttribute(
-        'aria-expanded',
-        'false'
-    );
-
-}
-
-
-chatLauncher.addEventListener(
+chatButton.addEventListener(
     'click',
     ()=>{
+
+        chatWindow.classList.toggle(
+            'open'
+        );
+
 
         if(
             chatWindow.classList
                 .contains('open')
         ){
 
-            closeChat();
-
-        }else{
-
-            openChat();
+            setTimeout(
+                ()=>chatInput.focus(),
+                100
+            );
 
         }
 
@@ -3401,145 +2589,37 @@ chatLauncher.addEventListener(
 
 chatClose.addEventListener(
     'click',
-    closeChat
-);
+    ()=>{
 
-
-/* =========================================================
-   CHAT STATUS
-========================================================= */
-
-function updateChatStatus(){
-
-    const availability =
-        getChatAvailability();
-
-
-    if(availability.open){
-
-        chatStatusText.textContent =
-            'Avoinna · klo '
-            +
-            availability.openingHour
-            +
-            '.00–'
-            +
-            availability.closingHour
-            +
-            '.00';
-
-
-        launcherStatus.style.background =
-            '#74d6a0';
-
-
-        chatHeaderStatusDot.style.background =
-            '#74d6a0';
-
-
-        chatAvailability.innerHTML = `
-            <div class="chat-message bot">
-
-                Chat on tällä hetkellä
-                <strong>avoinna</strong>.
-
-            </div>
-        `;
-
-
-        chatInput.disabled=false;
-
-        chatSend.disabled=false;
-
-        chatInput.placeholder =
-            'Kirjoita viesti';
-
-    }else{
-
-        chatStatusText.textContent =
-            'Suljettu';
-
-
-        launcherStatus.style.background =
-            '#d4dadd';
-
-
-        chatHeaderStatusDot.style.background =
-            '#d4dadd';
-
-
-        chatAvailability.innerHTML = `
-            <div class="chat-notice">
-
-                <strong>
-                    Chat on tällä hetkellä suljettu.
-                </strong>
-
-                <br><br>
-
-                Palveluajat ovat maanantaista
-                perjantaihin klo 8.00–18.00
-                sekä viikonloppuisin ja
-                arkipyhinä klo 10.00–16.00.
-
-                <br><br>
-
-                Sähköiset asiointipalvelut ovat
-                käytettävissä myös chatin ollessa
-                suljettuna.
-
-            </div>
-        `;
-
-
-        chatInput.disabled=true;
-
-        chatSend.disabled=true;
-
-        chatInput.placeholder =
-            'Chat on suljettu';
+        chatWindow.classList.remove(
+            'open'
+        );
 
     }
-
-}
-
-
-updateChatStatus();
-
-
-setInterval(
-    updateChatStatus,
-    60000
 );
 
 
-/* =========================================================
-   CHAT MESSAGES
-========================================================= */
-
-function addChatMessage(
+function addMessage(
     text,
     sender
 ){
 
-    const element =
+    const div =
         document.createElement(
             'div'
         );
 
 
-    element.className =
+    div.className =
         'chat-message '+
         sender;
 
 
-    element.textContent =
+    div.textContent =
         text;
 
 
-    chatBody.appendChild(
-        element
-    );
+    chatBody.appendChild(div);
 
 
     chatBody.scrollTop =
@@ -3550,23 +2630,21 @@ function addChatMessage(
 
 function addBotHtml(html){
 
-    const element =
+    const div =
         document.createElement(
             'div'
         );
 
 
-    element.className =
+    div.className =
         'chat-message bot';
 
 
-    element.innerHTML =
+    div.innerHTML =
         html;
 
 
-    chatBody.appendChild(
-        element
-    );
+    chatBody.appendChild(div);
 
 
     chatBody.scrollTop =
@@ -3575,11 +2653,7 @@ function addBotHtml(html){
 }
 
 
-/* =========================================================
-   CHAT RESPONSES
-========================================================= */
-
-function getBotResponse(message){
+function botResponse(message){
 
     const text =
         message
@@ -3593,17 +2667,11 @@ function getBotResponse(message){
         text.includes('hätä')
         ||
         text.includes('tajuton')
-        ||
-        text.includes('hengitys ei')
     ){
 
         return {
-
-            type:'html',
-
-            content:
-                'Jos kyseessä on hätätilanne tai henki on vaarassa, soita <strong>112</strong>. Chatia ei tule käyttää hätätilanteessa.'
-
+            html:
+                'Hätätilanteessa tai hengen ollessa vaarassa soita <strong>112</strong>.'
         };
 
     }
@@ -3618,12 +2686,8 @@ function getBotResponse(message){
     ){
 
         return {
-
-            type:'html',
-
-            content:
-                'Voit tarkastella ajanvaraustasi varauskoodilla.<br><br><a href="oma-varaus.html" style="color:#075394;font-weight:700;">Siirry omaan varaukseen</a>'
-
+            html:
+                'Voit tarkistaa ajanvarauksesi varauskoodilla.<br><br><a href="oma-varaus.html" style="color:#07549a;font-weight:700;">Avaa oma varaus</a>'
         };
 
     }
@@ -3633,17 +2697,11 @@ function getBotResponse(message){
         text.includes('varaa')
         ||
         text.includes('ajanvaraus')
-        ||
-        text.includes('vastaanottoaika')
     ){
 
         return {
-
-            type:'html',
-
-            content:
-                'Voit tarkastella vapaita vastaanottoaikoja sähköisessä ajanvarauksessa.<br><br><a href="ajanvaraus.html" style="color:#075394;font-weight:700;">Siirry ajanvaraukseen</a>'
-
+            html:
+                'Voit tarkastella vapaita vastaanottoaikoja ajanvarauksessa.<br><br><a href="ajanvaraus.html" style="color:#07549a;font-weight:700;">Siirry ajanvaraukseen</a>'
         };
 
     }
@@ -3656,12 +2714,8 @@ function getBotResponse(message){
     ){
 
         return {
-
-            type:'html',
-
-            content:
-                'Opiskeluterveydenhuollon terveyskysely täytetään sähköisesti.<br><br><a href="https://sannarantanenhyvaks.github.io/terveyskysely/" style="color:#075394;font-weight:700;">Avaa terveyskysely</a>'
-
+            html:
+                'Voit avata opiskeluterveydenhuollon terveyskyselyn tästä.<br><br><a href="https://sannarantanenhyvaks.github.io/terveyskysely/" style="color:#07549a;font-weight:700;">Avaa terveyskysely</a>'
         };
 
     }
@@ -3676,85 +2730,39 @@ function getBotResponse(message){
     ){
 
         return {
-
-            type:'html',
-
-            content:
-                'Opiskeluterveydenhuollon sivulla voit valita oman oppilaitoksesi ja tarkastella palvelutietoja.<br><br><a href="opiskeluterveydenhuolto.html" style="color:#075394;font-weight:700;">Siirry opiskeluterveydenhuoltoon</a>'
-
-        };
-
-    }
-
-
-    if(
-        text==='hei'
-        ||
-        text==='moi'
-        ||
-        text==='moikka'
-        ||
-        text==='terve'
-    ){
-
-        return {
-
-            type:'text',
-
-            content:
-                'Hei. Miten voin auttaa? Voin ohjata esimerkiksi ajanvaraukseen, omaan varaukseen, terveyskyselyyn tai opiskeluterveydenhuollon palveluihin.'
-
+            html:
+                'Opiskeluterveydenhuollon sivulla voit valita oppilaitoksen ja tarkastella palveluja.<br><br><a href="opiskeluterveydenhuolto.html" style="color:#07549a;font-weight:700;">Opiskeluterveydenhuolto</a>'
         };
 
     }
 
 
     return {
-
-        type:'text',
-
-        content:
-            'En löytänyt kysymykseesi suoraa vastausta. Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä sekä opiskeluterveydenhuollon palveluihin liittyvässä asioinnissa.'
-
+        text:
+            'Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä ja opiskeluterveydenhuollon palveluissa.'
     };
 
 }
 
 
-/* =========================================================
-   SEND CHAT MESSAGE
-========================================================= */
-
-function sendChatMessage(
+function sendMessage(
     preset=null
 ){
 
-    if(
-        !getChatAvailability()
-            .open
-    ){
-
-        return;
-
-    }
-
-
     const message =
         (
-            preset!==null
-            ? preset
-            : chatInput.value
+            preset
+            ??
+            chatInput.value
         ).trim();
 
 
     if(!message){
-
         return;
-
     }
 
 
-    addChatMessage(
+    addMessage(
         message,
         'user'
     );
@@ -3763,76 +2771,40 @@ function sendChatMessage(
     chatInput.value='';
 
 
-    chatInput.disabled=true;
-
-    chatSend.disabled=true;
-
-
     setTimeout(
         ()=>{
 
             const response =
-                getBotResponse(
+                botResponse(
                     message
                 );
 
 
-            if(
-                response.type===
-                'html'
-            ){
+            if(response.html){
 
                 addBotHtml(
-                    response.content
+                    response.html
                 );
 
             }else{
 
-                addChatMessage(
-                    response.content,
+                addMessage(
+                    response.text,
                     'bot'
                 );
 
             }
 
-
-            const open =
-                getChatAvailability()
-                    .open;
-
-
-            chatInput.disabled =
-                !open;
-
-
-            chatSend.disabled =
-                !open;
-
-
-            if(open){
-
-                chatInput.focus();
-
-            }
-
         },
-        400
+        350
     );
 
 }
 
 
-/* =========================================================
-   CHAT EVENTS
-========================================================= */
-
 chatSend.addEventListener(
     'click',
-    ()=>{
-
-        sendChatMessage();
-
-    }
+    ()=>sendMessage()
 );
 
 
@@ -3840,13 +2812,11 @@ chatInput.addEventListener(
     'keydown',
     event=>{
 
-        if(
-            event.key==='Enter'
-        ){
+        if(event.key==='Enter'){
 
             event.preventDefault();
 
-            sendChatMessage();
+            sendMessage();
 
         }
 
@@ -3854,54 +2824,15 @@ chatInput.addEventListener(
 );
 
 
-quickActions.forEach(
+quickButtons.forEach(
     button=>{
 
         button.addEventListener(
             'click',
             ()=>{
 
-                const message =
-                    button.dataset.message;
-
-
-                if(
-                    !getChatAvailability()
-                        .open
-                ){
-
-                    const response =
-                        getBotResponse(
-                            message
-                        );
-
-
-                    if(
-                        response.type===
-                        'html'
-                    ){
-
-                        addBotHtml(
-                            response.content
-                        );
-
-                    }else{
-
-                        addChatMessage(
-                            response.content,
-                            'bot'
-                        );
-
-                    }
-
-
-                    return;
-
-                }
-
-
-                sendChatMessage(
-                    message
+                sendMessage(
+                    button.dataset.message
                 );
 
             }
@@ -3915,14 +2846,11 @@ document.addEventListener(
     'keydown',
     event=>{
 
-        if(
-            event.key==='Escape'
-            &&
-            chatWindow.classList
-                .contains('open')
-        ){
+        if(event.key==='Escape'){
 
-            closeChat();
+            chatWindow.classList.remove(
+                'open'
+            );
 
         }
 
