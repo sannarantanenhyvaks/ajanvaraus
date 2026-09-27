@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anna palautetta | Keski-Suomen hyvinvointialue</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --blue: #2f679c;
+            --blue-dark: #07549a;
+            --blue-hover: #245987;
+            --green: #b8d981;
+            --light-blue: #eaf4f8;
+            --text: #151515;
+            --muted: #66747b;
+            --border: #cbd5da;
+            --error: #a52020;
+            --success: #e8f3dc;
+            --max-width: 1360px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: var(--text);
+
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .site-header {
+            background: #ffffff;
+        }
+
+        .header-top {
+            width: 100%;
+            max-width: var(--max-width);
+
+            min-height: 112px;
+
+            margin: 0 auto;
+            padding: 22px 20px 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 40px;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .logo {
+            display: block;
+
+            width: 220px;
+            max-height: 72px;
+
+            object-fit: contain;
+        }
+
+        .top-search {
+            width: 340px;
+            height: 52px;
+
+            display: flex;
+
+            border: 2px solid var(--blue-dark);
+            border-radius: 30px;
+
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .top-search input {
+            flex: 1;
+            min-width: 0;
+
+            padding: 0 21px;
+
+            border: 0;
+            outline: 0;
+
+            font-size: 15px;
+        }
+
+        .top-search button {
+            width: 55px;
+
+            border: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .top-search svg {
+            width: 23px;
+            height: 23px;
+        }
+
+        /* =====================================================
+           NAV
+        ===================================================== */
+
+        .main-nav {
+            background: #ffffff;
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: var(--max-width);
+
+            min-height: 63px;
+
+            margin: 0 auto;
+            padding: 0 7px;
+
+            display: flex;
+            align-items: stretch;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+
+            padding: 0 14px;
+
+            color: var(--blue-dark);
+
+            text-decoration: none;
+            font-size: 15px;
+
+            white-space: nowrap;
+
+            border-bottom: 4px solid transparent;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            border-bottom-color: var(--blue-dark);
+        }
+
+        /* =====================================================
+           BREADCRUMB
+        ===================================================== */
+
+        .breadcrumb {
+            width: 100%;
+            max-width: 1120px;
+
+            margin: 0 auto;
+            padding: 26px 20px 0;
+
+            color: #52656d;
+
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--blue-dark);
+        }
+
+        .breadcrumb-separator {
+            margin: 0 8px;
+        }
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .page {
+            width: 100%;
+            max-width: 1120px;
+
+            margin: 0 auto;
+
+            padding: 38px 20px 85px;
+        }
+
+        .page-header {
+            max-width: 760px;
+
+            margin-bottom: 42px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 18px;
+
+            color: var(--blue-dark);
+
+            font-size: 38px;
+            line-height: 1.15;
+
+            font-weight: 500;
+        }
+
+        .page-header p {
+            margin: 0 0 13px;
+
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .notice {
+            margin-top: 23px;
+            padding: 18px 20px;
+
+            background: var(--light-blue);
+
+            border-left: 5px solid var(--blue);
+
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .feedback-layout {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 720px)
+                minmax(240px, 1fr);
+
+            gap: 65px;
+
+            align-items: start;
+        }
+
+        .feedback-form {
+            width: 100%;
+        }
+
+        .form-section {
+            margin-bottom: 43px;
+        }
+
+        .form-section h2 {
+            margin: 0 0 12px;
+
+            color: var(--blue-dark);
+
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .form-section > p {
+            margin: 0 0 20px;
+
+            color: #333333;
+
+            font-size: 14px;
+        }
+
+        .required {
+            color: #9b1c1c;
+        }
+
+        /* =====================================================
+           NPS
+        ===================================================== */
+
+        .nps-question {
+            margin-bottom: 16px;
+
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .nps-scale {
+            display: grid;
+
+            grid-template-columns:
+                repeat(11, minmax(43px, 1fr));
+
+            gap: 7px;
+
+            max-width: 700px;
+        }
+
+        .score-option {
+            position: relative;
+        }
+
+        .score-option input {
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+        .score-option label {
+            height: 51px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid var(--blue);
+            border-radius: 4px;
+
+            background: #ffffff;
+            color: var(--blue-dark);
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                background .12s,
+                color .12s,
+                border-color .12s;
+        }
+
+        .score-option label:hover {
+            background: #edf5f9;
+        }
+
+        .score-option input:focus-visible + label {
+            outline: 3px solid rgba(0, 103, 168, .25);
+            outline-offset: 2px;
+        }
+
+        .score-option input:checked + label {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .scale-description {
+            max-width: 700px;
+
+            margin-top: 9px;
+
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #596970;
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           INPUTIT
+        ===================================================== */
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .field label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .field select,
+        .field textarea,
+        .field input[type="text"] {
+            width: 100%;
+
+            border: 1px solid #7c8d94;
+            border-radius: 3px;
+
+            background: #ffffff;
+        }
+
+        .field select,
+        .field input[type="text"] {
+            height: 48px;
+
+            padding: 0 13px;
+        }
+
+        .field textarea {
+            min-height: 180px;
+
+            padding: 13px;
+
+            resize: vertical;
+        }
+
+        .field-help {
+            margin-top: 6px;
+
+            color: #596970;
+
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           PRIVACY
+        ===================================================== */
+
+        .privacy-box {
+            margin: 10px 0 30px;
+
+            padding: 18px 20px;
+
+            background: #f5f7f8;
+
+            border: 1px solid #d9e0e3;
+        }
+
+        .privacy-box h3 {
+            margin: 0 0 7px;
+
+            color: var(--blue-dark);
+
+            font-size: 16px;
+        }
+
+        .privacy-box p {
+            margin: 0;
+
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        /* =====================================================
+           SUBMIT
+        ===================================================== */
+
+        .submit-row {
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+        }
+
+        .submit-button {
+            min-height: 48px;
+
+            padding: 0 24px;
+
+            border: 0;
+            border-radius: 4px;
+
+            background: var(--blue);
+            color: #ffffff;
+
+            font-weight: 700;
+        }
+
+        .submit-button:hover {
+            background: var(--blue-hover);
+        }
+
+        .submit-button:disabled {
+            cursor: wait;
+            opacity: .65;
+        }
+
+        .form-error {
+            display: none;
+
+            margin-top: 20px;
+            padding: 14px 16px;
+
+            border-left: 4px solid var(--error);
+
+            background: #fbeaea;
+            color: #721515;
+
+            font-size: 14px;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        /* =====================================================
+           SUCCESS
+        ===================================================== */
+
+        .success-box {
+            display: none;
+
+            max-width: 720px;
+
+            padding: 30px;
+
+            border-left: 6px solid #79a946;
+
+            background: var(--success);
+        }
+
+        .success-box.show {
+            display: block;
+        }
+
+        .success-box h2 {
+            margin: 0 0 12px;
+
+            color: #355f1b;
+
+            font-size: 25px;
+        }
+
+        .success-box p {
+            margin: 0 0 20px;
+        }
+
+        .return-button {
+            display: inline-flex;
+
+            min-height: 45px;
+
+            align-items: center;
+
+            padding: 0 18px;
+
+            border-radius: 4px;
+
+            background: var(--blue);
+            color: #ffffff;
+
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* =====================================================
+           SIDE INFO
+        ===================================================== */
+
+        .side-info {
+            padding: 24px;
+
+            background: #f1f6f8;
+
+            border-top: 5px solid var(--blue);
+        }
+
+        .side-info h2 {
+            margin: 0 0 12px;
+
+            color: var(--blue-dark);
+
+            font-size: 20px;
+        }
+
+        .side-info p {
+            margin: 0 0 18px;
+
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .side-info h3 {
+            margin: 24px 0 7px;
+
+            font-size: 16px;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .footer-main {
+            width: 100%;
+            max-width: 1050px;
+
+            margin: 0 auto;
+            padding: 35px 20px 40px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr;
+
+            gap: 100px;
+        }
+
+        .footer-main h2 {
+            margin: 0 0 14px;
+
+            font-size: 18px;
+        }
+
+        .footer-about p {
+            max-width: 430px;
+
+            margin: 0;
+
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer-links a {
+            display: block;
+
+            margin: 3px 0;
+
+            color: #ffffff;
+
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            max-width: 1050px;
+
+            margin: 0 auto;
+            padding: 0 20px 35px;
+        }
+
+        .footer-line {
+            height: 1px;
+
+            margin-bottom: 28px;
+
+            background: rgba(
+                255,
+                255,
+                255,
+                .65
+            );
+        }
+
+        .footer-bottom-row {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .footer-logo {
+            width: 175px;
+            max-height: 55px;
+
+            object-fit: contain;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .nav-inner {
+                overflow-x: auto;
+            }
+
+            .feedback-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .nps-scale {
+                grid-template-columns:
+                    repeat(6, 1fr);
+            }
+
+            .side-info {
+                max-width: 720px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .header-top {
+                min-height: 88px;
+
+                padding: 14px 18px;
+            }
+
+            .logo {
+                width: 175px;
+            }
+
+            .top-search {
+                display: none;
+            }
+
+            .nav-inner {
+                padding: 0;
+            }
+
+            .page {
+                padding: 28px 18px 60px;
+            }
+
+            .breadcrumb {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .page-header h1 {
+                font-size: 31px;
+            }
+
+            .nps-scale {
+                grid-template-columns:
+                    repeat(4, 1fr);
+            }
+
+            .scale-description {
+                display: block;
+            }
+
+            .scale-description span {
+                display: block;
+
+                margin-bottom: 4px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+            .footer-bottom-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-top">
+
+        <a
+            href="index.html"
+            class="logo-link"
+        >
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="logo"
+            >
+        </a>
+
+
+        <form
+            class="top-search"
+            id="topSearchForm"
+        >
+
+            <input
+                id="topSearchInput"
+                type="search"
+                placeholder="Hae sivustolta"
+                aria-label="Hae sivustolta"
+            >
+
+            <button
+                type="submit"
+                aria-label="Hae"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    ></circle>
+
+                    <path
+                        d="M16.5 16.5L21 21"
+                    ></path>
+                </svg>
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <div class="nav-inner">
+
+            <a
+                href="index.html#palvelut"
+                class="nav-link"
+            >
+                Palvelumme
+            </a>
+
+            <a
+                href="index.html#asiointi"
+                class="nav-link"
+            >
+                Asiointi
+            </a>
+
+            <a
+                href="opiskeluterveydenhuolto.html"
+                class="nav-link"
+            >
+                Asiakkaana
+            </a>
+
+            <a
+                href="index.html#palvelut"
+                class="nav-link"
+            >
+                Sairaala Nova
+            </a>
+
+            <a
+                href="opiskeluterveydenhuolto.html"
+                class="nav-link"
+            >
+                Hyvinvointisi tueksi
+            </a>
+
+            <a
+                href="index.html#footer"
+                class="nav-link"
+            >
+                Hyvinvointialue
+            </a>
+
+            <a
+                href="index.html#uutiset"
+                class="nav-link"
+            >
+                Ajankohtaista
+            </a>
+
+            <a
+                href="#"
+                class="nav-link"
+            >
+                Tule työkaveriksi
+            </a>
+
+            <a
+                href="#"
+                class="nav-link"
+            >
+                In English
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     BREADCRUMB
+========================================================= -->
+
+<div class="breadcrumb">
+
+    <a href="index.html">
+        Etusivu
+    </a>
+
+    <span class="breadcrumb-separator">
+        ›
+    </span>
+
+    <span>
+        Anna palautetta
+    </span>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="page">
+
+    <header class="page-header">
+
+        <h1>
+            Anna meille palautetta
+        </h1>
+
+        <p>
+            Kerro meille, miten onnistuimme.
+            Palautteesi auttaa kehittämään Keski-Suomen
+            hyvinvointialueen palveluja.
+        </p>
+
+        <p>
+            Voit antaa palautetta saamastasi palvelusta,
+            asioinnista tai muusta kokemuksestasi.
+        </p>
+
+
+        <div class="notice">
+            Älä kirjoita palautteeseen henkilötunnusta,
+            terveystietoja tai muita arkaluonteisia
+            henkilötietoja.
+        </div>
+
+    </header>
+
+
+    <div class="feedback-layout">
+
+        <!-- =================================================
+             FORM
+        ================================================= -->
+
+        <div>
+
+            <form
+                id="feedbackForm"
+                class="feedback-form"
+            >
+
+                <!-- NPS -->
+
+                <section class="form-section">
+
+                    <h2>
+                        Arvioi kokemuksesi
+                    </h2>
+
+                    <p class="nps-question">
+                        Kuinka todennäköisesti suosittelisit
+                        palveluamme läheisellesi?
+                        <span class="required">*</span>
+                    </p>
+
+
+                    <div
+                        class="nps-scale"
+                        role="radiogroup"
+                        aria-label="Arvio 0–10"
+                    >
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score0"
+                                name="score"
+                                value="0"
+                            >
+                            <label for="score0">0</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score1"
+                                name="score"
+                                value="1"
+                            >
+                            <label for="score1">1</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score2"
+                                name="score"
+                                value="2"
+                            >
+                            <label for="score2">2</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score3"
+                                name="score"
+                                value="3"
+                            >
+                            <label for="score3">3</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score4"
+                                name="score"
+                                value="4"
+                            >
+                            <label for="score4">4</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score5"
+                                name="score"
+                                value="5"
+                            >
+                            <label for="score5">5</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score6"
+                                name="score"
+                                value="6"
+                            >
+                            <label for="score6">6</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score7"
+                                name="score"
+                                value="7"
+                            >
+                            <label for="score7">7</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score8"
+                                name="score"
+                                value="8"
+                            >
+                            <label for="score8">8</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score9"
+                                name="score"
+                                value="9"
+                            >
+                            <label for="score9">9</label>
+                        </div>
+
+                        <div class="score-option">
+                            <input
+                                type="radio"
+                                id="score10"
+                                name="score"
+                                value="10"
+                            >
+                            <label for="score10">10</label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-description">
+
+                        <span>
+                            0 = en lainkaan todennäköisesti
+                        </span>
+
+                        <span>
+                            10 = erittäin todennäköisesti
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PALAUTTEEN AIHE -->
+
+                <section class="form-section">
+
+                    <h2>
+                        Kerro kokemuksestasi
+                    </h2>
+
+
+                    <div class="field">
+
+                        <label for="feedbackTopic">
+                            Palautteen aihe
+                        </label>
+
+                        <select id="feedbackTopic">
+
+                            <option value="">
+                                Valitse aihe
+                            </option>
+
+                            <option value="Opiskeluterveydenhuolto">
+                                Opiskeluterveydenhuolto
+                            </option>
+
+                            <option value="Ajanvaraus">
+                                Ajanvaraus
+                            </option>
+
+                            <option value="Vastaanotto">
+                                Vastaanotto
+                            </option>
+
+                            <option value="Verkkopalvelu">
+                                Verkkopalvelu
+                            </option>
+
+                            <option value="Asiakaspalvelu">
+                                Asiakaspalvelu
+                            </option>
+
+                            <option value="Muu">
+                                Muu
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="feedbackText">
+                            Vapaa palaute
+                        </label>
+
+                        <textarea
+                            id="feedbackText"
+                            maxlength="3000"
+                            placeholder="Kirjoita palautteesi tähän"
+                        ></textarea>
+
+                        <div class="field-help">
+                            Enintään 3000 merkkiä.
+                            Älä kirjoita arkaluonteisia henkilötietoja.
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PRIVACY -->
+
+                <div class="privacy-box">
+
+                    <h3>
+                        Palautteen käsittely
+                    </h3>
+
+                    <p>
+                        Palaute tallennetaan palvelun
+                        palautetietokantaan. Sivulla ei pyydetä
+                        nimeä, henkilötunnusta tai yhteystietoja.
+                        Palautetta käytetään palvelun
+                        kehittämiseen ja asiakaskokemuksen
+                        seurantaan.
+                    </p>
+
+                </div>
+
+
+                <!-- SEND -->
+
+                <div class="submit-row">
+
+                    <button
+                        id="submitButton"
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Lähetä palaute
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="formError"
+                    class="form-error"
+                    role="alert"
+                ></div>
+
+            </form>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                id="successBox"
+                class="success-box"
+            >
+
+                <h2>
+                    Kiitos palautteestasi
+                </h2>
+
+                <p>
+                    Palautteesi on vastaanotettu.
+                    Kiitos, että autat meitä kehittämään
+                    palvelujamme.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="return-button"
+                >
+                    Palaa etusivulle
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SIDE INFO
+        ================================================= -->
+
+        <aside class="side-info">
+
+            <h2>
+                Asiakaspalaute
+            </h2>
+
+            <p>
+                Palautteen avulla saamme tietoa asiakkaiden
+                kokemuksista ja voimme kehittää palvelujamme.
+            </p>
+
+            <h3>
+                NPS-mittari
+            </h3>
+
+            <p>
+                Suositteluhalukkuutta mitataan asteikolla
+                0–10.
+            </p>
+
+            <p>
+                Arviot 9–10 ovat suosittelijoita,
+                7–8 neutraaleja ja 0–6 arvostelijoita.
+                NPS-luku muodostetaan suosittelijoiden ja
+                arvostelijoiden osuuksien erotuksesta.
+            </p>
+
+            <h3>
+                Huomioithan
+            </h3>
+
+            <p>
+                Palautelomake ei ole tarkoitettu kiireelliseen
+                yhteydenottoon tai henkilökohtaisen
+                terveysasian käsittelyyn.
+            </p>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div class="footer-about">
+
+            <h2>
+                Keski-Suomen hyvinvointialue
+            </h2>
+
+            <p>
+                Vastaamme noin 273 000 keskisuomalaisen
+                sosiaali-, terveys- ja pelastustoimen
+                palveluista. Edistämme hyvinvointia,
+                terveyttä ja turvallisuutta Keski-Suomessa
+                vaikuttavasti ja laajalla yhteistyöllä.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h2>
+                Oikopolut
+            </h2>
+
+            <a href="index.html">
+                Etusivu
+            </a>
+
+            <a href="ajanvaraus.html">
+                Ajanvaraus
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+            <a href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+
+            <a href="palaute.html">
+                Anna palautetta
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="footer-line"></div>
+
+        <div class="footer-bottom-row">
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="footer-logo"
+            >
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<script>
+
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
+
+    const SUPABASE_URL =
+        'https://bwuybksyoopuejcrlspa.supabase.co';
+
+    const SUPABASE_PUBLIC_KEY =
+        'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLIC_KEY
+        );
+
+
+    /* =====================================================
+       ELEMENTIT
+    ===================================================== */
+
+    const feedbackForm =
+        document.getElementById(
+            'feedbackForm'
+        );
+
+    const feedbackTopic =
+        document.getElementById(
+            'feedbackTopic'
+        );
+
+    const feedbackText =
+        document.getElementById(
+            'feedbackText'
+        );
+
+    const submitButton =
+        document.getElementById(
+            'submitButton'
+        );
+
+    const formError =
+        document.getElementById(
+            'formError'
+        );
+
+    const successBox =
+        document.getElementById(
+            'successBox'
+        );
+
+
+    /* =====================================================
+       VIRHE
+    ===================================================== */
+
+    function showError(message) {
+
+        formError.textContent =
+            message;
+
+        formError.classList.add(
+            'show'
+        );
+
+
+        formError.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+
+
+    function hideError() {
+
+        formError.textContent = '';
+
+        formError.classList.remove(
+            'show'
+        );
+    }
+
+
+    /* =====================================================
+       PALAUTTEEN LÄHETYS
+    ===================================================== */
+
+    feedbackForm.addEventListener(
+        'submit',
+
+        async event => {
+
+            event.preventDefault();
+
+            hideError();
+
+
+            const selectedScore =
+                document.querySelector(
+                    'input[name="score"]:checked'
+                );
+
+
+            if (!selectedScore) {
+
+                showError(
+                    'Valitse ensin arvio väliltä 0–10.'
+                );
+
+                return;
+            }
+
+
+            const score =
+                Number(
+                    selectedScore.value
+                );
+
+
+            if (
+                !Number.isInteger(score)
+                ||
+                score < 0
+                ||
+                score > 10
+            ) {
+
+                showError(
+                    'Arvion tulee olla väliltä 0–10.'
+                );
+
+                return;
+            }
+
+
+            const topic =
+                feedbackTopic.value.trim();
+
+
+            const text =
+                feedbackText.value.trim();
+
+
+            submitButton.disabled =
+                true;
+
+
+            submitButton.textContent =
+                'Lähetetään...';
+
+
+            try {
+
+                /*
+                    Nykyisessä feedback-taulussa on:
+
+                    score
+                    feedback_text
+
+                    Koska topic-saraketta ei vielä tarvita
+                    erikseen, tallennetaan valittu aihe
+                    palautetekstin alkuun.
+
+                    Näin tämä toimii suoraan aiemmin
+                    tekemämme SQL:n kanssa.
+                */
+
+                let storedText = '';
+
+
+                if (topic && text) {
+
+                    storedText =
+                        'Aihe: '
+                        +
+                        topic
+                        +
+                        '\n\n'
+                        +
+                        text;
+
+                }
+
+                else if (topic) {
+
+                    storedText =
+                        'Aihe: '
+                        +
+                        topic;
+
+                }
+
+                else if (text) {
+
+                    storedText =
+                        text;
+                }
+
+
+                const payload = {
+                    score: score,
+                    feedback_text:
+                        storedText || null
+                };
+
+
+                const { error } =
+                    await supabaseClient
+                        .from('feedback')
+                        .insert(payload);
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                /*
+                    Onnistunut lähetys
+                */
+
+                feedbackForm.style.display =
+                    'none';
+
+
+                successBox.classList.add(
+                    'show'
+                );
+
+
+                window.scrollTo({
+                    top: 180,
+                    behavior: 'smooth'
+                });
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    'Palautteen lähetys epäonnistui:',
+                    error
+                );
+
+
+                showError(
+                    'Palautteen lähettäminen epäonnistui. Yritä hetken kuluttua uudelleen.'
+                );
+
+
+                submitButton.disabled =
+                    false;
+
+
+                submitButton.textContent =
+                    'Lähetä palaute';
+            }
+        }
+    );
+
+
+    /* =====================================================
+       HEADERIN HAKU
+    ===================================================== */
+
+    const topSearchForm =
+        document.getElementById(
+            'topSearchForm'
+        );
+
+    const topSearchInput =
+        document.getElementById(
+            'topSearchInput'
+        );
+
+
+    topSearchForm.addEventListener(
+        'submit',
+
+        event => {
+
+            event.preventDefault();
+
+
+            const query =
+                topSearchInput.value
+                    .trim();
+
+
+            if (!query) {
+                return;
+            }
+
+
+            window.location.href =
+                'index.html?search='
+                +
+                encodeURIComponent(
+                    query
+                );
+        }
+    );
+
+</script>
+
+</body>
+</html>
