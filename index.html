@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Keski-Suomen hyvinvointialue | hyvaks.fi</title>
-
-    <!-- Jos olet lisännyt favicon.png:n, tämä näyttää sen välilehdellä -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
@@ -18,10 +16,10 @@
             --news-blue: #c8e8f4;
             --news-green: #d8ebc5;
             --news-pink: #f7c6c8;
-            --text: #111111;
-            --muted: #53636a;
-            --border: #d8dfe2;
-            --navy: #173d4b;
+            --footer-blue: #2f679c;
+            --text: #111;
+            --muted: #65747b;
+            --border: #d9e0e3;
             --max-width: 1360px;
         }
 
@@ -35,10 +33,14 @@
 
         body {
             margin: 0;
-            background: #ffffff;
+            background: #fff;
             color: var(--text);
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.45;
+        }
+
+        img {
+            max-width: 100%;
         }
 
         button,
@@ -50,10 +52,6 @@
             cursor: pointer;
         }
 
-        img {
-            max-width: 100%;
-        }
-
         a {
             color: inherit;
         }
@@ -63,7 +61,7 @@
         ===================================================== */
 
         .site-header {
-            background: #ffffff;
+            background: #fff;
         }
 
         .header-top {
@@ -114,7 +112,7 @@
             justify-content: center;
 
             background: var(--blue);
-            color: #ffffff;
+            color: #fff;
         }
 
         .top-search svg {
@@ -127,7 +125,7 @@
         ===================================================== */
 
         .main-nav {
-            background: #ffffff;
+            background: #fff;
         }
 
         .nav-inner {
@@ -143,7 +141,6 @@
         .nav-link {
             display: flex;
             align-items: center;
-
             padding: 0 14px;
 
             color: var(--blue-dark);
@@ -162,10 +159,6 @@
            ETUSIVUN ALKU
         ===================================================== */
 
-        .intro {
-            background: #ffffff;
-        }
-
         .intro-inner {
             max-width: var(--max-width);
             margin: auto;
@@ -174,7 +167,6 @@
 
         .page-title {
             margin: 0 0 48px;
-
             color: var(--blue-dark);
             font-size: 30px;
             line-height: 1.2;
@@ -183,11 +175,7 @@
 
         .intro-grid {
             display: grid;
-
-            grid-template-columns:
-                minmax(400px, .83fr)
-                minmax(500px, 1fr);
-
+            grid-template-columns: minmax(400px, .83fr) minmax(500px, 1fr);
             gap: 30px;
             align-items: start;
         }
@@ -204,13 +192,12 @@
         }
 
         /* =====================================================
-           PÄÄHAKU
+           HAKU
         ===================================================== */
 
         .main-search {
             height: 54px;
             display: flex;
-
             margin-bottom: 30px;
 
             border: 2px solid var(--blue-dark);
@@ -224,19 +211,18 @@
             padding: 0 22px;
             border: 0;
             outline: 0;
-            font-size: 15px;
         }
 
         .main-search button {
             width: 55px;
+            border: 0;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border: 0;
             background: var(--blue);
-            color: #ffffff;
+            color: #fff;
         }
 
         .main-search svg {
@@ -246,15 +232,12 @@
 
         .search-results {
             display: none;
-            position: relative;
-            z-index: 10;
-
             margin-top: -30px;
             margin-bottom: 30px;
 
             border: 1px solid var(--border);
             border-top: 0;
-            background: #ffffff;
+            background: #fff;
         }
 
         .search-results.show {
@@ -266,7 +249,6 @@
             padding: 13px 16px;
 
             border-bottom: 1px solid var(--border);
-
             text-decoration: none;
         }
 
@@ -288,7 +270,7 @@
         }
 
         /* =====================================================
-           SINISET TOIMINTOPAINIKKEET
+           SINISET PAINIKKEET
         ===================================================== */
 
         .action-list {
@@ -303,11 +285,10 @@
             align-items: center;
 
             padding: 0 15px;
-
             border-radius: 5px;
 
             background: var(--blue);
-            color: #ffffff;
+            color: #fff;
 
             text-decoration: none;
             font-size: 16px;
@@ -330,17 +311,15 @@
             align-items: center;
             justify-content: center;
 
-            border: 2px solid #ffffff;
+            border: 2px solid #fff;
             border-radius: 50%;
-
-            font-size: 20px;
-            line-height: 1;
         }
 
         .action-arrow::after {
             content: "›";
             position: relative;
             top: -1px;
+            font-size: 20px;
         }
 
         /* =====================================================
@@ -350,7 +329,6 @@
         .hero-image-box {
             overflow: hidden;
             border-radius: 6px;
-            background: #eeeeee;
         }
 
         .hero-image {
@@ -389,7 +367,6 @@
             text-decoration: none;
 
             color: var(--blue-dark);
-
             font-size: 15px;
             font-weight: 700;
             line-height: 1.45;
@@ -424,12 +401,97 @@
         }
 
         /* =====================================================
+           KUVALLISET NOSTOT
+        ===================================================== */
+
+        .info-highlights {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 35px 20px 70px;
+        }
+
+        .info-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+
+            gap: 36px;
+            margin-bottom: 55px;
+        }
+
+        .info-highlight:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-highlight-text {
+            padding: 20px 0;
+        }
+
+        .info-highlight-text h2 {
+            margin: 0 0 18px;
+
+            color: var(--blue-dark);
+            font-size: 21px;
+            line-height: 1.25;
+            font-weight: 600;
+        }
+
+        .info-highlight-text p {
+            max-width: 520px;
+            margin: 0 0 26px;
+
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .info-highlight-text a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--blue-dark);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .info-highlight-text a:hover {
+            text-decoration: underline;
+        }
+
+        .read-arrow {
+            width: 20px;
+            height: 20px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid var(--blue);
+            border-radius: 50%;
+
+            font-size: 19px;
+        }
+
+        .info-highlight-image {
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .info-highlight-image img {
+            display: block;
+            width: 100%;
+            height: 285px;
+            object-fit: cover;
+        }
+
+        /* =====================================================
            UUTISET
         ===================================================== */
 
         .news-section {
-            background: #ffffff;
-            padding: 30px 20px 65px;
+            padding: 30px 20px 75px;
+            background: #fff;
         }
 
         .news-grid {
@@ -470,19 +532,16 @@
         .news-content {
             min-height: 515px;
             padding: 14px;
+
             border-radius: 6px;
-            background: #ffffff;
+            background: #fff;
         }
 
         .news-item {
-            display: block;
-
             padding: 0 0 20px;
             margin: 0 0 20px;
 
-            border-bottom: 1px solid #d8d8d8;
-
-            text-decoration: none;
+            border-bottom: 1px solid #ddd;
         }
 
         .news-item:last-child {
@@ -493,7 +552,6 @@
             margin: 0 0 9px;
 
             color: var(--blue-dark);
-
             font-size: 17px;
             line-height: 1.15;
             font-weight: 500;
@@ -501,141 +559,207 @@
 
         .news-item-date {
             display: block;
-
-            color: #111111;
-
             font-size: 12px;
             font-weight: 700;
         }
 
         .news-item-text {
             margin: 10px 0 0;
-
-            color: #333333;
-
+            color: #333;
             font-size: 14px;
-            line-height: 1.5;
         }
 
         .main-news-image {
             display: block;
-
             width: 100%;
             max-height: 230px;
-
             margin-bottom: 15px;
-
             object-fit: cover;
         }
 
         .main-news-item {
             padding-bottom: 20px;
             margin-bottom: 20px;
-
-            border-bottom: 1px solid #dddddd;
+            border-bottom: 1px solid #ddd;
         }
 
         .news-empty {
             padding: 10px 2px;
-
-            color: #53636a;
+            color: var(--muted);
             font-size: 14px;
         }
 
         /* =====================================================
-           NOSTOT UUTISTEN ALLA
+           PALAUTE – UUTISTEN JÄLKEEN
         ===================================================== */
 
-        .info-highlights {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 25px 20px 95px;
+        .feedback-section {
+            background: #fff;
+            padding: 25px 20px 65px;
         }
 
-        .info-highlight {
+        .feedback-inner {
+            max-width: 1050px;
+            margin: auto;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-
-            gap: 36px;
-
-            margin-bottom: 55px;
         }
 
-        .info-highlight:last-child {
-            margin-bottom: 0;
+        .feedback-left {
+            display: flex;
+            justify-content: center;
         }
 
-        .info-highlight-text {
-            padding: 20px 0;
+        .feedback-score {
+            width: 390px;
+            max-width: 100%;
+            text-align: center;
         }
 
-        .info-highlight-text h2 {
-            margin: 0 0 18px;
+        .feedback-area-name {
+            font-size: 18px;
+            color: #222;
+        }
+
+        .feedback-period {
+            margin-top: 1px;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .nps-gauge {
+            position: relative;
+
+            width: 290px;
+            height: 145px;
+
+            margin: 34px auto 0;
+
+            overflow: hidden;
+        }
+
+        .nps-gauge::before {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 290px;
+            height: 290px;
+
+            border-radius: 50%;
+
+            background:
+                conic-gradient(
+                    from 270deg,
+                    #ffc4c4 0deg 65deg,
+                    #efdda3 65deg 120deg,
+                    #b4d67f 120deg 180deg,
+                    transparent 180deg 360deg
+                );
+        }
+
+        .nps-gauge::after {
+            content: "";
+
+            position: absolute;
+            left: 38px;
+            top: 38px;
+
+            width: 214px;
+            height: 214px;
+
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        .nps-gauge-inner {
+            position: absolute;
+            z-index: 3;
+
+            left: 0;
+            right: 0;
+            top: 77px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nps-label {
+            font-size: 12px;
+        }
+
+        .nps-number {
+            font-size: 31px;
+            line-height: 1;
+            color: #26354a;
+        }
+
+        .nps-responses {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .feedback-content h2 {
+            margin: 0 0 8px;
 
             color: var(--blue-dark);
-
             font-size: 21px;
-            line-height: 1.25;
-            font-weight: 600;
         }
 
-        .info-highlight-text p {
+        .feedback-content h3 {
+            margin: 27px 0 2px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .feedback-content p {
+            margin: 0 0 15px;
             max-width: 520px;
-
-            margin: 0 0 26px;
-
-            color: #111111;
 
             font-size: 14px;
             line-height: 1.55;
         }
 
-        .info-highlight-text a {
+        .feedback-button {
             display: inline-flex;
             align-items: center;
-
             gap: 8px;
 
-            color: var(--blue-dark);
+            margin-top: 2px;
+            padding: 9px 12px;
 
-            font-size: 14px;
-            font-weight: 700;
+            border-radius: 5px;
+
+            background: var(--blue);
+            color: #fff;
 
             text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        .info-highlight-text a:hover {
-            text-decoration: underline;
-        }
-
-        .read-arrow {
-            width: 20px;
-            height: 20px;
+        .feedback-button span {
+            width: 17px;
+            height: 17px;
 
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
-            border: 2px solid var(--blue);
+            border: 1px solid #fff;
             border-radius: 50%;
-
-            font-size: 19px;
-            line-height: 1;
         }
 
-        .info-highlight-image {
-            overflow: hidden;
-            border-radius: 5px;
-        }
-
-        .info-highlight-image img {
-            display: block;
-
-            width: 100%;
-            height: 285px;
-
-            object-fit: cover;
+        .feedback-text-link {
+            color: var(--blue-dark);
+            font-size: 14px;
         }
 
         /* =====================================================
@@ -643,60 +767,102 @@
         ===================================================== */
 
         .footer {
-            background: var(--navy);
-            color: #ffffff;
+            background: var(--footer-blue);
+            color: #fff;
         }
 
-        .footer-inner {
-            max-width: var(--max-width);
-
+        .footer-main {
+            max-width: 1050px;
             margin: auto;
-            padding: 52px 20px;
+            padding: 35px 20px 40px;
 
             display: grid;
-
-            grid-template-columns:
-                1.5fr 1fr 1fr;
-
-            gap: 55px;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 100px;
         }
 
-        .footer h2,
-        .footer h3 {
-            margin-top: 0;
+        .footer-main h2 {
+            margin: 0 0 14px;
+            font-size: 18px;
         }
 
-        .footer p {
-            color: #d8e5e9;
-            font-size: 14px;
+        .footer-about p {
+            max-width: 430px;
+            margin: 0;
+
+            font-size: 13px;
+            line-height: 1.6;
         }
 
-        .footer a {
+        .footer-links a {
             display: block;
+            margin: 3px 0;
 
-            margin: 8px 0;
-
-            color: #ffffff;
-
+            color: #fff;
             text-decoration: none;
-
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        .footer a:hover {
+        .footer-links a:hover {
             text-decoration: underline;
         }
 
+        .footer-bottom {
+            max-width: 1050px;
+            margin: auto;
+            padding: 0 20px 35px;
+        }
+
+        .footer-line {
+            height: 1px;
+            margin-bottom: 28px;
+            background: rgba(255,255,255,.65);
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            width: 175px;
+            max-height: 55px;
+            object-fit: contain;
+        }
+
+        .socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social {
+            width: 39px;
+            height: 39px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--green);
+            color: var(--blue-dark);
+
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
         /* =====================================================
-           CHAT-PAINIKE
+           CHAT
         ===================================================== */
 
         .chat-button {
             position: fixed;
-
             right: 31px;
             bottom: 27px;
-
             z-index: 1000;
 
             width: 66px;
@@ -706,19 +872,13 @@
             align-items: center;
             justify-content: center;
 
-            padding: 0;
-
             border: 0;
             border-radius: 50%;
 
             background: #174e83;
-            color: #ffffff;
+            color: #fff;
 
-            box-shadow: 0 5px 18px rgba(0, 0, 0, .14);
-        }
-
-        .chat-button:hover {
-            background: #0f416f;
+            box-shadow: 0 5px 18px rgba(0,0,0,.14);
         }
 
         .chat-button svg {
@@ -732,18 +892,12 @@
             stroke-linejoin: round;
         }
 
-        /* =====================================================
-           CHAT-IKKUNA
-        ===================================================== */
-
         .chat-window {
             display: none;
 
             position: fixed;
-
             right: 31px;
             bottom: 105px;
-
             z-index: 1100;
 
             width: 410px;
@@ -752,16 +906,14 @@
             max-width: calc(100vw - 30px);
             max-height: calc(100vh - 130px);
 
-            background: #ffffff;
+            background: #fff;
 
             border: 1px solid #bdcbd1;
             border-radius: 6px;
 
             overflow: hidden;
 
-            box-shadow:
-                0 18px 50px
-                rgba(20, 45, 60, .25);
+            box-shadow: 0 18px 50px rgba(20,45,60,.25);
 
             flex-direction: column;
         }
@@ -777,7 +929,7 @@
             align-items: center;
 
             background: var(--blue);
-            color: #ffffff;
+            color: #fff;
         }
 
         .chat-header-text {
@@ -798,30 +950,25 @@
             width: 35px;
             height: 35px;
 
-            border: 1px solid rgba(255, 255, 255, .55);
+            border: 1px solid rgba(255,255,255,.55);
             border-radius: 50%;
 
             background: transparent;
-            color: #ffffff;
+            color: #fff;
 
             font-size: 23px;
         }
 
         .chat-body {
             flex: 1;
-
             overflow-y: auto;
-
             padding: 18px;
-
             background: #f4f6f7;
         }
 
         .chat-message {
             max-width: 87%;
-
             margin-bottom: 11px;
-
             padding: 11px 13px;
 
             border-radius: 5px;
@@ -832,18 +979,14 @@
 
         .chat-message.bot {
             margin-right: auto;
-
-            background: #ffffff;
-
+            background: #fff;
             border: 1px solid #dce2e5;
         }
 
         .chat-message.user {
             margin-left: auto;
-
             background: var(--blue);
-
-            color: #ffffff;
+            color: #fff;
         }
 
         .chat-message a {
@@ -853,9 +996,7 @@
 
         .chat-quick {
             display: grid;
-
             gap: 7px;
-
             margin-top: 10px;
         }
 
@@ -864,7 +1005,7 @@
 
             border: 1px solid var(--blue);
 
-            background: #ffffff;
+            background: #fff;
             color: var(--blue-dark);
 
             text-align: left;
@@ -873,10 +1014,8 @@
 
         .chat-input-area {
             padding: 11px;
-
-            border-top: 1px solid #dddddd;
-
-            background: #ffffff;
+            border-top: 1px solid #ddd;
+            background: #fff;
         }
 
         .chat-input-row {
@@ -887,37 +1026,30 @@
         .chat-input-row input {
             flex: 1;
             min-width: 0;
-
             padding: 10px;
-
             border: 1px solid #87969d;
         }
 
         .chat-send {
             border: 0;
-
             padding: 0 14px;
 
             background: var(--blue);
-            color: #ffffff;
-
+            color: #fff;
             font-weight: 700;
         }
 
         .chat-info {
             margin-top: 7px;
-
             color: #68777d;
-
             font-size: 10px;
         }
 
         /* =====================================================
-           RESPONSIVE
+           MOBIILI
         ===================================================== */
 
         @media (max-width: 1050px) {
-
             .nav-inner {
                 overflow-x: auto;
             }
@@ -928,7 +1060,6 @@
 
             .hero-image {
                 height: auto;
-                max-height: 500px;
             }
 
             .service-grid {
@@ -943,14 +1074,9 @@
             .news-content {
                 min-height: 0;
             }
-
-            .footer-inner {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 700px) {
-
             .header-top {
                 min-height: 88px;
                 padding: 14px 18px;
@@ -968,10 +1094,6 @@
                 padding: 0;
             }
 
-            .nav-link {
-                padding: 0 12px;
-            }
-
             .intro-inner {
                 padding: 22px 18px 45px;
             }
@@ -981,53 +1103,19 @@
                 font-size: 26px;
             }
 
-            .intro-grid {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .hero-image-box {
-                order: -1;
-            }
-
             .hero-image {
                 height: 235px;
             }
 
-            .services {
-                padding: 20px 18px 55px;
-            }
-
             .service-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2,1fr);
                 column-gap: 15px;
             }
 
-            .news-section {
-                padding: 20px 18px 50px;
-            }
-
-            .info-highlights {
-                padding: 10px 18px 55px;
-            }
-
-            .info-highlight,
-            .info-highlight.reverse {
+            .info-highlight {
                 display: flex;
                 flex-direction: column;
-
                 gap: 16px;
-
-                margin-bottom: 45px;
-            }
-
-            .info-highlight-text {
-                width: 100%;
-                padding: 0;
-            }
-
-            .info-highlight-image {
-                width: 100%;
             }
 
             .info-highlight-image img {
@@ -1042,14 +1130,24 @@
                 order: 1;
             }
 
-            .footer-inner {
+            .feedback-inner {
                 grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom-row {
+                align-items: flex-start;
+                flex-direction: column;
             }
 
             .chat-button {
                 right: 17px;
                 bottom: 17px;
-
                 width: 60px;
                 height: 60px;
             }
@@ -1057,7 +1155,6 @@
             .chat-window {
                 right: 15px;
                 bottom: 90px;
-
                 width: calc(100vw - 30px);
             }
         }
@@ -1065,10 +1162,6 @@
 </head>
 
 <body>
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
 
 <header class="site-header">
 
@@ -1092,17 +1185,10 @@
             >
 
             <button type="submit" aria-label="Hae">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="7"></circle>
                     <path d="M16.5 16.5L21 21"></path>
                 </svg>
-
             </button>
 
         </form>
@@ -1110,57 +1196,29 @@
     </div>
 
     <nav class="main-nav">
-
         <div class="nav-inner">
 
-            <a href="#palvelut" class="nav-link">
-                Palvelumme
-            </a>
-
-            <a href="#asiointi" class="nav-link">
-                Asiointi
-            </a>
-
-            <a href="opiskeluterveydenhuolto.html" class="nav-link">
-                Asiakkaana
-            </a>
-
-            <a href="#palvelut" class="nav-link">
-                Sairaala Nova
-            </a>
-
-            <a href="opiskeluterveydenhuolto.html" class="nav-link">
-                Hyvinvointisi tueksi
-            </a>
-
-            <a href="#footer" class="nav-link">
-                Hyvinvointialue
-            </a>
-
-            <a href="#uutiset" class="nav-link">
-                Ajankohtaista
-            </a>
-
-            <a href="#" class="nav-link">
-                Tule työkaveriksi
-            </a>
-
-            <a href="#" class="nav-link">
-                In English
-            </a>
+            <a href="#palvelut" class="nav-link">Palvelumme</a>
+            <a href="#asiointi" class="nav-link">Asiointi</a>
+            <a href="opiskeluterveydenhuolto.html" class="nav-link">Asiakkaana</a>
+            <a href="#palvelut" class="nav-link">Sairaala Nova</a>
+            <a href="opiskeluterveydenhuolto.html" class="nav-link">Hyvinvointisi tueksi</a>
+            <a href="#footer" class="nav-link">Hyvinvointialue</a>
+            <a href="#uutiset" class="nav-link">Ajankohtaista</a>
+            <a href="#" class="nav-link">Tule työkaveriksi</a>
+            <a href="#" class="nav-link">In English</a>
 
         </div>
-
     </nav>
 
 </header>
 
 
-<!-- =========================================================
-     ETUSIVUN ALKU
-========================================================= -->
-
 <main>
+
+<!-- =========================================================
+     ALKU
+========================================================= -->
 
 <section class="intro" id="asiointi">
 
@@ -1181,14 +1239,9 @@
                     palveluista Keski-Suomessa.
                 </p>
 
-                <h2 class="search-title">
-                    Hae palvelua
-                </h2>
+                <h2 class="search-title">Hae palvelua</h2>
 
-                <form
-                    class="main-search"
-                    id="mainSearchForm"
-                >
+                <form class="main-search" id="mainSearchForm">
 
                     <input
                         id="mainSearchInput"
@@ -1197,53 +1250,31 @@
                         autocomplete="off"
                     >
 
-                    <button
-                        type="submit"
-                        aria-label="Hae"
-                    >
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                        >
+                    <button type="submit" aria-label="Hae">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="7"></circle>
                             <path d="M16.5 16.5L21 21"></path>
                         </svg>
-
                     </button>
 
                 </form>
 
-                <div
-                    id="searchResults"
-                    class="search-results"
-                ></div>
+                <div id="searchResults" class="search-results"></div>
 
                 <div class="action-list">
 
                     <a href="ajanvaraus.html" class="action">
-                        <span class="action-text">
-                            Varaa aika
-                        </span>
+                        <span class="action-text">Varaa aika</span>
                         <span class="action-arrow"></span>
                     </a>
 
                     <a href="oma-varaus.html" class="action">
-                        <span class="action-text">
-                            Oma varaus
-                        </span>
+                        <span class="action-text">Oma varaus</span>
                         <span class="action-arrow"></span>
                     </a>
 
-                    <a
-                        href="opiskeluterveydenhuolto.html"
-                        class="action"
-                    >
-                        <span class="action-text">
-                            Opiskeluterveydenhuolto
-                        </span>
+                    <a href="opiskeluterveydenhuolto.html" class="action">
+                        <span class="action-text">Opiskeluterveydenhuolto</span>
                         <span class="action-arrow"></span>
                     </a>
 
@@ -1251,9 +1282,7 @@
                         href="https://sannarantanenhyvaks.github.io/terveyskysely/"
                         class="action"
                     >
-                        <span class="action-text">
-                            Terveyskysely
-                        </span>
+                        <span class="action-text">Terveyskysely</span>
                         <span class="action-arrow"></span>
                     </a>
 
@@ -1262,13 +1291,11 @@
             </div>
 
             <div class="hero-image-box">
-
                 <img
                     src="ensihoito.jpg"
                     alt="Ensihoidon ammattilaisia"
                     class="hero-image"
                 >
-
             </div>
 
         </div>
@@ -1279,41 +1306,27 @@
 
 
 <!-- =========================================================
-     PALVELUKUVAKKEET
-     Ei erillistä "Palvelumme"-otsikkoa.
+     PALVELUT
 ========================================================= -->
 
 <section id="palvelut" class="services">
 
     <div class="service-grid">
 
-        <!-- 1 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <circle cx="21" cy="20" r="7"/>
                     <circle cx="43" cy="21" r="6"/>
                     <path d="M8 49c1-11 6-17 13-17s13 6 14 17"/>
                     <path d="M35 48c1-9 4-14 9-14 6 0 10 5 11 14"/>
                 </svg>
-
             </div>
-
-            <span>
-                Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
-            </span>
-
+            <span>Perheiden, nuorten ja aikuisten ohjaus ja neuvonta</span>
         </a>
 
-        <!-- 2 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <circle cx="29" cy="18" r="8"/>
                     <path d="M20 49c1-13 4-20 10-20s10 7 11 20"/>
@@ -1321,80 +1334,44 @@
                     <path d="M43 31c0-4 5-4 5 0"/>
                     <path d="M43 52h7"/>
                 </svg>
-
             </div>
-
-            <span>
-                Seniorineuvonta
-            </span>
-
+            <span>Seniorineuvonta</span>
         </a>
 
-        <!-- 3 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <path d="M21 10c-8 2-10 10-8 18 2 7 6 9 8 20 1 6 5 7 8 1l3-8 3 8c3 6 7 5 8-1 2-11 6-13 8-20 2-8 0-16-8-18-5-1-8 2-11 2s-6-3-11-2z"/>
                 </svg>
-
             </div>
-
-            <span>
-                Suun terveydenhuolto
-            </span>
-
+            <span>Suun terveydenhuolto</span>
         </a>
 
-        <!-- 4 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <path d="M25 51c-10-4-16-13-16-23 0-12 10-21 23-21s23 9 23 21c0 9-5 16-13 20"/>
                     <path d="M22 27c2-5 6-8 10-8 6 0 10 4 10 10"/>
                     <path d="M24 38c5 4 11 4 16 0"/>
                 </svg>
-
             </div>
-
-            <span>
-                Mielenterveys- ja riippuvuuspalvelut
-            </span>
-
+            <span>Mielenterveys- ja riippuvuuspalvelut</span>
         </a>
 
-        <!-- 5 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <path d="M23 9h18"/>
                     <path d="M28 9v17L16 48c-2 4 1 7 5 7h22c4 0 7-3 5-7L36 26V9"/>
                     <path d="M21 42h23"/>
                     <path d="M25 36h14"/>
                 </svg>
-
             </div>
-
-            <span>
-                Laboratorio
-            </span>
-
+            <span>Laboratorio</span>
         </a>
 
-        <!-- 6 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <circle cx="31" cy="12" r="5"/>
                     <path d="M30 20l-4 14h13"/>
@@ -1402,31 +1379,14 @@
                     <path d="M38 34l5 14"/>
                     <path d="M26 32c-9 1-14 6-14 13 0 8 7 14 15 14 7 0 12-4 14-10"/>
                 </svg>
-
             </div>
-
-            <span>
-                Vammaisten palvelut
-            </span>
-
+            <span>Vammaisten palvelut</span>
         </a>
 
-        <!-- 7 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
-
-                    <rect
-                        x="13"
-                        y="13"
-                        width="38"
-                        height="42"
-                        rx="2"
-                    />
-
+                    <rect x="13" y="13" width="38" height="42" rx="2"/>
                     <path d="M27 21h10"/>
                     <path d="M32 16v10"/>
                     <path d="M20 34h7"/>
@@ -1434,34 +1394,19 @@
                     <path d="M20 42h7"/>
                     <path d="M37 42h7"/>
                     <path d="M28 55V45h8v10"/>
-
                 </svg>
-
             </div>
-
-            <span>
-                Sairaala Nova
-            </span>
-
+            <span>Sairaala Nova</span>
         </a>
 
-        <!-- 8 -->
-
         <a href="#" class="service">
-
             <div class="service-circle">
-
                 <svg viewBox="0 0 64 64">
                     <path d="M32 7c3 8 11 12 11 22 0 4-1 7-3 10 1-9-5-12-8-18-2 6-9 11-9 21 0 8 5 14 9 16 10-3 17-11 17-21 0-13-10-21-17-30z"/>
                     <path d="M32 56c-5-3-8-7-8-12 0-5 4-9 8-13 1 6 6 8 6 14 0 5-3 9-6 11z"/>
                 </svg>
-
             </div>
-
-            <span>
-                Pelastuslaitos
-            </span>
-
+            <span>Pelastuslaitos</span>
         </a>
 
     </div>
@@ -1470,66 +1415,132 @@
 
 
 <!-- =========================================================
-     UUTISET
+     KUVALLISET NOSTOT
+========================================================= -->
+
+<section class="info-highlights">
+
+    <div class="info-highlight">
+
+        <div class="info-highlight-text">
+
+            <h2>Suomi.fi-viestit</h2>
+
+            <p>
+                Keski-Suomen hyvinvointialueen ajanvarauskirjeet
+                saapuvat osittain sähköisesti asiakkaille Suomi.fi-viesteinä.
+                Suomi.fi-viestit on tietoturvallinen sähköinen postilaatikko,
+                joka korvaa paperipostitse saapuvan viranomaispostin.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+        <div class="info-highlight-image">
+            <img src="suomifi.jpg" alt="Suomi.fi-viestit">
+        </div>
+
+    </div>
+
+
+    <div class="info-highlight reverse">
+
+        <div class="info-highlight-image">
+            <img src="huoli-laheisesta.jpg" alt="Huoli läheisestä">
+        </div>
+
+        <div class="info-highlight-text">
+
+            <h2>Huoli läheisestä</h2>
+
+            <p>
+                Täältä löydät tietoa siitä, miten ilmoitat avun tai tuen
+                tarpeesta sosiaalihuoltoon Keski-Suomen hyvinvointialueella.
+                Sähköiset lomakkeet löytyvät sivun oikeasta laidasta.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-highlight">
+
+        <div class="info-highlight-text">
+
+            <h2>Hyvinvointia edistävä terveellinen syksy</h2>
+
+            <p>
+                Syksy on erinomaista aikaa omasta hyvinvoinnista ja
+                terveydestä huolehtimiseen. Olemme koonneet vinkkejä,
+                miten syksy sujuu hyvinvointia ja terveyttä edistäen
+                ja turvallisuudesta huolehtien.
+            </p>
+
+            <a href="#">
+                <span class="read-arrow">›</span>
+                Lue lisää
+            </a>
+
+        </div>
+
+        <div class="info-highlight-image">
+            <img
+                src="terveellinen-syksy.jpg"
+                alt="Hyvinvointia edistävä terveellinen syksy"
+            >
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     UUTISET – NÄMÄ OVAT ALIMPANA SISÄLTÖNÄ
 ========================================================= -->
 
 <section id="uutiset" class="news-section">
 
     <div class="news-grid">
 
-        <!-- PÄÄUUTISET -->
-
         <section class="news-column main">
 
-            <h2 class="news-heading">
-                Pääuutiset
-            </h2>
+            <h2 class="news-heading">Pääuutiset</h2>
 
-            <div
-                id="mainNews"
-                class="news-content"
-            >
-                <div class="news-empty">
-                    Ladataan uutisia...
-                </div>
+            <div id="mainNews" class="news-content">
+                <div class="news-empty">Ladataan uutisia...</div>
             </div>
 
         </section>
 
-        <!-- VIIMEISIMMÄT UUTISET -->
 
         <section class="news-column latest">
 
-            <h2 class="news-heading">
-                Viimeisimmät uutiset
-            </h2>
+            <h2 class="news-heading">Viimeisimmät uutiset</h2>
 
-            <div
-                id="latestNews"
-                class="news-content"
-            >
-                <div class="news-empty">
-                    Ladataan uutisia...
-                </div>
+            <div id="latestNews" class="news-content">
+                <div class="news-empty">Ladataan uutisia...</div>
             </div>
 
         </section>
 
-        <!-- TAPAHTUMAT -->
 
         <section class="news-column events">
 
-            <h2 class="news-heading">
-                Keski-Suomessa tapahtuu
-            </h2>
+            <h2 class="news-heading">Keski-Suomessa tapahtuu</h2>
 
-            <div
-                id="events"
-                class="news-content"
-            >
-                <div class="news-empty">
-                    Ladataan tapahtumia...
-                </div>
+            <div id="events" class="news-content">
+                <div class="news-empty">Ladataan tapahtumia...</div>
             </div>
 
         </section>
@@ -1540,114 +1551,64 @@
 
 
 <!-- =========================================================
-     NOSTOT
+     PALAUTE – TÄMÄ ON VIIMEINEN ASIA ENNEN FOOTERIA
 ========================================================= -->
 
-<section class="info-highlights">
+<section class="feedback-section">
 
-    <!-- SUOMI.FI -->
+    <div class="feedback-inner">
 
-    <div class="info-highlight">
+        <div class="feedback-left">
 
-        <div class="info-highlight-text">
+            <div class="feedback-score">
 
-            <h2>
-                Suomi.fi-viestit
-            </h2>
+                <div class="feedback-area-name">
+                    Keski-Suomen hyvinvointialue
+                </div>
+
+                <div class="feedback-period">
+                    Viimeiset 30 päivää
+                </div>
+
+                <div class="nps-gauge">
+
+                    <div class="nps-gauge-inner">
+                        <span class="nps-label">nps</span>
+                        <strong class="nps-number">67</strong>
+                        <span class="nps-responses">4334 vastausta</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="feedback-content">
+
+            <h2>Anna meille palautetta</h2>
 
             <p>
-                Keski-Suomen hyvinvointialueen ajanvarauskirjeet
-                saapuvat osittain sähköisesti asiakkaille
-                Suomi.fi-viesteinä. Suomi.fi-viestit on
-                tietoturvallinen sähköinen postilaatikko, joka
-                korvaa paperipostitse saapuvan viranomaispostin.
+                Kerro meille, miten onnistuimme, jotta voimme
+                palvella sinua jatkossa vielä paremmin.
             </p>
 
-            <a href="#">
-                <span class="read-arrow">›</span>
-                Lue lisää
+            <a href="palaute.html" class="feedback-button">
+                Anna palautetta
+                <span>›</span>
             </a>
 
-        </div>
-
-        <div class="info-highlight-image">
-
-            <img
-                src="suomifi.jpg"
-                alt="Suomi.fi-viestit"
-            >
-
-        </div>
-
-    </div>
-
-
-    <!-- HUOLI LÄHEISESTÄ -->
-
-    <div class="info-highlight reverse">
-
-        <div class="info-highlight-image">
-
-            <img
-                src="huoli-laheisesta.jpg"
-                alt="Huoli läheisestä"
-            >
-
-        </div>
-
-        <div class="info-highlight-text">
-
-            <h2>
-                Huoli läheisestä
-            </h2>
+            <h3>Asiakastyytyväisyys</h3>
 
             <p>
-                Täältä löydät tietoa siitä, miten ilmoitat avun
-                tai tuen tarpeesta sosiaalihuoltoon Keski-Suomen
-                hyvinvointialueella. Sähköiset lomakkeet löytyvät
-                sivun oikeasta laidasta.
+                Keski-Suomen hyvinvointialueella asiakaskokemusta
+                mitataan NPS (Net Promoter Score) -mittarilla.
             </p>
 
-            <a href="#">
-                <span class="read-arrow">›</span>
-                Lue lisää
+            <a href="palaute.html" class="feedback-text-link">
+                Lisätietoa asiakastyytyväisyydestämme
             </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- TERVEELLINEN SYKSY -->
-
-    <div class="info-highlight">
-
-        <div class="info-highlight-text">
-
-            <h2>
-                Hyvinvointia edistävä terveellinen syksy
-            </h2>
-
-            <p>
-                Syksy on erinomaista aikaa omasta hyvinvoinnista
-                ja terveydestä huolehtimiseen. Olemme koonneet
-                vinkkejä, miten syksy sujuu hyvinvointia ja
-                terveyttä edistäen ja turvallisuudesta huolehtien.
-            </p>
-
-            <a href="#">
-                <span class="read-arrow">›</span>
-                Lue lisää
-            </a>
-
-        </div>
-
-        <div class="info-highlight-image">
-
-            <img
-                src="terveellinen-syksy.jpg"
-                alt="Hyvinvointia edistävä terveellinen syksy"
-            >
 
         </div>
 
@@ -1664,56 +1625,65 @@
 
 <footer id="footer" class="footer">
 
-    <div class="footer-inner">
+    <div class="footer-main">
 
-        <div>
+        <div class="footer-about">
 
-            <h2>
-                Keski-Suomen hyvinvointialue
-            </h2>
+            <h2>Keski-Suomen hyvinvointialue</h2>
 
             <p>
-                Sosiaali- ja terveyspalvelut sekä
-                pelastustoimen palvelut Keski-Suomessa.
+                Vastaamme noin 273 000 keskisuomalaisen sosiaali-,
+                terveys- ja pelastustoimen palveluista. Edistämme
+                hyvinvointia, terveyttä ja turvallisuutta Keski-Suomessa
+                vaikuttavasti ja laajalla yhteistyöllä. Haluamme olla
+                ihmislähtöisin hyvinvointialue ja tukea keskisuomalaisten
+                hyvää arkea.
             </p>
 
         </div>
 
-        <div>
 
-            <h3>
-                Asiointi
-            </h3>
+        <div class="footer-links">
 
-            <a href="ajanvaraus.html">
-                Ajanvaraus
-            </a>
+            <h2>Oikopolut</h2>
 
-            <a href="oma-varaus.html">
-                Oma varaus
-            </a>
-
-            <a href="opiskeluterveydenhuolto.html">
-                Opiskeluterveydenhuolto
-            </a>
+            <a href="#">Sairaala Nova</a>
+            <a href="#">Pelastustoimi.fi | Keski-Suomi</a>
+            <a href="#">Ostolaskutiedot</a>
+            <a href="#">Kirjaamo</a>
+            <a href="#">Puhelinvaihde</a>
+            <a href="#">Tietosuoja</a>
+            <a href="#">Saavutettavuusseloste</a>
+            <a href="#">Päätöksenteko</a>
+            <a href="#">Esityslistat ja pöytäkirjat</a>
+            <a href="#">Kuulutukset ja ilmoitukset</a>
+            <a href="#">Yhteystiedot</a>
+            <a href="palaute.html">Anna palautetta</a>
 
         </div>
 
-        <div>
+    </div>
 
-            <h3>
-                Palvelut
-            </h3>
 
-            <a
-                href="https://sannarantanenhyvaks.github.io/terveyskysely/"
+    <div class="footer-bottom">
+
+        <div class="footer-line"></div>
+
+        <div class="footer-bottom-row">
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="footer-logo"
             >
-                Terveyskysely
-            </a>
 
-            <a href="admin.html">
-                Ammattilaisille
-            </a>
+            <div class="socials">
+                <a href="#" class="social">f</a>
+                <a href="#" class="social">X</a>
+                <a href="#" class="social">IG</a>
+                <a href="#" class="social">YT</a>
+                <a href="#" class="social">in</a>
+            </div>
 
         </div>
 
@@ -1723,7 +1693,7 @@
 
 
 <!-- =========================================================
-     CHAT-PAINIKE
+     CHAT
 ========================================================= -->
 
 <button
@@ -1732,37 +1702,25 @@
     type="button"
     aria-label="Avaa chat"
 >
-
     <svg viewBox="0 0 32 32">
         <path d="M6 7.5h20v14H14l-6 4v-4H6z"></path>
         <path d="M11 13h10"></path>
         <path d="M11 17h6"></path>
     </svg>
-
 </button>
 
 
-<!-- =========================================================
-     CHAT-IKKUNA
-========================================================= -->
-
-<section
-    id="chatWindow"
-    class="chat-window"
->
+<section id="chatWindow" class="chat-window">
 
     <header class="chat-header">
 
         <div class="chat-header-text">
-
             <div class="chat-header-small">
                 Keski-Suomen hyvinvointialue
             </div>
-
             <div class="chat-header-title">
                 Chat
             </div>
-
         </div>
 
         <button
@@ -1776,10 +1734,8 @@
 
     </header>
 
-    <div
-        id="chatBody"
-        class="chat-body"
-    >
+
+    <div id="chatBody" class="chat-body">
 
         <div class="chat-message bot">
             Hei. Miten voin auttaa?
@@ -1806,6 +1762,7 @@
         </div>
 
     </div>
+
 
     <div class="chat-input-area">
 
@@ -1838,14 +1795,9 @@
 </section>
 
 
-<!-- =========================================================
-     SUPABASE
-========================================================= -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
     /* =====================================================
        SUPABASE
     ===================================================== */
@@ -1864,18 +1816,16 @@
 
 
     /* =====================================================
-       TURVALLINEN HTML-TULOSTUS
+       HTML-SUOJAUS
     ===================================================== */
 
     function escapeHtml(value) {
-
         return String(value ?? '')
             .replaceAll('&', '&amp;')
             .replaceAll('<', '&lt;')
             .replaceAll('>', '&gt;')
             .replaceAll('"', '&quot;')
             .replaceAll("'", '&#039;');
-
     }
 
 
@@ -1905,7 +1855,6 @@
             + '.'
             + parts[0]
         );
-
     }
 
 
@@ -1914,71 +1863,31 @@
     ===================================================== */
 
     const searchData = [
-
         {
             title: 'Ajanvaraus',
-            description:
-                'Varaa aika opiskeluterveydenhuollon vastaanotolle.',
+            description: 'Varaa aika opiskeluterveydenhuollon vastaanotolle.',
             url: 'ajanvaraus.html'
         },
-
         {
             title: 'Oma varaus',
-            description:
-                'Tarkista ajanvarauksesi varauskoodilla.',
+            description: 'Tarkista ajanvarauksesi varauskoodilla.',
             url: 'oma-varaus.html'
         },
-
         {
             title: 'Opiskeluterveydenhuolto',
-            description:
-                'Opiskelijoiden terveys- ja hyvinvointipalvelut.',
+            description: 'Opiskelijoiden terveys- ja hyvinvointipalvelut.',
             url: 'opiskeluterveydenhuolto.html'
         },
-
         {
             title: 'Terveyskysely',
-            description:
-                'Opiskeluterveydenhuollon terveyskysely.',
-            url:
-                'https://sannarantanenhyvaks.github.io/terveyskysely/'
+            description: 'Opiskeluterveydenhuollon terveyskysely.',
+            url: 'https://sannarantanenhyvaks.github.io/terveyskysely/'
         },
-
         {
             title: 'Terveydenhoitaja',
-            description:
-                'Muuramen lukion terveydenhoitaja Sanna Rantanen.',
+            description: 'Muuramen lukion terveydenhoitaja Sanna Rantanen.',
             url: 'opiskeluterveydenhuolto.html'
-        },
-
-        {
-            title: 'Laboratorio',
-            description:
-                'Laboratoriopalvelut.',
-            url: '#palvelut'
-        },
-
-        {
-            title: 'Suun terveydenhuolto',
-            description:
-                'Suun terveydenhuollon palvelut.',
-            url: '#palvelut'
-        },
-
-        {
-            title: 'Sairaala Nova',
-            description:
-                'Sairaala Novan palvelut.',
-            url: '#palvelut'
-        },
-
-        {
-            title: 'Pelastuslaitos',
-            description:
-                'Pelastustoimen palvelut.',
-            url: '#palvelut'
         }
-
     ];
 
 
@@ -2001,137 +1910,72 @@
     function searchSite(query) {
 
         const clean =
-            query
-                .trim()
-                .toLocaleLowerCase('fi');
+            query.trim().toLocaleLowerCase('fi');
 
         if (!clean) {
-
             searchResults.innerHTML = '';
-
-            searchResults.classList.remove(
-                'show'
-            );
-
+            searchResults.classList.remove('show');
             return;
         }
 
         const matches =
             searchData.filter(item =>
-
-                item.title
-                    .toLocaleLowerCase('fi')
-                    .includes(clean)
-
+                item.title.toLocaleLowerCase('fi').includes(clean)
                 ||
-
-                item.description
-                    .toLocaleLowerCase('fi')
-                    .includes(clean)
-
+                item.description.toLocaleLowerCase('fi').includes(clean)
             );
 
-
         if (!matches.length) {
-
             searchResults.innerHTML = `
                 <div class="search-result">
                     <strong>Ei hakutuloksia</strong>
                     <small>Kokeile toista hakusanaa.</small>
                 </div>
             `;
-
-            searchResults.classList.add(
-                'show'
-            );
-
+            searchResults.classList.add('show');
             return;
         }
 
-
         searchResults.innerHTML =
-            matches
-                .map(item => `
+            matches.map(item => `
+                <a
+                    class="search-result"
+                    href="${escapeHtml(item.url)}"
+                >
+                    <strong>${escapeHtml(item.title)}</strong>
+                    <small>${escapeHtml(item.description)}</small>
+                </a>
+            `).join('');
 
-                    <a
-                        class="search-result"
-                        href="${escapeHtml(item.url)}"
-                    >
-
-                        <strong>
-                            ${escapeHtml(item.title)}
-                        </strong>
-
-                        <small>
-                            ${escapeHtml(item.description)}
-                        </small>
-
-                    </a>
-
-                `)
-                .join('');
-
-
-        searchResults.classList.add(
-            'show'
-        );
-
+        searchResults.classList.add('show');
     }
 
 
-    mainSearchForm.addEventListener(
-        'submit',
-        event => {
-
-            event.preventDefault();
-
-            searchSite(
-                mainSearchInput.value
-            );
-
-        }
-    );
+    mainSearchForm.addEventListener('submit', event => {
+        event.preventDefault();
+        searchSite(mainSearchInput.value);
+    });
 
 
-    mainSearchInput.addEventListener(
-        'input',
-        () => {
-
-            searchSite(
-                mainSearchInput.value
-            );
-
-        }
-    );
+    mainSearchInput.addEventListener('input', () => {
+        searchSite(mainSearchInput.value);
+    });
 
 
-    topSearchForm.addEventListener(
-        'submit',
-        event => {
+    topSearchForm.addEventListener('submit', event => {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            mainSearchInput.value =
-                topSearchInput.value;
+        mainSearchInput.value =
+            topSearchInput.value;
 
-            mainSearchInput.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
+        mainSearchInput.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
 
-            searchSite(
-                topSearchInput.value
-            );
-
-            setTimeout(
-                () => {
-                    mainSearchInput.focus();
-                },
-                300
-            );
-
-        }
-    );
+        searchSite(topSearchInput.value);
+    });
 
 
     /* =====================================================
@@ -2152,202 +1996,112 @@
 
         try {
 
-            const {
-                data,
-                error
-            } =
+            const { data, error } =
                 await supabaseClient
                     .from('site_news')
                     .select(
                         'id,title,content,category,image_url,event_date,created_at'
                     )
-                    .eq(
-                        'is_published',
-                        true
-                    )
+                    .eq('is_published', true)
                     .order(
                         'created_at',
-                        {
-                            ascending: false
-                        }
+                        { ascending: false }
                     );
-
 
             if (error) {
                 throw error;
             }
 
-
-            const rows =
-                data || [];
-
+            const rows = data || [];
 
             const main =
                 rows.filter(
-                    item =>
-                        item.category === 'main'
+                    item => item.category === 'main'
                 );
-
 
             const latest =
                 rows.filter(
-                    item =>
-                        item.category === 'latest'
+                    item => item.category === 'latest'
                 );
-
 
             const events =
                 rows
                     .filter(
-                        item =>
-                            item.category === 'event'
+                        item => item.category === 'event'
                     )
-                    .sort(
-                        (a, b) => {
+                    .sort((a, b) => {
 
-                            const dateA =
-                                a.event_date
-                                || a.created_at;
+                        const dateA =
+                            a.event_date || a.created_at;
 
-                            const dateB =
-                                b.event_date
-                                || b.created_at;
+                        const dateB =
+                            b.event_date || b.created_at;
 
-                            return (
-                                new Date(dateA)
-                                -
-                                new Date(dateB)
-                            );
-
-                        }
-                    );
-
+                        return (
+                            new Date(dateA)
+                            -
+                            new Date(dateB)
+                        );
+                    });
 
             renderMainNews(main);
             renderLatestNews(latest);
             renderEvents(events);
 
-        }
-        catch (error) {
+        } catch (error) {
 
             console.error(
                 'Uutisten lataus epäonnistui:',
                 error
             );
 
+            mainNewsContainer.innerHTML =
+                '<div class="news-empty">Pääuutisia ei ole julkaistu.</div>';
 
-            mainNewsContainer.innerHTML = `
-                <div class="news-empty">
-                    Pääuutisia ei ole julkaistu.
-                </div>
-            `;
+            latestNewsContainer.innerHTML =
+                '<div class="news-empty">Uutisia ei ole julkaistu.</div>';
 
-
-            latestNewsContainer.innerHTML = `
-                <div class="news-empty">
-                    Uutisia ei ole julkaistu.
-                </div>
-            `;
-
-
-            eventsContainer.innerHTML = `
-                <div class="news-empty">
-                    Tapahtumia ei ole julkaistu.
-                </div>
-            `;
-
+            eventsContainer.innerHTML =
+                '<div class="news-empty">Tapahtumia ei ole julkaistu.</div>';
         }
-
     }
 
 
     function renderMainNews(items) {
 
         if (!items.length) {
-
-            mainNewsContainer.innerHTML = `
-                <div class="news-empty">
-                    Pääuutisia ei ole julkaistu.
-                </div>
-            `;
-
+            mainNewsContainer.innerHTML =
+                '<div class="news-empty">Pääuutisia ei ole julkaistu.</div>';
             return;
         }
-
 
         mainNewsContainer.innerHTML =
-            items
-                .slice(0, 4)
-                .map(item => {
+            items.slice(0, 4).map(item => {
 
-                    const image =
-                        item.image_url
-                            ? `
-                                <img
-                                    src="${escapeHtml(item.image_url)}"
-                                    alt=""
-                                    class="main-news-image"
-                                >
-                            `
-                            : '';
+                const image =
+                    item.image_url
+                        ? `
+                            <img
+                                src="${escapeHtml(item.image_url)}"
+                                alt=""
+                                class="main-news-image"
+                            >
+                        `
+                        : '';
 
+                const text =
+                    item.content
+                        ? `
+                            <p class="news-item-text">
+                                ${escapeHtml(item.content)}
+                            </p>
+                        `
+                        : '';
 
-                    const text =
-                        item.content
-                            ? `
-                                <p class="news-item-text">
-                                    ${escapeHtml(item.content)}
-                                </p>
-                            `
-                            : '';
+                return `
+                    <article class="main-news-item">
 
-
-                    return `
-
-                        <article class="main-news-item">
-
-                            ${image}
-
-                            <h3 class="news-item-title">
-                                ${escapeHtml(item.title)}
-                            </h3>
-
-                            <time class="news-item-date">
-                                ${formatDate(item.created_at)}
-                            </time>
-
-                            ${text}
-
-                        </article>
-
-                    `;
-
-                })
-                .join('');
-
-    }
-
-
-    function renderLatestNews(items) {
-
-        if (!items.length) {
-
-            latestNewsContainer.innerHTML = `
-                <div class="news-empty">
-                    Uutisia ei ole julkaistu.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        latestNewsContainer.innerHTML =
-            items
-                .slice(0, 8)
-                .map(item => `
-
-                    <article class="news-item">
+                        ${image}
 
                         <h3 class="news-item-title">
                             ${escapeHtml(item.title)}
@@ -2357,54 +2111,68 @@
                             ${formatDate(item.created_at)}
                         </time>
 
+                        ${text}
+
                     </article>
+                `;
 
-                `)
-                .join('');
+            }).join('');
+    }
 
+
+    function renderLatestNews(items) {
+
+        if (!items.length) {
+            latestNewsContainer.innerHTML =
+                '<div class="news-empty">Uutisia ei ole julkaistu.</div>';
+            return;
+        }
+
+        latestNewsContainer.innerHTML =
+            items.slice(0, 8).map(item => `
+                <article class="news-item">
+
+                    <h3 class="news-item-title">
+                        ${escapeHtml(item.title)}
+                    </h3>
+
+                    <time class="news-item-date">
+                        ${formatDate(item.created_at)}
+                    </time>
+
+                </article>
+            `).join('');
     }
 
 
     function renderEvents(items) {
 
         if (!items.length) {
-
-            eventsContainer.innerHTML = `
-                <div class="news-empty">
-                    Tapahtumia ei ole julkaistu.
-                </div>
-            `;
-
+            eventsContainer.innerHTML =
+                '<div class="news-empty">Tapahtumia ei ole julkaistu.</div>';
             return;
         }
 
-
         eventsContainer.innerHTML =
-            items
-                .slice(0, 8)
-                .map(item => `
+            items.slice(0, 8).map(item => `
+                <article class="news-item">
 
-                    <article class="news-item">
+                    <h3 class="news-item-title">
+                        ${escapeHtml(item.title)}
+                    </h3>
 
-                        <h3 class="news-item-title">
-                            ${escapeHtml(item.title)}
-                        </h3>
+                    <time class="news-item-date">
+                        ${
+                            formatDate(
+                                item.event_date
+                                ||
+                                item.created_at
+                            )
+                        }
+                    </time>
 
-                        <time class="news-item-date">
-                            ${
-                                formatDate(
-                                    item.event_date
-                                    ||
-                                    item.created_at
-                                )
-                            }
-                        </time>
-
-                    </article>
-
-                `)
-                .join('');
-
+                </article>
+            `).join('');
     }
 
 
@@ -2434,51 +2202,28 @@
         document.getElementById('chatSend');
 
     const quickButtons =
-        document.querySelectorAll(
-            '.chat-quick button'
-        );
+        document.querySelectorAll('.chat-quick button');
 
 
-    chatButton.addEventListener(
-        'click',
-        () => {
+    chatButton.addEventListener('click', () => {
 
-            chatWindow.classList.toggle(
-                'open'
+        chatWindow.classList.toggle('open');
+
+        if (chatWindow.classList.contains('open')) {
+            setTimeout(
+                () => chatInput.focus(),
+                100
             );
-
-            if (
-                chatWindow.classList
-                    .contains('open')
-            ) {
-
-                setTimeout(
-                    () => chatInput.focus(),
-                    100
-                );
-
-            }
-
         }
-    );
+    });
 
 
-    chatClose.addEventListener(
-        'click',
-        () => {
-
-            chatWindow.classList.remove(
-                'open'
-            );
-
-        }
-    );
+    chatClose.addEventListener('click', () => {
+        chatWindow.classList.remove('open');
+    });
 
 
-    function addMessage(
-        text,
-        sender
-    ) {
+    function addMessage(text, sender) {
 
         const div =
             document.createElement('div');
@@ -2493,7 +2238,6 @@
 
         chatBody.scrollTop =
             chatBody.scrollHeight;
-
     }
 
 
@@ -2512,7 +2256,6 @@
 
         chatBody.scrollTop =
             chatBody.scrollHeight;
-
     }
 
 
@@ -2523,7 +2266,6 @@
                 .toLocaleLowerCase('fi')
                 .trim();
 
-
         if (
             text.includes('112')
             ||
@@ -2531,14 +2273,11 @@
             ||
             text.includes('tajuton')
         ) {
-
             return {
                 html:
                     'Hätätilanteessa tai hengen ollessa vaarassa soita <strong>112</strong>.'
             };
-
         }
-
 
         if (
             text.includes('oma varaus')
@@ -2547,42 +2286,33 @@
             ||
             text.includes('peru')
         ) {
-
             return {
                 html:
                     'Voit tarkistaa ajanvarauksesi varauskoodilla.<br><br><a href="oma-varaus.html">Avaa oma varaus</a>'
             };
-
         }
-
 
         if (
             text.includes('varaa')
             ||
             text.includes('ajanvaraus')
         ) {
-
             return {
                 html:
                     'Voit tarkastella vapaita vastaanottoaikoja ajanvarauksessa.<br><br><a href="ajanvaraus.html">Siirry ajanvaraukseen</a>'
             };
-
         }
-
 
         if (
             text.includes('terveyskysely')
             ||
             text.includes('kysely')
         ) {
-
             return {
                 html:
                     'Voit avata opiskeluterveydenhuollon terveyskyselyn tästä.<br><br><a href="https://sannarantanenhyvaks.github.io/terveyskysely/">Avaa terveyskysely</a>'
             };
-
         }
-
 
         if (
             text.includes('opiskeluterveydenhuolto')
@@ -2591,74 +2321,44 @@
             ||
             text.includes('lukio')
         ) {
-
             return {
                 html:
                     'Opiskeluterveydenhuollon sivulla voit valita oppilaitoksen ja tarkastella palveluja.<br><br><a href="opiskeluterveydenhuolto.html">Opiskeluterveydenhuolto</a>'
             };
-
         }
-
 
         return {
             text:
                 'Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä ja opiskeluterveydenhuollon palveluissa.'
         };
-
     }
 
 
     function sendMessage(preset = null) {
 
         const message =
-            (
-                preset
-                ??
-                chatInput.value
-            ).trim();
-
+            (preset ?? chatInput.value).trim();
 
         if (!message) {
             return;
         }
 
-
-        addMessage(
-            message,
-            'user'
-        );
-
+        addMessage(message, 'user');
 
         chatInput.value = '';
 
+        setTimeout(() => {
 
-        setTimeout(
-            () => {
+            const response =
+                botResponse(message);
 
-                const response =
-                    botResponse(message);
+            if (response.html) {
+                addBotHtml(response.html);
+            } else {
+                addMessage(response.text, 'bot');
+            }
 
-
-                if (response.html) {
-
-                    addBotHtml(
-                        response.html
-                    );
-
-                }
-                else {
-
-                    addMessage(
-                        response.text,
-                        'bot'
-                    );
-
-                }
-
-            },
-            350
-        );
-
+        }, 350);
     }
 
 
@@ -2673,33 +2373,24 @@
         event => {
 
             if (event.key === 'Enter') {
-
                 event.preventDefault();
-
                 sendMessage();
-
             }
-
         }
     );
 
 
-    quickButtons.forEach(
-        button => {
+    quickButtons.forEach(button => {
 
-            button.addEventListener(
-                'click',
-                () => {
-
-                    sendMessage(
-                        button.dataset.message
-                    );
-
-                }
-            );
-
-        }
-    );
+        button.addEventListener(
+            'click',
+            () => {
+                sendMessage(
+                    button.dataset.message
+                );
+            }
+        );
+    });
 
 
     document.addEventListener(
@@ -2707,13 +2398,8 @@
         event => {
 
             if (event.key === 'Escape') {
-
-                chatWindow.classList.remove(
-                    'open'
-                );
-
+                chatWindow.classList.remove('open');
             }
-
         }
     );
 
