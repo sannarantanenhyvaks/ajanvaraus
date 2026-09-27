@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat | Digitaaliset palvelut</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root{
+    --blue:#2f679b;
+    --blue-dark:#075a96;
+    --blue-deep:#174f80;
+    --blue-light:#e5f2f8;
+    --blue-pale:#f2f8fb;
+
+    --green:#b9d982;
+    --green-dark:#3e7d49;
+
+    --text:#161616;
+    --muted:#63717a;
+    --border:#d7dfe3;
+    --background:#f5f7f8;
+
+    --danger:#b42318;
+
+    --max:1180px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--background);
+    color:var(--text);
+}
+
+button,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:var(--blue-dark);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    width:min(calc(100% - 40px), var(--max));
+    height:86px;
+
+    margin:0 auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.logo{
+    display:block;
+    width:185px;
+    max-height:60px;
+    object-fit:contain;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.service-name{
+    color:var(--blue-dark);
+    font-size:14px;
+    font-weight:600;
+}
+
+.language{
+    position:relative;
+}
+
+.language-button{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    border:0;
+    background:transparent;
+
+    color:var(--blue-dark);
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.language-button svg{
+    width:12px;
+    height:12px;
+
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+}
+
+.language-menu{
+    position:absolute;
+
+    top:34px;
+    right:0;
+
+    z-index:100;
+
+    width:135px;
+
+    display:none;
+
+    padding:5px;
+
+    border:1px solid var(--border);
+    border-radius:4px;
+
+    background:#fff;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+
+.language.open .language-menu{
+    display:block;
+}
+
+.language-option{
+    width:100%;
+
+    padding:9px 11px;
+
+    border:0;
+    border-radius:3px;
+
+    background:transparent;
+
+    text-align:left;
+}
+
+.language-option:hover{
+    background:#edf4f8;
+}
+
+/* ============================================================
+   PALVELUN OTSIKKO
+============================================================ */
+
+.service-bar{
+    background:var(--blue);
+    color:#fff;
+}
+
+.service-bar-inner{
+    width:min(calc(100% - 40px), var(--max));
+
+    min-height:67px;
+
+    margin:0 auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.service-bar h1{
+    margin:0;
+
+    font-size:20px;
+    font-weight:600;
+}
+
+.connection{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:13px;
+}
+
+.connection-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#c7e694;
+}
+
+/* ============================================================
+   PÄÄSISÄLTÖ
+============================================================ */
+
+.page{
+    width:min(calc(100% - 40px), var(--max));
+
+    margin:0 auto;
+
+    padding:28px 0 45px;
+}
+
+.chat-layout{
+    display:grid;
+    grid-template-columns:280px minmax(0,1fr);
+
+    min-height:680px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+    border-radius:6px;
+
+    background:#fff;
+
+    box-shadow:0 3px 14px rgba(0,0,0,.05);
+}
+
+/* ============================================================
+   VASEN PALKKI
+============================================================ */
+
+.sidebar{
+    padding:27px 23px;
+
+    border-right:1px solid var(--border);
+
+    background:#f8fafb;
+}
+
+.sidebar-title{
+    margin:0 0 20px;
+
+    color:var(--blue-dark);
+
+    font-size:17px;
+}
+
+.professional{
+    padding-bottom:23px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.avatar{
+    width:64px;
+    height:64px;
+
+    margin-bottom:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--blue-light);
+}
+
+.avatar svg{
+    width:37px;
+    height:37px;
+
+    fill:none;
+    stroke:var(--blue-dark);
+
+    stroke-width:1.7;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.professional-name{
+    margin-bottom:2px;
+
+    font-size:15px;
+    font-weight:700;
+}
+
+.professional-role{
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.status{
+    margin-top:10px;
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:#356b40;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#66a85e;
+}
+
+/* ============================================================
+   SIVUPALKIN INFO
+============================================================ */
+
+.sidebar-section{
+    padding:22px 0;
+
+    border-bottom:1px solid var(--border);
+}
+
+.sidebar-section:last-child{
+    border-bottom:0;
+}
+
+.sidebar-section h3{
+    margin:0 0 8px;
+
+    font-size:13px;
+}
+
+.sidebar-section p{
+    margin:0;
+
+    color:#4d5960;
+
+    font-size:12px;
+    line-height:1.55;
+}
+
+.sidebar-link{
+    display:block;
+
+    margin-top:9px;
+
+    font-size:12px;
+}
+
+.end-button{
+    width:100%;
+
+    margin-top:20px;
+    padding:9px 12px;
+
+    border:1px solid var(--blue-dark);
+    border-radius:4px;
+
+    background:#fff;
+    color:var(--blue-dark);
+
+    font-size:13px;
+    font-weight:600;
+}
+
+.end-button:hover{
+    background:#edf5f9;
+}
+
+/* ============================================================
+   CHAT
+============================================================ */
+
+.chat-main{
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#fff;
+}
+
+.chat-header{
+    min-height:74px;
+
+    padding:17px 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.chat-header h2{
+    margin:0 0 3px;
+
+    color:var(--blue-dark);
+
+    font-size:18px;
+}
+
+.chat-header p{
+    margin:0;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.anonymous-badge{
+    padding:6px 10px;
+
+    border-radius:3px;
+
+    background:var(--blue-light);
+    color:var(--blue-dark);
+
+    font-size:11px;
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+/* ============================================================
+   VIESTIT
+============================================================ */
+
+.messages{
+    flex:1;
+
+    min-height:440px;
+    max-height:510px;
+
+    overflow-y:auto;
+
+    padding:26px 27px;
+
+    background:#fff;
+}
+
+.message-row{
+    margin-bottom:19px;
+
+    display:flex;
+}
+
+.message-row.user{
+    justify-content:flex-end;
+}
+
+.message-block{
+    max-width:72%;
+}
+
+.sender{
+    margin-bottom:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.message-row.user .sender{
+    text-align:right;
+}
+
+.bubble{
+    padding:12px 15px;
+
+    border-radius:5px;
+
+    font-size:14px;
+    line-height:1.5;
+
+    white-space:pre-wrap;
+}
+
+.message-row.assistant .bubble{
+    border:1px solid #d6e3e9;
+
+    background:#edf6fa;
+}
+
+.message-row.user .bubble{
+    background:var(--blue);
+    color:#fff;
+}
+
+.message-time{
+    margin-top:5px;
+
+    color:#8a969c;
+
+    font-size:10px;
+}
+
+.message-row.user .message-time{
+    text-align:right;
+}
+
+/* ============================================================
+   KIRJOITTAA
+============================================================ */
+
+.typing{
+    display:none;
+
+    margin:0 27px 15px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.typing.show{
+    display:block;
+}
+
+.typing-dots{
+    display:inline-flex;
+    gap:3px;
+
+    margin-left:4px;
+}
+
+.typing-dots span{
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#7e8c92;
+
+    animation:typing 1s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.typing-dots span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes typing{
+
+    0%,60%,100%{
+        opacity:.25;
+        transform:translateY(0);
+    }
+
+    30%{
+        opacity:1;
+        transform:translateY(-2px);
+    }
+}
+
+/* ============================================================
+   PIKAVALINNAT
+============================================================ */
+
+.quick-actions{
+    padding:0 24px 14px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.quick-button{
+    padding:7px 11px;
+
+    border:1px solid var(--blue);
+    border-radius:18px;
+
+    background:#fff;
+    color:var(--blue-dark);
+
+    font-size:12px;
+}
+
+.quick-button:hover{
+    background:#edf6fa;
+}
+
+/* ============================================================
+   KIRJOITUSALUE
+============================================================ */
+
+.composer{
+    padding:17px 20px;
+
+    border-top:1px solid var(--border);
+
+    background:#f8fafb;
+}
+
+.composer-row{
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+}
+
+.message-input{
+    flex:1;
+
+    min-height:50px;
+    max-height:125px;
+
+    resize:none;
+
+    padding:13px 14px;
+
+    border:1px solid #aebbc1;
+    border-radius:5px;
+
+    background:#fff;
+
+    outline:none;
+
+    font-size:14px;
+    line-height:1.4;
+}
+
+.message-input:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 1px var(--blue);
+}
+
+.send-button{
+    width:51px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+    border-radius:5px;
+
+    background:var(--blue);
+    color:#fff;
+}
+
+.send-button:hover{
+    background:var(--blue-deep);
+}
+
+.send-button svg{
+    width:23px;
+    height:23px;
+
+    fill:none;
+    stroke:currentColor;
+
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.composer-note{
+    margin-top:8px;
+
+    color:#69777e;
+
+    font-size:10px;
+}
+
+/* ============================================================
+   PALVELUILMOITUS
+============================================================ */
+
+.notice{
+    margin-bottom:20px;
+    padding:12px 15px;
+
+    border-left:4px solid var(--blue);
+
+    background:#e7f3f8;
+
+    color:#244c60;
+
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.modal-backdrop{
+    position:fixed;
+    inset:0;
+
+    z-index:1000;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.38);
+}
+
+.modal-backdrop.open{
+    display:flex;
+}
+
+.modal{
+    width:min(430px,100%);
+
+    padding:25px;
+
+    border-radius:6px;
+
+    background:#fff;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.modal h2{
+    margin:0 0 10px;
+
+    color:var(--blue-dark);
+
+    font-size:20px;
+}
+
+.modal p{
+    margin:0 0 20px;
+
+    font-size:13px;
+    line-height:1.55;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.modal-cancel,
+.modal-confirm{
+    padding:9px 14px;
+
+    border-radius:4px;
+
+    font-weight:600;
+}
+
+.modal-cancel{
+    border:1px solid var(--blue-dark);
+
+    background:#fff;
+    color:var(--blue-dark);
+}
+
+.modal-confirm{
+    border:1px solid var(--blue);
+
+    background:var(--blue);
+    color:#fff;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer{
+    padding:22px 20px;
+
+    background:#fff;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    color:#68777d;
+
+    font-size:11px;
+}
+
+/* ============================================================
+   MOBIILI
+============================================================ */
+
+@media(max-width:800px){
+
+    .header-inner{
+        width:calc(100% - 30px);
+        height:72px;
+    }
+
+    .logo{
+        width:155px;
+    }
+
+    .service-name{
+        display:none;
+    }
+
+    .service-bar-inner{
+        width:calc(100% - 30px);
+    }
+
+    .page{
+        width:calc(100% - 20px);
+
+        padding:12px 0 25px;
+    }
+
+    .chat-layout{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .chat-main{
+        min-height:calc(100vh - 190px);
+    }
+
+    .messages{
+        max-height:none;
+    }
+
+    .message-block{
+        max-width:88%;
+    }
+
+    .chat-header{
+        padding:15px;
+    }
+
+    .messages{
+        padding:20px 15px;
+    }
+
+    .quick-actions{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .composer{
+        padding:13px;
+    }
+
+    .anonymous-badge{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+        <a href="index.html">
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="logo"
+            >
+        </a>
+
+        <div class="header-right">
+
+            <span
+                class="service-name"
+                data-fi="Digitaaliset palvelut"
+                data-en="Digital services"
+            >
+                Digitaaliset palvelut
+            </span>
+
+            <div
+                class="language"
+                id="language"
+            >
+
+                <button
+                    type="button"
+                    class="language-button"
+                    id="languageButton"
+                >
+                    <span id="languageText">
+                        Suomi
+                    </span>
+
+                    <svg viewBox="0 0 16 16">
+                        <path d="M3 6l5 5 5-5"></path>
+                    </svg>
+
+                </button>
+
+                <div class="language-menu">
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-lang="fi"
+                    >
+                        Suomi
+                    </button>
+
+                    <button
+                        type="button"
+                        class="language-option"
+                        data-lang="en"
+                    >
+                        English
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ============================================================
+     PALVELUPALKKI
+============================================================= -->
+
+<section class="service-bar">
+
+    <div class="service-bar-inner">
+
+        <h1
+            data-fi="Chat-palvelu"
+            data-en="Chat service"
+        >
+            Chat-palvelu
+        </h1>
+
+        <div class="connection">
+
+            <span class="connection-dot"></span>
+
+            <span
+                data-fi="Palvelu käytettävissä"
+                data-en="Service available"
+            >
+                Palvelu käytettävissä
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ============================================================
+     SISÄLTÖ
+============================================================= -->
+
+<main class="page">
+
+    <div class="notice"
+         data-fi="Asioit ilman tunnistautumista. Älä kirjoita keskusteluun henkilötunnusta, pankkitunnuksia, salasanoja tai muita tunnistautumistietoja."
+         data-en="You are using the service without identification. Do not enter your personal identity code, banking credentials, passwords or other authentication information.">
+        Asioit ilman tunnistautumista.
+        Älä kirjoita keskusteluun henkilötunnusta,
+        pankkitunnuksia, salasanoja tai muita
+        tunnistautumistietoja.
+    </div>
+
+    <div class="chat-layout">
+
+        <!-- ====================================================
+             SIVUPALKKI
+        ===================================================== -->
+
+        <aside class="sidebar">
+
+            <h2
+                class="sidebar-title"
+                data-fi="Keskustelu"
+                data-en="Conversation"
+            >
+                Keskustelu
+            </h2>
+
+            <div class="professional">
+
+                <div class="avatar">
+
+                    <svg viewBox="0 0 48 48">
+
+                        <circle
+                            cx="24"
+                            cy="16"
+                            r="8"
+                        ></circle>
+
+                        <path
+                            d="M10 41c1-11 6-17 14-17s13 6 14 17"
+                        ></path>
+
+                        <path
+                            d="M19 30h10"
+                        ></path>
+
+                        <path
+                            d="M24 25v10"
+                        ></path>
+
+                    </svg>
+
+                </div>
+
+                <div
+                    class="professional-name"
+                    data-fi="Digitaalinen palveluohjaus"
+                    data-en="Digital service guidance"
+                >
+                    Digitaalinen palveluohjaus
+                </div>
+
+                <div
+                    class="professional-role"
+                    data-fi="Keski-Suomen hyvinvointialue"
+                    data-en="Wellbeing Services County of Central Finland"
+                >
+                    Keski-Suomen hyvinvointialue
+                </div>
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    <span
+                        data-fi="Palvelu avoinna"
+                        data-en="Service open"
+                    >
+                        Palvelu avoinna
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-section">
+
+                <h3
+                    data-fi="Asiointi"
+                    data-en="Using the service"
+                >
+                    Asiointi
+                </h3>
+
+                <p
+                    data-fi="Keskustelu on aloitettu ilman tunnistautumista. Palveluohjaus auttaa löytämään oikean palvelun."
+                    data-en="This conversation was started without identification. Service guidance can help you find the correct service."
+                >
+                    Keskustelu on aloitettu ilman
+                    tunnistautumista. Palveluohjaus auttaa
+                    löytämään oikean palvelun.
+                </p>
+
+            </div>
+
+            <div class="sidebar-section">
+
+                <h3
+                    data-fi="Hätätilanne"
+                    data-en="Emergency"
+                >
+                    Hätätilanne
+                </h3>
+
+                <p
+                    data-fi="Chat ei ole tarkoitettu hätätilanteisiin. Henkeä tai terveyttä uhkaavassa hätätilanteessa soita 112."
+                    data-en="This chat is not intended for emergencies. In a life-threatening emergency, call 112."
+                >
+                    Chat ei ole tarkoitettu hätätilanteisiin.
+                    Henkeä tai terveyttä uhkaavassa
+                    hätätilanteessa soita 112.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="end-button"
+                id="endButton"
+                data-fi="Lopeta keskustelu"
+                data-en="End conversation"
+            >
+                Lopeta keskustelu
+            </button>
+
+        </aside>
+
+        <!-- ====================================================
+             CHAT
+        ===================================================== -->
+
+        <section class="chat-main">
+
+            <header class="chat-header">
+
+                <div>
+
+                    <h2
+                        data-fi="Digitaalinen palveluohjaus"
+                        data-en="Digital service guidance"
+                    >
+                        Digitaalinen palveluohjaus
+                    </h2>
+
+                    <p
+                        data-fi="Voit kysyä palveluista ja asioinnista."
+                        data-en="You can ask about services and using them."
+                    >
+                        Voit kysyä palveluista ja asioinnista.
+                    </p>
+
+                </div>
+
+                <div
+                    class="anonymous-badge"
+                    data-fi="Ilman tunnistautumista"
+                    data-en="Without identification"
+                >
+                    Ilman tunnistautumista
+                </div>
+
+            </header>
+
+            <div
+                class="messages"
+                id="messages"
+                aria-live="polite"
+            ></div>
+
+            <div
+                class="typing"
+                id="typing"
+            >
+                <span
+                    data-fi="Palveluohjaus kirjoittaa"
+                    data-en="Service guidance is typing"
+                >
+                    Palveluohjaus kirjoittaa
+                </span>
+
+                <span class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+
+            <div
+                class="quick-actions"
+                id="quickActions"
+            >
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-message-fi="Haluan varata ajan"
+                    data-message-en="I want to book an appointment"
+                    data-fi="Ajanvaraus"
+                    data-en="Book an appointment"
+                >
+                    Ajanvaraus
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-message-fi="Haluan tarkistaa oman varaukseni"
+                    data-message-en="I want to check my appointment"
+                    data-fi="Oma varaus"
+                    data-en="My appointment"
+                >
+                    Oma varaus
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-message-fi="Kerro terveyskyselystä"
+                    data-message-en="Tell me about the health questionnaire"
+                    data-fi="Terveyskysely"
+                    data-en="Health questionnaire"
+                >
+                    Terveyskysely
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-message-fi="Tarvitsen opiskeluterveydenhuollon palveluita"
+                    data-message-en="I need student healthcare services"
+                    data-fi="Opiskeluterveydenhuolto"
+                    data-en="Student healthcare"
+                >
+                    Opiskeluterveydenhuolto
+                </button>
+
+            </div>
+
+            <form
+                class="composer"
+                id="chatForm"
+            >
+
+                <div class="composer-row">
+
+                    <textarea
+                        id="messageInput"
+                        class="message-input"
+                        rows="1"
+                        maxlength="1000"
+                        placeholder="Kirjoita viesti..."
+                        aria-label="Kirjoita viesti"
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        class="send-button"
+                        aria-label="Lähetä viesti"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 11.5L21 3l-7 18-3-7-8-2.5z"></path>
+                            <path d="M11 14L21 3"></path>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="composer-note"
+                    data-fi="Älä lähetä henkilötunnusta tai kirjautumistietoja chatissa."
+                    data-en="Do not send your personal identity code or login credentials in the chat."
+                >
+                    Älä lähetä henkilötunnusta tai
+                    kirjautumistietoja chatissa.
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+
+    <span
+        data-fi="Keski-Suomen hyvinvointialue · Digitaaliset palvelut"
+        data-en="Wellbeing Services County of Central Finland · Digital services"
+    >
+        Keski-Suomen hyvinvointialue · Digitaaliset palvelut
+    </span>
+
+</footer>
+
+<!-- ============================================================
+     LOPETA KESKUSTELU
+============================================================= -->
+
+<div
+    class="modal-backdrop"
+    id="endModal"
+>
+
+    <div class="modal">
+
+        <h2
+            data-fi="Lopeta keskustelu?"
+            data-en="End conversation?"
+        >
+            Lopeta keskustelu?
+        </h2>
+
+        <p
+            data-fi="Kun poistut tästä keskustelusta, tämän selaimen keskusteluhistoria poistetaan."
+            data-en="When you leave this conversation, the conversation history stored in this browser will be deleted."
+        >
+            Kun poistut tästä keskustelusta,
+            tämän selaimen keskusteluhistoria poistetaan.
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="cancelEnd"
+                data-fi="Peruuta"
+                data-en="Cancel"
+            >
+                Peruuta
+            </button>
+
+            <button
+                type="button"
+                class="modal-confirm"
+                id="confirmEnd"
+                data-fi="Lopeta keskustelu"
+                data-en="End conversation"
+            >
+                Lopeta keskustelu
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ============================================================
+   ASETUKSET
+============================================================= */
+
+let currentLanguage =
+    localStorage.getItem(
+        'digitalServicesLanguage'
+    ) || 'fi';
+
+const messages =
+    document.getElementById('messages');
+
+const form =
+    document.getElementById('chatForm');
+
+const input =
+    document.getElementById('messageInput');
+
+const typing =
+    document.getElementById('typing');
+
+/* ============================================================
+   AIKA
+============================================================= */
+
+function getTime(){
+
+    return new Intl.DateTimeFormat(
+        currentLanguage === 'en'
+            ? 'en-GB'
+            : 'fi-FI',
+        {
+            hour:'2-digit',
+            minute:'2-digit'
+        }
+    ).format(new Date());
+}
+
+/* ============================================================
+   VIESTI
+============================================================= */
+
+function addMessage(
+    text,
+    sender = 'assistant'
+){
+
+    const row =
+        document.createElement('div');
+
+    row.className =
+        'message-row ' + sender;
+
+    const block =
+        document.createElement('div');
+
+    block.className =
+        'message-block';
+
+    const senderElement =
+        document.createElement('div');
+
+    senderElement.className =
+        'sender';
+
+    senderElement.textContent =
+        sender === 'user'
+            ? (
+                currentLanguage === 'en'
+                    ? 'You'
+                    : 'Sinä'
+            )
+            : (
+                currentLanguage === 'en'
+                    ? 'Digital service guidance'
+                    : 'Digitaalinen palveluohjaus'
+            );
+
+    const bubble =
+        document.createElement('div');
+
+    bubble.className =
+        'bubble';
+
+    bubble.textContent =
+        text;
+
+    const time =
+        document.createElement('div');
+
+    time.className =
+        'message-time';
+
+    time.textContent =
+        getTime();
+
+    block.appendChild(
+        senderElement
+    );
+
+    block.appendChild(
+        bubble
+    );
+
+    block.appendChild(
+        time
+    );
+
+    row.appendChild(
+        block
+    );
+
+    messages.appendChild(
+        row
+    );
+
+    messages.scrollTop =
+        messages.scrollHeight;
+}
+
+/* ============================================================
+   LINKILLINEN VIESTI
+============================================================= */
+
+function addServiceMessage(
+    text,
+    linkText,
+    href
+){
+
+    const row =
+        document.createElement('div');
+
+    row.className =
+        'message-row assistant';
+
+    const block =
+        document.createElement('div');
+
+    block.className =
+        'message-block';
+
+    const senderElement =
+        document.createElement('div');
+
+    senderElement.className =
+        'sender';
+
+    senderElement.textContent =
+        currentLanguage === 'en'
+            ? 'Digital service guidance'
+            : 'Digitaalinen palveluohjaus';
+
+    const bubble =
+        document.createElement('div');
+
+    bubble.className =
+        'bubble';
+
+    const textNode =
+        document.createElement('div');
+
+    textNode.textContent =
+        text;
+
+    const link =
+        document.createElement('a');
+
+    link.href =
+        href;
+
+    link.textContent =
+        linkText;
+
+    link.style.display =
+        'inline-block';
+
+    link.style.marginTop =
+        '9px';
+
+    link.style.fontWeight =
+        '700';
+
+    link.style.color =
+        '#075a96';
+
+    bubble.appendChild(
+        textNode
+    );
+
+    bubble.appendChild(
+        link
+    );
+
+    const time =
+        document.createElement('div');
+
+    time.className =
+        'message-time';
+
+    time.textContent =
+        getTime();
+
+    block.appendChild(
+        senderElement
+    );
+
+    block.appendChild(
+        bubble
+    );
+
+    block.appendChild(
+        time
+    );
+
+    row.appendChild(
+        block
+    );
+
+    messages.appendChild(
+        row
+    );
+
+    messages.scrollTop =
+        messages.scrollHeight;
+}
+
+/* ============================================================
+   TEKSTIN NORMALISOINTI
+============================================================= */
+
+function normalize(text){
+
+    return text
+        .toLocaleLowerCase('fi')
+        .normalize('NFD')
+        .replace(
+            /[\u0300-\u036f]/g,
+            ''
+        );
+}
+
+function includesAny(
+    text,
+    words
+){
+
+    return words.some(
+        word =>
+            text.includes(
+                normalize(word)
+            )
+    );
+}
+
+/* ============================================================
+   VASTAUSLOGIIKKA
+============================================================= */
+
+function getResponse(original){
+
+    const text =
+        normalize(original);
+
+    /* --------------------------------------------------------
+       HÄTÄTILANNE
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'en saa henkea',
+                'ei saa henkea',
+                'tajuton',
+                'tajuttomana',
+                'rintakipu',
+                'halvaus',
+                'vakava verenvuoto',
+                'hengitysvaikeus',
+                'itsemurha',
+                'tapan itseni',
+                'kuolen'
+            ]
+        )
+    ){
+
+        return {
+            type:'text',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'This chat is not intended for emergencies. If there is an immediate threat to life or health, call the emergency number 112. Do not wait for a reply in the chat.'
+
+                : 'Chat ei ole tarkoitettu hätätilanteisiin. Jos henki tai terveys on välittömässä vaarassa, soita hätänumeroon 112. Älä jää odottamaan vastausta chatissa.'
+        };
+    }
+
+    /* --------------------------------------------------------
+       AJANVARAUS
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'ajanvaraus',
+                'varata ajan',
+                'varaan ajan',
+                'vapaita aikoja',
+                'vastaanottoaika',
+                'vastaanotolle'
+            ]
+        )
+    ){
+
+        return {
+            type:'link',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'You can view available appointments and book a time in the appointment service.'
+
+                : 'Voit tarkistaa vapaat vastaanottoajat ja varata ajan ajanvarauspalvelussa.',
+
+            link:
+                currentLanguage === 'en'
+                    ? 'Open appointment booking'
+                    : 'Siirry ajanvaraukseen',
+
+            href:'ajanvaraus.html'
+        };
+    }
+
+    /* --------------------------------------------------------
+       OMA VARAUS
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'oma varaus',
+                'varaukseni',
+                'varauskoodi',
+                'perua ajan',
+                'peruuttaa ajan',
+                'tarkistaa ajan'
+            ]
+        )
+    ){
+
+        return {
+            type:'link',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'You can check your appointment using your booking code in the My appointment service.'
+
+                : 'Voit tarkistaa ajanvarauksesi varauskoodilla Oma varaus -palvelussa.',
+
+            link:
+                currentLanguage === 'en'
+                    ? 'Open My appointment'
+                    : 'Avaa Oma varaus',
+
+            href:'oma-varaus.html'
+        };
+    }
+
+    /* --------------------------------------------------------
+       TERVEYSKYSELY
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'terveyskysely',
+                'terveys kysely',
+                'kysely',
+                'terveystarkastuslomake'
+            ]
+        )
+    ){
+
+        return {
+            type:'link',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'The health questionnaire can be completed electronically before the student health examination.'
+
+                : 'Terveyskyselyn voit täyttää sähköisesti ennen opiskeluterveydenhuollon terveystarkastusta.',
+
+            link:
+                currentLanguage === 'en'
+                    ? 'Open health questionnaire'
+                    : 'Avaa terveyskysely',
+
+            href:
+                'https://sannarantanenhyvaks.github.io/terveyskysely/'
+        };
+    }
+
+    /* --------------------------------------------------------
+       OPISKELUTERVEYDENHUOLTO
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'opiskeluterveydenhuolto',
+                'opiskeluterveyden',
+                'terkkari',
+                'terveydenhoitaja',
+                'sanna',
+                'rantanen',
+                'muuramen lukio',
+                'lukio'
+            ]
+        )
+    ){
+
+        return {
+            type:'link',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'Information about student healthcare, reception services and the school health nurse is available on the student healthcare page.'
+
+                : 'Opiskeluterveydenhuollon sivulta löydät tiedot vastaanotosta, palveluista ja terveydenhoitajasta.',
+
+            link:
+                currentLanguage === 'en'
+                    ? 'Student healthcare'
+                    : 'Opiskeluterveydenhuoltoon',
+
+            href:
+                'opiskeluterveydenhuolto.html'
+        };
+    }
+
+    /* --------------------------------------------------------
+       AVOIN VASTAANOTTO
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'avoin vastaanotto',
+                'ilman ajanvarausta',
+                'auki',
+                'aukiolo',
+                'paikalla'
+            ]
+        )
+    ){
+
+        return {
+            type:'text',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'At Muurame Upper Secondary School, the health nurse has an open reception from 12:00 to 13:00. For other services, check the student healthcare page.'
+
+                : 'Muuramen lukion terveydenhoitajan avoin vastaanotto on klo 12.00–13.00. Muut asiointitiedot löydät opiskeluterveydenhuollon sivulta.'
+        };
+    }
+
+    /* --------------------------------------------------------
+       PALAUTE
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'palaute',
+                'palautetta',
+                'valitus',
+                'kiitos palvelusta'
+            ]
+        )
+    ){
+
+        return {
+            type:'link',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'You can submit feedback using the feedback form.'
+
+                : 'Voit antaa palautetta sähköisellä palautelomakkeella.',
+
+            link:
+                currentLanguage === 'en'
+                    ? 'Give feedback'
+                    : 'Anna palautetta',
+
+            href:'palaute.html'
+        };
+    }
+
+    /* --------------------------------------------------------
+       IHMINEN / AMMATTILAINEN
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'ammattilainen',
+                'ihminen',
+                'oikea ihminen',
+                'haluan jutella',
+                'hoitaja',
+                'yhdista'
+            ]
+        )
+    ){
+
+        return {
+            type:'text',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'This version of the chat provides automated service guidance. It cannot currently transfer the conversation to a healthcare professional. If you need personal guidance, use the student healthcare contact channels.'
+
+                : 'Tämä chat tarjoaa tällä hetkellä automaattista palveluohjausta eikä voi vielä siirtää keskustelua terveydenhuollon ammattilaiselle. Henkilökohtaista neuvontaa varten voit käyttää opiskeluterveydenhuollon yhteydenottokanavia.'
+        };
+    }
+
+    /* --------------------------------------------------------
+       TERVEHDYS
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'hei',
+                'moi',
+                'moikka',
+                'terve',
+                'hello',
+                'hi'
+            ]
+        )
+    ){
+
+        return {
+            type:'text',
+
+            text:
+                currentLanguage === 'en'
+
+                ? 'Hello. How can I help you? You can ask, for example, about appointment booking, your existing appointment, the health questionnaire or student healthcare.'
+
+                : 'Hei. Miten voin auttaa? Voit kysyä esimerkiksi ajanvarauksesta, omasta varauksestasi, terveyskyselystä tai opiskeluterveydenhuollosta.'
+        };
+    }
+
+    /* --------------------------------------------------------
+       KIITOS
+    --------------------------------------------------------- */
+
+    if(
+        includesAny(
+            text,
+            [
+                'kiitos',
+                'thanks',
+                'thank you'
+            ]
+        )
+    ){
+
+        return {
+            type:'text',
+
+            text:
+                currentLanguage === 'en'
+                    ? 'You’re welcome. Is there anything else I can help you with?'
+                    : 'Ole hyvä. Voinko auttaa vielä jossakin muussa?'
+        };
+    }
+
+    /* --------------------------------------------------------
+       OLETUS
+    --------------------------------------------------------- */
+
+    return {
+        type:'text',
+
+        text:
+            currentLanguage === 'en'
+
+            ? 'I did not find a direct answer to that. I can help you with appointment booking, an existing appointment, the health questionnaire, student healthcare, reception information and feedback. You can also describe what service you are looking for in your own words.'
+
+            : 'En löytänyt tähän suoraa vastausta. Voin auttaa ajanvarauksessa, oman varauksen tarkistamisessa, terveyskyselyssä, opiskeluterveydenhuollossa, vastaanoton tiedoissa ja palautteen antamisessa. Voit myös kertoa omin sanoin, millaista palvelua etsit.'
+    };
+}
+
+/* ============================================================
+   VASTAA
+============================================================= */
+
+function answerMessage(
+    message
+){
+
+    typing.classList.add(
+        'show'
+    );
+
+    messages.scrollTop =
+        messages.scrollHeight;
+
+    const response =
+        getResponse(
+            message
+        );
+
+    const delay =
+        Math.min(
+            1200,
+            Math.max(
+                500,
+                response.text.length * 7
+            )
+        );
+
+    setTimeout(
+        () => {
+
+            typing.classList.remove(
+                'show'
+            );
+
+            if(
+                response.type ===
+                'link'
+            ){
+
+                addServiceMessage(
+                    response.text,
+                    response.link,
+                    response.href
+                );
+            }
+
+            else{
+
+                addMessage(
+                    response.text,
+                    'assistant'
+                );
+            }
+
+        },
+        delay
+    );
+}
+
+/* ============================================================
+   LÄHETYS
+============================================================= */
+
+function sendMessage(
+    text
+){
+
+    const clean =
+        text.trim();
+
+    if(!clean){
+        return;
+    }
+
+    addMessage(
+        clean,
+        'user'
+    );
+
+    input.value = '';
+
+    input.style.height =
+        'auto';
+
+    answerMessage(
+        clean
+    );
+}
+
+form.addEventListener(
+    'submit',
+    event => {
+
+        event.preventDefault();
+
+        sendMessage(
+            input.value
+        );
+    }
+);
+
+input.addEventListener(
+    'keydown',
+    event => {
+
+        if(
+            event.key === 'Enter'
+            &&
+            !event.shiftKey
+        ){
+
+            event.preventDefault();
+
+            form.requestSubmit();
+        }
+    }
+);
+
+input.addEventListener(
+    'input',
+    () => {
+
+        input.style.height =
+            'auto';
+
+        input.style.height =
+            Math.min(
+                input.scrollHeight,
+                125
+            ) + 'px';
+    }
+);
+
+/* ============================================================
+   PIKAVALINNAT
+============================================================= */
+
+document
+    .querySelectorAll(
+        '.quick-button'
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    const text =
+                        currentLanguage === 'en'
+                            ? button.dataset.messageEn
+                            : button.dataset.messageFi;
+
+                    sendMessage(
+                        text
+                    );
+                }
+            );
+        }
+    );
+
+/* ============================================================
+   KIELI
+============================================================= */
+
+const language =
+    document.getElementById(
+        'language'
+    );
+
+const languageButton =
+    document.getElementById(
+        'languageButton'
+    );
+
+const languageText =
+    document.getElementById(
+        'languageText'
+    );
+
+languageButton.addEventListener(
+    'click',
+    event => {
+
+        event.stopPropagation();
+
+        language.classList.toggle(
+            'open'
+        );
+    }
+);
+
+document
+    .querySelectorAll(
+        '.language-option'
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    setLanguage(
+                        button.dataset.lang
+                    );
+
+                    language.classList.remove(
+                        'open'
+                    );
+                }
+            );
+        }
+    );
+
+document.addEventListener(
+    'click',
+    event => {
+
+        if(
+            !language.contains(
+                event.target
+            )
+        ){
+
+            language.classList.remove(
+                'open'
+            );
+        }
+    }
+);
+
+function setLanguage(
+    lang
+){
+
+    currentLanguage =
+        lang;
+
+    localStorage.setItem(
+        'digitalServicesLanguage',
+        lang
+    );
+
+    document.documentElement.lang =
+        lang;
+
+    languageText.textContent =
+        lang === 'en'
+            ? 'English'
+            : 'Suomi';
+
+    document
+        .querySelectorAll(
+            '[data-fi][data-en]'
+        )
+        .forEach(
+            element => {
+
+                element.textContent =
+                    lang === 'en'
+                        ? element.dataset.en
+                        : element.dataset.fi;
+            }
+        );
+
+    input.placeholder =
+        lang === 'en'
+            ? 'Write a message...'
+            : 'Kirjoita viesti...';
+}
+
+/* ============================================================
+   LOPETA KESKUSTELU
+============================================================= */
+
+const endButton =
+    document.getElementById(
+        'endButton'
+    );
+
+const endModal =
+    document.getElementById(
+        'endModal'
+    );
+
+const cancelEnd =
+    document.getElementById(
+        'cancelEnd'
+    );
+
+const confirmEnd =
+    document.getElementById(
+        'confirmEnd'
+    );
+
+endButton.addEventListener(
+    'click',
+    () => {
+
+        endModal.classList.add(
+            'open'
+        );
+    }
+);
+
+cancelEnd.addEventListener(
+    'click',
+    () => {
+
+        endModal.classList.remove(
+            'open'
+        );
+    }
+);
+
+confirmEnd.addEventListener(
+    'click',
+    () => {
+
+        sessionStorage.removeItem(
+            'digitalChatHistory'
+        );
+
+        window.location.href =
+            'digipalvelut.html';
+    }
+);
+
+/* ============================================================
+   ALOITUS
+============================================================= */
+
+setLanguage(
+    currentLanguage
+);
+
+setTimeout(
+    () => {
+
+        addMessage(
+
+            currentLanguage === 'en'
+
+            ? 'Hello and welcome to digital service guidance. You are using the service without identification. How can I help you today?'
+
+            : 'Hei ja tervetuloa digitaaliseen palveluohjaukseen. Asioit ilman tunnistautumista. Miten voin auttaa tänään?',
+
+            'assistant'
+        );
+
+    },
+    300
+);
+
+</script>
+
+</body>
+</html>
