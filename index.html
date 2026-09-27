@@ -4,597 +4,1111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Opiskeluterveydenhuolto | Keski-Suomen hyvinvointialue</title>
+<title>Hyvinvointipalvelut</title>
 
 <style>
-* {
-    box-sizing: border-box;
+:root{
+    --blue:#005eb8;
+    --blue-dark:#004b93;
+    --blue-light:#eaf5fb;
+
+    --green:#dcefe7;
+    --green-dark:#176a53;
+
+    --navy:#173846;
+
+    --text:#1b2b34;
+    --muted:#56666e;
+
+    --border:#d9e1e5;
+    --background:#ffffff;
+    --soft:#f4f7f8;
+
+    --danger:#b42318;
+
+    --shadow:0 8px 30px rgba(20,48,61,.12);
 }
 
-:root {
-    --blue: #07569c;
-    --blue-dark: #003f78;
-    --blue-soft: #eaf3f8;
-    --green: #b8d979;
-    --green-soft: #eef6dc;
-    --text: #17252f;
-    --muted: #52616c;
-    --border: #d9e0e4;
-    --background: #ffffff;
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background: white;
-    line-height: 1.55;
+body{
+    margin:0;
+    background:var(--background);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 button,
-input {
-    font: inherit;
+input{
+    font:inherit;
 }
 
-a {
-    color: inherit;
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
 }
 
-/* ==========================================================
+a{
+    color:inherit;
+}
+
+/* =========================================================
+   TOP ACCENT
+========================================================= */
+
+.top-accent{
+    height:6px;
+    background:var(--blue);
+}
+
+/* =========================================================
    HEADER
-========================================================== */
+========================================================= */
 
-.top-accent {
-    height: 6px;
-    background: var(--blue);
+.site-header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
 }
 
-.site-header {
-    background: white;
-    border-bottom: 1px solid #e3e7ea;
+.header-main{
+    max-width:1420px;
+    min-height:102px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 42px;
 }
 
-.header-top {
-    max-width: 1280px;
-    margin: auto;
-    padding: 25px 28px 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+.logo-link{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
 }
 
-.logo-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
+.logo{
+    width:205px;
+    max-height:72px;
+    object-fit:contain;
 }
 
-.logo-link img {
-    width: 230px;
-    max-height: 80px;
-    object-fit: contain;
-    object-position: left center;
+.header-tools{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
 }
 
-.header-search {
-    width: min(390px, 100%);
-    display: flex;
-    border: 2px solid var(--blue);
-    border-radius: 30px;
-    overflow: hidden;
-    background: white;
+.header-tool{
+    border:0;
+    background:transparent;
+
+    color:var(--blue);
+
+    font-weight:700;
+    font-size:14px;
+
+    padding:12px;
+
+    cursor:pointer;
 }
 
-.header-search input {
-    flex: 1;
-    min-width: 0;
-    border: 0;
-    outline: 0;
-    padding: 12px 20px;
-    color: var(--text);
+.header-tool:hover{
+    text-decoration:underline;
 }
 
-.header-search button {
-    width: 58px;
-    border: 0;
-    background: var(--blue);
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.main-navigation{
+    border-top:1px solid #edf0f2;
+    background:#fff;
 }
 
-.header-search button:hover {
-    background: var(--blue-dark);
+.navigation-inner{
+    max-width:1420px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 32px;
+
+    min-height:58px;
 }
 
-/* ==========================================================
-   MAIN NAV
-========================================================== */
+.navigation-inner a{
+    text-decoration:none;
 
-.main-nav {
-    max-width: 1280px;
-    margin: auto;
-    padding: 0 28px 20px;
+    font-size:14px;
+    font-weight:700;
 
-    display: flex;
-    align-items: center;
-    gap: 37px;
-    flex-wrap: wrap;
+    color:#263b45;
+
+    padding:20px 14px;
+
+    white-space:nowrap;
 }
 
-.main-nav a {
-    text-decoration: none;
-    color: var(--blue-dark);
-    font-weight: 600;
-    font-size: 15px;
-    padding: 4px 0;
+.navigation-inner a:hover{
+    color:var(--blue);
+    background:#f5f9fb;
 }
 
-.main-nav a:hover {
-    text-decoration: underline;
-}
-
-.main-nav a.active {
-    border-bottom: 3px solid var(--blue);
-}
-
-/* ==========================================================
-   BREADCRUMB
-========================================================== */
-
-.breadcrumb-area {
-    border-top: 1px solid #edf0f2;
-    border-bottom: 1px solid #e1e6e9;
-    background: #fafbfb;
-}
-
-.breadcrumb {
-    max-width: 1280px;
-    margin: auto;
-    padding: 13px 28px;
-    font-size: 13px;
-    color: #596873;
-}
-
-.breadcrumb a {
-    color: var(--blue);
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-/* ==========================================================
-   MAIN
-========================================================== */
-
-main {
-    max-width: 1280px;
-    margin: auto;
-    padding: 48px 28px 75px;
-}
-
-/* ==========================================================
+/* =========================================================
    HERO
-========================================================== */
+========================================================= */
 
-.hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
-    gap: 70px;
-    align-items: center;
-    margin-bottom: 68px;
-}
-
-.hero-content {
-    max-width: 650px;
-}
-
-.hero-kicker {
-    display: inline-block;
-    margin-bottom: 13px;
-    color: var(--blue);
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.hero h1 {
-    margin: 0 0 21px;
-    color: var(--blue-dark);
-    font-size: 42px;
-    line-height: 1.12;
-    font-weight: 700;
-}
-
-.hero p {
-    margin: 0 0 16px;
-    color: #394b56;
-    font-size: 18px;
-    line-height: 1.65;
-}
-
-.hero-notice {
-    margin-top: 28px;
-    padding: 18px 20px;
-    background: var(--green-soft);
-    border-left: 5px solid #92bd45;
-    color: #314318;
-    font-size: 14px;
-}
-
-.hero-visual {
-    min-height: 330px;
+.hero{
     background:
         linear-gradient(
-            135deg,
-            #eaf3f8 0%,
-            #f5f9fb 55%,
-            #eef6dc 100%
+            110deg,
+            #e6f4f8 0%,
+            #f2f9f7 55%,
+            #e8f3ef 100%
         );
-    border-radius: 6px;
-    position: relative;
-    overflow: hidden;
+
+    border-bottom:1px solid #dce7e7;
 }
 
-.hero-circle {
-    position: absolute;
-    border-radius: 50%;
+.hero-inner{
+    max-width:1420px;
+    margin:auto;
+
+    min-height:455px;
+
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+
+    align-items:center;
+
+    padding:68px 42px;
 }
 
-.hero-circle.one {
-    width: 190px;
-    height: 190px;
-    background: #07569c;
-    left: 55px;
-    top: 70px;
+.hero-eyebrow{
+    text-transform:uppercase;
+
+    color:var(--blue);
+
+    letter-spacing:.09em;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:18px;
 }
 
-.hero-circle.two {
-    width: 155px;
-    height: 155px;
-    background: #b8d979;
-    left: 180px;
-    top: 110px;
+.hero h1{
+    margin:0;
+
+    font-size:52px;
+    line-height:1.08;
+
+    max-width:730px;
 }
 
-.hero-circle.three {
-    width: 110px;
-    height: 110px;
-    background: #f4c8c9;
-    left: 275px;
-    top: 48px;
+.hero-description{
+    max-width:670px;
+
+    font-size:19px;
+    line-height:1.65;
+
+    color:#435860;
+
+    margin:23px 0 32px;
 }
 
-.hero-visual-text {
-    position: absolute;
-    right: 34px;
-    bottom: 32px;
-    max-width: 210px;
-    color: var(--blue-dark);
-    font-size: 20px;
-    line-height: 1.25;
-    font-weight: 700;
+.search-box{
+    display:flex;
+
+    max-width:700px;
+
+    background:#fff;
+
+    border:2px solid var(--blue);
+
+    box-shadow:0 4px 15px rgba(0,69,125,.08);
 }
 
-/* ==========================================================
-   SERVICES
-========================================================== */
+.search-box input{
+    border:0;
+    outline:0;
 
-.section-heading {
-    margin-bottom: 25px;
+    min-height:60px;
+
+    flex:1;
+
+    padding:0 19px;
+
+    font-size:16px;
+
+    color:var(--text);
 }
 
-.section-heading h2 {
-    margin: 0 0 8px;
-    color: var(--blue-dark);
-    font-size: 30px;
+.search-button{
+    border:0;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    min-width:70px;
+
+    font-size:22px;
+
+    cursor:pointer;
 }
 
-.section-heading p {
-    margin: 0;
-    max-width: 760px;
-    color: var(--muted);
-    font-size: 16px;
+.search-button:hover{
+    background:var(--blue-dark);
 }
 
-.services-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
-    gap: 55px;
-    align-items: start;
+/* HERO VISUAL */
+
+.hero-visual{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding-left:50px;
 }
 
-.service-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.hero-circle{
+    width:310px;
+    height:310px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 20px 50px rgba(23,56,70,.10);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
 }
 
-.service-link {
-    min-height: 76px;
-    padding: 15px 20px;
+.hero-circle::before{
+    content:"";
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    position:absolute;
 
-    background: var(--blue);
-    color: white;
-    text-decoration: none;
+    width:250px;
+    height:250px;
 
-    border-radius: 4px;
+    border-radius:50%;
+
+    background:var(--green);
+}
+
+.hero-symbol{
+    position:relative;
+    z-index:2;
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    background:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:48px;
+    font-weight:700;
+}
+
+/* =========================================================
+   GENERAL CONTENT
+========================================================= */
+
+.section{
+    padding:70px 42px;
+}
+
+.section-inner{
+    max-width:1335px;
+    margin:auto;
+}
+
+.section-heading{
+    margin-bottom:33px;
+}
+
+.section-heading h2{
+    margin:0 0 10px;
+
+    font-size:34px;
+}
+
+.section-heading p{
+    margin:0;
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+    max-width:750px;
+}
+
+/* =========================================================
+   QUICK SERVICES
+========================================================= */
+
+.quick-services{
+    background:#fff;
+}
+
+.service-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+}
+
+.service-card{
+    border:1px solid var(--border);
+
+    min-height:255px;
+
+    padding:28px;
+
+    text-decoration:none;
+
+    background:#fff;
 
     transition:
-        background .15s ease,
-        transform .15s ease;
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease;
+
+    display:flex;
+    flex-direction:column;
 }
 
-.service-link:hover {
-    background: var(--blue-dark);
-    transform: translateY(-1px);
+.service-card:hover{
+    transform:translateY(-3px);
+
+    border-color:#9ec7df;
+
+    box-shadow:var(--shadow);
 }
 
-.service-link-content strong {
-    display: block;
-    margin-bottom: 2px;
-    font-size: 17px;
+.service-icon{
+    width:62px;
+    height:62px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:27px;
+
+    margin-bottom:23px;
 }
 
-.service-link-content span {
-    display: block;
-    color: #e6f0f7;
-    font-size: 13px;
+.service-card h3{
+    margin:0 0 11px;
+
+    color:var(--blue);
+
+    font-size:20px;
 }
 
-.service-arrow {
-    flex: 0 0 31px;
-    width: 31px;
-    height: 31px;
-    border: 2px solid white;
-    border-radius: 50%;
+.service-card p{
+    margin:0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color:var(--muted);
 
-    font-size: 20px;
-    font-weight: bold;
+    line-height:1.55;
+
+    font-size:14px;
 }
 
-/* ==========================================================
-   CONTACT
-========================================================== */
+.service-link{
+    margin-top:auto;
+    padding-top:20px;
 
-.contact-card {
-    border: 1px solid var(--border);
-    background: #fafbfb;
+    color:var(--blue);
+
+    font-weight:700;
+
+    font-size:14px;
 }
 
-.contact-card-heading {
-    padding: 18px 21px;
-    background: var(--blue-soft);
-    border-bottom: 1px solid #d4e3ec;
+/* =========================================================
+   STUDENT HEALTH
+========================================================= */
+
+.student-section{
+    background:var(--soft);
 }
 
-.contact-card-heading h3 {
-    margin: 0;
-    color: var(--blue-dark);
-    font-size: 20px;
+.student-layout{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:55px;
+
+    align-items:center;
 }
 
-.contact-body {
-    padding: 21px;
+.student-content h2{
+    font-size:36px;
+
+    margin:0 0 19px;
 }
 
-.contact-person {
-    margin-bottom: 20px;
+.student-content p{
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    max-width:620px;
 }
 
-.contact-person strong {
-    display: block;
-    font-size: 17px;
+.primary-link{
+    display:inline-flex;
+
+    text-decoration:none;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    font-weight:700;
+
+    padding:14px 22px;
+
+    margin-top:15px;
 }
 
-.contact-person span {
-    display: block;
-    color: var(--muted);
-    font-size: 14px;
+.primary-link:hover{
+    background:var(--blue-dark);
 }
 
-.contact-row {
-    padding: 12px 0;
-    border-top: 1px solid #e0e5e8;
+.info-panel{
+    background:#fff;
+
+    border-left:6px solid var(--blue);
+
+    padding:31px;
+
+    box-shadow:0 4px 20px rgba(24,55,69,.07);
 }
 
-.contact-row-label {
-    display: block;
-    margin-bottom: 2px;
-    color: #65747d;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
+.info-panel h3{
+    margin:0 0 20px;
+
+    font-size:21px;
 }
 
-.contact-row-value {
-    color: var(--text);
-    font-size: 14px;
+.info-row{
+    padding:15px 0;
+
+    border-bottom:1px solid var(--border);
 }
 
-/* ==========================================================
-   MORE SERVICES
-========================================================== */
-
-.more-services {
-    margin-top: 70px;
-    padding-top: 42px;
-    border-top: 1px solid #dce2e6;
+.info-row:last-child{
+    border-bottom:0;
 }
 
-.icon-services {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 28px;
+.info-row strong{
+    display:block;
+
+    margin-bottom:4px;
 }
 
-.icon-service {
-    text-align: center;
-    text-decoration: none;
-    color: var(--blue-dark);
+.info-row span{
+    color:var(--muted);
+
+    font-size:14px;
 }
 
-.icon-circle {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 14px;
+/* =========================================================
+   INFO / CURRENT
+========================================================= */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.current-grid{
+    display:grid;
 
-    border-radius: 50%;
-    background: var(--green);
+    grid-template-columns:2fr 1fr;
 
-    font-size: 29px;
+    gap:25px;
 }
 
-.icon-service strong {
-    font-size: 15px;
+.current-main,
+.current-side{
+    border:1px solid var(--border);
+
+    background:#fff;
+
+    padding:29px;
 }
 
-.icon-service:hover strong {
-    text-decoration: underline;
+.current-label{
+    color:var(--blue);
+
+    text-transform:uppercase;
+
+    font-weight:700;
+
+    letter-spacing:.07em;
+
+    font-size:11px;
 }
 
-/* ==========================================================
+.current-main h3,
+.current-side h3{
+    margin:12px 0;
+
+    font-size:22px;
+}
+
+.current-main p,
+.current-side p{
+    color:var(--muted);
+
+    line-height:1.6;
+}
+
+/* =========================================================
    FOOTER
-========================================================== */
+========================================================= */
 
-footer {
-    background: #173f66;
-    color: white;
+.footer{
+    background:var(--navy);
+
+    color:#fff;
+
+    margin-top:40px;
 }
 
-.footer-inner {
-    max-width: 1280px;
-    margin: auto;
-    padding: 44px 28px;
+.footer-inner{
+    max-width:1335px;
 
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 55px;
+    margin:auto;
+
+    padding:55px 42px;
+
+    display:grid;
+
+    grid-template-columns:1.5fr 1fr 1fr;
+
+    gap:50px;
 }
 
-footer h3 {
-    margin: 0 0 13px;
-    font-size: 18px;
+.footer h3{
+    margin-top:0;
 }
 
-footer p {
-    margin: 5px 0;
-    color: #e3edf4;
-    font-size: 14px;
+.footer p{
+    color:#d2e0e5;
+
+    line-height:1.65;
 }
 
-footer a {
-    color: white;
+.footer a{
+    color:#fff;
+
+    display:block;
+
+    margin:10px 0;
+
+    text-decoration:none;
 }
 
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,.18);
+.footer a:hover{
+    text-decoration:underline;
 }
 
-.footer-bottom-inner {
-    max-width: 1280px;
-    margin: auto;
-    padding: 17px 28px;
-    color: #dce8f0;
-    font-size: 12px;
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.16);
+
+    padding:19px 42px;
+
+    color:#c8d8de;
+
+    font-size:12px;
+
+    text-align:center;
 }
 
-/* ==========================================================
+/* =========================================================
+   CHAT BUTTON
+========================================================= */
+
+.chat-launcher{
+    position:fixed;
+
+    right:27px;
+    bottom:27px;
+
+    z-index:500;
+
+    border:0;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    border-radius:30px;
+
+    min-height:58px;
+
+    padding:0 22px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:700;
+
+    box-shadow:
+        0 8px 28px rgba(0,61,115,.30);
+
+    cursor:pointer;
+}
+
+.chat-launcher:hover{
+    background:var(--blue-dark);
+}
+
+.chat-launcher-icon{
+    font-size:22px;
+}
+
+.chat-status-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#fff;
+}
+
+/* =========================================================
+   CHAT WINDOW
+========================================================= */
+
+.chat-window{
+    display:none;
+
+    position:fixed;
+
+    right:27px;
+    bottom:99px;
+
+    width:390px;
+
+    max-width:calc(100vw - 30px);
+
+    height:590px;
+
+    max-height:calc(100vh - 130px);
+
+    background:#fff;
+
+    z-index:600;
+
+    box-shadow:
+        0 18px 55px rgba(18,43,54,.25);
+
+    border:1px solid #cad7dc;
+
+    flex-direction:column;
+}
+
+.chat-window.open{
+    display:flex;
+}
+
+.chat-header{
+    background:var(--blue);
+
+    color:#fff;
+
+    padding:18px 19px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.chat-header-symbol{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    color:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    font-weight:700;
+}
+
+.chat-header-content{
+    flex:1;
+}
+
+.chat-header-title{
+    font-weight:700;
+
+    font-size:16px;
+}
+
+.chat-header-status{
+    margin-top:4px;
+
+    font-size:12px;
+
+    color:#e5f2fa;
+}
+
+.chat-close{
+    border:0;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.chat-body{
+    flex:1;
+
+    overflow-y:auto;
+
+    background:#f5f7f8;
+
+    padding:18px;
+}
+
+.chat-message{
+    max-width:88%;
+
+    padding:12px 14px;
+
+    line-height:1.5;
+
+    font-size:14px;
+
+    margin-bottom:12px;
+}
+
+.chat-message.bot{
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    margin-right:auto;
+}
+
+.chat-message.user{
+    background:var(--blue);
+
+    color:#fff;
+
+    margin-left:auto;
+}
+
+.chat-service-buttons{
+    display:grid;
+
+    gap:8px;
+
+    margin-top:15px;
+}
+
+.chat-service-button{
+    display:block;
+
+    border:1px solid var(--blue);
+
+    background:#fff;
+
+    color:var(--blue);
+
+    text-decoration:none;
+
+    padding:11px 12px;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.chat-service-button:hover{
+    background:var(--blue-light);
+}
+
+.chat-closed-notice{
+    background:#fff5e8;
+
+    border-left:4px solid #c67600;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.chat-input-area{
+    border-top:1px solid var(--border);
+
+    padding:12px;
+
+    background:#fff;
+
+    display:flex;
+
+    gap:8px;
+}
+
+.chat-input{
+    flex:1;
+
+    border:1px solid #9baab1;
+
+    padding:11px;
+
+    outline:none;
+}
+
+.chat-input:focus{
+    border-color:var(--blue);
+
+    box-shadow:0 0 0 2px rgba(0,94,184,.12);
+}
+
+.chat-input:disabled{
+    background:#edf1f2;
+
+    cursor:not-allowed;
+}
+
+.chat-send{
+    border:0;
+
+    background:var(--blue);
+
+    color:#fff;
+
+    padding:0 15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.chat-send:hover{
+    background:var(--blue-dark);
+}
+
+.chat-send:disabled{
+    background:#9aa7ad;
+
+    cursor:not-allowed;
+}
+
+.chat-footer{
+    text-align:center;
+
+    padding:8px 10px;
+
+    border-top:1px solid #edf0f1;
+
+    font-size:10px;
+
+    color:#69777d;
+}
+
+/* =========================================================
+   SEARCH RESULTS
+========================================================= */
+
+.search-results{
+    display:none;
+
+    max-width:700px;
+
+    margin-top:8px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+}
+
+.search-results.show{
+    display:block;
+}
+
+.search-result{
+    display:block;
+
+    text-decoration:none;
+
+    padding:15px 17px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.search-result:last-child{
+    border-bottom:0;
+}
+
+.search-result:hover{
+    background:#f3f8fb;
+}
+
+.search-result strong{
+    display:block;
+
+    color:var(--blue);
+
+    margin-bottom:4px;
+}
+
+.search-result span{
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+/* =========================================================
    RESPONSIVE
-========================================================== */
+========================================================= */
 
-@media (max-width: 900px) {
+@media(max-width:1000px){
 
-    .hero {
-        grid-template-columns: 1fr;
-        gap: 35px;
+    .navigation-inner{
+        overflow-x:auto;
     }
 
-    .hero-visual {
-        min-height: 260px;
+    .hero-inner{
+        grid-template-columns:1fr;
     }
 
-    .services-layout {
-        grid-template-columns: 1fr;
+    .hero-visual{
+        display:none;
     }
 
-    .icon-services {
-        grid-template-columns: repeat(2, 1fr);
+    .service-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .footer-inner {
-        grid-template-columns: 1fr;
+    .student-layout{
+        grid-template-columns:1fr;
+    }
+
+    .current-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
     }
 }
 
-@media (max-width: 650px) {
+@media(max-width:650px){
 
-    .header-top {
-        align-items: flex-start;
-        flex-direction: column;
+    .header-main{
+        padding:0 20px;
+
+        min-height:83px;
     }
 
-    .logo-link img {
-        width: 190px;
+    .logo{
+        width:165px;
     }
 
-    .header-search {
-        width: 100%;
+    .header-tools{
+        display:none;
     }
 
-    .main-nav {
-        gap: 18px 25px;
+    .navigation-inner{
+        padding:0 10px;
     }
 
-    main {
-        padding: 32px 18px 55px;
+    .hero-inner{
+        padding:48px 22px;
+
+        min-height:auto;
     }
 
-    .breadcrumb {
-        padding-left: 18px;
-        padding-right: 18px;
+    .hero h1{
+        font-size:37px;
     }
 
-    .hero h1 {
-        font-size: 32px;
+    .hero-description{
+        font-size:16px;
     }
 
-    .hero p {
-        font-size: 16px;
+    .section{
+        padding:50px 22px;
     }
 
-    .hero-visual {
-        display: none;
+    .service-grid{
+        grid-template-columns:1fr;
     }
 
-    .icon-services {
-        grid-template-columns: 1fr 1fr;
+    .footer-inner{
+        padding:45px 22px;
     }
 
-    .footer-inner {
-        padding-left: 18px;
-        padding-right: 18px;
+    .chat-launcher{
+        right:15px;
+        bottom:15px;
+    }
+
+    .chat-window{
+        right:15px;
+        bottom:85px;
+
+        width:calc(100vw - 30px);
     }
 }
 </style>
@@ -606,131 +1120,656 @@ footer a {
 
 <header class="site-header">
 
-    <div class="header-top">
+    <div class="header-main">
 
-        <a
-            class="logo-link"
-            href="index.html"
-            aria-label="Etusivu"
-        >
+        <a href="index.html" class="logo-link">
             <img
                 src="hyvaks-logo.png"
+                class="logo"
                 alt="Keski-Suomen hyvinvointialue"
             >
         </a>
 
-
-        <form
-            class="header-search"
-            id="searchForm"
-        >
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="Hae sivustolta"
-                aria-label="Hae sivustolta"
-            >
+        <div class="header-tools">
 
             <button
-                type="submit"
-                aria-label="Hae"
+                class="header-tool"
+                type="button"
+                onclick="focusSearch()"
             >
-                ⌕
+                🔎 Haku
             </button>
 
-        </form>
+            <a
+                class="header-tool"
+                href="opiskeluterveydenhuolto.html"
+                style="text-decoration:none"
+            >
+                Asiointi
+            </a>
+
+        </div>
 
     </div>
 
 
-    <nav
-        class="main-nav"
-        aria-label="Päänavigaatio"
-    >
+    <nav class="main-navigation">
 
-        <a href="#palvelut">
-            Palvelumme
-        </a>
+        <div class="navigation-inner">
 
-        <a href="#palvelut">
-            Asiointi
-        </a>
+            <a href="#palvelut">
+                Palvelumme
+            </a>
 
-        <a href="#opiskeluterveydenhuolto" class="active">
-            Asiakkaana
-        </a>
+            <a href="#asiointi">
+                Asiointi
+            </a>
 
-        <a href="#opiskeluterveydenhuolto">
-            Opiskeluterveydenhuolto
-        </a>
+            <a href="#opiskeluterveydenhuolto">
+                Opiskeluterveydenhuolto
+            </a>
 
-        <a href="#yhteystiedot">
-            Yhteystiedot
-        </a>
+            <a href="ajanvaraus.html">
+                Ajanvaraus
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+            <a href="#yhteystiedot">
+                Yhteystiedot
+            </a>
+
+        </div>
 
     </nav>
 
 </header>
 
 
-<div class="breadcrumb-area">
+<!-- =======================================================
+     HERO
+======================================================== -->
 
-    <div class="breadcrumb">
+<section class="hero">
 
-        <a href="index.html">
-            Etusivu
-        </a>
+    <div class="hero-inner">
 
-        &nbsp;›&nbsp;
+        <div>
 
-        <span>
-            Opiskeluterveydenhuolto
-        </span>
+            <div class="hero-eyebrow">
+                Hyvinvointipalvelut
+            </div>
+
+            <h1>
+                Miten voimme auttaa?
+            </h1>
+
+            <p class="hero-description">
+                Löydä tarvitsemasi palvelu, asioi verkossa
+                tai siirry opiskeluterveydenhuollon palveluihin.
+            </p>
+
+
+            <div class="search-box">
+
+                <input
+                    id="siteSearch"
+                    type="search"
+                    placeholder="Hae palvelua tai tietoa"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="search-button"
+                    id="searchButton"
+                    type="button"
+                    aria-label="Hae"
+                >
+                    🔎
+                </button>
+
+            </div>
+
+
+            <div
+                id="searchResults"
+                class="search-results"
+            ></div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="hero-circle">
+
+                <div class="hero-symbol">
+                    +
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
+</section>
 
 
-<main>
+<!-- =======================================================
+     ONLINE SERVICES
+======================================================== -->
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+<section
+    class="section quick-services"
+    id="asiointi"
+>
 
-    <section
-        class="hero"
-        id="opiskeluterveydenhuolto"
+    <div class="section-inner">
+
+        <div class="section-heading">
+
+            <h2>
+                Asioi verkossa
+            </h2>
+
+            <p>
+                Siirry suoraan opiskeluterveydenhuollon
+                sähköisiin palveluihin.
+            </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+
+            <a
+                class="service-card"
+                href="opiskeluterveydenhuolto.html"
+            >
+
+                <div class="service-icon">
+                    🩺
+                </div>
+
+                <h3>
+                    Opiskeluterveydenhuolto
+                </h3>
+
+                <p>
+                    Tutustu Muuramen lukion
+                    opiskeluterveydenhuollon palveluihin,
+                    vastaanottoon ja asiointiin.
+                </p>
+
+                <div class="service-link">
+                    Siirry palveluun →
+                </div>
+
+            </a>
+
+
+            <a
+                class="service-card"
+                href="ajanvaraus.html"
+            >
+
+                <div class="service-icon">
+                    📅
+                </div>
+
+                <h3>
+                    Varaa aika
+                </h3>
+
+                <p>
+                    Tarkastele vapaita vastaanottoaikoja
+                    ja varaa aika terveydenhoitajan vastaanotolle.
+                </p>
+
+                <div class="service-link">
+                    Varaa aika →
+                </div>
+
+            </a>
+
+
+            <a
+                class="service-card"
+                href="oma-varaus.html"
+            >
+
+                <div class="service-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Oma varaus
+                </h3>
+
+                <p>
+                    Tarkastele tekemääsi ajanvarausta
+                    varauskoodilla ja hallitse varaustasi.
+                </p>
+
+                <div class="service-link">
+                    Tarkastele varausta →
+                </div>
+
+            </a>
+
+
+            <a
+                class="service-card"
+                href="https://sannarantanenhyvaks.github.io/terveyskysely/"
+            >
+
+                <div class="service-icon">
+                    📋
+                </div>
+
+                <h3>
+                    Terveyskysely
+                </h3>
+
+                <p>
+                    Täytä opiskeluterveydenhuollon
+                    terveyskysely sähköisesti.
+                </p>
+
+                <div class="service-link">
+                    Avaa terveyskysely →
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     STUDENT HEALTH
+======================================================== -->
+
+<section
+    class="section student-section"
+    id="opiskeluterveydenhuolto"
+>
+
+    <div class="section-inner">
+
+        <div class="student-layout">
+
+
+            <div class="student-content">
+
+                <h2>
+                    Opiskeluterveydenhuolto
+                </h2>
+
+                <p>
+                    Opiskeluterveydenhuolto tukee opiskelijoiden
+                    terveyttä, hyvinvointia ja opiskelukykyä.
+                    Palveluihin kuuluvat muun muassa
+                    terveystarkastukset, terveysneuvonta
+                    ja terveydenhoitajan vastaanotto.
+                </p>
+
+                <p>
+                    Muuramen lukion opiskelijat voivat asioida
+                    opiskeluterveydenhuollossa koulupäivän aikana
+                    sekä käyttää sähköisiä asiointipalveluja.
+                </p>
+
+                <a
+                    href="opiskeluterveydenhuolto.html"
+                    class="primary-link"
+                >
+                    Tutustu opiskeluterveydenhuoltoon
+                </a>
+
+            </div>
+
+
+            <div class="info-panel">
+
+                <h3>
+                    Muuramen lukio
+                </h3>
+
+                <div class="info-row">
+
+                    <strong>
+                        Terveydenhoitaja
+                    </strong>
+
+                    <span>
+                        Sanna Raitanen
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <strong>
+                        Avoin vastaanotto
+                    </strong>
+
+                    <span>
+                        klo 12.00–13.00
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <strong>
+                        Ajanvaraus
+                    </strong>
+
+                    <span>
+                        Vastaanottoajan voi varata
+                        sähköisestä ajanvarauksesta.
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <strong>
+                        Toimipiste
+                    </strong>
+
+                    <span>
+                        Muuramen lukio
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+======================================================== -->
+
+<section
+    class="section"
+    id="palvelut"
+>
+
+    <div class="section-inner">
+
+        <div class="section-heading">
+
+            <h2>
+                Palvelut opiskelijalle
+            </h2>
+
+            <p>
+                Opiskeluterveydenhuollon palveluihin
+                pääset sähköisesti tai ottamalla yhteyttä
+                opiskeluterveydenhuoltoon.
+            </p>
+
+        </div>
+
+
+        <div class="current-grid">
+
+            <div class="current-main">
+
+                <div class="current-label">
+                    Sähköinen asiointi
+                </div>
+
+                <h3>
+                    Varaa vastaanottoaika verkossa
+                </h3>
+
+                <p>
+                    Ajanvarauksessa näet vapaat ajat
+                    ja voit valita sinulle sopivan
+                    terveydenhoitajan vastaanottoajan.
+                </p>
+
+                <a
+                    href="ajanvaraus.html"
+                    class="primary-link"
+                >
+                    Siirry ajanvaraukseen
+                </a>
+
+            </div>
+
+
+            <div class="current-side">
+
+                <div class="current-label">
+                    Oletko jo varannut ajan?
+                </div>
+
+                <h3>
+                    Tarkista oma varauksesi
+                </h3>
+
+                <p>
+                    Varauskoodilla voit tarkastella
+                    ajanvarauksesi tietoja.
+                </p>
+
+                <a
+                    href="oma-varaus.html"
+                    class="primary-link"
+                >
+                    Oma varaus
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
+<footer
+    class="footer"
+    id="yhteystiedot"
+>
+
+    <div class="footer-inner">
+
+
+        <div>
+
+            <h3>
+                Opiskeluterveydenhuolto
+            </h3>
+
+            <p>
+                Muuramen lukion opiskeluterveydenhuollon
+                sähköiset asiointipalvelut.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Asiointi
+            </h3>
+
+            <a href="ajanvaraus.html">
+                Varaa aika
+            </a>
+
+            <a href="oma-varaus.html">
+                Oma varaus
+            </a>
+
+            <a href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Yhteystiedot
+            </h3>
+
+            <p>
+                Muuramen lukio
+            </p>
+
+            <p>
+                Terveydenhoitaja<br>
+                Sanna Raitanen
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+        Opiskeluterveydenhuollon sähköinen asiointi
+    </div>
+
+</footer>
+
+
+<!-- =======================================================
+     CHAT BUTTON
+======================================================== -->
+
+<button
+    id="chatLauncher"
+    class="chat-launcher"
+    type="button"
+>
+
+    <span class="chat-launcher-icon">
+        💬
+    </span>
+
+    <span>
+        Chat
+    </span>
+
+    <span
+        id="launcherStatusDot"
+        class="chat-status-dot"
+    ></span>
+
+</button>
+
+
+<!-- =======================================================
+     CHAT WINDOW
+======================================================== -->
+
+<div
+    id="chatWindow"
+    class="chat-window"
+    aria-label="Chat"
+>
+
+    <div class="chat-header">
+
+        <div class="chat-header-symbol">
+            +
+        </div>
+
+        <div class="chat-header-content">
+
+            <div class="chat-header-title">
+                Opiskeluterveydenhuollon chat
+            </div>
+
+            <div
+                id="chatStatus"
+                class="chat-header-status"
+            >
+                Tarkistetaan palvelun tilaa...
+            </div>
+
+        </div>
+
+        <button
+            id="chatClose"
+            class="chat-close"
+            type="button"
+            aria-label="Sulje chat"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        id="chatBody"
+        class="chat-body"
     >
 
-        <div class="hero-content">
+        <div class="chat-message bot">
 
-            <span class="hero-kicker">
-                Opiskeluterveydenhuolto
-            </span>
+            Hei! 👋
+            <br><br>
 
-            <h1>
-                Opiskeluterveydenhuolto
-            </h1>
+            Tervetuloa opiskeluterveydenhuollon
+            sähköiseen neuvontaan.
 
-            <p>
-                Opiskeluterveydenhuollon palvelut tukevat
-                opiskelijoiden terveyttä, hyvinvointia ja
-                opiskelukykyä.
-            </p>
+            <div class="chat-service-buttons">
 
-            <p>
-                Tältä sivulta pääset Muuramen lukion
-                opiskeluterveydenhuollon sähköisiin palveluihin.
-            </p>
+                <a
+                    href="ajanvaraus.html"
+                    class="chat-service-button"
+                >
+                    📅 Varaa vastaanottoaika
+                </a>
 
-            <div class="hero-notice">
+                <a
+                    href="oma-varaus.html"
+                    class="chat-service-button"
+                >
+                    ✓ Tarkista oma varaus
+                </a>
 
-                <strong>Muuramen lukio</strong><br>
-
-                Opiskeluterveydenhuollon vastaanotto ja sähköinen
-                asiointi lukion opiskelijoille.
+                <a
+                    href="opiskeluterveydenhuolto.html"
+                    class="chat-service-button"
+                >
+                    🩺 Opiskeluterveydenhuollon palvelut
+                </a>
 
             </div>
 
@@ -738,484 +1777,852 @@ footer a {
 
 
         <div
-            class="hero-visual"
-            aria-hidden="true"
+            id="chatAvailabilityMessage"
+        ></div>
+
+    </div>
+
+
+    <div class="chat-input-area">
+
+        <input
+            id="chatInput"
+            class="chat-input"
+            type="text"
+            placeholder="Kirjoita viestisi..."
+            autocomplete="off"
         >
 
-            <div class="hero-circle one"></div>
-            <div class="hero-circle two"></div>
-            <div class="hero-circle three"></div>
-
-            <div class="hero-visual-text">
-                Tukea opiskelijan terveyteen ja hyvinvointiin
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PALVELUT
-    ====================================================== -->
-
-    <section id="palvelut">
-
-        <div class="section-heading">
-
-            <h2>
-                Asioi opiskeluterveydenhuollossa
-            </h2>
-
-            <p>
-                Valitse tarvitsemasi palvelu. Voit varata
-                vastaanottoajan tai siirtyä muihin
-                opiskeluterveydenhuollon sähköisiin palveluihin.
-            </p>
-
-        </div>
-
-
-        <div class="services-layout">
-
-            <div class="service-list">
-
-
-                <a
-                    class="service-link"
-                    href="ajanvaraus.html"
-                >
-
-                    <div class="service-link-content">
-
-                        <strong>
-                            Varaa aika vastaanotolle
-                        </strong>
-
-                        <span>
-                            Varaa aika terveydenhoitajan
-                            vastaanotolle.
-                        </span>
-
-                    </div>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    class="service-link"
-                    href="oma-varaus.html"
-                >
-
-                    <div class="service-link-content">
-
-                        <strong>
-                            Oma ajanvaraus
-                        </strong>
-
-                        <span>
-                            Tarkastele tekemääsi ajanvarausta
-                            varauskoodilla.
-                        </span>
-
-                    </div>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    class="service-link"
-                    href="https://sannarantanenhyvaks.github.io/terveyskysely/"
-                >
-
-                    <div class="service-link-content">
-
-                        <strong>
-                            Terveyskysely
-                        </strong>
-
-                        <span>
-                            Siirry opiskeluterveydenhuollon
-                            terveyskyselyyn.
-                        </span>
-
-                    </div>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-
-                <a
-                    class="service-link"
-                    href="#yhteystiedot"
-                >
-
-                    <div class="service-link-content">
-
-                        <strong>
-                            Yhteystiedot
-                        </strong>
-
-                        <span>
-                            Katso opiskeluterveydenhuollon
-                            yhteystiedot.
-                        </span>
-
-                    </div>
-
-                    <span class="service-arrow">
-                        →
-                    </span>
-
-                </a>
-
-            </div>
-
-
-            <!-- YHTEYSTIEDOT -->
-
-            <aside
-                class="contact-card"
-                id="yhteystiedot"
-            >
-
-                <div class="contact-card-heading">
-
-                    <h3>
-                        Muuramen lukio
-                    </h3>
-
-                </div>
-
-
-                <div class="contact-body">
-
-                    <div class="contact-person">
-
-                        <strong>
-                            Sanna Raitanen
-                        </strong>
-
-                        <span>
-                            Terveydenhoitaja
-                        </span>
-
-                    </div>
-
-
-                    <div class="contact-row">
-
-                        <span class="contact-row-label">
-                            Palvelu
-                        </span>
-
-                        <span class="contact-row-value">
-                            Opiskeluterveydenhuolto
-                        </span>
-
-                    </div>
-
-
-                    <div class="contact-row">
-
-                        <span class="contact-row-label">
-                            Toimipiste
-                        </span>
-
-                        <span class="contact-row-value">
-                            Muuramen lukio
-                        </span>
-
-                    </div>
-
-
-                    <div class="contact-row">
-
-                        <span class="contact-row-label">
-                            Ajanvaraus
-                        </span>
-
-                        <span class="contact-row-value">
-                            Vastaanottoajan voi varata sähköisen
-                            ajanvarauksen kautta.
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         MUITA PALVELUITA
-    ====================================================== -->
-
-    <section class="more-services">
-
-        <div class="section-heading">
-
-            <h2>
-                Hyvinvointisi tueksi
-            </h2>
-
-            <p>
-                Opiskeluterveydenhuollossa saat tukea
-                terveyteen, hyvinvointiin ja opiskelukykyyn.
-            </p>
-
-        </div>
-
-
-        <div class="icon-services">
-
-            <a
-                class="icon-service"
-                href="#palvelut"
-            >
-
-                <div class="icon-circle">
-                    ♡
-                </div>
-
-                <strong>
-                    Terveydenhoitajan vastaanotto
-                </strong>
-
-            </a>
-
-
-            <a
-                class="icon-service"
-                href="#palvelut"
-            >
-
-                <div class="icon-circle">
-                    ☺
-                </div>
-
-                <strong>
-                    Opiskelijan hyvinvointi
-                </strong>
-
-            </a>
-
-
-            <a
-                class="icon-service"
-                href="#palvelut"
-            >
-
-                <div class="icon-circle">
-                    ✓
-                </div>
-
-                <strong>
-                    Terveystarkastukset
-                </strong>
-
-            </a>
-
-
-            <a
-                class="icon-service"
-                href="#yhteystiedot"
-            >
-
-                <div class="icon-circle">
-                    ☏
-                </div>
-
-                <strong>
-                    Neuvonta ja yhteystiedot
-                </strong>
-
-            </a>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer>
-
-    <div class="footer-inner">
-
-        <div>
-
-            <h3>
-                Keski-Suomen hyvinvointialue
-            </h3>
-
-            <p>
-                Opiskeluterveydenhuolto
-            </p>
-
-            <p>
-                Muuramen lukio
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Sähköinen asiointi
-            </h3>
-
-            <p>
-                <a href="ajanvaraus.html">
-                    Ajanvaraus
-                </a>
-            </p>
-
-            <p>
-                <a href="oma-varaus.html">
-                    Oma ajanvaraus
-                </a>
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Opiskeluterveydenhuolto
-            </h3>
-
-            <p>
-                Terveydenhoitajan vastaanotto
-            </p>
-
-            <p>
-                Muuramen lukio
-            </p>
-
-        </div>
+        <button
+            id="chatSend"
+            class="chat-send"
+            type="button"
+        >
+            Lähetä
+        </button>
 
     </div>
 
 
-    <div class="footer-bottom">
-
-        <div class="footer-bottom-inner">
-            Keski-Suomen hyvinvointialue · Opiskeluterveydenhuolto
-        </div>
-
+    <div class="chat-footer">
+        Chat-avustaja ei korvaa terveydenhuollon ammattilaisen arviota.
     </div>
 
-</footer>
+</div>
 
 
 <script>
 
-/* ==========================================================
-   SIVUSTON HAKU
-   Kevyt navigointihaku tämän palvelusivun sisällä.
-========================================================== */
+/* =========================================================
+   SEARCH
+========================================================= */
 
-const searchForm =
-    document.getElementById('searchForm');
+const searchItems = [
+
+    {
+        title:'Opiskeluterveydenhuolto',
+        description:'Muuramen lukion opiskeluterveydenhuollon palvelut',
+        url:'opiskeluterveydenhuolto.html',
+        keywords:
+            'opiskeluterveydenhuolto terveydenhoitaja muurame lukio terveys'
+    },
+
+    {
+        title:'Varaa aika',
+        description:'Varaa vastaanottoaika terveydenhoitajalle',
+        url:'ajanvaraus.html',
+        keywords:
+            'ajanvaraus varaa aika vastaanotto terveydenhoitaja'
+    },
+
+    {
+        title:'Oma varaus',
+        description:'Tarkastele ajanvaraustasi varauskoodilla',
+        url:'oma-varaus.html',
+        keywords:
+            'oma varaus varauskoodi peru ajanvaraus'
+    },
+
+    {
+        title:'Terveyskysely',
+        description:'Opiskeluterveydenhuollon terveyskysely',
+        url:'https://sannarantanenhyvaks.github.io/terveyskysely/',
+        keywords:
+            'terveyskysely kysely terveystarkastus'
+    }
+
+];
+
 
 const searchInput =
-    document.getElementById('searchInput');
+    document.getElementById('siteSearch');
+
+const searchResults =
+    document.getElementById('searchResults');
 
 
-searchForm.addEventListener(
-    'submit',
-    event => {
+function focusSearch(){
 
-        event.preventDefault();
+    searchInput.focus();
 
-        const query =
-            searchInput.value
-                .trim()
+    searchInput.scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+    });
+}
+
+
+window.focusSearch =
+    focusSearch;
+
+
+function performSearch(){
+
+    const query =
+        searchInput
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    if(!query){
+
+        searchResults.classList.remove('show');
+
+        searchResults.innerHTML='';
+
+        return;
+    }
+
+
+    const results =
+        searchItems.filter(item=>{
+
+            const searchable =
+                `${item.title} ${item.description} ${item.keywords}`
                 .toLowerCase();
 
+            return searchable.includes(query);
 
-        if (!query) {
-            return;
-        }
-
-
-        if (
-            query.includes('ajanvaraus') ||
-            query.includes('varaa aika') ||
-            query.includes('vastaanotto')
-        ) {
-
-            window.location.href =
-                'ajanvaraus.html';
-
-            return;
-        }
-
-
-        if (
-            query.includes('oma') ||
-            query.includes('varauskoodi') ||
-            query.includes('peru')
-        ) {
-
-            window.location.href =
-                'oma-varaus.html';
-
-            return;
-        }
-
-
-        if (
-            query.includes('terveyskysely') ||
-            query.includes('kysely')
-        ) {
-
-            window.location.href =
-                'https://sannarantanenhyvaks.github.io/terveyskysely/';
-
-            return;
-        }
-
-
-        if (
-            query.includes('yhteystieto') ||
-            query.includes('terveydenhoitaja') ||
-            query.includes('sanna')
-        ) {
-
-            document.getElementById(
-                'yhteystiedot'
-            ).scrollIntoView({
-                behavior: 'smooth'
-            });
-
-            return;
-        }
-
-
-        document.getElementById(
-            'palvelut'
-        ).scrollIntoView({
-            behavior: 'smooth'
         });
+
+
+    if(!results.length){
+
+        searchResults.innerHTML=`
+
+            <div
+                style="
+                    padding:18px;
+                    color:#56666e;
+                "
+            >
+                Haulla ei löytynyt palveluita.
+            </div>
+
+        `;
+
+        searchResults.classList.add('show');
+
+        return;
+    }
+
+
+    searchResults.innerHTML =
+        results.map(item=>`
+
+            <a
+                class="search-result"
+                href="${item.url}"
+            >
+
+                <strong>
+                    ${item.title}
+                </strong>
+
+                <span>
+                    ${item.description}
+                </span>
+
+            </a>
+
+        `).join('');
+
+
+    searchResults.classList.add('show');
+}
+
+
+searchInput.addEventListener(
+    'input',
+    performSearch
+);
+
+
+document
+.getElementById('searchButton')
+.addEventListener(
+    'click',
+    performSearch
+);
+
+
+/* =========================================================
+   FINNISH HOLIDAYS
+========================================================= */
+
+function easterSunday(year){
+
+    /*
+        Gregorian Easter calculation
+    */
+
+    const a = year % 19;
+    const b = Math.floor(year / 100);
+    const c = year % 100;
+    const d = Math.floor(b / 4);
+    const e = b % 4;
+
+    const f =
+        Math.floor(
+            (b + 8) / 25
+        );
+
+    const g =
+        Math.floor(
+            (b - f + 1) / 3
+        );
+
+    const h =
+        (
+            19 * a +
+            b -
+            d -
+            g +
+            15
+        ) % 30;
+
+    const i =
+        Math.floor(c / 4);
+
+    const k =
+        c % 4;
+
+    const l =
+        (
+            32 +
+            2 * e +
+            2 * i -
+            h -
+            k
+        ) % 7;
+
+    const m =
+        Math.floor(
+            (
+                a +
+                11 * h +
+                22 * l
+            ) / 451
+        );
+
+    const month =
+        Math.floor(
+            (
+                h +
+                l -
+                7 * m +
+                114
+            ) / 31
+        );
+
+    const day =
+        (
+            (
+                h +
+                l -
+                7 * m +
+                114
+            ) % 31
+        ) + 1;
+
+
+    return new Date(
+        Date.UTC(
+            year,
+            month - 1,
+            day
+        )
+    );
+}
+
+
+function addUtcDays(date,days){
+
+    const copy =
+        new Date(date);
+
+    copy.setUTCDate(
+        copy.getUTCDate() + days
+    );
+
+    return copy;
+}
+
+
+function dateKeyFromDate(date){
+
+    return [
+        date.getUTCFullYear(),
+        String(
+            date.getUTCMonth()+1
+        ).padStart(2,'0'),
+        String(
+            date.getUTCDate()
+        ).padStart(2,'0')
+    ].join('-');
+}
+
+
+function getFinnishHolidays(year){
+
+    const holidays =
+        new Set();
+
+
+    function add(month,day){
+
+        holidays.add(
+            `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`
+        );
+    }
+
+
+    /*
+        Fixed public holidays
+    */
+
+    add(1,1);
+    add(1,6);
+    add(5,1);
+    add(12,6);
+    add(12,24);
+    add(12,25);
+    add(12,26);
+
+
+    /*
+        Easter-related holidays
+    */
+
+    const easter =
+        easterSunday(year);
+
+    holidays.add(
+        dateKeyFromDate(
+            addUtcDays(easter,-2)
+        )
+    );
+
+    holidays.add(
+        dateKeyFromDate(easter)
+    );
+
+    holidays.add(
+        dateKeyFromDate(
+            addUtcDays(easter,1)
+        )
+    );
+
+    holidays.add(
+        dateKeyFromDate(
+            addUtcDays(easter,39)
+        )
+    );
+
+
+    /*
+        Midsummer Day:
+        Saturday between 20 and 26 June.
+    */
+
+    for(let day=20;day<=26;day++){
+
+        const date =
+            new Date(
+                Date.UTC(
+                    year,
+                    5,
+                    day
+                )
+            );
+
+        if(date.getUTCDay()===6){
+
+            holidays.add(
+                `${year}-06-${String(day).padStart(2,'0')}`
+            );
+
+            /*
+                Midsummer Eve
+            */
+
+            const eve =
+                addUtcDays(date,-1);
+
+            holidays.add(
+                dateKeyFromDate(eve)
+            );
+
+            break;
+        }
+    }
+
+
+    /*
+        All Saints' Day:
+        Saturday between 31 Oct and 6 Nov.
+    */
+
+    for(let offset=0;offset<=6;offset++){
+
+        const date =
+            new Date(
+                Date.UTC(
+                    year,
+                    9,
+                    31 + offset
+                )
+            );
+
+        if(date.getUTCDay()===6){
+
+            holidays.add(
+                dateKeyFromDate(date)
+            );
+
+            break;
+        }
+    }
+
+
+    return holidays;
+}
+
+
+/* =========================================================
+   HELSINKI TIME
+========================================================= */
+
+function getHelsinkiParts(date = new Date()){
+
+    const formatter =
+        new Intl.DateTimeFormat(
+            'en-CA',
+            {
+                timeZone:'Europe/Helsinki',
+                year:'numeric',
+                month:'2-digit',
+                day:'2-digit',
+                weekday:'short',
+                hour:'2-digit',
+                minute:'2-digit',
+                hourCycle:'h23'
+            }
+        );
+
+
+    const parts =
+        formatter.formatToParts(date);
+
+
+    const result = {};
+
+
+    parts.forEach(part=>{
+
+        if(part.type !== 'literal'){
+
+            result[part.type] =
+                part.value;
+
+        }
+
+    });
+
+
+    return {
+
+        year:
+            Number(result.year),
+
+        month:
+            Number(result.month),
+
+        day:
+            Number(result.day),
+
+        weekday:
+            result.weekday,
+
+        hour:
+            Number(result.hour),
+
+        minute:
+            Number(result.minute)
+
+    };
+}
+
+
+/* =========================================================
+   CHAT OPENING HOURS
+========================================================= */
+
+function getChatAvailability(){
+
+    const now =
+        getHelsinkiParts();
+
+
+    const dateKey =
+        `${now.year}-${String(now.month).padStart(2,'0')}-${String(now.day).padStart(2,'0')}`;
+
+
+    const holidays =
+        getFinnishHolidays(
+            now.year
+        );
+
+
+    const isHoliday =
+        holidays.has(
+            dateKey
+        );
+
+
+    const weekend =
+        now.weekday === 'Sat' ||
+        now.weekday === 'Sun';
+
+
+    /*
+        Weekends and Finnish public holidays:
+        10–16
+
+        Normal weekdays:
+        8–18
+    */
+
+    const specialDay =
+        weekend ||
+        isHoliday;
+
+
+    const openingHour =
+        specialDay
+        ? 10
+        : 8;
+
+
+    const closingHour =
+        specialDay
+        ? 16
+        : 18;
+
+
+    const minutesNow =
+        now.hour * 60 +
+        now.minute;
+
+
+    const openingMinutes =
+        openingHour * 60;
+
+
+    const closingMinutes =
+        closingHour * 60;
+
+
+    const open =
+        minutesNow >= openingMinutes &&
+        minutesNow < closingMinutes;
+
+
+    return {
+        open,
+        openingHour,
+        closingHour,
+        specialDay,
+        now
+    };
+}
+
+
+/* =========================================================
+   CHAT UI
+========================================================= */
+
+const chatLauncher =
+    document.getElementById(
+        'chatLauncher'
+    );
+
+const chatWindow =
+    document.getElementById(
+        'chatWindow'
+    );
+
+const chatClose =
+    document.getElementById(
+        'chatClose'
+    );
+
+const chatStatus =
+    document.getElementById(
+        'chatStatus'
+    );
+
+const chatAvailabilityMessage =
+    document.getElementById(
+        'chatAvailabilityMessage'
+    );
+
+const chatInput =
+    document.getElementById(
+        'chatInput'
+    );
+
+const chatSend =
+    document.getElementById(
+        'chatSend'
+    );
+
+const launcherStatusDot =
+    document.getElementById(
+        'launcherStatusDot'
+    );
+
+
+chatLauncher.addEventListener(
+    'click',
+    ()=>{
+
+        chatWindow.classList.toggle(
+            'open'
+        );
+
+    }
+);
+
+
+chatClose.addEventListener(
+    'click',
+    ()=>{
+
+        chatWindow.classList.remove(
+            'open'
+        );
+
+    }
+);
+
+
+/* =========================================================
+   UPDATE CHAT STATUS
+========================================================= */
+
+function updateChatStatus(){
+
+    const availability =
+        getChatAvailability();
+
+
+    if(availability.open){
+
+        chatStatus.textContent =
+            `● Avoinna · sulkeutuu klo ${availability.closingHour}.00`;
+
+
+        launcherStatusDot.style.background =
+            '#82e3a8';
+
+
+        chatAvailabilityMessage.innerHTML=`
+
+            <div class="chat-message bot">
+
+                Chat on tällä hetkellä
+                <strong>avoinna</strong>.
+
+                <br><br>
+
+                Palvelu sulkeutuu tänään
+                klo ${availability.closingHour}.00.
+
+            </div>
+
+        `;
+
+
+        chatInput.disabled=false;
+
+        chatSend.disabled=false;
+
+        chatInput.placeholder =
+            'Kirjoita viestisi...';
+
+    }else{
+
+        chatStatus.textContent =
+            '○ Chat suljettu';
+
+
+        launcherStatusDot.style.background =
+            '#d9e1e5';
+
+
+        chatAvailabilityMessage.innerHTML=`
+
+            <div class="chat-closed-notice">
+
+                <strong>
+                    Chat on tällä hetkellä suljettu.
+                </strong>
+
+                <br><br>
+
+                Palveluajat:
+
+                <br>
+
+                ma–pe klo 8.00–18.00
+
+                <br>
+
+                viikonloppuisin ja arkipyhinä
+                klo 10.00–16.00.
+
+            </div>
+
+        `;
+
+
+        chatInput.disabled=true;
+
+        chatSend.disabled=true;
+
+        chatInput.placeholder =
+            'Chat on suljettu';
+
+    }
+}
+
+
+updateChatStatus();
+
+
+setInterval(
+    updateChatStatus,
+    60000
+);
+
+
+/* =========================================================
+   TEMPORARY CHAT MESSAGE HANDLING
+========================================================= */
+
+function temporaryChatResponse(){
+
+    if(!getChatAvailability().open){
+        return;
+    }
+
+
+    const text =
+        chatInput
+        .value
+        .trim();
+
+
+    if(!text){
+        return;
+    }
+
+
+    const body =
+        document.getElementById(
+            'chatBody'
+        );
+
+
+    const userMessage =
+        document.createElement(
+            'div'
+        );
+
+
+    userMessage.className =
+        'chat-message user';
+
+
+    userMessage.textContent =
+        text;
+
+
+    body.appendChild(
+        userMessage
+    );
+
+
+    chatInput.value='';
+
+
+    const botMessage =
+        document.createElement(
+            'div'
+        );
+
+
+    botMessage.className =
+        'chat-message bot';
+
+
+    botMessage.innerHTML=`
+        Chat-avustajan automaattiset vastaukset
+        otetaan käyttöön seuraavassa vaiheessa.
+        <br><br>
+        Voit tällä hetkellä käyttää yllä olevia
+        sähköisen asioinnin palveluita.
+    `;
+
+
+    body.appendChild(
+        botMessage
+    );
+
+
+    body.scrollTop =
+        body.scrollHeight;
+}
+
+
+chatSend.addEventListener(
+    'click',
+    temporaryChatResponse
+);
+
+
+chatInput.addEventListener(
+    'keydown',
+    event=>{
+
+        if(event.key==='Enter'){
+
+            temporaryChatResponse();
+
+        }
+
     }
 );
 
