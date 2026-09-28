@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asiakkaana | Keski-Suomen hyvinvointialue</title>
+
+    <style>
+        :root {
+            --blue: #28639a;
+            --blue-dark: #174f85;
+            --blue-deep: #0e477e;
+            --blue-light: #eaf2f8;
+            --green: #afd77d;
+            --pink: #ffc3c7;
+            --text: #16324a;
+            --muted: #5f6f7c;
+            --border: #d8e1e8;
+            --background: #ffffff;
+            --soft: #f5f8fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.55;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-shell {
+            width: min(1296px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+            background: #fff;
+        }
+
+        .header-top {
+            min-height: 118px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 20px 10px 8px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #15518b;
+            flex-shrink: 0;
+        }
+
+        .brand-symbol {
+            position: relative;
+            width: 118px;
+            height: 54px;
+        }
+
+        .brand-pill {
+            position: absolute;
+            width: 55px;
+            height: 50px;
+            border-radius: 24px;
+            top: 2px;
+        }
+
+        .brand-pill.pink {
+            left: 0;
+            background: var(--pink);
+        }
+
+        .brand-pill.blue {
+            left: 30px;
+            background: #27669e;
+        }
+
+        .brand-pill.green {
+            left: 64px;
+            background: #b4d77f;
+        }
+
+        .brand-text {
+            font-size: 13px;
+            line-height: 1.02;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .search {
+            display: flex;
+            width: 315px;
+            height: 51px;
+            border: 1.5px solid #1d5d95;
+            border-radius: 28px;
+            overflow: hidden;
+            background: white;
+            transition: box-shadow .2s ease;
+        }
+
+        .search:focus-within {
+            box-shadow: 0 0 0 4px rgba(40, 99, 154, .12);
+        }
+
+        .search input {
+            flex: 1;
+            border: 0;
+            outline: 0;
+            min-width: 0;
+            padding: 0 20px;
+            color: #23384a;
+            background: transparent;
+        }
+
+        .search input::placeholder {
+            color: #8a9299;
+        }
+
+        .search button {
+            width: 50px;
+            border: 0;
+            color: white;
+            background: var(--blue);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+
+        .search button:hover {
+            background: var(--blue-dark);
+        }
+
+        .search-icon {
+            width: 18px;
+            height: 18px;
+            border: 2px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .search-icon::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background: white;
+            right: -6px;
+            bottom: -3px;
+            transform: rotate(45deg);
+            border-radius: 2px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 42px;
+            min-height: 62px;
+            border-bottom: 1px solid #1d5d95;
+            white-space: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .main-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #064984;
+            font-size: 15px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #003c70;
+        }
+
+        .main-nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            height: 3px;
+            background: var(--blue);
+        }
+
+        /* =========================================================
+           BREADCRUMBS
+        ========================================================= */
+
+        .breadcrumbs {
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            color: #205d93;
+            font-size: 15px;
+            padding: 4px 14px;
+        }
+
+        .breadcrumbs button {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #205d93;
+            cursor: pointer;
+        }
+
+        .breadcrumbs button:hover {
+            text-decoration: underline;
+        }
+
+        .crumb-separator {
+            color: #8796a3;
+        }
+
+        /* =========================================================
+           LANDING / HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            height: 495px;
+            overflow: hidden;
+            background: #e9eef2;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-title {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 235px;
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            padding: 13px 20px;
+            background: white;
+            color: #205b91;
+            border-radius: 0 55px 0 0;
+            font-size: 30px;
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .quick-links {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 180px;
+            padding: 20px 100px 50px;
+        }
+
+        .quick-link {
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            color: #16558f;
+            text-align: center;
+            min-width: 160px;
+            font-weight: 700;
+        }
+
+        .quick-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--green);
+            margin: 0 auto 9px;
+            display: grid;
+            place-items: center;
+            color: #0b5d98;
+        }
+
+        .quick-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .quick-link:hover .quick-icon {
+            transform: translateY(-2px);
+        }
+
+        /* =========================================================
+           CATEGORY GRID
+        ========================================================= */
+
+        .categories {
+            padding: 26px 6px 54px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 28px;
+            row-gap: 48px;
+        }
+
+        .category h2 {
+            color: #205b91;
+            margin: 0 0 13px;
+            font-size: 23px;
+            line-height: 1.25;
+        }
+
+        .category-heading-link {
+            border: 0;
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            cursor: pointer;
+            font: inherit;
+            font-weight: inherit;
+            text-align: left;
+        }
+
+        .category-heading-link:hover {
+            text-decoration: underline;
+        }
+
+        .heading-arrow {
+            margin-left: 10px;
+            font-weight: 400;
+        }
+
+        .link-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .service-button {
+            width: 100%;
+            min-height: 51px;
+            border: 0;
+            border-radius: 6px;
+            background: var(--blue);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 700;
+            transition:
+                background .16s ease,
+                transform .16s ease,
+                box-shadow .16s ease;
+        }
+
+        .service-button:hover {
+            background: #1f578b;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(15, 68, 113, .14);
+        }
+
+        .service-button:focus-visible,
+        .quick-link:focus-visible,
+        .feedback-choice:focus-visible {
+            outline: 3px solid #9bc86b;
+            outline-offset: 3px;
+        }
+
+        .round-arrow {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 22px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .feedback-block {
+            margin-top: 68px;
+        }
+
+        .feedback-block h3 {
+            margin: 0 0 20px;
+            color: #111;
+            font-size: 18px;
+        }
+
+        .feedback-choices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+        }
+
+        .feedback-choice {
+            border: 0;
+            border-radius: 24px;
+            min-height: 35px;
+            background: var(--blue);
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .feedback-choice:hover {
+            background: var(--blue-dark);
+        }
+
+        .feedback-note {
+            margin: 30px 0 0;
+            color: #6e7981;
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           DETAIL PAGE
+        ========================================================= */
+
+        #detailView {
+            display: none;
+        }
+
+        .detail-page {
+            padding: 8px 12px 80px;
+        }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 830px) 310px;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .detail-main {
+            min-width: 0;
+        }
+
+        .detail-main h1 {
+            margin: 14px 0 22px;
+            color: #15558e;
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.08;
+            letter-spacing: -.7px;
+        }
+
+        .detail-lead {
+            margin: 0 0 34px;
+            max-width: 780px;
+            color: #273d4e;
+            font-size: 20px;
+            line-height: 1.55;
+        }
+
+        .detail-section {
+            padding: 30px 0;
+            border-top: 1px solid #dbe3e9;
+        }
+
+        .detail-section h2 {
+            margin: 0 0 13px;
+            color: #205b91;
+            font-size: 27px;
+            line-height: 1.2;
+        }
+
+        .detail-section p {
+            margin: 0 0 14px;
+            color: #253b4d;
+            font-size: 16px;
+        }
+
+        .detail-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-section ul {
+            margin: 14px 0 0;
+            padding-left: 24px;
+        }
+
+        .detail-section li {
+            margin: 8px 0;
+        }
+
+        .info-box {
+            margin: 25px 0;
+            padding: 24px 26px;
+            background: #edf4f8;
+            border-left: 6px solid var(--blue);
+            border-radius: 4px;
+        }
+
+        .info-box.green {
+            background: #f0f7e7;
+            border-left-color: #96c361;
+        }
+
+        .info-box h3 {
+            margin: 0 0 8px;
+            color: #15558e;
+            font-size: 20px;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .primary-action,
+        .secondary-action {
+            border-radius: 5px;
+            min-height: 48px;
+            padding: 11px 18px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .primary-action {
+            border: 1px solid var(--blue);
+            background: var(--blue);
+            color: white;
+        }
+
+        .primary-action:hover {
+            background: var(--blue-dark);
+        }
+
+        .secondary-action {
+            border: 1px solid var(--blue);
+            background: white;
+            color: var(--blue-dark);
+        }
+
+        .secondary-action:hover {
+            background: #eef5fa;
+        }
+
+        .detail-sidebar {
+            position: sticky;
+            top: 24px;
+        }
+
+        .side-card {
+            background: #f3f7fa;
+            padding: 25px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .side-card h3 {
+            margin: 0 0 15px;
+            color: #15558e;
+            font-size: 21px;
+        }
+
+        .side-card p {
+            margin: 0 0 12px;
+            color: #425664;
+            font-size: 14px;
+        }
+
+        .side-link {
+            width: 100%;
+            border: 0;
+            border-top: 1px solid #ccd9e3;
+            background: transparent;
+            padding: 12px 0;
+            text-align: left;
+            color: #15558e;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .side-link:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 35px;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            color: #15558e;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           SEARCH RESULTS
+        ========================================================= */
+
+        .search-results {
+            display: none;
+            padding: 10px 12px 70px;
+        }
+
+        .search-results h1 {
+            margin: 15px 0 8px;
+            color: #15558e;
+            font-size: 42px;
+        }
+
+        .search-query-text {
+            color: #526575;
+            margin-bottom: 35px;
+        }
+
+        .result-list {
+            display: grid;
+            gap: 15px;
+            max-width: 900px;
+        }
+
+        .result-card {
+            border: 1px solid #d7e0e7;
+            border-radius: 5px;
+            background: white;
+            padding: 20px 22px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .result-card:hover {
+            border-color: #77a1c4;
+            box-shadow: 0 4px 14px rgba(20, 72, 112, .08);
+        }
+
+        .result-card strong {
+            display: block;
+            color: #15558e;
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .result-card span {
+            color: #536673;
+        }
+
+        .no-results {
+            padding: 25px;
+            background: #f4f7f9;
+            border-radius: 5px;
+            max-width: 800px;
+        }
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            transform: translate(-50%, 20px);
+            background: #163e63;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 5px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .22);
+            opacity: 0;
+            pointer-events: none;
+            transition: .2s ease;
+            z-index: 9999;
+            max-width: calc(100% - 30px);
+            text-align: center;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+            background: var(--blue);
+            color: white;
+            padding: 34px 0 0;
+        }
+
+        .footer-inner {
+            width: min(1140px, calc(100% - 48px));
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 130px;
+            padding-bottom: 40px;
+        }
+
+        .footer h2 {
+            margin: 0 0 14px;
+            font-size: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+            max-width: 500px;
+            line-height: 1.55;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 2px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-line {
+            width: min(1140px, calc(100% - 48px));
+            height: 1px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, .8);
+        }
+
+        .footer-bottom {
+            width: min(1140px, calc(100% - 48px));
+            margin: auto;
+            padding: 17px 0 25px;
+            font-size: 13px;
+            color: rgba(255,255,255,.9);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .detail-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .detail-sidebar {
+                position: static;
+            }
+
+            .quick-links {
+                gap: 60px;
+                padding-left: 40px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .site-shell {
+                width: min(100% - 28px, 1296px);
+            }
+
+            .header-top {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .search {
+                width: 100%;
+            }
+
+            .main-nav {
+                gap: 26px;
+            }
+
+            .hero {
+                height: 390px;
+            }
+
+            .hero-title {
+                font-size: 25px;
+            }
+
+            .quick-links {
+                justify-content: center;
+                padding: 25px 0 40px;
+                gap: 30px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+                row-gap: 36px;
+            }
+
+            .feedback-choices {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .detail-main h1 {
+                font-size: 36px;
+            }
+
+            .detail-lead {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="site-shell">
+
+        <div class="header-top">
+
+            <a href="index.html" class="brand" aria-label="Keski-Suomen hyvinvointialue etusivu">
+                <div class="brand-symbol" aria-hidden="true">
+                    <span class="brand-pill pink"></span>
+                    <span class="brand-pill blue"></span>
+                    <span class="brand-pill green"></span>
+                </div>
+
+                <div class="brand-text">
+                    KESKI-<br>
+                    SUOMEN<br>
+                    HYVINVOINTI-<br>
+                    ALUE
+                </div>
+            </a>
+
+            <form class="search" id="searchForm">
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Hae sivustolta"
+                    aria-label="Hae sivustolta"
+                >
+                <button type="submit" aria-label="Hae">
+                    <span class="search-icon"></span>
+                </button>
+            </form>
+
+        </div>
+
+        <nav class="main-nav">
+            <a href="index.html">Palvelumme</a>
+            <a href="asiointi.html">Asiointi</a>
+            <a href="asiakkaana.html" class="active">Asiakkaana</a>
+            <a href="#" onclick="showToast('Sairaala Nova'); return false;">Sairaala Nova</a>
+            <a href="#" onclick="showToast('Hyvinvointisi tueksi'); return false;">Hyvinvointisi tueksi</a>
+            <a href="#" onclick="showToast('Hyvinvointialue'); return false;">Hyvinvointialue</a>
+            <a href="#" onclick="showToast('Ajankohtaista'); return false;">Ajankohtaista</a>
+            <a href="#" onclick="showToast('Tule työkaveriksi'); return false;">Tule työkaveriksi</a>
+            <a href="#" onclick="showToast('In English'); return false;">In English</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="site-shell">
+
+    <div class="breadcrumbs" id="breadcrumbs">
+        <button onclick="goHome()">Etusivu</button>
+        <span class="crumb-separator">/</span>
+        <span>Asiakkaana</span>
+    </div>
+
+
+    <!-- =========================================================
+         ASIAKKAANA ETUSIVU
+    ========================================================== -->
+
+    <div id="landingView">
+
+        <section class="hero">
+            <img src="asiakas.jpg" alt="Asiakkaana Keski-Suomen hyvinvointialueella">
+
+            <div class="hero-title">
+                Asiakkaana
+            </div>
+        </section>
+
+
+        <section class="quick-links">
+
+            <button class="quick-link" onclick="openPage('lomakkeet')">
+                <span class="quick-icon">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="6" y="3" width="20" height="26"></rect>
+                        <rect x="9" y="7" width="13" height="9"></rect>
+                        <line x1="9" y1="20" x2="22" y2="20"></line>
+                        <line x1="9" y1="24" x2="19" y2="24"></line>
+                        <line x1="25" y1="7" x2="29" y2="7"></line>
+                        <line x1="27" y1="7" x2="27" y2="23"></line>
+                    </svg>
+                </span>
+                Lomakkeet
+            </button>
+
+            <button class="quick-link" onclick="openPage('anna-palautetta')">
+                <span class="quick-icon">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M6 7h20a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H16l-6 5v-5H6a3 3 0 0 1-3-3V10a3 3 0 0 1 3-3z"></path>
+                        <path d="M10 15l3 3 7-7"></path>
+                    </svg>
+                </span>
+                Anna meille palautetta
+            </button>
+
+        </section>
+
+
+        <section class="categories">
+
+            <div class="category-grid">
+
+                <!-- ASIAKASMAKSUT -->
+
+                <section class="category">
+                    <h2>
+                        <button class="category-heading-link" onclick="openPage('asiakasmaksut')">
+                            Asiakasmaksut <span class="heading-arrow">→</span>
+                        </button>
+                    </h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('terveyspalveluiden-asiakasmaksut')">
+                            <span>Terveyspalveluiden asiakasmaksut</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('asiakasmaksujen-alentaminen')">
+                            <span>Asiakasmaksujen alentaminen ja perimättä jättäminen</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('maksukatto')">
+                            <span>Maksukatto</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('suoramaksut')">
+                            <span>Suoramaksut ja e-laskut</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('erapaaivan-siirto')">
+                            <span>Eräpäivän siirtopyyntö ja liikamaksun palautus</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- ASIAKKAAN OIKEUDET -->
+
+                <section class="category">
+                    <h2>
+                        <button class="category-heading-link" onclick="openPage('asiakkaan-oikeudet')">
+                            Asiakkaan oikeudet <span class="heading-arrow">→</span>
+                        </button>
+                    </h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('potilasasiavastaava')">
+                            <span>Potilasasiavastaava ja sosiaaliasiavastaava</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('kela-taksi')">
+                            <span>Kela-taksi</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('muistutukset-ja-kantelut')">
+                            <span>Muistutukset ja kantelut</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('palvelujen-valvonta')">
+                            <span>Sosiaali- ja terveyspalvelujen valvonta</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('asiakas-ja-potilasturvallisuus')">
+                            <span>Asiakas- ja potilasturvallisuus</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('alaikaisen-asema')">
+                            <span>Alaikäisen asema</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('laakityslista')">
+                            <span>Lääkityslista</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- ASIAKIRJOJEN KÄSITTELY -->
+
+                <section class="category">
+                    <h2>
+                        <button class="category-heading-link" onclick="openPage('asiakirjojen-kasittely')">
+                            Asiakirjojen käsittely <span class="heading-arrow">→</span>
+                        </button>
+                    </h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('henkilotietojen-kasittely')">
+                            <span>Henkilötietojen käsittely</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('oikeudet-tietoon')">
+                            <span>Oikeudet tietoon</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('tietosuoja')">
+                            <span>Tietosuoja</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- LOMAKKEET -->
+
+                <section class="category">
+                    <h2>Lomakkeet</h2>
+
+                    <div class="link-list">
+                        <button class="service-button" onclick="openPage('lomakkeet')">
+                            <span>Lomakkeet</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- PALVELUSETELIT -->
+
+                <section class="category">
+                    <h2>Palvelusetelit</h2>
+
+                    <div class="link-list">
+                        <button class="service-button" onclick="openPage('palvelusetelit')">
+                            <span>Palvelusetelit</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- RUOKALISTAT -->
+
+                <section class="category">
+                    <h2>Ruokalistat</h2>
+
+                    <div class="link-list">
+                        <button class="service-button" onclick="openPage('ruokalistat')">
+                            <span>Ruokalistat</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- OHJEITA -->
+
+                <section class="category">
+                    <h2>Ohjeita ja tietoa hoidosta</h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('asiakas-ja-potilasohjeet')">
+                            <span>Asiakas- ja potilasohjeet</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('potilasohjevideot')">
+                            <span>Potilasohjevideot ja -animaatiot</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('hoito-ja-palveluketjut')">
+                            <span>Hoito- ja palveluketjut</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('hoitopolut')">
+                            <span>Hoitopolut</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('viittomakieliset-videot')">
+                            <span>Viittomakieliset videot</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- PALVELUIHIN PÄÄSY -->
+
+                <section class="category">
+                    <h2>Palveluihin pääsy</h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('puolesta-asiointi')">
+                            <span>Puolesta asiointi</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                        <button class="service-button" onclick="openPage('palveluiden-myontamisperusteet')">
+                            <span>Palveluiden myöntämisperusteet</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- HOITOON PÄÄSY -->
+
+                <section class="category">
+                    <h2>Hoitoon pääsy ja odotusajat</h2>
+
+                    <div class="link-list">
+
+                        <button class="service-button" onclick="openPage('hoitoon-paasy')">
+                            <span>Hoitoon pääsy ja odotusajat</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+
+                    </div>
+                </section>
+
+
+                <!-- PALAUTE -->
+
+                <section class="category">
+                    <h2>Anna palautetta</h2>
+
+                    <div class="link-list">
+                        <button class="service-button" onclick="openPage('anna-palautetta')">
+                            <span>Anna palautetta</span>
+                            <span class="round-arrow">→</span>
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <div class="feedback-block">
+                <h3>Löysitkö etsimäsi tiedon tältä sivulta?</h3>
+
+                <div class="feedback-choices">
+                    <button class="feedback-choice" onclick="feedback('Kyllä')">
+                        ✓ Kyllä
+                    </button>
+
+                    <button class="feedback-choice" onclick="feedback('Osittain')">
+                        ? Osittain
+                    </button>
+
+                    <button class="feedback-choice" onclick="feedback('En')">
+                        × En
+                    </button>
+                </div>
+
+                <p class="feedback-note">
+                    Sivun palautetta käytetään verkkopalvelun kehittämiseen.
+                </p>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================================================
+         ALASIVU
+    ========================================================== -->
+
+    <div id="detailView">
+
+        <article class="detail-page">
+
+            <div class="detail-layout">
+
+                <div class="detail-main">
+
+                    <h1 id="detailTitle"></h1>
+
+                    <p class="detail-lead" id="detailLead"></p>
+
+                    <div id="detailContent"></div>
+
+                    <button class="back-link" onclick="goHome()">
+                        ← Takaisin Asiakkaana-sivulle
+                    </button>
+
+                </div>
+
+
+                <aside class="detail-sidebar">
+
+                    <div class="side-card">
+                        <h3>Asiakkaana</h3>
+
+                        <p>
+                            Tietoa hyvinvointialueen asiakkaan oikeuksista,
+                            maksuista, asiakirjoista, hoidosta ja palveluihin
+                            pääsystä.
+                        </p>
+
+                        <button class="side-link" onclick="goHome()">
+                            Asiakkaana
+                        </button>
+
+                        <button class="side-link" onclick="openPage('asiakasmaksut')">
+                            Asiakasmaksut
+                        </button>
+
+                        <button class="side-link" onclick="openPage('asiakkaan-oikeudet')">
+                            Asiakkaan oikeudet
+                        </button>
+
+                        <button class="side-link" onclick="openPage('asiakirjojen-kasittely')">
+                            Asiakirjojen käsittely
+                        </button>
+
+                        <button class="side-link" onclick="openPage('lomakkeet')">
+                            Lomakkeet
+                        </button>
+
+                        <button class="side-link" onclick="openPage('anna-palautetta')">
+                            Anna palautetta
+                        </button>
+                    </div>
+
+                    <div class="side-card">
+                        <h3>Tarvitsetko apua?</h3>
+
+                        <p>
+                            Palveluun liittyvissä kysymyksissä voit olla yhteydessä
+                            siihen palveluyksikköön, jossa asioit.
+                        </p>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- =========================================================
+         HAKUTULOKSET
+    ========================================================== -->
+
+    <section class="search-results" id="searchResults">
+
+        <h1>Hakutulokset</h1>
+
+        <p class="search-query-text" id="searchQueryText"></p>
+
+        <div class="result-list" id="resultList"></div>
+
+        <button class="back-link" onclick="goHome()">
+            ← Takaisin Asiakkaana-sivulle
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <section>
+            <h2>Keski-Suomen hyvinvointialue</h2>
+
+            <p>
+                Vastaamme noin 273 000 keskisuomalaisen sosiaali-, terveys- ja
+                pelastustoimen palveluista. Edistämme hyvinvointia, terveyttä ja
+                turvallisuutta Keski-Suomessa vaikuttavasti ja laajalla
+                yhteistyöllä. Haluamme olla ihmislähtöisin hyvinvointialue ja
+                tukea keskisuomalaisten hyvää arkea.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Oikopolut</h2>
+
+            <div class="footer-links">
+                <a href="#" onclick="showToast('Sairaala Nova'); return false;">Sairaala Nova</a>
+                <a href="#" onclick="showToast('Pelastustoimi.fi | Keski-Suomi'); return false;">Pelastustoimi.fi | Keski-Suomi</a>
+                <a href="#" onclick="showToast('Ostolaskutiedot'); return false;">Ostolaskutiedot</a>
+                <a href="#" onclick="showToast('Kirjaamo'); return false;">Kirjaamo</a>
+                <a href="#" onclick="showToast('Puhelinvaihde'); return false;">Puhelinvaihde</a>
+                <a href="#" onclick="openPage('tietosuoja'); return false;">Tietosuoja</a>
+                <a href="#" onclick="showToast('Saavutettavuusseloste'); return false;">Saavutettavuusseloste</a>
+                <a href="#" onclick="showToast('Päätöksenteko'); return false;">Päätöksenteko</a>
+                <a href="#" onclick="showToast('Esityslistat ja pöytäkirjat'); return false;">Esityslistat ja pöytäkirjat</a>
+                <a href="#" onclick="showToast('Kuulutukset ja ilmoitukset'); return false;">Kuulutukset ja ilmoitukset</a>
+                <a href="#" onclick="showToast('Yhteystiedot'); return false;">Yhteystiedot</a>
+                <a href="#" onclick="openPage('anna-palautetta'); return false;">Anna palautetta</a>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="footer-line"></div>
+
+    <div class="footer-bottom">
+        © Keski-Suomen hyvinvointialue
+    </div>
+
+</footer>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+/* =============================================================
+   SIVUJEN SISÄLLÖT
+============================================================= */
+
+const pages = {
+
+    "asiakasmaksut": {
+        title: "Asiakasmaksut",
+        category: "Asiakasmaksut",
+        lead: "Hyvinvointialueen sosiaali- ja terveyspalveluista voidaan periä asiakasmaksuja. Tältä sivulta löydät tietoa maksuista, laskutuksesta, maksukatosta sekä maksujen alentamisesta.",
+        sections: [
+            {
+                title: "Tietoa asiakasmaksuista",
+                text: "Asiakasmaksu määräytyy käytetyn palvelun ja asiakkaan tilanteen mukaan. Osa sosiaali- ja terveyspalveluista on maksuttomia ja osasta voidaan periä asiakasmaksu."
+            },
+            {
+                title: "Asiakasmaksuihin liittyvät asiat",
+                list: [
+                    "Terveyspalveluiden asiakasmaksut",
+                    "Asiakasmaksujen alentaminen ja perimättä jättäminen",
+                    "Maksukatto",
+                    "Suoramaksut ja e-laskut",
+                    "Eräpäivän siirtopyyntö ja liikamaksun palautus"
+                ]
+            }
+        ]
+    },
+
+    "terveyspalveluiden-asiakasmaksut": {
+        title: "Terveyspalveluiden asiakasmaksut",
+        category: "Asiakasmaksut",
+        lead: "Terveydenhuollon palveluista perittävät asiakasmaksut määräytyvät palvelun mukaan. Kaikista palveluista ei peritä maksua.",
+        sections: [
+            {
+                title: "Terveyspalveluiden maksut",
+                text: "Asiakasmaksu voidaan periä esimerkiksi vastaanottokäynnistä, sairaalahoidosta tai muusta maksulliseksi määritellystä terveydenhuollon palvelusta. Maksun määrä riippuu palvelusta."
+            },
+            {
+                title: "Maksuttomat palvelut",
+                text: "Osa terveydenhuollon palveluista on asiakkaalle maksuttomia. Maksuttomuuteen voivat vaikuttaa palvelun tyyppi, asiakkaan ikä tai muu lainsäädännössä määritelty peruste."
+            },
+            {
+                title: "Lasku",
+                text: "Jos palvelusta peritään maksu, saat siitä laskun hyvinvointialueelta. Tarkista laskulta palvelu, summa, eräpäivä ja maksutiedot."
+            }
+        ]
+    },
+
+    "asiakasmaksujen-alentaminen": {
+        title: "Asiakasmaksujen alentaminen ja perimättä jättäminen",
+        category: "Asiakasmaksut",
+        lead: "Asiakasmaksua voidaan tietyissä tilanteissa alentaa tai jättää perimättä, jos maksun periminen vaarantaa asiakkaan tai hänen perheensä toimeentulon.",
+        sections: [
+            {
+                title: "Milloin maksun alentamista voi hakea?",
+                text: "Maksun alentamista tai perimättä jättämistä voidaan arvioida asiakkaan taloudellisen tilanteen perusteella. Arvioinnissa huomioidaan asiakkaan käytettävissä olevat tulot ja välttämättömät menot."
+            },
+            {
+                title: "Hakeminen",
+                text: "Hakemuksessa tarvitaan riittävät tiedot taloudellisesta tilanteesta. Hakemukseen voidaan pyytää liitteitä, joilla tulot ja menot voidaan selvittää."
+            }
+        ]
+    },
+
+    "maksukatto": {
+        title: "Maksukatto",
+        category: "Asiakasmaksut",
+        lead: "Terveydenhuollon asiakasmaksuilla on kalenterivuosittainen maksukatto. Maksukattoon kertyviä maksuja kannattaa seurata vuoden aikana.",
+        sections: [
+            {
+                title: "Mikä on maksukatto?",
+                text: "Maksukatto rajoittaa asiakkaalle kalenterivuoden aikana kertyvien tiettyjen terveydenhuollon asiakasmaksujen kokonaismäärää."
+            },
+            {
+                title: "Maksujen seuranta",
+                text: "Asiakkaan kannattaa säilyttää laskut ja maksutositteet sekä seurata maksukattoon kertyviä maksuja."
+            },
+            {
+                title: "Kun maksukatto täyttyy",
+                text: "Maksukaton täyttymisen jälkeen maksukattoon kuuluvat palvelut ovat pääsääntöisesti maksuttomia loppuvuoden ajan. Joistakin palveluista voidaan kuitenkin periä erikseen säädetty maksu."
+            }
+        ]
+    },
+
+    "suoramaksut": {
+        title: "Suoramaksut ja e-laskut",
+        category: "Asiakasmaksut",
+        lead: "Hyvinvointialueen laskujen maksamista voi helpottaa ottamalla käyttöön e-laskun tai suoramaksun.",
+        sections: [
+            {
+                title: "E-lasku",
+                text: "E-lasku saapuu suoraan verkkopankkiisi. Voit tarkistaa laskun tiedot ennen maksamista ja hyväksyä maksun verkkopankissa."
+            },
+            {
+                title: "Suoramaksu",
+                text: "Suoramaksu soveltuu erityisesti asiakkaalle, jolla ei ole verkkopankkia käytössä. Suoramaksusta sovitaan oman pankin kanssa."
+            }
+        ]
+    },
+
+    "erapaaivan-siirto": {
+        title: "Eräpäivän siirtopyyntö ja liikamaksun palautus",
+        category: "Asiakasmaksut",
+        lead: "Jos tarvitset laskulle lisää maksuaikaa tai olet maksanut laskua liikaa, asia voidaan selvittää hyvinvointialueen laskutuksen kanssa.",
+        sections: [
+            {
+                title: "Eräpäivän siirtäminen",
+                text: "Jos et pysty maksamaan laskua eräpäivään mennessä, pyydä eräpäivän siirtoa mahdollisimman ajoissa ennen laskun erääntymistä."
+            },
+            {
+                title: "Liikamaksun palautus",
+                text: "Jos laskulle on maksettu liikaa, liikamaksu voidaan palauttaa maksajalle asian selvittämisen jälkeen."
+            }
+        ]
+    },
+
+
+    /* OIKEUDET */
+
+    "asiakkaan-oikeudet": {
+        title: "Asiakkaan oikeudet",
+        category: "Asiakkaan oikeudet",
+        lead: "Sosiaali- ja terveyspalvelujen asiakkaalla ja potilaalla on oikeuksia, jotka koskevat esimerkiksi hyvää kohtelua, tiedonsaantia, itsemääräämisoikeutta ja turvallista palvelua.",
+        sections: [
+            {
+                title: "Oikeus hyvään palveluun ja hoitoon",
+                text: "Asiakkaalla ja potilaalla on oikeus asianmukaiseen ja laadukkaaseen sosiaali- ja terveydenhuoltoon sekä hyvään kohteluun."
+            },
+            {
+                title: "Neuvonta ja oikeusturva",
+                text: "Jos olet tyytymätön saamaasi palveluun tai kohteluun, asia kannattaa ensisijaisesti ottaa esille palveluyksikössä. Tarvittaessa voit saada neuvontaa potilasasiavastaavalta tai sosiaaliasiavastaavalta."
+            }
+        ]
+    },
+
+    "potilasasiavastaava": {
+        title: "Potilasasiavastaava ja sosiaaliasiavastaava",
+        category: "Asiakkaan oikeudet",
+        lead: "Potilasasiavastaava ja sosiaaliasiavastaava neuvovat asiakkaan ja potilaan oikeuksiin liittyvissä kysymyksissä.",
+        sections: [
+            {
+                title: "Potilasasiavastaava",
+                text: "Potilasasiavastaava neuvoo potilaan asemaan ja oikeuksiin liittyvissä asioissa sekä tarvittaessa muistutuksen tekemisessä."
+            },
+            {
+                title: "Sosiaaliasiavastaava",
+                text: "Sosiaaliasiavastaava neuvoo sosiaalihuollon asiakkaan asemaan ja oikeuksiin liittyvissä kysymyksissä."
+            },
+            {
+                title: "Puolueeton neuvonta",
+                text: "Asiavastaavan tehtävänä on neuvoa ja ohjata. Asiavastaava ei tee hoitopäätöksiä eikä muuta viranomaisen tekemiä päätöksiä."
+            }
+        ]
+    },
+
+    "kela-taksi": {
+        title: "Kela-taksi",
+        category: "Asiakkaan oikeudet",
+        lead: "Kela voi korvata terveydenhuoltoon tehtävän matkan kustannuksia silloin, kun korvauksen ehdot täyttyvät.",
+        sections: [
+            {
+                title: "Matka terveydenhuoltoon",
+                text: "Taksin käyttöön ja matkakorvaukseen liittyvät ehdot määräytyvät Kelan ohjeiden mukaan. Terveydenhuolto voi tarvittaessa arvioida terveydentilaan perustuvan erityiskulkuneuvon tarpeen."
+            },
+            {
+                title: "Taksin tilaaminen",
+                text: "Korvattava taksimatka tilataan Kelan hyväksymän alueellisen tilausvälityskeskuksen kautta."
+            }
+        ]
+    },
+
+    "muistutukset-ja-kantelut": {
+        title: "Muistutukset ja kantelut",
+        category: "Asiakkaan oikeudet",
+        lead: "Jos olet tyytymätön saamaasi hoitoon, palveluun tai kohteluun, voit selvittää asiaa palveluyksikön kanssa ja tarvittaessa tehdä muistutuksen.",
+        sections: [
+            {
+                title: "Keskustele ensin palveluyksikön kanssa",
+                text: "Moni epäselvyys voidaan ratkaista nopeasti keskustelemalla palvelun henkilöstön tai vastuuhenkilön kanssa."
+            },
+            {
+                title: "Muistutus",
+                text: "Asiakkaalla tai potilaalla on oikeus tehdä kirjallinen muistutus saamastaan hoidosta, palvelusta tai kohtelusta."
+            },
+            {
+                title: "Kantelu",
+                text: "Viranomaisen toiminnasta voidaan tietyissä tilanteissa tehdä kantelu valvovalle viranomaiselle."
+            }
+        ]
+    },
+
+    "palvelujen-valvonta": {
+        title: "Sosiaali- ja terveyspalvelujen valvonta",
+        category: "Asiakkaan oikeudet",
+        lead: "Hyvinvointialue valvoo järjestämiensä ja tuottamiensa sosiaali- ja terveyspalvelujen laatua, turvallisuutta ja lainmukaisuutta.",
+        sections: [
+            {
+                title: "Omavalvonta",
+                text: "Omavalvonnalla seurataan palvelujen laatua ja turvallisuutta osana päivittäistä toimintaa."
+            },
+            {
+                title: "Epäkohta palvelussa",
+                text: "Jos huomaat palvelussa epäkohdan, voit olla yhteydessä palveluyksikköön tai antaa palautetta hyvinvointialueelle."
+            }
+        ]
+    },
+
+    "asiakas-ja-potilasturvallisuus": {
+        title: "Asiakas- ja potilasturvallisuus",
+        category: "Asiakkaan oikeudet",
+        lead: "Asiakas- ja potilasturvallisuuden tavoitteena on, että asiakkaan saama palvelu ja hoito toteutuvat turvallisesti ja mahdolliset haitat ehkäistään.",
+        sections: [
+            {
+                title: "Turvallinen palvelu",
+                text: "Turvallisuutta edistetään suunnittelemalla toimintatavat huolellisesti, tunnistamalla riskejä ja kehittämällä toimintaa havaintojen perusteella."
+            },
+            {
+                title: "Asiakas turvallisuuden edistäjänä",
+                text: "Kerro henkilöstölle ajantasaiset tiedot terveydestäsi, lääkityksestäsi ja mahdollisista allergioistasi. Kysy aina, jos jokin hoidossa tai palvelussa jää epäselväksi."
+            }
+        ]
+    },
+
+    "alaikaisen-asema": {
+        title: "Alaikäisen asema",
+        category: "Asiakkaan oikeudet",
+        lead: "Alaikäisen asiakkaan ja potilaan mielipide sekä hänen kykynsä päättää omista asioistaan huomioidaan hänen ikänsä ja kehitystasonsa mukaisesti.",
+        sections: [
+            {
+                title: "Alaikäisen mielipide",
+                text: "Alaikäisen näkemys omasta hoidostaan ja palvelustaan selvitetään aina, kun se on hänen ikänsä ja kehitystasonsa perusteella mahdollista."
+            },
+            {
+                title: "Huoltajan osallistuminen",
+                text: "Huoltaja osallistuu alaikäisen asioiden hoitamiseen silloin, kun alaikäinen ei kykene itse päättämään kyseisestä asiasta."
+            },
+            {
+                title: "Tietojen luovuttaminen",
+                text: "Terveydenhuollossa ammattihenkilö arvioi tapauskohtaisesti alaikäisen päätöskyvyn. Päätöskykyinen alaikäinen voi tietyissä tilanteissa vaikuttaa siihen, luovutetaanko hänen tietojaan huoltajalle."
+            }
+        ]
+    },
+
+    "laakityslista": {
+        title: "Lääkityslista",
+        category: "Asiakkaan oikeudet",
+        lead: "Ajantasainen lääkityslista auttaa varmistamaan turvallisen hoidon ja oikean lääkityksen kaikissa sosiaali- ja terveydenhuollon palveluissa.",
+        sections: [
+            {
+                title: "Pidä lääkityslista ajan tasalla",
+                text: "Merkitse listaan säännöllisesti ja tarvittaessa käyttämäsi lääkkeet, annokset sekä mahdolliset itsehoitovalmisteet."
+            },
+            {
+                title: "Ota lista mukaan",
+                text: "Pidä lääkityslista mukanasi vastaanotolla ja kerro henkilöstölle myös mahdollisista lääkeaineallergioista."
+            }
+        ]
+    },
+
+
+    /* ASIAKIRJAT */
+
+    "asiakirjojen-kasittely": {
+        title: "Asiakirjojen käsittely",
+        category: "Asiakirjojen käsittely",
+        lead: "Sosiaali- ja terveydenhuollossa käsitellään asiakkaiden ja potilaiden tietoja luottamuksellisesti ja tietosuojalainsäädännön mukaisesti.",
+        sections: [
+            {
+                title: "Asiakas- ja potilastiedot",
+                text: "Tietoja käsittelevät vain ne henkilöt, jotka tarvitsevat niitä työtehtäviensä hoitamiseen."
+            },
+            {
+                title: "Tietojen tarkastaminen",
+                text: "Sinulla on oikeus saada tietoa henkilötietojesi käsittelystä ja pyytää omien tietojesi tarkastamista."
+            }
+        ]
+    },
+
+    "henkilotietojen-kasittely": {
+        title: "Henkilötietojen käsittely",
+        category: "Asiakirjojen käsittely",
+        lead: "Keski-Suomen hyvinvointialue käsittelee henkilötietoja palvelujen järjestämiseksi ja lakisääteisten tehtäviensä hoitamiseksi.",
+        sections: [
+            {
+                title: "Miksi tietoja käsitellään?",
+                text: "Henkilötietoja tarvitaan muun muassa asiakkaan palvelun ja potilaan hoidon järjestämiseen, yhteydenpitoon, päätöksentekoon sekä lakisääteiseen dokumentointiin."
+            },
+            {
+                title: "Tietojen suojaaminen",
+                text: "Tietojen käyttöä rajataan käyttöoikeuksilla ja tietojärjestelmien käyttöä valvotaan. Sosiaali- ja terveydenhuollon tietoja koskee salassapitovelvollisuus."
+            }
+        ]
+    },
+
+    "oikeudet-tietoon": {
+        title: "Oikeudet tietoon",
+        category: "Asiakirjojen käsittely",
+        lead: "Sinulla on oikeus saada tietoa siitä, miten henkilötietojasi käsitellään, sekä tarkastaa sinusta tallennettuja tietoja lainsäädännön mukaisesti.",
+        sections: [
+            {
+                title: "Tietojen tarkastaminen",
+                text: "Voit pyytää nähtäväksi sinusta tallennettuja henkilötietoja. Sosiaali- ja terveydenhuollon tietoja on mahdollista nähdä myös valtakunnallisissa sähköisissä palveluissa niiden sisältämien tietojen osalta."
+            },
+            {
+                title: "Virheellisen tiedon korjaaminen",
+                text: "Jos havaitset tiedoissasi virheen, voit pyytää tiedon korjaamista siitä toimintayksiköstä tai rekisterinpitäjältä, joka vastaa tiedosta."
+            }
+        ]
+    },
+
+    "tietosuoja": {
+        title: "Tietosuoja",
+        category: "Asiakirjojen käsittely",
+        lead: "Tietosuoja turvaa henkilötietojesi asianmukaisen käsittelyn. Hyvinvointialue käsittelee asiakas- ja potilastietoja luottamuksellisesti.",
+        sections: [
+            {
+                title: "Henkilötietojen suojaaminen",
+                text: "Henkilötietoja käsitellään vain siihen tarkoitukseen, johon niitä tarvitaan. Tietojen käsittely perustuu lainsäädäntöön ja hyvinvointialueen tehtäviin."
+            },
+            {
+                title: "Salassapito",
+                text: "Sosiaali- ja terveydenhuollon asiakas- ja potilastiedot ovat salassa pidettäviä. Henkilöstöä sitoo salassapito- ja vaitiolovelvollisuus."
+            },
+            {
+                title: "Tietojen käytön valvonta",
+                text: "Tietojärjestelmien käyttöä seurataan ja käyttöoikeudet myönnetään työtehtävien perusteella."
+            }
+        ]
+    },
+
+
+    /* MUUT */
+
+    "lomakkeet": {
+        title: "Lomakkeet",
+        category: "Lomakkeet",
+        lead: "Tältä sivulta löydät Keski-Suomen hyvinvointialueen asiointiin liittyviä lomakkeita.",
+        sections: [
+            {
+                title: "Sosiaali- ja terveyspalvelujen lomakkeet",
+                text: "Lomakkeita voidaan käyttää esimerkiksi hakemuksiin, suostumuksiin, tietopyyntöihin ja muihin palveluihin liittyviin asioihin."
+            },
+            {
+                title: "Lomakkeen toimittaminen",
+                text: "Tarkista aina lomakkeen omista ohjeista, mihin ja miten lomake tulee toimittaa. Älä lähetä arkaluonteisia henkilötietoja tavallisella suojaamattomalla sähköpostilla."
+            }
+        ]
+    },
+
+    "palvelusetelit": {
+        title: "Palvelusetelit",
+        category: "Palvelusetelit",
+        lead: "Palveluseteli on yksi tapa järjestää hyvinvointialueen sosiaali- ja terveyspalveluja asiakkaalle.",
+        sections: [
+            {
+                title: "Mikä on palveluseteli?",
+                text: "Hyvinvointialue voi myöntää asiakkaalle palvelusetelin tietyn palvelun hankkimista varten. Asiakas valitsee palveluntuottajan hyväksyttyjen palveluntuottajien joukosta."
+            },
+            {
+                title: "Palvelusetelin käyttäminen",
+                text: "Palvelusetelin arvo ja asiakkaan mahdollinen omavastuu riippuvat palvelusta ja palvelusetelin ehdoista."
+            }
+        ]
+    },
+
+    "ruokalistat": {
+        title: "Ruokalistat",
+        category: "Ruokalistat",
+        lead: "Tältä sivulta löydät hyvinvointialueen toimintayksiköiden ruokalistoihin liittyviä tietoja.",
+        sections: [
+            {
+                title: "Ruokailu toimintayksiköissä",
+                text: "Ruokalistat voivat vaihdella toimintayksikön ja ajankohdan mukaan. Erityisruokavaliot huomioidaan toimintayksikön käytäntöjen mukaisesti."
+            }
+        ]
+    },
+
+    "asiakas-ja-potilasohjeet": {
+        title: "Asiakas- ja potilasohjeet",
+        category: "Ohjeita ja tietoa hoidosta",
+        lead: "Asiakas- ja potilasohjeista löydät tietoa tutkimuksiin, hoitoihin, toimenpiteisiin ja palveluihin valmistautumisesta.",
+        sections: [
+            {
+                title: "Ohjeet ennen käyntiä",
+                text: "Tutustu saamaasi ohjeeseen hyvissä ajoin ennen vastaanottoa, tutkimusta tai toimenpidettä. Ohjeessa kerrotaan mahdollisista valmistautumisohjeista."
+            },
+            {
+                title: "Jos jokin jää epäselväksi",
+                text: "Ota yhteyttä hoitavaan yksikköön, jos et ole varma saamastasi ohjeesta tai et pysty noudattamaan valmistautumisohjeita."
+            }
+        ]
+    },
+
+    "potilasohjevideot": {
+        title: "Potilasohjevideot ja -animaatiot",
+        category: "Ohjeita ja tietoa hoidosta",
+        lead: "Videoiden ja animaatioiden avulla voit tutustua hoitoon, tutkimuksiin ja erilaisiin toimenpiteisiin.",
+        sections: [
+            {
+                title: "Ohjeita videomuodossa",
+                text: "Potilasohjevideot täydentävät kirjallisia ohjeita ja auttavat valmistautumaan esimerkiksi tutkimukseen tai toimenpiteeseen."
+            }
+        ]
+    },
+
+    "hoito-ja-palveluketjut": {
+        title: "Hoito- ja palveluketjut",
+        category: "Ohjeita ja tietoa hoidosta",
+        lead: "Hoito- ja palveluketjut kuvaavat asiakkaan tai potilaan palvelun etenemistä eri ammattilaisten ja palvelujen välillä.",
+        sections: [
+            {
+                title: "Yhtenäinen palvelukokonaisuus",
+                text: "Hoito- ja palveluketjujen avulla pyritään varmistamaan, että palvelut muodostavat asiakkaan tarpeisiin sopivan kokonaisuuden ja tiedonkulku eri toimijoiden välillä toimii."
+            }
+        ]
+    },
+
+    "hoitopolut": {
+        title: "Hoitopolut",
+        category: "Ohjeita ja tietoa hoidosta",
+        lead: "Hoitopolku auttaa hahmottamaan, miten tutkimukset, hoito ja seuranta etenevät eri tilanteissa.",
+        sections: [
+            {
+                title: "Hoidon eteneminen",
+                text: "Hoitopolku voi sisältää tietoa oireiden arvioinnista, tutkimuksista, vastaanotoista, hoidosta, kuntoutuksesta ja seurannasta."
+            }
+        ]
+    },
+
+    "viittomakieliset-videot": {
+        title: "Viittomakieliset videot",
+        category: "Ohjeita ja tietoa hoidosta",
+        lead: "Viittomakielisillä videoilla tarjotaan tietoa hyvinvointialueen palveluista saavutettavassa muodossa.",
+        sections: [
+            {
+                title: "Tietoa viittomakielellä",
+                text: "Videoiden tavoitteena on helpottaa palveluihin ja asiointiin liittyvän tiedon saamista viittomakielellä."
+            }
+        ]
+    },
+
+    "puolesta-asiointi": {
+        title: "Puolesta asiointi",
+        category: "Palveluihin pääsy",
+        lead: "Toisen henkilön puolesta voi asioida tietyissä tilanteissa valtuutuksen, huoltajuuden tai muun laillisen edustusoikeuden perusteella.",
+        sections: [
+            {
+                title: "Toisen puolesta asioiminen",
+                text: "Puolesta asioinnin tapa riippuu palvelusta. Sähköisessä asioinnissa voidaan käyttää erillistä valtuutta, ja asiointipisteessä oikeus asioida toisen puolesta voidaan joutua todentamaan."
+            },
+            {
+                title: "Alaikäisen puolesta asiointi",
+                text: "Huoltaja voi asioida alaikäisen puolesta palvelun ja alaikäisen päätöskyvyn sallimissa rajoissa."
+            }
+        ]
+    },
+
+    "palveluiden-myontamisperusteet": {
+        title: "Palveluiden myöntämisperusteet",
+        category: "Palveluihin pääsy",
+        lead: "Palveluiden myöntämisperusteilla kuvataan, millä perusteilla hyvinvointialueen järjestämiä palveluja voidaan myöntää asiakkaalle.",
+        sections: [
+            {
+                title: "Palvelutarpeen arviointi",
+                text: "Palvelun tarve arvioidaan asiakkaan yksilöllisen tilanteen ja palvelua koskevan lainsäädännön sekä myöntämisperusteiden mukaisesti."
+            },
+            {
+                title: "Päätös palvelusta",
+                text: "Sosiaalipalveluissa asiakkaalle voidaan tehdä kirjallinen päätös palvelun myöntämisestä tai hakemuksen hylkäämisestä."
+            }
+        ]
+    },
+
+    "hoitoon-paasy": {
+        title: "Hoitoon pääsy ja odotusajat",
+        category: "Hoitoon pääsy ja odotusajat",
+        lead: "Hoitoon pääsyä ja odotusaikoja seurataan hyvinvointialueen terveyspalveluissa. Hoidon kiireellisyys arvioidaan aina asiakkaan tilanteen perusteella.",
+        sections: [
+            {
+                title: "Hoidon tarpeen arviointi",
+                text: "Kun otat yhteyttä terveydenhuoltoon, ammattilainen arvioi oireidesi ja tilanteesi perusteella hoidon tarpeen sekä sen kiireellisyyden."
+            },
+            {
+                title: "Kiireellinen hoito",
+                text: "Kiireellisessä tilanteessa hoito järjestetään tilanteen edellyttämällä tavalla. Henkeä uhkaavassa hätätilanteessa soitetaan hätänumeroon 112."
+            },
+            {
+                title: "Kiireetön hoito",
+                text: "Kiireettömän hoidon ajankohta määräytyy hoidon tarpeen ja käytettävissä olevien palvelujen perusteella."
+            }
+        ]
+    },
+
+    "anna-palautetta": {
+        title: "Anna palautetta",
+        category: "Anna palautetta",
+        lead: "Palautteesi auttaa kehittämään Keski-Suomen hyvinvointialueen palveluja ja asiakaskokemusta.",
+        sections: [
+            {
+                title: "Palaute palvelusta",
+                text: "Voit antaa palautetta saamastasi palvelusta, asioinnista, tiloista tai verkkopalvelusta. Palautetta voidaan hyödyntää toiminnan kehittämisessä."
+            },
+            {
+                title: "Älä lähetä arkaluonteisia tietoja palautteessa",
+                text: "Yleiseen palautteeseen ei tule kirjoittaa henkilötunnusta, terveystietoja tai muita salassa pidettäviä tietoja."
+            },
+            {
+                title: "Muistutus ei ole sama asia kuin palaute",
+                text: "Jos olet tyytymätön hoitoon, palveluun tai kohteluun ja haluat asian viralliseen käsittelyyn, voit selvittää muistutuksen tekemistä."
+            }
+        ]
+    }
+};
+
+
+/* =============================================================
+   SIVUN AVAAMINEN
+============================================================= */
+
+function openPage(id, updateHistory = true) {
+
+    const page = pages[id];
+
+    if (!page) {
+        showToast("Sivua ei löytynyt.");
+        return;
+    }
+
+    document.getElementById("landingView").style.display = "none";
+    document.getElementById("searchResults").style.display = "none";
+    document.getElementById("detailView").style.display = "block";
+
+    document.getElementById("detailTitle").textContent = page.title;
+    document.getElementById("detailLead").textContent = page.lead;
+
+    renderSections(page.sections || []);
+
+    renderBreadcrumbs(page);
+
+    document.title = page.title + " | Keski-Suomen hyvinvointialue";
+
+    if (updateHistory) {
+        history.pushState(
+            { page: id },
+            "",
+            "asiakkaana.html#" + id
+        );
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =============================================================
+   SISÄLTÖOSIOT
+============================================================= */
+
+function renderSections(sections) {
+
+    const container = document.getElementById("detailContent");
+
+    container.innerHTML = "";
+
+    sections.forEach(section => {
+
+        const block = document.createElement("section");
+        block.className = "detail-section";
+
+        const title = document.createElement("h2");
+        title.textContent = section.title;
+        block.appendChild(title);
+
+        if (section.text) {
+            const p = document.createElement("p");
+            p.textContent = section.text;
+            block.appendChild(p);
+        }
+
+        if (section.text2) {
+            const p = document.createElement("p");
+            p.textContent = section.text2;
+            block.appendChild(p);
+        }
+
+        if (section.list) {
+
+            const ul = document.createElement("ul");
+
+            section.list.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+
+            block.appendChild(ul);
+        }
+
+        container.appendChild(block);
+    });
+}
+
+
+/* =============================================================
+   MURUPOLKU
+============================================================= */
+
+function renderBreadcrumbs(page) {
+
+    const breadcrumbs = document.getElementById("breadcrumbs");
+
+    breadcrumbs.innerHTML = "";
+
+    const home = document.createElement("button");
+    home.textContent = "Etusivu";
+    home.onclick = () => {
+        window.location.href = "index.html";
+    };
+
+    breadcrumbs.appendChild(home);
+
+    addSeparator(breadcrumbs);
+
+    const customer = document.createElement("button");
+    customer.textContent = "Asiakkaana";
+    customer.onclick = goHome;
+
+    breadcrumbs.appendChild(customer);
+
+    if (page.category && page.category !== page.title) {
+
+        addSeparator(breadcrumbs);
+
+        const category = document.createElement("span");
+        category.textContent = page.category;
+
+        breadcrumbs.appendChild(category);
+    }
+
+    addSeparator(breadcrumbs);
+
+    const current = document.createElement("span");
+    current.textContent = page.title;
+
+    breadcrumbs.appendChild(current);
+}
+
+
+function addSeparator(parent) {
+    const separator = document.createElement("span");
+    separator.className = "crumb-separator";
+    separator.textContent = "/";
+    parent.appendChild(separator);
+}
+
+
+/* =============================================================
+   ASIAKKAANA ETUSIVULLE
+============================================================= */
+
+function goHome(updateHistory = true) {
+
+    document.getElementById("detailView").style.display = "none";
+    document.getElementById("searchResults").style.display = "none";
+    document.getElementById("landingView").style.display = "block";
+
+    document.getElementById("breadcrumbs").innerHTML = `
+        <button onclick="window.location.href='index.html'">Etusivu</button>
+        <span class="crumb-separator">/</span>
+        <span>Asiakkaana</span>
+    `;
+
+    document.title = "Asiakkaana | Keski-Suomen hyvinvointialue";
+
+    if (updateHistory) {
+        history.pushState(
+            { page: "home" },
+            "",
+            "asiakkaana.html"
+        );
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =============================================================
+   HAKU
+============================================================= */
+
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const query = document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    if (!query) {
+        return;
+    }
+
+    const matches = Object.entries(pages).filter(([id, page]) => {
+
+        const sectionText = (page.sections || [])
+            .map(section => {
+                return [
+                    section.title || "",
+                    section.text || "",
+                    section.text2 || "",
+                    ...(section.list || [])
+                ].join(" ");
+            })
+            .join(" ");
+
+        const searchText = [
+            page.title,
+            page.category,
+            page.lead,
+            sectionText
+        ]
+        .join(" ")
+        .toLowerCase();
+
+        return searchText.includes(query);
+    });
+
+    showSearchResults(query, matches);
+});
+
+
+function showSearchResults(query, matches) {
+
+    document.getElementById("landingView").style.display = "none";
+    document.getElementById("detailView").style.display = "none";
+    document.getElementById("searchResults").style.display = "block";
+
+    document.getElementById("breadcrumbs").innerHTML = `
+        <button onclick="window.location.href='index.html'">Etusivu</button>
+        <span class="crumb-separator">/</span>
+        <button onclick="goHome()">Asiakkaana</button>
+        <span class="crumb-separator">/</span>
+        <span>Haku</span>
+    `;
+
+    document.getElementById("searchQueryText").textContent =
+        `Hakusanalla "${query}" löytyi ${matches.length} tulosta.`;
+
+    const resultList = document.getElementById("resultList");
+
+    resultList.innerHTML = "";
+
+    if (matches.length === 0) {
+
+        const empty = document.createElement("div");
+        empty.className = "no-results";
+        empty.innerHTML = `
+            <strong>Hakutuloksia ei löytynyt.</strong>
+            <p>Kokeile toista hakusanaa tai palaa Asiakkaana-sivulle.</p>
+        `;
+
+        resultList.appendChild(empty);
+
+    } else {
+
+        matches.forEach(([id, page]) => {
+
+            const button = document.createElement("button");
+
+            button.className = "result-card";
+
+            button.innerHTML = `
+                <strong>${escapeHTML(page.title)}</strong>
+                <span>${escapeHTML(page.lead)}</span>
+            `;
+
+            button.onclick = () => openPage(id);
+
+            resultList.appendChild(button);
+        });
+    }
+
+    document.title = "Haku | Keski-Suomen hyvinvointialue";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =============================================================
+   PALAUTE
+============================================================= */
+
+function feedback(answer) {
+
+    const messages = {
+        "Kyllä": "Kiitos palautteestasi!",
+        "Osittain": "Kiitos palautteestasi. Kehitämme sivua palautteen perusteella.",
+        "En": "Kiitos palautteestasi. Pyrimme parantamaan sivun sisältöä."
+    };
+
+    showToast(messages[answer] || "Kiitos palautteestasi!");
+}
+
+
+/* =============================================================
+   TOAST
+============================================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("visible");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("visible");
+    }, 2600);
+}
+
+
+/* =============================================================
+   HTML TURVALLISEKSI HAKUTULOKSISSA
+============================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+/* =============================================================
+   SELAIMEN TAKAISIN / ETEEN
+============================================================= */
+
+window.addEventListener("popstate", function() {
+
+    const hash = location.hash.replace("#", "");
+
+    if (hash && pages[hash]) {
+        openPage(hash, false);
+    } else {
+        goHome(false);
+    }
+});
+
+
+/* =============================================================
+   SUORA LINKKI:
+   asiakkaana.html#tietosuoja
+   asiakkaana.html#maksukatto
+   jne.
+============================================================= */
+
+window.addEventListener("DOMContentLoaded", function() {
+
+    const hash = location.hash.replace("#", "");
+
+    if (hash && pages[hash]) {
+        openPage(hash, false);
+    }
+});
+</script>
+
+</body>
+</html>
