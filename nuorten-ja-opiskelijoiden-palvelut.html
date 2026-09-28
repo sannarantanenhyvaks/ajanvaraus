@@ -7,48 +7,66 @@
 <title>Nuorten ja opiskelijoiden palvelut | Keski-Suomen hyvinvointialue</title>
 <link rel="icon" href="favicon.png">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 :root{
-    --blue:#075a96;
-    --button:#2e669c;
-    --green:#b8dc7c;
-    --border:#d8dee4;
+    --blue:#005a96;
+    --blue2:#2d659b;
+    --blueDark:#004c82;
+    --green:#b7d97d;
+    --pink:#fff0ef;
+    --lightBlue:#edf6fb;
+    --lightGreen:#f2f8e8;
+    --border:#d6dde3;
+    --text:#111820;
+    --muted:#56636e;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    color:#111;
+    color:var(--text);
     background:#fff;
     line-height:1.55;
 }
 
-a{color:var(--blue)}
+button,input{
+    font:inherit;
+}
+
+a{
+    color:var(--blue);
+}
 
 .container{
     width:min(1180px,calc(100% - 48px));
     margin:auto;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
-    background:#fff;
+    background:white;
 }
 
 .header-top{
-    padding-top:30px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:30px;
+    padding-top:30px;
 }
 
 .logo{
-    width:220px;
     display:block;
+    width:220px;
 }
 
 .search{
@@ -56,65 +74,65 @@ header{
     height:52px;
     border:2px solid var(--blue);
     border-radius:30px;
-    overflow:hidden;
     display:flex;
+    overflow:hidden;
 }
 
 .search input{
     flex:1;
+    min-width:0;
     border:0;
     outline:0;
     padding:0 20px;
-    min-width:0;
 }
 
 .search button{
-    width:60px;
+    width:61px;
     border:0;
-    background:#2e669c;
-    color:white;
-    font-size:22px;
+    background:var(--blue2);
+    color:#fff;
     cursor:pointer;
+    font-size:23px;
 }
 
 .mobile-menu{
     display:none;
-    border:2px solid var(--blue);
-    background:#fff;
+    background:white;
     color:var(--blue);
-    padding:8px 12px;
-    border-radius:5px;
+    border:2px solid var(--blue);
+    border-radius:4px;
+    padding:8px 13px;
     font-weight:bold;
 }
 
 nav{
-    margin-top:32px;
+    margin-top:31px;
     border-bottom:1px solid var(--blue);
 }
 
 nav ul{
-    display:flex;
     list-style:none;
-    padding:0;
     margin:0;
+    padding:0;
+    display:flex;
 }
 
 nav a{
     display:block;
-    padding:0 26px 20px 0;
-    margin-right:23px;
+    color:#004f8c;
     text-decoration:none;
-    color:#004f8b;
     font-weight:600;
+    padding:0 25px 20px 0;
+    margin-right:21px;
     white-space:nowrap;
 }
 
-nav a:hover{text-decoration:underline}
-
-/* BREADCRUMB */
+nav a:hover{
+    text-decoration:underline;
+}
 
 .breadcrumb{
-    padding:14px 13px 17px;
+    padding:15px 13px 17px;
     color:var(--blue);
     font-size:14px;
 }
@@ -123,13 +141,15 @@ nav a:hover{text-decoration:underline}
     text-decoration:none;
 }
 
-/* HERO */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
     position:relative;
 }
 
-.hero img{
+.hero-image{
     width:100%;
     height:450px;
     object-fit:cover;
@@ -138,54 +158,60 @@ nav a:hover{text-decoration:underline}
 
 .hero-title{
     position:relative;
+    width:500px;
+    max-width:90%;
     margin-top:-61px;
-    background:white;
-    width:495px;
     padding:16px 20px 12px;
+    background:#fff;
     border-radius:0 60px 0 0;
 }
 
 .hero-title h1{
-    margin:0;
     color:var(--blue);
-    font-size:29px;
+    margin:0;
+    font-size:30px;
     line-height:1.25;
 }
 
-/* QUICK LINKS */
+/* =====================================================
+   QUICK LINKS
+===================================================== */
 
 .quick-links{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:48px 28px;
-    margin-top:20px;
+    gap:45px 25px;
     padding:0 25px;
-    text-align:center;
+    margin-top:23px;
 }
 
 .quick{
     border:0;
-    background:none;
-    color:#005394;
-    font-weight:bold;
+    background:transparent;
+    color:#005393;
     cursor:pointer;
-    font-size:14px;
-    font-family:inherit;
+    text-align:center;
+    font-weight:bold;
+}
+
+.quick-circle{
+    width:57px;
+    height:57px;
+    margin:0 auto 11px;
+    border-radius:50%;
+    background:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.15s;
+}
+
+.quick:hover .quick-circle{
+    transform:translateY(-2px);
 }
 
 .quick:hover .quick-text{
     text-decoration:underline;
-}
-
-.quick-circle{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:var(--green);
-    margin:0 auto 11px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
 }
 
 .quick-circle svg{
@@ -203,15 +229,17 @@ nav a:hover{text-decoration:underline}
     line-height:1.35;
 }
 
-/* NUORELLE */
+/* =====================================================
+   NUORELLE
+===================================================== */
 
 .young-card{
     width:860px;
     max-width:calc(100% - 100px);
-    margin:65px auto 0;
+    margin:70px auto 0;
     display:grid;
     grid-template-columns:1fr 1.15fr;
-    gap:28px;
+    gap:30px;
     align-items:center;
 }
 
@@ -219,55 +247,55 @@ nav a:hover{text-decoration:underline}
     width:100%;
     height:280px;
     object-fit:cover;
-    border-radius:6px;
+    border-radius:5px;
 }
 
 .young-content h2{
-    margin:0 0 12px;
     color:var(--blue);
-    font-size:21px;
+    margin:0 0 12px;
+    font-size:22px;
 }
 
 .young-content p{
-    margin:0 0 20px;
+    margin:0 0 19px;
 }
 
-.read-more{
+.text-link{
+    padding:0;
     border:0;
     background:none;
-    padding:0;
     color:var(--blue);
-    font-weight:bold;
     text-decoration:underline;
     cursor:pointer;
-    font-size:15px;
+    font-weight:bold;
 }
 
-.read-more .round{
+.text-link-circle{
+    width:22px;
+    height:22px;
+    margin-right:7px;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:22px;
-    height:22px;
-    background:#2e669c;
-    color:white;
     border-radius:50%;
-    margin-right:7px;
+    background:var(--blue2);
+    color:#fff;
     text-decoration:none;
 }
 
-/* SERVICES */
+/* =====================================================
+   SERVICES
+===================================================== */
 
 .services{
-    margin-top:58px;
+    margin-top:62px;
     padding:0 27px;
 }
 
-.services h2{
+.services > h2{
     margin:0 0 38px;
     color:var(--blue);
-    font-size:31px;
-    font-weight:600;
+    font-size:32px;
 }
 
 .service-columns{
@@ -284,131 +312,310 @@ nav a:hover{text-decoration:underline}
 
 .service-btn{
     width:100%;
-    min-height:48px;
+    min-height:49px;
+    margin-bottom:13px;
+    padding:11px 52px 11px 14px;
+    position:relative;
     border:0;
     border-radius:4px;
-    background:#2e669c;
-    color:white;
-    margin-bottom:13px;
-    padding:11px 50px 11px 14px;
-    font-weight:bold;
+    background:var(--blue2);
+    color:#fff;
     text-align:left;
-    cursor:pointer;
-    position:relative;
     line-height:1.35;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .service-btn:hover{
-    background:#255b8f;
+    background:#25598b;
 }
 
-.service-btn .arrow{
+.arrow{
+    width:22px;
+    height:22px;
     position:absolute;
     right:14px;
     top:50%;
     transform:translateY(-50%);
-    width:21px;
-    height:21px;
     border:2px solid white;
     border-radius:50%;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:15px;
+    justify-content:center;
 }
 
-/* FEEDBACK */
+/* =====================================================
+   NPS
+===================================================== */
 
-.feedback{
-    margin:75px 0 30px;
+.nps-section{
+    margin-top:85px;
+    border-top:1px solid #e1e5e8;
+    padding:55px 25px 50px;
 }
 
-.feedback h3{
-    color:#111;
+.nps-heading{
+    max-width:800px;
+}
+
+.nps-heading h2{
+    margin:0 0 7px;
+    color:var(--blue);
+    font-size:27px;
+}
+
+.nps-heading p{
+    margin:0;
+    color:#333;
+}
+
+.rating-box{
+    margin-top:30px;
+    max-width:850px;
+    background:#f7f9fa;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:27px;
+}
+
+.rating-question{
+    margin:0 0 19px;
     font-size:18px;
+    font-weight:bold;
 }
 
-.feedback-buttons{
+.score-labels{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+    color:#5b6570;
+    font-size:13px;
+}
+
+.score-buttons{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
+    grid-template-columns:repeat(11,1fr);
+    gap:7px;
 }
 
-.feedback-buttons button{
-    border:0;
-    border-radius:22px;
-    background:#2e669c;
-    color:white;
-    height:36px;
+.score-button{
+    height:45px;
+    border:2px solid var(--blue2);
+    border-radius:4px;
+    background:#fff;
+    color:var(--blue);
     font-weight:bold;
     cursor:pointer;
 }
 
-.feedback-message{
+.score-button:hover,
+.score-button.selected{
+    background:var(--blue2);
+    color:#fff;
+}
+
+.nps-status{
     display:none;
-    color:var(--blue);
+    margin-top:17px;
+    padding:13px 16px;
+    background:var(--lightGreen);
+    border-left:5px solid var(--green);
     font-weight:bold;
-    margin-top:13px;
 }
 
-.askem{
-    color:#999;
-    font-size:10px;
-    margin-top:26px;
+.nps-dashboard{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:370px 1fr;
+    gap:55px;
+    align-items:center;
 }
 
-/* FOOTER */
+.gauge-wrap{
+    text-align:center;
+}
 
-footer{
-    background:#2e669c;
-    color:white;
+.gauge-title{
+    font-size:21px;
+    margin-bottom:1px;
+}
+
+.gauge-period{
+    color:#666;
+    font-size:14px;
+    margin-bottom:15px;
+}
+
+.gauge{
+    width:320px;
+    height:175px;
+    margin:auto;
+    position:relative;
+    overflow:hidden;
+}
+
+.gauge-rings{
+    position:absolute;
+    width:300px;
+    height:300px;
+    left:10px;
+    top:10px;
+    border-radius:50%;
+    background:
+        conic-gradient(
+            from 270deg,
+            #f7c2c5 0deg 60deg,
+            #f2dda2 60deg 120deg,
+            #b6d87c 120deg 180deg,
+            transparent 180deg 360deg
+        );
+}
+
+.gauge-inner{
+    position:absolute;
+    width:220px;
+    height:220px;
+    left:50px;
+    top:50px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.needle{
+    position:absolute;
+    left:158px;
+    top:145px;
+    width:125px;
+    height:5px;
+    background:#283646;
+    transform-origin:0 50%;
+    transform:rotate(-90deg);
+    transition:transform .8s ease;
+    border-radius:5px;
+}
+
+.needle:after{
+    content:"";
+    position:absolute;
+    right:-4px;
+    top:-6px;
+    border-left:19px solid #283646;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+}
+
+.gauge-center{
+    position:absolute;
+    width:150px;
+    left:85px;
+    top:92px;
+    text-align:center;
+}
+
+.gauge-center small{
+    display:block;
+    font-weight:bold;
+    text-transform:lowercase;
+}
+
+.gauge-score{
+    font-size:38px;
+    font-weight:bold;
+    line-height:1.05;
+}
+
+.gauge-count{
+    font-weight:bold;
+    font-size:17px;
+    margin-top:9px;
+}
+
+.scale{
+    position:absolute;
+    font-size:11px;
+    color:#263440;
+}
+
+.scale.minus100{left:4px;top:147px}
+.scale.minus50{left:39px;top:71px}
+.scale.zero{left:156px;top:38px}
+.scale.plus50{right:38px;top:71px}
+.scale.plus100{right:0;top:147px}
+
+.nps-explanation{
+    max-width:530px;
+}
+
+.nps-explanation h3{
+    color:var(--blue);
+    font-size:22px;
     margin-top:0;
 }
 
-.footer{
+.nps-explanation p{
+    margin-bottom:12px;
+}
+
+.nps-small{
+    color:#555;
+    font-size:14px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    background:var(--blue2);
+    color:white;
+}
+
+.footer-inner{
     width:min(1030px,calc(100% - 50px));
     margin:auto;
-    padding:37px 0 55px;
+    padding:38px 0 60px;
     display:grid;
     grid-template-columns:1.1fr .9fr;
     gap:150px;
 }
 
-.footer h3{
+.footer-inner h3{
     margin-top:0;
-    font-size:19px;
 }
 
-.footer p{
+.footer-inner p{
     max-width:440px;
-    font-size:15px;
 }
 
-.footer ul{
+.footer-inner ul{
     list-style:none;
-    margin:0;
     padding:0;
+    margin:0;
 }
 
-.footer a{
+.footer-inner a{
     color:white;
     text-decoration:none;
-    font-size:15px;
 }
 
-.footer a:hover{text-decoration:underline}
+.footer-inner a:hover{
+    text-decoration:underline;
+}
 
-/* MODAL */
+/* =====================================================
+   PALVELUMODAALI
+===================================================== */
 
 .modal-overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.48);
     z-index:1000;
+    background:rgba(20,35,48,.62);
     display:none;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
-    padding:25px;
+    padding:28px;
+    overflow:auto;
 }
 
 .modal-overlay.open{
@@ -416,72 +623,181 @@ footer{
 }
 
 .modal{
-    background:white;
-    width:min(720px,100%);
-    max-height:90vh;
-    overflow:auto;
-    border-radius:5px;
-    box-shadow:0 15px 50px rgba(0,0,0,.25);
+    width:min(900px,100%);
+    background:#fff;
+    border-radius:7px;
+    overflow:hidden;
+    box-shadow:0 20px 70px rgba(0,0,0,.28);
+    margin:auto;
 }
 
-.modal-header{
+.modal-top{
+    min-height:110px;
+    padding:22px 30px;
+    border-bottom:1px solid #d9dfe4;
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
-    padding:25px 28px 18px;
-    border-bottom:1px solid #ddd;
+    align-items:center;
+    gap:30px;
 }
 
-.modal-header h2{
-    margin:0;
-    color:var(--blue);
-    font-size:25px;
-    line-height:1.3;
-    padding-right:20px;
+.modal-brand{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-.close{
+.modal-logo{
+    width:175px;
+}
+
+.modal-brand-text{
+    padding-left:19px;
+    border-left:1px solid #ccd5db;
+    color:#53616c;
+    font-size:14px;
+}
+
+.modal-close{
     border:0;
-    background:none;
-    color:#005a96;
+    background:transparent;
+    color:var(--blue);
     font-weight:bold;
     cursor:pointer;
-    font-size:15px;
+    white-space:nowrap;
 }
 
-.modal-body{
-    padding:25px 28px 30px;
+.modal-hero{
+    padding:35px 38px;
+    background:var(--lightBlue);
 }
 
-.modal-body h3{
+.modal-hero .eyebrow{
+    color:#4d6273;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.modal-hero h2{
+    margin:0 0 13px;
     color:var(--blue);
-    margin:24px 0 8px;
+    font-size:31px;
+    line-height:1.2;
 }
 
-.modal-body p{
-    margin:0 0 15px;
+.modal-lead{
+    margin:0;
+    max-width:760px;
+    font-size:18px;
+    line-height:1.55;
 }
 
-.modal-body ul{
+.modal-content{
+    padding:35px 38px 42px;
+}
+
+.modal-grid{
+    display:grid;
+    grid-template-columns:1.35fr .75fr;
+    gap:35px;
+}
+
+.modal-main h3{
+    margin:27px 0 9px;
+    color:var(--blue);
+    font-size:21px;
+}
+
+.modal-main h3:first-child{
+    margin-top:0;
+}
+
+.modal-main p{
+    margin:0 0 14px;
+}
+
+.modal-main ul{
     padding-left:22px;
 }
 
+.info-box{
+    padding:22px;
+    margin-bottom:18px;
+    border-radius:5px;
+    background:var(--pink);
+}
+
+.info-box.blue{
+    background:var(--lightBlue);
+}
+
+.info-box.green{
+    background:var(--lightGreen);
+}
+
+.info-box h3{
+    color:var(--blue);
+    margin:0 0 9px;
+    font-size:18px;
+}
+
+.info-box p{
+    margin:0 0 10px;
+}
+
 .modal-action{
-    display:inline-block;
-    margin-top:15px;
-    background:#2e669c;
+    width:100%;
+    display:block;
+    margin-top:10px;
+    padding:13px 46px 13px 15px;
+    border:0;
+    border-radius:4px;
+    background:var(--blue2);
     color:white;
     text-decoration:none;
-    padding:12px 19px;
-    border-radius:4px;
+    text-align:left;
     font-weight:bold;
+    position:relative;
+    cursor:pointer;
 }
 
 .modal-action:hover{
-    background:#255b8f;
+    background:#25598b;
 }
 
-/* RESPONSIVE */
+.modal-action:after{
+    content:"→";
+    width:22px;
+    height:22px;
+    position:absolute;
+    right:13px;
+    top:50%;
+    transform:translateY(-50%);
+    border:2px solid white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.emergency{
+    margin-top:30px;
+    padding:18px 20px;
+    border-left:6px solid #d1463f;
+    background:#fff1f0;
+}
+
+.emergency strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:900px){
 
@@ -491,18 +807,14 @@ footer{
 
     .service-columns{
         grid-template-columns:1fr;
-        gap:30px;
     }
 
-    .young-card{
-        width:auto;
-        max-width:none;
-        margin-left:20px;
-        margin-right:20px;
+    .nps-dashboard{
+        grid-template-columns:1fr;
     }
 
-    .footer{
-        gap:60px;
+    .modal-grid{
+        grid-template-columns:1fr;
     }
 }
 
@@ -546,8 +858,8 @@ footer{
     }
 
     nav a{
-        margin:0;
         padding:11px 3px;
+        margin:0;
         border-bottom:1px solid #ddd;
     }
 
@@ -555,15 +867,13 @@ footer{
         padding:13px 18px;
     }
 
-    .hero img{
+    .hero-image{
         height:270px;
     }
 
     .hero-title{
-        width:330px;
-        max-width:90%;
+        width:340px;
         margin-top:-48px;
-        padding:13px 18px 9px;
     }
 
     .hero-title h1{
@@ -572,14 +882,15 @@ footer{
 
     .quick-links{
         grid-template-columns:repeat(2,1fr);
-        padding:0 18px;
-        margin-top:25px;
+        padding:0 15px;
         gap:35px 12px;
     }
 
     .young-card{
+        width:auto;
+        max-width:none;
+        margin:55px 18px 0;
         grid-template-columns:1fr;
-        margin-top:50px;
     }
 
     .young-card img{
@@ -588,38 +899,72 @@ footer{
 
     .services{
         padding:0 18px;
-        margin-top:50px;
     }
 
-    .services h2{
+    .services > h2{
         font-size:27px;
     }
 
-    .feedback{
-        margin:55px 18px 30px;
+    .nps-section{
+        padding:45px 18px;
     }
 
-    .feedback-buttons{
-        grid-template-columns:1fr;
+    .rating-box{
+        padding:20px 15px;
     }
 
-    .footer{
-        width:100%;
+    .score-buttons{
+        grid-template-columns:repeat(6,1fr);
+    }
+
+    .score-button{
+        height:42px;
+    }
+
+    .gauge{
+        transform:scale(.9);
+        transform-origin:center top;
+        margin-bottom:-15px;
+    }
+
+    .footer-inner{
+        width:auto;
         padding:35px 22px;
         grid-template-columns:1fr;
         gap:35px;
     }
 
     .modal-overlay{
-        padding:10px;
+        padding:8px;
     }
 
-    .modal-header{
-        padding:20px;
+    .modal-top{
+        padding:18px;
+        align-items:flex-start;
     }
 
-    .modal-body{
-        padding:20px;
+    .modal-logo{
+        width:135px;
+    }
+
+    .modal-brand-text{
+        display:none;
+    }
+
+    .modal-hero{
+        padding:25px 20px;
+    }
+
+    .modal-hero h2{
+        font-size:25px;
+    }
+
+    .modal-lead{
+        font-size:16px;
+    }
+
+    .modal-content{
+        padding:25px 20px 30px;
     }
 }
 </style>
@@ -634,8 +979,8 @@ footer{
 
         <a href="index.html">
             <img src="hyvaks-logo.png"
-                 alt="Keski-Suomen hyvinvointialue"
-                 class="logo">
+                 class="logo"
+                 alt="Keski-Suomen hyvinvointialue">
         </a>
 
         <button class="mobile-menu" id="menuButton">
@@ -645,8 +990,7 @@ footer{
         <form class="search" onsubmit="searchSite(event)">
             <input id="searchInput"
                    type="search"
-                   placeholder="Hae sivustolta"
-                   aria-label="Hae sivustolta">
+                   placeholder="Hae sivustolta">
             <button type="submit" aria-label="Hae">⌕</button>
         </form>
 
@@ -672,306 +1016,334 @@ footer{
 
 <main class="container">
 
-    <div class="breadcrumb">
-        <a href="index.html">Etusivu</a> /
-        <a href="palvelut.html">Palvelumme</a> /
-        Nuorten ja opiskelijoiden palvelut
+<div class="breadcrumb">
+    <a href="index.html">Etusivu</a> /
+    <a href="palvelut.html">Palvelumme</a> /
+    Nuorten ja opiskelijoiden palvelut
+</div>
+
+
+<section class="hero">
+
+    <img src="nuori.jpg"
+         class="hero-image"
+         alt="Nuorten ja opiskelijoiden palvelut">
+
+    <div class="hero-title">
+        <h1>Nuorten ja opiskelijoiden palvelut</h1>
+    </div>
+
+</section>
+
+
+<section class="quick-links">
+
+    <button class="quick" onclick="openService('help')">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <rect x="13" y="5" width="23" height="38" rx="3"/>
+                <path d="M19 10h11M18 33l12-12M18 36l4-1-3-3z"/>
+            </svg>
+        </span>
+        <span class="quick-text">Pyydä apua -nappi</span>
+    </button>
+
+    <button class="quick" onclick="openService('youngHelp')">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="20" r="7"/>
+                <path d="M13 43c1-9 5-14 11-14s10 5 11 14"/>
+                <path d="M7 11h9v7H7zM32 9h9v7h-9zM5 24h9v7H5z"/>
+            </svg>
+        </span>
+        <span class="quick-text">Apua ja tukea nuorelle</span>
+    </button>
+
+    <button class="quick" onclick="openService('schoolHealth')">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="16" r="7"/>
+                <path d="M13 42c1-9 5-14 11-14s10 5 11 14"/>
+                <path d="M11 17c-4 3-5 7-5 11 0 5 3 9 8 11"/>
+                <path d="M37 17c4 3 5 7 5 11 0 5-3 9-8 11"/>
+            </svg>
+        </span>
+        <span class="quick-text">Kouluterveydenhuolto</span>
+    </button>
+
+    <button class="quick"
+            onclick="location.href='opiskeluterveydenhuolto.html'">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="15" r="7"/>
+                <path d="M14 43v-9c0-7 4-11 10-11s10 4 10 11v9"/>
+                <path d="M17 27l7 7 7-7M10 42h28"/>
+            </svg>
+        </span>
+        <span class="quick-text">
+            Opiskeluterveydenhuolto toisen asteen opiskelijoille
+        </span>
+    </button>
+
+    <button class="quick" onclick="openService('guidance')">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <rect x="10" y="6" width="28" height="34" rx="2"/>
+                <path d="M16 14h3M23 14h10M16 21h3M23 21h10M16 28h3M23 28h10"/>
+            </svg>
+        </span>
+        <span class="quick-text">
+            Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
+        </span>
+    </button>
+
+    <button class="quick" onclick="openService('contraception')">
+        <span class="quick-circle">
+            <svg viewBox="0 0 48 48">
+                <rect x="9" y="9" width="30" height="30" rx="4"/>
+                <path d="M24 15v18M15 24h18"/>
+            </svg>
+        </span>
+        <span class="quick-text">
+            Maksuton ehkäisy alle 25-vuotiaille
+        </span>
+    </button>
+
+</section>
+
+
+<section class="young-card">
+
+    <img src="tytto.jpg" alt="Nuori">
+
+    <div class="young-content">
+
+        <h2>Nuorelle</h2>
+
+        <p>
+            Moi nuori! Nämä sivut ovat juuri sinulle. Täältä saat tietoa
+            nuoruuteen liittyvistä eri teemoista ja asioista. Sivustolle
+            on kasattu linkkejä ja ohjeita, mistä ja miten voit saada
+            apua ja tukea erilaisiin tilanteisiin.
+        </p>
+
+        <button class="text-link" onclick="openService('young')">
+            <span class="text-link-circle">→</span>
+            Lue lisää
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="services">
+
+<h2>Nuorten ja opiskelijoiden palvelut</h2>
+
+<div class="service-columns">
+
+    <div class="service-column">
+
+        <h3>Koulu- ja opiskeluterveydenhuolto</h3>
+
+        <button class="service-btn"
+                onclick="openService('schoolHealth')">
+            Peruskoululaisille
+            <span class="arrow">→</span>
+        </button>
+
+        <button class="service-btn"
+                onclick="location.href='opiskeluterveydenhuolto.html'">
+            Toisen asteen opiskelijoille
+            <span class="arrow">→</span>
+        </button>
+
     </div>
 
 
-    <!-- HERO -->
+    <div class="service-column">
 
-    <section class="hero">
+        <h3>Kuraattori- ja psykologipalvelut</h3>
 
-        <img src="nuori.jpg" alt="Nuorten ja opiskelijoiden palvelut">
+        <button class="service-btn"
+                onclick="openService('studentWelfareSchool')">
+            Peruskoululaisille
+            <span class="arrow">→</span>
+        </button>
 
-        <div class="hero-title">
-            <h1>Nuorten ja opiskelijoiden palvelut</h1>
+        <button class="service-btn"
+                onclick="openService('studentWelfareSecondary')">
+            Toisen asteen opiskelijoille
+            <span class="arrow">→</span>
+        </button>
+
+    </div>
+
+
+    <div class="service-column">
+
+        <h3>Muu tuki ja apu</h3>
+
+        <button class="service-btn"
+                onclick="openService('guidance')">
+            Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
+            <span class="arrow">→</span>
+        </button>
+
+        <button class="service-btn"
+                onclick="openService('contraception')">
+            Maksuton ehkäisy alle 25-vuotiaille
+            <span class="arrow">→</span>
+        </button>
+
+        <button class="service-btn"
+                onclick="openService('mentalHealth')">
+            Nuorten mielenterveys- ja päihdepalvelut
+            <span class="arrow">→</span>
+        </button>
+
+        <button class="service-btn"
+                onclick="openService('childSupport')">
+            Ota yhteyttä lapsiperheen tuen tarpeesta tai tee lastensuojeluilmoitus
+            <span class="arrow">→</span>
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ============================
+     OMA NPS
+============================= -->
+
+<section class="nps-section">
+
+    <div class="nps-heading">
+        <h2>Anna palautetta palvelusta</h2>
+
+        <p>
+            Palautteesi auttaa meitä kehittämään nuorten ja
+            opiskelijoiden palveluita.
+        </p>
+    </div>
+
+
+    <div class="rating-box" id="ratingBox">
+
+        <p class="rating-question">
+            Kuinka todennäköisesti suosittelisit
+            Nuorten ja opiskelijoiden palveluita?
+        </p>
+
+        <div class="score-labels">
+            <span>0 – En lainkaan todennäköisesti</span>
+            <span>10 – Erittäin todennäköisesti</span>
         </div>
 
-    </section>
+        <div class="score-buttons">
 
-
-    <!-- PIKAPAINIKKEET -->
-
-    <section class="quick-links">
-
-        <button class="quick"
-                onclick="openModal('pyyda-apua')">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <rect x="13" y="5" width="23" height="38" rx="3"/>
-                    <path d="M19 10h11"/>
-                    <path d="M18 33l12-12"/>
-                    <path d="M18 36l4-1-3-3z"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Pyydä apua -nappi
-            </span>
-
-        </button>
-
-
-        <button class="quick"
-                onclick="openModal('apu-nuorelle')">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <circle cx="24" cy="22" r="8"/>
-                    <path d="M13 43c1-8 5-12 11-12s10 4 11 12"/>
-                    <path d="M8 14h8v7H8z"/>
-                    <path d="M32 11h8v7h-8z"/>
-                    <path d="M6 26h8v6H6z"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Apua ja tukea nuorelle
-            </span>
-
-        </button>
-
-
-        <button class="quick"
-                onclick="openModal('kouluterveydenhuolto')">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <circle cx="24" cy="16" r="7"/>
-                    <path d="M13 42c1-9 5-14 11-14s10 5 11 14"/>
-                    <path d="M11 17c-3 2-5 6-5 10 0 5 3 9 8 11"/>
-                    <path d="M37 17c3 2 5 6 5 10 0 5-3 9-8 11"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Kouluterveydenhuolto
-            </span>
-
-        </button>
-
-
-        <button class="quick"
-                onclick="window.location.href='opiskeluterveydenhuolto.html'">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <circle cx="24" cy="15" r="7"/>
-                    <path d="M14 43v-9c0-7 4-11 10-11s10 4 10 11v9"/>
-                    <path d="M17 27l7 7 7-7"/>
-                    <path d="M10 42h28"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Opiskeluterveydenhuolto toisen asteen opiskelijoille
-            </span>
-
-        </button>
-
-
-        <button class="quick"
-                onclick="openModal('ohjaus-neuvonta')">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <rect x="10" y="6" width="28" height="34" rx="2"/>
-                    <path d="M16 14h3"/>
-                    <path d="M23 14h10"/>
-                    <path d="M16 21h3"/>
-                    <path d="M23 21h10"/>
-                    <path d="M16 28h3"/>
-                    <path d="M23 28h10"/>
-                    <path d="M27 40l5 5v-5"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
-            </span>
-
-        </button>
-
-
-        <button class="quick"
-                onclick="openModal('ehkaisy')">
-
-            <span class="quick-circle">
-                <svg viewBox="0 0 48 48">
-                    <rect x="9" y="9" width="30" height="30" rx="4"/>
-                    <path d="M24 15v18"/>
-                    <path d="M15 24h18"/>
-                    <path d="M13 6h22"/>
-                    <path d="M13 42h22"/>
-                </svg>
-            </span>
-
-            <span class="quick-text">
-                Maksuton ehkäisy alle 25-vuotiaille
-            </span>
-
-        </button>
-
-    </section>
-
-
-    <!-- NUORELLE -->
-
-    <section class="young-card">
-
-        <img src="tytto.jpg" alt="Nuori">
-
-        <div class="young-content">
-
-            <h2>Nuorelle</h2>
-
-            <p>
-                Moi nuori! Nämä sivut ovat juuri sinulle.
-                Täältä saat tietoa nuoruuteen liittyvistä eri
-                teemoista ja asioista. Sivustolle on kasattu
-                linkkejä ja ohjeita, mistä ja miten voit saada
-                apua ja tukea erilaisiin tilanteisiin.
-            </p>
-
-            <button class="read-more"
-                    onclick="openModal('nuorelle')">
-
-                <span class="round">→</span>
-                Lue lisää
-
-            </button>
+            <button class="score-button" onclick="submitScore(0,this)">0</button>
+            <button class="score-button" onclick="submitScore(1,this)">1</button>
+            <button class="score-button" onclick="submitScore(2,this)">2</button>
+            <button class="score-button" onclick="submitScore(3,this)">3</button>
+            <button class="score-button" onclick="submitScore(4,this)">4</button>
+            <button class="score-button" onclick="submitScore(5,this)">5</button>
+            <button class="score-button" onclick="submitScore(6,this)">6</button>
+            <button class="score-button" onclick="submitScore(7,this)">7</button>
+            <button class="score-button" onclick="submitScore(8,this)">8</button>
+            <button class="score-button" onclick="submitScore(9,this)">9</button>
+            <button class="score-button" onclick="submitScore(10,this)">10</button>
 
         </div>
 
-    </section>
-
-
-    <!-- PALVELUT -->
-
-    <section class="services">
-
-        <h2>Nuorten ja opiskelijoiden palvelut</h2>
-
-        <div class="service-columns">
-
-
-            <!-- KOULU- JA OPISKELUTERVEYS -->
-
-            <div class="service-column">
-
-                <h3>Koulu- ja opiskeluterveydenhuolto</h3>
-
-                <button class="service-btn"
-                        onclick="openModal('peruskoululaiset')">
-                    Peruskoululaisille
-                    <span class="arrow">→</span>
-                </button>
-
-                <button class="service-btn"
-                        onclick="window.location.href='opiskeluterveydenhuolto.html'">
-                    Toisen asteen opiskelijoille
-                    <span class="arrow">→</span>
-                </button>
-
-            </div>
-
-
-            <!-- KURAATTORI JA PSYKOLOGI -->
-
-            <div class="service-column">
-
-                <h3>Kuraattori- ja psykologipalvelut</h3>
-
-                <button class="service-btn"
-                        onclick="openModal('kuraattori-peruskoulu')">
-                    Peruskoululaisille
-                    <span class="arrow">→</span>
-                </button>
-
-                <button class="service-btn"
-                        onclick="openModal('kuraattori-toinen')">
-                    Toisen asteen opiskelijoille
-                    <span class="arrow">→</span>
-                </button>
-
-            </div>
-
-
-            <!-- MUU TUKI -->
-
-            <div class="service-column">
-
-                <h3>Muu tuki ja apu</h3>
-
-                <button class="service-btn"
-                        onclick="openModal('ohjaus-neuvonta')">
-                    Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
-                    <span class="arrow">→</span>
-                </button>
-
-                <button class="service-btn"
-                        onclick="openModal('ehkaisy')">
-                    Maksuton ehkäisy alle 25-vuotiaille
-                    <span class="arrow">→</span>
-                </button>
-
-                <button class="service-btn"
-                        onclick="openModal('mielenterveys')">
-                    Nuorten mielenterveys- ja päihdepalvelut
-                    <span class="arrow">→</span>
-                </button>
-
-                <button class="service-btn"
-                        onclick="openModal('lapsiperhe')">
-                    Ota yhteyttä lapsiperheen tuen tarpeesta tai tee lastensuojeluilmoitus
-                    <span class="arrow">→</span>
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PALAUTE -->
-
-    <section class="feedback">
-
-        <h3>Löysitkö etsimäsi tiedon tältä sivulta?</h3>
-
-        <div class="feedback-buttons">
-
-            <button onclick="feedback()">✓ Kyllä</button>
-            <button onclick="feedback()">? Osittain</button>
-            <button onclick="feedback()">× En</button>
-
-        </div>
-
-        <div class="feedback-message" id="feedbackMessage">
+        <div class="nps-status" id="npsStatus">
             Kiitos palautteestasi.
         </div>
 
-        <div class="askem">
-            Created with askem.com
+    </div>
+
+
+    <div class="nps-dashboard">
+
+        <div class="gauge-wrap">
+
+            <div class="gauge-title">
+                Nuorten ja opiskelijoiden palvelut
+            </div>
+
+            <div class="gauge-period">
+                Palvelun suositteluindeksi
+            </div>
+
+            <div class="gauge">
+
+                <div class="gauge-rings"></div>
+                <div class="gauge-inner"></div>
+
+                <span class="scale minus100">-100</span>
+                <span class="scale minus50">-50</span>
+                <span class="scale zero">0</span>
+                <span class="scale plus50">50</span>
+                <span class="scale plus100">100</span>
+
+                <div class="needle" id="npsNeedle"></div>
+
+                <div class="gauge-center">
+                    <small>NPS</small>
+
+                    <div class="gauge-score" id="npsScore">
+                        –
+                    </div>
+
+                    <div class="gauge-count" id="npsCount">
+                        0 vastausta
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
-    </section>
+
+        <div class="nps-explanation">
+
+            <h3>Palvelun suositteluindeksi</h3>
+
+            <p>
+                Mittari perustuu tällä sivulla annettuihin
+                0–10-arvioihin.
+            </p>
+
+            <p>
+                Arvosanat 9–10 ovat suosittelijoita, 7–8
+                neutraaleja ja 0–6 arvostelijoita. NPS-luku
+                saadaan vähentämällä arvostelijoiden osuus
+                suosittelijoiden osuudesta.
+            </p>
+
+            <p class="nps-small">
+                Mittarin arvo ja vastausten määrä päivittyvät
+                palveluun annettujen arvioiden perusteella.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 </main>
 
 
-<!-- FOOTER -->
-
 <footer>
 
-<div class="footer">
+<div class="footer-inner">
 
     <div>
-
         <h3>Keski-Suomen hyvinvointialue</h3>
 
         <p>
@@ -979,14 +1351,12 @@ footer{
             terveys- ja pelastustoimen palveluista. Edistämme
             hyvinvointia, terveyttä ja turvallisuutta Keski-Suomessa
             vaikuttavasti ja laajalla yhteistyöllä. Haluamme olla
-            ihmislähtöisin hyvinvointialue ja tukea keskisuomalaisten
-            hyvää arkea.
+            ihmislähtöisin hyvinvointialue ja tukea
+            keskisuomalaisten hyvää arkea.
         </p>
-
     </div>
 
     <div>
-
         <h3>Oikopolut</h3>
 
         <ul>
@@ -998,12 +1368,9 @@ footer{
             <li><a href="tietosuoja.html">Tietosuoja</a></li>
             <li><a href="saavutettavuus.html">Saavutettavuusseloste</a></li>
             <li><a href="paatoksenteko.html">Päätöksenteko</a></li>
-            <li><a href="esityslistat.html">Esityslistat ja pöytäkirjat</a></li>
-            <li><a href="kuulutukset.html">Kuulutukset ja ilmoitukset</a></li>
             <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
             <li><a href="palaute.html">Anna palautetta</a></li>
         </ul>
-
     </div>
 
 </div>
@@ -1011,331 +1378,677 @@ footer{
 </footer>
 
 
-<!-- MODAALI -->
+<!-- =================================================
+     PALVELUMODAALI
+================================================== -->
 
 <div class="modal-overlay"
      id="modalOverlay"
      onclick="overlayClose(event)">
 
-    <div class="modal"
-         role="dialog"
-         aria-modal="true"
-         aria-labelledby="modalTitle">
+<div class="modal">
 
-        <div class="modal-header">
+    <div class="modal-top">
 
-            <h2 id="modalTitle"></h2>
+        <div class="modal-brand">
 
-            <button class="close"
-                    onclick="closeModal()">
-                Sulje ×
-            </button>
+            <img src="hyvaks-logo.png"
+                 class="modal-logo"
+                 alt="Keski-Suomen hyvinvointialue">
+
+            <div class="modal-brand-text">
+                Keski-Suomen hyvinvointialue<br>
+                Nuorten ja opiskelijoiden palvelut
+            </div>
 
         </div>
 
-        <div class="modal-body"
-             id="modalBody">
+        <button class="modal-close"
+                onclick="closeModal()">
+            Sulje ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-hero">
+
+        <div class="eyebrow">
+            PALVELUN TIEDOT
+        </div>
+
+        <h2 id="modalTitle"></h2>
+
+        <p class="modal-lead"
+           id="modalLead"></p>
+
+    </div>
+
+
+    <div class="modal-content">
+
+        <div class="modal-grid">
+
+            <div class="modal-main"
+                 id="modalMain">
+            </div>
+
+            <aside id="modalAside">
+            </aside>
+
         </div>
 
     </div>
 
 </div>
+</div>
 
 
 <script>
 
-/* ================================
-   MODAALIEN SISÄLLÖT
-================================ */
+/* =====================================================
+   SUPABASE
+===================================================== */
 
-const modalContent = {
+const SUPABASE_URL =
+    "https://bwuybksyoopuejcrlspa.supabase.co";
 
-    "pyyda-apua":{
-        title:"Pyydä apua -nappi",
-        body:`
+const SUPABASE_KEY =
+    "sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ";
+
+const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+const PAGE_KEY =
+    "nuorten-ja-opiskelijoiden-palvelut";
+
+
+/* =====================================================
+   PALVELUIDEN SISÄLLÖT
+===================================================== */
+
+const services = {
+
+help:{
+    title:"Pyydä apua -nappi",
+    lead:"Kun jokin asia mietityttää, apua kannattaa pyytää matalalla kynnyksellä. Sinun ei tarvitse itse tietää valmiiksi, mikä palvelu olisi oikea.",
+
+    main:`
+        <h3>Kun tarvitset apua tai tukea</h3>
+
+        <p>
+            Elämässä voi tulla vastaan tilanteita, joissa omat
+            voimavarat eivät tunnu riittävän tai et tiedä,
+            kenen kanssa asiasta voisi puhua. Avun pyytämiseen
+            ei tarvita valmista diagnoosia tai tarkkaa syytä.
+        </p>
+
+        <p>
+            Yhteyttä voi ottaa esimerkiksi silloin, kun
+            jaksaminen, mieliala, ihmissuhteet, opiskelu,
+            kotiin liittyvät asiat tai oma turvallisuuden tunne
+            herättävät huolta.
+        </p>
+
+        <h3>Mitä yhteydenoton jälkeen tapahtuu?</h3>
+
+        <p>
+            Tilannettasi voidaan arvioida yhdessä kanssasi.
+            Tavoitteena on löytää juuri sinun tilanteeseesi
+            sopiva tapa saada apua ja tarvittaessa ohjata
+            sinut oikean ammattilaisen luokse.
+        </p>
+
+        <h3>Voit puhua myös pienestä asiasta</h3>
+
+        <p>
+            Yhteydenottoa ei tarvitse odottaa siihen asti,
+            että tilanne tuntuu vakavalta. Mitä aikaisemmin
+            huolesta kertoo, sitä helpompi tilanteeseen on
+            usein löytää tukea.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box blue">
+            <h3>Kenelle?</h3>
             <p>
-                Pyydä apua -palvelun kautta nuori voi pyytää
-                apua tai tukea silloin, kun oma tilanne
-                mietityttää eikä tiedä, mistä apua kannattaisi hakea.
+                Nuorelle, joka kaipaa neuvoa, keskusteluapua
+                tai ohjausta sopivan palvelun löytämiseen.
+            </p>
+        </div>
+
+        <div class="info-box green">
+            <h3>Asiointi</h3>
+            <p>
+                Voit aloittaa yhteydenoton digitaalisissa
+                palveluissa.
             </p>
 
-            <h3>Milloin voin pyytää apua?</h3>
+            <a class="modal-action" href="digipalvelut.html">
+                Digitaaliset palvelut
+            </a>
+        </div>
 
+        <div class="emergency">
+            <strong>Hätätilanteessa</strong>
+            Soita 112, jos henki tai terveys on välittömässä vaarassa.
+        </div>
+    `
+},
+
+
+youngHelp:{
+    title:"Apua ja tukea nuorelle",
+    lead:"Nuoruuteen kuuluu muutoksia, uusia tilanteita ja joskus myös vaikeita vaiheita. Apua on saatavilla eikä asioiden kanssa tarvitse jäädä yksin.",
+
+    main:`
+        <h3>Mistä asioista voin puhua?</h3>
+
+        <p>
+            Ammattilaisen kanssa voit keskustella esimerkiksi
+            jaksamisesta, mielialasta, yksinäisyydestä,
+            ihmissuhteista, opiskelusta, päihteistä,
+            seksuaalisuudesta tai kotona olevista huolista.
+        </p>
+
+        <h3>En tiedä, mitä apua tarvitsen</h3>
+
+        <p>
+            Se ei haittaa. Voit kertoa tilanteestasi omin
+            sanoin. Ammattilainen auttaa selvittämään,
+            millainen tuki voisi sopia tilanteeseesi.
+        </p>
+
+        <h3>Apua kannattaa hakea ajoissa</h3>
+
+        <p>
+            Sinun ei tarvitse odottaa tilanteen pahenemista.
+            Myös epävarmuudesta tai pieneltä tuntuvasta
+            huolesta voi keskustella.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box">
+            <h3>Apua nuorelle</h3>
             <p>
-                Voit hakea apua esimerkiksi hyvinvointiin,
-                ihmissuhteisiin, opiskeluun, jaksamiseen tai
-                elämäntilanteeseen liittyvissä asioissa.
+                Palveluja on tarjolla sekä koulussa ja
+                oppilaitoksessa että hyvinvointialueen
+                muissa palveluissa.
+            </p>
+        </div>
+
+        <div class="info-box blue">
+            <h3>Et tiedä mistä aloittaa?</h3>
+            <p>
+                Ohjaus ja neuvonta auttaa löytämään sopivan
+                palvelun.
             </p>
 
+            <button class="modal-action"
+                    onclick="openService('guidance')">
+                Ohjaus ja neuvonta
+            </button>
+        </div>
+    `
+},
+
+
+young:{
+    title:"Nuorelle",
+    lead:"Täältä löydät tietoa ja tukea nuoruuteen liittyviin asioihin sekä reittejä palveluihin silloin, kun tarvitset apua.",
+
+    main:`
+        <h3>Sinua varten</h3>
+
+        <p>
+            Nuoruus on elämänvaihe, jossa tapahtuu paljon.
+            Opiskelu, ihmissuhteet, itsenäistyminen ja oma
+            hyvinvointi voivat herättää monenlaisia kysymyksiä.
+        </p>
+
+        <h3>Hyvinvointi ja jaksaminen</h3>
+
+        <p>
+            Riittävä uni, ravinto, liikkuminen, turvalliset
+            ihmissuhteet ja mahdollisuus palautumiseen tukevat
+            hyvinvointia. Jos oma olo kuitenkin huolestuttaa,
+            asiasta kannattaa kertoa aikuiselle tai ammattilaiselle.
+        </p>
+
+        <h3>Opiskelu</h3>
+
+        <p>
+            Jos opiskelu kuormittaa, keskittyminen on vaikeaa
+            tai koulunkäyntiin liittyy muita huolia, voit hakea
+            tukea opiskeluhuollosta.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box green">
+            <h3>Opiskeluhuolto</h3>
             <p>
-                Kiireellisessä hätätilanteessa soita hätänumeroon 112.
+                Terveydenhoitaja, kuraattori ja psykologi
+                ovat opiskelijoiden tukena.
             </p>
-        `
-    },
+        </div>
+
+        <div class="info-box blue">
+            <h3>Toisen asteen opiskelija?</h3>
+
+            <a class="modal-action"
+               href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+        </div>
+    `
+},
 
 
-    "apu-nuorelle":{
-        title:"Apua ja tukea nuorelle",
-        body:`
+schoolHealth:{
+    title:"Kouluterveydenhuolto",
+    lead:"Kouluterveydenhuolto tukee oppilaan terveyttä, hyvinvointia, kasvua ja koulunkäyntiä yhteistyössä oppilaan, perheen ja koulun kanssa.",
+
+    main:`
+        <h3>Kouluterveydenhuollon palvelut</h3>
+
+        <p>
+            Kouluterveydenhuollossa seurataan oppilaan kasvua,
+            kehitystä ja hyvinvointia sekä järjestetään
+            terveystarkastuksia.
+        </p>
+
+        <p>
+            Terveydenhoitajaan voi ottaa yhteyttä myös
+            terveystarkastusten välillä.
+        </p>
+
+        <h3>Milloin terveydenhoitajalle?</h3>
+
+        <p>
+            Voit tulla keskustelemaan esimerkiksi terveydestä,
+            kasvusta ja kehityksestä, unesta, ravitsemuksesta,
+            jaksamisesta tai muusta omaan hyvinvointiin
+            liittyvästä asiasta.
+        </p>
+
+        <h3>Yhteistyö</h3>
+
+        <p>
+            Tarvittaessa kouluterveydenhuolto tekee yhteistyötä
+            muiden opiskeluhuollon ammattilaisten ja
+            terveyspalveluiden kanssa.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box blue">
+            <h3>Kouluterveydenhuolto</h3>
             <p>
-                Nuorelle on tarjolla tukea monenlaisiin
-                elämäntilanteisiin. Apua kannattaa hakea myös silloin,
-                kun et vielä itse tiedä tarkasti, millaista tukea tarvitset.
+                Palvelu on tarkoitettu perusopetuksen oppilaille.
             </p>
+        </div>
 
-            <h3>Mistä voin saada tukea?</h3>
-
-            <ul>
-                <li>koulu- ja opiskeluterveydenhuollosta</li>
-                <li>kuraattorilta tai psykologilta</li>
-                <li>mielenterveys- ja päihdepalveluista</li>
-                <li>nuorten ja perheiden palveluista</li>
-            </ul>
-        `
-    },
-
-
-    "kouluterveydenhuolto":{
-        title:"Kouluterveydenhuolto",
-        body:`
+        <div class="info-box green">
+            <h3>Toisella asteella?</h3>
             <p>
-                Kouluterveydenhuolto tukee peruskoululaisten
-                terveyttä, hyvinvointia ja opiskelukykyä.
-            </p>
-
-            <h3>Kouluterveydenhuollossa</h3>
-
-            <p>
-                Voit keskustella terveydenhoitajan kanssa esimerkiksi
-                terveydestäsi, kasvusta ja kehityksestä,
-                jaksamisesta tai muista hyvinvointiin liittyvistä asioista.
-            </p>
-
-            <p>
-                Palveluihin kuuluvat myös terveystarkastukset.
-            </p>
-        `
-    },
-
-
-    "ohjaus-neuvonta":{
-        title:"Perheiden, nuorten ja aikuisten ohjaus ja neuvonta",
-        body:`
-            <p>
-                Ohjaus ja neuvonta auttaa löytämään tilanteeseesi
-                sopivan sosiaali- tai terveyspalvelun.
-            </p>
-
-            <p>
-                Voit ottaa yhteyttä silloin, kun tarvitset neuvoja
-                omaan tai läheisesi tilanteeseen etkä tiedä,
-                mistä palvelusta apua kannattaisi hakea.
+                Lukioiden ja ammatillisten oppilaitosten
+                opiskelijoita palvelee opiskeluterveydenhuolto.
             </p>
 
             <a class="modal-action"
-               href="neuvonta.html">
-                Tutustu ohjaukseen ja neuvontaan
+               href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
             </a>
-        `
-    },
+        </div>
+    `
+},
 
 
-    "ehkaisy":{
-        title:"Maksuton ehkäisy alle 25-vuotiaille",
-        body:`
+studentWelfareSchool:{
+    title:"Kuraattori- ja psykologipalvelut peruskoululaisille",
+    lead:"Kuraattori ja psykologi tukevat oppilaan koulunkäyntiä, oppimista, psyykkistä hyvinvointia ja arjen sujumista.",
+
+    main:`
+        <h3>Kuraattorin palvelut</h3>
+
+        <p>
+            Kuraattorin kanssa voi keskustella esimerkiksi
+            koulunkäynnistä, kaverisuhteista, perhetilanteesta,
+            kiusaamisesta, poissaoloista tai muista arjen huolista.
+        </p>
+
+        <h3>Psykologin palvelut</h3>
+
+        <p>
+            Psykologi tukee esimerkiksi oppimiseen,
+            keskittymiseen, mielialaan, ahdistukseen,
+            jaksamiseen ja psyykkiseen hyvinvointiin
+            liittyvissä asioissa.
+        </p>
+
+        <h3>Luottamuksellinen keskustelu</h3>
+
+        <p>
+            Vastaanotolla voit kertoa tilanteestasi omin
+            sanoin. Yhdessä ammattilaisen kanssa voidaan
+            miettiä sopivia keinoja tilanteen helpottamiseksi.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box">
+            <h3>Opiskeluhuollon palvelu</h3>
             <p>
-                Alle 25-vuotiaille tarkoitettujen ehkäisypalvelujen
-                kautta saat neuvontaa ehkäisyyn ja seksuaaliterveyteen
-                liittyvissä asioissa.
+                Palvelut ovat osa koulun opiskeluhuoltoa.
+            </p>
+        </div>
+
+        <div class="info-box blue">
+            <h3>Tarvitsetko apua?</h3>
+            <p>
+                Voit olla yhteydessä koulusi opiskeluhuollon
+                ammattilaiseen.
+            </p>
+        </div>
+    `
+},
+
+
+studentWelfareSecondary:{
+    title:"Kuraattori- ja psykologipalvelut toisen asteen opiskelijoille",
+    lead:"Opiskeluhuollon kuraattori ja psykologi tukevat opiskelijan opiskelukykyä, hyvinvointia ja arjessa selviytymistä.",
+
+    main:`
+        <h3>Kuraattorille</h3>
+
+        <p>
+            Kuraattorin kanssa voit keskustella esimerkiksi
+            opiskelusta, ihmissuhteista, asumisesta,
+            toimeentulosta, poissaoloista tai elämäntilanteen
+            muutoksista.
+        </p>
+
+        <h3>Psykologille</h3>
+
+        <p>
+            Psykologin kanssa voidaan käsitellä esimerkiksi
+            mielialaa, ahdistusta, jaksamista, opiskelukykyä,
+            oppimista tai muita psyykkiseen hyvinvointiin
+            liittyviä asioita.
+        </p>
+
+        <h3>Yksilöllinen tuki</h3>
+
+        <p>
+            Tuen tarve arvioidaan yhdessä opiskelijan kanssa.
+            Tarvittaessa opiskelija voidaan ohjata myös
+            muiden palveluiden piiriin.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box green">
+            <h3>Toisen asteen opiskelijoille</h3>
+            <p>
+                Palvelut kuuluvat oppilaitoksen opiskeluhuoltoon.
+            </p>
+        </div>
+
+        <div class="info-box blue">
+            <h3>Opiskeluterveydenhuolto</h3>
+
+            <a class="modal-action"
+               href="opiskeluterveydenhuolto.html">
+                Katso palvelut
+            </a>
+        </div>
+    `
+},
+
+
+guidance:{
+    title:"Perheiden, nuorten ja aikuisten ohjaus ja neuvonta",
+    lead:"Ohjauksesta ja neuvonnasta saat apua oikean sosiaali- tai terveyspalvelun löytämiseen, kun et vielä tiedä, mistä tilanteessasi kannattaisi aloittaa.",
+
+    main:`
+        <h3>Kun tarvitset neuvoa</h3>
+
+        <p>
+            Voit ottaa yhteyttä omaan tai läheisesi
+            elämäntilanteeseen liittyvässä asiassa.
+        </p>
+
+        <p>
+            Ammattilainen kuuntelee tilanteesi ja auttaa
+            selvittämään, millainen palvelu tai tuki voisi
+            olla tilanteeseesi sopiva.
+        </p>
+
+        <h3>Nuoren tai perheen tilanne</h3>
+
+        <p>
+            Yhteyttä voi ottaa esimerkiksi silloin, kun
+            vanhemmuus, nuoren hyvinvointi, perheen arki,
+            mielenterveys tai muu elämäntilanne herättää huolta.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box blue">
+            <h3>Asioi verkossa</h3>
+            <p>
+                Digitaalisissa palveluissa voit tutustua
+                käytettävissä oleviin yhteydenottokanaviin.
             </p>
 
-            <h3>Ehkäisyneuvonta</h3>
+            <a class="modal-action" href="digipalvelut.html">
+                Digitaaliset palvelut
+            </a>
+        </div>
 
+        <div class="info-box">
+            <h3>Lisätietoa</h3>
+
+            <a class="modal-action" href="neuvonta.html">
+                Ohjaus ja neuvonta
+            </a>
+        </div>
+    `
+},
+
+
+contraception:{
+    title:"Maksuton ehkäisy alle 25-vuotiaille",
+    lead:"Alle 25-vuotiaille tarkoitetuissa ehkäisypalveluissa saat neuvontaa ehkäisyyn, seksuaaliterveyteen ja sopivan ehkäisymenetelmän valintaan liittyvissä asioissa.",
+
+    main:`
+        <h3>Ehkäisyneuvonta</h3>
+
+        <p>
+            Ammattilaisen kanssa voit keskustella
+            luottamuksellisesti eri ehkäisymenetelmistä,
+            niiden käytöstä ja omaan tilanteeseesi sopivista
+            vaihtoehdoista.
+        </p>
+
+        <h3>Seksuaaliterveys</h3>
+
+        <p>
+            Vastaanotolla voi ottaa puheeksi myös muita
+            seksuaaliterveyteen liittyviä kysymyksiä.
+        </p>
+
+        <h3>Yksilöllinen suunnittelu</h3>
+
+        <p>
+            Sopiva ehkäisymenetelmä valitaan yksilöllisesti.
+            Ammattilainen käy kanssasi läpi vaihtoehdot ja
+            auttaa menetelmän valinnassa.
+        </p>
+    `,
+
+    aside:`
+        <div class="info-box green">
+            <h3>Alle 25-vuotiaille</h3>
             <p>
-                Ammattilaisen kanssa voit keskustella
-                luottamuksellisesti sopivasta ehkäisystä ja
-                muista seksuaaliterveyteen liittyvistä kysymyksistä.
+                Palvelu on suunnattu alle 25-vuotiaille
+                nuorille ja nuorille aikuisille.
             </p>
-        `
-    },
+        </div>
+
+        <div class="info-box blue">
+            <h3>Opiskelija?</h3>
+
+            <a class="modal-action"
+               href="opiskeluterveydenhuolto.html">
+                Opiskeluterveydenhuolto
+            </a>
+        </div>
+    `
+},
 
 
-    "nuorelle":{
-        title:"Nuorelle",
-        body:`
+mentalHealth:{
+    title:"Nuorten mielenterveys- ja päihdepalvelut",
+    lead:"Apua on saatavilla, jos mieliala, ahdistus, jaksaminen, päihteiden käyttö tai muu psyykkiseen hyvinvointiin liittyvä asia herättää huolta.",
+
+    main:`
+        <h3>Milloin kannattaa hakea apua?</h3>
+
+        <p>
+            Apua kannattaa hakea, jos paha olo jatkuu,
+            arjessa selviytyminen vaikeutuu tai oma tai
+            läheisen päihteiden käyttö herättää huolta.
+        </p>
+
+        <h3>Sinun ei tarvitse tietää syytä</h3>
+
+        <p>
+            Joskus omaa oloa on vaikea selittää.
+            Se ei estä avun hakemista. Tilannetta voidaan
+            selvittää yhdessä ammattilaisen kanssa.
+        </p>
+
+        <h3>Tukea mahdollisimman varhain</h3>
+
+        <p>
+            Huolesta kannattaa kertoa jo varhaisessa vaiheessa.
+            Tukea voidaan suunnitella tilanteesi ja tarpeidesi
+            mukaan.
+        </p>
+
+        <div class="emergency">
+            <strong>Välitön hätätilanne</strong>
+            Jos henki tai terveys on välittömässä vaarassa,
+            soita hätänumeroon 112.
+        </div>
+    `,
+
+    aside:`
+        <div class="info-box blue">
+            <h3>Keskustele ammattilaisen kanssa</h3>
             <p>
-                Nuoruuteen kuuluu paljon muutoksia, uusia tilanteita
-                ja kysymyksiä. Kaikesta ei tarvitse selvitä yksin.
-            </p>
-
-            <h3>Apua erilaisiin tilanteisiin</h3>
-
-            <p>
-                Voit hakea apua esimerkiksi opiskeluun,
-                ihmissuhteisiin, mielialaan, jaksamiseen,
-                terveyteen tai päihteisiin liittyvissä asioissa.
-            </p>
-
-            <p>
-                Jos et tiedä, mihin palveluun sinun pitäisi ottaa
-                yhteyttä, voit aloittaa ohjauksesta ja neuvonnasta.
-            </p>
-        `
-    },
-
-
-    "peruskoululaiset":{
-        title:"Koulu- ja opiskeluterveydenhuolto – peruskoululaisille",
-        body:`
-            <p>
-                Kouluterveydenhuolto on tarkoitettu
-                peruskoulun oppilaille.
-            </p>
-
-            <p>
-                Kouluterveydenhoitajan vastaanotolle voi hakeutua
-                esimerkiksi terveyteen, kasvuun, kehitykseen,
-                jaksamiseen tai hyvinvointiin liittyvissä asioissa.
-            </p>
-
-            <h3>Terveystarkastukset</h3>
-
-            <p>
-                Oppilaille järjestetään kouluterveydenhuollossa
-                terveystarkastuksia eri vuosiluokilla.
-            </p>
-        `
-    },
-
-
-    "kuraattori-peruskoulu":{
-        title:"Kuraattori- ja psykologipalvelut peruskoululaisille",
-        body:`
-            <p>
-                Koulun kuraattori ja psykologi tukevat oppilaan
-                opiskelua, hyvinvointia ja koulunkäyntiä.
-            </p>
-
-            <h3>Kuraattori</h3>
-
-            <p>
-                Kuraattorin kanssa voi keskustella esimerkiksi
-                koulunkäyntiin, ihmissuhteisiin tai elämäntilanteeseen
-                liittyvistä asioista.
-            </p>
-
-            <h3>Psykologi</h3>
-
-            <p>
-                Psykologilta voi saada tukea esimerkiksi
-                oppimiseen, mielialaan, jaksamiseen tai
-                psyykkiseen hyvinvointiin liittyvissä kysymyksissä.
-            </p>
-        `
-    },
-
-
-    "kuraattori-toinen":{
-        title:"Kuraattori- ja psykologipalvelut toisen asteen opiskelijoille",
-        body:`
-            <p>
-                Opiskeluhuollon kuraattori- ja psykologipalvelut
-                tukevat opiskelijan opiskelukykyä ja hyvinvointia.
-            </p>
-
-            <h3>Kuraattorin kanssa voit keskustella</h3>
-
-            <p>
-                esimerkiksi opiskelusta, ihmissuhteista,
-                asumisesta, taloudellisesta tilanteesta tai
-                muista elämäntilanteeseen liittyvistä asioista.
-            </p>
-
-            <h3>Psykologilta saat tukea</h3>
-
-            <p>
-                esimerkiksi jaksamiseen, mielialaan,
-                opiskelukykyyn ja psyykkiseen hyvinvointiin
-                liittyvissä asioissa.
-            </p>
-        `
-    },
-
-
-    "mielenterveys":{
-        title:"Nuorten mielenterveys- ja päihdepalvelut",
-        body:`
-            <p>
-                Nuorten mielenterveys- ja päihdepalveluista
-                voi hakea tukea silloin, kun mieliala,
-                ahdistus, jaksaminen tai päihteiden käyttö
-                herättää huolta.
+                Digitaalisista palveluista löydät käytettävissä
+                olevat yhteydenottokanavat.
             </p>
 
+            <a class="modal-action" href="digipalvelut.html">
+                Digitaaliset palvelut
+            </a>
+        </div>
+    `
+},
+
+
+childSupport:{
+    title:"Lapsiperheen tuen tarve ja lastensuojeluilmoitus",
+    lead:"Kun lapsen, nuoren tai perheen tilanteesta herää huoli, apua kannattaa hakea mahdollisimman varhain.",
+
+    main:`
+        <h3>Huoli lapsesta tai perheestä</h3>
+
+        <p>
+            Tukea voidaan tarvita esimerkiksi silloin, kun
+            perheen arki kuormittaa, vanhemman voimavarat
+            ovat vähissä tai lapsen tai nuoren hyvinvoinnista
+            on herännyt huoli.
+        </p>
+
+        <h3>Yhteydenotto tuen tarpeesta</h3>
+
+        <p>
+            Sosiaalipalveluihin voidaan olla yhteydessä,
+            jotta lapsen tai perheen tilannetta ja mahdollista
+            tuen tarvetta voidaan arvioida.
+        </p>
+
+        <h3>Lastensuojeluilmoitus</h3>
+
+        <p>
+            Jos lapsen turvallisuudesta, hoidosta tai
+            hyvinvoinnista on vakava huoli, voidaan tehdä
+            lastensuojeluilmoitus.
+        </p>
+
+        <div class="emergency">
+            <strong>Välitön vaara</strong>
+            Jos lapsi tai muu henkilö on välittömässä vaarassa,
+            soita 112.
+        </div>
+    `,
+
+    aside:`
+        <div class="info-box">
+            <h3>Huoli läheisestä</h3>
             <p>
-                Apua kannattaa hakea mahdollisimman varhain.
-            </p>
-
-            <h3>Kiireellinen tilanne</h3>
-
-            <p>
-                Jos tilanteeseen liittyy välitön hengen tai
-                terveyden vaara, soita hätänumeroon 112.
-            </p>
-        `
-    },
-
-
-    "lapsiperhe":{
-        title:"Lapsiperheen tuen tarve ja lastensuojeluilmoitus",
-        body:`
-            <p>
-                Jos lapsen tai perheen tilanteesta herää huoli,
-                apua voidaan hakea sosiaalipalveluista.
-            </p>
-
-            <h3>Huoli lapsesta</h3>
-
-            <p>
-                Voit ottaa yhteyttä, jos lapsi tai perhe tarvitsee
-                tukea ja tilanteen arviointia.
-            </p>
-
-            <p>
-                Jos lapsen turvallisuudesta tai hyvinvoinnista
-                on vakava huoli, voidaan tehdä lastensuojeluilmoitus.
+                Katso lisätietoa avun ja tuen tarpeesta
+                ilmoittamisesta.
             </p>
 
             <a class="modal-action"
                href="huoli-laheisesta.html">
-                Lue lisää
+                Huoli läheisestä
             </a>
-        `
-    }
+        </div>
+    `
+}
 
 };
 
 
-/* ================================
-   MODAALIN TOIMINTA
-================================ */
+/* =====================================================
+   MODAALI
+===================================================== */
 
-function openModal(id){
+function openService(id){
 
-    const data = modalContent[id];
+    const s = services[id];
 
-    if(!data) return;
+    if(!s) return;
 
     document.getElementById("modalTitle").textContent =
-        data.title;
+        s.title;
 
-    document.getElementById("modalBody").innerHTML =
-        data.body;
+    document.getElementById("modalLead").textContent =
+        s.lead;
+
+    document.getElementById("modalMain").innerHTML =
+        s.main;
+
+    document.getElementById("modalAside").innerHTML =
+        s.aside;
 
     document.getElementById("modalOverlay")
         .classList.add("open");
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow="hidden";
+
+    document.getElementById("modalOverlay").scrollTop=0;
 }
 
 
@@ -1344,70 +2057,201 @@ function closeModal(){
     document.getElementById("modalOverlay")
         .classList.remove("open");
 
-    document.body.style.overflow = "";
+    document.body.style.overflow="";
 }
 
 
 function overlayClose(event){
 
-    if(event.target.id === "modalOverlay"){
+    if(event.target.id==="modalOverlay"){
         closeModal();
     }
 }
 
 
-document.addEventListener("keydown",function(event){
+document.addEventListener("keydown",event=>{
 
-    if(event.key === "Escape"){
+    if(event.key==="Escape"){
         closeModal();
     }
 
 });
 
 
-/* ================================
-   MOBIILIVALIKKO
-================================ */
+/* =====================================================
+   NPS
+===================================================== */
 
-document.getElementById("menuButton")
-.addEventListener("click",function(){
+async function loadNps(){
 
-    document.getElementById("nav")
-        .classList.toggle("open");
+    try{
+
+        const {data,error} =
+            await db.rpc(
+                "get_page_nps",
+                {p_page_key:PAGE_KEY}
+            );
+
+        if(error) throw error;
+
+        if(!data || !data.length){
+            updateGauge(0,0);
+            return;
+        }
+
+        updateGauge(
+            Number(data[0].nps_score || 0),
+            Number(data[0].response_count || 0)
+        );
+
+    }catch(error){
+
+        console.error("NPS loading failed:",error);
+
+        document.getElementById("npsScore")
+            .textContent="–";
+
+        document.getElementById("npsCount")
+            .textContent="Ei tietoja";
+    }
+
+}
+
+
+async function submitScore(score,button){
+
+    if(
+        localStorage.getItem(
+            "nps_voted_"+PAGE_KEY
+        )
+    ){
+        showNpsMessage(
+            "Olet jo antanut palautteen tältä laitteelta."
+        );
+        return;
+    }
+
+    document
+        .querySelectorAll(".score-button")
+        .forEach(btn=>btn.disabled=true);
+
+    try{
+
+        const {error} =
+            await db
+            .from("page_feedback")
+            .insert({
+                page_key:PAGE_KEY,
+                score:score
+            });
+
+        if(error) throw error;
+
+        localStorage.setItem(
+            "nps_voted_"+PAGE_KEY,
+            "1"
+        );
+
+        button.classList.add("selected");
+
+        showNpsMessage(
+            "Kiitos palautteestasi. Arviosi on tallennettu."
+        );
+
+        await loadNps();
+
+    }catch(error){
+
+        console.error(error);
+
+        showNpsMessage(
+            "Palautteen tallentaminen ei onnistunut. Yritä hetken kuluttua uudelleen."
+        );
+
+        document
+            .querySelectorAll(".score-button")
+            .forEach(btn=>btn.disabled=false);
+    }
+
+}
+
+
+function showNpsMessage(text){
+
+    const box =
+        document.getElementById("npsStatus");
+
+    box.textContent=text;
+    box.style.display="block";
+}
+
+
+function updateGauge(score,count){
+
+    score =
+        Math.max(-100,Math.min(100,score));
+
+    document.getElementById("npsScore")
+        .textContent =
+        count > 0 ? score : "–";
+
+    document.getElementById("npsCount")
+        .textContent =
+        count === 1
+        ? "1 vastaus"
+        : count+" vastausta";
+
+    /*
+       -100 = -180°
+       0    = -90°
+       100  = 0°
+    */
+
+    const angle =
+        -180 + ((score + 100) / 200) * 180;
+
+    document.getElementById("npsNeedle")
+        .style.transform =
+        "rotate("+angle+"deg)";
+}
+
+
+/* =====================================================
+   MENU + HAKU
+===================================================== */
+
+document
+.getElementById("menuButton")
+.addEventListener("click",()=>{
+
+    document
+    .getElementById("nav")
+    .classList.toggle("open");
 
 });
 
-
-/* ================================
-   HAKU
-================================ */
 
 function searchSite(event){
 
     event.preventDefault();
 
-    const value =
-        document.getElementById("searchInput")
+    const q =
+        document
+        .getElementById("searchInput")
         .value.trim();
 
-    if(!value) return;
+    if(!q) return;
 
-    window.location.href =
-        "haku.html?q=" +
-        encodeURIComponent(value);
+    location.href =
+        "haku.html?q="+encodeURIComponent(q);
 }
 
 
-/* ================================
-   PALAUTE
-================================ */
+/* =====================================================
+   START
+===================================================== */
 
-function feedback(){
-
-    document.getElementById("feedbackMessage")
-        .style.display="block";
-
-}
+loadNps();
 
 </script>
 
