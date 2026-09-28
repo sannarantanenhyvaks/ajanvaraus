@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Palvelut | Keski-Suomen hyvinvointialue</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#286296;
+    --blue-dark:#005596;
+    --blue-hover:#174f7f;
+    --green:#b8d981;
+    --pink:#fff0f0;
+    --text:#111111;
+    --muted:#5e6c73;
+    --border:#d5dadd;
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+    font-family:"Raleway",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+}
+
+a{
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:124px;
+
+    margin:auto;
+    padding:25px 20px 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.logo-link{
+    display:inline-flex;
+    align-items:center;
+}
+
+.logo{
+    display:block;
+    width:245px;
+    max-height:82px;
+    object-fit:contain;
+}
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue-dark);
+    border-radius:30px;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+    border:0;
+    outline:0;
+    padding:0 22px;
+    font-size:15px;
+}
+
+.top-search button{
+    width:58px;
+    border:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--blue);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--blue-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.main-nav{
+    background:#fff;
+}
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:67px;
+
+    margin:auto;
+    padding:0 4px;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid #d8e0e4;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue-dark);
+
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue-dark);
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:17px 20px 90px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb{
+    margin:0 0 45px;
+
+    color:var(--blue-dark);
+
+    font-size:15px;
+}
+
+.breadcrumb a{
+    color:var(--blue-dark);
+    text-decoration:none;
+}
+
+.breadcrumb a:hover{
+    text-decoration:underline;
+}
+
+.breadcrumb-separator{
+    padding:0 6px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.page-title{
+    margin:0 0 42px;
+
+    color:var(--blue-dark);
+
+    font-size:34px;
+    line-height:1.2;
+    font-weight:600;
+}
+
+/* =========================================================
+   CONTENT GRID
+========================================================= */
+
+.content-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,2fr)
+        minmax(330px,1fr);
+
+    gap:42px;
+
+    align-items:start;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content{
+    max-width:900px;
+}
+
+.lead{
+    margin:0 0 20px;
+
+    font-size:17px;
+    line-height:1.6;
+}
+
+.main-content p{
+    margin:0 0 18px;
+}
+
+.main-content ul{
+    margin:9px 0 22px;
+    padding-left:31px;
+}
+
+.main-content li{
+    margin:3px 0;
+}
+
+.main-content li::marker{
+    color:var(--green);
+}
+
+.section-title{
+    margin:39px 0 18px;
+
+    color:var(--blue-dark);
+
+    font-size:26px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+/* =========================================================
+   CONTACT CARDS
+========================================================= */
+
+.contact-list{
+    display:grid;
+    gap:17px;
+}
+
+.contact-card{
+    border:1px solid #c9ced1;
+    border-radius:7px;
+
+    padding:17px 18px 20px;
+
+    background:#fff;
+}
+
+.contact-title{
+    margin:0 0 8px;
+
+    font-size:16px;
+    font-weight:700;
+}
+
+.contact-row{
+    margin:5px 0;
+}
+
+.contact-label{
+    display:block;
+
+    margin-top:12px;
+
+    font-weight:700;
+}
+
+.phone-button{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    margin-top:3px;
+
+    padding:10px 15px;
+
+    border-radius:5px;
+
+    background:var(--blue);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+.phone-button:hover{
+    background:var(--blue-hover);
+}
+
+.phone-button svg{
+    width:16px;
+    height:16px;
+
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+}
+
+.online-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:11px;
+
+    font-weight:500;
+}
+
+.online-icon{
+    width:21px;
+    height:21px;
+
+    color:#e7a6ad;
+}
+
+.online-link{
+    color:var(--blue-dark);
+    font-weight:700;
+}
+
+/* =========================================================
+   RIGHT SIDE SERVICES
+========================================================= */
+
+.available{
+    background:var(--pink);
+
+    border-radius:7px;
+
+    padding:29px 25px 26px;
+}
+
+.available h2{
+    margin:0 0 22px;
+
+    color:var(--blue-dark);
+
+    font-size:25px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+.available-list{
+    display:grid;
+}
+
+.available-item{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:18px;
+
+    padding:15px 0;
+
+    border:0;
+    border-bottom:1px solid rgba(0,85,150,.09);
+
+    background:transparent;
+
+    color:var(--blue-dark);
+
+    text-align:left;
+
+    font-weight:700;
+    line-height:1.4;
+
+    text-decoration:none;
+}
+
+.available-item:last-child{
+    border-bottom:0;
+}
+
+.available-item:hover .available-text{
+    text-decoration:underline;
+}
+
+.available-text{
+    flex:1;
+}
+
+.circle-arrow{
+    flex:0 0 auto;
+
+    width:25px;
+    height:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid var(--blue);
+    border-radius:50%;
+
+    color:var(--blue);
+
+    font-size:20px;
+    line-height:1;
+}
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box{
+    margin-top:18px;
+
+    padding:18px;
+
+    border-left:5px solid var(--blue);
+
+    background:#edf5f9;
+}
+
+.info-box strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+/* =========================================================
+   DIGITAL SERVICES BUTTON
+========================================================= */
+
+.chat-button{
+    position:fixed;
+
+    right:30px;
+    bottom:28px;
+
+    z-index:1000;
+
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+    border-radius:50%;
+
+    background:var(--blue-dark);
+    color:#fff;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.18);
+}
+
+.chat-button:hover{
+    background:#00477e;
+}
+
+.chat-button svg{
+    width:31px;
+    height:31px;
+
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+}
+
+/* =========================================================
+   DIGITAL POPUP
+========================================================= */
+
+.digital-popup{
+    position:fixed;
+
+    right:30px;
+    bottom:110px;
+
+    z-index:999;
+
+    width:390px;
+    max-width:calc(100vw - 40px);
+
+    display:none;
+
+    padding:27px;
+
+    border:1px solid #d7dde1;
+    border-radius:6px;
+
+    background:#fff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.17);
+}
+
+.digital-popup.open{
+    display:block;
+}
+
+.digital-popup-close{
+    position:absolute;
+
+    top:11px;
+    right:13px;
+
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    background:transparent;
+
+    color:var(--blue-dark);
+
+    font-size:27px;
+}
+
+.digital-popup h2{
+    margin:0 35px 12px 0;
+
+    color:var(--blue-dark);
+
+    font-size:23px;
+}
+
+.digital-popup p{
+    margin:0 0 22px;
+
+    font-size:14px;
+    line-height:1.55;
+}
+
+.digital-popup-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    padding:11px 17px;
+
+    border-radius:25px;
+
+    background:var(--blue);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .nav-inner{
+        overflow-x:auto;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+    .available{
+        max-width:650px;
+    }
+}
+
+@media(max-width:700px){
+
+    .header-top{
+        min-height:95px;
+        padding:15px 18px;
+    }
+
+    .logo{
+        width:195px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .nav-link{
+        font-size:14px;
+    }
+
+    .page{
+        padding:17px 18px 70px;
+    }
+
+    .breadcrumb{
+        margin-bottom:30px;
+    }
+
+    .page-title{
+        margin-bottom:30px;
+        font-size:29px;
+    }
+
+    .lead{
+        font-size:16px;
+    }
+
+    .available{
+        padding:23px 20px;
+    }
+
+    .chat-button{
+        right:17px;
+        bottom:17px;
+
+        width:61px;
+        height:61px;
+    }
+
+    .digital-popup{
+        right:15px;
+        bottom:90px;
+
+        width:calc(100vw - 30px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-top">
+
+        <a href="index.html" class="logo-link">
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="logo"
+            >
+
+        </a>
+
+        <form
+            class="top-search"
+            id="topSearchForm"
+        >
+
+            <input
+                id="topSearchInput"
+                type="search"
+                placeholder="Hae sivustolta"
+                aria-label="Hae sivustolta"
+            >
+
+            <button
+                type="submit"
+                aria-label="Hae"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M16.5 16.5L21 21"></path>
+                </svg>
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <div class="nav-inner">
+
+            <a
+                href="index.html#palvelut"
+                class="nav-link"
+            >
+                Palvelumme
+            </a>
+
+            <a
+                href="index.html#asiointi"
+                class="nav-link"
+            >
+                Asiointi
+            </a>
+
+            <a
+                href="opiskeluterveydenhuolto.html"
+                class="nav-link"
+            >
+                Asiakkaana
+            </a>
+
+            <a
+                href="palvelu.html?palvelu=sairaala-nova"
+                class="nav-link"
+            >
+                Sairaala Nova
+            </a>
+
+            <a
+                href="index.html#nostot"
+                class="nav-link"
+            >
+                Hyvinvointisi tueksi
+            </a>
+
+            <a
+                href="index.html#footer"
+                class="nav-link"
+            >
+                Hyvinvointialue
+            </a>
+
+            <a
+                href="index.html#uutiset"
+                class="nav-link"
+            >
+                Ajankohtaista
+            </a>
+
+            <a
+                href="index.html#footer"
+                class="nav-link"
+            >
+                Tule työkaveriksi
+            </a>
+
+            <a
+                href="#"
+                class="nav-link"
+            >
+                In English
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     PAGE
+========================================================= -->
+
+<main class="page">
+
+    <nav
+        class="breadcrumb"
+        aria-label="Murupolku"
+    >
+
+        <a href="index.html">
+            Etusivu
+        </a>
+
+        <span class="breadcrumb-separator">
+            /
+        </span>
+
+        <a href="index.html#palvelut">
+            Palvelut
+        </a>
+
+        <span class="breadcrumb-separator">
+            /
+        </span>
+
+        <span id="breadcrumbTitle">
+            Palvelu
+        </span>
+
+    </nav>
+
+
+    <h1
+        id="pageTitle"
+        class="page-title"
+    >
+        Palvelu
+    </h1>
+
+
+    <div class="content-grid">
+
+        <!-- MAIN -->
+
+        <article class="main-content">
+
+            <p
+                id="lead"
+                class="lead"
+            ></p>
+
+            <div id="description"></div>
+
+
+            <h2 class="section-title">
+                Yhteystiedot
+            </h2>
+
+
+            <div
+                id="contacts"
+                class="contact-list"
+            ></div>
+
+        </article>
+
+
+        <!-- RIGHT -->
+
+        <aside class="available">
+
+            <h2>
+                Saatavilla olevat palvelut
+            </h2>
+
+            <div
+                id="availableServices"
+                class="available-list"
+            ></div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     DIGITAL SERVICES
+========================================================= -->
+
+<button
+    id="chatButton"
+    class="chat-button"
+    type="button"
+    aria-label="Avaa digitaaliset palvelut"
+>
+
+    <svg viewBox="0 0 32 32">
+        <path d="M6 7.5h20v14H14l-6 4v-4H6z"></path>
+        <path d="M11 13h10"></path>
+        <path d="M11 17h6"></path>
+    </svg>
+
+</button>
+
+
+<section
+    id="digitalPopup"
+    class="digital-popup"
+    aria-hidden="true"
+>
+
+    <button
+        id="digitalPopupClose"
+        class="digital-popup-close"
+        type="button"
+        aria-label="Sulje"
+    >
+        ×
+    </button>
+
+    <h2>
+        Digitaaliset palvelut
+    </h2>
+
+    <p>
+        Keskustele ammattilaisen kanssa chatissa ja täytä
+        terveyspalveluiden lomakkeita digitaalisessa
+        asiointipalvelussa.
+    </p>
+
+    <a
+        href="digipalvelut.html"
+        class="digital-popup-link"
+    >
+        Siirry asioimaan
+        <span>›</span>
+    </a>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   PALVELUIDEN SISÄLLÖT
+
+   Nämä ovat tämän projektisivun palvelukuvauksia.
+========================================================= */
+
+const services = {
+
+
+/* =========================================================
+   PERHEET, NUORET JA AIKUISET
+========================================================= */
+
+"perheet-nuoret-aikuiset": {
+
+    title:
+        "Perheiden, nuorten ja aikuisten ohjaus ja neuvonta",
+
+    lead:
+        "Ohjaus ja neuvonta palvelee keskisuomalaisia lasten, nuorten, perheiden ja aikuisten sosiaalipalveluihin liittyvissä asioissa.",
+
+    description: `
+
+        <p>
+            Voit olla yhteydessä esimerkiksi seuraavissa asioissa:
+        </p>
+
+        <ul>
+            <li>vanhemmuus ja kasvatuskysymykset</li>
+            <li>nuoren hyvinvointiin liittyvät huolet</li>
+            <li>lapsiperheen tuen tarve</li>
+            <li>aikuisten sosiaalipalveluihin liittyvä neuvonta</li>
+            <li>ohjaus sopivan palvelun löytämiseksi</li>
+        </ul>
+
+        <p>
+            Yhteydenottoosi vastaa sosiaali- ja terveydenhuollon
+            ammattilainen. Kiireellisessä tilanteessa käytä
+            tilanteeseen soveltuvaa päivystys- tai hätäpalvelua.
+        </p>
+    `,
+
+    contacts: [
+
+        {
+            type:"phone",
+            title:"Ohjaus ja neuvonta",
+            hours:"maanantai–perjantai 8.00–14.00",
+            phone:"014 336 5850"
+        },
+
+        {
+            type:"online",
+            title:"Verkkoasiointi",
+            text:
+                "Voit käyttää digitaalisia palveluita myös verkossa.",
+            link:"digipalvelut.html",
+            linkText:"Siirry digitaalisiin palveluihin"
+        }
+
+    ],
+
+    available: [
+        "Kasvatus- ja perheneuvonta",
+        "Nuorten palvelut",
+        "Lapsiperheiden tuki",
+        "Perhesosiaalityö",
+        "Sosiaaliohjaus",
+        "Aikuisten sosiaalipalvelut"
+    ]
+},
+
+
+/* =========================================================
+   SENIORINEUVONTA
+========================================================= */
+
+"seniorineuvonta": {
+
+    title:
+        "Seniorineuvonta",
+
+    lead:
+        "Seniorineuvonta tarjoaa ikääntyneille ja heidän läheisilleen neuvontaa, ohjausta ja tietoa arkea tukevista palveluista.",
+
+    description: `
+
+        <p>
+            Seniorineuvonnasta saat tietoa esimerkiksi:
+        </p>
+
+        <ul>
+            <li>kotona asumisen tukemisesta</li>
+            <li>kotihoidosta ja tukipalveluista</li>
+            <li>omaishoidon tuesta</li>
+            <li>asumispalveluista</li>
+            <li>hyvinvointia tukevasta toiminnasta</li>
+            <li>palvelutarpeen arvioinnista</li>
+        </ul>
+
+        <p>
+            Neuvonnassa arvioidaan yhdessä asiakkaan kanssa,
+            millainen tuki tai palvelu sopii tilanteeseen.
+        </p>
+    `,
+
+    contacts: [
+
+        {
+            type:"phone",
+            title:"Seniorineuvonta",
+            hours:"maanantai–perjantai 9.00–15.00",
+            phone:"014 269 1470"
+        },
+
+        {
+            type:"online",
+            title:"Digitaalinen asiointi",
+            text:
+                "Voit hakea ohjausta myös digitaalisten palvelujen kautta.",
+            link:"digipalvelut.html",
+            linkText:"Siirry digitaalisiin palveluihin"
+        }
+
+    ],
+
+    available: [
+        "Seniorineuvonta",
+        "Palveluohjaus",
+        "Kotihoito",
+        "Omaishoidon tuki",
+        "Ikääntyneiden asumispalvelut",
+        "Kotona asumisen tukipalvelut"
+    ]
+},
+
+
+/* =========================================================
+   SUUN TERVEYDENHUOLTO
+========================================================= */
+
+"suun-terveydenhuolto": {
+
+    title:
+        "Suun terveydenhuolto",
+
+    lead:
+        "Suun terveydenhuollon palveluissa edistetään suun ja hampaiden terveyttä sekä tutkitaan ja hoidetaan suun sairauksia.",
+
+    description: `
+
+        <p>
+            Suun terveydenhuollon palveluihin kuuluvat esimerkiksi:
+        </p>
+
+        <ul>
+            <li>suun terveystarkastukset</li>
+            <li>hammashoito</li>
+            <li>suuhygienistin vastaanotto</li>
+            <li>lasten ja nuorten suun terveydenhuolto</li>
+            <li>kiireellinen hammashoito</li>
+            <li>suun terveyden omahoidon ohjaus</li>
+        </ul>
+
+        <p>
+            Hoidon tarve arvioidaan yhteydenoton yhteydessä.
+            Kiireellisessä tilanteessa ota yhteyttä suun
+            terveydenhuollon päivystykseen.
+        </p>
+    `,
+
+    contacts: [
+
+        {
+            type:"phone",
+            title:"Suun terveydenhuollon ajanvaraus",
+            hours:"maanantai–perjantai",
+            phone:"014 266 0126"
+        },
+
+        {
+            type:"online",
+            title:"Verkkoasiointi",
+            text:
+                "Digitaalisissa palveluissa voit tarkastella käytettävissä olevia asiointipalveluja.",
+            link:"digipalvelut.html",
+            linkText:"Siirry digitaalisiin palveluihin"
+        }
+
+    ],
+
+    available: [
+        "Hammashoidon ajanvaraus",
+        "Kiireellinen hammashoito",
+        "Suun terveystarkastus",
+        "Suuhygienistin vastaanotto",
+        "Lasten ja nuorten suun terveydenhuolto"
+    ]
+},
+
+
+/* =========================================================
+   MIELENTERVEYS JA RIIPPUVUUDET
+========================================================= */
+
+"mielenterveys-riippuvuuspalvelut": {
+
+    title:
+        "Mielenterveys- ja riippuvuuspalvelut",
+
+    lead:
+        "Mielenterveys- ja riippuvuuspalveluista saat tukea mielenterveyteen, päihteisiin ja muihin riippuvuuksiin liittyvissä tilanteissa.",
+
+    description: `
+
+        <p>
+            Voit hakea apua esimerkiksi:
+        </p>
+
+        <ul>
+            <li>mielialaan ja jaksamiseen liittyviin vaikeuksiin</li>
+            <li>ahdistukseen tai pitkäaikaiseen kuormitukseen</li>
+            <li>päihteiden käyttöön liittyviin huoliin</li>
+            <li>muihin riippuvuuksiin</li>
+            <li>läheisen tilanteeseen liittyvään huoleen</li>
+        </ul>
+
+        <p>
+            Ammattilainen arvioi kanssasi tilanteen ja ohjaa
+            tarvittaessa tarkoituksenmukaiseen palveluun.
+        </p>
+
+        <div class="info-box">
+            <strong>Hätätilanne</strong>
+            Jos henkilö on välittömässä hengenvaarassa tai
+            tarvitsee kiireellistä viranomaisapua, soita 112.
+        </div>
+    `,
+
+    contacts: [
+
+        {
+            type:"online",
+            title:"Digitaaliset palvelut",
+            text:
+                "Voit aloittaa yhteydenoton digitaalisen asioinnin kautta.",
+            link:"digipalvelut.html",
+            linkText:"Siirry digitaalisiin palveluihin"
+        }
+
+    ],
+
+    available: [
+        "Mielenterveyspalvelut",
+        "Riippuvuuspalvelut",
+        "Nuorten mielenterveyspalvelut",
+        "Päihdepalvelut",
+        "Mielenterveys- ja päihdepäivystys"
+    ]
+},
+
+
+/* =========================================================
+   LABORATORIO
+========================================================= */
+
+"laboratorio": {
+
+    title:
+        "Laboratorio",
+
+    lead:
+        "Laboratoriopalveluissa tehdään tutkimuksia, joita käytetään sairauksien tutkimiseen, seurantaan ja hoidon suunnitteluun.",
+
+    description: `
+
+        <p>
+            Laboratoriopalveluihin kuuluvat esimerkiksi:
+        </p>
+
+        <ul>
+            <li>verinäytteet</li>
+            <li>virtsa- ja muut näytteet</li>
+            <li>näytteenottoon valmistautumisen ohjeet</li>
+            <li>laboratoriotutkimukset</li>
+        </ul>
+
+        <p>
+            Tarkista ennen näytteenottoa mahdolliset
+            valmistautumisohjeet ja se, edellyttääkö tutkimus
+            ajanvarausta.
+        </p>
+    `,
+
+    contacts: [
+
+        {
+            type:"online",
+            title:"Laboratorion asiointi",
+            text:
+                "Tarkista ajanvaraus- ja asiointiohjeet ennen näytteenottoa.",
+            link:"digipalvelut.html",
+            linkText:"Verkkoasiointi"
+        }
+
+    ],
+
+    available: [
+        "Laboratorion ajanvaraus",
+        "Näytteenotto",
+        "Valmistautumisohjeet",
+        "Laboratoriotutkimukset"
+    ]
+},
+
+
+/* =========================================================
+   VAMMAISTEN PALVELUT
+========================================================= */
+
+"vammaisten-palvelut": {
+
+    title:
+        "Vammaisten palvelut",
+
+    lead:
+        "Vammaisten palvelut tukevat asiakkaan itsenäistä elämää, osallisuutta ja arjessa selviytymistä.",
+
+    description: `
+
+        <p>
+            Palveluihin ja tukeen voi kuulua esimerkiksi:
+        </p>
+
+        <ul>
+            <li>palveluohjaus ja neuvonta</li>
+            <li>henkilökohtainen apu</li>
+            <li>asumisen tuki</li>
+            <li>liikkumista tukevat palvelut</li>
+            <li>päiväaikainen toiminta</li>
+            <li>perhehoito</li>
+        </ul>
+
+        <p>
+            Palvelujen tarvetta arvioidaan yksilöllisesti yhdessä
+            asiakkaan ja tarvittaessa hänen läheistensä kanssa.
+        </p>
+    `,
+
+    contacts: [
+
+        {
+            type:"online",
+            title:"Vammaispalvelujen asiointi",
+            text:
+                "Voit hakea ohjausta ja lisätietoa digitaalisen asioinnin kautta.",
+            link:"digipalvelut.html",
+            linkText:"Siirry digitaalisiin palveluihin"
+        }
+
+    ],
+
+    available: [
+        "Vammaispalvelujen neuvonta",
+        "Henkilökohtainen apu",
+        "Asumisen tuki",
+        "Liikkumisen tuki",
+        "Perhehoito",
+        "Päiväaikainen toiminta"
+    ]
+},
+
+
+/* =========================================================
+   SAIRAALA NOVA
+========================================================= */
+
+"sairaala-nova": {
+
+    title:
+        "Sairaala Nova",
+
+    lead:
+        "Sairaala Nova tarjoaa erikoissairaanhoidon tutkimuksia, hoitoa ja päivystyksellisiä palveluja Keski-Suomessa.",
+
+    description: `
+
+        <p>
+            Sairaala Novassa toimivat muun muassa:
+        </p>
+
+        <ul>
+            <li>päivystys</li>
+            <li>erikoisalojen poliklinikat</li>
+            <li>vuodeosastot</li>
+            <li>leikkaus- ja toimenpidepalvelut</li>
+            <li>kuvantaminen</li>
+            <li>tutkimus- ja kuntoutuspalvelut</li>
+        </ul>
+
+        <p>
+            Poliklinikalle tai tutkimukseen saavutaan yleensä
+            lähetteen tai ennalta sovitun ajan perusteella.
+        </p>
+
+        <div class="info-box">
+            <strong>Hätätilanteessa</strong>
+            Soita hätänumeroon 112, jos kyseessä on henkeä
+            uhkaava tilanne.
+        </div>
+    `,
+
+    contacts: [
+
+        {
+            type:"phone",
+            title:"Sairaala Nova",
+            hours:"Puhelinvaihde",
+            phone:"014 269 1811"
+        }
+
+    ],
+
+    available: [
+        "Päivystys",
+        "Poliklinikat",
+        "Osastot",
+        "Leikkaus- ja toimenpidepalvelut",
+        "Kuvantaminen",
+        "Saapuminen Sairaala Novaan"
+    ]
+},
+
+
+/* =========================================================
+   PELASTUSLAITOS
+========================================================= */
+
+"pelastuslaitos": {
+
+    title:
+        "Pelastuslaitos",
+
+    lead:
+        "Keski-Suomen pelastuslaitos huolehtii pelastustoimesta, onnettomuuksien ehkäisystä, varautumisesta ja turvallisuusviestinnästä.",
+
+    description: `
+
+        <p>
+            Pelastuslaitoksen palveluihin kuuluvat esimerkiksi:
+        </p>
+
+        <ul>
+            <li>pelastustoiminta</li>
+            <li>onnettomuuksien ehkäisy</li>
+            <li>palotarkastukset ja valvonta</li>
+            <li>turvallisuusneuvonta</li>
+            <li>varautuminen</li>
+            <li>turvallisuusviestintä</li>
+        </ul>
+
+        <p>
+            Kiireettömissä turvallisuusasioissa voit ottaa
+            yhteyttä pelastuslaitoksen neuvontaan.
+        </p>
+
+        <div class="info-box">
+            <strong>Hätätilanne</strong>
+            Tulipalossa, vakavassa onnettomuudessa tai muussa
+            kiireellisessä hätätilanteessa soita 112.
+        </div>
+    `,
+
+    contacts: [
+
+        {
+            type:"online",
+            title:"Pelastuslaitoksen asiointi",
+            text:
+                "Kiireettömissä asioissa voit tutustua pelastuslaitoksen palveluihin ja asiointikanaviin.",
+            link:"#",
+            linkText:"Pelastuslaitoksen palvelut"
+        }
+
+    ],
+
+    available: [
+        "Paloturvallisuus",
+        "Palotarkastus ja valvonta",
+        "Turvallisuusneuvonta",
+        "Varautuminen",
+        "Turvallisuusviestintä",
+        "Pelastustoiminta"
+    ]
+}
+
+};
+
+
+/* =========================================================
+   GET PARAMETER
+========================================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const serviceKey =
+    params.get("palvelu");
+
+const service =
+    services[serviceKey]
+    ||
+    services["perheet-nuoret-aikuiset"];
+
+
+/* =========================================================
+   SET PAGE CONTENT
+========================================================= */
+
+document.title =
+    service.title
+    +
+    " | Keski-Suomen hyvinvointialue";
+
+
+document.getElementById(
+    "pageTitle"
+).textContent =
+    service.title;
+
+
+document.getElementById(
+    "breadcrumbTitle"
+).textContent =
+    service.title;
+
+
+document.getElementById(
+    "lead"
+).textContent =
+    service.lead;
+
+
+document.getElementById(
+    "description"
+).innerHTML =
+    service.description;
+
+
+/* =========================================================
+   CONTACTS
+========================================================= */
+
+const contacts =
+    document.getElementById(
+        "contacts"
+    );
+
+
+function phoneIcon(){
+
+    return `
+        <svg viewBox="0 0 24 24">
+            <path d="M5 4l4 1 2 5-3 2c2 4 4 6 8 8l2-3 5 2 1 4c-1 2-3 3-5 3C10 25-1 14 1 6c0-2 2-3 4-2z"></path>
+        </svg>
+    `;
+}
+
+
+function renderContacts(){
+
+    contacts.innerHTML =
+        service.contacts
+            .map(contact => {
+
+                if(
+                    contact.type === "phone"
+                ){
+
+                    return `
+
+                        <section class="contact-card">
+
+                            <h3 class="contact-title">
+                                ${contact.title}
+                            </h3>
+
+                            <div class="contact-row">
+                                ${contact.hours}
+                            </div>
+
+                            <span class="contact-label">
+                                Puhelinnumero
+                            </span>
+
+                            <a
+                                href="tel:${contact.phone.replace(/\s/g,"")}"
+                                class="phone-button"
+                            >
+                                ${phoneIcon()}
+                                ${contact.phone}
+                            </a>
+
+                        </section>
+
+                    `;
+                }
+
+
+                return `
+
+                    <section class="contact-card">
+
+                        <div class="online-row">
+
+                            <svg
+                                class="online-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            >
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M3 12h18"></path>
+                                <path d="M12 3c3 3 4 6 4 9s-1 6-4 9"></path>
+                                <path d="M12 3c-3 3-4 6-4 9s1 6 4 9"></path>
+                            </svg>
+
+                            <strong>
+                                ${contact.title}
+                            </strong>
+
+                        </div>
+
+                        <p>
+                            ${contact.text}
+                        </p>
+
+                        <a
+                            href="${contact.link}"
+                            class="online-link"
+                        >
+                            ${contact.linkText}
+                        </a>
+
+                    </section>
+
+                `;
+
+            })
+            .join("");
+}
+
+
+renderContacts();
+
+
+/* =========================================================
+   AVAILABLE SERVICES
+========================================================= */
+
+const availableServices =
+    document.getElementById(
+        "availableServices"
+    );
+
+
+availableServices.innerHTML =
+    service.available
+        .map(item => `
+
+            <a
+                href="#contacts"
+                class="available-item"
+            >
+
+                <span class="available-text">
+                    ${item}
+                </span>
+
+                <span class="circle-arrow">
+                    ›
+                </span>
+
+            </a>
+
+        `)
+        .join("");
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const topSearchForm =
+    document.getElementById(
+        "topSearchForm"
+    );
+
+const topSearchInput =
+    document.getElementById(
+        "topSearchInput"
+    );
+
+
+topSearchForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+        const query =
+            topSearchInput
+                .value
+                .trim();
+
+        if(!query){
+            return;
+        }
+
+        window.location.href =
+            "index.html?search="
+            +
+            encodeURIComponent(
+                query
+            );
+    }
+);
+
+
+/* =========================================================
+   DIGITAL SERVICES POPUP
+========================================================= */
+
+const chatButton =
+    document.getElementById(
+        "chatButton"
+    );
+
+const digitalPopup =
+    document.getElementById(
+        "digitalPopup"
+    );
+
+const digitalPopupClose =
+    document.getElementById(
+        "digitalPopupClose"
+    );
+
+
+function openDigitalPopup(){
+
+    digitalPopup
+        .classList
+        .add("open");
+
+    digitalPopup
+        .setAttribute(
+            "aria-hidden",
+            "false"
+        );
+}
+
+
+function closeDigitalPopup(){
+
+    digitalPopup
+        .classList
+        .remove("open");
+
+    digitalPopup
+        .setAttribute(
+            "aria-hidden",
+            "true"
+        );
+}
+
+
+chatButton.addEventListener(
+    "click",
+    () => {
+
+        if(
+            digitalPopup
+                .classList
+                .contains("open")
+        ){
+            closeDigitalPopup();
+        }
+
+        else{
+            openDigitalPopup();
+        }
+
+    }
+);
+
+
+digitalPopupClose.addEventListener(
+    "click",
+    closeDigitalPopup
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+            closeDigitalPopup();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
