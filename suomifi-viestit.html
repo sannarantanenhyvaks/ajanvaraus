@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Suomi.fi-viestit | Keski-Suomen hyvinvointialue</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --blue:#005596;
+    --button-blue:#286296;
+    --button-hover:#174f7f;
+    --green:#b8d981;
+    --border:#d6dee3;
+    --text:#111;
+    --muted:#65747c;
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+    font-family:"Raleway",Arial,sans-serif;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.6;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:var(--blue);
+}
+
+img{
+    max-width:100%;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:124px;
+
+    margin:auto;
+    padding:25px 20px 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.logo-link{
+    display:inline-flex;
+    align-items:center;
+}
+
+.logo{
+    display:block;
+    width:245px;
+    max-height:82px;
+    object-fit:contain;
+}
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue);
+    border-radius:30px;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+}
+
+.top-search button{
+    width:58px;
+
+    border:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--button-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+.mobile-menu-button{
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    border:0;
+    background:transparent;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+}
+
+.mobile-menu-button span{
+    display:block;
+
+    width:27px;
+    height:2px;
+
+    background:var(--blue);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.main-nav{
+    background:#fff;
+}
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:67px;
+
+    margin:auto;
+    padding:0 4px;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid var(--blue);
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue);
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:500;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue);
+}
+
+.mobile-search{
+    display:none;
+}
+
+.mobile-nav-close{
+    display:none;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.page{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    padding:17px 20px 85px;
+}
+
+/* =========================================================
+   BREADCRUMBS
+========================================================= */
+
+.breadcrumbs{
+    margin:0 0 24px;
+
+    color:var(--blue);
+
+    font-size:14px;
+}
+
+.breadcrumbs a{
+    color:var(--blue);
+    text-decoration:none;
+}
+
+.breadcrumbs a:hover{
+    text-decoration:underline;
+}
+
+.breadcrumb-divider{
+    margin:0 5px;
+}
+
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+.article{
+    width:100%;
+    max-width:820px;
+
+    margin:0 auto;
+}
+
+.article-hero{
+    width:100%;
+
+    margin:0 0 18px;
+
+    border-radius:2px;
+
+    overflow:hidden;
+}
+
+.article-hero img{
+    display:block;
+
+    width:100%;
+    height:auto;
+}
+
+.article h1{
+    margin:0 0 38px;
+
+    color:var(--blue);
+
+    font-size:31px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+.article h2{
+    margin:39px 0 16px;
+
+    color:var(--blue);
+
+    font-size:27px;
+    line-height:1.35;
+    font-weight:500;
+}
+
+.article h3{
+    margin:30px 0 10px;
+
+    color:var(--blue);
+
+    font-size:20px;
+    font-weight:600;
+}
+
+.article p{
+    margin:0 0 17px;
+
+    font-size:16px;
+    line-height:1.65;
+}
+
+.article strong{
+    font-weight:700;
+}
+
+.article a{
+    color:var(--blue);
+    text-decoration:underline;
+}
+
+.article ul{
+    margin:12px 0 22px;
+    padding-left:27px;
+}
+
+.article li{
+    margin:4px 0;
+
+    padding-left:5px;
+
+    font-size:16px;
+    line-height:1.55;
+}
+
+/* =========================================================
+   INFOGRAPHIC
+========================================================= */
+
+.infographic{
+    margin:34px auto;
+
+    text-align:center;
+}
+
+.infographic img{
+    display:block;
+
+    width:100%;
+    max-width:800px;
+
+    margin:auto;
+}
+
+/* =========================================================
+   LISÄTIETOJA
+========================================================= */
+
+.more-info{
+    margin-top:28px;
+}
+
+.more-info h3{
+    margin-bottom:10px;
+}
+
+.more-info ul{
+    padding-left:24px;
+}
+
+.external-link::after{
+    content:" ↗";
+    font-size:.8em;
+}
+
+/* =========================================================
+   PAGE FEEDBACK
+========================================================= */
+
+.page-feedback{
+    width:100%;
+    max-width:1300px;
+
+    margin:70px auto 0;
+
+    padding-top:5px;
+}
+
+.page-feedback h2{
+    margin:0 0 18px;
+
+    color:#111;
+
+    font-size:17px;
+    font-weight:600;
+}
+
+.feedback-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+}
+
+.feedback-option{
+    min-height:39px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:8px 15px;
+
+    border:0;
+    border-radius:22px;
+
+    background:var(--button-blue);
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.feedback-option:hover{
+    background:var(--button-hover);
+}
+
+.feedback-message{
+    display:none;
+
+    margin-top:16px;
+
+    color:var(--blue);
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.feedback-message.show{
+    display:block;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.footer-main{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:42px 20px 45px;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+
+    gap:100px;
+}
+
+.footer h2{
+    margin:0 0 14px;
+
+    font-size:19px;
+    font-weight:600;
+}
+
+.footer p{
+    max-width:470px;
+
+    margin:0;
+
+    font-size:13px;
+    line-height:1.65;
+}
+
+.footer-links a{
+    display:block;
+
+    margin:5px 0;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-bottom{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:0 20px 35px;
+}
+
+.footer-line{
+    height:1px;
+
+    margin-bottom:27px;
+
+    background:rgba(255,255,255,.6);
+}
+
+.footer-bottom-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.footer-logo{
+    width:190px;
+    max-height:65px;
+    object-fit:contain;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .nav-inner{
+        overflow-x:auto;
+    }
+
+    .article{
+        max-width:760px;
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    body{
+        font-size:15px;
+    }
+
+    .header-top{
+        min-height:82px;
+
+        padding:12px 18px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .logo{
+        width:180px;
+        max-height:58px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .mobile-menu-button{
+        display:flex;
+    }
+
+    .main-nav{
+        position:fixed;
+        z-index:2000;
+
+        top:0;
+        right:0;
+        bottom:0;
+
+        width:min(360px,88vw);
+
+        background:#fff;
+
+        transform:translateX(105%);
+        transition:transform .22s ease;
+
+        box-shadow:-8px 0 30px rgba(0,0,0,.16);
+
+        overflow:auto;
+    }
+
+    .main-nav.open{
+        transform:translateX(0);
+    }
+
+    .nav-inner{
+        min-height:100%;
+
+        display:block;
+
+        padding:80px 22px 30px;
+
+        border:0;
+        overflow:visible;
+    }
+
+    .mobile-nav-close{
+        position:absolute;
+
+        top:18px;
+        right:18px;
+
+        width:44px;
+        height:44px;
+
+        display:block;
+
+        border:0;
+        background:transparent;
+
+        color:var(--blue);
+
+        font-size:34px;
+    }
+
+    .nav-link{
+        min-height:54px;
+
+        padding:0 4px;
+
+        border-bottom:1px solid var(--border);
+
+        white-space:normal;
+
+        font-size:16px;
+    }
+
+    .nav-link:hover{
+        border-bottom-color:var(--border);
+    }
+
+    .mobile-search{
+        height:49px;
+
+        display:flex;
+
+        margin:18px 0;
+
+        border:2px solid var(--blue);
+        border-radius:25px;
+
+        overflow:hidden;
+    }
+
+    .mobile-search input{
+        flex:1;
+        min-width:0;
+
+        padding:0 15px;
+
+        border:0;
+        outline:0;
+    }
+
+    .mobile-search button{
+        width:52px;
+
+        border:0;
+
+        background:var(--button-blue);
+        color:#fff;
+    }
+
+    .menu-overlay{
+        position:fixed;
+        z-index:1990;
+
+        inset:0;
+
+        display:none;
+
+        background:rgba(0,0,0,.32);
+    }
+
+    .menu-overlay.show{
+        display:block;
+    }
+
+    .page{
+        padding:17px 18px 55px;
+    }
+
+    .breadcrumbs{
+        margin-bottom:20px;
+
+        font-size:13px;
+    }
+
+    .article{
+        width:100%;
+    }
+
+    .article-hero{
+        margin-left:-18px;
+        width:calc(100% + 36px);
+    }
+
+    .article h1{
+        margin-bottom:26px;
+
+        font-size:27px;
+    }
+
+    .article h2{
+        margin-top:32px;
+
+        font-size:23px;
+    }
+
+    .article h3{
+        font-size:19px;
+    }
+
+    .article p,
+    .article li{
+        font-size:15px;
+        line-height:1.65;
+    }
+
+    .article ul{
+        padding-left:22px;
+    }
+
+    .infographic{
+        margin:27px 0;
+    }
+
+    .feedback-options{
+        grid-template-columns:1fr;
+        gap:9px;
+    }
+
+    .page-feedback{
+        margin-top:50px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .footer-bottom-row{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+<div class="header-top">
+
+<a href="index.html" class="logo-link">
+    <img
+        src="hyvaks-logo.png"
+        alt="Keski-Suomen hyvinvointialue"
+        class="logo"
+    >
+</a>
+
+<form class="top-search" id="topSearchForm">
+
+<input
+    id="topSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+    aria-label="Hae sivustolta"
+>
+
+<button type="submit" aria-label="Hae">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="11" cy="11" r="7"></circle>
+    <path d="M16.5 16.5L21 21"></path>
+</svg>
+
+</button>
+
+</form>
+
+<button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    type="button"
+    aria-label="Avaa valikko"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+</div>
+
+<nav class="main-nav" id="mainNav">
+
+<button
+    class="mobile-nav-close"
+    id="mobileNavClose"
+    type="button"
+    aria-label="Sulje valikko"
+>×</button>
+
+<div class="nav-inner">
+
+<form class="mobile-search" id="mobileSearchForm">
+
+<input
+    id="mobileSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+>
+
+<button type="submit">⌕</button>
+
+</form>
+
+<a href="palvelut.html" class="nav-link">
+    Palvelumme
+</a>
+
+<a href="asiointi.html" class="nav-link">
+    Asiointi
+</a>
+
+<a href="asiakkaana.html" class="nav-link">
+    Asiakkaana
+</a>
+
+<a href="sairaala-nova.html" class="nav-link">
+    Sairaala Nova
+</a>
+
+<a href="hyvinvointisi-tueksi.html" class="nav-link">
+    Hyvinvointisi tueksi
+</a>
+
+<a href="hyvinvointialue.html" class="nav-link">
+    Hyvinvointialue
+</a>
+
+<a href="ajankohtaista.html" class="nav-link">
+    Ajankohtaista
+</a>
+
+<a href="tyopaikat.html" class="nav-link">
+    Tule työkaveriksi
+</a>
+
+<a href="#" class="nav-link" id="languageButton">
+    In English
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- =========================================================
+     CONTENT
+========================================================= -->
+
+<main class="page">
+
+<div class="breadcrumbs">
+
+<a href="index.html">
+    Etusivu
+</a>
+
+<span class="breadcrumb-divider">/</span>
+
+<a href="asiakkaana.html">
+    Asiakkaana
+</a>
+
+<span class="breadcrumb-divider">/</span>
+
+<span>
+    Suomi.fi-viestit
+</span>
+
+</div>
+
+<article class="article">
+
+<!-- SAMA KUVA KUIN ETUSIVULLA -->
+
+<div class="article-hero">
+
+<img
+    src="suomifi.png"
+    alt="Suomi.fi-viestit"
+>
+
+</div>
+
+<h1>
+    Suomi.fi-viestit
+</h1>
+
+<p>
+    Suomi siirtyy vaiheittain kohti sähköistä viranomaisviestintää.
+    14.4.2026 alkaen viranomaisposti toimitetaan ensisijaisesti
+    digitaalisesti kaikille, jotka asioivat sähköisesti.
+    <strong>
+        Keski-Suomen hyvinvointialueen ajanvarauskirjeet saapuvat
+        osittain sähköisesti asiakkaalle alkuvuoden 2026 aikana.
+    </strong>
+    Muita muutoksia on tulossa myöhemmin, joista tiedotetaan lähempänä
+    muutoksen ajankohtaa.
+</p>
+
+<p>
+    Digi- ja väestötietoviraston uutinen 13.4.2026:
+    <a
+        href="https://www.suomi.fi/"
+        target="_blank"
+        rel="noopener"
+        class="external-link"
+    >
+        Viranomaisposti siirtyy digiin – Suomi.fi-viestit korvaa useat
+        viranomaisten lähettämät paperikirjeet
+    </a>
+</p>
+
+<p>
+    Suomi.fi-viestit on tietoturvallinen sähköinen postilaatikko,
+    joka korvaa paperipostitse saapuvan viranomaispostin.
+    Palvelua käyttää useat viranomaiset.
+</p>
+
+<p>
+    Viranomaisten sähköisiin asiointipalveluihin kirjautuvat
+    täysi-ikäiset henkilöt saavat Suomi.fi-tunnistuksen yhteydessä
+    Suomi.fi-viestit käyttöön ilman erillistä suostumusta, jos palvelu
+    ei ole jo entuudestaan käytössä.
+</p>
+
+<h2>
+    Lähetämme ajanvarauskirjeet ensisijaisesti sähköisenä
+    valtaosassa erikoissairaanhoidon yksiköitämme
+</h2>
+
+<p>
+    Keski-Suomen hyvinvointialue on siirtymässä vuoden 2026 aikana
+    käyttämään sähköisiä Suomi.fi-viestejä ajanvarauskirjeiden
+    lähettämiseen, mikäli asiakas on ottanut Suomi.fi-viestit käyttöönsä.
+    Viestit lähtevät ensisijaisesti sähköisesti seuraavissa poliklinikoissa:
+</p>
+
+<ul>
+    <li>endokrinologian poliklinikka</li>
+    <li>endoskopiakeskus</li>
+    <li>erikoissairaanhoidon ravitsemusterapia</li>
+    <li>fysiatrian poliklinikka</li>
+    <li>gastroenterologian poliklinikka</li>
+    <li>hammas-, suu- ja leukakirurgian poliklinikka</li>
+    <li>hematologian poliklinikka</li>
+    <li>hoitokeskus</li>
+    <li>ihotautien poliklinikka</li>
+    <li>infektiopoliklinikka</li>
+    <li>keuhkosairauksien poliklinikka</li>
+    <li>kirurgian poliklinikka</li>
+    <li>kivunhoidon poliklinikka</li>
+    <li>korva-, nenä- ja kurkkutautien poliklinikka</li>
+    <li>lastenneurologian poliklinikka</li>
+    <li>munuaiskeskus</li>
+    <li>naistentauti- ja äitiyspoliklinikka</li>
+    <li>neurologian poliklinikka</li>
+    <li>reumasairauksien poliklinikka</li>
+    <li>silmätutkimusten poliklinikka</li>
+    <li>osa perusterveydenhuollon erikoisvastaanotoista</li>
+</ul>
+
+<p>
+    Mikäli et ole ottanut Suomi.fi-viestejä käyttöösi, lähetetään
+    Keski-Suomen hyvinvointialueen ajanvarauskirje edelleen paperisena.
+    Varausta ajasta lähtee sekä Suomi.fi-viestit käyttöönotelleelle,
+    että paperikirjeen saajalle myös tekstiviesti.
+</p>
+
+<h2>
+    Saapunut posti on luettavissa kaikkialla, missä kuljetkin
+</h2>
+
+<p>
+    Suomi.fi-viestit saa käyttöön lataamalla Suomi.fi-mobiilisovelluksen
+    tai tunnistautumalla osoitteessa
+    <a
+        href="https://www.suomi.fi/viestit"
+        target="_blank"
+        rel="noopener"
+        class="external-link"
+    >
+        suomi.fi/viestit
+    </a>.
+    Tunnistautuminen tapahtuu pankkitunnuksilla, mobiilivarmenteella
+    tai henkilökortin sähköisellä varmenteella. Ottamalla Suomi.fi-viestit
+    käyttöön saa jatkossa myös useiden eri viranomaisten lähettämän
+    postin sähköisenä.
+</p>
+
+<p>
+    Ilmoitukset uusista saapuneista viesteistä tulevat
+    sähköpostiosoitteeseen, jonka olet ilmoittanut palveluun.
+    Suomi.fi-mobiilisovelluksen käyttäjät saavat ilmoituksen myös
+    suoraan sovelluksen kautta.
+</p>
+
+<!--
+     Jos lisäät myöhemmin käyttöönoton infografiikan GitHubiin nimellä
+     suomifi-kayttoonotto.png, se ilmestyy automaattisesti tähän.
+-->
+
+<div class="infographic">
+
+<img
+    src="suomifi-kayttoonotto.png"
+    alt="Suomi.fi-viestien käyttöönoton vaiheet"
+    onerror="this.parentElement.style.display='none'"
+>
+
+</div>
+
+<p>
+    <strong>
+        Jos asioit organisaation tai toisen henkilön puolesta,
+    </strong>
+    Suomi.fi-viestit tulevat käyttöön sinulle itsellesi – ei sille
+    henkilölle tai organisaatiolle, jonka puolesta olet menossa asioimaan.
+</p>
+
+<p>
+    <strong>
+        Siirtyminen digitaaliseen viestintään tuo merkittäviä hyötyjä.
+    </strong>
+    Se säästää yhteiskunnan varoja ja helpottaa kansalaisten arkea.
+    Viranomaispostit ovat nopeasti saatavilla, löytyvät yhdestä paikasta
+    ja ovat aina käytettävissä.
+</p>
+
+<h2>
+    Entä jos haluan viranomaispostini jatkossakin paperipostina?
+</h2>
+
+<p>
+    <strong>
+        Ne, jotka eivät voi käyttää digipalveluita, saavat jatkossakin
+        viranomaispostin paperilla, elleivät itse valitse toisin.
+    </strong>
+    Sähköisten viestien vastaanottamisen voi myös keskeyttää ilmoittamalla
+    asiasta, jolloin viestit lähetetään jälleen paperipostina.
+</p>
+
+<p>
+    Jos henkilö, joka on valinnut paperipostin, jatkaa sähköistä asiointia,
+    hänelle luodaan uuden kuukauden jälkeen uudelleen sähköinen
+    postilaatikko Suomi.fi-viesteihin.
+</p>
+
+<p>
+    Suomi.fi-viestit ei tule käyttöön, jos et käytä viranomaisten
+    sähköisiä palveluja. Silloin saat jatkossakin viranomaispostia
+    paperisena. Muutos ei koske alaikäisiä eikä edunvalvonnassa olevia.
+</p>
+
+<p>
+    Jos et halua vastaanottaa viranomaispostia Suomi.fi-viesteihin,
+    voit siirtyä Suomi.fi-viesteistä takaisin paperipostin vastaanottajaksi
+    muuttamalla palvelun asetuksia tai ottamalla yhteyttä
+    Digi- ja väestötietoviraston asiakaspalveluun puhelimitse.
+</p>
+
+<p>
+    Valinta paperipostin vastaanottamisesta pysyy voimassa puoli vuotta
+    kerrallaan. Jos kuuden kuukauden jälkeen tunnistaudut uudelleen
+    viranomaisten asiointipalveluihin, Suomi.fi-viestit tulee uudelleen
+    käyttöön.
+</p>
+
+<p>
+    Halutessasi voit myös itse milloin tahansa ottaa Suomi.fi-viestit
+    uudelleen käyttöön lataamalla käyttöösi Suomi.fi-sovelluksen tai
+    ottamalla palvelun käyttöön osoitteessa
+    <a
+        href="https://www.suomi.fi/viestit"
+        target="_blank"
+        rel="noopener"
+        class="external-link"
+    >
+        suomi.fi-viestit
+    </a>.
+</p>
+
+<h2>
+    Valtakunnallinen kansalaisneuvonta palvelee kysymyksissä
+</h2>
+
+<p>
+    Digi- ja väestötietoviraston Kansalaisneuvonta palvelee
+    Digi ensin -muutokseen ja viestien käyttöön liittyvissä kysymyksissä
+    puhelimitse ma–pe klo 9–15 numerossa 0295 000.
+</p>
+
+<p>
+    Jos asiakkaan kysymys koskee käynnissä olevaa asiointia,
+    tarjoaa tukea viranomainen, jonka asiaa kysymys koskee.
+</p>
+
+<div class="more-info">
+
+<h3>
+    Lisätietoja
+</h3>
+
+<ul>
+
+<li>
+<a
+    href="https://www.suomi.fi/viestit"
+    target="_blank"
+    rel="noopener"
+    class="external-link"
+>
+    Lisätietoja Suomi.fi-viesteistä
+</a>
+</li>
+
+<li>
+<a
+    href="https://www.suomi.fi/ohjeet-ja-tuki"
+    target="_blank"
+    rel="noopener"
+    class="external-link"
+>
+    Mikä on Suomi.fi-tunnistus?
+</a>
+</li>
+
+<li>
+<a
+    href="https://www.suomi.fi/viestit"
+    target="_blank"
+    rel="noopener"
+    class="external-link"
+>
+    Suomi.fi-viestejä käyttävät organisaatiot ja palvelut
+</a>
+</li>
+
+<li>
+<a
+    href="https://www.suomi.fi/viestit"
+    target="_blank"
+    rel="noopener"
+    class="external-link"
+>
+    Suomi.fi-viestien käytön lopettaminen
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</article>
+
+<!-- =========================================================
+     SIVUPALAUTE
+========================================================= -->
+
+<section class="page-feedback">
+
+<h2>
+    Löysitkö etsimäsi tiedon tältä sivulta?
+</h2>
+
+<div class="feedback-options">
+
+<button class="feedback-option" data-answer="Kyllä">
+    ✓&nbsp; Kyllä
+</button>
+
+<button class="feedback-option" data-answer="Osittain">
+    ?&nbsp; Osittain
+</button>
+
+<button class="feedback-option" data-answer="En">
+    ×&nbsp; En
+</button>
+
+</div>
+
+<div id="feedbackMessage" class="feedback-message">
+    Kiitos palautteestasi.
+</div>
+
+</section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+<div class="footer-main">
+
+<div>
+
+<h2>
+    Keski-Suomen hyvinvointialue
+</h2>
+
+<p>
+    Vastaamme noin 273 000 keskisuomalaisen sosiaali-, terveys-
+    ja pelastustoimen palveluista. Edistämme hyvinvointia,
+    terveyttä ja turvallisuutta Keski-Suomessa vaikuttavasti
+    ja laajalla yhteistyöllä.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<h2>
+    Oikopolut
+</h2>
+
+<a href="sairaala-nova.html">Sairaala Nova</a>
+<a href="pelastuslaitos.html">Pelastuslaitos</a>
+<a href="tietosuoja.html">Tietosuoja</a>
+<a href="saavutettavuus.html">Saavutettavuusseloste</a>
+<a href="paatoksenteko.html">Päätöksenteko</a>
+<a href="yhteystiedot.html">Yhteystiedot</a>
+<a href="palaute.html">Anna palautetta</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<div class="footer-line"></div>
+
+<div class="footer-bottom-row">
+
+<img
+    src="hyvaks-logo.png"
+    alt="Keski-Suomen hyvinvointialue"
+    class="footer-logo"
+>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuButton =
+    document.getElementById('mobileMenuButton');
+
+const mobileNavClose =
+    document.getElementById('mobileNavClose');
+
+const mainNav =
+    document.getElementById('mainNav');
+
+const menuOverlay =
+    document.getElementById('menuOverlay');
+
+function openMenu(){
+
+    mainNav.classList.add('open');
+    menuOverlay.classList.add('show');
+
+    document.body.classList.add('menu-open');
+
+}
+
+function closeMenu(){
+
+    mainNav.classList.remove('open');
+    menuOverlay.classList.remove('show');
+
+    document.body.classList.remove('menu-open');
+
+}
+
+mobileMenuButton.addEventListener('click',openMenu);
+mobileNavClose.addEventListener('click',closeMenu);
+menuOverlay.addEventListener('click',closeMenu);
+
+document.addEventListener('keydown',event => {
+
+    if(event.key === 'Escape'){
+        closeMenu();
+    }
+
+});
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchFromHeader(value){
+
+    const query =
+        value.trim();
+
+    if(!query){
+        return;
+    }
+
+    window.location.href =
+        'index.html?search='
+        +
+        encodeURIComponent(query);
+
+}
+
+document
+    .getElementById('topSearchForm')
+    .addEventListener('submit',event => {
+
+        event.preventDefault();
+
+        searchFromHeader(
+            document.getElementById('topSearchInput').value
+        );
+
+    });
+
+document
+    .getElementById('mobileSearchForm')
+    .addEventListener('submit',event => {
+
+        event.preventDefault();
+
+        searchFromHeader(
+            document.getElementById('mobileSearchInput').value
+        );
+
+    });
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+document
+    .getElementById('languageButton')
+    .addEventListener('click',event => {
+
+        event.preventDefault();
+
+        /*
+            Englanninkielinen sisältösivu voidaan tehdä myöhemmin.
+            Nyt painike palauttaa englanninkieliselle etusivulle.
+        */
+
+        window.location.href =
+            'index.html?lang=en';
+
+    });
+
+/* =========================================================
+   PAGE FEEDBACK
+========================================================= */
+
+const feedbackButtons =
+    document.querySelectorAll('.feedback-option');
+
+const feedbackMessage =
+    document.getElementById('feedbackMessage');
+
+feedbackButtons.forEach(button => {
+
+    button.addEventListener('click',() => {
+
+        feedbackButtons.forEach(item => {
+
+            item.style.background =
+                '#286296';
+
+        });
+
+        button.style.background =
+            '#174f7f';
+
+        feedbackMessage.classList.add('show');
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
