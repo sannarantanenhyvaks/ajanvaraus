@@ -3078,53 +3078,9 @@ async function loadAppointments(){
     const {data,error} = await sb
         .from("appointments")
         .select(`
-            id,
-            available_time_id,
-            student_name,
-            student_group,
-            student_email,
-            student_phone,
-            appointment_type,
-            status,
-            booking_code,
-            created_at,
-
-            available_times (
-                id,
-                appointment_date,
-                start_time,
-                end_time,
-                professional_name,
-                location,
-                is_available
-            ),
-
-            visit_notes (
-                id,
-                appointment_id,
-                author_user_id,
-                visit_reason,
-                note_text,
-                follow_up,
-                status,
-                created_at,
-                updated_at,
-
-                visit_date,
-                visit_start_time,
-                visit_end_time,
-                location,
-                professionals,
-                background_information,
-                observations,
-                examinations,
-                procedures,
-                guidance,
-                follow_up_instructions,
-                additional_information,
-                completed_at,
-                document_version
-            )
+            *,
+            available_times (*),
+            visit_notes (*)
         `);
 
     if(error){
