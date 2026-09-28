@@ -1,0 +1,2611 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Asiointi | Keski-Suomen hyvinvointialue</title>
+
+<style>
+:root{
+    --blue:#28639a;
+    --blue-dark:#195487;
+    --blue-deep:#124c7f;
+    --green:#b4d77f;
+    --pink:#ffc4c8;
+    --text:#18374f;
+    --muted:#5c6d7b;
+    --border:#d9e2e8;
+    --soft:#f3f7fa;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:var(--text);
+    line-height:1.55;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+.site-shell{
+    width:min(1296px, calc(100% - 48px));
+    margin:0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.site-header{
+    background:white;
+}
+
+.header-top{
+    min-height:118px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    padding:20px 10px 8px;
+}
+
+.brand{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:#15518b;
+}
+
+.brand-symbol{
+    position:relative;
+    width:118px;
+    height:54px;
+}
+
+.brand-pill{
+    position:absolute;
+    width:55px;
+    height:50px;
+    border-radius:25px;
+    top:2px;
+}
+
+.brand-pill.pink{
+    left:0;
+    background:var(--pink);
+}
+
+.brand-pill.blue{
+    left:30px;
+    background:#27669e;
+}
+
+.brand-pill.green{
+    left:64px;
+    background:var(--green);
+}
+
+.brand-text{
+    font-size:13px;
+    line-height:1.02;
+    font-weight:700;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+}
+
+.search{
+    display:flex;
+    width:315px;
+    height:51px;
+    border:1.5px solid #1d5d95;
+    border-radius:28px;
+    overflow:hidden;
+    background:white;
+}
+
+.search:focus-within{
+    box-shadow:0 0 0 4px rgba(40,99,154,.12);
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    min-width:0;
+    padding:0 20px;
+    background:transparent;
+    color:#23384a;
+}
+
+.search input::placeholder{
+    color:#8a9299;
+}
+
+.search button{
+    width:50px;
+    border:0;
+    background:var(--blue);
+    color:white;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+}
+
+.search button:hover{
+    background:var(--blue-dark);
+}
+
+.search-icon{
+    width:18px;
+    height:18px;
+    border:2px solid white;
+    border-radius:50%;
+    position:relative;
+}
+
+.search-icon::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:2px;
+    background:white;
+    right:-6px;
+    bottom:-3px;
+    transform:rotate(45deg);
+    border-radius:2px;
+}
+
+.main-nav{
+    display:flex;
+    align-items:center;
+    gap:42px;
+    min-height:62px;
+    border-bottom:1px solid #1d5d95;
+    white-space:nowrap;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.main-nav::-webkit-scrollbar{
+    display:none;
+}
+
+.main-nav a{
+    text-decoration:none;
+    color:#064984;
+    font-size:15px;
+    padding:20px 0;
+    position:relative;
+}
+
+.main-nav a:hover,
+.main-nav a.active{
+    color:#003c70;
+}
+
+.main-nav a.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:3px;
+    background:var(--blue);
+}
+
+
+/* ============================================================
+   BREADCRUMBS
+============================================================ */
+
+.breadcrumbs{
+    min-height:52px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:7px;
+    padding:4px 14px;
+    color:#205d93;
+    font-size:15px;
+}
+
+.breadcrumbs button{
+    border:0;
+    background:transparent;
+    padding:0;
+    color:#205d93;
+    cursor:pointer;
+}
+
+.breadcrumbs button:hover{
+    text-decoration:underline;
+}
+
+.crumb-separator{
+    color:#8998a5;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.hero{
+    height:495px;
+    position:relative;
+    overflow:hidden;
+    background:#e9eef2;
+}
+
+.hero img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-title{
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    width:180px;
+    min-height:68px;
+
+    display:flex;
+    align-items:center;
+
+    padding:13px 20px;
+
+    background:white;
+
+    border-radius:0 55px 0 0;
+
+    color:#205b91;
+
+    font-size:30px;
+    line-height:1.15;
+    font-weight:700;
+}
+
+.hero-description{
+    max-width:790px;
+    margin:22px 20px 0;
+
+    color:#111;
+
+    font-size:15px;
+    line-height:1.55;
+}
+
+
+/* ============================================================
+   ASIOINTI PALVELUT
+============================================================ */
+
+.services-area{
+    width:min(1070px, calc(100% - 48px));
+    margin:0 auto;
+
+    padding:75px 0 65px;
+}
+
+.services-area > h1{
+    margin:0 0 30px;
+
+    color:#205b91;
+
+    font-size:31px;
+    line-height:1.2;
+}
+
+.service-columns{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+}
+
+.service-group h2{
+    margin:0 0 14px;
+
+    min-height:48px;
+
+    color:#205b91;
+
+    font-size:20px;
+    line-height:1.35;
+}
+
+.service-list{
+    display:grid;
+    gap:12px;
+}
+
+.service-button{
+    width:100%;
+
+    min-height:43px;
+
+    border:0;
+    border-radius:5px;
+
+    background:var(--blue);
+    color:white;
+
+    padding:9px 12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    text-align:left;
+
+    font-size:13px;
+    line-height:1.4;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        background .16s ease,
+        transform .16s ease,
+        box-shadow .16s ease;
+}
+
+.service-button:hover{
+    background:#20598d;
+
+    transform:translateY(-1px);
+
+    box-shadow:0 5px 14px rgba(15,68,113,.14);
+}
+
+.round-arrow{
+    width:19px;
+    height:19px;
+
+    flex:0 0 19px;
+
+    border:2px solid white;
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    font-size:13px;
+    line-height:1;
+}
+
+
+/* ============================================================
+   FEEDBACK
+============================================================ */
+
+.feedback{
+    margin-top:85px;
+}
+
+.feedback h3{
+    margin:0 0 16px;
+
+    color:#111;
+
+    font-size:16px;
+}
+
+.feedback-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:11px;
+}
+
+.feedback-button{
+    border:0;
+    border-radius:25px;
+
+    min-height:30px;
+
+    background:var(--blue);
+    color:white;
+
+    font-size:12px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.feedback-button:hover{
+    background:var(--blue-dark);
+}
+
+.feedback-note{
+    margin:28px 0 0;
+
+    color:#79848d;
+
+    font-size:9px;
+}
+
+
+/* ============================================================
+   DETAIL PAGE
+============================================================ */
+
+#detailView{
+    display:none;
+}
+
+.detail-page{
+    padding:15px 14px 80px;
+}
+
+.detail-layout{
+    display:grid;
+
+    grid-template-columns:minmax(0,830px) 310px;
+
+    gap:70px;
+
+    align-items:start;
+}
+
+.detail-main h1{
+    margin:15px 0 22px;
+
+    color:#15558e;
+
+    font-size:48px;
+    line-height:1.08;
+
+    letter-spacing:-.7px;
+}
+
+.detail-lead{
+    max-width:790px;
+
+    margin:0 0 35px;
+
+    color:#263e50;
+
+    font-size:20px;
+    line-height:1.55;
+}
+
+.detail-section{
+    padding:29px 0;
+
+    border-top:1px solid #dbe3e9;
+}
+
+.detail-section h2{
+    margin:0 0 13px;
+
+    color:#205b91;
+
+    font-size:27px;
+    line-height:1.25;
+}
+
+.detail-section p{
+    margin:0 0 14px;
+
+    color:#263e50;
+
+    font-size:16px;
+}
+
+.detail-section ul{
+    margin:15px 0 0;
+    padding-left:23px;
+}
+
+.detail-section li{
+    margin:8px 0;
+}
+
+.info-box{
+    margin:25px 0;
+
+    padding:24px 26px;
+
+    background:#edf4f8;
+
+    border-left:6px solid var(--blue);
+    border-radius:4px;
+}
+
+.info-box h3{
+    margin:0 0 8px;
+
+    color:#15558e;
+
+    font-size:20px;
+}
+
+.info-box p{
+    margin:0;
+}
+
+.action-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:13px;
+
+    margin-top:20px;
+}
+
+.action-card{
+    border:1px solid #d2dfe8;
+
+    border-radius:5px;
+
+    background:white;
+
+    padding:20px;
+
+    cursor:pointer;
+
+    text-align:left;
+}
+
+.action-card:hover{
+    border-color:#6f9bc0;
+
+    box-shadow:0 4px 14px rgba(25,78,120,.1);
+}
+
+.action-card strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#15558e;
+
+    font-size:18px;
+}
+
+.action-card span{
+    color:#536673;
+
+    font-size:14px;
+}
+
+.detail-sidebar{
+    position:sticky;
+    top:24px;
+}
+
+.side-card{
+    margin-bottom:20px;
+
+    padding:25px;
+
+    background:#f3f7fa;
+
+    border-radius:4px;
+}
+
+.side-card h3{
+    margin:0 0 14px;
+
+    color:#15558e;
+
+    font-size:21px;
+}
+
+.side-card p{
+    margin:0 0 12px;
+
+    color:#425664;
+
+    font-size:14px;
+}
+
+.side-link{
+    width:100%;
+
+    padding:12px 0;
+
+    border:0;
+    border-top:1px solid #ccd9e3;
+
+    background:transparent;
+
+    text-align:left;
+
+    color:#15558e;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.side-link:hover{
+    text-decoration:underline;
+}
+
+.back-link{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:35px;
+
+    border:0;
+
+    padding:0;
+
+    background:transparent;
+
+    color:#15558e;
+
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+.back-link:hover{
+    text-decoration:underline;
+}
+
+
+/* ============================================================
+   SEARCH RESULTS
+============================================================ */
+
+.search-results{
+    display:none;
+
+    padding:10px 14px 75px;
+}
+
+.search-results h1{
+    margin:15px 0 8px;
+
+    color:#15558e;
+
+    font-size:42px;
+}
+
+.search-query-text{
+    margin-bottom:35px;
+
+    color:#536673;
+}
+
+.result-list{
+    display:grid;
+
+    gap:15px;
+
+    max-width:900px;
+}
+
+.result-card{
+    width:100%;
+
+    border:1px solid #d7e0e7;
+
+    border-radius:5px;
+
+    background:white;
+
+    padding:20px 22px;
+
+    cursor:pointer;
+
+    text-align:left;
+}
+
+.result-card:hover{
+    border-color:#77a1c4;
+
+    box-shadow:0 4px 14px rgba(20,72,112,.08);
+}
+
+.result-card strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#15558e;
+
+    font-size:19px;
+}
+
+.result-card span{
+    color:#536673;
+}
+
+.no-results{
+    max-width:800px;
+
+    padding:25px;
+
+    background:#f4f7f9;
+
+    border-radius:5px;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer{
+    background:var(--blue);
+
+    color:white;
+
+    padding-top:31px;
+}
+
+.footer-inner{
+    width:min(925px, calc(100% - 48px));
+
+    margin:0 auto;
+
+    display:grid;
+
+    grid-template-columns:1.2fr .8fr;
+
+    gap:130px;
+
+    padding-bottom:42px;
+}
+
+.footer h2{
+    margin:0 0 12px;
+
+    font-size:16px;
+}
+
+.footer p{
+    margin:0;
+
+    max-width:410px;
+
+    font-size:13px;
+    line-height:1.55;
+}
+
+.footer-links{
+    display:grid;
+    gap:1px;
+}
+
+.footer-links a{
+    color:white;
+
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-line{
+    width:min(925px, calc(100% - 48px));
+
+    height:1px;
+
+    margin:0 auto;
+
+    background:rgba(255,255,255,.7);
+}
+
+.footer-bottom{
+    width:min(925px, calc(100% - 48px));
+
+    margin:0 auto;
+
+    padding:15px 0 22px;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:12px;
+}
+
+
+/* ============================================================
+   TOAST
+============================================================ */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+    bottom:28px;
+
+    transform:translate(-50%,20px);
+
+    max-width:calc(100% - 30px);
+
+    padding:13px 20px;
+
+    border-radius:5px;
+
+    background:#163e63;
+    color:white;
+
+    box-shadow:0 8px 28px rgba(0,0,0,.22);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.2s ease;
+
+    z-index:9999;
+
+    text-align:center;
+}
+
+.toast.visible{
+    opacity:1;
+
+    transform:translate(-50%,0);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media(max-width:950px){
+
+    .service-columns{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .detail-layout{
+        grid-template-columns:1fr;
+
+        gap:30px;
+    }
+
+    .detail-sidebar{
+        position:static;
+    }
+}
+
+@media(max-width:700px){
+
+    .site-shell{
+        width:min(100% - 28px,1296px);
+    }
+
+    .header-top{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+    }
+
+    .search{
+        width:100%;
+    }
+
+    .main-nav{
+        gap:26px;
+    }
+
+    .hero{
+        height:390px;
+    }
+
+    .hero-title{
+        font-size:25px;
+    }
+
+    .hero-description{
+        margin-left:5px;
+        margin-right:5px;
+    }
+
+    .services-area{
+        width:calc(100% - 30px);
+
+        padding-top:55px;
+    }
+
+    .service-columns{
+        grid-template-columns:1fr;
+    }
+
+    .service-group h2{
+        min-height:0;
+    }
+
+    .feedback-buttons{
+        grid-template-columns:1fr;
+    }
+
+    .detail-main h1{
+        font-size:36px;
+    }
+
+    .detail-lead{
+        font-size:18px;
+    }
+
+    .action-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ============================================================
+     HEADER
+============================================================= -->
+
+<header class="site-header">
+
+<div class="site-shell">
+
+    <div class="header-top">
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-symbol">
+                <span class="brand-pill pink"></span>
+                <span class="brand-pill blue"></span>
+                <span class="brand-pill green"></span>
+            </div>
+
+            <div class="brand-text">
+                KESKI-<br>
+                SUOMEN<br>
+                HYVINVOINTI-<br>
+                ALUE
+            </div>
+
+        </a>
+
+
+        <form class="search" id="searchForm">
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Hae sivustolta"
+                aria-label="Hae sivustolta"
+            >
+
+            <button type="submit" aria-label="Hae">
+                <span class="search-icon"></span>
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            Palvelumme
+        </a>
+
+        <a href="asiointi.html" class="active">
+            Asiointi
+        </a>
+
+        <a href="asiakkaana.html">
+            Asiakkaana
+        </a>
+
+        <a href="#" onclick="showToast('Sairaala Nova'); return false;">
+            Sairaala Nova
+        </a>
+
+        <a href="#" onclick="showToast('Hyvinvointisi tueksi'); return false;">
+            Hyvinvointisi tueksi
+        </a>
+
+        <a href="#" onclick="showToast('Hyvinvointialue'); return false;">
+            Hyvinvointialue
+        </a>
+
+        <a href="#" onclick="showToast('Ajankohtaista'); return false;">
+            Ajankohtaista
+        </a>
+
+        <a href="#" onclick="showToast('Tule työkaveriksi'); return false;">
+            Tule työkaveriksi
+        </a>
+
+        <a href="#" onclick="showToast('In English'); return false;">
+            In English
+        </a>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<!-- ============================================================
+     MAIN
+============================================================= -->
+
+<main class="site-shell">
+
+
+<!-- BREADCRUMBS -->
+
+<div class="breadcrumbs" id="breadcrumbs">
+
+    <button onclick="window.location.href='index.html'">
+        Etusivu
+    </button>
+
+    <span class="crumb-separator">/</span>
+
+    <span>
+        Asiointi
+    </span>
+
+</div>
+
+
+
+<!-- ============================================================
+     ASIOINTI ETUSIVU
+============================================================= -->
+
+<div id="landingView">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <img
+            src="asiointi.jpg"
+            alt="Asiointi Keski-Suomen hyvinvointialueella"
+        >
+
+        <div class="hero-title">
+            Asiointi
+        </div>
+
+    </section>
+
+
+    <p class="hero-description">
+
+        Keski-Suomen hyvinvointialue vastaa alueen sosiaali- ja
+        terveyspalveluista sekä pelastuspalveluista. Palvelemme sinua niin
+        puhelimitse ja verkossa kuin paikan päällä toimipisteissämme.
+        Tältä sivulta löydät yhteystiedot palveluihimme.
+
+    </p>
+
+
+
+    <!-- ========================================================
+         ASIOINTIPALVELUT
+    ========================================================= -->
+
+    <section class="services-area">
+
+        <h1>
+            Asioi Keski-Suomen hyvinvointialueella
+        </h1>
+
+
+        <div class="service-columns">
+
+
+            <!-- PUHELIN JA VERKKO -->
+
+            <section class="service-group">
+
+                <h2>
+                    Puhelin- ja verkkoasiointi
+                </h2>
+
+                <div class="service-list">
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('asioi-verkossa')"
+                    >
+
+                        <span>
+                            Asioi verkossa
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('puhelinasiointi')"
+                    >
+
+                        <span>
+                            Puhelinasiointi
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- TERVEYSASEMAT -->
+
+            <section class="service-group">
+
+                <h2>
+                    Terveysasemat, Sairaala Novan<br>
+                    yksiköt ja sosiaaliasemat
+                </h2>
+
+                <div class="service-list">
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('terveysasemat')"
+                    >
+
+                        <span>
+                            Terveysasemat
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('sairaala-novan-yksikot')"
+                    >
+
+                        <span>
+                            Sairaala Novan yksiköt
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('sosiaaliasemat')"
+                    >
+
+                        <span>
+                            Sosiaaliasemat
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MUUT TOIMIPAIKAT -->
+
+            <section class="service-group">
+
+                <h2>
+                    Muut toimipaikat
+                </h2>
+
+                <div class="service-list">
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('perhekeskukset')"
+                    >
+
+                        <span>
+                            Perhekeskukset
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('asumisen-palvelut')"
+                    >
+
+                        <span>
+                            Asumisen palvelut
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('vammaispalvelujen-toimipisteet')"
+                    >
+
+                        <span>
+                            Vammaispalvelujen toimipisteet
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="service-button"
+                        onclick="openPage('paloasemat')"
+                    >
+
+                        <span>
+                            Paloasemat
+                        </span>
+
+                        <span class="round-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- PALAUTE -->
+
+        <div class="feedback">
+
+            <h3>
+                Löysitkö etsimäsi tiedon tältä sivulta?
+            </h3>
+
+
+            <div class="feedback-buttons">
+
+                <button
+                    class="feedback-button"
+                    onclick="feedback('Kyllä')"
+                >
+                    ✓ Kyllä
+                </button>
+
+
+                <button
+                    class="feedback-button"
+                    onclick="feedback('Osittain')"
+                >
+                    ? Osittain
+                </button>
+
+
+                <button
+                    class="feedback-button"
+                    onclick="feedback('En')"
+                >
+                    × En
+                </button>
+
+            </div>
+
+
+            <p class="feedback-note">
+                Sivun palautetta käytetään verkkopalvelun kehittämiseen.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- ============================================================
+     DETAIL VIEW
+============================================================= -->
+
+<div id="detailView">
+
+<article class="detail-page">
+
+<div class="detail-layout">
+
+
+    <div class="detail-main">
+
+        <h1 id="detailTitle"></h1>
+
+        <p
+            class="detail-lead"
+            id="detailLead"
+        ></p>
+
+        <div id="detailContent"></div>
+
+
+        <button
+            class="back-link"
+            onclick="goHome()"
+        >
+            ← Takaisin Asiointi-sivulle
+        </button>
+
+    </div>
+
+
+
+    <aside class="detail-sidebar">
+
+
+        <div class="side-card">
+
+            <h3>
+                Asiointi
+            </h3>
+
+            <p>
+                Löydä hyvinvointialueen sähköiset
+                asiointipalvelut, puhelinnumerot ja
+                toimipisteet.
+            </p>
+
+
+            <button
+                class="side-link"
+                onclick="goHome()"
+            >
+                Asiointi
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="openPage('asioi-verkossa')"
+            >
+                Asioi verkossa
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="openPage('puhelinasiointi')"
+            >
+                Puhelinasiointi
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="openPage('terveysasemat')"
+            >
+                Terveysasemat
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="openPage('sairaala-novan-yksikot')"
+            >
+                Sairaala Novan yksiköt
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="openPage('sosiaaliasemat')"
+            >
+                Sosiaaliasemat
+            </button>
+
+        </div>
+
+
+        <div class="side-card">
+
+            <h3>
+                Hätätilanne
+            </h3>
+
+            <p>
+                Henkeä, terveyttä, omaisuutta tai ympäristöä
+                uhkaavassa kiireellisessä hätätilanteessa
+                soita hätänumeroon 112.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+</div>
+
+</article>
+
+</div>
+
+
+
+<!-- ============================================================
+     SEARCH
+============================================================= -->
+
+<section
+    class="search-results"
+    id="searchResults"
+>
+
+    <h1>
+        Hakutulokset
+    </h1>
+
+    <p
+        class="search-query-text"
+        id="searchQueryText"
+    ></p>
+
+    <div
+        class="result-list"
+        id="resultList"
+    ></div>
+
+
+    <button
+        class="back-link"
+        onclick="goHome()"
+    >
+        ← Takaisin Asiointi-sivulle
+    </button>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ============================================================
+     FOOTER
+============================================================= -->
+
+<footer class="footer">
+
+<div class="footer-inner">
+
+
+    <section>
+
+        <h2>
+            Keski-Suomen hyvinvointialue
+        </h2>
+
+        <p>
+            Vastaamme noin 273 000 keskisuomalaisen
+            sosiaali-, terveys- ja pelastustoimen palveluista.
+            Edistämme hyvinvointia, terveyttä ja turvallisuutta
+            Keski-Suomessa vaikuttavasti ja laajalla yhteistyöllä.
+            Haluamme olla ihmislähtöisin hyvinvointialue ja
+            tukea keskisuomalaisten hyvää arkea.
+        </p>
+
+    </section>
+
+
+
+    <section>
+
+        <h2>
+            Oikopolut
+        </h2>
+
+        <div class="footer-links">
+
+            <a href="#" onclick="showToast('Sairaala Nova'); return false;">
+                Sairaala Nova
+            </a>
+
+            <a href="#" onclick="showToast('Pelastustoimi.fi | Keski-Suomi'); return false;">
+                Pelastustoimi.fi | Keski-Suomi
+            </a>
+
+            <a href="#" onclick="showToast('Ostolaskutiedot'); return false;">
+                Ostolaskutiedot
+            </a>
+
+            <a href="#" onclick="showToast('Kirjaamo'); return false;">
+                Kirjaamo
+            </a>
+
+            <a href="#" onclick="showToast('Puhelinvaihde'); return false;">
+                Puhelinvaihde
+            </a>
+
+            <a href="asiakkaana.html#tietosuoja">
+                Tietosuoja
+            </a>
+
+            <a href="#" onclick="showToast('Saavutettavuusseloste'); return false;">
+                Saavutettavuusseloste
+            </a>
+
+            <a href="#" onclick="showToast('Päätöksenteko'); return false;">
+                Päätöksenteko
+            </a>
+
+            <a href="#" onclick="showToast('Esityslistat ja pöytäkirjat'); return false;">
+                Esityslistat ja pöytäkirjat
+            </a>
+
+            <a href="#" onclick="showToast('Kuulutukset ja ilmoitukset'); return false;">
+                Kuulutukset ja ilmoitukset
+            </a>
+
+            <a href="#" onclick="showToast('Yhteystiedot'); return false;">
+                Yhteystiedot
+            </a>
+
+            <a href="asiakkaana.html#anna-palautetta">
+                Anna palautetta
+            </a>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<div class="footer-line"></div>
+
+
+<div class="footer-bottom">
+    © Keski-Suomen hyvinvointialue
+</div>
+
+</footer>
+
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
+<script>
+
+/* ============================================================
+   ASIOINTISIVUJEN SISÄLLÖT
+============================================================= */
+
+const pages = {
+
+
+/* ------------------------------------------------------------
+   ASIOI VERKOSSA
+------------------------------------------------------------- */
+
+"asioi-verkossa":{
+
+    title:"Asioi verkossa",
+
+    category:"Puhelin- ja verkkoasiointi",
+
+    lead:
+    "Voit hoitaa monia sosiaali- ja terveyspalveluihin liittyviä asioita verkossa ajasta ja paikasta riippumatta.",
+
+    sections:[
+
+        {
+            title:"Sähköinen asiointi",
+
+            text:
+            "Sähköisissä palveluissa voit palvelusta riippuen esimerkiksi ottaa yhteyttä ammattilaiseen, täyttää lomakkeita, tarkastella ajanvarauksia tai hoitaa muita palveluihin liittyviä asioita."
+        },
+
+        {
+            title:"Tunnistautuminen",
+
+            text:
+            "Henkilökohtaisia sosiaali- ja terveydenhuollon tietoja sisältäviin palveluihin kirjaudutaan vahvasti tunnistautuneena."
+        },
+
+        {
+            title:"Asiointi toisen puolesta",
+
+            text:
+            "Joissakin sähköisissä palveluissa voit asioida myös toisen henkilön puolesta, jos sinulla on siihen tarvittava oikeus tai valtuutus."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   PUHELINASIOINTI
+------------------------------------------------------------- */
+
+"puhelinasiointi":{
+
+    title:"Puhelinasiointi",
+
+    category:"Puhelin- ja verkkoasiointi",
+
+    lead:
+    "Hyvinvointialueen palveluihin saat yhteyden myös puhelimitse. Oikea puhelinnumero riippuu siitä, mitä palvelua tarvitset.",
+
+    sections:[
+
+        {
+            title:"Kun otat yhteyttä",
+
+            text:
+            "Valitse yhteydenottopaikka sen mukaan, mitä asiaa yhteydenottosi koskee. Terveyspalveluissa ammattilainen voi arvioida tilanteesi ja ohjata sinut tarvittaessa oikeaan palveluun."
+        },
+
+        {
+            title:"Kiireellinen terveysasia",
+
+            text:
+            "Jos tarvitset kiireellistä hoitoa, ota yhteyttä alueesi kiireellisen hoidon palveluun tai päivystykseen tilanteen mukaan."
+        },
+
+        {
+            title:"Hätätilanne",
+
+            text:
+            "Henkeä, terveyttä, omaisuutta tai ympäristöä uhkaavassa kiireellisessä hätätilanteessa soita hätänumeroon 112."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   TERVEYSASEMAT
+------------------------------------------------------------- */
+
+"terveysasemat":{
+
+    title:"Terveysasemat",
+
+    category:"Terveysasemat ja toimipaikat",
+
+    lead:
+    "Terveysasemilta saat perusterveydenhuollon palveluja eri puolilla Keski-Suomea. Valitse oma asiointipaikkasi saadaksesi tarkemmat yhteystiedot ja palvelutiedot.",
+
+    sections:[
+
+        {
+            title:"Terveysaseman palvelut",
+
+            text:
+            "Terveysasemilla järjestetään muun muassa hoidon tarpeen arviointia, sairaanhoitajan ja lääkärin vastaanottoja sekä muita perusterveydenhuollon palveluja."
+        },
+
+        {
+            title:"Ajanvaraus ja yhteydenotto",
+
+            text:
+            "Ennen terveysasemalle saapumista ota tarvittaessa yhteyttä palveluun. Ammattilainen arvioi tilanteesi ja kertoo, miten asian hoitaminen etenee."
+        },
+
+        {
+            title:"Toimipaikat",
+
+            list:[
+                "Jyväskylän alueen terveysasemat",
+                "Muuramen terveysasema",
+                "Jämsän alueen terveyspalvelut",
+                "Äänekosken terveysasema",
+                "Saarijärven terveysasema",
+                "Viitasaaren terveysasema",
+                "Muut Keski-Suomen terveysasemat"
+            ]
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   SAIRAALA NOVA
+------------------------------------------------------------- */
+
+"sairaala-novan-yksikot":{
+
+    title:"Sairaala Novan yksiköt",
+
+    category:"Terveysasemat ja toimipaikat",
+
+    lead:
+    "Sairaala Novassa toimii Keski-Suomen hyvinvointialueen erikoissairaanhoidon vastaanottoja, tutkimus- ja hoitoyksiköitä sekä päivystyspalveluja.",
+
+    sections:[
+
+        {
+            title:"Sairaala Nova",
+
+            text:
+            "Sairaala Nova sijaitsee Jyväskylässä. Sairaalassa järjestetään erikoissairaanhoidon tutkimuksia, vastaanottoja, toimenpiteitä ja osastohoitoa."
+        },
+
+        {
+            title:"Kun saavut sairaalaan",
+
+            text:
+            "Tarkista kutsukirjeestä tai saamastasi ajanvaraustiedosta oikea yksikkö, saapumisaika ja mahdolliset valmistautumisohjeet."
+        },
+
+        {
+            title:"Yksikön löytäminen",
+
+            text:
+            "Sairaalan opasteet ja palvelupisteet auttavat löytämään oikean vastaanoton tai hoitoyksikön."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   SOSIAALIASEMAT
+------------------------------------------------------------- */
+
+"sosiaaliasemat":{
+
+    title:"Sosiaaliasemat",
+
+    category:"Terveysasemat ja toimipaikat",
+
+    lead:
+    "Sosiaaliasemilta saat neuvontaa ja palveluja erilaisiin elämäntilanteisiin sekä sosiaalihuollon tuen tarpeisiin.",
+
+    sections:[
+
+        {
+            title:"Sosiaalipalvelut",
+
+            text:
+            "Sosiaalipalveluissa arvioidaan asiakkaan tuen tarvetta ja etsitään hänen tilanteeseensa sopivia palveluja ja tukimuotoja."
+        },
+
+        {
+            title:"Yhteydenotto",
+
+            text:
+            "Voit olla yhteydessä sosiaalipalveluihin, jos tarvitset neuvontaa tai tukea esimerkiksi arjen, asumisen, taloudellisen tilanteen tai muun elämäntilanteen vuoksi."
+        },
+
+        {
+            title:"Asiointi",
+
+            text:
+            "Osa asioista voidaan hoitaa puhelimitse tai sähköisesti. Tarvittaessa sinulle järjestetään tapaaminen ammattilaisen kanssa."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   PERHEKESKUKSET
+------------------------------------------------------------- */
+
+"perhekeskukset":{
+
+    title:"Perhekeskukset",
+
+    category:"Muut toimipaikat",
+
+    lead:
+    "Perhekeskukset kokoavat lasten, nuorten ja perheiden palveluja yhteen. Tavoitteena on, että apua ja tukea saa mahdollisimman helposti oikeasta paikasta.",
+
+    sections:[
+
+        {
+            title:"Lapsille, nuorille ja perheille",
+
+            text:
+            "Perhekeskuksen palveluihin voi kuulua esimerkiksi neuvolapalveluja, perhetyötä, sosiaalipalveluja sekä lasten ja nuorten hyvinvointia tukevia palveluja."
+        },
+
+        {
+            title:"Tukea erilaisiin tilanteisiin",
+
+            text:
+            "Perhekeskuksesta voi hakea neuvontaa ja tukea esimerkiksi vanhemmuuteen, lapsen kasvuun ja kehitykseen tai perheen arjen haasteisiin."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   ASUMISEN PALVELUT
+------------------------------------------------------------- */
+
+"asumisen-palvelut":{
+
+    title:"Asumisen palvelut",
+
+    category:"Muut toimipaikat",
+
+    lead:
+    "Asumisen palvelut tukevat asiakkaita silloin, kun itsenäinen asuminen edellyttää apua, ohjausta, hoivaa tai muuta tukea.",
+
+    sections:[
+
+        {
+            title:"Asumisen tuki",
+
+            text:
+            "Asumisen palvelujen sisältö ja tuen määrä määräytyvät asiakkaan yksilöllisen palvelutarpeen perusteella."
+        },
+
+        {
+            title:"Palvelutarpeen arviointi",
+
+            text:
+            "Ennen palvelun järjestämistä asiakkaan tilanne ja tuen tarve arvioidaan yhdessä asiakkaan kanssa."
+        },
+
+        {
+            title:"Toimipaikat",
+
+            text:
+            "Hyvinvointialueella on erilaisia asumisen palvelujen toimipaikkoja eri asiakasryhmille ja erilaisiin tuen tarpeisiin."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   VAMMAISPALVELUT
+------------------------------------------------------------- */
+
+"vammaispalvelujen-toimipisteet":{
+
+    title:"Vammaispalvelujen toimipisteet",
+
+    category:"Muut toimipaikat",
+
+    lead:
+    "Vammaispalvelujen toimipisteistä saat tietoa ja ohjausta vammaispalveluihin sekä niiden järjestämiseen liittyvissä asioissa.",
+
+    sections:[
+
+        {
+            title:"Vammaispalvelut",
+
+            text:
+            "Vammaispalvelujen tavoitteena on tukea vammaisen henkilön itsenäistä elämää, osallisuutta ja yhdenvertaisuutta."
+        },
+
+        {
+            title:"Palvelutarpeen arviointi",
+
+            text:
+            "Palvelut suunnitellaan asiakkaan yksilöllisen tilanteen ja avun tarpeen perusteella yhdessä asiakkaan kanssa."
+        },
+
+        {
+            title:"Yhteydenotto",
+
+            text:
+            "Jos tarvitset tietoa vammaispalveluista tai haluat selvittää palvelujen tarvetta, voit ottaa yhteyttä hyvinvointialueen vammaispalveluihin."
+        }
+
+    ]
+},
+
+
+
+/* ------------------------------------------------------------
+   PALOASEMAT
+------------------------------------------------------------- */
+
+"paloasemat":{
+
+    title:"Paloasemat",
+
+    category:"Muut toimipaikat",
+
+    lead:
+    "Keski-Suomen pelastuslaitoksen paloasemat tuottavat pelastustoimen palveluja eri puolilla Keski-Suomea.",
+
+    sections:[
+
+        {
+            title:"Pelastustoimi",
+
+            text:
+            "Pelastuslaitoksen tehtäviin kuuluvat onnettomuuksien ehkäisy, pelastustoiminta sekä muut pelastustoimen lakisääteiset tehtävät."
+        },
+
+        {
+            title:"Paloasemat Keski-Suomessa",
+
+            text:
+            "Pelastuslaitoksen toiminta perustuu eri puolilla hyvinvointialuetta sijaitsevaan paloasemaverkostoon."
+        },
+
+        {
+            title:"Hätätilanteessa",
+
+            text:
+            "Älä ota hätätilanteessa yhteyttä suoraan paloasemalle. Henkeä, terveyttä, omaisuutta tai ympäristöä uhkaavassa kiireellisessä tilanteessa soita hätänumeroon 112."
+        }
+
+    ]
+}
+
+};
+
+
+
+/* ============================================================
+   OPEN PAGE
+============================================================= */
+
+function openPage(id, updateHistory = true){
+
+    const page = pages[id];
+
+    if(!page){
+        showToast("Sivua ei löytynyt.");
+        return;
+    }
+
+
+    document.getElementById("landingView").style.display="none";
+
+    document.getElementById("searchResults").style.display="none";
+
+    document.getElementById("detailView").style.display="block";
+
+
+    document.getElementById("detailTitle").textContent =
+        page.title;
+
+    document.getElementById("detailLead").textContent =
+        page.lead;
+
+
+    renderSections(page.sections || []);
+
+    renderBreadcrumbs(page);
+
+
+    document.title =
+        page.title + " | Keski-Suomen hyvinvointialue";
+
+
+    if(updateHistory){
+
+        history.pushState(
+            {page:id},
+            "",
+            "asiointi.html#" + id
+        );
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* ============================================================
+   RENDER SECTIONS
+============================================================= */
+
+function renderSections(sections){
+
+    const container =
+        document.getElementById("detailContent");
+
+    container.innerHTML="";
+
+
+    sections.forEach(section=>{
+
+        const block =
+            document.createElement("section");
+
+        block.className="detail-section";
+
+
+        const title =
+            document.createElement("h2");
+
+        title.textContent=section.title;
+
+        block.appendChild(title);
+
+
+        if(section.text){
+
+            const p =
+                document.createElement("p");
+
+            p.textContent=section.text;
+
+            block.appendChild(p);
+
+        }
+
+
+        if(section.text2){
+
+            const p =
+                document.createElement("p");
+
+            p.textContent=section.text2;
+
+            block.appendChild(p);
+
+        }
+
+
+        if(section.list){
+
+            const ul =
+                document.createElement("ul");
+
+
+            section.list.forEach(item=>{
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent=item;
+
+                ul.appendChild(li);
+
+            });
+
+
+            block.appendChild(ul);
+
+        }
+
+
+        container.appendChild(block);
+
+    });
+
+}
+
+
+
+/* ============================================================
+   BREADCRUMBS
+============================================================= */
+
+function renderBreadcrumbs(page){
+
+    const breadcrumbs =
+        document.getElementById("breadcrumbs");
+
+    breadcrumbs.innerHTML="";
+
+
+    const home =
+        document.createElement("button");
+
+    home.textContent="Etusivu";
+
+    home.onclick=()=>{
+        window.location.href="index.html";
+    };
+
+    breadcrumbs.appendChild(home);
+
+
+    addSeparator(breadcrumbs);
+
+
+    const asiointi =
+        document.createElement("button");
+
+    asiointi.textContent="Asiointi";
+
+    asiointi.onclick=goHome;
+
+    breadcrumbs.appendChild(asiointi);
+
+
+    if(
+        page.category &&
+        page.category !== page.title
+    ){
+
+        addSeparator(breadcrumbs);
+
+
+        const category =
+            document.createElement("span");
+
+        category.textContent=page.category;
+
+        breadcrumbs.appendChild(category);
+
+    }
+
+
+    addSeparator(breadcrumbs);
+
+
+    const current =
+        document.createElement("span");
+
+    current.textContent=page.title;
+
+    breadcrumbs.appendChild(current);
+
+}
+
+
+
+function addSeparator(parent){
+
+    const separator =
+        document.createElement("span");
+
+    separator.className="crumb-separator";
+
+    separator.textContent="/";
+
+    parent.appendChild(separator);
+
+}
+
+
+
+/* ============================================================
+   HOME
+============================================================= */
+
+function goHome(updateHistory=true){
+
+    document.getElementById("detailView").style.display="none";
+
+    document.getElementById("searchResults").style.display="none";
+
+    document.getElementById("landingView").style.display="block";
+
+
+    document.getElementById("breadcrumbs").innerHTML=`
+
+        <button onclick="window.location.href='index.html'">
+            Etusivu
+        </button>
+
+        <span class="crumb-separator">
+            /
+        </span>
+
+        <span>
+            Asiointi
+        </span>
+
+    `;
+
+
+    document.title=
+        "Asiointi | Keski-Suomen hyvinvointialue";
+
+
+    if(updateHistory){
+
+        history.pushState(
+            {page:"home"},
+            "",
+            "asiointi.html"
+        );
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* ============================================================
+   SEARCH
+============================================================= */
+
+document
+.getElementById("searchForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+
+    const query=
+        document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    if(!query){
+        return;
+    }
+
+
+    const matches=
+        Object.entries(pages)
+        .filter(([id,page])=>{
+
+            const sectionText=
+                (page.sections || [])
+                .map(section=>{
+
+                    return[
+                        section.title || "",
+                        section.text || "",
+                        section.text2 || "",
+                        ...(section.list || [])
+                    ].join(" ");
+
+                })
+                .join(" ");
+
+
+            const searchText=[
+                page.title,
+                page.category,
+                page.lead,
+                sectionText
+            ]
+            .join(" ")
+            .toLowerCase();
+
+
+            return searchText.includes(query);
+
+        });
+
+
+    showSearchResults(query,matches);
+
+});
+
+
+
+function showSearchResults(query,matches){
+
+    document.getElementById("landingView").style.display="none";
+
+    document.getElementById("detailView").style.display="none";
+
+    document.getElementById("searchResults").style.display="block";
+
+
+    document.getElementById("breadcrumbs").innerHTML=`
+
+        <button onclick="window.location.href='index.html'">
+            Etusivu
+        </button>
+
+        <span class="crumb-separator">
+            /
+        </span>
+
+        <button onclick="goHome()">
+            Asiointi
+        </button>
+
+        <span class="crumb-separator">
+            /
+        </span>
+
+        <span>
+            Haku
+        </span>
+
+    `;
+
+
+    document.getElementById("searchQueryText").textContent=
+        `Hakusanalla "${query}" löytyi ${matches.length} tulosta.`;
+
+
+    const resultList=
+        document.getElementById("resultList");
+
+    resultList.innerHTML="";
+
+
+    if(matches.length===0){
+
+        const empty=
+            document.createElement("div");
+
+        empty.className="no-results";
+
+        empty.innerHTML=`
+
+            <strong>
+                Hakutuloksia ei löytynyt.
+            </strong>
+
+            <p>
+                Kokeile toista hakusanaa tai palaa
+                Asiointi-sivulle.
+            </p>
+
+        `;
+
+        resultList.appendChild(empty);
+
+    }
+
+    else{
+
+        matches.forEach(([id,page])=>{
+
+            const button=
+                document.createElement("button");
+
+            button.className="result-card";
+
+
+            const strong=
+                document.createElement("strong");
+
+            strong.textContent=page.title;
+
+
+            const span=
+                document.createElement("span");
+
+            span.textContent=page.lead;
+
+
+            button.appendChild(strong);
+
+            button.appendChild(span);
+
+
+            button.onclick=()=>{
+                openPage(id);
+            };
+
+
+            resultList.appendChild(button);
+
+        });
+
+    }
+
+
+    document.title=
+        "Haku | Keski-Suomen hyvinvointialue";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+
+/* ============================================================
+   FEEDBACK
+============================================================= */
+
+function feedback(answer){
+
+    const messages={
+
+        "Kyllä":
+            "Kiitos palautteestasi!",
+
+        "Osittain":
+            "Kiitos palautteestasi. Kehitämme sivua palautteen perusteella.",
+
+        "En":
+            "Kiitos palautteestasi. Pyrimme parantamaan sivun sisältöä."
+
+    };
+
+
+    showToast(
+        messages[answer] ||
+        "Kiitos palautteestasi!"
+    );
+
+}
+
+
+
+/* ============================================================
+   TOAST
+============================================================= */
+
+let toastTimer;
+
+
+function showToast(message){
+
+    const toast=
+        document.getElementById("toast");
+
+
+    toast.textContent=message;
+
+    toast.classList.add("visible");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer=setTimeout(()=>{
+
+        toast.classList.remove("visible");
+
+    },2600);
+
+}
+
+
+
+/* ============================================================
+   BACK / FORWARD
+============================================================= */
+
+window.addEventListener(
+    "popstate",
+    function(){
+
+        const hash=
+            location.hash.replace("#","");
+
+
+        if(hash && pages[hash]){
+
+            openPage(hash,false);
+
+        }
+
+        else{
+
+            goHome(false);
+
+        }
+
+    }
+);
+
+
+
+/* ============================================================
+   DIRECT LINK
+============================================================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const hash=
+            location.hash.replace("#","");
+
+
+        if(hash && pages[hash]){
+
+            openPage(hash,false);
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
