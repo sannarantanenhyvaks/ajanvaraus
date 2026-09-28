@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psykologin ajanvaraus | Opiskeluhuolto</title>
+<style>
+*{box-sizing:border-box}
+:root{
+ --navy:#12354b;--blue:#006bb6;--blue2:#004f8b;--sky:#eaf6fb;--mint:#e8f5ef;
+ --green:#18794e;--ink:#182a35;--muted:#60727e;--line:#d9e3e8;--paper:#fff;
+ --bg:#f5f8fa;--soft:#eef3f6;--danger:#b42318;--shadow:0 18px 55px rgba(18,53,75,.10);
+}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.topline{height:6px;background:#006bb6}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:relative;z-index:10}
+.header-main{max-width:1240px;margin:auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:22px;text-decoration:none}
+.brand img{width:185px;max-height:66px;object-fit:contain}
+.brand-copy{padding-left:22px;border-left:1px solid var(--line)}
+.brand-copy strong{display:block;font-size:18px}
+.brand-copy span{font-size:13px;color:var(--muted)}
+.header-tools{display:flex;align-items:center;gap:10px}
+.own-booking{border:1px solid #b8c9d2;background:#fff;border-radius:8px;padding:10px 14px;text-decoration:none;font-weight:700;font-size:13px;color:var(--navy)}
+.nav-wrap{border-top:1px solid #edf1f3;background:#fff}
+.nav{max-width:1240px;margin:auto;padding:0 26px;display:flex;align-items:center;gap:4px}
+.nav a{padding:14px 15px;text-decoration:none;font-size:14px;font-weight:700;color:#3b5260;border-bottom:3px solid transparent}
+.nav a:hover,.nav a.active{color:var(--blue2);border-bottom-color:var(--blue)}
+.hero{background:linear-gradient(120deg,#e9f6fb 0%,#f8fbfc 62%,#eaf5ef 100%);border-bottom:1px solid var(--line)}
+.hero-inner{max-width:1240px;margin:auto;padding:58px 26px 50px;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue2);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.eyebrow:before{content:"";width:28px;height:3px;background:var(--blue)}
+.hero h1{font-size:46px;line-height:1.08;letter-spacing:-.025em;margin:0 0 18px;color:var(--navy)}
+.hero p{font-size:18px;max-width:720px;color:#49616f;margin:0}
+.professional{background:rgba(255,255,255,.9);border:1px solid #d5e3e9;border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.professional-top{display:flex;gap:16px;align-items:center}
+.avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:22px;font-weight:800}
+.professional strong{display:block;font-size:18px;color:var(--navy)}
+.professional span{font-size:14px;color:var(--muted)}
+.professional dl{margin:20px 0 0;display:grid;grid-template-columns:90px 1fr;gap:8px;font-size:13px}
+.professional dt{color:var(--muted)} .professional dd{margin:0;font-weight:700}
+.shell{max-width:1240px;margin:0 auto;padding:34px 26px 70px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--blue2);text-decoration:none}
+.progress{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:26px;box-shadow:0 5px 18px rgba(18,53,75,.04)}
+.progress-step{padding:15px 18px;display:flex;align-items:center;gap:11px;border-right:1px solid var(--line);font-size:13px;color:#687985;font-weight:700}
+.progress-step:last-child{border-right:0}
+.progress-step b{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#edf2f4;color:#61717b}
+.progress-step.active{background:#edf7fb;color:var(--blue2)}
+.progress-step.active b{background:var(--blue);color:#fff}
+.progress-step.done{color:var(--green)} .progress-step.done b{background:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 22px rgba(18,53,75,.05);overflow:hidden}
+.panel-head{padding:25px 28px;border-bottom:1px solid var(--line)}
+.panel-head h2{margin:0 0 5px;font-size:24px;color:var(--navy)}
+.panel-head p{margin:0;color:var(--muted);font-size:14px}
+.panel-body{padding:28px}
+.side-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:18px}
+.side-card h3{margin:0 0 12px;font-size:17px;color:var(--navy)}
+.side-card p,.side-card li{font-size:13px;color:#566b78}
+.side-card ul{padding-left:18px;margin:10px 0 0}
+.notice{border-left:4px solid var(--blue);background:#edf7fb;padding:15px 17px;border-radius:0 8px 8px 0;font-size:13px;color:#405966;margin-bottom:22px}
+.calendar-wrap{display:grid;grid-template-columns:minmax(400px,1.15fr) minmax(270px,.85fr);gap:22px}
+.calendar{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.calendar-top{display:grid;grid-template-columns:54px 1fr 54px;align-items:center;background:#f7fafb;border-bottom:1px solid var(--line);min-height:62px}
+.calendar-top h3{text-align:center;margin:0;font-size:18px;color:var(--navy);text-transform:capitalize}
+.month-btn{height:62px;border:0;background:transparent;font-size:28px;color:var(--blue)}
+.month-btn:hover:not(:disabled){background:#eaf4f8}.month-btn:disabled{color:#c3ccd1;cursor:default}
+.weekdays,.days{display:grid;grid-template-columns:repeat(7,1fr)}
+.weekdays{background:#f1f5f7;border-bottom:1px solid var(--line)}
+.weekday{text-align:center;padding:9px 2px;font-size:11px;font-weight:800;color:#60727d}
+.day{min-height:66px;border:0;border-right:1px solid #e6ecef;border-bottom:1px solid #e6ecef;background:#fff;position:relative;color:var(--ink)}
+.day:nth-child(7n){border-right:0}.day.empty{background:#fafcfc;cursor:default}
+.day-number{display:block;font-weight:800;font-size:15px}
+.day small{display:block;font-size:9px;margin-top:3px;color:inherit}
+.day.available{background:#f1faf5;color:#12633f}
+.day.available:hover{background:#e0f3e8;box-shadow:inset 0 0 0 2px var(--green)}
+.day.unavailable{background:#f6f7f8;color:#a3adb3;cursor:not-allowed}
+.day.selected{background:var(--blue)!important;color:#fff;box-shadow:inset 0 0 0 3px var(--blue2)}
+.times{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-height:365px}
+.times-head{background:#f7fafb;border-bottom:1px solid var(--line);padding:17px 19px}
+.times-head h3{margin:0;font-size:17px;color:var(--navy)}.times-head p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.times-body{padding:17px}
+.placeholder{padding:30px 10px;text-align:center;color:#74838c;font-size:13px}
+.time-btn{width:100%;border:1px solid #bcd7c9;background:#f1faf5;color:#135f3e;border-radius:9px;padding:13px 14px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;text-align:left}
+.time-btn:hover{border-color:var(--green);background:#e5f5eb}.time-btn.selected{background:var(--green);border-color:var(--green);color:#fff}
+.time-main{font-size:17px;font-weight:800}.time-meta{font-size:11px;font-weight:700}
+.loading{padding:42px;text-align:center;color:var(--muted)}
+.error{display:none;background:#fff0ef;border-left:4px solid var(--danger);color:#76211b;padding:16px 18px;margin-bottom:22px;border-radius:0 8px 8px 0}
+#detailsPanel,#successPanel{display:none}
+.selection{background:#edf7fb;border:1px solid #c8e2ee;border-radius:10px;padding:18px 20px;margin-bottom:24px}
+.selection-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:#587080}
+.selection strong{display:block;font-size:18px;color:var(--navy);margin:4px 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:800;margin-bottom:7px}
+.required{color:var(--danger)}
+input{width:100%;min-height:49px;border:1px solid #aebbc2;border-radius:7px;padding:10px 12px;background:#fff}
+input:focus{outline:3px solid rgba(0,107,182,.14);border-color:var(--blue)}
+.help{font-size:11px;color:var(--muted);display:block;margin-top:5px}
+.privacy{margin-top:23px;background:#f6f8f9;border:1px solid var(--line);border-radius:8px;padding:15px;font-size:12px;color:#526672}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+.btn{border-radius:8px;padding:13px 20px;font-weight:800;border:1px solid transparent}
+.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:var(--blue2)}.btn-primary:disabled{opacity:.55;cursor:wait}
+.btn-secondary{background:#fff;color:var(--blue2);border-color:#9fc3d7}
+.success{padding:36px 28px;text-align:center}
+.success-mark{width:68px;height:68px;margin:0 auto 17px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:35px;font-weight:800}
+.success h2{font-size:29px;color:var(--navy);margin:0 0 7px}
+.success p{color:var(--muted)}
+.success-summary{max-width:620px;margin:26px auto;text-align:left;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.success-summary-head{padding:11px 16px;background:#f3f6f7;font-size:11px;text-transform:uppercase;font-weight:800;color:#5c6e78}
+.success-summary-body{padding:17px}
+.code-box{max-width:620px;margin:20px auto;background:#edf7fb;border:2px solid var(--blue);border-radius:12px;padding:22px}
+.code-box small{display:block;text-transform:uppercase;font-weight:800;letter-spacing:.06em;color:#597281}
+.booking-code{display:block;font-size:29px;letter-spacing:.08em;font-weight:800;color:var(--navy);margin:6px 0 11px}
+.footer{background:#203541;color:#fff;margin-top:20px}
+.footer-inner{max-width:1240px;margin:auto;padding:34px 26px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+.footer strong{display:block;margin-bottom:7px}.footer p,.footer a{font-size:12px;color:#d5e0e5;text-decoration:none}
+@media(max-width:900px){.hero-inner,.grid{grid-template-columns:1fr}.professional{max-width:520px}.calendar-wrap{grid-template-columns:1fr}.hero h1{font-size:38px}.nav{overflow:auto}.side{display:grid;grid-template-columns:1fr 1fr;gap:15px}.side-card{margin:0}}
+@media(max-width:620px){.header-main{align-items:flex-start;flex-direction:column}.brand-copy{display:none}.header-tools{width:100%}.own-booking{width:100%;text-align:center}.hero-inner{padding-top:38px}.hero h1{font-size:32px}.shell{padding:24px 14px 50px}.progress{grid-template-columns:1fr 1fr}.progress-step{border-bottom:1px solid var(--line)}.calendar-wrap{display:block}.times{margin-top:18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.side{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.day{min-height:55px}.day small{display:none}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header class="site-header">
+ <div class="header-main">
+  <a class="brand" href="opiskeluterveydenhuolto.html">
+   <img src="hyvaks-logo.png" alt="Keski-Suomen hyvinvointialue">
+   <div class="brand-copy"><strong>Opiskeluhuollon palvelut</strong><span>Muuramen lukio</span></div>
+  </a>
+  <div class="header-tools"><a class="own-booking" href="oma-varaus.html">Oma ajanvaraus</a></div>
+ </div>
+ <div class="nav-wrap">
+  <nav class="nav" aria-label="Päänavigointi">
+   <a href="opiskeluterveydenhuolto.html">Opiskeluterveydenhuolto</a>
+   <a class="active" href="psykologi-ajanvaraus.html">Psykologi</a>
+   <a href="kuraattori-ja-psykologipalvelut.html">Kuraattori ja psykologi</a>
+   <a href="digipalvelut.html">Digipalvelut</a>
+   <a href="oma-varaus.html">Oma varaus</a>
+  </nav>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div>
+   <div class="eyebrow">Opiskeluhuollon psykologipalvelut</div>
+   <h1>Varaa aika psykologille</h1>
+   <p>Valitse sinulle sopiva vapaa vastaanottoaika. Ajanvarauksessa ei tarvitse kuvata henkilökohtaisia tai terveydentilaa koskevia asioita.</p>
+  </div>
+  <aside class="professional">
+   <div class="professional-top"><div class="avatar">ST</div><div><strong>Saara Tuhkanen</strong><span>Psykologi</span></div></div>
+   <dl><dt>Toimipiste</dt><dd>Muuramen lukio</dd><dt>Palvelu</dt><dd>Psykologin vastaanotto</dd><dt>Ajanvaraus</dt><dd>Vapaat ajat verkossa</dd></dl>
+  </aside>
+ </div>
+</section>
+
+<main class="shell">
+ <div class="breadcrumb"><a href="opiskeluterveydenhuolto.html">Opiskeluhuolto</a> &nbsp;›&nbsp; Psykologipalvelut &nbsp;›&nbsp; Ajanvaraus</div>
+
+ <div class="progress">
+  <div class="progress-step active" id="step1"><b>1</b> Valitse päivä</div>
+  <div class="progress-step" id="step2"><b>2</b> Valitse aika</div>
+  <div class="progress-step" id="step3"><b>3</b> Omat tiedot</div>
+  <div class="progress-step" id="step4"><b>4</b> Vahvistus</div>
+ </div>
+
+ <div id="errorMessage" class="error"></div>
+
+ <div class="grid" id="bookingGrid">
+  <div>
+   <section class="panel" id="calendarPanel">
+    <div class="panel-head"><h2>Vapaat vastaanottoajat</h2><p>Kalenterissa näkyvät Saara Tuhkasen ajanvaraukseen avatut ajat.</p></div>
+    <div id="loading" class="loading">Ladataan vapaita vastaanottoaikoja...</div>
+    <div class="panel-body" id="calendarContent" style="display:none">
+     <div class="notice"><strong>Valitse päivä.</strong> Päivät, joilla on vapaita aikoja, näkyvät vihreällä. Kellonajat avautuvat kalenterin viereen.</div>
+     <div class="calendar-wrap">
+      <div class="calendar">
+       <div class="calendar-top">
+        <button class="month-btn" id="previousMonth" type="button" aria-label="Edellinen kuukausi">‹</button>
+        <h3 id="monthTitle"></h3>
+        <button class="month-btn" id="nextMonth" type="button" aria-label="Seuraava kuukausi">›</button>
+       </div>
+       <div class="weekdays"><div class="weekday">Ma</div><div class="weekday">Ti</div><div class="weekday">Ke</div><div class="weekday">To</div><div class="weekday">Pe</div><div class="weekday">La</div><div class="weekday">Su</div></div>
+       <div class="days" id="calendarDays"></div>
+      </div>
+      <div class="times">
+       <div class="times-head"><h3>Valitse kellonaika</h3><p id="selectedDateText">Valitse ensin päivä</p></div>
+       <div class="times-body" id="timesContent"><div class="placeholder">Vapaat kellonajat tulevat tähän päivän valitsemisen jälkeen.</div></div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section class="panel" id="detailsPanel" style="margin-top:24px">
+    <div class="panel-head"><h2>Varaajan tiedot</h2><p>Täytä yhteystietosi. Älä kirjoita lomakkeelle käynnin syytä tai terveystietoja.</p></div>
+    <div class="panel-body">
+     <div class="selection"><span class="selection-label">Valittu aika</span><strong id="selectedAppointment"></strong><div id="selectedProfessional"></div></div>
+     <form id="bookingForm">
+      <div class="form-grid">
+       <div class="field"><label for="studentName">Etu- ja sukunimi <span class="required">*</span></label><input id="studentName" type="text" autocomplete="name" required></div>
+       <div class="field"><label for="studentGroup">Ryhmä</label><input id="studentGroup" type="text" placeholder="Esim. 26A"></div>
+       <div class="field"><label for="studentEmail">Sähköpostiosoite</label><input id="studentEmail" type="email" autocomplete="email"><span class="help">Anna osoite, josta sinut tavoittaa tarvittaessa.</span></div>
+       <div class="field"><label for="studentPhone">Puhelinnumero</label><input id="studentPhone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="privacy"><strong>Tietojen käsittely</strong><br>Anna tähän vain ajanvarauksen käsittelyssä tarvittavat yhteystiedot. Älä kirjoita lomakkeelle arkaluonteisia lisätietoja, käynnin syytä tai kuvausta tilanteestasi.</div>
+      <div class="actions"><button class="btn btn-secondary" id="changeTimeButton" type="button">Vaihda aikaa</button><button class="btn btn-primary" id="bookingButton" type="submit">Vahvista ajanvaraus</button></div>
+     </form>
+    </div>
+   </section>
+
+   <section class="panel" id="successPanel">
+    <div class="success">
+     <div class="success-mark">✓</div>
+     <h2>Ajanvaraus on vahvistettu</h2>
+     <p>Vastaanottoaika on varattu onnistuneesti.</p>
+     <div class="success-summary"><div class="success-summary-head">Varattu vastaanotto</div><div class="success-summary-body"><strong id="successDate"></strong><div id="successDetails"></div></div></div>
+     <div class="code-box"><small>Varauskoodisi</small><span class="booking-code" id="bookingCode">----</span><p>Säilytä koodi. Tarvitset sitä ajanvarauksen tarkasteluun ja peruuttamiseen.</p><button class="btn btn-secondary" id="copyCodeButton" type="button">Kopioi varauskoodi</button><div id="copyResult" class="help"></div></div>
+     <div class="actions" style="justify-content:center"><a class="btn btn-secondary" style="text-decoration:none" href="oma-varaus.html">Avaa oma varaus</a><button class="btn btn-primary" id="newBookingButton" type="button">Tee uusi ajanvaraus</button></div>
+    </div>
+   </section>
+  </div>
+
+  <aside class="side">
+   <div class="side-card"><h3>Ennen ajan varaamista</h3><p>Voit varata ajan psykologin vastaanotolle verkossa näkyvistä vapaista ajoista.</p><ul><li>Valitse ensin päivä ja kellonaika.</li><li>Täytä vain ajanvaraukseen tarvittavat tiedot.</li><li>Tallenna lopuksi saamasi varauskoodi.</li></ul></div>
+   <div class="side-card"><h3>Luottamuksellinen palvelu</h3><p>Ajanvarauslomakkeella ei kysytä käynnin syytä. Vastaanotolla voit keskustella tilanteestasi psykologin kanssa.</p></div>
+   <div class="side-card"><h3>Oletko jo varannut ajan?</h3><p>Voit tarkastella varaustasi ja käytettävissä olevia toimintoja varauskoodilla.</p><a href="oma-varaus.html" style="color:var(--blue2);font-weight:800;font-size:13px">Siirry omaan varaukseen →</a></div>
+  </aside>
+ </div>
+</main>
+
+<footer class="footer"><div class="footer-inner"><div><strong>Opiskeluhuollon palvelut</strong><p>Muuramen lukio</p></div><div><strong>Ajanvaraus</strong><p><a href="psykologi-ajanvaraus.html">Psykologin ajanvaraus</a><br><a href="oma-varaus.html">Oma varaus</a></p></div><div><strong>Keski-Suomen hyvinvointialue</strong><p>Sähköinen asiointi</p></div></div></footer>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://bwuybksyoopuejcrlspa.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+const supabase = createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const PROFESSIONAL = 'Saara Tuhkanen';
+const MIN_DATE = '2026-09-01';
+const MAX_DATE = '2026-11-01';
+let currentYear=2026,currentMonth=8,calendarTimes=[],selectedDate=null,selectedSlot=null,currentBookingCode=null;
+
+const $=id=>document.getElementById(id);
+const calendarDays=$('calendarDays'),monthTitle=$('monthTitle'),previousMonth=$('previousMonth'),nextMonth=$('nextMonth'),timesContent=$('timesContent'),selectedDateText=$('selectedDateText'),detailsPanel=$('detailsPanel'),bookingForm=$('bookingForm'),bookingButton=$('bookingButton'),errorMessage=$('errorMessage');
+
+function makeDateKey(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
+function formatDate(v){const [y,m,d]=v.split('-').map(Number);return new Intl.DateTimeFormat('fi-FI',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(y,m-1,d))}
+function cap(v){return v?v.charAt(0).toUpperCase()+v.slice(1):v}
+function time(v){return String(v||'').substring(0,5).replace(':','.')}
+function setStep(n){for(let i=1;i<=4;i++){const e=$(`step${i}`);e.className='progress-step '+(i<n?'done':i===n?'active':'');e.querySelector('b').textContent=i<n?'✓':i}}
+function showError(t){errorMessage.textContent=t;errorMessage.style.display='block';errorMessage.scrollIntoView({behavior:'smooth',block:'center'})}
+function hideError(){errorMessage.style.display='none';errorMessage.textContent=''}
+
+async function loadTimes(){
+ $('loading').style.display='block';$('calendarContent').style.display='none';hideError();
+ const {data,error}=await supabase.from('public_calendar_times')
+  .select('id,appointment_date,start_time,end_time,appointment_type,professional_name,location,is_available')
+  .eq('professional_name',PROFESSIONAL)
+  .gte('appointment_date',MIN_DATE).lte('appointment_date',MAX_DATE)
+  .order('appointment_date',{ascending:true}).order('start_time',{ascending:true});
+ $('loading').style.display='none';$('calendarContent').style.display='block';
+ if(error){console.error(error);showError('Vastaanottoaikojen lataaminen epäonnistui. Yritä päivittää sivu.');return}
+ calendarTimes=(data||[]).filter(x=>x.is_available===true);
+ renderCalendar();
+}
+
+function renderCalendar(){
+ const months=['Tammikuu','Helmikuu','Maaliskuu','Huhtikuu','Toukokuu','Kesäkuu','Heinäkuu','Elokuu','Syyskuu','Lokakuu','Marraskuu','Joulukuu'];
+ monthTitle.textContent=`${months[currentMonth]} ${currentYear}`;calendarDays.innerHTML='';
+ const first=new Date(currentYear,currentMonth,1),days=new Date(currentYear,currentMonth+1,0).getDate(),offset=(first.getDay()+6)%7;
+ for(let i=0;i<offset;i++){const e=document.createElement('div');e.className='day empty';calendarDays.appendChild(e)}
+ for(let d=1;d<=days;d++){
+  const key=makeDateKey(currentYear,currentMonth,d),free=calendarTimes.filter(x=>x.appointment_date===key);
+  const b=document.createElement('button');b.type='button';b.innerHTML=`<span class="day-number">${d}</span><small>${free.length?free.length+' vapaata':''}</small>`;
+  const inRange=key>=MIN_DATE&&key<=MAX_DATE;
+  if(inRange&&free.length){b.className='day available';b.onclick=()=>selectDate(key)}else{b.className='day unavailable';b.disabled=true}
+  if(selectedDate===key)b.classList.add('selected');calendarDays.appendChild(b);
+ }
+ previousMonth.disabled=currentYear===2026&&currentMonth===8;
+ nextMonth.disabled=currentYear===2026&&currentMonth===10;
+}
+
+function selectDate(date){
+ selectedDate=date;selectedSlot=null;detailsPanel.style.display='none';setStep(2);renderCalendar();renderTimes();
+}
+
+function renderTimes(){
+ selectedDateText.textContent=cap(formatDate(selectedDate));timesContent.innerHTML='';
+ const slots=calendarTimes.filter(x=>x.appointment_date===selectedDate&&x.is_available).sort((a,b)=>a.start_time.localeCompare(b.start_time));
+ if(!slots.length){timesContent.innerHTML='<div class="placeholder">Tälle päivälle ei ole enää vapaita aikoja.</div>';return}
+ slots.forEach(slot=>{
+  const b=document.createElement('button');b.type='button';b.className='time-btn';
+  b.innerHTML=`<span><span class="time-main">${time(slot.start_time)}–${time(slot.end_time)}</span><br><span class="time-meta">${slot.appointment_type||'Psykologin vastaanotto'}</span></span><strong>Valitse</strong>`;
+  b.onclick=()=>selectTime(slot,b);timesContent.appendChild(b);
+ });
+}
+
+function selectTime(slot,button){
+ selectedSlot=slot;document.querySelectorAll('.time-btn').forEach(x=>x.classList.remove('selected'));button.classList.add('selected');
+ $('selectedAppointment').textContent=`${cap(formatDate(slot.appointment_date))} klo ${time(slot.start_time)}–${time(slot.end_time)}`;
+ $('selectedProfessional').textContent=`${slot.professional_name} • ${slot.location}`;
+ detailsPanel.style.display='block';setStep(3);setTimeout(()=>detailsPanel.scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+
+previousMonth.onclick=()=>{if(currentYear===2026&&currentMonth===8)return;currentMonth--;if(currentMonth<0){currentMonth=11;currentYear--}selectedDate=null;selectedSlot=null;resetSelection();renderCalendar()};
+nextMonth.onclick=()=>{if(currentYear===2026&&currentMonth===10)return;currentMonth++;if(currentMonth>11){currentMonth=0;currentYear++}selectedDate=null;selectedSlot=null;resetSelection();renderCalendar()};
+function resetSelection(){selectedDateText.textContent='Valitse ensin päivä';timesContent.innerHTML='<div class="placeholder">Vapaat kellonajat tulevat tähän päivän valitsemisen jälkeen.</div>';detailsPanel.style.display='none';setStep(1)}
+$('changeTimeButton').onclick=()=>{$('calendarPanel').scrollIntoView({behavior:'smooth',block:'start'});setStep(selectedDate?2:1)};
+
+bookingForm.addEventListener('submit',async e=>{
+ e.preventDefault();hideError();if(!selectedSlot){showError('Valitse ensin vastaanottoaika.');return}
+ const studentName=$('studentName').value.trim(),studentGroup=$('studentGroup').value.trim(),studentEmail=$('studentEmail').value.trim(),studentPhone=$('studentPhone').value.trim();
+ if(!studentName){showError('Anna opiskelijan etu- ja sukunimi.');return}
+ bookingButton.disabled=true;bookingButton.textContent='Vahvistetaan varausta...';
+ const {data,error}=await supabase.rpc('book_appointment',{p_available_time_id:selectedSlot.id,p_student_name:studentName,p_student_group:studentGroup,p_student_email:studentEmail,p_student_phone:studentPhone,p_appointment_type:selectedSlot.appointment_type});
+ bookingButton.disabled=false;bookingButton.textContent='Vahvista ajanvaraus';
+ if(error){console.error(error);showError('Ajan varaaminen ei onnistunut. Valittu aika on voinut juuri varautua. Valitse toinen vastaanottoaika.');await loadTimes();return}
+ currentBookingCode=String(data||'').trim();
+ if(!currentBookingCode){showError('Ajanvaraus tehtiin, mutta varauskoodin näyttäminen epäonnistui.');return}
+ showSuccess();
+});
+
+function showSuccess(){
+ $('bookingGrid').querySelector('.side').style.display='none';$('calendarPanel').style.display='none';detailsPanel.style.display='none';$('successPanel').style.display='block';
+ $('bookingGrid').style.gridTemplateColumns='minmax(0,850px)';$('bookingGrid').style.justifyContent='center';setStep(4);
+ $('successDate').textContent=`${cap(formatDate(selectedSlot.appointment_date))} klo ${time(selectedSlot.start_time)}–${time(selectedSlot.end_time)}`;
+ $('successDetails').textContent=`${selectedSlot.professional_name} • ${selectedSlot.location}`;$('bookingCode').textContent=currentBookingCode;window.scrollTo({top:0,behavior:'smooth'});
+}
+$('copyCodeButton').onclick=async()=>{try{await navigator.clipboard.writeText(currentBookingCode);$('copyResult').textContent='Varauskoodi kopioitu.'}catch(e){$('copyResult').textContent='Kopiointi ei onnistunut. Kopioi koodi käsin.'}};
+$('newBookingButton').onclick=()=>location.reload();
+
+loadTimes();
+</script>
+</body>
+</html>
