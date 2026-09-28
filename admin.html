@@ -1,65 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Hallinta | Keski-Suomen hyvinvointialue</title>
-
-<link rel="icon" href="favicon.png">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>Henkilökunnan työpöytä | Keski-Suomen hyvinvointialue</title>
 
 <style>
 :root{
-    --blue:#28659a;
-    --blue-dark:#174d79;
-    --blue-light:#eaf3fa;
-    --blue-pale:#f4f8fb;
-
-    --green:#4f7c50;
-    --green-bg:#edf6eb;
-
-    --red:#a72a24;
-    --red-bg:#fff1ef;
-
-    --yellow:#8b6518;
-    --yellow-bg:#fff7e5;
-
-    --text:#222a31;
-    --muted:#66717c;
-    --border:#d4dbe1;
-    --border-dark:#bbc5ce;
-
-    --page:#f3f5f6;
+    --blue:#28679d;
+    --blue-dark:#164d78;
+    --blue-light:#eaf3f8;
+    --green:#b8d982;
+    --bg:#f4f6f7;
     --white:#fff;
-
-    --sidebar:255px;
+    --text:#17242b;
+    --muted:#65757c;
+    --border:#d6dfe3;
+    --danger:#a42b2b;
+    --danger-bg:#fbecec;
+    --success:#356c3a;
+    --success-bg:#eaf4e8;
+    --warning:#8a6410;
+    --warning-bg:#fff5d8;
 }
 
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
     min-height:100%;
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--page);
+    background:var(--bg);
     color:var(--text);
 }
 
-button,input,textarea,select{
+button,input,select,textarea{
     font:inherit;
 }
 
-button{
-    cursor:pointer;
-}
+button{cursor:pointer}
 
 .hidden{
     display:none!important;
 }
-
 
 /* =========================================================
    LOGIN
@@ -67,375 +51,407 @@ button{
 
 #loginView{
     min-height:100vh;
-    display:grid;
-    grid-template-columns:500px 1fr;
-    background:#fff;
+    background:white;
 }
 
-.login-left{
-    padding:60px;
+.login-accent{
+    height:8px;
+    background:var(--blue);
+}
+
+.login-header{
+    height:105px;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
-    border-right:1px solid var(--border);
+    align-items:center;
+    padding:20px 42px;
+    border-bottom:1px solid var(--border);
 }
 
-.login-logo{
-    width:185px;
-    margin-bottom:48px;
+.login-header img{
+    width:205px;
+    max-height:65px;
+    object-fit:contain;
+}
+
+.login-main{
+    min-height:calc(100vh - 113px);
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+}
+
+.login-information{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    background:#edf5f8;
+}
+
+.login-information-inner{
+    max-width:550px;
 }
 
 .login-eyebrow{
     color:var(--blue);
     font-weight:700;
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:.05em;
-    margin-bottom:8px;
+    margin-bottom:12px;
 }
 
-.login-left h1{
-    font-size:32px;
-    margin:0 0 12px;
+.login-information h1{
+    margin:0 0 20px;
+    color:var(--blue-dark);
+    font-size:38px;
+    font-weight:500;
 }
 
-.login-left p{
-    color:var(--muted);
-    line-height:1.55;
-    margin:0 0 30px;
-}
-
-.login-right{
-    background:
-        linear-gradient(rgba(23,77,121,.82),rgba(23,77,121,.82)),
-        url("ensihoito.jpg") center/cover;
-    color:#fff;
-    display:flex;
-    align-items:flex-end;
-    padding:70px;
-}
-
-.login-right h2{
-    font-size:40px;
-    margin:0 0 12px;
-}
-
-.login-right p{
-    max-width:600px;
-    line-height:1.6;
+.login-information p{
+    line-height:1.65;
     font-size:17px;
 }
 
-.form-field{
-    margin-bottom:17px;
+.login-unit{
+    margin-top:30px;
+    padding:20px;
+    background:#fff;
+    border-left:5px solid var(--blue);
 }
 
-.form-field label{
+.login-unit strong,
+.login-unit span{
     display:block;
+}
+
+.login-unit span{
+    margin-top:4px;
+    color:var(--muted);
+}
+
+.login-panel{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:55px;
+}
+
+.login-box{
+    width:100%;
+    max-width:390px;
+}
+
+.login-box h2{
+    margin:0;
+    color:var(--blue-dark);
+    font-size:27px;
+}
+
+.login-subtitle{
+    color:var(--muted);
+    margin:6px 0 27px;
+}
+
+.field{
+    margin-bottom:18px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:6px;
     font-size:13px;
     font-weight:700;
-    margin-bottom:6px;
 }
 
-.form-field input,
-.form-field textarea,
-.form-field select{
+.field input,
+.field select,
+.field textarea{
     width:100%;
-    border:1px solid var(--border-dark);
-    border-radius:4px;
     padding:10px 11px;
+    border:1px solid #8c9ba2;
+    border-radius:3px;
     background:#fff;
-    color:var(--text);
-    outline:none;
 }
 
-.form-field input:focus,
-.form-field textarea:focus,
-.form-field select:focus{
-    border-color:var(--blue);
-    box-shadow:0 0 0 2px rgba(40,101,154,.12);
+.field input,
+.field select{
+    height:44px;
 }
 
-.form-field textarea{
-    min-height:115px;
+.field textarea{
+    min-height:120px;
     resize:vertical;
-    line-height:1.5;
 }
 
-.btn{
-    border:1px solid transparent;
-    border-radius:4px;
-    padding:9px 15px;
-    min-height:39px;
+.login-button,
+.primary-button{
+    border:0;
+    border-radius:3px;
+    background:var(--blue);
+    color:#fff;
+    padding:11px 17px;
     font-weight:700;
 }
 
-.btn-primary{
-    background:var(--blue);
-    border-color:var(--blue);
-    color:#fff;
+.login-button{
+    width:100%;
+    min-height:47px;
 }
 
-.btn-primary:hover{
+.login-button:hover,
+.primary-button:hover{
     background:var(--blue-dark);
 }
 
-.btn-secondary{
-    background:#fff;
-    border-color:var(--border-dark);
-    color:var(--blue-dark);
-}
-
-.btn-secondary:hover{
-    border-color:var(--blue);
-    background:var(--blue-pale);
-}
-
-.btn-danger{
-    background:#fff;
-    border-color:#d5aaa6;
-    color:var(--red);
-}
-
-.btn-danger:hover{
-    background:var(--red-bg);
-    border-color:var(--red);
-}
-
-.btn-success{
-    background:#47754b;
-    color:#fff;
-    border-color:#47754b;
-}
-
-.btn-success:hover{
-    background:#355e39;
-}
-
-.btn-full{
-    width:100%;
-}
-
 .login-error{
-    margin-top:16px;
-    background:var(--red-bg);
-    border-left:4px solid var(--red);
-    padding:11px 13px;
-    color:#7c201b;
-    font-size:13px;
+    display:none;
+    margin-bottom:17px;
+    padding:12px;
+    color:var(--danger);
+    background:var(--danger-bg);
+    border-left:4px solid var(--danger);
 }
-
 
 /* =========================================================
-   ADMIN SHELL
+   HEADER
+========================================================= */
+
+#appView{
+    display:none;
+}
+
+.app-header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:78px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    background:white;
+    border-bottom:1px solid var(--border);
+}
+
+.header-logo{
+    width:245px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:12px 24px;
+    border-right:1px solid var(--border);
+}
+
+.header-logo img{
+    max-width:170px;
+    max-height:54px;
+}
+
+.header-context{
+    flex:1;
+    padding:0 25px;
+}
+
+.header-context-title{
+    color:var(--blue-dark);
+    font-weight:700;
+}
+
+.header-context-sub{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.header-user{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding-right:27px;
+}
+
+.avatar{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--blue-light);
+    color:var(--blue-dark);
+    font-weight:700;
+}
+
+.header-user-name{
+    font-size:14px;
+    font-weight:700;
+}
+
+.header-user-title{
+    margin-top:2px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================================================
+   SIDEBAR
 ========================================================= */
 
 .sidebar{
     position:fixed;
-    left:0;
-    top:0;
+    top:78px;
     bottom:0;
-    width:var(--sidebar);
-    background:#fff;
-    border-right:1px solid var(--border);
-    z-index:20;
+    left:0;
+    width:245px;
     display:flex;
     flex-direction:column;
+    background:white;
+    border-right:1px solid var(--border);
+    overflow-y:auto;
 }
 
-.sidebar-logo{
-    height:70px;
-    padding:15px 20px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-}
-
-.sidebar-logo img{
-    width:135px;
-}
-
-.sidebar-user{
-    padding:17px 20px;
+.sidebar-unit{
+    padding:20px 22px;
     border-bottom:1px solid var(--border);
 }
 
-.sidebar-user small{
-    color:var(--muted);
+.sidebar-unit strong{
     display:block;
+}
+
+.sidebar-unit span{
+    display:block;
+    margin-top:4px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.navigation{
+    padding:14px 0;
+}
+
+.nav-label{
+    padding:10px 21px 7px;
+    color:#829097;
     font-size:11px;
-    margin-bottom:4px;
-}
-
-.sidebar-user strong{
-    font-size:13px;
-}
-
-.nav{
-    flex:1;
-    overflow:auto;
-    padding:10px;
-}
-
-.nav-heading{
-    color:#7b858e;
-    font-size:10px;
     font-weight:700;
     text-transform:uppercase;
-    letter-spacing:.08em;
-    padding:16px 11px 7px;
 }
 
 .nav-button{
     width:100%;
+    min-height:45px;
+    padding:0 20px;
     border:0;
+    border-left:4px solid transparent;
     background:transparent;
-    color:#35414b;
-    padding:10px 11px;
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+    color:#26373f;
     text-align:left;
-    font-weight:600;
-    margin:1px 0;
 }
 
 .nav-button:hover{
-    background:#f2f5f7;
+    background:#f2f6f8;
 }
 
 .nav-button.active{
     background:var(--blue-light);
+    border-left-color:var(--blue);
     color:var(--blue-dark);
-    box-shadow:inset 3px 0 0 var(--blue);
+    font-weight:700;
 }
 
-.nav-button svg{
-    width:18px;
-    height:18px;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:1.8;
-}
-
-.sidebar-bottom{
-    padding:14px 20px;
+.sidebar-footer{
+    margin-top:auto;
     border-top:1px solid var(--border);
-    font-size:11px;
-    color:var(--muted);
-    line-height:1.5;
+    padding:12px 0;
 }
 
-.main{
-    margin-left:var(--sidebar);
+/* =========================================================
+   MAIN
+========================================================= */
+
+.app-main{
     min-height:100vh;
-}
-
-.topbar{
-    height:70px;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 27px;
-    position:sticky;
-    top:0;
-    z-index:15;
-}
-
-.topbar h1{
-    margin:0;
-    font-size:16px;
-}
-
-.topbar p{
-    margin:3px 0 0;
-    font-size:11px;
-    color:var(--muted);
-}
-
-.account{
-    display:flex;
-    align-items:center;
-    gap:11px;
-}
-
-.avatar{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    background:var(--blue);
-    color:#fff;
-    display:grid;
-    place-items:center;
-    font-weight:700;
-    font-size:12px;
-}
-
-.account-text strong{
-    display:block;
-    font-size:12px;
-}
-
-.account-text span{
-    font-size:11px;
-    color:var(--muted);
-}
-
-.logout{
-    border:1px solid var(--border);
-    background:#fff;
-    border-radius:4px;
-    padding:7px 10px;
-    font-size:12px;
-    font-weight:700;
+    margin-left:245px;
+    padding-top:78px;
 }
 
 .content{
-    padding:25px 27px 55px;
-    max-width:1700px;
+    max-width:1450px;
     margin:auto;
+    padding:30px;
 }
 
-.page-heading{
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.breadcrumb{
+    margin-bottom:9px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.page-header{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
     gap:20px;
-    margin-bottom:20px;
+    margin-bottom:24px;
 }
 
-.page-heading h2{
-    margin:0 0 6px;
-    font-size:27px;
-}
-
-.page-heading p{
+.page-header h1{
     margin:0;
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.5;
+    color:var(--blue-dark);
+    font-size:29px;
+    font-weight:500;
 }
 
+.page-description{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:14px;
+}
 
 /* =========================================================
-   CARDS
+   MESSAGES
+========================================================= */
+
+.message{
+    display:none;
+    margin-bottom:20px;
+    padding:13px 16px;
+    border-left:4px solid;
+}
+
+.message.error{
+    background:var(--danger-bg);
+    border-color:var(--danger);
+    color:var(--danger);
+}
+
+.message.success{
+    background:var(--success-bg);
+    border-color:var(--success);
+    color:var(--success);
+}
+
+/* =========================================================
+   CARDS / STATS
 ========================================================= */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin-bottom:18px;
+    gap:15px;
+    margin-bottom:24px;
 }
 
 .stat{
-    background:#fff;
+    padding:19px;
+    background:white;
     border:1px solid var(--border);
-    border-radius:5px;
-    padding:16px;
 }
 
 .stat-label{
@@ -444,82 +460,48 @@ button{
     font-weight:700;
 }
 
-.stat-number{
+.stat-value{
+    margin-top:6px;
+    color:var(--blue-dark);
     font-size:30px;
     font-weight:700;
-    margin-top:12px;
 }
 
-.stat-note{
-    color:var(--muted);
-    font-size:11px;
-    margin-top:5px;
-}
-
-.panel{
-    background:#fff;
+.card{
+    margin-bottom:22px;
+    background:white;
     border:1px solid var(--border);
-    border-radius:5px;
-    overflow:hidden;
 }
 
-.panel-header{
+.card-header{
     min-height:58px;
-    border-bottom:1px solid var(--border);
-    padding:14px 16px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:15px;
+    align-items:center;
+    gap:20px;
+    padding:13px 18px;
+    border-bottom:1px solid var(--border);
 }
 
-.panel-header h3{
+.card-header h2{
     margin:0;
-    font-size:15px;
+    color:var(--blue-dark);
+    font-size:18px;
 }
 
-.panel-header p{
-    margin:4px 0 0;
-    color:var(--muted);
-    font-size:11px;
+.card-body{
+    padding:18px;
 }
 
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1.45fr 1fr;
+    gap:22px;
+}
 
 /* =========================================================
-   FILTERS + TABLE
+   TABLES
 ========================================================= */
-
-.filters{
-    display:grid;
-    grid-template-columns:1.5fr .7fr .7fr .7fr auto;
-    gap:9px;
-    padding:13px 15px;
-    background:#fafbfc;
-    border-bottom:1px solid var(--border);
-}
-
-.filters label{
-    display:block;
-    font-size:10px;
-    color:var(--muted);
-    font-weight:700;
-    margin-bottom:4px;
-}
-
-.filters input,
-.filters select{
-    width:100%;
-    height:37px;
-    padding:0 9px;
-    border:1px solid var(--border-dark);
-    background:#fff;
-    border-radius:4px;
-}
-
-.filter-button{
-    display:flex;
-    align-items:flex-end;
-}
 
 .table-wrap{
     overflow:auto;
@@ -528,755 +510,462 @@ button{
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1050px;
 }
 
 th{
-    background:#f4f6f7;
-    color:#4e5963;
-    font-size:11px;
+    padding:11px 13px;
+    background:#f2f5f6;
+    border-bottom:1px solid var(--border);
+    color:#53636a;
     text-align:left;
-    padding:10px 11px;
-    border-bottom:1px solid var(--border-dark);
-    white-space:nowrap;
+    font-size:12px;
 }
 
 td{
-    padding:10px 11px;
-    border-bottom:1px solid #e5e9ec;
-    font-size:12px;
-    vertical-align:middle;
-}
-
-tbody tr:hover{
-    background:#f7fafc;
-}
-
-.student-name{
-    font-weight:700;
-    margin-bottom:3px;
-}
-
-.subtext{
-    font-size:10px;
-    color:var(--muted);
-}
-
-.status{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    padding:4px 7px;
-    border-radius:999px;
-    font-size:10px;
-    font-weight:700;
-}
-
-.status:before{
-    content:"";
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:currentColor;
-}
-
-.status-booked{
-    background:#e8f2fb;
-    color:#235f92;
-}
-
-.status-completed{
-    background:#e9f4e8;
-    color:#3d6b40;
-}
-
-.status-cancelled{
-    background:#f0f1f2;
-    color:#66717a;
-}
-
-.code{
-    font-family:Consolas,monospace;
-    white-space:nowrap;
-}
-
-.table-btn{
-    background:#fff;
-    color:var(--blue-dark);
-    border:1px solid var(--border-dark);
-    border-radius:4px;
-    padding:6px 9px;
-    font-size:11px;
-    font-weight:700;
-}
-
-.table-btn:hover{
-    border-color:var(--blue);
-    background:var(--blue-pale);
-}
-
-.empty{
-    padding:55px 20px;
-    text-align:center;
-    color:var(--muted);
-}
-
-
-/* =========================================================
-   DRAWER
-========================================================= */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(16,29,39,.38);
-    z-index:50;
-    opacity:0;
-    pointer-events:none;
-    transition:.18s;
-}
-
-.overlay.open{
-    opacity:1;
-    pointer-events:auto;
-}
-
-.drawer{
-    position:fixed;
-    right:0;
-    top:0;
-    bottom:0;
-    width:min(620px,100%);
-    background:#fff;
-    z-index:51;
-    transform:translateX(100%);
-    transition:.2s;
-    box-shadow:-15px 0 35px rgba(0,0,0,.16);
-    display:flex;
-    flex-direction:column;
-}
-
-.drawer.open{
-    transform:translateX(0);
-}
-
-.drawer-head{
-    padding:16px 19px;
+    padding:12px 13px;
     border-bottom:1px solid var(--border);
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.drawer-head h3{
-    margin:0;
-    font-size:18px;
-}
-
-.drawer-head p{
-    margin:4px 0 0;
-    color:var(--muted);
-    font-size:11px;
-}
-
-.drawer-body{
-    flex:1;
-    overflow:auto;
-    padding:18px;
-}
-
-.drawer-footer{
-    padding:12px 18px;
-    border-top:1px solid var(--border);
-    background:#fafbfc;
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.info-section{
-    border:1px solid var(--border);
-    border-radius:5px;
-    margin-bottom:14px;
-}
-
-.info-title{
-    background:#f4f6f7;
-    border-bottom:1px solid var(--border);
-    padding:10px 13px;
-    font-size:12px;
-    font-weight:700;
-}
-
-.info-content{
-    padding:13px;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:13px 17px;
-}
-
-.info-item label{
-    display:block;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:.04em;
-    font-weight:700;
-    color:var(--muted);
-    margin-bottom:4px;
-}
-
-.info-item div{
-    font-size:12px;
-    line-height:1.4;
-}
-
-.document-card{
-    border:1px solid var(--border);
-    padding:14px;
-    background:#fff;
-}
-
-.document-status{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:13px;
-}
-
-.document-status strong{
+    vertical-align:top;
     font-size:13px;
 }
 
-.document-status span{
-    font-size:11px;
-    color:var(--muted);
-}
-
-.document-actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-
-/* =========================================================
-   DOCUMENT WORKSPACE
-========================================================= */
-
-.document-workspace{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    background:#e4e7e9;
-    display:none;
-    flex-direction:column;
-}
-
-.document-workspace.open{
-    display:flex;
-}
-
-.document-toolbar{
-    height:68px;
-    flex:none;
-    background:#fff;
-    border-bottom:1px solid #cbd1d6;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 22px;
-    box-shadow:0 2px 8px rgba(0,0,0,.06);
-}
-
-.document-toolbar-left{
-    display:flex;
-    align-items:center;
-    gap:17px;
-}
-
-.document-toolbar-logo{
-    width:120px;
-}
-
-.document-toolbar-title strong{
-    display:block;
-    font-size:14px;
-}
-
-.document-toolbar-title span{
-    display:block;
-    color:var(--muted);
-    font-size:10px;
-    margin-top:3px;
-}
-
-.document-toolbar-actions{
-    display:flex;
-    gap:8px;
-}
-
-.document-scroll{
-    flex:1;
-    overflow:auto;
-    padding:38px 20px 70px;
-}
-
-.a4{
-    width:210mm;
-    min-height:297mm;
-    margin:0 auto 28px;
-    background:#fff;
-    box-shadow:0 4px 18px rgba(0,0,0,.13);
-    padding:17mm 18mm 18mm;
-    position:relative;
-}
-
-.a4-page-number{
-    position:absolute;
-    bottom:10mm;
-    right:18mm;
-    color:#6c747b;
-    font-size:9pt;
-}
-
-.doc-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:25px;
-    padding-bottom:10mm;
-    border-bottom:2px solid var(--blue);
-    margin-bottom:9mm;
-}
-
-.doc-logo{
-    width:47mm;
-}
-
-.doc-header-right{
-    text-align:right;
-    font-size:9pt;
-    color:#59636c;
-    line-height:1.5;
-}
-
-.doc-title{
-    margin-bottom:9mm;
-}
-
-.doc-title h1{
-    margin:0 0 2mm;
-    font-size:20pt;
-    color:#20282e;
-    letter-spacing:.01em;
-}
-
-.doc-title p{
-    margin:0;
-    color:#626d76;
-    font-size:9.5pt;
-}
-
-.doc-section{
-    margin-bottom:8mm;
-}
-
-.doc-section-heading{
-    color:var(--blue-dark);
-    font-size:10pt;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:.04em;
-    border-bottom:1px solid #aebac4;
-    padding-bottom:2mm;
-    margin-bottom:4mm;
-}
-
-.doc-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:4mm 10mm;
-}
-
-.doc-row{
-    min-width:0;
-}
-
-.doc-row.full{
-    grid-column:1/-1;
-}
-
-.doc-label{
-    font-size:8pt;
-    font-weight:700;
-    color:#5c6770;
-    margin-bottom:1.2mm;
-}
-
-.doc-value{
-    min-height:7mm;
-    border-bottom:1px solid #ccd3d8;
-    font-size:10pt;
-    padding:1.3mm 0;
-    overflow-wrap:anywhere;
-}
-
-.doc-input,
-.doc-textarea{
-    width:100%;
-    border:1px solid #aebbc5;
-    border-radius:2px;
-    background:#fff;
-    color:#20272d;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-.doc-input{
-    min-height:10mm;
-    padding:2.5mm 3mm;
-    font-size:10pt;
-}
-
-.doc-textarea{
-    padding:3mm;
-    resize:vertical;
-    min-height:35mm;
-    line-height:1.5;
-    font-size:10pt;
-}
-
-.doc-textarea.medium{
-    min-height:47mm;
-}
-
-.doc-textarea.large{
-    min-height:62mm;
-}
-
-.doc-input:focus,
-.doc-textarea:focus{
-    outline:2px solid rgba(40,101,154,.18);
-    border-color:var(--blue);
-}
-
-.doc-information{
-    padding:4mm;
-    background:#edf4f9;
-    border-left:3px solid var(--blue);
-    font-size:9pt;
-    line-height:1.55;
-    margin-bottom:7mm;
-}
-
-.signature-area{
-    margin-top:15mm;
-    padding-top:7mm;
-    border-top:1px solid #aeb8c0;
-}
-
-.signature-name{
-    font-weight:700;
-    font-size:10pt;
-}
-
-.signature-title,
-.signature-org{
-    font-size:9pt;
-    color:#58636c;
-    margin-top:1mm;
-}
-
-.doc-footer{
-    position:absolute;
-    left:18mm;
-    right:18mm;
-    bottom:10mm;
-    border-top:1px solid #d4dade;
-    padding-top:3mm;
-    font-size:7.5pt;
-    color:#6a737b;
-    display:flex;
-    justify-content:space-between;
-}
-
-
-/* =========================================================
-   GENERIC ADMIN VIEWS
-========================================================= */
-
-.two-column{
-    display:grid;
-    grid-template-columns:350px 1fr;
-    gap:17px;
-}
-
-.admin-form{
-    padding:16px;
-}
-
-.list-row{
-    padding:12px 15px;
-    border-bottom:1px solid #e5e9ec;
-    display:grid;
-    grid-template-columns:130px 1fr 130px auto;
-    align-items:center;
-    gap:12px;
-    font-size:12px;
-}
-
-.list-row:hover{
+tbody tr:hover{
     background:#f8fafb;
 }
 
-.feedback-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:13px;
+.table-button,
+.secondary-button,
+.danger-button{
+    border-radius:3px;
+    font-weight:700;
+}
+
+.table-button{
+    padding:6px 9px;
+    border:1px solid var(--blue);
+    background:#fff;
+    color:var(--blue-dark);
+    font-size:12px;
+}
+
+.secondary-button{
+    padding:10px 15px;
+    border:1px solid var(--blue);
+    background:#fff;
+    color:var(--blue-dark);
+}
+
+.danger-button{
+    padding:9px 13px;
+    border:1px solid var(--danger);
+    background:#fff;
+    color:var(--danger);
+}
+
+.danger-button:hover{
+    background:var(--danger-bg);
+}
+
+.button-row{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.badge.booked{
+    background:#e4f1e1;
+    color:#376936;
+}
+
+.badge.completed{
+    background:#e7eef6;
+    color:#315b86;
+}
+
+.badge.cancelled{
+    background:#f1eeee;
+    color:#715c5c;
+}
+
+.badge.draft{
+    background:var(--warning-bg);
+    color:var(--warning);
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+    display:flex;
+    gap:12px;
+    align-items:end;
+    flex-wrap:wrap;
     margin-bottom:18px;
 }
 
-.feedback-card{
-    border:1px solid var(--border);
-    background:#fff;
-    padding:17px;
+.toolbar .field{
+    margin:0;
+    min-width:180px;
 }
 
-.feedback-card small{
-    color:var(--muted);
-    font-weight:700;
+.toolbar .search{
+    flex:1;
+    min-width:240px;
 }
 
-.feedback-card strong{
-    display:block;
-    font-size:30px;
-    margin-top:10px;
+/* =========================================================
+   ROLE PANEL
+========================================================= */
+
+.role-banner{
+    padding:20px 22px;
+    margin-bottom:22px;
+    background:#edf5f8;
+    border-left:5px solid var(--blue);
 }
 
-.nps-scale{
+.role-banner h2{
+    margin:0 0 7px;
+    color:var(--blue-dark);
+    font-size:20px;
+}
+
+.role-banner p{
+    margin:0;
+    line-height:1.55;
+}
+
+.role-grid{
     display:grid;
-    grid-template-columns:repeat(11,1fr);
-    gap:5px;
-    margin-top:15px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-.nps-cell{
-    text-align:center;
+.role-card{
+    padding:18px;
+    border:1px solid var(--border);
+    background:white;
 }
 
-.nps-bar-area{
-    height:120px;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
+.role-card h3{
+    margin:0 0 7px;
+    color:var(--blue-dark);
 }
 
-.nps-bar{
-    width:70%;
-    background:var(--blue);
-    min-height:2px;
+.role-card p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.5;
+    font-size:13px;
 }
 
-.nps-label{
-    margin-top:6px;
-    font-size:10px;
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:11px 17px;
+}
+
+.info-label{
+    color:var(--muted);
+    font-size:12px;
     font-weight:700;
 }
 
+.student-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.student-card{
+    padding:17px;
+    border:1px solid var(--border);
+    background:white;
+}
+
+.student-card h3{
+    margin:0 0 6px;
+    color:var(--blue-dark);
+}
+
+.student-card p{
+    margin:4px 0;
+    color:var(--muted);
+    font-size:13px;
+}
 
 /* =========================================================
-   TOAST
+   NOTE EDITOR
 ========================================================= */
 
-.toast{
+.note-editor{
+    max-width:1000px;
+}
+
+.note-heading{
+    padding:22px;
+    background:#edf5f8;
+    border-bottom:1px solid var(--border);
+}
+
+.note-heading h2{
+    margin:0;
+    color:var(--blue-dark);
+}
+
+.note-heading p{
+    margin:6px 0 0;
+    color:var(--muted);
+}
+
+.note-section{
+    padding:20px;
+    border-bottom:1px solid var(--border);
+}
+
+.note-section h3{
+    margin:0 0 16px;
+    color:var(--blue-dark);
+    font-size:17px;
+}
+
+.note-actions{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:20px;
+}
+
+.note-list-item{
+    padding:16px;
+    border-bottom:1px solid var(--border);
+}
+
+.note-list-item:last-child{
+    border-bottom:0;
+}
+
+.note-list-item strong{
+    color:var(--blue-dark);
+}
+
+.note-list-item p{
+    white-space:pre-wrap;
+    line-height:1.5;
+}
+
+/* =========================================================
+   SLOTS
+========================================================= */
+
+.slot-form{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1.4fr auto;
+    gap:13px;
+    align-items:end;
+}
+
+.slot-form .field{
+    margin:0;
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-heading{
+    display:flex;
+    align-items:center;
+    gap:17px;
+    margin-bottom:24px;
+}
+
+.profile-avatar{
+    width:65px;
+    height:65px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:var(--blue-light);
+    color:var(--blue-dark);
+    font-size:21px;
+    font-weight:700;
+}
+
+.profile-heading h2{
+    margin:0 0 4px;
+}
+
+.profile-heading p{
+    margin:0;
+    color:var(--muted);
+}
+
+.empty{
+    padding:28px 18px;
+    text-align:center;
+    color:var(--muted);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
     position:fixed;
-    bottom:20px;
-    right:20px;
-    z-index:200;
-    background:#20282e;
-    color:#fff;
-    padding:12px 15px;
-    border-radius:4px;
-    font-size:12px;
-    min-width:270px;
-    max-width:420px;
-    opacity:0;
-    transform:translateY(10px);
-    pointer-events:none;
-    transition:.18s;
+    inset:0;
+    z-index:500;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:rgba(17,32,42,.52);
 }
 
-.toast.show{
-    opacity:1;
-    transform:none;
+.modal.open{
+    display:flex;
 }
 
-.toast.error{
-    background:#85231e;
+.modal-panel{
+    width:min(950px,100%);
+    max-height:92vh;
+    overflow:auto;
+    background:white;
+    box-shadow:0 15px 50px rgba(0,0,0,.2);
 }
 
-
-/* =========================================================
-   PRINT
-========================================================= */
-
-@media print{
-    body{
-        background:#fff;
-    }
-
-    body *{
-        visibility:hidden!important;
-    }
-
-    #documentWorkspace,
-    #documentWorkspace *{
-        visibility:visible!important;
-    }
-
-    #documentWorkspace{
-        position:static;
-        display:block;
-        background:#fff;
-    }
-
-    .document-toolbar{
-        display:none!important;
-    }
-
-    .document-scroll{
-        padding:0;
-        overflow:visible;
-    }
-
-    .a4{
-        width:210mm;
-        height:297mm;
-        min-height:297mm;
-        margin:0;
-        box-shadow:none;
-        page-break-after:always;
-        break-after:page;
-    }
-
-    .a4:last-child{
-        page-break-after:auto;
-        break-after:auto;
-    }
-
-    .doc-input,
-    .doc-textarea{
-        border:0;
-        padding:0;
-        resize:none;
-        overflow:visible;
-    }
-
-    @page{
-        size:A4;
-        margin:0;
-    }
+.modal-header{
+    position:sticky;
+    top:0;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:17px 20px;
+    background:white;
+    border-bottom:1px solid var(--border);
 }
 
+.modal-header h2{
+    margin:0;
+    color:var(--blue-dark);
+}
+
+.close-button{
+    border:0;
+    background:transparent;
+    color:var(--blue-dark);
+    font-weight:700;
+}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
 @media(max-width:1100px){
-    .stats{
+    .stats,
+    .role-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .filters{
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .student-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .two-column{
-        grid-template-columns:1fr;
-    }
-
-    .feedback-grid{
-        grid-template-columns:1fr;
+    .slot-form{
+        grid-template-columns:1fr 1fr;
     }
 }
 
 @media(max-width:800px){
-    :root{
-        --sidebar:0px;
+    .login-main{
+        grid-template-columns:1fr;
+    }
+
+    .login-information{
+        display:none;
+    }
+
+    .login-panel{
+        padding:35px 20px;
+    }
+
+    .app-header{
+        position:static;
+    }
+
+    .header-logo{
+        width:auto;
+        border:0;
+    }
+
+    .header-context{
+        display:none;
     }
 
     .sidebar{
+        position:static;
+        width:100%;
+    }
+
+    .sidebar-unit,
+    .nav-label,
+    .sidebar-footer{
         display:none;
     }
 
-    .main{
-        margin-left:0;
+    .navigation{
+        display:flex;
+        overflow:auto;
+    }
+
+    .nav-button{
+        min-width:max-content;
+        border-left:0;
+        border-bottom:4px solid transparent;
+    }
+
+    .nav-button.active{
+        border-bottom-color:var(--blue);
+    }
+
+    .app-main{
+        margin:0;
+        padding:0;
     }
 
     .content{
-        padding:18px 12px 40px;
+        padding:20px 14px;
     }
 
-    #loginView{
+    .stats,
+    .role-grid,
+    .student-grid,
+    .slot-form{
         grid-template-columns:1fr;
-    }
-
-    .login-right{
-        display:none;
-    }
-
-    .login-left{
-        padding:35px 22px;
-    }
-
-    .account-text{
-        display:none;
-    }
-
-    .page-heading{
-        flex-direction:column;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
-    }
-
-    .document-scroll{
-        padding:20px 5px 50px;
-    }
-
-    .a4{
-        transform-origin:top center;
-        width:210mm;
-    }
-
-    .document-toolbar-logo{
-        display:none;
-    }
-}
-
-@media(max-width:550px){
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .filters{
-        grid-template-columns:1fr;
-    }
-
-    .document-toolbar{
-        height:auto;
-        min-height:68px;
-        padding:10px;
-        align-items:flex-start;
-    }
-
-    .document-toolbar-actions{
-        flex-wrap:wrap;
-        justify-content:flex-end;
     }
 }
 </style>
@@ -1288,336 +977,344 @@ tbody tr:hover{
      LOGIN
 ======================================================= -->
 
-<section id="loginView">
+<div id="loginView">
 
-    <div class="login-left">
+    <div class="login-accent"></div>
 
-        <img
-            src="hyvaks-logo.png"
-            alt="Keski-Suomen hyvinvointialue"
-            class="login-logo"
-        >
+    <header class="login-header">
+        <img src="hyvaks-logo.png" alt="Keski-Suomen hyvinvointialue">
+    </header>
 
-        <div class="login-eyebrow">
-            Hallintajärjestelmä
-        </div>
+    <div class="login-main">
 
-        <h1>Kirjaudu hallintaan</h1>
+        <section class="login-information">
 
-        <p>
-            Hallintanäkymä on tarkoitettu palvelun henkilöstölle.
-            Kirjaudu henkilökohtaisella käyttäjätunnuksellasi.
-        </p>
+            <div class="login-information-inner">
 
-        <form id="loginForm">
+                <div class="login-eyebrow">
+                    Henkilökunnan palvelu
+                </div>
 
-            <div class="form-field">
-                <label>Sähköpostiosoite</label>
-                <input
-                    id="loginEmail"
-                    type="email"
-                    autocomplete="username"
-                    required
-                >
+                <h1>
+                    Opiskeluhuollon työpöytä
+                </h1>
+
+                <p>
+                    Henkilökunnan työpöydällä käsitellään opiskeluhuollon
+                    ajanvarauksia, vastaanottoaikoja ja käyntikirjauksia.
+                    Näytettävät toiminnot määräytyvät kirjautuneen
+                    työntekijän tehtävän mukaan.
+                </p>
+
+                <div class="login-unit">
+                    <strong>Muuramen lukio</strong>
+                    <span>Opiskeluhuolto</span>
+                </div>
+
             </div>
 
-            <div class="form-field">
-                <label>Salasana</label>
-                <input
-                    id="loginPassword"
-                    type="password"
-                    autocomplete="current-password"
-                    required
-                >
-            </div>
+        </section>
 
-            <button
-                id="loginButton"
-                class="btn btn-primary btn-full"
-                type="submit"
-            >
-                Kirjaudu
-            </button>
+        <section class="login-panel">
 
-        </form>
+            <form id="loginForm" class="login-box">
 
-        <div
-            id="loginError"
-            class="login-error hidden"
-        ></div>
+                <h2>Kirjaudu työpöydälle</h2>
+
+                <div class="login-subtitle">
+                    Käytä henkilökunnan käyttäjätunnusta.
+                </div>
+
+                <div id="loginError" class="login-error"></div>
+
+                <div class="field">
+                    <label for="email">Käyttäjätunnus</label>
+                    <input
+                        id="email"
+                        type="email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="password">Salasana</label>
+                    <input
+                        id="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button class="login-button" type="submit">
+                    Kirjaudu
+                </button>
+
+            </form>
+
+        </section>
 
     </div>
-
-    <div class="login-right">
-        <div>
-            <h2>Palveluiden hallinta</h2>
-            <p>
-                Ajanvaraukset, käyntiasiakirjat,
-                vastaanottoajat ja verkkopalveluiden ylläpito
-                yhdessä hallintanäkymässä.
-            </p>
-        </div>
-    </div>
-
-</section>
+</div>
 
 
 <!-- =======================================================
-     ADMIN
+     APPLICATION
 ======================================================= -->
 
-<section id="adminView" class="hidden">
+<div id="appView">
 
-<aside class="sidebar">
+<header class="app-header">
 
-    <div class="sidebar-logo">
-        <img src="hyvaks-logo.png" alt="">
+    <div class="header-logo">
+        <img src="hyvaks-logo.png" alt="Keski-Suomen hyvinvointialue">
     </div>
 
-    <div class="sidebar-user">
-        <small>Kirjautunut käyttäjä</small>
-        <strong id="sidebarName">–</strong>
+    <div class="header-context">
+        <div class="header-context-title">
+            Opiskeluhuollon henkilökunnan työpöytä
+        </div>
+        <div class="header-context-sub">
+            Muuramen lukio
+        </div>
     </div>
 
-    <nav class="nav">
+    <div class="header-user">
 
-        <div class="nav-heading">
-            Vastaanotto
+        <div class="avatar" id="headerAvatar">–</div>
+
+        <div>
+            <div class="header-user-name" id="headerName">–</div>
+            <div class="header-user-title" id="headerTitle">–</div>
         </div>
-
-        <button class="nav-button active" data-view="appointments">
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="5" width="18" height="16" rx="2"/>
-                <path d="M7 3v4M17 3v4M3 10h18"/>
-            </svg>
-            Ajanvaraukset
-        </button>
-
-        <button class="nav-button" data-view="slots">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 7v5l3 2"/>
-            </svg>
-            Vastaanottoajat
-        </button>
-
-
-        <div class="nav-heading">
-            Sisältö
-        </div>
-
-        <button class="nav-button" data-view="news">
-            <svg viewBox="0 0 24 24">
-                <path d="M4 5h16v14H4z"/>
-                <path d="M7 8h6M7 12h10M7 16h10"/>
-            </svg>
-            Uutiset ja tapahtumat
-        </button>
-
-
-        <div class="nav-heading">
-            Asiakaspalaute
-        </div>
-
-        <button class="nav-button" data-view="feedback">
-            <svg viewBox="0 0 24 24">
-                <path d="M4 4h16v12H8l-4 4z"/>
-                <path d="M8 9h8M8 12h5"/>
-            </svg>
-            Arvostelut ja NPS
-        </button>
-
-
-        <div class="nav-heading">
-            Järjestelmä
-        </div>
-
-        <button class="nav-button" data-view="users">
-            <svg viewBox="0 0 24 24">
-                <circle cx="9" cy="8" r="3"/>
-                <path d="M3 20c0-4 2-7 6-7s6 3 6 7"/>
-                <path d="M17 11a3 3 0 1 0 0-6"/>
-            </svg>
-            Henkilöstö
-        </button>
-
-    </nav>
-
-    <div class="sidebar-bottom">
-        Keski-Suomen hyvinvointialue<br>
-        Hallintajärjestelmä
-    </div>
-
-</aside>
-
-
-<main class="main">
-
-<header class="topbar">
-
-    <div>
-        <h1 id="topTitle">Ajanvarausten hallinta</h1>
-        <p id="topSubtitle">Opiskeluterveydenhuolto</p>
-    </div>
-
-    <div class="account">
-
-        <div class="avatar" id="avatar">
-            SR
-        </div>
-
-        <div class="account-text">
-            <strong id="staffName">–</strong>
-            <span id="staffTitle">–</span>
-        </div>
-
-        <button
-            class="logout"
-            id="logoutButton"
-        >
-            Kirjaudu ulos
-        </button>
 
     </div>
 
 </header>
 
 
+<aside class="sidebar">
+
+    <div class="sidebar-unit">
+        <strong id="sidebarName">–</strong>
+        <span id="sidebarTitle">–</span>
+    </div>
+
+    <nav class="navigation">
+
+        <div class="nav-label">Työpöytä</div>
+
+        <button class="nav-button active" data-page="dashboard">
+            Etusivu
+        </button>
+
+        <button class="nav-button" data-page="appointments">
+            Ajanvaraukset
+        </button>
+
+        <button class="nav-button" data-page="slots">
+            Vastaanottoajat
+        </button>
+
+        <button class="nav-button" data-page="students">
+            Opiskelijat
+        </button>
+
+        <button class="nav-button" data-page="notes">
+            Käyntikirjaukset
+        </button>
+
+        <!-- VAIN PSYKOLOGI -->
+        <div class="role-psychologist hidden">
+            <div class="nav-label">Psykologipalvelut</div>
+
+            <button class="nav-button" data-page="psychologist">
+                Psykologin työ
+            </button>
+        </div>
+
+        <!-- VAIN KURAATTORI -->
+        <div class="role-curator hidden">
+            <div class="nav-label">Kuraattoripalvelut</div>
+
+            <button class="nav-button" data-page="curator">
+                Kuraattorin työ
+            </button>
+        </div>
+
+        <!-- VAIN TERVEYDENHOITAJA -->
+        <div class="role-nurse hidden">
+            <div class="nav-label">Terveyspalvelut</div>
+
+            <button class="nav-button" data-page="news">
+                Uutiset ja tapahtumat
+            </button>
+
+            <button class="nav-button" data-page="feedback">
+                Arvostelut ja NPS
+            </button>
+        </div>
+
+        <div class="nav-label">Käyttäjä</div>
+
+        <button class="nav-button" data-page="profile">
+            Omat tiedot
+        </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+        <button id="logoutButton" class="nav-button">
+            Kirjaudu ulos
+        </button>
+    </div>
+
+</aside>
+
+
+<main class="app-main">
+
 <div class="content">
+
+    <div id="globalError" class="message error"></div>
+    <div id="globalSuccess" class="message success"></div>
+
+
+<!-- =======================================================
+     DASHBOARD
+======================================================= -->
+
+<section id="page-dashboard" class="page active">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Etusivu
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Hyvää päivää, <span id="welcomeName">–</span></h1>
+            <div class="page-description" id="dashboardDescription"></div>
+        </div>
+
+        <button class="secondary-button" id="refreshButton">
+            Päivitä tiedot
+        </button>
+    </div>
+
+    <div id="roleBanner" class="role-banner"></div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-label">TULEVAT AJANVARAUKSET</div>
+            <div class="stat-value" id="statUpcoming">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">TÄMÄN PÄIVÄN AJAT</div>
+            <div class="stat-value" id="statToday">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">LUONNOSKIRJAUKSET</div>
+            <div class="stat-value" id="statDrafts">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">VAPAAT AJAT</div>
+            <div class="stat-value" id="statFree">0</div>
+        </div>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>Seuraavat vastaanotot</h2>
+            </div>
+
+            <div class="card-body" id="dashboardAppointments"></div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-header">
+                <h2>Oma työtilanne</h2>
+            </div>
+
+            <div class="card-body" id="dashboardWork"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 <!-- =======================================================
      APPOINTMENTS
 ======================================================= -->
 
-<section id="view-appointments">
+<section id="page-appointments" class="page">
 
-    <div class="page-heading">
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Ajanvaraukset
+    </div>
 
+    <div class="page-header">
         <div>
-            <h2>Ajanvaraukset</h2>
-            <p>
-                Tarkastele ajanvarauksia ja laadi
-                vastaanottokäynnin asiakirjat.
-            </p>
+            <h1>Ajanvaraukset</h1>
+            <div class="page-description">
+                Sinulle varatut opiskeluhuollon vastaanottoajat.
+            </div>
         </div>
-
-        <button
-            class="btn btn-secondary"
-            onclick="loadAppointments()"
-        >
-            Päivitä tiedot
-        </button>
-
     </div>
 
+    <div class="card">
 
-    <div class="stats">
+        <div class="card-body">
 
-        <div class="stat">
-            <div class="stat-label">Varatut</div>
-            <div class="stat-number" id="statBooked">0</div>
-            <div class="stat-note">Voimassa olevat varaukset</div>
-        </div>
+            <div class="toolbar">
 
-        <div class="stat">
-            <div class="stat-label">Tänään</div>
-            <div class="stat-number" id="statToday">0</div>
-            <div class="stat-note">Tämän päivän vastaanotot</div>
-        </div>
+                <div class="field search">
+                    <label>Hae opiskelijaa</label>
+                    <input id="appointmentSearch" type="search">
+                </div>
 
-        <div class="stat">
-            <div class="stat-label">Valmiit</div>
-            <div class="stat-number" id="statCompleted">0</div>
-            <div class="stat-note">Valmiiksi merkityt käynnit</div>
-        </div>
+                <div class="field">
+                    <label>Tila</label>
+                    <select id="appointmentStatus">
+                        <option value="">Kaikki</option>
+                        <option value="booked">Varattu</option>
+                        <option value="completed">Valmis</option>
+                        <option value="cancelled">Peruttu</option>
+                    </select>
+                </div>
 
-        <div class="stat">
-            <div class="stat-label">Perutut</div>
-            <div class="stat-number" id="statCancelled">0</div>
-            <div class="stat-note">Perutut ajanvaraukset</div>
-        </div>
-
-    </div>
-
-
-    <div class="panel">
-
-        <div class="panel-header">
-            <div>
-                <h3>Varausluettelo</h3>
-                <p id="appointmentCount">0 varausta</p>
-            </div>
-        </div>
-
-
-        <div class="filters">
-
-            <div>
-                <label>Haku</label>
-                <input
-                    id="searchInput"
-                    placeholder="Nimi, ryhmä tai varauskoodi"
-                >
             </div>
 
-            <div>
-                <label>Tila</label>
-                <select id="statusFilter">
-                    <option value="">Kaikki</option>
-                    <option value="booked">Varattu</option>
-                    <option value="completed">Valmis</option>
-                    <option value="cancelled">Peruttu</option>
-                </select>
-            </div>
+            <div class="table-wrap">
 
-            <div>
-                <label>Alkaen</label>
-                <input id="dateFrom" type="date">
-            </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Päivä</th>
+                        <th>Aika</th>
+                        <th>Opiskelija</th>
+                        <th>Vastaanotto</th>
+                        <th>Tila</th>
+                        <th></th>
+                    </tr>
+                    </thead>
 
-            <div>
-                <label>Päättyen</label>
-                <input id="dateTo" type="date">
-            </div>
+                    <tbody id="appointmentsTable"></tbody>
 
-            <div class="filter-button">
-                <button
-                    class="btn btn-secondary"
-                    id="clearFilters"
-                >
-                    Tyhjennä
-                </button>
-            </div>
+                </table>
 
-        </div>
-
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-                <tr>
-                    <th>Päivä</th>
-                    <th>Opiskelija</th>
-                    <th>Ryhmä</th>
-                    <th>Palvelu</th>
-                    <th>Tila</th>
-                    <th>Asiakirja</th>
-                    <th>Varauskoodi</th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody id="appointmentsBody"></tbody>
-
-            </table>
-
-            <div
-                id="appointmentsEmpty"
-                class="empty hidden"
-            >
-                Ei näytettäviä ajanvarauksia.
             </div>
 
         </div>
@@ -1631,86 +1328,52 @@ tbody tr:hover{
      SLOTS
 ======================================================= -->
 
-<section id="view-slots" class="hidden">
+<section id="page-slots" class="page">
 
-    <div class="page-heading">
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Vastaanottoajat
+    </div>
+
+    <div class="page-header">
         <div>
-            <h2>Vastaanottoajat</h2>
-            <p>
-                Hallitse ajanvarauksessa näkyviä
-                vastaanottoaikoja.
-            </p>
+            <h1>Vastaanottoajat</h1>
+            <div class="page-description">
+                Hallitse omia ajanvaraukseen julkaistuja vastaanottoaikojasi.
+            </div>
         </div>
     </div>
 
-    <div class="two-column">
+    <div class="card">
 
-        <div class="panel">
+        <div class="card-header">
+            <h2>Lisää vastaanottoaika</h2>
+        </div>
 
-            <div class="panel-header">
-                <div>
-                    <h3>Lisää vastaanottoaika</h3>
-                    <p>Uusi vapaa aika</p>
-                </div>
-            </div>
+        <div class="card-body">
 
-            <form
-                id="slotForm"
-                class="admin-form"
-            >
+            <form id="slotForm" class="slot-form">
 
-                <div class="form-field">
+                <div class="field">
                     <label>Päivämäärä</label>
-                    <input
-                        id="slotDate"
-                        type="date"
-                        required
-                    >
+                    <input id="slotDate" type="date" required>
                 </div>
 
-                <div class="form-field">
+                <div class="field">
                     <label>Alkaa</label>
-                    <input
-                        id="slotStart"
-                        type="time"
-                        required
-                    >
+                    <input id="slotStart" type="time" required>
                 </div>
 
-                <div class="form-field">
+                <div class="field">
                     <label>Päättyy</label>
-                    <input
-                        id="slotEnd"
-                        type="time"
-                        required
-                    >
+                    <input id="slotEnd" type="time" required>
                 </div>
 
-                <div class="form-field">
-                    <label>Palvelu</label>
-                    <input
-                        id="slotType"
-                        value="Terveydenhoitajan vastaanotto"
-                    >
+                <div class="field">
+                    <label>Vastaanoton tyyppi</label>
+                    <input id="slotType" required>
                 </div>
 
-                <div class="form-field">
-                    <label>Ammattilainen</label>
-                    <input
-                        id="slotProfessional"
-                        value="Sanna Rantanen"
-                    >
-                </div>
-
-                <div class="form-field">
-                    <label>Paikka</label>
-                    <input
-                        id="slotLocation"
-                        value="Muuramen lukio"
-                    >
-                </div>
-
-                <button class="btn btn-primary btn-full">
+                <button class="primary-button" type="submit">
                     Lisää aika
                 </button>
 
@@ -1718,24 +1381,34 @@ tbody tr:hover{
 
         </div>
 
+    </div>
 
-        <div class="panel">
+    <div class="card">
 
-            <div class="panel-header">
-                <div>
-                    <h3>Vastaanottoajat</h3>
-                    <p id="slotCount">0 aikaa</p>
-                </div>
+        <div class="card-header">
+            <h2>Julkaistut ajat</h2>
+        </div>
 
-                <button
-                    class="btn btn-secondary"
-                    onclick="loadSlots()"
-                >
-                    Päivitä
-                </button>
+        <div class="card-body">
+
+            <div class="table-wrap">
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Päivä</th>
+                        <th>Aika</th>
+                        <th>Vastaanotto</th>
+                        <th>Tila</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="slotsTable"></tbody>
+
+                </table>
+
             </div>
-
-            <div id="slotList"></div>
 
         </div>
 
@@ -1745,221 +1418,317 @@ tbody tr:hover{
 
 
 <!-- =======================================================
-     NEWS
+     STUDENTS
 ======================================================= -->
 
-<section id="view-news" class="hidden">
+<section id="page-students" class="page">
 
-    <div class="page-heading">
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Opiskelijat
+    </div>
+
+    <div class="page-header">
         <div>
-            <h2>Uutiset ja tapahtumat</h2>
-            <p>
-                Hallitse verkkopalvelun uutis- ja
-                tapahtumasisältöä.
-            </p>
+            <h1>Opiskelijat</h1>
+            <div class="page-description">
+                Opiskelijat, joilla on tai on ollut ajanvaraus vastaanotollesi.
+            </div>
         </div>
     </div>
 
+    <div id="studentGrid" class="student-grid"></div>
 
-    <div class="two-column">
+</section>
 
-        <div class="panel">
 
-            <div class="panel-header">
-                <div>
-                    <h3>Uusi julkaisu</h3>
-                    <p>Lisää uutinen tai tapahtuma</p>
-                </div>
+<!-- =======================================================
+     NOTES
+======================================================= -->
+
+<section id="page-notes" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Käyntikirjaukset
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Käyntikirjaukset</h1>
+            <div class="page-description">
+                Vastaanottoihin liittyvät omat kirjauksesi.
             </div>
+        </div>
+    </div>
 
-            <form id="newsForm" class="admin-form">
+    <div class="card">
+        <div id="notesList"></div>
+    </div>
 
-                <input id="newsId" type="hidden">
+</section>
 
-                <div class="form-field">
+
+<!-- =======================================================
+     PSYCHOLOGIST ONLY
+======================================================= -->
+
+<section id="page-psychologist" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Psykologipalvelut
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Psykologin työ</h1>
+            <div class="page-description">
+                Psykologin vastaanottotyön yhteenveto.
+            </div>
+        </div>
+    </div>
+
+    <div class="role-banner">
+        <h2>Psykologipalvelut</h2>
+        <p>
+            Tässä näkymässä ovat psykologin vastaanottoihin,
+            käyntikirjauksiin ja sovittuihin jatkokäynteihin liittyvät tiedot.
+        </p>
+    </div>
+
+    <div class="role-grid">
+
+        <div class="role-card">
+            <h3>Tulevat vastaanotot</h3>
+            <p id="psychUpcoming">0 vastaanottoa</p>
+        </div>
+
+        <div class="role-card">
+            <h3>Keskeneräiset kirjaukset</h3>
+            <p id="psychDrafts">0 kirjausta</p>
+        </div>
+
+        <div class="role-card">
+            <h3>Jatkokäynnit</h3>
+            <p id="psychFollowups">0 kirjausta, joissa jatkosuunnitelma</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     CURATOR ONLY
+======================================================= -->
+
+<section id="page-curator" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Kuraattoripalvelut
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Kuraattorin työ</h1>
+            <div class="page-description">
+                Kuraattorin opiskeluhuoltotyön yhteenveto.
+            </div>
+        </div>
+    </div>
+
+    <div class="role-banner">
+        <h2>Kuraattoripalvelut</h2>
+        <p>
+            Tässä näkymässä ovat kuraattorin vastaanotot,
+            tukitoimiin liittyvät kirjaukset ja sovitut jatkotoimet.
+        </p>
+    </div>
+
+    <div class="role-grid">
+
+        <div class="role-card">
+            <h3>Tulevat tapaamiset</h3>
+            <p id="curatorUpcoming">0 tapaamista</p>
+        </div>
+
+        <div class="role-card">
+            <h3>Keskeneräiset kirjaukset</h3>
+            <p id="curatorDrafts">0 kirjausta</p>
+        </div>
+
+        <div class="role-card">
+            <h3>Sovitut jatkotoimet</h3>
+            <p id="curatorFollowups">0 kirjausta</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     NEWS - NURSE ONLY
+======================================================= -->
+
+<section id="page-news" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Uutiset ja tapahtumat
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Uutiset ja tapahtumat</h1>
+            <div class="page-description">
+                Terveydenhoitajan julkaisutyökalut.
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Julkaise uusi sisältö</h2>
+        </div>
+
+        <div class="card-body">
+
+            <form id="newsForm">
+
+                <div class="field">
                     <label>Otsikko</label>
                     <input id="newsTitle" required>
                 </div>
 
-                <div class="form-field">
-                    <label>Kategoria</label>
+                <div class="field">
+                    <label>Sisältö</label>
+                    <textarea id="newsContent" required></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Tyyppi</label>
                     <select id="newsCategory">
-                        <option value="main">Pääuutinen</option>
                         <option value="latest">Uutinen</option>
+                        <option value="main">Pääuutinen</option>
                         <option value="event">Tapahtuma</option>
                     </select>
                 </div>
 
-                <div class="form-field">
-                    <label>Sisältö</label>
-                    <textarea id="newsContent"></textarea>
-                </div>
-
-                <div class="form-field">
-                    <label>Kuvan osoite</label>
-                    <input id="newsImage">
-                </div>
-
-                <div class="form-field">
+                <div class="field">
                     <label>Tapahtumapäivä</label>
                     <input id="newsEventDate" type="date">
                 </div>
 
-                <div class="form-field">
-                    <label>
-                        <input
-                            id="newsPublished"
-                            type="checkbox"
-                            checked
-                            style="width:auto"
-                        >
-                        Julkaistu
-                    </label>
-                </div>
-
-                <button class="btn btn-primary">
-                    Tallenna julkaisu
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    onclick="resetNewsForm()"
-                >
-                    Tyhjennä
+                <button class="primary-button" type="submit">
+                    Julkaise
                 </button>
 
             </form>
 
         </div>
 
+    </div>
 
-        <div class="panel">
+    <div class="card">
 
-            <div class="panel-header">
+        <div class="card-header">
+            <h2>Julkaisut</h2>
+        </div>
+
+        <div id="newsList"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FEEDBACK - NURSE ONLY
+======================================================= -->
+
+<section id="page-feedback" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Arvostelut ja NPS
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Arvostelut ja NPS</h1>
+            <div class="page-description">
+                Palvelusta annettu palaute.
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-label">NPS</div>
+            <div class="stat-value" id="feedbackNps">–</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">VASTAUKSIA</div>
+            <div class="stat-value" id="feedbackCount">–</div>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-body" id="feedbackInfo">
+            Palautetiedot ladataan palvelusta.
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PROFILE
+======================================================= -->
+
+<section id="page-profile" class="page">
+
+    <div class="breadcrumb">
+        Henkilökunnan työpöytä / Omat tiedot
+    </div>
+
+    <div class="page-header">
+        <div>
+            <h1>Omat tiedot</h1>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <div class="profile-heading">
+
+                <div class="profile-avatar" id="profileAvatar">–</div>
+
                 <div>
-                    <h3>Julkaisut</h3>
-                    <p id="newsCount">0 julkaisua</p>
+                    <h2 id="profileHeading">–</h2>
+                    <p id="profileHeadingTitle">–</p>
                 </div>
+
             </div>
 
-            <div id="newsList"></div>
+            <div class="info-grid">
 
-        </div>
+                <div class="info-label">Nimi</div>
+                <div id="profileName">–</div>
 
-    </div>
+                <div class="info-label">Ammattinimike</div>
+                <div id="profileTitle">–</div>
 
-</section>
+                <div class="info-label">Toimipiste</div>
+                <div id="profileLocation">–</div>
 
+                <div class="info-label">Käyttäjätunnus</div>
+                <div id="profileEmail">–</div>
 
-<!-- =======================================================
-     FEEDBACK
-======================================================= -->
-
-<section id="view-feedback" class="hidden">
-
-    <div class="page-heading">
-        <div>
-            <h2>Arvostelut ja NPS</h2>
-            <p>
-                Verkkopalveluun jätettyjen arvioiden
-                yhteenveto.
-            </p>
-        </div>
-
-        <button
-            class="btn btn-secondary"
-            onclick="loadFeedback()"
-        >
-            Päivitä tiedot
-        </button>
-    </div>
-
-
-    <div class="feedback-grid">
-
-        <div class="feedback-card">
-            <small>NPS</small>
-            <strong id="adminNps">–</strong>
-        </div>
-
-        <div class="feedback-card">
-            <small>Vastauksia</small>
-            <strong id="adminResponses">0</strong>
-        </div>
-
-        <div class="feedback-card">
-            <small>Keskiarvo</small>
-            <strong id="adminAverage">–</strong>
-        </div>
-
-    </div>
-
-
-    <div class="panel">
-
-        <div class="panel-header">
-            <div>
-                <h3>Arvosanojen jakauma</h3>
-                <p>Asteikko 0–10</p>
             </div>
-        </div>
-
-        <div style="padding:20px">
-
-            <div
-                id="npsDistribution"
-                class="nps-scale"
-            ></div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     USERS
-======================================================= -->
-
-<section id="view-users" class="hidden">
-
-    <div class="page-heading">
-        <div>
-            <h2>Henkilöstö</h2>
-            <p>
-                Hallintajärjestelmään määritetyt
-                henkilöstöprofiilit.
-            </p>
-        </div>
-    </div>
-
-    <div class="panel">
-
-        <div class="panel-header">
-            <div>
-                <h3>Käyttäjät</h3>
-                <p>Henkilöstöprofiilit</p>
-            </div>
-        </div>
-
-        <div class="table-wrap">
-
-            <table style="min-width:700px">
-
-                <thead>
-                <tr>
-                    <th>Nimi</th>
-                    <th>Ammattinimike</th>
-                    <th>Toimipiste</th>
-                    <th>Käyttäjätunnus</th>
-                </tr>
-                </thead>
-
-                <tbody id="usersBody"></tbody>
-
-            </table>
 
         </div>
 
@@ -1969,735 +1738,213 @@ tbody tr:hover{
 
 </div>
 </main>
-</section>
+</div>
 
 
 <!-- =======================================================
-     APPOINTMENT DRAWER
+     APPOINTMENT MODAL
 ======================================================= -->
 
-<div id="drawerOverlay" class="overlay"></div>
+<div id="appointmentModal" class="modal">
 
-<aside id="appointmentDrawer" class="drawer">
+<div class="modal-panel">
 
-    <div class="drawer-head">
-
-        <div>
-            <h3 id="drawerName">Ajanvaraus</h3>
-            <p id="drawerDate">–</p>
-        </div>
-
-        <button
-            class="btn btn-secondary"
-            onclick="closeDrawer()"
-        >
+    <div class="modal-header">
+        <h2>Ajanvarauksen tiedot</h2>
+        <button id="closeAppointment" class="close-button">
             Sulje
         </button>
-
     </div>
 
+    <div class="card-body">
 
-    <div class="drawer-body">
+        <div class="info-grid">
 
-        <div class="info-section">
+            <div class="info-label">Opiskelija</div>
+            <div id="detailStudent">–</div>
 
-            <div class="info-title">
-                Varaustiedot
-            </div>
+            <div class="info-label">Ryhmä</div>
+            <div id="detailGroup">–</div>
 
-            <div class="info-content">
+            <div class="info-label">Sähköposti</div>
+            <div id="detailEmail">–</div>
 
-                <div class="info-grid">
+            <div class="info-label">Puhelin</div>
+            <div id="detailPhone">–</div>
 
-                    <div class="info-item">
-                        <label>Opiskelija</label>
-                        <div id="dStudent">–</div>
-                    </div>
+            <div class="info-label">Päivämäärä</div>
+            <div id="detailDate">–</div>
 
-                    <div class="info-item">
-                        <label>Ryhmä</label>
-                        <div id="dGroup">–</div>
-                    </div>
+            <div class="info-label">Aika</div>
+            <div id="detailTime">–</div>
 
-                    <div class="info-item">
-                        <label>Päivämäärä</label>
-                        <div id="dDate">–</div>
-                    </div>
+            <div class="info-label">Vastaanotto</div>
+            <div id="detailType">–</div>
 
-                    <div class="info-item">
-                        <label>Aika</label>
-                        <div id="dTime">–</div>
-                    </div>
+            <div class="info-label">Ammattilainen</div>
+            <div id="detailProfessional">–</div>
 
-                    <div class="info-item">
-                        <label>Palvelu</label>
-                        <div id="dType">–</div>
-                    </div>
+            <div class="info-label">Tila</div>
+            <div id="detailStatus">–</div>
 
-                    <div class="info-item">
-                        <label>Paikka</label>
-                        <div id="dLocation">–</div>
-                    </div>
-
-                    <div class="info-item">
-                        <label>Ammattilainen</label>
-                        <div id="dProfessional">–</div>
-                    </div>
-
-                    <div class="info-item">
-                        <label>Varauskoodi</label>
-                        <div id="dCode" class="code">–</div>
-                    </div>
-
-                    <div class="info-item">
-                        <label>Sähköposti</label>
-                        <div id="dEmail">–</div>
-                    </div>
-
-                    <div class="info-item">
-                        <label>Puhelin</label>
-                        <div id="dPhone">–</div>
-                    </div>
-
-                </div>
-
-            </div>
+            <div class="info-label">Varauskoodi</div>
+            <div id="detailCode">–</div>
 
         </div>
 
+        <div class="button-row" style="margin-top:25px">
 
-        <div class="info-section">
+            <button
+                id="openNoteButton"
+                class="primary-button"
+            >
+                Avaa käyntikirjaus
+            </button>
 
-            <div class="info-title">
-                Käyntiasiakirja
-            </div>
+            <button
+                id="cancelAppointmentButton"
+                class="secondary-button"
+            >
+                Peruuta ajanvaraus
+            </button>
 
-            <div class="info-content">
-
-                <div class="document-card">
-
-                    <div class="document-status">
-
-                        <div>
-                            <strong id="documentStatusTitle">
-                                Asiakirjaa ei ole laadittu
-                            </strong>
-
-                            <span id="documentStatusText">
-                                Avaa käyntilomake aloittaaksesi kirjauksen.
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="document-actions">
-
-                        <button
-                            class="btn btn-primary"
-                            id="openDocumentButton"
-                        >
-                            Avaa käyntilomake
-                        </button>
-
-                        <button
-                            class="btn btn-secondary hidden"
-                            id="printDocumentButton"
-                        >
-                            Tulosta
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <button
+                id="deleteAppointmentButton"
+                class="danger-button"
+            >
+                Poista ajanvaraus
+            </button>
 
         </div>
 
     </div>
 
-
-    <div class="drawer-footer">
-
-        <button
-            class="btn btn-danger"
-            id="cancelAppointmentButton"
-        >
-            Peru varaus
-        </button>
-
-        <button
-            class="btn btn-danger"
-            id="deleteAppointmentButton"
-        >
-            Poista testivaraus
-        </button>
-
-    </div>
-
-</aside>
+</div>
+</div>
 
 
 <!-- =======================================================
-     DOCUMENT WORKSPACE
+     NOTE MODAL
 ======================================================= -->
 
-<section
-    id="documentWorkspace"
-    class="document-workspace"
->
+<div id="noteModal" class="modal">
 
-<div class="document-toolbar">
+<div class="modal-panel note-editor">
 
-    <div class="document-toolbar-left">
+    <div class="modal-header">
+        <h2 id="noteModalTitle">Käyntikirjaus</h2>
 
-        <img
-            src="hyvaks-logo.png"
-            class="document-toolbar-logo"
-            alt=""
-        >
+        <button id="closeNote" class="close-button">
+            Sulje
+        </button>
+    </div>
 
-        <div class="document-toolbar-title">
-            <strong>Käyntiasiakirja</strong>
-            <span id="toolbarDocumentStatus">Luonnos</span>
+    <div class="note-heading">
+
+        <h2 id="noteStudent">–</h2>
+
+        <p id="noteAppointment">–</p>
+
+    </div>
+
+    <div class="note-section">
+
+        <h3>Kirjauksen tiedot</h3>
+
+        <div class="info-grid">
+
+            <div class="info-label">Laatija</div>
+            <div id="noteAuthor">–</div>
+
+            <div class="info-label">Ammattinimike</div>
+            <div id="noteProfessionalTitle">–</div>
+
+            <div class="info-label">Tila</div>
+            <div id="noteState">Uusi kirjaus</div>
+
+            <div class="info-label">Päivitetty</div>
+            <div id="noteUpdated">–</div>
+
         </div>
 
     </div>
 
+    <div class="note-section">
 
-    <div class="document-toolbar-actions">
+        <h3 id="reasonHeading">Käynnin syy</h3>
 
-        <button
-            class="btn btn-secondary"
-            onclick="closeDocument()"
-        >
-            Sulje
-        </button>
+        <div class="field">
+            <textarea id="visitReason"></textarea>
+        </div>
 
-        <button
-            class="btn btn-secondary"
-            id="saveDocumentButton"
-        >
+    </div>
+
+    <div class="note-section">
+
+        <h3 id="mainNoteHeading">Käyntimerkintä</h3>
+
+        <div class="field">
+            <textarea id="noteText"></textarea>
+        </div>
+
+    </div>
+
+    <div class="note-section">
+
+        <h3 id="followUpHeading">Jatkosuunnitelma</h3>
+
+        <div class="field">
+            <textarea id="followUp"></textarea>
+        </div>
+
+    </div>
+
+    <div class="note-actions">
+
+        <button id="saveDraftButton" class="secondary-button">
             Tallenna luonnos
         </button>
 
-        <button
-            class="btn btn-secondary"
-            onclick="window.print()"
-        >
-            Tulosta
-        </button>
-
-        <button
-            class="btn btn-success"
-            id="completeDocumentButton"
-        >
-            Merkitse valmiiksi ja lähetä
+        <button id="completeButton" class="primary-button">
+            Merkitse valmiiksi ja julkaise
         </button>
 
     </div>
 
 </div>
-
-
-<div class="document-scroll">
-
-
-<!-- PAGE 1 -->
-
-<article class="a4">
-
-    <div class="doc-header">
-
-        <img
-            src="hyvaks-logo.png"
-            class="doc-logo"
-            alt="Keski-Suomen hyvinvointialue"
-        >
-
-        <div class="doc-header-right">
-            Keski-Suomen hyvinvointialue<br>
-            Opiskeluterveydenhuolto<br>
-            Käyntiasiakirja
-        </div>
-
-    </div>
-
-
-    <div class="doc-title">
-
-        <h1>Käyntikirjaus</h1>
-
-        <p>
-            Vastaanottokäynnin yhteenveto
-        </p>
-
-    </div>
-
-
-    <div class="doc-information">
-        Tämä asiakirja sisältää vastaanottokäyntiin liittyvät
-        keskeiset tiedot, käynnillä tehdyt havainnot sekä
-        jatkosuunnitelman.
-    </div>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Asiakirjan tiedot
-        </div>
-
-        <div class="doc-grid">
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Asiakirjan tunniste
-                </div>
-                <div
-                    class="doc-value"
-                    id="docIdentifier"
-                >–</div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Asiakirjan tila
-                </div>
-                <div
-                    class="doc-value"
-                    id="docState"
-                >
-                    Luonnos
-                </div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Laatija
-                </div>
-                <div
-                    class="doc-value"
-                    id="docAuthor"
-                >–</div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Ammattinimike
-                </div>
-                <div
-                    class="doc-value"
-                    id="docAuthorTitle"
-                >–</div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Toimipiste
-                </div>
-                <div
-                    class="doc-value"
-                    id="docAuthorLocation"
-                >–</div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Laatimispäivä
-                </div>
-                <div
-                    class="doc-value"
-                    id="docCreatedDate"
-                >–</div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Asiakkaan tiedot
-        </div>
-
-        <div class="doc-grid">
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Nimi
-                </div>
-                <div
-                    class="doc-value"
-                    id="docStudent"
-                >–</div>
-            </div>
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Ryhmä
-                </div>
-                <div
-                    class="doc-value"
-                    id="docGroup"
-                >–</div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Vastaanoton tiedot
-        </div>
-
-        <div class="doc-grid">
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Päivämäärä
-                </div>
-
-                <input
-                    class="doc-input"
-                    id="docVisitDate"
-                    type="date"
-                >
-            </div>
-
-
-            <div class="doc-row">
-                <div class="doc-label">
-                    Vastaanottoaika
-                </div>
-
-                <div style="
-                    display:grid;
-                    grid-template-columns:1fr 1fr;
-                    gap:3mm
-                ">
-
-                    <input
-                        class="doc-input"
-                        id="docStartTime"
-                        type="time"
-                    >
-
-                    <input
-                        class="doc-input"
-                        id="docEndTime"
-                        type="time"
-                    >
-
-                </div>
-            </div>
-
-
-            <div class="doc-row full">
-
-                <div class="doc-label">
-                    Toimenpiteen / vastaanoton pitäjä(t)
-                </div>
-
-                <input
-                    class="doc-input"
-                    id="docProfessionals"
-                >
-
-            </div>
-
-
-            <div class="doc-row">
-
-                <div class="doc-label">
-                    Paikka
-                </div>
-
-                <input
-                    class="doc-input"
-                    id="docLocation"
-                >
-
-            </div>
-
-
-            <div class="doc-row">
-
-                <div class="doc-label">
-                    Käynnin tyyppi
-                </div>
-
-                <div
-                    class="doc-value"
-                    id="docAppointmentType"
-                >
-                    –
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Käynnin syy
-        </div>
-
-        <textarea
-            id="docVisitReason"
-            class="doc-textarea"
-            style="min-height:30mm"
-            placeholder="Kirjaa käynnin syy..."
-        ></textarea>
-
-    </section>
-
-
-    <div class="doc-footer">
-        <span>Keski-Suomen hyvinvointialue</span>
-        <span>Sivu 1 / 3</span>
-    </div>
-
-</article>
-
-
-<!-- PAGE 2 -->
-
-<article class="a4">
-
-    <div class="doc-header">
-
-        <img
-            src="hyvaks-logo.png"
-            class="doc-logo"
-            alt=""
-        >
-
-        <div class="doc-header-right">
-            Käyntikirjaus<br>
-            <span class="repeatStudentName">–</span>
-        </div>
-
-    </div>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Taustatiedot ja esitiedot
-        </div>
-
-        <textarea
-            id="docBackground"
-            class="doc-textarea medium"
-            placeholder="Kirjaa käyntiin liittyvät olennaiset tausta- ja esitiedot..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Havainnot
-        </div>
-
-        <textarea
-            id="docObservations"
-            class="doc-textarea medium"
-            placeholder="Kirjaa vastaanotolla tehdyt havainnot..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Tutkimukset ja mittaukset
-        </div>
-
-        <textarea
-            id="docExaminations"
-            class="doc-textarea medium"
-            placeholder="Kirjaa tehdyt tutkimukset, mittaukset ja niiden olennaiset tulokset..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Tehdyt toimenpiteet
-        </div>
-
-        <textarea
-            id="docProcedures"
-            class="doc-textarea"
-            placeholder="Kirjaa käynnillä tehdyt toimenpiteet..."
-        ></textarea>
-
-    </section>
-
-
-    <div class="doc-footer">
-        <span>Keski-Suomen hyvinvointialue</span>
-        <span>Sivu 2 / 3</span>
-    </div>
-
-</article>
-
-
-<!-- PAGE 3 -->
-
-<article class="a4">
-
-    <div class="doc-header">
-
-        <img
-            src="hyvaks-logo.png"
-            class="doc-logo"
-            alt=""
-        >
-
-        <div class="doc-header-right">
-            Käyntikirjaus<br>
-            <span class="repeatStudentName">–</span>
-        </div>
-
-    </div>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Ohjaus ja neuvonta
-        </div>
-
-        <textarea
-            id="docGuidance"
-            class="doc-textarea medium"
-            placeholder="Kirjaa annettu ohjaus ja neuvonta..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Jatkosuunnitelma
-        </div>
-
-        <textarea
-            id="docFollowUp"
-            class="doc-textarea medium"
-            placeholder="Kirjaa jatkosuunnitelma..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Jatko-ohjeet asiakkaalle
-        </div>
-
-        <textarea
-            id="docFollowUpInstructions"
-            class="doc-textarea"
-            placeholder="Kirjaa asiakkaalle annetut jatko-ohjeet..."
-        ></textarea>
-
-    </section>
-
-
-    <section class="doc-section">
-
-        <div class="doc-section-heading">
-            Lisätiedot
-        </div>
-
-        <textarea
-            id="docAdditional"
-            class="doc-textarea"
-            placeholder="Muut asiakirjaan merkittävät tiedot..."
-        ></textarea>
-
-    </section>
-
-
-    <div class="signature-area">
-
-        <div
-            class="signature-name"
-            id="signatureName"
-        >
-            –
-        </div>
-
-        <div
-            class="signature-title"
-            id="signatureTitle"
-        >
-            –
-        </div>
-
-        <div class="signature-org">
-            Keski-Suomen hyvinvointialue<br>
-            <span id="signatureLocation">–</span>
-        </div>
-
-        <div
-            class="signature-org"
-            id="signatureTimestamp"
-        ></div>
-
-    </div>
-
-
-    <div class="doc-footer">
-        <span>Keski-Suomen hyvinvointialue</span>
-        <span>Sivu 3 / 3</span>
-    </div>
-
-</article>
-
 </div>
-</section>
 
 
-<div id="toast" class="toast"></div>
+<script type="module">
 
+import {createClient}
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-<script>
 
 /* =========================================================
    SUPABASE
 ========================================================= */
 
 const SUPABASE_URL =
-    "https://bwuybksyoopuejcrlspa.supabase.co";
+'https://bwuybksyoopuejcrlspa.supabase.co';
 
 const SUPABASE_KEY =
-    "sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ";
+'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
 
-const sb = window.supabase.createClient(
+const supabase =
+createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+
+
+/*
+    Roolipelin päivämäärä.
+    Tällä vältetään oikean kalenteripäivän vaikutus
+    pelin ajanvarauksiin.
+*/
+
+const GAME_TODAY = '2026-08-19';
 
 
 /* =========================================================
@@ -2708,285 +1955,503 @@ let currentUser = null;
 let staffProfile = null;
 
 let appointments = [];
-let selectedAppointment = null;
-let selectedNote = null;
-
 let slots = [];
-let newsItems = [];
+let notes = [];
+let news = [];
+
+let activeAppointment = null;
 
 
 /* =========================================================
    HELPERS
 ========================================================= */
 
-const $ = id => document.getElementById(id);
+function escapeHtml(value){
 
-function esc(value){
-    return String(value ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
+    return String(value ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
         .replaceAll("'","&#039;");
 }
 
+
 function formatDate(value){
 
-    if(!value) return "–";
+    if(!value) return '–';
 
-    const p = value.split("-");
+    const p =
+        String(value)
+        .substring(0,10)
+        .split('-');
 
     if(p.length !== 3) return value;
 
-    return `${p[2]}.${p[1]}.${p[0]}`;
+    return (
+        Number(p[2])
+        + '.'
+        + Number(p[1])
+        + '.'
+        + p[0]
+    );
 }
+
 
 function formatTime(value){
 
-    if(!value) return "–";
+    if(!value) return '–';
 
-    return value.slice(0,5);
+    return String(value).substring(0,5);
 }
+
 
 function formatDateTime(value){
 
-    if(!value) return "–";
+    if(!value) return '–';
 
-    return new Intl.DateTimeFormat(
-        "fi-FI",
-        {
-            dateStyle:"short",
-            timeStyle:"short"
-        }
-    ).format(new Date(value));
+    const d = new Date(value);
+
+    if(Number.isNaN(d.getTime())){
+        return value;
+    }
+
+    return d.toLocaleString('fi-FI',{
+        dateStyle:'short',
+        timeStyle:'short'
+    });
 }
 
-function statusText(status){
 
-    return {
-        booked:"Varattu",
-        completed:"Valmis",
-        cancelled:"Peruttu"
-    }[status] || status || "–";
+function statusLabel(value){
+
+    const labels = {
+        booked:'Varattu',
+        completed:'Valmis',
+        cancelled:'Peruttu',
+        draft:'Luonnos'
+    };
+
+    return labels[value] || value || '–';
 }
 
-function statusClass(status){
-
-    if(status === "completed")
-        return "status-completed";
-
-    if(status === "cancelled")
-        return "status-cancelled";
-
-    return "status-booked";
-}
 
 function initials(name){
 
-    return (name || "SR")
-        .split(/\s+/)
+    return String(name || '')
+        .split(' ')
+        .filter(Boolean)
         .slice(0,2)
-        .map(x => x[0]?.toUpperCase())
-        .join("");
+        .map(x=>x[0])
+        .join('')
+        .toUpperCase() || '–';
 }
 
-function toast(message,error=false){
 
-    $("toast").textContent = message;
+function showMessage(type,text){
 
-    $("toast").classList.toggle(
-        "error",
-        error
-    );
+    const error =
+        document.getElementById('globalError');
 
-    $("toast").classList.add("show");
+    const success =
+        document.getElementById('globalSuccess');
 
-    clearTimeout(toast.timer);
+    error.style.display='none';
+    success.style.display='none';
 
-    toast.timer = setTimeout(
-        () => $("toast").classList.remove("show"),
-        3500
-    );
-}
+    const box =
+        type === 'error'
+        ? error
+        : success;
 
-function getNote(appointment){
+    box.textContent=text;
+    box.style.display='block';
 
-    if(!appointment)
-        return null;
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
 
-    const value = appointment.visit_notes;
-
-    if(Array.isArray(value))
-        return value[0] || null;
-
-    return value || null;
+    setTimeout(()=>{
+        box.style.display='none';
+    },6000);
 }
 
 
 /* =========================================================
-   AUTH
+   ROLE
 ========================================================= */
 
-async function init(){
+function normalizedRole(){
 
-    const {
-        data:{session}
-    } = await sb.auth.getSession();
+    const title =
+        String(
+            staffProfile?.professional_title || ''
+        )
+        .trim()
+        .toLocaleLowerCase('fi');
 
-    if(!session?.user){
-        showLogin();
-        return;
+    if(title.includes('psykologi')){
+        return 'psychologist';
     }
 
-    currentUser = session.user;
-
-    const ok = await loadStaff();
-
-    if(!ok){
-
-        await sb.auth.signOut();
-
-        showLogin();
-
-        $("loginError").textContent =
-            "Käyttäjällä ei ole hallintaoikeutta.";
-
-        $("loginError").classList.remove("hidden");
-
-        return;
+    if(title.includes('kuraattori')){
+        return 'curator';
     }
 
-    await showAdmin();
+    if(title.includes('terveydenhoitaja')){
+        return 'nurse';
+    }
+
+    return 'other';
 }
 
 
-async function loadStaff(){
+function isNurse(){
+    return normalizedRole()==='nurse';
+}
 
-    const {data,error} = await sb
-        .from("staff_profiles")
-        .select("*")
-        .eq("user_id",currentUser.id)
+function isPsychologist(){
+    return normalizedRole()==='psychologist';
+}
+
+function isCurator(){
+    return normalizedRole()==='curator';
+}
+
+
+function ownProfessionalName(){
+
+    return String(
+        staffProfile?.full_name || ''
+    ).trim();
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+document
+.getElementById('loginForm')
+.addEventListener(
+    'submit',
+    async event=>{
+
+        event.preventDefault();
+
+        const email =
+            document
+            .getElementById('email')
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById('password')
+            .value;
+
+        const box =
+            document.getElementById('loginError');
+
+        box.style.display='none';
+
+        const {data,error} =
+            await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+        if(error){
+
+            box.textContent =
+                'Kirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.';
+
+            box.style.display='block';
+
+            return;
+        }
+
+        await openApplication(data.user);
+    }
+);
+
+
+/* =========================================================
+   OPEN APPLICATION
+========================================================= */
+
+async function openApplication(user){
+
+    currentUser=user;
+
+    const {data:admin,error:adminError} =
+        await supabase
+        .from('admin_users')
+        .select('user_id')
+        .eq('user_id',user.id)
+        .maybeSingle();
+
+    if(adminError || !admin){
+
+        await supabase.auth.signOut();
+
+        const box =
+            document.getElementById('loginError');
+
+        box.textContent =
+            'Käyttäjällä ei ole oikeutta henkilökunnan työpöydälle.';
+
+        box.style.display='block';
+
+        return;
+    }
+
+    await loadProfile();
+
+    if(normalizedRole()==='other'){
+
+        await supabase.auth.signOut();
+
+        const box =
+            document.getElementById('loginError');
+
+        box.textContent =
+            'Käyttäjän ammattiroolia ei tunnistettu.';
+
+        box.style.display='block';
+
+        return;
+    }
+
+    applyRoleInterface();
+
+    document.getElementById('loginView')
+        .style.display='none';
+
+    document.getElementById('appView')
+        .style.display='block';
+
+    await refreshData();
+}
+
+
+/* =========================================================
+   RESTORE SESSION
+========================================================= */
+
+const {
+    data:{session}
+} = await supabase.auth.getSession();
+
+if(session?.user){
+    await openApplication(session.user);
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+document
+.getElementById('logoutButton')
+.addEventListener(
+    'click',
+    async ()=>{
+
+        await supabase.auth.signOut();
+
+        location.reload();
+    }
+);
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+async function loadProfile(){
+
+    const {data,error} =
+        await supabase
+        .from('staff_profiles')
+        .select('*')
+        .eq('user_id',currentUser.id)
         .maybeSingle();
 
     if(error){
         console.error(error);
-        return false;
     }
 
-    if(!data)
-        return false;
+    if(!data){
 
-    staffProfile = data;
+        staffProfile={
+            full_name:currentUser.email,
+            professional_title:'',
+            location:'Muuramen lukio'
+        };
 
-    return true;
-}
-
-
-$("loginForm").addEventListener(
-"submit",
-async e => {
-
-    e.preventDefault();
-
-    $("loginError").classList.add("hidden");
-
-    $("loginButton").disabled = true;
-    $("loginButton").textContent =
-        "Kirjaudutaan...";
-
-    try{
-
-        const {data,error} =
-            await sb.auth.signInWithPassword({
-                email:$("loginEmail").value.trim(),
-                password:$("loginPassword").value
-            });
-
-        if(error)
-            throw error;
-
-        currentUser = data.user;
-
-        const ok = await loadStaff();
-
-        if(!ok){
-
-            await sb.auth.signOut();
-
-            throw new Error(
-                "Käyttäjällä ei ole hallintaoikeutta."
-            );
-        }
-
-        await showAdmin();
-
-    }catch(error){
-
-        console.error(error);
-
-        $("loginError").textContent =
-            error.message ||
-            "Kirjautuminen epäonnistui.";
-
-        $("loginError").classList.remove("hidden");
-
-    }finally{
-
-        $("loginButton").disabled = false;
-        $("loginButton").textContent =
-            "Kirjaudu";
+        return;
     }
-});
 
-
-$("logoutButton").addEventListener(
-"click",
-async () => {
-
-    await sb.auth.signOut();
-
-    currentUser = null;
-    staffProfile = null;
-
-    showLogin();
-});
-
-
-function showLogin(){
-
-    $("adminView").classList.add("hidden");
-    $("loginView").classList.remove("hidden");
-}
-
-
-async function showAdmin(){
-
-    $("loginView").classList.add("hidden");
-    $("adminView").classList.remove("hidden");
+    staffProfile=data;
 
     const name =
-        staffProfile.full_name ||
-        "Sanna Rantanen";
+        staffProfile.full_name || '–';
 
     const title =
-        staffProfile.professional_title ||
-        "Terveydenhoitaja";
+        staffProfile.professional_title || '–';
 
-    $("staffName").textContent = name;
-    $("staffTitle").textContent = title;
-    $("sidebarName").textContent = name;
-    $("avatar").textContent = initials(name);
+    const location =
+        staffProfile.location || '–';
 
-    $("slotProfessional").value = name;
+    const avatar=initials(name);
 
-    $("slotLocation").value =
-        staffProfile.location ||
-        "Muuramen lukio";
+    document.getElementById('headerName')
+        .textContent=name;
 
-    await Promise.all([
-        loadAppointments(),
-        loadSlots()
-    ]);
+    document.getElementById('headerTitle')
+        .textContent=title;
+
+    document.getElementById('headerAvatar')
+        .textContent=avatar;
+
+    document.getElementById('sidebarName')
+        .textContent=name;
+
+    document.getElementById('sidebarTitle')
+        .textContent=title;
+
+    document.getElementById('profileHeading')
+        .textContent=name;
+
+    document.getElementById('profileHeadingTitle')
+        .textContent=title;
+
+    document.getElementById('profileName')
+        .textContent=name;
+
+    document.getElementById('profileTitle')
+        .textContent=title;
+
+    document.getElementById('profileLocation')
+        .textContent=location;
+
+    document.getElementById('profileEmail')
+        .textContent=currentUser.email || '–';
+
+    document.getElementById('profileAvatar')
+        .textContent=avatar;
+
+    document.getElementById('welcomeName')
+        .textContent=name.split(' ')[0];
+
+    document.getElementById('noteAuthor')
+        .textContent=name;
+
+    document.getElementById('noteProfessionalTitle')
+        .textContent=title;
+}
+
+
+/* =========================================================
+   ROLE INTERFACE
+========================================================= */
+
+function applyRoleInterface(){
+
+    document
+    .querySelectorAll('.role-nurse')
+    .forEach(el=>{
+        el.classList.toggle(
+            'hidden',
+            !isNurse()
+        );
+    });
+
+    document
+    .querySelectorAll('.role-psychologist')
+    .forEach(el=>{
+        el.classList.toggle(
+            'hidden',
+            !isPsychologist()
+        );
+    });
+
+    document
+    .querySelectorAll('.role-curator')
+    .forEach(el=>{
+        el.classList.toggle(
+            'hidden',
+            !isCurator()
+        );
+    });
+
+
+    const banner =
+        document.getElementById('roleBanner');
+
+    const description =
+        document.getElementById(
+            'dashboardDescription'
+        );
+
+
+    if(isNurse()){
+
+        banner.innerHTML=`
+            <h2>Terveydenhoitajan työpöytä</h2>
+            <p>
+                Vastaanottojen ja käyntikirjausten lisäksi
+                käytössäsi ovat terveyspalvelujen uutis-,
+                tapahtuma- ja palautetoiminnot.
+            </p>
+        `;
+
+        description.textContent =
+            'Terveydenhoitajan vastaanotot ja opiskeluterveydenhuollon hallinta.';
+
+        document.getElementById('slotType')
+            .value='Terveydenhoitajan vastaanotto';
+    }
+
+
+    if(isPsychologist()){
+
+        banner.innerHTML=`
+            <h2>Psykologin työpöytä</h2>
+            <p>
+                Tässä työtilassa käsitellään psykologin
+                ajanvarauksia, vastaanottoja, käyntikirjauksia
+                ja jatkokäyntejä.
+            </p>
+        `;
+
+        description.textContent =
+            'Psykologipalvelujen vastaanotot ja käyntikirjaukset.';
+
+        document.getElementById('slotType')
+            .value='Psykologin vastaanotto';
+    }
+
+
+    if(isCurator()){
+
+        banner.innerHTML=`
+            <h2>Kuraattorin työpöytä</h2>
+            <p>
+                Tässä työtilassa käsitellään kuraattorin
+                tapaamisia, opiskelijoiden tukitoimia,
+                käyntikirjauksia ja jatkosuunnitelmia.
+            </p>
+        `;
+
+        description.textContent =
+            'Kuraattoripalvelujen tapaamiset ja käyntikirjaukset.';
+
+        document.getElementById('slotType')
+            .value='Kuraattorin vastaanotto';
+    }
 }
 
 
@@ -2994,79 +2459,109 @@ async function showAdmin(){
    NAVIGATION
 ========================================================= */
 
-const views = {
-    appointments:{
-        title:"Ajanvarausten hallinta",
-        subtitle:"Opiskeluterveydenhuolto"
-    },
-    slots:{
-        title:"Vastaanottoaikojen hallinta",
-        subtitle:"Opiskeluterveydenhuolto"
-    },
-    news:{
-        title:"Sisällönhallinta",
-        subtitle:"Uutiset ja tapahtumat"
-    },
-    feedback:{
-        title:"Asiakaspalaute",
-        subtitle:"Arvostelut ja NPS"
-    },
-    users:{
-        title:"Henkilöstö",
-        subtitle:"Käyttäjähallinta"
-    }
-};
-
-
-document.querySelectorAll(".nav-button")
-.forEach(button => {
+document
+.querySelectorAll('.nav-button[data-page]')
+.forEach(button=>{
 
     button.addEventListener(
-    "click",
-    async () => {
-
-        const view =
-            button.dataset.view;
-
-        document
-            .querySelectorAll(".nav-button")
-            .forEach(x =>
-                x.classList.remove("active")
-            );
-
-        button.classList.add("active");
-
-        document
-            .querySelectorAll("[id^='view-']")
-            .forEach(x =>
-                x.classList.add("hidden")
-            );
-
-        $(`view-${view}`)
-            .classList.remove("hidden");
-
-        $("topTitle").textContent =
-            views[view].title;
-
-        $("topSubtitle").textContent =
-            views[view].subtitle;
-
-        if(view === "appointments")
-            await loadAppointments();
-
-        if(view === "slots")
-            await loadSlots();
-
-        if(view === "news")
-            await loadNews();
-
-        if(view === "feedback")
-            await loadFeedback();
-
-        if(view === "users")
-            await loadUsers();
-    });
+        'click',
+        ()=>showPage(button.dataset.page)
+    );
 });
+
+
+function pageAllowed(page){
+
+    if(
+        page==='news'
+        ||
+        page==='feedback'
+    ){
+        return isNurse();
+    }
+
+    if(page==='psychologist'){
+        return isPsychologist();
+    }
+
+    if(page==='curator'){
+        return isCurator();
+    }
+
+    return true;
+}
+
+
+function showPage(page){
+
+    if(!pageAllowed(page)){
+        showMessage(
+            'error',
+            'Tämä toiminto ei kuulu kirjautuneen käyttäjän käyttöoikeuksiin.'
+        );
+
+        page='dashboard';
+    }
+
+    document
+    .querySelectorAll('.page')
+    .forEach(el=>el.classList.remove('active'));
+
+    document
+    .querySelectorAll('.nav-button[data-page]')
+    .forEach(el=>el.classList.remove('active'));
+
+    document
+    .getElementById(`page-${page}`)
+    ?.classList.add('active');
+
+    document
+    .querySelector(
+        `.nav-button[data-page="${page}"]`
+    )
+    ?.classList.add('active');
+
+    window.scrollTo(0,0);
+}
+
+
+/* =========================================================
+   LOAD DATA
+========================================================= */
+
+async function refreshData(){
+
+    await Promise.all([
+        loadAppointments(),
+        loadSlots(),
+        loadNotes(),
+        isNurse()
+            ? loadNews()
+            : Promise.resolve()
+    ]);
+
+    renderAll();
+
+    if(isNurse()){
+        await loadFeedback();
+    }
+}
+
+
+document
+.getElementById('refreshButton')
+.addEventListener(
+    'click',
+    async ()=>{
+
+        await refreshData();
+
+        showMessage(
+            'success',
+            'Tiedot päivitettiin.'
+        );
+    }
+);
 
 
 /* =========================================================
@@ -3075,939 +2570,47 @@ document.querySelectorAll(".nav-button")
 
 async function loadAppointments(){
 
-    const {data,error} = await sb
-        .from("appointments")
+    const {data,error} =
+        await supabase
+        .from('appointments')
         .select(`
             *,
-            available_times (*),
-            visit_notes (*)
-        `);
+            available_times(*)
+        `)
+        .order('created_at',{
+            ascending:false
+        });
 
     if(error){
 
         console.error(error);
 
-        toast(
-            "Ajanvarausten lataaminen epäonnistui.",
-            true
+        showMessage(
+            'error',
+            'Ajanvarausten lataaminen epäonnistui.'
         );
 
         return;
     }
 
-    appointments = data || [];
 
-    appointments.sort((a,b) => {
-
-        const A =
-            `${a.available_times?.appointment_date || ""}T${a.available_times?.start_time || ""}`;
-
-        const B =
-            `${b.available_times?.appointment_date || ""}T${b.available_times?.start_time || ""}`;
-
-        return A.localeCompare(B);
-    });
-
-    updateStats();
-    filterAppointments();
-}
-
-
-function updateStats(){
-
-    const today =
-        new Date()
-            .toLocaleDateString(
-                "sv-SE"
-            );
-
-    $("statBooked").textContent =
-        appointments.filter(
-            x => x.status === "booked"
-        ).length;
-
-    $("statCompleted").textContent =
-        appointments.filter(
-            x => x.status === "completed"
-        ).length;
-
-    $("statCancelled").textContent =
-        appointments.filter(
-            x => x.status === "cancelled"
-        ).length;
-
-    $("statToday").textContent =
-        appointments.filter(
-            x =>
-                x.available_times?.appointment_date
-                    === today &&
-                x.status !== "cancelled"
-        ).length;
-}
-
-
-function filterAppointments(){
-
-    const q =
-        $("searchInput")
-            .value
-            .trim()
-            .toLowerCase();
-
-    const status =
-        $("statusFilter").value;
-
-    const from =
-        $("dateFrom").value;
-
-    const to =
-        $("dateTo").value;
-
-    const filtered =
-        appointments.filter(a => {
-
-            const slot =
-                a.available_times || {};
-
-            const text = [
-                a.student_name,
-                a.student_group,
-                a.booking_code,
-                a.student_email
-            ]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase();
-
-            if(q && !text.includes(q))
-                return false;
-
-            if(
-                status &&
-                a.status !== status
-            )
-                return false;
-
-            if(
-                from &&
-                slot.appointment_date < from
-            )
-                return false;
-
-            if(
-                to &&
-                slot.appointment_date > to
-            )
-                return false;
-
-            return true;
-        });
-
-    renderAppointments(filtered);
-}
-
-
-function renderAppointments(items){
-
-    const body =
-        $("appointmentsBody");
-
-    body.innerHTML = "";
-
-    $("appointmentCount").textContent =
-        `${items.length} varausta`;
-
-    $("appointmentsEmpty")
-        .classList.toggle(
-            "hidden",
-            items.length > 0
-        );
-
-    items.forEach(a => {
-
-        const slot =
-            a.available_times || {};
-
-        const note =
-            getNote(a);
-
-        const tr =
-            document.createElement("tr");
-
-        let documentText =
-            "Ei asiakirjaa";
-
-        if(note?.status === "draft")
-            documentText = "Luonnos";
-
-        if(note?.status === "completed")
-            documentText = "Valmis";
-
-        tr.innerHTML = `
-
-            <td>
-                <strong>
-                    ${esc(formatDate(slot.appointment_date))}
-                </strong>
-
-                <div class="subtext">
-                    ${esc(formatTime(slot.start_time))}
-                    –
-                    ${esc(formatTime(slot.end_time))}
-                </div>
-            </td>
-
-            <td>
-                <div class="student-name">
-                    ${esc(a.student_name)}
-                </div>
-
-                <div class="subtext">
-                    ${esc(a.student_email || "")}
-                </div>
-            </td>
-
-            <td>
-                ${esc(a.student_group || "–")}
-            </td>
-
-            <td>
-                ${esc(a.appointment_type || "–")}
-            </td>
-
-            <td>
-                <span class="
-                    status
-                    ${statusClass(a.status)}
-                ">
-                    ${esc(statusText(a.status))}
-                </span>
-            </td>
-
-            <td>
-                ${esc(documentText)}
-            </td>
-
-            <td class="code">
-                ${esc(a.booking_code || "–")}
-            </td>
-
-            <td>
-                <button
-                    class="table-btn"
-                    onclick="openAppointment('${a.id}')"
-                >
-                    Avaa
-                </button>
-            </td>
-        `;
-
-        body.appendChild(tr);
-    });
-}
-
-
-[
-    "searchInput",
-    "statusFilter",
-    "dateFrom",
-    "dateTo"
-].forEach(id => {
-
-    $(id).addEventListener(
-        id === "searchInput"
-            ? "input"
-            : "change",
-        filterAppointments
-    );
-});
-
-
-$("clearFilters").onclick = () => {
-
-    $("searchInput").value = "";
-    $("statusFilter").value = "";
-    $("dateFrom").value = "";
-    $("dateTo").value = "";
-
-    filterAppointments();
-};
-
-
-/* =========================================================
-   APPOINTMENT DRAWER
-========================================================= */
-
-function openAppointment(id){
-
-    selectedAppointment =
-        appointments.find(
-            x => x.id === id
-        );
-
-    if(!selectedAppointment)
-        return;
-
-    selectedNote =
-        getNote(selectedAppointment);
-
-    const a =
-        selectedAppointment;
-
-    const s =
-        a.available_times || {};
-
-    $("drawerName").textContent =
-        a.student_name || "Ajanvaraus";
-
-    $("drawerDate").textContent =
-        `${formatDate(s.appointment_date)} klo ${formatTime(s.start_time)}`;
-
-    $("dStudent").textContent =
-        a.student_name || "–";
-
-    $("dGroup").textContent =
-        a.student_group || "–";
-
-    $("dDate").textContent =
-        formatDate(s.appointment_date);
-
-    $("dTime").textContent =
-        `${formatTime(s.start_time)}–${formatTime(s.end_time)}`;
-
-    $("dType").textContent =
-        a.appointment_type || "–";
-
-    $("dLocation").textContent =
-        s.location || "–";
-
-    $("dProfessional").textContent =
-        s.professional_name || "–";
-
-    $("dCode").textContent =
-        a.booking_code || "–";
-
-    $("dEmail").textContent =
-        a.student_email || "–";
-
-    $("dPhone").textContent =
-        a.student_phone || "–";
-
-    updateDocumentCard();
-
-    $("appointmentDrawer")
-        .classList.add("open");
-
-    $("drawerOverlay")
-        .classList.add("open");
-}
-
-
-function updateDocumentCard(){
-
-    if(!selectedNote){
-
-        $("documentStatusTitle")
-            .textContent =
-            "Asiakirjaa ei ole laadittu";
-
-        $("documentStatusText")
-            .textContent =
-            "Avaa käyntilomake aloittaaksesi kirjauksen.";
-
-        $("openDocumentButton")
-            .textContent =
-            "Avaa käyntilomake";
-
-        $("printDocumentButton")
-            .classList.add("hidden");
-
-        return;
-    }
-
-    if(selectedNote.status === "completed"){
-
-        $("documentStatusTitle")
-            .textContent =
-            "Käyntiasiakirja on valmis";
-
-        $("documentStatusText")
-            .textContent =
-            `Valmistunut ${formatDateTime(selectedNote.completed_at || selectedNote.updated_at)}`;
-
-        $("openDocumentButton")
-            .textContent =
-            "Avaa asiakirja";
-
-        $("printDocumentButton")
-            .classList.remove("hidden");
-
-    }else{
-
-        $("documentStatusTitle")
-            .textContent =
-            "Käyntiasiakirja on luonnos";
-
-        $("documentStatusText")
-            .textContent =
-            `Viimeksi tallennettu ${formatDateTime(selectedNote.updated_at)}`;
-
-        $("openDocumentButton")
-            .textContent =
-            "Jatka kirjaamista";
-
-        $("printDocumentButton")
-            .classList.add("hidden");
-    }
-}
-
-
-function closeDrawer(){
-
-    $("appointmentDrawer")
-        .classList.remove("open");
-
-    $("drawerOverlay")
-        .classList.remove("open");
-}
-
-
-$("drawerOverlay").onclick =
-    closeDrawer;
-
-
-/* =========================================================
-   DOCUMENT
-========================================================= */
-
-$("openDocumentButton").onclick =
-    openDocument;
-
-$("printDocumentButton").onclick = () => {
-
-    openDocument();
-
-    setTimeout(
-        () => window.print(),
-        150
-    );
-};
-
-
-function openDocument(){
-
-    if(!selectedAppointment)
-        return;
-
-    const a =
-        selectedAppointment;
-
-    const slot =
-        a.available_times || {};
-
-    const note =
-        selectedNote || {};
-
-    const completed =
-        note.status === "completed";
-
-    $("docIdentifier").textContent =
-        note.id ||
-        `UUSI-${a.id.slice(0,8).toUpperCase()}`;
-
-    $("docState").textContent =
-        completed
-            ? "Valmis"
-            : "Luonnos";
-
-    $("toolbarDocumentStatus").textContent =
-        completed
-            ? "Valmis asiakirja"
-            : "Luonnos";
-
-    $("docAuthor").textContent =
-        staffProfile?.full_name ||
-        "Sanna Rantanen";
-
-    $("docAuthorTitle").textContent =
-        staffProfile?.professional_title ||
-        "Terveydenhoitaja";
-
-    $("docAuthorLocation").textContent =
-        staffProfile?.location ||
-        slot.location ||
-        "Muuramen lukio";
-
-    $("docCreatedDate").textContent =
-        formatDate(
-            (note.created_at || new Date().toISOString())
-                .slice(0,10)
-        );
-
-    $("docStudent").textContent =
-        a.student_name || "–";
-
-    $("docGroup").textContent =
-        a.student_group || "–";
-
-    document
-        .querySelectorAll(".repeatStudentName")
-        .forEach(el => {
-            el.textContent =
-                a.student_name || "–";
-        });
-
-    $("docVisitDate").value =
-        note.visit_date ||
-        slot.appointment_date ||
-        "";
-
-    $("docStartTime").value =
-        formatTime(
-            note.visit_start_time ||
-            slot.start_time ||
-            ""
-        ).replace("–","");
-
-    $("docEndTime").value =
-        formatTime(
-            note.visit_end_time ||
-            slot.end_time ||
-            ""
-        ).replace("–","");
-
-    $("docProfessionals").value =
-        note.professionals ||
-        slot.professional_name ||
-        staffProfile?.full_name ||
-        "";
-
-    $("docLocation").value =
-        note.location ||
-        slot.location ||
-        staffProfile?.location ||
-        "";
-
-    $("docAppointmentType").textContent =
-        a.appointment_type ||
-        "–";
-
-    $("docVisitReason").value =
-        note.visit_reason || "";
-
-    $("docBackground").value =
-        note.background_information || "";
-
-    $("docObservations").value =
-        note.observations || "";
-
-    $("docExaminations").value =
-        note.examinations || "";
-
-    $("docProcedures").value =
-        note.procedures || "";
-
-    $("docGuidance").value =
-        note.guidance || "";
-
-    $("docFollowUp").value =
-        note.follow_up || "";
-
-    $("docFollowUpInstructions").value =
-        note.follow_up_instructions || "";
-
-    $("docAdditional").value =
-        note.additional_information || "";
-
-    $("signatureName").textContent =
-        staffProfile?.full_name ||
-        "Sanna Rantanen";
-
-    $("signatureTitle").textContent =
-        staffProfile?.professional_title ||
-        "Terveydenhoitaja";
-
-    $("signatureLocation").textContent =
-        staffProfile?.location ||
-        slot.location ||
-        "Muuramen lukio";
-
-    $("signatureTimestamp").textContent =
-        completed
-            ? `Asiakirja valmistunut ${formatDateTime(note.completed_at || note.updated_at)}`
-            : "Asiakirja on luonnos";
-
-    setDocumentReadonly(completed);
-
-    $("documentWorkspace")
-        .classList.add("open");
-}
-
-
-function setDocumentReadonly(readonly){
-
-    [
-        "docVisitDate",
-        "docStartTime",
-        "docEndTime",
-        "docProfessionals",
-        "docLocation",
-        "docVisitReason",
-        "docBackground",
-        "docObservations",
-        "docExaminations",
-        "docProcedures",
-        "docGuidance",
-        "docFollowUp",
-        "docFollowUpInstructions",
-        "docAdditional"
-    ].forEach(id => {
-
-        $(id).readOnly = readonly;
-    });
-
-    $("saveDocumentButton")
-        .classList.toggle(
-            "hidden",
-            readonly
-        );
-
-    $("completeDocumentButton")
-        .classList.toggle(
-            "hidden",
-            readonly
+    /*
+        Käyttöliittymässä työntekijälle näytetään
+        vain hänen omalle nimelleen varatut ajat.
+    */
+
+    appointments =
+        (data || [])
+        .filter(item=>
+            item.available_times
+            &&
+            String(
+                item.available_times.professional_name || ''
+            ).trim()
+            ===
+            ownProfessionalName()
         );
 }
-
-
-function closeDocument(){
-
-    $("documentWorkspace")
-        .classList.remove("open");
-}
-
-
-function documentPayload(status){
-
-    return {
-        appointment_id:
-            selectedAppointment.id,
-
-        author_user_id:
-            currentUser.id,
-
-        visit_reason:
-            $("docVisitReason").value.trim() || null,
-
-        /*
-          Pidetään myös vanha note_text mukana,
-          jotta nykyiset vanhemmat näkymät eivät hajoa.
-        */
-        note_text:
-            $("docObservations").value.trim() || null,
-
-        follow_up:
-            $("docFollowUp").value.trim() || null,
-
-        visit_date:
-            $("docVisitDate").value || null,
-
-        visit_start_time:
-            $("docStartTime").value || null,
-
-        visit_end_time:
-            $("docEndTime").value || null,
-
-        location:
-            $("docLocation").value.trim() || null,
-
-        professionals:
-            $("docProfessionals").value.trim() || null,
-
-        background_information:
-            $("docBackground").value.trim() || null,
-
-        observations:
-            $("docObservations").value.trim() || null,
-
-        examinations:
-            $("docExaminations").value.trim() || null,
-
-        procedures:
-            $("docProcedures").value.trim() || null,
-
-        guidance:
-            $("docGuidance").value.trim() || null,
-
-        follow_up_instructions:
-            $("docFollowUpInstructions").value.trim() || null,
-
-        additional_information:
-            $("docAdditional").value.trim() || null,
-
-        status,
-
-        updated_at:
-            new Date().toISOString(),
-
-        completed_at:
-            status === "completed"
-                ? new Date().toISOString()
-                : null,
-
-        document_version:
-            selectedNote?.document_version || 1
-    };
-}
-
-
-async function saveDocument(status){
-
-    if(!selectedAppointment)
-        return;
-
-    if(
-        status === "completed" &&
-        !$("docVisitReason").value.trim()
-    ){
-        toast(
-            "Kirjaa käynnin syy ennen asiakirjan valmistumista.",
-            true
-        );
-        return;
-    }
-
-    const payload =
-        documentPayload(status);
-
-    try{
-
-        let result;
-
-        if(selectedNote?.id){
-
-            result = await sb
-                .from("visit_notes")
-                .update(payload)
-                .eq("id",selectedNote.id)
-                .select()
-                .single();
-
-        }else{
-
-            result = await sb
-                .from("visit_notes")
-                .insert(payload)
-                .select()
-                .single();
-        }
-
-        if(result.error)
-            throw result.error;
-
-        selectedNote =
-            result.data;
-
-        if(status === "completed"){
-
-            const {error} = await sb
-                .from("appointments")
-                .update({
-                    status:"completed"
-                })
-                .eq(
-                    "id",
-                    selectedAppointment.id
-                );
-
-            if(error)
-                throw error;
-
-            selectedAppointment.status =
-                "completed";
-        }
-
-        toast(
-            status === "completed"
-                ? "Käyntiasiakirja merkittiin valmiiksi ja julkaistiin asiakkaalle."
-                : "Luonnos tallennettiin."
-        );
-
-        await loadAppointments();
-
-        const refreshed =
-            appointments.find(
-                x =>
-                    x.id ===
-                    selectedAppointment.id
-            );
-
-        if(refreshed){
-
-            selectedAppointment =
-                refreshed;
-
-            selectedNote =
-                getNote(refreshed);
-        }
-
-        updateDocumentCard();
-
-        if(status === "completed"){
-
-            closeDocument();
-
-            openAppointment(
-                selectedAppointment.id
-            );
-
-        }else{
-
-            openDocument();
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(
-            "Asiakirjan tallentaminen epäonnistui: " +
-            (error.message || ""),
-            true
-        );
-    }
-}
-
-
-$("saveDocumentButton").onclick =
-    () => saveDocument("draft");
-
-
-$("completeDocumentButton").onclick =
-async () => {
-
-    const ok = confirm(
-        "Merkitäänkö asiakirja valmiiksi ja julkaistaanko se asiakkaan omaan varaukseen?"
-    );
-
-    if(!ok)
-        return;
-
-    await saveDocument("completed");
-};
-
-
-/* =========================================================
-   CANCEL / DELETE
-========================================================= */
-
-$("cancelAppointmentButton").onclick =
-async () => {
-
-    if(!selectedAppointment)
-        return;
-
-    if(!confirm(
-        "Perutaanko tämä ajanvaraus?"
-    ))
-        return;
-
-    try{
-
-        const {error} = await sb
-            .from("appointments")
-            .update({
-                status:"cancelled"
-            })
-            .eq(
-                "id",
-                selectedAppointment.id
-            );
-
-        if(error)
-            throw error;
-
-        if(
-            selectedAppointment
-                .available_time_id
-        ){
-
-            await sb
-                .from("available_times")
-                .update({
-                    is_available:true
-                })
-                .eq(
-                    "id",
-                    selectedAppointment
-                        .available_time_id
-                );
-        }
-
-        toast("Ajanvaraus peruttiin.");
-
-        closeDrawer();
-
-        await Promise.all([
-            loadAppointments(),
-            loadSlots()
-        ]);
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(
-            "Peruminen epäonnistui.",
-            true
-        );
-    }
-};
-
-
-$("deleteAppointmentButton").onclick =
-async () => {
-
-    if(!selectedAppointment)
-        return;
-
-    if(!confirm(
-        "Poistetaanko testivaraus kokonaan?"
-    ))
-        return;
-
-    try{
-
-        const {error} = await sb.rpc(
-            "admin_delete_appointment",
-            {
-                appointment_id_input:
-                    selectedAppointment.id
-            }
-        );
-
-        if(error)
-            throw error;
-
-        toast("Testivaraus poistettiin.");
-
-        closeDrawer();
-
-        await Promise.all([
-            loadAppointments(),
-            loadSlots()
-        ]);
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(
-            "Testivarauksen poistaminen epäonnistui.",
-            true
-        );
-    }
-};
 
 
 /* =========================================================
@@ -4016,169 +2619,69 @@ async () => {
 
 async function loadSlots(){
 
-    const {data,error} = await sb
-        .from("available_times")
-        .select("*")
-        .order(
-            "appointment_date",
-            {ascending:true}
+    const {data,error} =
+        await supabase
+        .from('available_times')
+        .select('*')
+        .eq(
+            'professional_name',
+            ownProfessionalName()
         )
-        .order(
-            "start_time",
-            {ascending:true}
-        );
+        .gte(
+            'appointment_date',
+            GAME_TODAY
+        )
+        .order('appointment_date')
+        .order('start_time');
 
     if(error){
 
         console.error(error);
+
+        showMessage(
+            'error',
+            'Vastaanottoaikojen lataaminen epäonnistui.'
+        );
+
         return;
     }
 
-    slots = data || [];
-
-    $("slotCount").textContent =
-        `${slots.length} aikaa`;
-
-    const list =
-        $("slotList");
-
-    list.innerHTML = "";
-
-    slots.forEach(slot => {
-
-        const row =
-            document.createElement("div");
-
-        row.className =
-            "list-row";
-
-        row.innerHTML = `
-
-            <strong>
-                ${esc(formatDate(slot.appointment_date))}
-            </strong>
-
-            <div>
-                ${esc(formatTime(slot.start_time))}
-                –
-                ${esc(formatTime(slot.end_time))}
-
-                <div class="subtext">
-                    ${esc(slot.professional_name || "")}
-                </div>
-            </div>
-
-            <div>
-                ${
-                    slot.is_available
-                        ? "Vapaa"
-                        : "Varattu"
-                }
-            </div>
-
-            <div>
-                ${
-                    slot.is_available
-                    ? `
-                        <button
-                            class="table-btn"
-                            onclick="deleteSlot('${slot.id}')"
-                        >
-                            Poista
-                        </button>
-                    `
-                    : ""
-                }
-            </div>
-        `;
-
-        list.appendChild(row);
-    });
+    slots=data || [];
 }
 
 
-$("slotForm").onsubmit =
-async e => {
+/* =========================================================
+   NOTES
+========================================================= */
 
-    e.preventDefault();
+async function loadNotes(){
 
-    try{
-
-        const {error} = await sb
-            .from("available_times")
-            .insert({
-
-                appointment_date:
-                    $("slotDate").value,
-
-                start_time:
-                    $("slotStart").value,
-
-                end_time:
-                    $("slotEnd").value,
-
-                appointment_type:
-                    $("slotType").value.trim(),
-
-                professional_name:
-                    $("slotProfessional").value.trim(),
-
-                location:
-                    $("slotLocation").value.trim(),
-
-                is_available:true
-            });
-
-        if(error)
-            throw error;
-
-        toast(
-            "Vastaanottoaika lisättiin."
+    const {data,error} =
+        await supabase
+        .from('visit_notes')
+        .select('*')
+        .eq(
+            'author_user_id',
+            currentUser.id
+        )
+        .order(
+            'updated_at',
+            {ascending:false}
         );
-
-        $("slotDate").value = "";
-        $("slotStart").value = "";
-        $("slotEnd").value = "";
-
-        await loadSlots();
-
-    }catch(error){
-
-        console.error(error);
-
-        toast(
-            "Vastaanottoajan lisääminen epäonnistui.",
-            true
-        );
-    }
-};
-
-
-async function deleteSlot(id){
-
-    if(!confirm(
-        "Poistetaanko vapaa vastaanottoaika?"
-    ))
-        return;
-
-    const {error} = await sb
-        .from("available_times")
-        .delete()
-        .eq("id",id);
 
     if(error){
 
-        toast(
-            "Ajan poistaminen epäonnistui.",
-            true
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Käyntikirjausten lataaminen epäonnistui.'
         );
 
         return;
     }
 
-    toast("Vastaanottoaika poistettiin.");
-
-    await loadSlots();
+    notes=data || [];
 }
 
 
@@ -4188,447 +2691,1925 @@ async function deleteSlot(id){
 
 async function loadNews(){
 
-    const {data,error} = await sb
-        .from("site_news")
-        .select("*")
+    if(!isNurse()) return;
+
+    const {data,error} =
+        await supabase
+        .from('site_news')
+        .select('*')
         .order(
-            "created_at",
+            'created_at',
             {ascending:false}
         );
 
     if(error){
 
-        console.warn(
-            "site_news ei ole käytettävissä:",
-            error
-        );
-
-        $("newsList").innerHTML = `
-            <div class="empty">
-                Uutistaulua ei voitu lukea.
-                Tarkista site_news-taulu ja sen käyttöoikeudet.
-            </div>
-        `;
-
-        return;
-    }
-
-    newsItems = data || [];
-
-    $("newsCount").textContent =
-        `${newsItems.length} julkaisua`;
-
-    const list =
-        $("newsList");
-
-    list.innerHTML = "";
-
-    newsItems.forEach(item => {
-
-        const row =
-            document.createElement("div");
-
-        row.className =
-            "list-row";
-
-        row.innerHTML = `
-
-            <div>
-                ${
-                    item.category === "event"
-                        ? "Tapahtuma"
-                        : item.category === "main"
-                            ? "Pääuutinen"
-                            : "Uutinen"
-                }
-            </div>
-
-            <div>
-                <strong>
-                    ${esc(item.title)}
-                </strong>
-
-                <div class="subtext">
-                    ${
-                        item.is_published
-                            ? "Julkaistu"
-                            : "Luonnos"
-                    }
-                </div>
-            </div>
-
-            <div>
-                ${esc(formatDate(
-                    item.event_date ||
-                    item.created_at?.slice(0,10)
-                ))}
-            </div>
-
-            <div>
-                <button
-                    class="table-btn"
-                    onclick="editNews('${item.id}')"
-                >
-                    Muokkaa
-                </button>
-            </div>
-        `;
-
-        list.appendChild(row);
-    });
-}
-
-
-$("newsForm").onsubmit =
-async e => {
-
-    e.preventDefault();
-
-    const id =
-        $("newsId").value;
-
-    const payload = {
-
-        title:
-            $("newsTitle").value.trim(),
-
-        content:
-            $("newsContent").value.trim(),
-
-        category:
-            $("newsCategory").value,
-
-        image_url:
-            $("newsImage").value.trim() || null,
-
-        event_date:
-            $("newsEventDate").value || null,
-
-        is_published:
-            $("newsPublished").checked
-    };
-
-    try{
-
-        let result;
-
-        if(id){
-
-            result = await sb
-                .from("site_news")
-                .update(payload)
-                .eq("id",id);
-
-        }else{
-
-            result = await sb
-                .from("site_news")
-                .insert(payload);
-        }
-
-        if(result.error)
-            throw result.error;
-
-        toast("Julkaisu tallennettiin.");
-
-        resetNewsForm();
-
-        await loadNews();
-
-    }catch(error){
-
         console.error(error);
 
-        toast(
-            "Julkaisun tallentaminen epäonnistui.",
-            true
-        );
-    }
-};
+        document.getElementById('newsList')
+            .innerHTML=
+            '<div class="empty">Julkaisuja ei voitu ladata.</div>';
 
-
-function editNews(id){
-
-    const item =
-        newsItems.find(
-            x => String(x.id) === String(id)
-        );
-
-    if(!item)
         return;
+    }
 
-    $("newsId").value =
-        item.id;
-
-    $("newsTitle").value =
-        item.title || "";
-
-    $("newsContent").value =
-        item.content || "";
-
-    $("newsCategory").value =
-        item.category || "latest";
-
-    $("newsImage").value =
-        item.image_url || "";
-
-    $("newsEventDate").value =
-        item.event_date || "";
-
-    $("newsPublished").checked =
-        item.is_published !== false;
-}
-
-
-function resetNewsForm(){
-
-    $("newsForm").reset();
-
-    $("newsId").value = "";
-
-    $("newsCategory").value =
-        "main";
-
-    $("newsPublished").checked =
-        true;
+    news=data || [];
 }
 
 
 /* =========================================================
-   FEEDBACK / NPS
+   RENDER ALL
 ========================================================= */
 
-async function loadFeedback(){
+function renderAll(){
 
-    /*
-      Ensimmäiseksi käytetään jo projektissa
-      ollutta get_feedback_statistics-RPC:tä.
-    */
+    renderStatistics();
+    renderDashboard();
+    renderAppointments();
+    renderSlots();
+    renderStudents();
+    renderNotes();
+    renderRolePages();
 
-    const {data,error} =
-        await sb.rpc(
-            "get_feedback_statistics"
+    if(isNurse()){
+        renderNews();
+    }
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+function renderStatistics(){
+
+    const upcoming =
+        appointments.filter(a=>
+            a.status==='booked'
+            &&
+            a.available_times?.appointment_date
+            >=
+            GAME_TODAY
         );
 
-    if(error){
+    const today =
+        appointments.filter(a=>
+            a.status==='booked'
+            &&
+            a.available_times?.appointment_date
+            ===
+            GAME_TODAY
+        );
 
-        console.warn(error);
+    const drafts =
+        notes.filter(n=>
+            n.status==='draft'
+        );
 
-        $("adminNps").textContent = "–";
-        $("adminResponses").textContent = "0";
-        $("adminAverage").textContent = "–";
+    const free =
+        slots.filter(s=>
+            s.is_available===true
+        );
 
-        renderEmptyNps();
+    document.getElementById('statUpcoming')
+        .textContent=upcoming.length;
+
+    document.getElementById('statToday')
+        .textContent=today.length;
+
+    document.getElementById('statDrafts')
+        .textContent=drafts.length;
+
+    document.getElementById('statFree')
+        .textContent=free.length;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function sortedAppointments(){
+
+    return [...appointments]
+        .filter(a=>a.available_times)
+        .sort((a,b)=>{
+
+            const A =
+                `${a.available_times.appointment_date}T${a.available_times.start_time}`;
+
+            const B =
+                `${b.available_times.appointment_date}T${b.available_times.start_time}`;
+
+            return A.localeCompare(B);
+        });
+}
+
+
+function renderDashboard(){
+
+    const upcoming =
+        sortedAppointments()
+        .filter(a=>
+            a.status==='booked'
+            &&
+            a.available_times.appointment_date
+            >=
+            GAME_TODAY
+        )
+        .slice(0,6);
+
+    const container =
+        document.getElementById(
+            'dashboardAppointments'
+        );
+
+
+    if(!upcoming.length){
+
+        container.innerHTML=
+            '<div class="empty">Ei tulevia vastaanottoja.</div>';
+
+    }else{
+
+        container.innerHTML=`
+
+            <div class="table-wrap">
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Päivä</th>
+                    <th>Aika</th>
+                    <th>Opiskelija</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                ${
+                    upcoming.map(a=>`
+
+                        <tr>
+
+                            <td>
+                                ${formatDate(
+                                    a.available_times.appointment_date
+                                )}
+                            </td>
+
+                            <td>
+                                ${formatTime(
+                                    a.available_times.start_time
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(a.student_name)}
+                            </td>
+
+                            <td>
+                                <button
+                                    class="table-button"
+                                    data-open-appointment="${a.id}"
+                                >
+                                    Avaa
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    `).join('')
+                }
+
+                </tbody>
+
+            </table>
+            </div>
+        `;
+    }
+
+
+    let workText='';
+
+    if(isNurse()){
+
+        workText=`
+            <p><strong>Terveydenhoitaja</strong></p>
+            <p>
+                Hallinnoi vastaanottoja, käyntikirjauksia,
+                opiskeluterveydenhuollon julkaisuja ja palautetta.
+            </p>
+        `;
+    }
+
+    if(isPsychologist()){
+
+        workText=`
+            <p><strong>Psykologi</strong></p>
+            <p>
+                Hallinnoi psykologin vastaanottoja,
+                käyntikirjauksia ja jatkokäyntejä.
+            </p>
+        `;
+    }
+
+    if(isCurator()){
+
+        workText=`
+            <p><strong>Kuraattori</strong></p>
+            <p>
+                Hallinnoi kuraattorin tapaamisia,
+                opiskeluhuollon tukitoimia ja jatkosuunnitelmia.
+            </p>
+        `;
+    }
+
+    document.getElementById('dashboardWork')
+        .innerHTML=workText;
+
+    bindAppointmentButtons();
+}
+
+
+/* =========================================================
+   APPOINTMENT TABLE
+========================================================= */
+
+function renderAppointments(){
+
+    const query =
+        document
+        .getElementById('appointmentSearch')
+        .value
+        .trim()
+        .toLocaleLowerCase('fi');
+
+    const status =
+        document
+        .getElementById('appointmentStatus')
+        .value;
+
+    let items=sortedAppointments();
+
+    if(query){
+
+        items=items.filter(a=>
+            String(a.student_name || '')
+                .toLocaleLowerCase('fi')
+                .includes(query)
+            ||
+            String(a.student_group || '')
+                .toLocaleLowerCase('fi')
+                .includes(query)
+        );
+    }
+
+    if(status){
+
+        items=items.filter(a=>
+            a.status===status
+        );
+    }
+
+    const tbody =
+        document.getElementById(
+            'appointmentsTable'
+        );
+
+
+    if(!items.length){
+
+        tbody.innerHTML=`
+            <tr>
+                <td colspan="6" class="empty">
+                    Ajanvarauksia ei löytynyt.
+                </td>
+            </tr>
+        `;
 
         return;
     }
 
-    const stats =
-        Array.isArray(data)
-            ? data[0]
-            : data;
 
-    $("adminNps").textContent =
-        stats?.nps_score ?? "–";
+    tbody.innerHTML=
+        items.map(a=>{
 
-    $("adminResponses").textContent =
-        stats?.response_count ?? 0;
+            const slot=a.available_times;
 
-    $("adminAverage").textContent =
-        stats?.average_score != null
-            ? Number(
-                stats.average_score
-            ).toFixed(1)
-            : "–";
+            return `
+
+                <tr>
+
+                    <td>
+                        ${formatDate(
+                            slot.appointment_date
+                        )}
+                    </td>
+
+                    <td>
+                        ${formatTime(slot.start_time)}
+                        –
+                        ${formatTime(slot.end_time)}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(a.student_name)}
+                        </strong>
+
+                        <div style="color:var(--muted);margin-top:3px">
+                            ${escapeHtml(a.student_group || '')}
+                        </div>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            slot.appointment_type
+                            ||
+                            a.appointment_type
+                            ||
+                            ''
+                        )}
+                    </td>
+
+                    <td>
+                        <span class="badge ${escapeHtml(a.status)}">
+                            ${escapeHtml(statusLabel(a.status))}
+                        </span>
+                    </td>
+
+                    <td>
+                        <button
+                            class="table-button"
+                            data-open-appointment="${a.id}"
+                        >
+                            Avaa
+                        </button>
+                    </td>
+
+                </tr>
+            `;
+
+        }).join('');
+
+    bindAppointmentButtons();
+}
+
+
+document
+.getElementById('appointmentSearch')
+.addEventListener(
+    'input',
+    renderAppointments
+);
+
+document
+.getElementById('appointmentStatus')
+.addEventListener(
+    'change',
+    renderAppointments
+);
+
+
+/* =========================================================
+   OPEN APPOINTMENT
+========================================================= */
+
+function bindAppointmentButtons(){
+
+    document
+    .querySelectorAll('[data-open-appointment]')
+    .forEach(button=>{
+
+        button.onclick=()=>{
+
+            const appointment =
+                appointments.find(
+                    a=>
+                    a.id
+                    ===
+                    button.dataset.openAppointment
+                );
+
+            if(appointment){
+                openAppointment(appointment);
+            }
+        };
+    });
+}
+
+
+function openAppointment(appointment){
+
+    activeAppointment=appointment;
+
+    const slot=appointment.available_times;
+
+    document.getElementById('detailStudent')
+        .textContent=
+        appointment.student_name || '–';
+
+    document.getElementById('detailGroup')
+        .textContent=
+        appointment.student_group || '–';
+
+    document.getElementById('detailEmail')
+        .textContent=
+        appointment.student_email || '–';
+
+    document.getElementById('detailPhone')
+        .textContent=
+        appointment.student_phone || '–';
+
+    document.getElementById('detailDate')
+        .textContent=
+        formatDate(slot?.appointment_date);
+
+    document.getElementById('detailTime')
+        .textContent=
+        `${formatTime(slot?.start_time)}–${formatTime(slot?.end_time)}`;
+
+    document.getElementById('detailType')
+        .textContent=
+        slot?.appointment_type
+        ||
+        appointment.appointment_type
+        ||
+        '–';
+
+    document.getElementById('detailProfessional')
+        .textContent=
+        slot?.professional_name || '–';
+
+    document.getElementById('detailStatus')
+        .textContent=
+        statusLabel(appointment.status);
+
+    document.getElementById('detailCode')
+        .textContent=
+        appointment.booking_code || '–';
+
+
+    const cancelled =
+        appointment.status==='cancelled';
+
+    const completed =
+        appointment.status==='completed';
+
+
+    document.getElementById(
+        'cancelAppointmentButton'
+    ).style.display =
+        cancelled || completed
+        ? 'none'
+        : 'inline-block';
+
 
     /*
-      Jos RPC palauttaa jakauman JSON-muodossa,
-      käytetään sitä. Muuten mittari näyttää
-      tyhjän jakauman.
+        Poistaminen on käytettävissä myös
+        perutulle testivaraukselle.
     */
 
-    renderNpsDistribution(
-        stats?.distribution || null
+    document.getElementById(
+        'deleteAppointmentButton'
+    ).style.display='inline-block';
+
+
+    document.getElementById(
+        'appointmentModal'
+    ).classList.add('open');
+}
+
+
+document
+.getElementById('closeAppointment')
+.onclick=()=>{
+
+    document.getElementById(
+        'appointmentModal'
+    ).classList.remove('open');
+};
+
+
+/* =========================================================
+   CANCEL APPOINTMENT
+========================================================= */
+
+document
+.getElementById('cancelAppointmentButton')
+.onclick=async()=>{
+
+    if(!activeAppointment) return;
+
+    const ok=confirm(
+        `Perutaanko opiskelijan ${activeAppointment.student_name} ajanvaraus? Vastaanottoaika vapautetaan uudelleen varattavaksi.`
+    );
+
+    if(!ok) return;
+
+
+    const {error} =
+        await supabase.rpc(
+            'admin_cancel_appointment',
+            {
+                p_appointment_id:
+                    activeAppointment.id
+            }
+        );
+
+
+    if(error){
+
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Ajanvarauksen peruuttaminen epäonnistui.'
+        );
+
+        return;
+    }
+
+
+    document.getElementById(
+        'appointmentModal'
+    ).classList.remove('open');
+
+
+    await refreshData();
+
+
+    showMessage(
+        'success',
+        'Ajanvaraus peruttiin ja vastaanottoaika vapautettiin.'
+    );
+};
+
+
+/* =========================================================
+   DELETE APPOINTMENT
+========================================================= */
+
+document
+.getElementById('deleteAppointmentButton')
+.onclick=async()=>{
+
+    if(!activeAppointment) return;
+
+
+    /*
+        Tämä käyttää tietokannassa olevaa
+        admin_delete_appointment-RPC:tä.
+
+        RPC poistaa ensin mahdollisen käyntikirjauksen,
+        sitten ajanvarauksen ja vapauttaa ajan.
+    */
+
+    const student =
+        activeAppointment.student_name || 'opiskelijan';
+
+    const ok=confirm(
+        `Poistetaanko ${student} ajanvaraus kokonaan?\n\nTämä poistaa myös ajanvaraukseen liittyvän käyntikirjauksen. Toimintoa ei voi perua.`
+    );
+
+    if(!ok) return;
+
+
+    const appointmentId =
+        activeAppointment.id;
+
+
+    const {error} =
+        await supabase.rpc(
+            'admin_delete_appointment',
+            {
+                p_appointment_id:
+                    appointmentId
+            }
+        );
+
+
+    if(error){
+
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Ajanvarauksen poistaminen epäonnistui: '
+            +
+            error.message
+        );
+
+        return;
+    }
+
+
+    activeAppointment=null;
+
+    document.getElementById(
+        'appointmentModal'
+    ).classList.remove('open');
+
+
+    await refreshData();
+
+
+    showMessage(
+        'success',
+        'Ajanvaraus poistettiin kokonaan ja vastaanottoaika vapautettiin.'
+    );
+};
+
+
+/* =========================================================
+   STUDENTS
+========================================================= */
+
+function renderStudents(){
+
+    const map=new Map();
+
+    appointments.forEach(a=>{
+
+        const key=
+            String(
+                a.student_email
+                ||
+                a.student_name
+            )
+            .trim()
+            .toLocaleLowerCase('fi');
+
+        if(!key) return;
+
+
+        if(!map.has(key)){
+
+            map.set(key,{
+                name:a.student_name,
+                group:a.student_group,
+                email:a.student_email,
+                phone:a.student_phone,
+                appointments:[]
+            });
+        }
+
+        map.get(key)
+            .appointments
+            .push(a);
+    });
+
+
+    const students=
+        [...map.values()]
+        .sort((a,b)=>
+            String(a.name)
+            .localeCompare(
+                String(b.name),
+                'fi'
+            )
+        );
+
+
+    const container =
+        document.getElementById('studentGrid');
+
+
+    if(!students.length){
+
+        container.innerHTML=
+            '<div class="empty">Opiskelijoita ei ole.</div>';
+
+        return;
+    }
+
+
+    container.innerHTML=
+        students.map(student=>`
+
+            <article class="student-card">
+
+                <h3>
+                    ${escapeHtml(student.name)}
+                </h3>
+
+                <p>
+                    ${escapeHtml(
+                        student.group || 'Ryhmä ei ilmoitettu'
+                    )}
+                </p>
+
+                <p>
+                    ${student.appointments.length}
+                    ajanvarausta
+                </p>
+
+                <p>
+                    ${escapeHtml(
+                        student.email || ''
+                    )}
+                </p>
+
+            </article>
+
+        `).join('');
+}
+
+
+/* =========================================================
+   NOTE EDITOR
+========================================================= */
+
+document
+.getElementById('openNoteButton')
+.onclick=()=>{
+
+    if(!activeAppointment) return;
+
+    document.getElementById(
+        'appointmentModal'
+    ).classList.remove('open');
+
+    openNote(activeAppointment);
+};
+
+
+function configureNoteLabels(){
+
+    if(isNurse()){
+
+        document.getElementById('noteModalTitle')
+            .textContent=
+            'Terveydenhoitajan käyntikirjaus';
+
+        document.getElementById('reasonHeading')
+            .textContent=
+            'Käynnin syy';
+
+        document.getElementById('mainNoteHeading')
+            .textContent=
+            'Käyntimerkintä, havainnot ja toteutetut toimenpiteet';
+
+        document.getElementById('followUpHeading')
+            .textContent=
+            'Ohjaus ja jatkosuunnitelma';
+    }
+
+
+    if(isPsychologist()){
+
+        document.getElementById('noteModalTitle')
+            .textContent=
+            'Psykologin käyntikirjaus';
+
+        document.getElementById('reasonHeading')
+            .textContent=
+            'Yhteydenoton ja käynnin syy';
+
+        document.getElementById('mainNoteHeading')
+            .textContent=
+            'Tilanteen kuvaus, keskustelun sisältö ja psykologin arvio';
+
+        document.getElementById('followUpHeading')
+            .textContent=
+            'Sovitut jatkotoimet ja seuraava yhteydenotto';
+    }
+
+
+    if(isCurator()){
+
+        document.getElementById('noteModalTitle')
+            .textContent=
+            'Kuraattorin käyntikirjaus';
+
+        document.getElementById('reasonHeading')
+            .textContent=
+            'Yhteydenoton ja tapaamisen syy';
+
+        document.getElementById('mainNoteHeading')
+            .textContent=
+            'Opiskelutilanne, elämäntilanne ja sovitut tukitoimet';
+
+        document.getElementById('followUpHeading')
+            .textContent=
+            'Yhteistyö ja jatkosuunnitelma';
+    }
+}
+
+
+function openNote(appointment){
+
+    activeAppointment=appointment;
+
+    configureNoteLabels();
+
+    const slot=appointment.available_times;
+
+    document.getElementById('noteStudent')
+        .textContent=
+        appointment.student_name || '–';
+
+    document.getElementById('noteAppointment')
+        .textContent=
+        `${
+            formatDate(
+                slot?.appointment_date
+            )
+        } klo ${
+            formatTime(
+                slot?.start_time
+            )
+        } – ${
+            slot?.appointment_type || ''
+        }`;
+
+    document.getElementById('noteAuthor')
+        .textContent=
+        staffProfile.full_name;
+
+    document.getElementById('noteProfessionalTitle')
+        .textContent=
+        staffProfile.professional_title;
+
+    const note=
+        notes.find(
+            n=>
+            n.appointment_id
+            ===
+            appointment.id
+        );
+
+
+    document.getElementById('visitReason')
+        .value=
+        note?.visit_reason || '';
+
+    document.getElementById('noteText')
+        .value=
+        note?.note_text || '';
+
+    document.getElementById('followUp')
+        .value=
+        note?.follow_up || '';
+
+
+    if(note){
+
+        document.getElementById('noteState')
+            .innerHTML=
+            `<span class="badge ${escapeHtml(note.status)}">
+                ${escapeHtml(statusLabel(note.status))}
+            </span>`;
+
+        document.getElementById('noteUpdated')
+            .textContent=
+            formatDateTime(note.updated_at);
+
+    }else{
+
+        document.getElementById('noteState')
+            .textContent='Uusi kirjaus';
+
+        document.getElementById('noteUpdated')
+            .textContent='–';
+    }
+
+
+    const readOnly =
+        note?.status==='completed';
+
+
+    [
+        'visitReason',
+        'noteText',
+        'followUp'
+    ].forEach(id=>{
+
+        document.getElementById(id)
+            .readOnly=readOnly;
+    });
+
+
+    document.getElementById('saveDraftButton')
+        .style.display=
+        readOnly
+        ? 'none'
+        : 'inline-block';
+
+    document.getElementById('completeButton')
+        .style.display=
+        readOnly
+        ? 'none'
+        : 'inline-block';
+
+
+    document.getElementById(
+        'noteModal'
+    ).classList.add('open');
+}
+
+
+document
+.getElementById('closeNote')
+.onclick=()=>{
+
+    document.getElementById(
+        'noteModal'
+    ).classList.remove('open');
+};
+
+
+/* =========================================================
+   SAVE NOTE
+========================================================= */
+
+async function saveNote(status){
+
+    if(!activeAppointment) return;
+
+
+    /*
+        Tarkistus:
+        työntekijä ei saa käyttöliittymän kautta
+        kirjata toisen ammattilaisen ajanvarausta.
+    */
+
+    if(
+        activeAppointment
+        .available_times
+        ?.professional_name
+        !==
+        ownProfessionalName()
+    ){
+
+        showMessage(
+            'error',
+            'Tämä ajanvaraus ei kuulu kirjautuneelle ammattilaiselle.'
+        );
+
+        return;
+    }
+
+
+    const payload={
+
+        visit_reason:
+            document
+            .getElementById('visitReason')
+            .value
+            .trim(),
+
+        note_text:
+            document
+            .getElementById('noteText')
+            .value
+            .trim(),
+
+        follow_up:
+            document
+            .getElementById('followUp')
+            .value
+            .trim(),
+
+        status,
+
+        updated_at:
+            new Date().toISOString()
+    };
+
+
+    const existing =
+        notes.find(
+            n=>
+            n.appointment_id
+            ===
+            activeAppointment.id
+        );
+
+
+    let error;
+
+
+    if(existing){
+
+        /*
+            Vain kirjauksen alkuperäinen laatija
+            saa muuttaa omaa kirjaustaan.
+        */
+
+        if(
+            existing.author_user_id
+            !==
+            currentUser.id
+        ){
+
+            showMessage(
+                'error',
+                'Et voi muokata toisen ammattilaisen kirjausta.'
+            );
+
+            return;
+        }
+
+
+        const result =
+            await supabase
+            .from('visit_notes')
+            .update(payload)
+            .eq('id',existing.id)
+            .eq(
+                'author_user_id',
+                currentUser.id
+            );
+
+        error=result.error;
+
+    }else{
+
+        const result =
+            await supabase
+            .from('visit_notes')
+            .insert({
+
+                ...payload,
+
+                appointment_id:
+                    activeAppointment.id,
+
+                author_user_id:
+                    currentUser.id
+            });
+
+        error=result.error;
+    }
+
+
+    if(error){
+
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Kirjauksen tallentaminen epäonnistui: '
+            +
+            error.message
+        );
+
+        return;
+    }
+
+
+    if(
+        status==='completed'
+        &&
+        activeAppointment.status==='booked'
+    ){
+
+        const {error:completeError} =
+            await supabase.rpc(
+                'admin_complete_appointment',
+                {
+                    p_appointment_id:
+                        activeAppointment.id
+                }
+            );
+
+
+        if(completeError){
+
+            console.error(completeError);
+
+            showMessage(
+                'error',
+                'Kirjaus tallennettiin, mutta vastaanoton merkitseminen valmiiksi epäonnistui.'
+            );
+
+            await refreshData();
+
+            return;
+        }
+    }
+
+
+    document.getElementById(
+        'noteModal'
+    ).classList.remove('open');
+
+
+    await refreshData();
+
+
+    showMessage(
+        'success',
+        status==='completed'
+        ?
+        'Käyntikirjaus valmistui ja julkaistiin.'
+        :
+        'Käyntikirjaus tallennettiin luonnoksena.'
     );
 }
 
 
-function renderEmptyNps(){
+document.getElementById('saveDraftButton')
+.onclick=()=>saveNote('draft');
 
-    renderNpsDistribution(null);
-}
+document.getElementById('completeButton')
+.onclick=()=>{
+
+    const ok=confirm(
+        'Merkitäänkö käyntikirjaus valmiiksi? Valmis kirjaus julkaistaan asiakkaan Oma varaus -palveluun.'
+    );
+
+    if(ok){
+        saveNote('completed');
+    }
+};
 
 
-function renderNpsDistribution(distribution){
+/* =========================================================
+   NOTES LIST
+========================================================= */
 
-    const el =
-        $("npsDistribution");
+function renderNotes(){
 
-    el.innerHTML = "";
+    const container =
+        document.getElementById('notesList');
 
-    let values =
-        Array(11).fill(0);
 
-    if(Array.isArray(distribution)){
+    if(!notes.length){
 
-        values =
-            values.map(
-                (_,i) =>
-                    Number(
-                        distribution[i] || 0
-                    )
-            );
+        container.innerHTML=
+            '<div class="empty">Käyntikirjauksia ei ole.</div>';
 
-    }else if(
-        distribution &&
-        typeof distribution === "object"
-    ){
-
-        values =
-            values.map(
-                (_,i) =>
-                    Number(
-                        distribution[i] ||
-                        distribution[String(i)] ||
-                        0
-                    )
-            );
+        return;
     }
 
-    const max =
-        Math.max(...values,1);
 
-    values.forEach((value,index) => {
+    container.innerHTML=
+        notes.map(note=>{
 
-        const cell =
-            document.createElement("div");
+            const appointment =
+                appointments.find(
+                    a=>
+                    a.id
+                    ===
+                    note.appointment_id
+                );
 
-        cell.className =
-            "nps-cell";
+            return `
 
-        const height =
-            Math.max(
-                2,
-                (value / max) * 110
-            );
+                <article class="note-list-item">
 
-        cell.innerHTML = `
+                    <strong>
+                        ${
+                            escapeHtml(
+                                appointment
+                                ?.student_name
+                                ||
+                                'Opiskelija'
+                            )
+                        }
+                    </strong>
 
-            <div class="nps-bar-area">
-                <div
-                    class="nps-bar"
-                    style="height:${height}px"
-                    title="${value} vastausta"
-                ></div>
-            </div>
+                    <div style="margin-top:5px">
 
-            <div class="nps-label">
-                ${index}
-            </div>
-        `;
+                        <span class="badge ${escapeHtml(note.status)}">
+                            ${escapeHtml(statusLabel(note.status))}
+                        </span>
 
-        el.appendChild(cell);
+                        <span style="color:var(--muted);font-size:12px;margin-left:8px">
+                            ${formatDateTime(note.updated_at)}
+                        </span>
+
+                    </div>
+
+                    ${
+                        note.visit_reason
+                        ?
+                        `<p>${escapeHtml(note.visit_reason)}</p>`
+                        :
+                        ''
+                    }
+
+                    ${
+                        appointment
+                        ?
+                        `
+                        <button
+                            class="table-button"
+                            data-open-note="${appointment.id}"
+                        >
+                            Avaa kirjaus
+                        </button>
+                        `
+                        :
+                        ''
+                    }
+
+                </article>
+            `;
+
+        }).join('');
+
+
+    document
+    .querySelectorAll('[data-open-note]')
+    .forEach(button=>{
+
+        button.onclick=()=>{
+
+            const appointment =
+                appointments.find(
+                    a=>
+                    a.id
+                    ===
+                    button.dataset.openNote
+                );
+
+            if(appointment){
+                openNote(appointment);
+            }
+        };
     });
 }
 
 
 /* =========================================================
-   STAFF
+   ROLE PAGES
 ========================================================= */
 
-async function loadUsers(){
+function renderRolePages(){
 
-    const {data,error} = await sb
-        .from("staff_profiles")
-        .select("*")
-        .order(
-            "full_name",
-            {ascending:true}
+    const upcoming =
+        appointments.filter(a=>
+            a.status==='booked'
+            &&
+            a.available_times
+            ?.appointment_date
+            >=
+            GAME_TODAY
+        ).length;
+
+    const drafts =
+        notes.filter(
+            n=>n.status==='draft'
+        ).length;
+
+    const followups =
+        notes.filter(
+            n=>
+            String(n.follow_up || '')
+            .trim()
+            .length>0
+        ).length;
+
+
+    if(isPsychologist()){
+
+        document.getElementById(
+            'psychUpcoming'
+        ).textContent=
+            `${upcoming} vastaanottoa`;
+
+        document.getElementById(
+            'psychDrafts'
+        ).textContent=
+            `${drafts} kirjausta`;
+
+        document.getElementById(
+            'psychFollowups'
+        ).textContent=
+            `${followups} kirjausta, joissa jatkosuunnitelma`;
+    }
+
+
+    if(isCurator()){
+
+        document.getElementById(
+            'curatorUpcoming'
+        ).textContent=
+            `${upcoming} tapaamista`;
+
+        document.getElementById(
+            'curatorDrafts'
+        ).textContent=
+            `${drafts} kirjausta`;
+
+        document.getElementById(
+            'curatorFollowups'
+        ).textContent=
+            `${followups} kirjausta`;
+    }
+}
+
+
+/* =========================================================
+   SLOT RENDER
+========================================================= */
+
+function renderSlots(){
+
+    const tbody =
+        document.getElementById('slotsTable');
+
+
+    if(!slots.length){
+
+        tbody.innerHTML=`
+            <tr>
+                <td colspan="5" class="empty">
+                    Vastaanottoaikoja ei ole.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    tbody.innerHTML=
+        slots.map(slot=>`
+
+            <tr>
+
+                <td>
+                    ${formatDate(slot.appointment_date)}
+                </td>
+
+                <td>
+                    ${formatTime(slot.start_time)}
+                    –
+                    ${formatTime(slot.end_time)}
+                </td>
+
+                <td>
+                    ${escapeHtml(slot.appointment_type)}
+                </td>
+
+                <td>
+                    ${
+                        slot.is_available
+                        ?
+                        '<span class="badge booked">Vapaa</span>'
+                        :
+                        '<span class="badge completed">Varattu</span>'
+                    }
+                </td>
+
+                <td>
+
+                    ${
+                        slot.is_available
+                        ?
+                        `
+                        <button
+                            class="danger-button"
+                            data-delete-slot="${slot.id}"
+                        >
+                            Poista
+                        </button>
+                        `
+                        :
+                        ''
+                    }
+
+                </td>
+
+            </tr>
+
+        `).join('');
+
+
+    document
+    .querySelectorAll('[data-delete-slot]')
+    .forEach(button=>{
+
+        button.onclick=
+            ()=>deleteSlot(
+                button.dataset.deleteSlot
+            );
+    });
+}
+
+
+/* =========================================================
+   CREATE SLOT
+========================================================= */
+
+document
+.getElementById('slotForm')
+.addEventListener(
+    'submit',
+    async event=>{
+
+        event.preventDefault();
+
+        const appointmentDate =
+            document
+            .getElementById('slotDate')
+            .value;
+
+        const startTime =
+            document
+            .getElementById('slotStart')
+            .value;
+
+        const endTime =
+            document
+            .getElementById('slotEnd')
+            .value;
+
+        const appointmentType =
+            document
+            .getElementById('slotType')
+            .value
+            .trim();
+
+
+        if(endTime<=startTime){
+
+            showMessage(
+                'error',
+                'Päättymisajan täytyy olla alkamisajan jälkeen.'
+            );
+
+            return;
+        }
+
+
+        const {error} =
+            await supabase
+            .from('available_times')
+            .insert({
+
+                appointment_date:
+                    appointmentDate,
+
+                start_time:
+                    startTime,
+
+                end_time:
+                    endTime,
+
+                appointment_type:
+                    appointmentType,
+
+                professional_name:
+                    ownProfessionalName(),
+
+                location:
+                    staffProfile.location
+                    ||
+                    'Muuramen lukio',
+
+                is_available:true
+            });
+
+
+        if(error){
+
+            console.error(error);
+
+            showMessage(
+                'error',
+                'Vastaanottoajan lisääminen epäonnistui: '
+                +
+                error.message
+            );
+
+            return;
+        }
+
+
+        document.getElementById('slotDate')
+            .value='';
+
+        document.getElementById('slotStart')
+            .value='';
+
+        document.getElementById('slotEnd')
+            .value='';
+
+
+        await loadSlots();
+
+        renderSlots();
+        renderStatistics();
+
+
+        showMessage(
+            'success',
+            'Vastaanottoaika lisättiin.'
         );
+    }
+);
+
+
+/* =========================================================
+   DELETE FREE SLOT
+========================================================= */
+
+async function deleteSlot(id){
+
+    const slot =
+        slots.find(s=>s.id===id);
+
+    if(!slot) return;
+
+
+    if(!slot.is_available){
+
+        showMessage(
+            'error',
+            'Varattua vastaanottoaikaa ei voi poistaa tästä näkymästä.'
+        );
+
+        return;
+    }
+
+
+    const ok=confirm(
+        'Poistetaanko tämä vapaa vastaanottoaika?'
+    );
+
+    if(!ok) return;
+
+
+    const {error} =
+        await supabase
+        .from('available_times')
+        .delete()
+        .eq('id',id)
+        .eq(
+            'professional_name',
+            ownProfessionalName()
+        )
+        .eq(
+            'is_available',
+            true
+        );
+
 
     if(error){
 
         console.error(error);
 
-        toast(
-            "Henkilöstön lataaminen epäonnistui.",
-            true
+        showMessage(
+            'error',
+            'Vastaanottoajan poistaminen epäonnistui: '
+            +
+            error.message
         );
 
         return;
     }
 
-    const body =
-        $("usersBody");
 
-    body.innerHTML = "";
+    await loadSlots();
 
-    (data || []).forEach(user => {
+    renderSlots();
+    renderStatistics();
 
-        const tr =
-            document.createElement("tr");
 
-        tr.innerHTML = `
-
-            <td>
-                <strong>
-                    ${esc(user.full_name || "–")}
-                </strong>
-            </td>
-
-            <td>
-                ${esc(user.professional_title || "–")}
-            </td>
-
-            <td>
-                ${esc(user.location || "–")}
-            </td>
-
-            <td class="code">
-                ${esc(user.user_id || "–")}
-            </td>
-        `;
-
-        body.appendChild(tr);
-    });
+    showMessage(
+        'success',
+        'Vastaanottoaika poistettiin.'
+    );
 }
 
 
 /* =========================================================
-   KEYBOARD
+   NEWS - NURSE ONLY
 ========================================================= */
 
-document.addEventListener(
-"keydown",
-e => {
+document
+.getElementById('newsForm')
+.addEventListener(
+    'submit',
+    async event=>{
 
-    if(e.key !== "Escape")
-        return;
+        event.preventDefault();
 
-    if(
-        $("documentWorkspace")
-            .classList
-            .contains("open")
-    ){
-        closeDocument();
+
+        if(!isNurse()){
+
+            showMessage(
+                'error',
+                'Uutisten julkaiseminen on rajattu terveydenhoitajalle.'
+            );
+
+            return;
+        }
+
+
+        const title =
+            document
+            .getElementById('newsTitle')
+            .value
+            .trim();
+
+        const content =
+            document
+            .getElementById('newsContent')
+            .value
+            .trim();
+
+        const category =
+            document
+            .getElementById('newsCategory')
+            .value;
+
+        const eventDate =
+            document
+            .getElementById('newsEventDate')
+            .value
+            ||
+            null;
+
+
+        const payload={
+            title,
+            content,
+            category
+        };
+
+
+        if(category==='event'){
+            payload.event_date=eventDate;
+        }
+
+
+        const {error} =
+            await supabase
+            .from('site_news')
+            .insert(payload);
+
+
+        if(error){
+
+            console.error(error);
+
+            showMessage(
+                'error',
+                'Julkaisun tallentaminen epäonnistui: '
+                +
+                error.message
+            );
+
+            return;
+        }
+
+
+        document.getElementById('newsForm')
+            .reset();
+
+
+        await loadNews();
+
+        renderNews();
+
+
+        showMessage(
+            'success',
+            'Sisältö julkaistiin.'
+        );
+    }
+);
+
+
+function renderNews(){
+
+    if(!isNurse()) return;
+
+    const container =
+        document.getElementById('newsList');
+
+
+    if(!news.length){
+
+        container.innerHTML=
+            '<div class="empty">Julkaisuja ei ole.</div>';
+
         return;
     }
 
-    if(
-        $("appointmentDrawer")
-            .classList
-            .contains("open")
-    ){
-        closeDrawer();
+
+    container.innerHTML=
+        news.map(item=>`
+
+            <article class="note-list-item">
+
+                <strong>
+                    ${escapeHtml(item.title)}
+                </strong>
+
+                <div style="margin-top:5px;color:var(--muted);font-size:12px">
+                    ${escapeHtml(item.category || 'Uutinen')}
+                    ·
+                    ${formatDate(item.created_at)}
+                </div>
+
+                ${
+                    item.content
+                    ?
+                    `<p>${escapeHtml(item.content)}</p>`
+                    :
+                    ''
+                }
+
+                <button
+                    class="danger-button"
+                    data-delete-news="${item.id}"
+                >
+                    Poista julkaisu
+                </button>
+
+            </article>
+
+        `).join('');
+
+
+    document
+    .querySelectorAll('[data-delete-news]')
+    .forEach(button=>{
+
+        button.onclick=
+            ()=>deleteNews(
+                button.dataset.deleteNews
+            );
+    });
+}
+
+
+async function deleteNews(id){
+
+    if(!isNurse()) return;
+
+    const ok=confirm(
+        'Poistetaanko julkaisu?'
+    );
+
+    if(!ok) return;
+
+
+    const {error} =
+        await supabase
+        .from('site_news')
+        .delete()
+        .eq('id',id);
+
+
+    if(error){
+
+        console.error(error);
+
+        showMessage(
+            'error',
+            'Julkaisun poistaminen epäonnistui.'
+        );
+
+        return;
     }
+
+
+    await loadNews();
+    renderNews();
+
+
+    showMessage(
+        'success',
+        'Julkaisu poistettiin.'
+    );
+}
+
+
+/* =========================================================
+   FEEDBACK - NURSE ONLY
+========================================================= */
+
+async function loadFeedback(){
+
+    if(!isNurse()) return;
+
+
+    const {data,error} =
+        await supabase.rpc(
+            'get_feedback_statistics'
+        );
+
+
+    if(error){
+
+        console.error(error);
+
+        document.getElementById(
+            'feedbackInfo'
+        ).textContent=
+            'Palautetietojen lataaminen epäonnistui.';
+
+        return;
+    }
+
+
+    let stats=data;
+
+    if(
+        Array.isArray(stats)
+        &&
+        stats.length
+    ){
+        stats=stats[0];
+    }
+
+
+    if(!stats){
+
+        document.getElementById(
+            'feedbackNps'
+        ).textContent='–';
+
+        document.getElementById(
+            'feedbackCount'
+        ).textContent='0';
+
+        return;
+    }
+
+
+    document.getElementById(
+        'feedbackNps'
+    ).textContent=
+        stats.nps_score
+        ??
+        stats.nps
+        ??
+        '–';
+
+
+    document.getElementById(
+        'feedbackCount'
+    ).textContent=
+        stats.response_count
+        ??
+        stats.responses
+        ??
+        stats.count
+        ??
+        '–';
+
+
+    document.getElementById(
+        'feedbackInfo'
+    ).textContent=
+        'Palautetiedot on päivitetty asiakaspalautteen tietokannasta.';
+}
+
+
+/* =========================================================
+   CLOSE MODALS BY BACKDROP
+========================================================= */
+
+[
+    'appointmentModal',
+    'noteModal'
+].forEach(id=>{
+
+    const modal =
+        document.getElementById(id);
+
+    modal.addEventListener(
+        'click',
+        event=>{
+
+            if(event.target===modal){
+                modal.classList.remove('open');
+            }
+        }
+    );
 });
 
 
 /* =========================================================
-   START
+   ESCAPE
 ========================================================= */
 
-init();
+document.addEventListener(
+    'keydown',
+    event=>{
+
+        if(event.key==='Escape'){
+
+            document
+            .querySelectorAll('.modal.open')
+            .forEach(
+                modal=>
+                    modal.classList.remove('open')
+            );
+        }
+    }
+);
 
 </script>
 
