@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Huoli läheisestä | Keski-Suomen hyvinvointialue</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#005596;
+    --button-blue:#286296;
+    --button-hover:#174f7f;
+    --border:#d4dde3;
+    --text:#111;
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+    font-family:"Raleway",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:var(--blue);
+}
+
+img{
+    max-width:100%;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site-header{
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:124px;
+
+    margin:auto;
+    padding:25px 20px 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.logo{
+    display:block;
+    width:245px;
+    max-height:82px;
+    object-fit:contain;
+}
+
+.logo-link{
+    display:inline-flex;
+}
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue);
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+}
+
+.top-search button{
+    width:58px;
+
+    border:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--button-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+.mobile-menu-button{
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    border:0;
+    background:transparent;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+}
+
+.mobile-menu-button span{
+    display:block;
+    width:27px;
+    height:2px;
+    background:var(--blue);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:67px;
+
+    margin:auto;
+    padding:0 4px;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid var(--blue);
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue);
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:500;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue);
+}
+
+.mobile-search,
+.mobile-nav-close{
+    display:none;
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:17px 20px 80px;
+}
+
+/* BREADCRUMB */
+
+.breadcrumbs{
+    margin:0 0 22px;
+
+    color:var(--blue);
+    font-size:14px;
+}
+
+.breadcrumbs a{
+    color:var(--blue);
+    text-decoration:none;
+}
+
+.breadcrumbs a:hover{
+    text-decoration:underline;
+}
+
+.breadcrumb-divider{
+    margin:0 5px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+
+    width:100%;
+    margin-bottom:34px;
+}
+
+.hero img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    max-height:550px;
+
+    object-fit:cover;
+    object-position:center;
+}
+
+.hero-title{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    min-width:330px;
+
+    margin:0;
+    padding:20px 32px 8px;
+
+    background:#fff;
+
+    border-radius:0 70px 0 0;
+
+    color:var(--blue);
+
+    font-size:32px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro{
+    max-width:1040px;
+
+    margin:0 0 48px;
+
+    color:var(--blue);
+
+    font-size:21px;
+    line-height:1.5;
+    font-weight:600;
+}
+
+/* =====================================================
+   CONTENT LAYOUT
+===================================================== */
+
+.content-grid{
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) minmax(380px,.95fr);
+
+    gap:70px;
+
+    align-items:start;
+}
+
+.content-section{
+    margin-bottom:48px;
+}
+
+.content-section h2{
+    margin:0 0 16px;
+
+    color:var(--blue);
+
+    font-size:27px;
+    line-height:1.35;
+    font-weight:500;
+}
+
+.content-section h3{
+    margin:30px 0 12px;
+
+    color:var(--blue);
+
+    font-size:21px;
+    line-height:1.4;
+    font-weight:500;
+}
+
+.content-section p{
+    margin:0 0 17px;
+
+    font-size:16px;
+    line-height:1.7;
+}
+
+.content-section ul{
+    margin:12px 0 22px;
+    padding-left:27px;
+}
+
+.content-section li{
+    margin:6px 0;
+    padding-left:5px;
+
+    line-height:1.65;
+}
+
+.content-section a{
+    color:var(--blue);
+    text-decoration:underline;
+}
+
+.content-section strong{
+    font-weight:700;
+}
+
+/* =====================================================
+   RIGHT SIDE ACTIONS
+===================================================== */
+
+.side-section{
+    margin-bottom:44px;
+}
+
+.side-section h2{
+    margin:0 0 17px;
+
+    color:var(--blue);
+
+    font-size:24px;
+    line-height:1.3;
+    font-weight:600;
+}
+
+.action-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.action-button{
+    min-height:58px;
+
+    padding:12px 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    background:var(--button-blue);
+    color:#fff;
+
+    border-radius:5px;
+
+    text-decoration:none;
+
+    font-size:15px;
+    line-height:1.35;
+    font-weight:600;
+
+    transition:.15s ease;
+}
+
+.action-button:hover{
+    background:var(--button-hover);
+}
+
+.action-arrow{
+    width:25px;
+    height:25px;
+
+    flex:0 0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #fff;
+    border-radius:50%;
+
+    font-family:Arial,sans-serif;
+    font-size:18px;
+    line-height:1;
+}
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+.page-feedback{
+    margin-top:65px;
+}
+
+.page-feedback h2{
+    margin:0 0 18px;
+
+    color:#111;
+
+    font-size:17px;
+    font-weight:600;
+}
+
+.feedback-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+}
+
+.feedback-option{
+    min-height:40px;
+
+    border:0;
+    border-radius:22px;
+
+    background:var(--button-blue);
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.feedback-option:hover{
+    background:var(--button-hover);
+}
+
+.feedback-message{
+    display:none;
+
+    margin-top:15px;
+
+    color:var(--blue);
+    font-weight:600;
+}
+
+.feedback-message.show{
+    display:block;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.footer-main{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:45px 20px;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+
+    gap:100px;
+}
+
+.footer h2{
+    margin:0 0 14px;
+
+    font-size:19px;
+    font-weight:600;
+}
+
+.footer p{
+    max-width:470px;
+
+    margin:0;
+
+    font-size:13px;
+    line-height:1.65;
+}
+
+.footer-links a{
+    display:block;
+
+    margin:5px 0;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:1000px){
+
+    .nav-inner{
+        overflow-x:auto;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .right-column{
+        max-width:700px;
+    }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    body{
+        font-size:15px;
+    }
+
+    .header-top{
+        min-height:82px;
+
+        padding:12px 18px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .logo{
+        width:180px;
+        max-height:58px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .mobile-menu-button{
+        display:flex;
+    }
+
+    .main-nav{
+        position:fixed;
+        z-index:2000;
+
+        top:0;
+        right:0;
+        bottom:0;
+
+        width:min(360px,88vw);
+
+        background:#fff;
+
+        transform:translateX(105%);
+        transition:transform .22s ease;
+
+        box-shadow:-8px 0 30px rgba(0,0,0,.16);
+
+        overflow:auto;
+    }
+
+    .main-nav.open{
+        transform:translateX(0);
+    }
+
+    .nav-inner{
+        min-height:100%;
+
+        display:block;
+
+        padding:80px 22px 30px;
+
+        border:0;
+        overflow:visible;
+    }
+
+    .mobile-nav-close{
+        position:absolute;
+
+        top:18px;
+        right:18px;
+
+        width:44px;
+        height:44px;
+
+        display:block;
+
+        border:0;
+        background:transparent;
+
+        color:var(--blue);
+
+        font-size:34px;
+    }
+
+    .nav-link{
+        min-height:54px;
+
+        padding:0 4px;
+
+        border-bottom:1px solid var(--border);
+
+        white-space:normal;
+
+        font-size:16px;
+    }
+
+    .nav-link:hover{
+        border-bottom-color:var(--border);
+    }
+
+    .mobile-search{
+        height:49px;
+
+        display:flex;
+
+        margin:18px 0;
+
+        border:2px solid var(--blue);
+        border-radius:25px;
+
+        overflow:hidden;
+    }
+
+    .mobile-search input{
+        flex:1;
+        min-width:0;
+
+        padding:0 15px;
+
+        border:0;
+        outline:0;
+    }
+
+    .mobile-search button{
+        width:52px;
+
+        border:0;
+
+        background:var(--button-blue);
+        color:#fff;
+    }
+
+    .menu-overlay{
+        position:fixed;
+        z-index:1990;
+
+        inset:0;
+
+        display:none;
+
+        background:rgba(0,0,0,.32);
+    }
+
+    .menu-overlay.show{
+        display:block;
+    }
+
+    .page{
+        padding:17px 18px 55px;
+    }
+
+    .breadcrumbs{
+        font-size:13px;
+    }
+
+    /* kuva laidasta laitaan mobiilissa */
+
+    .hero{
+        width:calc(100% + 36px);
+
+        margin-left:-18px;
+        margin-bottom:27px;
+    }
+
+    .hero img{
+        min-height:235px;
+        object-fit:cover;
+    }
+
+    .hero-title{
+        position:relative;
+
+        width:calc(100% - 35px);
+        min-width:0;
+
+        margin-top:-45px;
+
+        padding:16px 20px 7px;
+
+        border-radius:0 45px 0 0;
+
+        font-size:27px;
+    }
+
+    .intro{
+        margin-bottom:35px;
+
+        font-size:18px;
+        line-height:1.5;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+        gap:5px;
+    }
+
+    .content-section{
+        margin-bottom:35px;
+    }
+
+    .content-section h2{
+        font-size:23px;
+    }
+
+    .content-section h3{
+        font-size:19px;
+    }
+
+    .content-section p,
+    .content-section li{
+        font-size:15px;
+    }
+
+    .side-section h2{
+        font-size:21px;
+    }
+
+    .action-button{
+        min-height:57px;
+
+        font-size:14px;
+    }
+
+    .feedback-options{
+        grid-template-columns:1fr;
+        gap:9px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+<div class="header-top">
+
+<a href="index.html" class="logo-link">
+    <img
+        src="hyvaks-logo.png"
+        alt="Keski-Suomen hyvinvointialue"
+        class="logo"
+    >
+</a>
+
+<form class="top-search" id="topSearchForm">
+
+<input
+    id="topSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+    aria-label="Hae sivustolta"
+>
+
+<button type="submit" aria-label="Hae">
+
+<svg viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2">
+
+<circle cx="11" cy="11" r="7"></circle>
+<path d="M16.5 16.5L21 21"></path>
+
+</svg>
+
+</button>
+
+</form>
+
+<button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    type="button"
+    aria-label="Avaa valikko"
+>
+<span></span>
+<span></span>
+<span></span>
+</button>
+
+</div>
+
+<nav class="main-nav" id="mainNav">
+
+<button
+    class="mobile-nav-close"
+    id="mobileNavClose"
+    type="button"
+    aria-label="Sulje valikko"
+>×</button>
+
+<div class="nav-inner">
+
+<form class="mobile-search" id="mobileSearchForm">
+
+<input
+    id="mobileSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+>
+
+<button type="submit">⌕</button>
+
+</form>
+
+<a href="palvelut.html" class="nav-link">
+    Palvelumme
+</a>
+
+<a href="asiointi.html" class="nav-link">
+    Asiointi
+</a>
+
+<a href="asiakkaana.html" class="nav-link">
+    Asiakkaana
+</a>
+
+<a href="sairaala-nova.html" class="nav-link">
+    Sairaala Nova
+</a>
+
+<a href="hyvinvointisi-tueksi.html" class="nav-link">
+    Hyvinvointisi tueksi
+</a>
+
+<a href="hyvinvointialue.html" class="nav-link">
+    Hyvinvointialue
+</a>
+
+<a href="ajankohtaista.html" class="nav-link">
+    Ajankohtaista
+</a>
+
+<a href="tyopaikat.html" class="nav-link">
+    Tule työkaveriksi
+</a>
+
+<a href="index.html?lang=en" class="nav-link">
+    In English
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<main class="page">
+
+<div class="breadcrumbs">
+
+<a href="index.html">
+    Etusivu
+</a>
+
+<span class="breadcrumb-divider">/</span>
+
+<a href="hyvinvointisi-tueksi.html">
+    Huoli läheisestä
+</a>
+
+</div>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<img
+    src="laheinen.jpg"
+    alt="Huoli läheisestä"
+>
+
+<h1 class="hero-title">
+    Huoli läheisestä
+</h1>
+
+</section>
+
+<p class="intro">
+    Täältä löydät tietoa siitä, miten ilmoitat avun tai tuen
+    tarpeesta sosiaalihuoltoon Keski-Suomen hyvinvointialueella.
+    Sähköiset lomakkeet löytyvät sivun oikeasta laidasta.
+</p>
+
+<!-- =====================================================
+     TWO COLUMNS
+===================================================== -->
+
+<div class="content-grid">
+
+<!-- LEFT -->
+
+<div class="left-column">
+
+<section class="content-section">
+
+<p>
+    Useimmille meistä tulee elämässä vastaan tilanteita, jolloin
+    olemme huolissamme läheisestämme. Jokin asia perheenjäsenen,
+    kaverin tai tuttavan käytöksessä herättää huolta ja vaivaa
+    mieltä. Asiaa ei kannata jäädä kovin pitkäksi aikaa yksin
+    pohtimaan.
+</p>
+
+<h2>
+    Ota huoli puheeksi läheisen kanssa.
+</h2>
+
+<p>
+    Kuuntele, ja pohtikaa yhdessä ratkaisuja. Mikäli keskusteltu
+    toiminta ja tilanne aiheuttaa edelleen yhteisesti huolta,
+    kannusta henkilöä ottamaan itse yhteyttä tarvittaviin
+    palveluihin. Jos hän ei tiedä, mistä kannattaisi aloittaa,
+    hän voi ottaa yhteyttä Keski-Suomen hyvinvointialueen
+    neuvonnan ja ohjauksen palveluihin.
+</p>
+
+<p>
+    Voitte myös yhdessä läheisen kanssa ottaa yhteyttä
+    palvelutarpeen arviointiin puhelimitse, kirjallisesti tai
+    verkossa.
+</p>
+
+</section>
+
+<section class="content-section">
+
+<h2>
+    Apua on saatavilla, vaikka puheeksi ottaminen ei onnistu.
+</h2>
+
+<p>
+    Aina yhteinen keskustelu toisen henkilön kanssa ei tuota
+    toivottua tulosta. Jos sinulla on edelleen huoli tilanteesta,
+    voit tehdä sosiaalihuoltolain mukaisen huoli-ilmoituksen.
+    Jos huolesi koskee alaikäistä, voit tehdä myös
+    <strong>lastensuojeluilmoituksen.</strong>
+</p>
+
+</section>
+
+<section class="content-section">
+
+<h3>
+    Näin teet sosiaalihuoltolain mukaisen yhteydenoton eli
+    huoli-ilmoituksen työikäisestä tai alaikäisestä
+</h3>
+
+<ul>
+
+<li>
+<strong>Kun asiasi on kiireetön,</strong>
+voit tehdä huoli-ilmoituksen sähköisellä lomakkeella.
+Voit tehdä huoli-ilmoituksen myös verkossa.
+</li>
+
+<li>
+<strong>Jos asiasi on kiireellinen:</strong>
+
+<ul>
+
+<li>
+Kun kyse on alaikäisestä, ota yhteys puhelimitse siihen
+kuntaan, jossa lapsi on kirjoilla.
+</li>
+
+<li>
+Jos alaikäisen tai työikäisen tilanne vaatii kiireellistä
+sosiaalityön arviota tai välittömiä toimenpiteitä, ota
+yhteyttä sosiaali- ja kriisipäivystykseen.
+</li>
+
+<li>
+Hätätilanteessa soita <strong>112</strong>.
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<h3>
+    Näin teet sosiaalihuoltolain mukaisen yhteydenoton eli
+    huoli-ilmoituksen ikääntyneestä
+</h3>
+
+<ul>
+
+<li>
+<strong>Kun asiasi on kiireetön,</strong>
+voit tehdä huoli-ilmoituksen lomakkeella. Palauta
+huoli-ilmoitus oman kuntasi keskitetyn asiakas- ja
+palveluohjauksen osoitteeseen.
+</li>
+
+<li>
+<strong>Jos asiasi on kiireellinen:</strong>
+
+<ul>
+
+<li>
+Ota yhteyttä sen kunnan keskitettyyn asiakas- ja
+palveluohjaukseen, jossa henkilö on kirjoilla.
+</li>
+
+<li>
+Kun tilanne vaatii kiireellistä sosiaalityön arviota tai
+välittömiä toimenpiteitä, ota yhteyttä sosiaali- ja
+kriisipäivystykseen.
+</li>
+
+<li>
+Hätätilanteessa soita <strong>112</strong>.
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<h3>
+    Näin teet lastensuojeluilmoituksen
+</h3>
+
+<ul>
+
+<li>
+<strong>Kun asiasi on kiireetön:</strong>
+
+<ul>
+
+<li>
+Voit tehdä ilmoituksen sähköisesti verkossa.
+</li>
+
+<li>
+Voit tehdä ilmoituksen myös pdf-lomakkeella ja postittaa
+sen osoitteeseen:
+<br>
+<strong>
+Perheiden, nuorten ja aikuisten ohjaus ja neuvonta,
+Ohjelmakaari 10, 40500 Jyväskylä.
+</strong>
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<p>
+    Tee lastensuojeluilmoituksen lapsen nimellä, ja jos tiedossasi
+    on lapsen henkilötunnus, täytä myös se lomakkeeseen.
+    Yksityishenkilö voi tehdä lastensuojeluilmoituksen myös
+    nimettömänä. Jos olet huolissasi raskaana olevasta henkilöstä
+    tai pariskunnasta, joka on saamassa lapsen, voit tehdä
+    ennakollisen lastensuojeluilmoituksen.
+</p>
+
+<ul>
+
+<li>
+<strong>Jos asiasi on kiireellinen:</strong>
+
+<ul>
+
+<li>
+Kiireellisissä lastensuojeluasioissa ota yhteyttä
+sosiaali- ja kriisipäivystykseen.
+</li>
+
+<li>
+Hätätilanteessa soita <strong>112</strong>.
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<h3>
+    Haluatko ottaa yhteyttä omasta tilanteestasi?
+</h3>
+
+<ul>
+
+<li>
+Ole yhteydessä Keski-Suomen hyvinvointialueen neuvontaan
+ikäsi tai asiakasryhmäsi mukaisesti. Mikäli asiasi voi
+odottaa korkeintaan seitsemän päivää, voit tehdä itsestäsi
+sosiaalihuoltolain mukaisen yhteydenoton. Ammattilainen
+on sinuun yhteydessä.
+</li>
+
+<li>
+Kiireellisessä tilanteessa ota yhteys sosiaali- ja
+kriisipäivystykseen tai hätänumeroon <strong>112</strong>.
+</li>
+
+</ul>
+
+</section>
+
+</div>
+
+<!-- =====================================================
+     RIGHT COLUMN
+===================================================== -->
+
+<aside class="right-column">
+
+<section class="side-section">
+
+<h2>
+    Kysy neuvoa
+</h2>
+
+<div class="action-list">
+
+<a href="neuvonta.html#sosiaaliohjaus"
+   class="action-button">
+
+<span>
+    Sosiaalihuollon alkuarviointi
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+<a href="neuvonta.html#lapset-nuoret-perheet"
+   class="action-button">
+
+<span>
+    Ota yhteyttä lapsiperheen tuen tarpeesta tai tee
+    lastensuojeluilmoitus
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+<a href="neuvonta.html#seniorineuvonta"
+   class="action-button">
+
+<span>
+    Seniorineuvonta
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+<a href="neuvonta.html#vammaispalvelut"
+   class="action-button">
+
+<span>
+    Vammaispalvelujen ensiarviointi
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+<a href="neuvonta.html#mielenterveys"
+   class="action-button">
+
+<span>
+    Apua ja tukea mielenterveyden ongelmiin
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+</div>
+
+</section>
+
+<section class="side-section">
+
+<h2>
+    Lomakkeet
+</h2>
+
+<div class="action-list">
+
+<a href="#" class="action-button">
+<span>Jätä huoli-ilmoitus verkossa</span>
+<span class="action-arrow">›</span>
+</a>
+
+<a href="#" class="action-button">
+<span>Tee lastensuojeluilmoitus verkossa</span>
+<span class="action-arrow">›</span>
+</a>
+
+<a href="#" class="action-button">
+<span>Huoli-ilmoitus työikäisistä (pdf)</span>
+<span class="action-arrow">›</span>
+</a>
+
+<a href="#" class="action-button">
+<span>Huoli-ilmoitus yli 70-vuotiaasta (pdf)</span>
+<span class="action-arrow">›</span>
+</a>
+
+<a href="#" class="action-button">
+<span>Lastensuojeluilmoitus (pdf)</span>
+<span class="action-arrow">›</span>
+</a>
+
+<a href="#" class="action-button">
+<span>Vaaratapahtumailmoitus (sähköinen)</span>
+<span class="action-arrow">›</span>
+</a>
+
+</div>
+
+</section>
+
+<section class="side-section">
+
+<h2>
+    Kun asialla on kiire, ota yhteyttä:
+</h2>
+
+<div class="action-list">
+
+<a href="#" class="action-button">
+
+<span>
+    Keski-Suomen sosiaali- ja kriisipäivystys
+</span>
+
+<span class="action-arrow">›</span>
+
+</a>
+
+</div>
+
+</section>
+
+</aside>
+
+</div>
+
+<!-- =====================================================
+     FEEDBACK
+===================================================== -->
+
+<section class="page-feedback">
+
+<h2>
+    Löysitkö etsimäsi tiedon tältä sivulta?
+</h2>
+
+<div class="feedback-options">
+
+<button class="feedback-option">
+    ✓&nbsp; Kyllä
+</button>
+
+<button class="feedback-option">
+    ?&nbsp; Osittain
+</button>
+
+<button class="feedback-option">
+    ×&nbsp; En
+</button>
+
+</div>
+
+<div class="feedback-message" id="feedbackMessage">
+    Kiitos palautteestasi.
+</div>
+
+</section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div class="footer-main">
+
+<div>
+
+<h2>
+    Keski-Suomen hyvinvointialue
+</h2>
+
+<p>
+    Vastaamme keskisuomalaisten sosiaali-, terveys- ja
+    pelastustoimen palveluista. Edistämme hyvinvointia,
+    terveyttä ja turvallisuutta Keski-Suomessa.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<h2>Oikopolut</h2>
+
+<a href="sairaala-nova.html">Sairaala Nova</a>
+<a href="pelastuslaitos.html">Pelastuslaitos</a>
+<a href="tietosuoja.html">Tietosuoja</a>
+<a href="saavutettavuus.html">Saavutettavuusseloste</a>
+<a href="yhteystiedot.html">Yhteystiedot</a>
+<a href="palaute.html">Anna palautetta</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+const mobileNavClose =
+    document.getElementById("mobileNavClose");
+
+const mainNav =
+    document.getElementById("mainNav");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+function openMenu(){
+
+    mainNav.classList.add("open");
+    menuOverlay.classList.add("show");
+
+    document.body.classList.add("menu-open");
+
+}
+
+function closeMenu(){
+
+    mainNav.classList.remove("open");
+    menuOverlay.classList.remove("show");
+
+    document.body.classList.remove("menu-open");
+
+}
+
+mobileMenuButton.addEventListener("click",openMenu);
+mobileNavClose.addEventListener("click",closeMenu);
+menuOverlay.addEventListener("click",closeMenu);
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key === "Escape"){
+        closeMenu();
+    }
+
+});
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function doSearch(value){
+
+    const query=value.trim();
+
+    if(!query){
+        return;
+    }
+
+    window.location.href =
+        "index.html?search=" +
+        encodeURIComponent(query);
+
+}
+
+document
+.getElementById("topSearchForm")
+.addEventListener("submit",event=>{
+
+    event.preventDefault();
+
+    doSearch(
+        document.getElementById("topSearchInput").value
+    );
+
+});
+
+document
+.getElementById("mobileSearchForm")
+.addEventListener("submit",event=>{
+
+    event.preventDefault();
+
+    doSearch(
+        document.getElementById("mobileSearchInput").value
+    );
+
+});
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+const feedbackButtons =
+    document.querySelectorAll(".feedback-option");
+
+const feedbackMessage =
+    document.getElementById("feedbackMessage");
+
+feedbackButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        feedbackButtons.forEach(other=>{
+
+            other.style.background="#286296";
+
+        });
+
+        button.style.background="#174f7f";
+
+        feedbackMessage.classList.add("show");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
