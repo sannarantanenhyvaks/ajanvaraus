@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Palvelu | Keski-Suomen hyvinvointialue</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --blue:#005596;
+    --blue-light:#28679f;
+    --blue-hover:#00477e;
+    --green:#b7d97d;
+    --pink:#fff0f0;
+    --light-blue:#eef6fa;
+    --text:#111;
+    --muted:#59656c;
+    --border:#d6dde1;
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+
+    font-family:"Raleway",Arial,sans-serif;
+    font-size:16px;
+    font-weight:500;
+    line-height:1.55;
+}
+
+a{
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    width:100%;
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+
+    min-height:128px;
+
+    margin:auto;
+    padding:24px 20px 9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:40px;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    display:block;
+    width:245px;
+    max-width:100%;
+    height:auto;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue);
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+    font-weight:500;
+}
+
+.top-search button{
+    width:59px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+
+    background:var(--blue-light);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--blue-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+
+    min-height:67px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid #d8e0e4;
+
+    overflow-x:auto;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue);
+
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:17px 20px 100px;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb{
+    margin:0 0 44px;
+
+    color:var(--blue);
+
+    font-size:15px;
+    font-weight:500;
+}
+
+.breadcrumb a{
+    color:var(--blue);
+    text-decoration:none;
+}
+
+.breadcrumb a:hover{
+    text-decoration:underline;
+}
+
+.breadcrumb-separator{
+    display:inline-block;
+    padding:0 6px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.page-title{
+    max-width:900px;
+
+    margin:0 0 37px;
+
+    color:var(--blue);
+
+    font-size:35px;
+    line-height:1.2;
+    font-weight:600;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,2fr)
+        minmax(340px,1fr);
+
+    gap:50px;
+
+    align-items:start;
+}
+
+.main-content{
+    max-width:900px;
+}
+
+.lead{
+    margin:0 0 23px;
+
+    font-size:18px;
+    line-height:1.6;
+    font-weight:600;
+}
+
+.main-content p{
+    margin:0 0 19px;
+}
+
+.main-content ul{
+    margin:8px 0 23px;
+    padding-left:31px;
+}
+
+.main-content li{
+    margin:5px 0;
+}
+
+.main-content li::marker{
+    color:var(--green);
+}
+
+.section-title{
+    margin:40px 0 18px;
+
+    color:var(--blue);
+
+    font-size:26px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box{
+    margin:25px 0;
+
+    padding:19px 20px;
+
+    border-left:5px solid var(--blue);
+
+    background:var(--light-blue);
+}
+
+.info-box strong{
+    display:block;
+    margin-bottom:5px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-list{
+    display:grid;
+    gap:17px;
+}
+
+.contact-card{
+    padding:18px 19px 20px;
+
+    border:1px solid #c9ced1;
+    border-radius:7px;
+
+    background:#fff;
+}
+
+.contact-title{
+    margin:0 0 8px;
+
+    font-size:16px;
+    font-weight:700;
+}
+
+.contact-card p{
+    margin:7px 0;
+}
+
+.contact-label{
+    display:block;
+
+    margin-top:12px;
+
+    font-weight:700;
+}
+
+.phone-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:4px;
+    padding:10px 15px;
+
+    border-radius:5px;
+
+    background:var(--blue-light);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+.phone-button:hover{
+    background:var(--blue-hover);
+}
+
+.online-button{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-top:9px;
+
+    padding:11px 17px;
+
+    border-radius:5px;
+
+    background:var(--blue-light);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+.online-button:hover{
+    background:var(--blue-hover);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.side-panel{
+    padding:29px 25px 25px;
+
+    border-radius:7px;
+
+    background:var(--pink);
+}
+
+.side-panel h2{
+    margin:0 0 20px;
+
+    color:var(--blue);
+
+    font-size:25px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+.side-item{
+    min-height:57px;
+
+    display:flex;
+    align-items:center;
+
+    gap:18px;
+
+    padding:13px 0;
+
+    border-bottom:1px solid #d8dfe2;
+
+    color:var(--blue);
+
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:700;
+}
+
+.side-item:last-child{
+    border-bottom:0;
+}
+
+.side-item:hover .side-text{
+    text-decoration:underline;
+}
+
+.side-text{
+    flex:1;
+}
+
+.circle-arrow{
+    width:25px;
+    height:25px;
+
+    flex:0 0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid var(--blue);
+    border-radius:50%;
+
+    color:var(--blue);
+
+    font-size:20px;
+    font-weight:500;
+    line-height:1;
+}
+
+.side-item:hover .circle-arrow{
+    background:var(--blue);
+    color:#fff;
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+.back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    margin-top:28px;
+
+    color:var(--blue);
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+.back-link:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   DIGITAL BUTTON
+========================================================= */
+
+.chat-button{
+    position:fixed;
+
+    right:30px;
+    bottom:28px;
+
+    z-index:1000;
+
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+    border-radius:50%;
+
+    background:var(--blue);
+    color:#fff;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.18);
+}
+
+.chat-button:hover{
+    background:var(--blue-hover);
+}
+
+.chat-button svg{
+    width:31px;
+    height:31px;
+
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.8;
+}
+
+
+/* =========================================================
+   DIGITAL POPUP
+========================================================= */
+
+.digital-popup{
+    position:fixed;
+
+    right:30px;
+    bottom:110px;
+
+    z-index:999;
+
+    width:390px;
+    max-width:calc(100vw - 40px);
+
+    display:none;
+
+    padding:27px;
+
+    border:1px solid var(--border);
+    border-radius:7px;
+
+    background:#fff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.17);
+}
+
+.digital-popup.open{
+    display:block;
+}
+
+.digital-popup-close{
+    position:absolute;
+
+    top:10px;
+    right:12px;
+
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    background:transparent;
+    color:var(--blue);
+
+    font-size:27px;
+}
+
+.digital-popup h2{
+    margin:0 35px 12px 0;
+
+    color:var(--blue);
+
+    font-size:23px;
+    font-weight:600;
+}
+
+.digital-popup p{
+    margin:0 0 22px;
+
+    font-size:14px;
+}
+
+.digital-popup-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:11px 17px;
+
+    border-radius:25px;
+
+    background:var(--blue-light);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   NOT FOUND
+========================================================= */
+
+.not-found{
+    max-width:800px;
+
+    padding:30px;
+
+    border:1px solid var(--border);
+    border-radius:7px;
+
+    background:#fff;
+}
+
+.not-found h1{
+    margin-top:0;
+    color:var(--blue);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+    .side-panel{
+        max-width:680px;
+    }
+}
+
+@media(max-width:700px){
+
+    .header-top{
+        min-height:95px;
+        padding:15px 18px;
+    }
+
+    .logo{
+        width:195px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .nav-link{
+        padding:0 13px;
+        font-size:14px;
+    }
+
+    .page{
+        padding:17px 18px 75px;
+    }
+
+    .breadcrumb{
+        margin-bottom:30px;
+    }
+
+    .page-title{
+        margin-bottom:28px;
+        font-size:29px;
+    }
+
+    .lead{
+        font-size:17px;
+    }
+
+    .side-panel{
+        padding:23px 20px;
+    }
+
+    .chat-button{
+        right:17px;
+        bottom:17px;
+
+        width:61px;
+        height:61px;
+    }
+
+    .digital-popup{
+        right:15px;
+        bottom:90px;
+
+        width:calc(100vw - 30px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-top">
+
+        <a href="index.html" class="logo-link">
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="logo"
+            >
+
+        </a>
+
+
+        <form
+            id="topSearchForm"
+            class="top-search"
+        >
+
+            <input
+                id="topSearchInput"
+                type="search"
+                placeholder="Hae sivustolta"
+                aria-label="Hae sivustolta"
+            >
+
+            <button
+                type="submit"
+                aria-label="Hae"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M16.5 16.5L21 21"></path>
+                </svg>
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <div class="nav-inner">
+
+            <a href="index.html#palvelut" class="nav-link">
+                Palvelumme
+            </a>
+
+            <a href="index.html#asiointi" class="nav-link">
+                Asiointi
+            </a>
+
+            <a href="opiskeluterveydenhuolto.html" class="nav-link">
+                Asiakkaana
+            </a>
+
+            <a href="palvelu.html?palvelu=sairaala-nova" class="nav-link">
+                Sairaala Nova
+            </a>
+
+            <a href="index.html#nostot" class="nav-link">
+                Hyvinvointisi tueksi
+            </a>
+
+            <a href="index.html#footer" class="nav-link">
+                Hyvinvointialue
+            </a>
+
+            <a href="index.html#uutiset" class="nav-link">
+                Ajankohtaista
+            </a>
+
+            <a href="index.html#footer" class="nav-link">
+                Tule työkaveriksi
+            </a>
+
+            <a href="#" class="nav-link">
+                In English
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     PAGE
+========================================================= -->
+
+<main class="page" id="pageContent">
+
+    <nav class="breadcrumb" aria-label="Murupolku">
+
+        <a href="index.html">
+            Etusivu
+        </a>
+
+        <span class="breadcrumb-separator">/</span>
+
+        <a href="index.html#palvelut">
+            Palvelut
+        </a>
+
+        <span class="breadcrumb-separator">/</span>
+
+        <a id="parentBreadcrumb" href="palvelu.html">
+            Palvelu
+        </a>
+
+        <span class="breadcrumb-separator">/</span>
+
+        <span id="currentBreadcrumb">
+            Palvelu
+        </span>
+
+    </nav>
+
+
+    <h1
+        id="pageTitle"
+        class="page-title"
+    >
+        Palvelu
+    </h1>
+
+
+    <div class="content-grid">
+
+        <article class="main-content">
+
+            <p
+                id="lead"
+                class="lead"
+            ></p>
+
+            <div id="description"></div>
+
+
+            <h2 class="section-title">
+                Yhteystiedot ja asiointi
+            </h2>
+
+            <div
+                id="contacts"
+                class="contact-list"
+            ></div>
+
+
+            <a
+                id="backLink"
+                href="palvelu.html"
+                class="back-link"
+            >
+                ← Takaisin palveluihin
+            </a>
+
+        </article>
+
+
+        <aside class="side-panel">
+
+            <h2>
+                Aiheeseen liittyvät palvelut
+            </h2>
+
+            <div id="relatedServices"></div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     DIGIPALVELUT
+========================================================= -->
+
+<button
+    id="chatButton"
+    class="chat-button"
+    type="button"
+    aria-label="Avaa digitaaliset palvelut"
+>
+
+    <svg viewBox="0 0 32 32">
+        <path d="M6 7.5h20v14H14l-6 4v-4H6z"></path>
+        <path d="M11 13h10"></path>
+        <path d="M11 17h6"></path>
+    </svg>
+
+</button>
+
+
+<section
+    id="digitalPopup"
+    class="digital-popup"
+    aria-hidden="true"
+>
+
+    <button
+        id="digitalPopupClose"
+        class="digital-popup-close"
+        type="button"
+        aria-label="Sulje"
+    >
+        ×
+    </button>
+
+    <h2>
+        Digitaaliset palvelut
+    </h2>
+
+    <p>
+        Keskustele ammattilaisen kanssa chatissa ja käytä
+        sähköisiä asiointipalveluja.
+    </p>
+
+    <a
+        href="digipalvelut.html"
+        class="digital-popup-link"
+    >
+        Siirry asioimaan
+        <span>›</span>
+    </a>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   PÄÄPALVELUT + ALAPALVELUT
+========================================================= */
+
+const serviceGroups = {
+
+
+/* =========================================================
+   PERHEET, NUORET JA AIKUISET
+========================================================= */
+
+"perheet-nuoret-aikuiset":{
+
+    title:"Perheiden, nuorten ja aikuisten ohjaus ja neuvonta",
+
+    services:{
+
+        "kasvatus-ja-perheneuvonta":{
+
+            title:"Kasvatus- ja perheneuvonta",
+
+            lead:
+                "Kasvatus- ja perheneuvonnasta saat tukea lapsen kasvuun, kehitykseen, vanhemmuuteen ja perheen vuorovaikutukseen liittyvissä kysymyksissä.",
+
+            description:`
+
+                <p>
+                    Voit ottaa yhteyttä, kun tarvitset tukea tai
+                    neuvontaa esimerkiksi lapsen käyttäytymiseen,
+                    kasvatukseen tai perheen vuorovaikutukseen liittyvissä
+                    tilanteissa.
+                </p>
+
+                <p>
+                    Palvelussa voidaan yhdessä perheen kanssa arvioida
+                    tilannetta ja sopia tarkoituksenmukaisesta tuesta.
+                </p>
+
+                <ul>
+                    <li>vanhemmuuden tuki</li>
+                    <li>lapsen kasvuun ja kehitykseen liittyvät kysymykset</li>
+                    <li>perheen vuorovaikutustilanteet</li>
+                    <li>perheen muutostilanteet</li>
+                </ul>
+            `
+        },
+
+
+        "nuorten-mielenterveys-ja-paihdepalvelut":{
+
+            title:"Nuorten mielenterveys- ja päihdepalvelut",
+
+            lead:
+                "Nuorten mielenterveys- ja päihdepalveluista saa tukea mielialaan, jaksamiseen, päihteisiin ja nuoren hyvinvointiin liittyvissä asioissa.",
+
+            description:`
+
+                <p>
+                    Palveluun voi hakeutua, jos nuorella on esimerkiksi
+                    mielialaan, ahdistukseen, jaksamiseen tai päihteiden
+                    käyttöön liittyviä huolia.
+                </p>
+
+                <ul>
+                    <li>mielialaan liittyvät vaikeudet</li>
+                    <li>ahdistuneisuus ja kuormitus</li>
+                    <li>päihteisiin liittyvät huolet</li>
+                    <li>nuoren arjen ja toimintakyvyn tukeminen</li>
+                </ul>
+            `
+        },
+
+
+        "lapsiperheen-tuen-tarve":{
+
+            title:"Lapsiperheen tuen tarpeen yhteydenotto",
+
+            lead:
+                "Voit ottaa yhteyttä, kun lapsen tai perheen tilanteeseen liittyy huoli ja tarvitset ohjausta sopivan tuen löytämiseksi.",
+
+            description:`
+
+                <p>
+                    Yhteydenoton perusteella ammattilainen arvioi
+                    yhdessä perheen kanssa, millaista tukea tilanteessa
+                    tarvitaan.
+                </p>
+
+                <p>
+                    Yhteyttä voi ottaa esimerkiksi vanhemmuuteen,
+                    arjen hallintaan, lapsen hyvinvointiin tai perheen
+                    elämäntilanteeseen liittyvissä kysymyksissä.
+                </p>
+            `
+        },
+
+
+        "perhesosiaalityo":{
+
+            title:"Perhesosiaalityö",
+
+            lead:
+                "Perhesosiaalityö tukee lapsiperheitä erilaisissa arjen ja elämäntilanteen haasteissa.",
+
+            description:`
+
+                <p>
+                    Työskentelyn tavoitteena on vahvistaa perheen
+                    omia voimavaroja ja löytää yhdessä keinoja
+                    arjen tilanteen helpottamiseksi.
+                </p>
+
+                <ul>
+                    <li>perheen arjen tukeminen</li>
+                    <li>vanhemmuuden tukeminen</li>
+                    <li>palvelujen yhteensovittaminen</li>
+                    <li>perheen tilanteen arviointi</li>
+                </ul>
+            `
+        },
+
+
+        "pikkulapsiperheiden-psykologi":{
+
+            title:"Pikkulapsiperheiden psykologi",
+
+            lead:
+                "Pikkulapsiperheiden psykologipalvelu tarjoaa tukea pienen lapsen kehitykseen, vanhemmuuteen ja perheen hyvinvointiin liittyvissä kysymyksissä.",
+
+            description:`
+
+                <p>
+                    Psykologin kanssa voidaan keskustella esimerkiksi
+                    lapsen kehityksestä, käyttäytymisestä,
+                    vuorovaikutuksesta tai vanhemman kokemasta
+                    kuormituksesta.
+                </p>
+            `
+        },
+
+
+        "sosiaaliohjaus":{
+
+            title:"Sosiaaliohjaus",
+
+            lead:
+                "Sosiaaliohjauksesta saat neuvontaa ja tukea arjen tilanteisiin sekä sopivien sosiaalipalvelujen löytämiseen.",
+
+            description:`
+
+                <p>
+                    Sosiaaliohjaaja voi auttaa selvittämään
+                    elämäntilannettasi ja ohjata tarvittaessa
+                    muiden palvelujen piiriin.
+                </p>
+
+                <ul>
+                    <li>arjen hallinta</li>
+                    <li>palveluihin hakeutuminen</li>
+                    <li>etuuksiin ja tukeen liittyvä ohjaus</li>
+                    <li>elämäntilanteen selvittäminen</li>
+                </ul>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   SENIORINEUVONTA
+========================================================= */
+
+"seniorineuvonta":{
+
+    title:"Seniorineuvonta",
+
+    services:{
+
+        "seniorineuvonta-ja-palveluohjaus":{
+
+            title:"Seniorineuvonta ja palveluohjaus",
+
+            lead:
+                "Seniorineuvonta tarjoaa ikääntyneille ja heidän läheisilleen tietoa, neuvontaa ja ohjausta arkea tukevista palveluista.",
+
+            description:`
+
+                <p>
+                    Saat neuvontaa esimerkiksi kotona asumiseen,
+                    toimintakykyyn ja hyvinvointiin liittyvissä asioissa.
+                </p>
+
+                <p>
+                    Palveluohjauksessa voidaan selvittää,
+                    millaiset palvelut tai tukimuodot sopivat
+                    asiakkaan tilanteeseen.
+                </p>
+            `
+        },
+
+
+        "kotihoito":{
+
+            title:"Kotihoito",
+
+            lead:
+                "Kotihoito tukee henkilöä silloin, kun hän tarvitsee apua kotona selviytymiseen.",
+
+            description:`
+
+                <p>
+                    Kotihoidon tarve arvioidaan asiakkaan yksilöllisen
+                    tilanteen ja toimintakyvyn perusteella.
+                </p>
+
+                <ul>
+                    <li>päivittäisissä toiminnoissa tukeminen</li>
+                    <li>lääkehoidon tukeminen</li>
+                    <li>toimintakyvyn seuranta</li>
+                    <li>kotona asumisen tukeminen</li>
+                </ul>
+            `
+        },
+
+
+        "kotona-asumisen-tukipalvelut":{
+
+            title:"Kotona asumisen tukipalvelut",
+
+            lead:
+                "Kotona asumisen tukipalvelut auttavat ylläpitämään turvallista ja mahdollisimman itsenäistä arkea.",
+
+            description:`
+
+                <p>
+                    Tukipalveluja voidaan järjestää asiakkaan
+                    yksilöllisen tarpeen perusteella.
+                </p>
+
+                <p>
+                    Palveluihin voi kuulua esimerkiksi aterioihin,
+                    turvallisuuteen tai arjen sujumiseen liittyviä
+                    tukimuotoja.
+                </p>
+            `
+        },
+
+
+        "omaishoidon-tuki":{
+
+            title:"Omaishoidon tuki",
+
+            lead:
+                "Omaishoidon tuki on kokonaisuus, jolla tuetaan läheistään kotona hoitavaa omaishoitajaa.",
+
+            description:`
+
+                <p>
+                    Omaishoidon tuen tarvetta arvioidaan hoidettavan
+                    henkilön avun tarpeen ja hoidon sitovuuden perusteella.
+                </p>
+
+                <p>
+                    Kokonaisuuteen voi kuulua hoitopalkkio,
+                    omaishoitajan vapaita sekä muita tukipalveluja.
+                </p>
+            `
+        },
+
+
+        "ikaantyneiden-asumispalvelut":{
+
+            title:"Ikääntyneiden asumispalvelut",
+
+            lead:
+                "Asumispalvelut tukevat ikääntynyttä silloin, kun kotona asuminen ei onnistu riittävienkään tukipalvelujen avulla.",
+
+            description:`
+
+                <p>
+                    Asumisen ja hoivan tarve arvioidaan yksilöllisesti.
+                    Ratkaisu pyritään tekemään asiakkaan toimintakyvyn,
+                    turvallisuuden ja kokonaistilanteen perusteella.
+                </p>
+            `
+        },
+
+
+        "palvelutarpeen-arviointi":{
+
+            title:"Palvelutarpeen arviointi",
+
+            lead:
+                "Palvelutarpeen arvioinnissa selvitetään asiakkaan toimintakykyä, elämäntilannetta ja mahdollista palvelujen tarvetta.",
+
+            description:`
+
+                <p>
+                    Arviointi tehdään yhdessä asiakkaan ja tarvittaessa
+                    hänen läheistensä kanssa.
+                </p>
+
+                <p>
+                    Arvioinnin perusteella voidaan suunnitella
+                    asiakkaan tarvitsemat palvelut ja tukitoimet.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   SUUN TERVEYDENHUOLTO
+========================================================= */
+
+"suun-terveydenhuolto":{
+
+    title:"Suun terveydenhuolto",
+
+    services:{
+
+        "hammashoidon-ajanvaraus":{
+
+            title:"Hammashoidon ajanvaraus",
+
+            lead:
+                "Hammashoidon ajanvarauksessa arvioidaan hoidon tarve ja ohjataan tarkoituksenmukaiseen suun terveydenhuollon palveluun.",
+
+            description:`
+
+                <p>
+                    Ota yhteyttä ajanvaraukseen, kun tarvitset
+                    hammashoitoa tai haluat selvittää suun
+                    terveydenhuollon palveluihin hakeutumista.
+                </p>
+            `
+        },
+
+
+        "kiireellinen-hammashoito":{
+
+            title:"Kiireellinen hammashoito",
+
+            lead:
+                "Kiireellinen hammashoito on tarkoitettu tilanteisiin, joissa suun tai hampaiden oire vaatii nopeaa arviota.",
+
+            description:`
+
+                <p>
+                    Kiireellisen hoidon tarve arvioidaan
+                    oireiden perusteella.
+                </p>
+
+                <p>
+                    Voimakas kipu, turvotus, tapaturma tai muu
+                    nopeasti kehittynyt oire voi edellyttää
+                    kiireellistä arviota.
+                </p>
+            `
+        },
+
+
+        "suun-terveystarkastus":{
+
+            title:"Suun terveystarkastus",
+
+            lead:
+                "Suun terveystarkastuksessa arvioidaan hampaiden, ikenien ja koko suun terveydentilaa.",
+
+            description:`
+
+                <p>
+                    Tarkastuksessa arvioidaan myös yksilöllinen
+                    hoidon ja seurannan tarve sekä annetaan
+                    omahoidon ohjausta.
+                </p>
+            `
+        },
+
+
+        "suuhygienistin-vastaanotto":{
+
+            title:"Suuhygienistin vastaanotto",
+
+            lead:
+                "Suuhygienisti edistää suun terveyttä ja antaa yksilöllistä ohjausta suun omahoitoon.",
+
+            description:`
+
+                <p>
+                    Vastaanotolla voidaan tehdä suun terveyttä
+                    tukevia toimenpiteitä sekä arvioida
+                    omahoidon onnistumista.
+                </p>
+            `
+        },
+
+
+        "lasten-ja-nuorten-suun-terveydenhuolto":{
+
+            title:"Lasten ja nuorten suun terveydenhuolto",
+
+            lead:
+                "Lasten ja nuorten suun terveydenhuollossa seurataan suun ja hampaiden kehitystä ja tuetaan hyviä suunhoitotottumuksia.",
+
+            description:`
+
+                <p>
+                    Palveluun kuuluvat ikäryhmien mukaiset
+                    suun terveystarkastukset sekä tarvittava
+                    jatkohoito ja ohjaus.
+                </p>
+            `
+        },
+
+
+        "suun-terveyden-omahoito":{
+
+            title:"Suun terveyden omahoito",
+
+            lead:
+                "Hyvä päivittäinen omahoito on tärkeä osa suun ja hampaiden terveyden ylläpitämistä.",
+
+            description:`
+
+                <p>
+                    Omahoitoon kuuluvat hampaiden säännöllinen
+                    puhdistaminen, hammasvälien puhdistus ja
+                    suun terveyttä tukevat ruokailutottumukset.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   MIELENTERVEYS JA RIIPPUVUUDET
+========================================================= */
+
+"mielenterveys-riippuvuuspalvelut":{
+
+    title:"Mielenterveys- ja riippuvuuspalvelut",
+
+    services:{
+
+        "mielenterveyspalvelut":{
+
+            title:"Mielenterveyspalvelut",
+
+            lead:
+                "Mielenterveyspalveluista saat apua ja tukea mielenterveyteen ja jaksamiseen liittyvissä tilanteissa.",
+
+            description:`
+
+                <p>
+                    Apua voi hakea esimerkiksi mielialaan,
+                    ahdistukseen, jaksamiseen tai toimintakykyyn
+                    liittyvissä vaikeuksissa.
+                </p>
+
+                <p>
+                    Ammattilainen arvioi tilanteesi ja suunnittelee
+                    kanssasi sopivaa tukea.
+                </p>
+            `
+        },
+
+
+        "riippuvuuspalvelut":{
+
+            title:"Riippuvuuspalvelut",
+
+            lead:
+                "Riippuvuuspalvelut tarjoavat tukea päihteisiin ja muihin riippuvuuksiin liittyvissä tilanteissa.",
+
+            description:`
+
+                <p>
+                    Voit hakea apua omaan tai läheisesi
+                    tilanteeseen liittyvissä huolissa.
+                </p>
+
+                <p>
+                    Palvelussa arvioidaan tuen ja hoidon tarvetta
+                    yhdessä asiakkaan kanssa.
+                </p>
+            `
+        },
+
+
+        "nuorten-mielenterveyspalvelut":{
+
+            title:"Nuorten mielenterveyspalvelut",
+
+            lead:
+                "Nuorten mielenterveyspalvelut tukevat nuorta mielialaan, ahdistukseen, jaksamiseen ja muuhun psyykkiseen hyvinvointiin liittyvissä tilanteissa.",
+
+            description:`
+
+                <p>
+                    Yhteyttä voi ottaa, kun nuoren hyvinvoinnista
+                    herää huoli tai arjen toimintakyky on heikentynyt.
+                </p>
+            `
+        },
+
+
+        "paihdepalvelut":{
+
+            title:"Päihdepalvelut",
+
+            lead:
+                "Päihdepalveluista saat neuvontaa, arviointia ja tukea alkoholin, huumeiden tai muiden päihteiden käyttöön liittyvissä tilanteissa.",
+
+            description:`
+
+                <p>
+                    Palveluun voi hakeutua, kun päihteiden käyttö
+                    aiheuttaa huolta itselle tai läheisille.
+                </p>
+            `
+        },
+
+
+        "mielenterveys-ja-paihdepaivystys":{
+
+            title:"Mielenterveys- ja päihdepäivystys",
+
+            lead:
+                "Mielenterveys- ja päihdepäivystys auttaa tilanteissa, joissa mielenterveyteen tai päihteisiin liittyvä tilanne tarvitsee kiireellistä arviota.",
+
+            description:`
+
+                <p>
+                    Kiireellisessä tilanteessa ammattilainen arvioi
+                    tilanteen ja tarvittavan jatkohoidon.
+                </p>
+
+                <div class="info-box">
+                    <strong>Hätätilanne</strong>
+                    Jos henkilö on välittömässä hengenvaarassa tai
+                    tarvitsee kiireellistä viranomaisapua, soita 112.
+                </div>
+            `
+        },
+
+
+        "laheisten-neuvonta":{
+
+            title:"Läheisten neuvonta",
+
+            lead:
+                "Läheisten neuvonnasta saat tukea, kun olet huolissasi läheisesi mielenterveydestä tai päihteiden käytöstä.",
+
+            description:`
+
+                <p>
+                    Ammattilaisen kanssa voit keskustella tilanteesta
+                    ja saada ohjausta siihen, miten läheistä voi tukea
+                    ja mistä apua voidaan hakea.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   LABORATORIO
+========================================================= */
+
+"laboratorio":{
+
+    title:"Laboratorio",
+
+    services:{
+
+        "laboratorion-ajanvaraus":{
+
+            title:"Laboratorion ajanvaraus",
+
+            lead:
+                "Laboratorion ajanvarauksessa voit varata ajan näytteenottoon silloin, kun tutkimus edellyttää ajanvarausta.",
+
+            description:`
+
+                <p>
+                    Tarkista ennen ajanvarausta saamasi
+                    tutkimus- ja valmistautumisohjeet.
+                </p>
+            `
+        },
+
+
+        "naytteenotto":{
+
+            title:"Näytteenotto",
+
+            lead:
+                "Laboratorion näytteenotossa otetaan tutkimusta varten määrätyt näytteet.",
+
+            description:`
+
+                <p>
+                    Noudata ennen näytteenottoa saamiasi ohjeita.
+                    Osa tutkimuksista voi edellyttää esimerkiksi
+                    paastoa tai näytteen ottamista tiettyyn aikaan.
+                </p>
+            `
+        },
+
+
+        "verinaytteet":{
+
+            title:"Verinäytteet",
+
+            lead:
+                "Verinäytteitä käytetään terveydentilan tutkimiseen, sairauksien seurantaan ja hoidon arviointiin.",
+
+            description:`
+
+                <p>
+                    Tarkista tutkimuskohtaiset valmistautumisohjeet
+                    ennen laboratorioon saapumista.
+                </p>
+            `
+        },
+
+
+        "virtsanaytteet":{
+
+            title:"Virtsanäytteet",
+
+            lead:
+                "Virtsanäytteitä käytetään erilaisten sairauksien ja terveydentilan muutosten tutkimiseen.",
+
+            description:`
+
+                <p>
+                    Näytteen ottamiseen voi liittyä
+                    tutkimuskohtaisia ohjeita. Noudata saamiasi
+                    näytteenotto-ohjeita huolellisesti.
+                </p>
+            `
+        },
+
+
+        "valmistautumisohjeet":{
+
+            title:"Laboratoriotutkimuksiin valmistautuminen",
+
+            lead:
+                "Oikea valmistautuminen auttaa varmistamaan laboratoriotutkimuksen luotettavan tuloksen.",
+
+            description:`
+
+                <p>
+                    Tutkimuksesta riippuen sinua voidaan ohjeistaa
+                    esimerkiksi olemaan syömättä, välttämään
+                    raskasta liikuntaa tai ottamaan näyte
+                    tiettynä ajankohtana.
+                </p>
+            `
+        },
+
+
+        "laboratoriotutkimukset":{
+
+            title:"Laboratoriotutkimukset",
+
+            lead:
+                "Laboratoriotutkimuksia käytetään sairauksien tutkimiseen, hoidon suunnitteluun ja terveydentilan seurantaan.",
+
+            description:`
+
+                <p>
+                    Tutkimukset tehdään terveydenhuollon
+                    ammattilaisen antaman tutkimuspyynnön
+                    perusteella.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   VAMMAISTEN PALVELUT
+========================================================= */
+
+"vammaisten-palvelut":{
+
+    title:"Vammaisten palvelut",
+
+    services:{
+
+        "vammaispalvelujen-neuvonta":{
+
+            title:"Vammaispalvelujen neuvonta",
+
+            lead:
+                "Vammaispalvelujen neuvonnasta saat tietoa palveluista, tukimuodoista ja palveluihin hakeutumisesta.",
+
+            description:`
+
+                <p>
+                    Neuvonnassa voidaan selvittää asiakkaan
+                    tilannetta ja ohjata sopivan palvelun tai
+                    muun tuen piiriin.
+                </p>
+            `
+        },
+
+
+        "henkilokohtainen-apu":{
+
+            title:"Henkilökohtainen apu",
+
+            lead:
+                "Henkilökohtaisen avun tarkoituksena on tukea vammaisen henkilön itsenäistä elämää ja osallistumista.",
+
+            description:`
+
+                <p>
+                    Henkilökohtaista apua voidaan järjestää
+                    yksilöllisen tarpeen perusteella esimerkiksi
+                    päivittäisiin toimiin, opiskeluun, työhön,
+                    harrastuksiin tai yhteiskunnalliseen osallistumiseen.
+                </p>
+            `
+        },
+
+
+        "asumisen-tuki":{
+
+            title:"Asumisen tuki",
+
+            lead:
+                "Asumisen tuella edistetään mahdollisimman itsenäistä ja turvallista asumista.",
+
+            description:`
+
+                <p>
+                    Tuen sisältö ja määrä arvioidaan asiakkaan
+                    yksilöllisen avun ja tuen tarpeen perusteella.
+                </p>
+            `
+        },
+
+
+        "liikkumisen-tuki":{
+
+            title:"Liikkumisen tuki",
+
+            lead:
+                "Liikkumisen tuella voidaan edistää henkilön mahdollisuuksia asioida ja osallistua kodin ulkopuoliseen elämään.",
+
+            description:`
+
+                <p>
+                    Palvelun tarve arvioidaan asiakkaan
+                    toimintakyvyn, liikkumisen vaikeuksien ja
+                    yksilöllisen tilanteen perusteella.
+                </p>
+            `
+        },
+
+
+        "perhehoito":{
+
+            title:"Perhehoito",
+
+            lead:
+                "Perhehoito tarjoaa hoivaa, huolenpitoa ja tukea perhehoitajan kodissa tai muulla sovitulla tavalla.",
+
+            description:`
+
+                <p>
+                    Perhehoitoa voidaan järjestää asiakkaan
+                    yksilöllisen tilanteen ja palvelutarpeen
+                    perusteella.
+                </p>
+
+                <p>
+                    Digitaalisissa palveluissa on myös
+                    perhehoitajaksi hakevan esitietolomake.
+                </p>
+            `
+        },
+
+
+        "paivaaikainen-toiminta":{
+
+            title:"Päiväaikainen toiminta",
+
+            lead:
+                "Päiväaikainen toiminta tukee osallisuutta, toimintakykyä ja mielekästä arkea.",
+
+            description:`
+
+                <p>
+                    Toiminnan sisältö suunnitellaan asiakkaiden
+                    tarpeiden ja tavoitteiden mukaisesti.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   SAIRAALA NOVA
+========================================================= */
+
+"sairaala-nova":{
+
+    title:"Sairaala Nova",
+
+    services:{
+
+        "paivystys":{
+
+            title:"Päivystys",
+
+            lead:
+                "Päivystyksessä hoidetaan sairauksia ja vammoja, jotka vaativat kiireellistä arviota tai hoitoa.",
+
+            description:`
+
+                <p>
+                    Päivystyksessä hoidon kiireellisyys arvioidaan
+                    terveydentilan perusteella.
+                </p>
+
+                <div class="info-box">
+                    <strong>Hätätilanne</strong>
+                    Henkeä uhkaavassa tilanteessa soita 112.
+                </div>
+            `
+        },
+
+
+        "poliklinikat":{
+
+            title:"Poliklinikat",
+
+            lead:
+                "Sairaala Novan poliklinikoilla tutkitaan ja hoidetaan eri erikoisalojen potilaita.",
+
+            description:`
+
+                <p>
+                    Poliklinikalle saavutaan yleensä lähetteen
+                    tai ennalta sovitun ajan perusteella.
+                </p>
+            `
+        },
+
+
+        "vuodeosastot":{
+
+            title:"Vuodeosastot",
+
+            lead:
+                "Vuodeosastoilla hoidetaan potilaita, joiden terveydentila edellyttää sairaalahoitoa ja seurantaa.",
+
+            description:`
+
+                <p>
+                    Hoito suunnitellaan yksilöllisesti
+                    potilaan sairauden ja hoidon tarpeen mukaan.
+                </p>
+            `
+        },
+
+
+        "leikkaus-ja-toimenpidepalvelut":{
+
+            title:"Leikkaus- ja toimenpidepalvelut",
+
+            lead:
+                "Leikkaus- ja toimenpidepalveluissa tehdään suunniteltuja ja kiireellisiä toimenpiteitä.",
+
+            description:`
+
+                <p>
+                    Potilas saa ennen toimenpidettä tarvittavat
+                    valmistautumis- ja saapumisohjeet.
+                </p>
+            `
+        },
+
+
+        "kuvantaminen":{
+
+            title:"Kuvantaminen",
+
+            lead:
+                "Kuvantamistutkimuksia käytetään sairauksien ja vammojen tutkimiseen sekä hoidon suunnitteluun.",
+
+            description:`
+
+                <p>
+                    Kuvantamiseen kuuluvat erilaiset
+                    tutkimusmenetelmät. Tutkimukseen saavutaan
+                    saadun ajan ja ohjeiden mukaisesti.
+                </p>
+            `
+        },
+
+
+        "saapuminen-sairaala-novaan":{
+
+            title:"Saapuminen Sairaala Novaan",
+
+            lead:
+                "Tutustu saapumisohjeisiin ennen vastaanottoa, tutkimusta tai muuta käyntiä Sairaala Novassa.",
+
+            description:`
+
+                <p>
+                    Tarkista kutsukirjeestä tai saamastasi
+                    ajanvaraustiedosta oikea yksikkö,
+                    ilmoittautumisohjeet ja saapumisaika.
+                </p>
+            `
+        }
+
+    }
+
+},
+
+
+/* =========================================================
+   PELASTUSLAITOS
+========================================================= */
+
+"pelastuslaitos":{
+
+    title:"Pelastuslaitos",
+
+    services:{
+
+        "pelastustoiminta":{
+
+            title:"Pelastustoiminta",
+
+            lead:
+                "Pelastustoiminnan tehtävänä on auttaa ihmisiä ja suojata omaisuutta ja ympäristöä onnettomuustilanteissa.",
+
+            description:`
+
+                <p>
+                    Pelastuslaitos vastaa pelastustoiminnasta
+                    alueellaan ja varautuu erilaisiin
+                    onnettomuus- ja häiriötilanteisiin.
+                </p>
+
+                <div class="info-box">
+                    <strong>Hätätilanne</strong>
+                    Kiireellisessä hätätilanteessa soita 112.
+                </div>
+            `
+        },
+
+
+        "paloturvallisuus":{
+
+            title:"Paloturvallisuus",
+
+            lead:
+                "Paloturvallisuudella ehkäistään tulipaloja ja vähennetään niiden aiheuttamia vahinkoja.",
+
+            description:`
+
+                <p>
+                    Jokainen voi parantaa turvallisuutta
+                    huolehtimalla esimerkiksi toimivista
+                    palovaroittimista ja turvallisista
+                    toimintatavoista.
+                </p>
+            `
+        },
+
+
+        "palotarkastus-ja-valvonta":{
+
+            title:"Palotarkastus ja valvonta",
+
+            lead:
+                "Pelastuslaitoksen valvonnalla edistetään rakennusten, toimintojen ja ihmisten turvallisuutta.",
+
+            description:`
+
+                <p>
+                    Valvontaa toteutetaan muun muassa
+                    palotarkastuksilla ja muilla
+                    valvontatoimenpiteillä.
+                </p>
+            `
+        },
+
+
+        "turvallisuusneuvonta":{
+
+            title:"Turvallisuusneuvonta",
+
+            lead:
+                "Turvallisuusneuvonnasta saat ohjausta tulipalojen ja muiden onnettomuuksien ehkäisemiseen.",
+
+            description:`
+
+                <p>
+                    Neuvonta voi liittyä esimerkiksi
+                    asumisen paloturvallisuuteen,
+                    poistumisturvallisuuteen tai
+                    turvallisiin toimintatapoihin.
+                </p>
+            `
+        },
+
+
+        "varautuminen":{
+
+            title:"Varautuminen",
+
+            lead:
+                "Varautumisella pyritään turvaamaan yhteiskunnan ja arjen toimintaa häiriö- ja poikkeustilanteissa.",
+
+            description:`
+
+                <p>
+                    Hyvä varautuminen auttaa selviytymään
+                    tilanteista, joissa normaalit palvelut tai
+                    yhteiskunnan toiminnot häiriintyvät.
+                </p>
+            `
+        },
+
+
+        "turvallisuusviestinta":{
+
+            title:"Turvallisuusviestintä",
+
+            lead:
+                "Turvallisuusviestinnällä lisätään ihmisten tietoja ja taitoja onnettomuuksien ehkäisemiseksi.",
+
+            description:`
+
+                <p>
+                    Turvallisuusviestintään voi kuulua
+                    neuvontaa, koulutusta, tapahtumia ja
+                    muuta turvallisuustietoa.
+                </p>
+            `
+        }
+
+    }
+
+}
+
+};
+
+
+/* =========================================================
+   URL PARAMETRIT
+========================================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const parentKey =
+    params.get("palvelu");
+
+const sectionKey =
+    params.get("osio");
+
+
+const parent =
+    serviceGroups[parentKey];
+
+const service =
+    parent
+        &&
+    parent.services[sectionKey];
+
+
+/* =========================================================
+   VIRHEELLINEN LINKKI
+========================================================= */
+
+if(!parent || !service){
+
+    document.getElementById(
+        "pageContent"
+    ).innerHTML = `
+
+        <div class="not-found">
+
+            <h1>
+                Palvelua ei löytynyt
+            </h1>
+
+            <p>
+                Valittua palvelua ei löytynyt.
+                Voit palata palveluiden etusivulle ja
+                valita palvelun uudelleen.
+            </p>
+
+            <a
+                href="index.html#palvelut"
+                class="online-button"
+            >
+                Takaisin palveluihin
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   NORMAALI SIVU
+========================================================= */
+
+else{
+
+
+/* ---------------------------------------------------------
+   TITLE
+--------------------------------------------------------- */
+
+document.title =
+    service.title
+    +
+    " | Keski-Suomen hyvinvointialue";
+
+
+document.getElementById(
+    "pageTitle"
+).textContent =
+    service.title;
+
+
+document.getElementById(
+    "currentBreadcrumb"
+).textContent =
+    service.title;
+
+
+document.getElementById(
+    "parentBreadcrumb"
+).textContent =
+    parent.title;
+
+
+document.getElementById(
+    "parentBreadcrumb"
+).href =
+    "palvelu.html?palvelu="
+    +
+    encodeURIComponent(
+        parentKey
+    );
+
+
+document.getElementById(
+    "backLink"
+).href =
+    "palvelu.html?palvelu="
+    +
+    encodeURIComponent(
+        parentKey
+    );
+
+
+document.getElementById(
+    "backLink"
+).textContent =
+    "← Takaisin: "
+    +
+    parent.title;
+
+
+/* ---------------------------------------------------------
+   CONTENT
+--------------------------------------------------------- */
+
+document.getElementById(
+    "lead"
+).textContent =
+    service.lead;
+
+
+document.getElementById(
+    "description"
+).innerHTML =
+    service.description;
+
+
+/* ---------------------------------------------------------
+   CONTACTS
+--------------------------------------------------------- */
+
+const contacts =
+    document.getElementById(
+        "contacts"
+    );
+
+
+function getContactContent(){
+
+    /*
+       Tässä käytetään projektin yhteisiä asiointikanavia.
+       Myöhemmin jokaiselle palvelulle voidaan lisätä omat
+       yhteystiedot tietokantaan.
+    */
+
+    if(
+        parentKey ===
+        "mielenterveys-riippuvuuspalvelut"
+    ){
+
+        return `
+
+            <section class="contact-card">
+
+                <h3 class="contact-title">
+                    Digitaalinen asiointi
+                </h3>
+
+                <p>
+                    Voit aloittaa kiireettömän yhteydenoton
+                    digitaalisten palvelujen kautta.
+                </p>
+
+                <a
+                    href="digipalvelut.html"
+                    class="online-button"
+                >
+                    Siirry digitaalisiin palveluihin
+                </a>
+
+            </section>
+
+        `;
+    }
+
+
+    if(
+        parentKey ===
+        "laboratorio"
+    ){
+
+        return `
+
+            <section class="contact-card">
+
+                <h3 class="contact-title">
+                    Verkkoasiointi
+                </h3>
+
+                <p>
+                    Tarkista tutkimukseen liittyvät
+                    asiointi- ja valmistautumisohjeet.
+                </p>
+
+                <a
+                    href="digipalvelut.html"
+                    class="online-button"
+                >
+                    Verkkoasiointi
+                </a>
+
+            </section>
+
+        `;
+    }
+
+
+    if(
+        parentKey ===
+        "pelastuslaitos"
+    ){
+
+        return `
+
+            <section class="contact-card">
+
+                <h3 class="contact-title">
+                    Kiireetön asiointi
+                </h3>
+
+                <p>
+                    Kiireettömissä asioissa voit tutustua
+                    pelastuslaitoksen palveluihin ja
+                    turvallisuusohjeisiin.
+                </p>
+
+                <div class="info-box">
+                    <strong>Hätätilanne</strong>
+                    Kiireellisessä hätätilanteessa soita 112.
+                </div>
+
+            </section>
+
+        `;
+    }
+
+
+    if(
+        parentKey ===
+        "sairaala-nova"
+    ){
+
+        return `
+
+            <section class="contact-card">
+
+                <h3 class="contact-title">
+                    Sairaala Nova
+                </h3>
+
+                <p>
+                    Noudata ajanvarauksessa tai kutsukirjeessä
+                    saamiasi yhteydenotto- ja saapumisohjeita.
+                </p>
+
+            </section>
+
+        `;
+    }
+
+
+    return `
+
+        <section class="contact-card">
+
+            <h3 class="contact-title">
+                Verkkoasiointi
+            </h3>
+
+            <p>
+                Voit käyttää digitaalista asiointipalvelua
+                kiireettömissä asioissa.
+            </p>
+
+            <a
+                href="digipalvelut.html"
+                class="online-button"
+            >
+                Siirry digitaalisiin palveluihin
+            </a>
+
+        </section>
+
+    `;
+
+}
+
+
+contacts.innerHTML =
+    getContactContent();
+
+
+/* ---------------------------------------------------------
+   RELATED SERVICES
+--------------------------------------------------------- */
+
+const related =
+    document.getElementById(
+        "relatedServices"
+    );
+
+
+related.innerHTML =
+    Object.entries(
+        parent.services
+    )
+
+    .filter(
+        ([key]) =>
+            key !== sectionKey
+    )
+
+    .map(
+        ([key,item]) => {
+
+            const url =
+                "neuvonta.html"
+                +
+                "?palvelu="
+                +
+                encodeURIComponent(
+                    parentKey
+                )
+                +
+                "&osio="
+                +
+                encodeURIComponent(
+                    key
+                );
+
+
+            return `
+
+                <a
+                    href="${url}"
+                    class="side-item"
+                >
+
+                    <span class="side-text">
+                        ${item.title}
+                    </span>
+
+                    <span
+                        class="circle-arrow"
+                        aria-hidden="true"
+                    >
+                        ›
+                    </span>
+
+                </a>
+
+            `;
+
+        }
+
+    )
+
+    .join("");
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchForm =
+    document.getElementById(
+        "topSearchForm"
+    );
+
+const searchInput =
+    document.getElementById(
+        "topSearchInput"
+    );
+
+
+searchForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+        const query =
+            searchInput
+                .value
+                .trim();
+
+
+        if(!query){
+            return;
+        }
+
+
+        window.location.href =
+            "index.html?search="
+            +
+            encodeURIComponent(
+                query
+            );
+
+    }
+);
+
+
+/* =========================================================
+   DIGITAL POPUP
+========================================================= */
+
+const chatButton =
+    document.getElementById(
+        "chatButton"
+    );
+
+const digitalPopup =
+    document.getElementById(
+        "digitalPopup"
+    );
+
+const digitalPopupClose =
+    document.getElementById(
+        "digitalPopupClose"
+    );
+
+
+function openPopup(){
+
+    digitalPopup
+        .classList
+        .add("open");
+
+    digitalPopup
+        .setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+}
+
+
+function closePopup(){
+
+    digitalPopup
+        .classList
+        .remove("open");
+
+    digitalPopup
+        .setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+}
+
+
+chatButton.addEventListener(
+    "click",
+    () => {
+
+        if(
+            digitalPopup
+                .classList
+                .contains("open")
+        ){
+
+            closePopup();
+
+        }
+
+        else{
+
+            openPopup();
+
+        }
+
+    }
+);
+
+
+digitalPopupClose.addEventListener(
+    "click",
+    closePopup
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closePopup();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
