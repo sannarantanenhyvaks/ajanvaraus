@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hyvinvointia edistävä terveellinen syksy | Keski-Suomen hyvinvointialue</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#005596;
+    --button-blue:#286296;
+    --button-hover:#174f7f;
+    --green:#b4d77d;
+    --border:#d4dde3;
+    --text:#111;
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+
+    font-family:"Raleway",Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+a{
+    color:var(--blue);
+}
+
+img{
+    max-width:100%;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site-header{
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:124px;
+
+    margin:auto;
+    padding:25px 20px 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:40px;
+}
+
+.logo-link{
+    display:inline-flex;
+}
+
+.logo{
+    display:block;
+
+    width:245px;
+    max-height:82px;
+
+    object-fit:contain;
+}
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue);
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+}
+
+.top-search button{
+    width:58px;
+
+    border:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--button-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+.mobile-menu-button{
+    display:none;
+
+    width:48px;
+    height:48px;
+
+    border:0;
+    background:transparent;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.mobile-menu-button span{
+    display:block;
+
+    width:27px;
+    height:2px;
+
+    background:var(--blue);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:67px;
+
+    margin:auto;
+    padding:0 4px;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid var(--blue);
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue);
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:500;
+
+    white-space:nowrap;
+
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover{
+    border-bottom-color:var(--blue);
+}
+
+.mobile-search,
+.mobile-nav-close{
+    display:none;
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    padding:17px 20px 70px;
+}
+
+/* =====================================================
+   BREADCRUMBS
+===================================================== */
+
+.breadcrumbs{
+    margin:0 0 22px;
+
+    color:var(--blue);
+
+    font-size:14px;
+}
+
+.breadcrumbs a{
+    color:var(--blue);
+    text-decoration:none;
+}
+
+.breadcrumbs a:hover{
+    text-decoration:underline;
+}
+
+.breadcrumb-divider{
+    margin:0 5px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+
+    width:100%;
+
+    margin-bottom:30px;
+}
+
+.hero img{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    max-height:550px;
+
+    object-fit:cover;
+    object-position:center;
+}
+
+.hero-title{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    min-width:680px;
+
+    margin:0;
+
+    padding:20px 32px 8px;
+
+    background:#fff;
+
+    border-radius:0 70px 0 0;
+
+    color:var(--blue);
+
+    font-size:31px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro{
+    max-width:900px;
+
+    margin:0 0 18px;
+
+    color:var(--blue);
+
+    font-size:28px;
+    line-height:1.45;
+    font-weight:500;
+}
+
+.intro-text{
+    max-width:900px;
+
+    margin:0 0 16px;
+
+    font-size:16px;
+    line-height:1.7;
+}
+
+.pdf-line{
+    max-width:900px;
+
+    margin:0 0 65px;
+
+    font-size:16px;
+}
+
+.pdf-line a{
+    color:var(--blue);
+    text-decoration:underline;
+}
+
+/* =====================================================
+   TOPIC GRID
+===================================================== */
+
+.topic-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:62px 45px;
+
+    margin:25px 0 70px;
+}
+
+.topic-card{
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    color:var(--blue);
+    text-decoration:none;
+
+    text-align:center;
+
+    font-size:15px;
+    line-height:1.45;
+    font-weight:600;
+}
+
+.topic-card:hover .topic-icon{
+    transform:translateY(-3px);
+}
+
+.topic-icon{
+    position:relative;
+
+    width:65px;
+    height:65px;
+
+    margin-bottom:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    transition:transform .15s ease;
+}
+
+.topic-icon svg{
+    width:49px;
+    height:49px;
+
+    fill:none;
+
+    stroke:var(--blue);
+    stroke-width:1.55;
+
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.topic-name{
+    max-width:245px;
+}
+
+/* =====================================================
+   TOPIC CONTENT
+===================================================== */
+
+.topic-content{
+    max-width:1000px;
+
+    margin:0 auto 70px;
+}
+
+.article-topic{
+    padding:38px 0;
+
+    border-top:1px solid var(--border);
+
+    scroll-margin-top:25px;
+}
+
+.article-topic h2{
+    margin:0 0 15px;
+
+    color:var(--blue);
+
+    font-size:25px;
+    line-height:1.35;
+    font-weight:500;
+}
+
+.article-topic p{
+    margin:0;
+
+    font-size:16px;
+    line-height:1.7;
+}
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+.page-feedback{
+    margin-top:45px;
+}
+
+.page-feedback h2{
+    margin:0 0 18px;
+
+    color:#111;
+
+    font-size:17px;
+    font-weight:600;
+}
+
+.feedback-options{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+}
+
+.feedback-option{
+    min-height:40px;
+
+    border:0;
+    border-radius:22px;
+
+    background:var(--button-blue);
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.feedback-option:hover{
+    background:var(--button-hover);
+}
+
+.feedback-message{
+    display:none;
+
+    margin-top:15px;
+
+    color:var(--blue);
+
+    font-weight:600;
+}
+
+.feedback-message.show{
+    display:block;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:var(--button-blue);
+    color:#fff;
+}
+
+.footer-main{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:48px 20px 60px;
+
+    display:grid;
+
+    grid-template-columns:1.3fr 1fr;
+
+    gap:120px;
+}
+
+.footer h2{
+    margin:0 0 15px;
+
+    font-size:19px;
+    font-weight:600;
+}
+
+.footer p{
+    max-width:480px;
+
+    margin:0;
+
+    font-size:14px;
+    line-height:1.7;
+}
+
+.footer-links a{
+    display:block;
+
+    margin:4px 0;
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:1000px){
+
+    .nav-inner{
+        overflow-x:auto;
+    }
+
+    .topic-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    body{
+        font-size:15px;
+    }
+
+    /* HEADER */
+
+    .header-top{
+        min-height:82px;
+
+        padding:12px 18px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .logo{
+        width:180px;
+        max-height:58px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .mobile-menu-button{
+        display:flex;
+    }
+
+    /* MOBILE NAV */
+
+    .main-nav{
+        position:fixed;
+        z-index:2000;
+
+        top:0;
+        right:0;
+        bottom:0;
+
+        width:min(360px,88vw);
+
+        background:#fff;
+
+        transform:translateX(105%);
+        transition:transform .22s ease;
+
+        box-shadow:-8px 0 30px rgba(0,0,0,.16);
+
+        overflow:auto;
+    }
+
+    .main-nav.open{
+        transform:translateX(0);
+    }
+
+    .nav-inner{
+        min-height:100%;
+
+        display:block;
+
+        padding:80px 22px 30px;
+
+        border:0;
+
+        overflow:visible;
+    }
+
+    .mobile-nav-close{
+        position:absolute;
+
+        top:18px;
+        right:18px;
+
+        width:44px;
+        height:44px;
+
+        display:block;
+
+        border:0;
+        background:transparent;
+
+        color:var(--blue);
+
+        font-size:34px;
+    }
+
+    .nav-link{
+        min-height:54px;
+
+        padding:0 4px;
+
+        border-bottom:1px solid var(--border);
+
+        white-space:normal;
+
+        font-size:16px;
+    }
+
+    .nav-link:hover{
+        border-bottom-color:var(--border);
+    }
+
+    .mobile-search{
+        height:49px;
+
+        display:flex;
+
+        margin:18px 0;
+
+        border:2px solid var(--blue);
+        border-radius:25px;
+
+        overflow:hidden;
+    }
+
+    .mobile-search input{
+        flex:1;
+        min-width:0;
+
+        padding:0 15px;
+
+        border:0;
+        outline:0;
+    }
+
+    .mobile-search button{
+        width:52px;
+
+        border:0;
+
+        background:var(--button-blue);
+        color:#fff;
+    }
+
+    .menu-overlay{
+        position:fixed;
+        z-index:1990;
+
+        inset:0;
+
+        display:none;
+
+        background:rgba(0,0,0,.32);
+    }
+
+    .menu-overlay.show{
+        display:block;
+    }
+
+    /* PAGE */
+
+    .page{
+        padding:17px 18px 55px;
+    }
+
+    .breadcrumbs{
+        font-size:13px;
+    }
+
+    /* HERO */
+
+    .hero{
+        width:calc(100% + 36px);
+
+        margin-left:-18px;
+        margin-bottom:25px;
+    }
+
+    .hero img{
+        min-height:245px;
+
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .hero-title{
+        position:relative;
+
+        width:calc(100% - 22px);
+        min-width:0;
+
+        margin-top:-43px;
+
+        padding:16px 20px 8px;
+
+        border-radius:0 42px 0 0;
+
+        font-size:25px;
+    }
+
+    .intro{
+        font-size:22px;
+        line-height:1.45;
+    }
+
+    .intro-text{
+        font-size:15px;
+    }
+
+    .pdf-line{
+        margin-bottom:45px;
+
+        font-size:15px;
+    }
+
+    /* TOPICS */
+
+    .topic-grid{
+        grid-template-columns:repeat(2,1fr);
+
+        gap:40px 20px;
+
+        margin-bottom:55px;
+    }
+
+    .topic-icon{
+        width:61px;
+        height:61px;
+
+        margin-bottom:13px;
+    }
+
+    .topic-icon svg{
+        width:45px;
+        height:45px;
+    }
+
+    .topic-card{
+        font-size:14px;
+    }
+
+    .article-topic{
+        padding:30px 0;
+    }
+
+    .article-topic h2{
+        font-size:21px;
+    }
+
+    .article-topic p{
+        font-size:15px;
+    }
+
+    /* FEEDBACK */
+
+    .feedback-options{
+        grid-template-columns:1fr;
+
+        gap:9px;
+    }
+
+    /* FOOTER */
+
+    .footer-main{
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+<div class="header-top">
+
+<a href="index.html" class="logo-link">
+
+<img
+    src="hyvaks-logo.png"
+    alt="Keski-Suomen hyvinvointialue"
+    class="logo"
+>
+
+</a>
+
+<form class="top-search" id="topSearchForm">
+
+<input
+    id="topSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+    aria-label="Hae sivustolta"
+>
+
+<button type="submit" aria-label="Hae">
+
+<svg viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2">
+
+<circle cx="11" cy="11" r="7"></circle>
+<path d="M16.5 16.5L21 21"></path>
+
+</svg>
+
+</button>
+
+</form>
+
+<button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    type="button"
+    aria-label="Avaa valikko"
+>
+
+<span></span>
+<span></span>
+<span></span>
+
+</button>
+
+</div>
+
+<nav class="main-nav" id="mainNav">
+
+<button
+    class="mobile-nav-close"
+    id="mobileNavClose"
+    type="button"
+    aria-label="Sulje valikko"
+>
+×
+</button>
+
+<div class="nav-inner">
+
+<form class="mobile-search" id="mobileSearchForm">
+
+<input
+    id="mobileSearchInput"
+    type="search"
+    placeholder="Hae sivustolta"
+>
+
+<button type="submit">
+    ⌕
+</button>
+
+</form>
+
+<a href="palvelut.html" class="nav-link">
+    Palvelumme
+</a>
+
+<a href="asiointi.html" class="nav-link">
+    Asiointi
+</a>
+
+<a href="asiakkaana.html" class="nav-link">
+    Asiakkaana
+</a>
+
+<a href="sairaala-nova.html" class="nav-link">
+    Sairaala Nova
+</a>
+
+<a href="hyvinvointisi-tueksi.html" class="nav-link">
+    Hyvinvointisi tueksi
+</a>
+
+<a href="hyvinvointialue.html" class="nav-link">
+    Hyvinvointialue
+</a>
+
+<a href="ajankohtaista.html" class="nav-link">
+    Ajankohtaista
+</a>
+
+<a href="tyopaikat.html" class="nav-link">
+    Tule työkaveriksi
+</a>
+
+<a href="index.html?lang=en" class="nav-link">
+    In English
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<main class="page">
+
+<!-- BREADCRUMBS -->
+
+<div class="breadcrumbs">
+
+<a href="index.html">
+    Etusivu
+</a>
+
+<span class="breadcrumb-divider">/</span>
+
+<a href="hyvinvointisi-tueksi.html">
+    Hyvinvointisi tueksi
+</a>
+
+<span class="breadcrumb-divider">/</span>
+
+<span>
+    Hyvinvointia edistävä terveellinen syksy
+</span>
+
+</div>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<img
+    src="syksy.jpg"
+    alt="Syksyinen maisema"
+>
+
+<h1 class="hero-title">
+    Hyvinvointia edistävä terveellinen syksy
+</h1>
+
+</section>
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<h2 class="intro">
+    Kirpeä syksy - Vinkit hyvinvointia edistävään,<br>
+    terveelliseen ja turvalliseen syksyyn
+</h2>
+
+<p class="intro-text">
+    Syksy on erinomaista aikaa omasta hyvinvoinnista ja
+    terveydestä huolehtimiseen. Olemme koonneet vinkkejä,
+    miten syksy sujuu hyvinvointia ja terveyttä edistäen
+    ja turvallisuudesta huolehtien.
+</p>
+
+<p class="pdf-line">
+    Tulostettava esite:
+    <a href="#">
+        Hyvinvointia edistävä, terveellinen ja turvallinen syksy (pdf)
+    </a>
+</p>
+
+<!-- =====================================================
+     12 TOPICS
+===================================================== -->
+
+<section class="topic-grid">
+
+<a class="topic-card" href="#tunnelmaa">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Tunnelmaa pimeään elävästä tulesta
+</span>
+
+</a>
+
+<a class="topic-card" href="#infektiot">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Pienillä toimilla voit ehkäistä infektiotauteja
+</span>
+
+</a>
+
+<a class="topic-card" href="#tekemista">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Mielekästä tekemistä syysarkeen
+</span>
+
+</a>
+
+<a class="topic-card" href="#yksinaisyys">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Apua yksinäisyyteen
+</span>
+
+</a>
+
+<a class="topic-card" href="#nakymiseksi">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Tee itsesi näkyväksi pimeällä
+</span>
+
+</a>
+
+<a class="topic-card" href="#muisti">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Pidä huolta muistista
+</span>
+
+</a>
+
+<a class="topic-card" href="#ruokailu">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Väreistä ja monipuolisesta ruokailusta puhtia syksyyn
+</span>
+
+</a>
+
+<a class="topic-card" href="#kaamosoireet">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Keinoja kaamosoireisiin
+</span>
+
+</a>
+
+<a class="topic-card" href="#tulisijat">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Varmista tulisijojen turvallisuus
+</span>
+
+</a>
+
+<a class="topic-card" href="#viljat">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Vaihda viljat täysjyvään
+</span>
+
+</a>
+
+<a class="topic-card" href="#taidot">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Hyvinvointia uudesta taidosta
+</span>
+
+</a>
+
+<a class="topic-card" href="#ruutuaika">
+
+<div class="topic-icon">
+
+<svg viewBox="0 0 64 64">
+<path d="M6 29l13-11 13 11v25H6z"/>
+<path d="M11 54V35h16v19"/>
+<path d="M17 54V43h6v11"/>
+<path d="M32 10h25v44H32"/>
+<path d="M38 16h5v5h-5z"/>
+<path d="M48 16h5v5h-5z"/>
+<path d="M38 26h5v5h-5z"/>
+<path d="M48 26h5v5h-5z"/>
+<path d="M38 36h5v5h-5z"/>
+<path d="M48 36h5v5h-5z"/>
+<path d="M38 46h5v5h-5z"/>
+<path d="M48 46h5v5h-5z"/>
+<path d="M5 15c4-5 9-5 13-2 3-4 8-4 11-1"/>
+</svg>
+
+</div>
+
+<span class="topic-name">
+    Vähennä ruutuaikaa somepaastolla
+</span>
+
+</a>
+
+</section>
+
+<!-- =====================================================
+     TOPIC DETAILS
+===================================================== -->
+
+<section class="topic-content">
+
+<div class="article-topic" id="tunnelmaa">
+<h2>Tunnelmaa pimeään elävästä tulesta</h2>
+<p>
+    Syksyn pimeinä iltoina kynttilät ja muu elävä tuli tuovat
+    tunnelmaa. Huolehdi kuitenkin paloturvallisuudesta ja pidä
+    avotulta aina valvottuna.
+</p>
+</div>
+
+<div class="article-topic" id="infektiot">
+<h2>Pienillä toimilla voit ehkäistä infektiotauteja</h2>
+<p>
+    Hyvä käsihygienia ja arjen pienet terveysturvalliset valinnat
+    auttavat ehkäisemään infektioiden leviämistä.
+</p>
+</div>
+
+<div class="article-topic" id="tekemista">
+<h2>Mielekästä tekemistä syysarkeen</h2>
+<p>
+    Mielekäs tekeminen, liikkuminen ja itselle tärkeät harrastukset
+    tukevat hyvinvointia myös syksyn pimetessä.
+</p>
+</div>
+
+<div class="article-topic" id="yksinaisyys">
+<h2>Apua yksinäisyyteen</h2>
+<p>
+    Yhteydenpito läheisiin ja osallistuminen yhteiseen tekemiseen
+    voivat auttaa yksinäisyyden kokemukseen.
+</p>
+</div>
+
+<div class="article-topic" id="nakymiseksi">
+<h2>Tee itsesi näkyväksi pimeällä</h2>
+<p>
+    Pimeällä liikkuessa heijastin ja asianmukaiset valot parantavat
+    näkyvyyttä ja liikenneturvallisuutta.
+</p>
+</div>
+
+<div class="article-topic" id="muisti">
+<h2>Pidä huolta muistista</h2>
+<p>
+    Riittävä uni, liikunta, sosiaaliset suhteet ja monipuolinen
+    tekeminen tukevat muistia ja aivojen hyvinvointia.
+</p>
+</div>
+
+<div class="article-topic" id="ruokailu">
+<h2>Väreistä ja monipuolisesta ruokailusta puhtia syksyyn</h2>
+<p>
+    Monipuolinen ruokavalio ja säännöllinen ateriarytmi tukevat
+    jaksamista ja hyvinvointia.
+</p>
+</div>
+
+<div class="article-topic" id="kaamosoireet">
+<h2>Keinoja kaamosoireisiin</h2>
+<p>
+    Valoisa aika kannattaa hyödyntää ulkoiluun. Myös säännöllinen
+    unirytmi ja liikunta voivat tukea jaksamista pimeänä vuodenaikana.
+</p>
+</div>
+
+<div class="article-topic" id="tulisijat">
+<h2>Varmista tulisijojen turvallisuus</h2>
+<p>
+    Huolehdi tulisijan ja hormin asianmukaisesta käytöstä ja
+    kunnossapidosta ennen lämmityskauden alkua.
+</p>
+</div>
+
+<div class="article-topic" id="viljat">
+<h2>Vaihda viljat täysjyvään</h2>
+<p>
+    Täysjyväviljat ovat hyvä osa monipuolista ruokavaliota ja niistä
+    saa muun muassa kuitua.
+</p>
+</div>
+
+<div class="article-topic" id="taidot">
+<h2>Hyvinvointia uudesta taidosta</h2>
+<p>
+    Uuden taidon opettelu voi tuoda arkeen mielekästä tekemistä,
+    onnistumisen kokemuksia ja uusia kiinnostuksen kohteita.
+</p>
+</div>
+
+<div class="article-topic" id="ruutuaika">
+<h2>Vähennä ruutuaikaa somepaastolla</h2>
+<p>
+    Ruutuajan tietoinen vähentäminen voi vapauttaa aikaa levolle,
+    liikkumiselle, harrastuksille ja kasvokkaiselle yhdessäololle.
+</p>
+</div>
+
+</section>
+
+<!-- =====================================================
+     FEEDBACK
+===================================================== -->
+
+<section class="page-feedback">
+
+<h2>
+    Löysitkö etsimäsi tiedon tältä sivulta?
+</h2>
+
+<div class="feedback-options">
+
+<button class="feedback-option">
+    ✓&nbsp; Kyllä
+</button>
+
+<button class="feedback-option">
+    ?&nbsp; Osittain
+</button>
+
+<button class="feedback-option">
+    ×&nbsp; En
+</button>
+
+</div>
+
+<div class="feedback-message" id="feedbackMessage">
+    Kiitos palautteestasi.
+</div>
+
+</section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div class="footer-main">
+
+<div>
+
+<h2>
+    Keski-Suomen hyvinvointialue
+</h2>
+
+<p>
+    Vastaamme noin 273 000 keskisuomalaisen sosiaali-,
+    terveys- ja pelastustoimen palveluista. Edistämme
+    hyvinvointia, terveyttä ja turvallisuutta Keski-Suomessa
+    vaikuttavasti ja laajalla yhteistyöllä. Haluamme olla
+    ihmislähtöisin hyvinvointialue ja tukea keskisuomalaisten
+    hyvää arkea.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<h2>
+    Oikopolut
+</h2>
+
+<a href="sairaala-nova.html">Sairaala Nova</a>
+<a href="pelastuslaitos.html">Pelastuslaitos</a>
+<a href="ostolaskut.html">Ostolaskutiedot</a>
+<a href="kirjaamo.html">Kirjaamo</a>
+<a href="puhelinvaihde.html">Puhelinvaihde</a>
+<a href="tietosuoja.html">Tietosuoja</a>
+<a href="saavutettavuus.html">Saavutettavuusseloste</a>
+<a href="paatoksenteko.html">Päätöksenteko</a>
+<a href="esitykset.html">Esityslistat ja pöytäkirjat</a>
+<a href="kuulutukset.html">Kuulutukset ja ilmoitukset</a>
+<a href="yhteystiedot.html">Yhteystiedot</a>
+<a href="palaute.html">Anna palautetta</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const mobileMenuButton =
+    document.getElementById("mobileMenuButton");
+
+const mobileNavClose =
+    document.getElementById("mobileNavClose");
+
+const mainNav =
+    document.getElementById("mainNav");
+
+const menuOverlay =
+    document.getElementById("menuOverlay");
+
+function openMenu(){
+
+    mainNav.classList.add("open");
+
+    menuOverlay.classList.add("show");
+
+    document.body.classList.add("menu-open");
+
+}
+
+function closeMenu(){
+
+    mainNav.classList.remove("open");
+
+    menuOverlay.classList.remove("show");
+
+    document.body.classList.remove("menu-open");
+
+}
+
+mobileMenuButton.addEventListener(
+    "click",
+    openMenu
+);
+
+mobileNavClose.addEventListener(
+    "click",
+    closeMenu
+);
+
+menuOverlay.addEventListener(
+    "click",
+    closeMenu
+);
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key==="Escape"){
+            closeMenu();
+        }
+
+    }
+);
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function doSearch(value){
+
+    const query=value.trim();
+
+    if(!query){
+        return;
+    }
+
+    window.location.href =
+        "index.html?search=" +
+        encodeURIComponent(query);
+
+}
+
+document
+.getElementById("topSearchForm")
+.addEventListener(
+    "submit",
+    event=>{
+
+        event.preventDefault();
+
+        doSearch(
+            document
+            .getElementById("topSearchInput")
+            .value
+        );
+
+    }
+);
+
+document
+.getElementById("mobileSearchForm")
+.addEventListener(
+    "submit",
+    event=>{
+
+        event.preventDefault();
+
+        doSearch(
+            document
+            .getElementById("mobileSearchInput")
+            .value
+        );
+
+    }
+);
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+const feedbackButtons =
+    document.querySelectorAll(".feedback-option");
+
+const feedbackMessage =
+    document.getElementById("feedbackMessage");
+
+feedbackButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        feedbackButtons.forEach(other=>{
+
+            other.style.background="#286296";
+
+        });
+
+        button.style.background="#174f7f";
+
+        feedbackMessage.classList.add("show");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
