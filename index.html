@@ -42,7 +42,8 @@ body{
     margin:0;
     background:#fff;
     color:var(--text);
-    font-family:"Raleway",Arial,sans-serif;
+    font-family:"Raleway", Arial, sans-serif;
+    font-weight:500;
     line-height:1.5;
 }
 
@@ -169,17 +170,15 @@ button{
 .nav-link{
     display:flex;
     align-items:center;
-
     padding:0 16px;
 
     color:var(--blue-dark);
-
     text-decoration:none;
+
     font-size:16px;
-    font-weight:500;
+    font-weight:600;
 
     white-space:nowrap;
-
     border-bottom:4px solid transparent;
 }
 
@@ -201,13 +200,15 @@ button{
 }
 
 .page-title{
-    margin:0 0 51px;
+    font-weight:600;
+}
 
-    color:var(--blue-dark);
-
-    font-size:32px;
-    line-height:1.2;
-    font-weight:500;
+.search-title,
+.section-title,
+.available h2,
+.news-heading,
+.feedback-content h2{
+    font-weight:600;
 }
 
 .intro-grid{
@@ -1235,6 +1236,22 @@ button{
 
         width:calc(100vw - 30px);
     }
+}
+    /* Typografian viimeistely */
+
+p,
+li,
+input,
+button{
+    font-weight:500;
+}
+
+.action,
+.service,
+.available-item,
+.phone-button,
+.feedback-button{
+    font-weight:700;
 }
 </style>
 </head>
