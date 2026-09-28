@@ -14,28 +14,26 @@
     Oma varaus | Keski-Suomen hyvinvointialue
 </title>
 
-
 <style>
 
 :root{
-
     --blue:#0067a8;
     --blue-dark:#004f82;
-    --blue-light:#eaf4f8;
+    --blue-soft:#eaf4f8;
 
     --green:#176746;
-    --green-light:#edf7f2;
+    --green-soft:#edf7f2;
 
     --red:#a92727;
-    --red-light:#fff2f2;
+    --red-soft:#fff2f2;
+
+    --yellow-soft:#fff8df;
 
     --text:#202a30;
-    --muted:#56636a;
+    --muted:#5b6870;
 
     --border:#d8e0e4;
-
-    --background:#ffffff;
-    --soft:#f4f7f8;
+    --soft:#f5f7f8;
 
     --footer:#173b49;
 
@@ -43,48 +41,41 @@
 }
 
 
+/* =========================================================
+   BASE
+========================================================= */
+
 *{
     box-sizing:border-box;
 }
-
 
 html{
     scroll-behavior:smooth;
 }
 
-
 body{
-
     margin:0;
-
     background:#fff;
-
     color:var(--text);
-
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
     line-height:1.5;
 }
-
 
 button,
 input{
     font:inherit;
 }
 
-
 button{
     cursor:pointer;
 }
 
-
 a{
     color:inherit;
 }
-
 
 .hidden{
     display:none !important;
@@ -96,11 +87,8 @@ a{
 ========================================================= */
 
 .top-line{
-
     height:6px;
-
     background:var(--blue);
-
 }
 
 
@@ -109,132 +97,80 @@ a{
 ========================================================= */
 
 .site-header{
-
     background:#fff;
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
 
-
 .header-main{
-
     max-width:1360px;
-
     min-height:104px;
-
     margin:auto;
-
     padding:0 34px;
 
     display:flex;
-
     align-items:center;
-
 }
-
 
 .logo{
-
     width:210px;
-
     max-height:72px;
-
     object-fit:contain;
-
 }
-
 
 .header-right{
-
     margin-left:auto;
-
     display:flex;
-
     align-items:center;
-
-    gap:25px;
-
+    gap:26px;
 }
-
 
 .header-link{
-
     color:var(--blue-dark);
-
     text-decoration:none;
-
     font-size:14px;
-
     font-weight:700;
-
 }
 
-
 .header-link:hover{
-
     text-decoration:underline;
-
 }
 
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 .navigation{
-
-    border-top:
-        1px solid #edf0f2;
-
+    border-top:1px solid #edf0f2;
     background:#fff;
-
 }
 
-
 .navigation-inner{
-
     max-width:1360px;
-
     min-height:61px;
-
     margin:auto;
-
     padding:0 24px;
 
     display:flex;
-
 }
 
-
 .navigation a{
-
     display:flex;
-
     align-items:center;
 
     padding:0 15px;
 
     text-decoration:none;
-
     font-size:14px;
-
     font-weight:700;
 
-    border-bottom:
-        4px solid transparent;
-
+    border-bottom:4px solid transparent;
 }
 
-
-.navigation a:hover{
-
+.navigation a:hover,
+.navigation a.active{
     color:var(--blue);
-
-    border-bottom-color:
-        var(--blue);
-
+    border-bottom-color:var(--blue);
 }
 
 
@@ -243,32 +179,20 @@ a{
 ========================================================= */
 
 .breadcrumb-wrapper{
-
-    border-bottom:
-        1px solid #edf0f2;
-
+    border-bottom:1px solid #edf0f2;
 }
 
-
 .breadcrumb{
-
     max-width:var(--content);
-
     margin:auto;
-
     padding:15px 24px;
 
     color:var(--muted);
-
     font-size:13px;
-
 }
 
-
 .breadcrumb a{
-
     color:var(--blue-dark);
-
 }
 
 
@@ -277,63 +201,39 @@ a{
 ========================================================= */
 
 .hero{
-
-    background:#eef6f7;
-
-    border-bottom:
-        1px solid #dce6e8;
-
+    background:#edf6f7;
+    border-bottom:1px solid #dce6e8;
 }
-
 
 .hero-inner{
-
     max-width:var(--content);
-
     margin:auto;
-
-    padding:
-        58px 24px 62px;
-
+    padding:56px 24px 60px;
 }
 
-
 .hero-label{
-
     margin-bottom:10px;
 
     color:var(--blue-dark);
-
     font-size:14px;
-
     font-weight:700;
-
 }
-
 
 .hero h1{
-
     margin:0;
 
-    font-size:42px;
-
-    line-height:1.15;
-
+    font-size:44px;
+    line-height:1.12;
 }
 
-
 .hero p{
-
-    max-width:760px;
+    max-width:720px;
 
     margin:18px 0 0;
 
     color:#43555d;
-
     font-size:17px;
-
     line-height:1.7;
-
 }
 
 
@@ -342,160 +242,128 @@ a{
 ========================================================= */
 
 .main-section{
-
-    padding:
-        58px 24px 75px;
-
+    padding:55px 24px 80px;
 }
 
-
 .main-inner{
-
     max-width:var(--content);
-
     margin:auto;
-
 }
 
 
 /* =========================================================
-   CODE SEARCH
+   LOOKUP
 ========================================================= */
 
+.lookup-layout{
+    display:grid;
+    grid-template-columns:minmax(0,760px) minmax(260px,1fr);
+    gap:30px;
+    align-items:start;
+}
+
 .lookup-panel{
-
-    max-width:760px;
-
     background:#fff;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
+    border-top:5px solid var(--blue);
 
-    border-top:
-        5px solid var(--blue);
-
-    padding:30px;
-
+    padding:31px;
 }
-
 
 .lookup-panel h2{
-
-    margin:
-        0 0 11px;
-
-    font-size:26px;
-
+    margin:0 0 10px;
+    font-size:27px;
 }
 
+.lookup-panel > p{
+    max-width:650px;
 
-.lookup-panel p{
-
-    margin:
-        0 0 24px;
+    margin:0 0 25px;
 
     color:var(--muted);
-
     line-height:1.65;
-
 }
 
-
 .form-label{
-
     display:block;
 
     margin-bottom:8px;
 
     font-size:14px;
-
     font-weight:700;
-
 }
-
 
 .code-row{
-
     display:flex;
-
     gap:10px;
-
 }
 
-
 .code-input{
-
     flex:1;
 
     min-width:0;
+    min-height:52px;
 
-    min-height:51px;
+    padding:0 14px;
 
-    padding:
-        0 14px;
-
-    border:
-        1px solid #87969d;
+    border:1px solid #87969d;
 
     outline:0;
 
     font-size:17px;
-
     letter-spacing:.08em;
-
     text-transform:uppercase;
-
 }
 
-
 .code-input:focus{
-
-    border-color:
-        var(--blue);
+    border-color:var(--blue);
 
     box-shadow:
         0 0 0 3px
         rgba(0,103,168,.12);
-
 }
 
+.primary-button{
+    min-height:52px;
 
-.lookup-button{
+    border:1px solid var(--blue);
 
-    min-height:51px;
-
-    border:
-        1px solid var(--blue);
-
-    background:
-        var(--blue);
-
+    background:var(--blue);
     color:#fff;
 
-    padding:
-        0 22px;
+    padding:0 23px;
 
     font-weight:700;
-
 }
 
-
-.lookup-button:hover{
-
-    background:
-        var(--blue-dark);
-
+.primary-button:hover{
+    background:var(--blue-dark);
 }
 
-
-.lookup-button:disabled{
-
-    background:#9ba9af;
-
-    border-color:#9ba9af;
-
+.primary-button:disabled{
+    opacity:.55;
     cursor:not-allowed;
+}
 
+.lookup-help{
+    background:var(--soft);
+    border:1px solid var(--border);
+
+    padding:25px;
+}
+
+.lookup-help h3{
+    margin:0 0 12px;
+    font-size:19px;
+}
+
+.lookup-help p{
+    margin:0;
+
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.65;
 }
 
 
@@ -504,189 +372,193 @@ a{
 ========================================================= */
 
 .message{
-
-    max-width:760px;
-
-    margin-top:18px;
+    margin:20px 0;
 
     padding:15px 17px;
 
-    border-left:
-        4px solid var(--blue);
+    border-left:4px solid var(--blue);
 
-    background:
-        var(--blue-light);
+    background:var(--blue-soft);
 
     color:#344950;
-
-    line-height:1.6;
-
 }
 
-
 .message.error{
-
-    border-left-color:
-        var(--red);
-
-    background:
-        var(--red-light);
-
+    border-left-color:var(--red);
+    background:var(--red-soft);
     color:#702222;
-
 }
 
 
 /* =========================================================
-   BOOKING AREA
+   BOOKING
 ========================================================= */
 
 .booking-area{
-
-    margin-top:42px;
-
+    margin-top:5px;
 }
 
+.booking-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:25px;
 
-.booking-heading{
-
-    margin-bottom:25px;
-
+    margin-bottom:28px;
 }
-
 
 .booking-heading h2{
-
     margin:0 0 7px;
-
-    font-size:31px;
-
+    font-size:32px;
 }
-
 
 .booking-heading p{
-
     margin:0;
-
     color:var(--muted);
-
 }
-
-
-/* =========================================================
-   BOOKING STATUS
-========================================================= */
 
 .status{
+    display:inline-flex;
+    align-items:center;
 
-    display:inline-block;
+    padding:8px 13px;
 
-    margin-bottom:20px;
-
-    padding:
-        6px 10px;
-
-    font-size:12px;
-
+    font-size:13px;
     font-weight:700;
-
 }
-
 
 .status-booked{
-
-    background:
-        var(--green-light);
-
-    color:
-        var(--green);
-
+    background:var(--green-soft);
+    color:var(--green);
 }
-
 
 .status-completed{
-
-    background:
-        #e9f1f8;
-
-    color:
-        #24577b;
-
+    background:#e9f1f8;
+    color:#24577b;
 }
 
-
 .status-cancelled{
-
-    background:
-        #f1f2f3;
-
-    color:
-        #5d676c;
-
+    background:#f0f1f2;
+    color:#5d676c;
 }
 
 
 /* =========================================================
-   DETAILS GRID
+   SUMMARY
 ========================================================= */
 
-.details-grid{
+.summary-card{
+    margin-bottom:28px;
 
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+.summary-accent{
+    height:5px;
+    background:var(--blue);
+}
+
+.summary-main{
+    padding:27px 28px;
+}
+
+.summary-main h3{
+    margin:0 0 20px;
+    font-size:23px;
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+}
+
+.summary-item{
+    min-height:75px;
+
+    padding:4px 22px 4px 0;
+
+    margin-right:22px;
+
+    border-right:1px solid var(--border);
+}
+
+.summary-item:nth-child(3n){
+    border-right:0;
+}
+
+.summary-item:nth-child(n+4){
+    margin-top:25px;
+}
+
+.summary-label{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:var(--muted);
+    font-size:12px;
+    font-weight:700;
+}
+
+.summary-value{
+    font-size:15px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   CONTENT GRID
+========================================================= */
+
+.content-grid{
     display:grid;
 
     grid-template-columns:
-        minmax(0,1.1fr)
-        minmax(300px,.9fr);
+        minmax(0,1fr)
+        330px;
 
     gap:28px;
 
     align-items:start;
-
 }
 
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .card{
+    margin-bottom:25px;
 
     background:#fff;
-
-    border:
-        1px solid var(--border);
-
-    margin-bottom:24px;
-
+    border:1px solid var(--border);
 }
-
 
 .card-header{
+    padding:21px 23px;
 
-    padding:
-        19px 22px;
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
-
 
 .card-header h3{
-
     margin:0;
-
-    font-size:20px;
-
+    font-size:21px;
 }
 
+.card-header p{
+    margin:6px 0 0;
+
+    color:var(--muted);
+    font-size:14px;
+}
 
 .card-body{
-
-    padding:
-        7px 22px;
-
+    padding:6px 23px;
 }
 
-
 .detail-row{
-
     display:grid;
 
     grid-template-columns:
@@ -694,375 +566,541 @@ a{
 
     gap:20px;
 
-    padding:
-        15px 0;
+    padding:15px 0;
 
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
-
 
 .detail-row:last-child{
-
     border-bottom:0;
-
 }
-
 
 .detail-label{
-
     font-size:13px;
-
     font-weight:700;
-
 }
 
-
 .detail-value{
-
-    color:
-        var(--muted);
-
+    color:#485960;
     font-size:14px;
-
 }
 
 
 /* =========================================================
-   VISIT NOTE
+   DOCUMENTS
 ========================================================= */
 
-.visit-note{
+.documents-card{
+    margin-top:27px;
 
     background:#fff;
 
-    border:
-        1px solid var(--border);
-
-    border-top:
-        5px solid var(--blue);
-
-    margin-top:28px;
-
+    border:1px solid var(--border);
 }
 
+.documents-header{
+    padding:24px 25px;
 
-.visit-note-header{
-
-    padding:
-        23px 25px;
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
 
-
-.visit-note-header h2{
-
-    margin:
-        0 0 5px;
-
-    font-size:24px;
-
+.documents-header h2{
+    margin:0 0 6px;
+    font-size:25px;
 }
 
-
-.visit-note-header p{
-
+.documents-header p{
     margin:0;
 
     color:var(--muted);
-
     font-size:14px;
-
 }
 
-
-.visit-note-body{
-
-    padding:
-        8px 25px 25px;
-
+.documents-body{
+    padding:24px;
 }
 
+.no-documents{
+    padding:24px;
 
-.note-section{
-
-    padding:
-        20px 0;
-
-    border-bottom:
-        1px solid var(--border);
-
+    background:var(--soft);
+    border:1px solid var(--border);
 }
 
-
-.note-section:last-child{
-
-    border-bottom:0;
-
-}
-
-
-.note-label{
-
+.no-documents strong{
     display:block;
+    margin-bottom:6px;
+}
+
+.no-documents p{
+    margin:0;
+
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   DOCUMENT ITEM
+========================================================= */
+
+.document-item{
+    display:grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap:25px;
+
+    padding:22px;
+
+    border:1px solid #ccd8de;
+
+    background:#fff;
+}
+
+.document-type{
+    display:inline-block;
 
     margin-bottom:7px;
 
-    font-size:13px;
-
-    font-weight:700;
-
-}
-
-
-.note-content{
-
-    margin:0;
-
-    color:#3d5058;
-
-    line-height:1.7;
-
-    white-space:pre-wrap;
-
-}
-
-
-.note-meta{
-
-    margin-top:20px;
-
-    padding:
-        14px 16px;
-
-    background:
-        var(--soft);
-
-    color:
-        var(--muted);
+    color:var(--blue-dark);
 
     font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
 
+.document-item h3{
+    margin:0 0 7px;
+    font-size:20px;
+}
+
+.document-meta{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+.document-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.document-open,
+.document-download{
+    min-height:44px;
+
+    padding:0 16px;
+
+    font-weight:700;
+}
+
+.document-open{
+    border:1px solid var(--blue);
+    background:var(--blue);
+    color:#fff;
+}
+
+.document-open:hover{
+    background:var(--blue-dark);
+}
+
+.document-download{
+    border:1px solid var(--blue);
+    background:#fff;
+    color:var(--blue-dark);
+}
+
+.document-download:hover{
+    background:var(--blue-soft);
 }
 
 
 /* =========================================================
-   NO NOTE
-========================================================= */
-
-.no-note{
-
-    margin-top:28px;
-
-    padding:
-        22px 24px;
-
-    border:
-        1px solid var(--border);
-
-    background:
-        var(--soft);
-
-}
-
-
-.no-note h3{
-
-    margin:
-        0 0 7px;
-
-    font-size:18px;
-
-}
-
-
-.no-note p{
-
-    margin:0;
-
-    color:
-        var(--muted);
-
-    line-height:1.6;
-
-}
-
-
-/* =========================================================
-   SIDE PANEL
+   SIDE
 ========================================================= */
 
 .side-panel{
-
-    background:
-        var(--soft);
-
-    border:
-        1px solid var(--border);
-
     padding:25px;
 
+    background:var(--soft);
+    border:1px solid var(--border);
 }
-
 
 .side-panel h3{
-
-    margin:
-        0 0 15px;
-
-    font-size:19px;
-
+    margin:0 0 16px;
+    font-size:20px;
 }
-
-
-.side-panel p{
-
-    color:
-        var(--muted);
-
-    font-size:14px;
-
-    line-height:1.65;
-
-}
-
 
 .side-info{
+    padding:13px 0;
 
-    padding:
-        13px 0;
-
-    border-bottom:
-        1px solid var(--border);
-
+    border-bottom:1px solid var(--border);
 }
 
-
-.side-info:last-child{
-
+.side-info:last-of-type{
     border-bottom:0;
-
 }
-
 
 .side-info strong{
-
     display:block;
 
     margin-bottom:4px;
 
     font-size:13px;
-
 }
-
 
 .side-info span{
-
-    color:
-        var(--muted);
-
+    color:var(--muted);
     font-size:14px;
-
 }
-
-
-/* =========================================================
-   CANCEL
-========================================================= */
 
 .cancel-area{
+    margin-top:24px;
+    padding-top:22px;
 
-    margin-top:25px;
-
-    padding-top:23px;
-
-    border-top:
-        1px solid var(--border);
-
+    border-top:1px solid var(--border);
 }
-
 
 .cancel-area p{
+    margin:0 0 14px;
 
-    margin:
-        0 0 14px;
-
-    color:
-        var(--muted);
-
+    color:var(--muted);
     font-size:14px;
-
 }
-
 
 .cancel-button{
-
     min-height:46px;
 
-    padding:
-        0 18px;
+    padding:0 17px;
 
-    border:
-        1px solid var(--red);
+    border:1px solid var(--red);
 
     background:#fff;
-
-    color:
-        var(--red);
+    color:var(--red);
 
     font-weight:700;
-
 }
 
-
 .cancel-button:hover{
-
-    background:
-        var(--red-light);
-
+    background:var(--red-soft);
 }
 
 
 /* =========================================================
-   NEW SEARCH
+   SECONDARY BUTTON
 ========================================================= */
 
-.new-search{
+.bottom-actions{
+    margin-top:28px;
+}
 
-    margin-top:27px;
+.secondary-button{
+    min-height:45px;
 
+    padding:0 18px;
+
+    border:1px solid var(--blue);
+
+    background:#fff;
+    color:var(--blue-dark);
+
+    font-weight:700;
+}
+
+.secondary-button:hover{
+    background:var(--blue-soft);
 }
 
 
-.secondary-button{
+/* =========================================================
+   DOCUMENT MODAL
+========================================================= */
 
-    min-height:45px;
+.document-modal{
+    position:fixed;
+    inset:0;
 
-    border:
-        1px solid var(--blue);
+    z-index:1000;
+
+    background:rgba(14,27,34,.78);
+
+    overflow:auto;
+}
+
+.document-modal-header{
+    position:sticky;
+    top:0;
+
+    z-index:1010;
+
+    min-height:72px;
+
+    padding:12px 24px;
 
     background:#fff;
 
-    color:
-        var(--blue-dark);
+    border-bottom:1px solid var(--border);
 
-    padding:
-        0 18px;
+    box-shadow:
+        0 2px 12px
+        rgba(0,0,0,.12);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.document-modal-title strong{
+    display:block;
+    font-size:16px;
+}
+
+.document-modal-title span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.modal-actions{
+    display:flex;
+    gap:9px;
+}
+
+.modal-button{
+    min-height:42px;
+
+    padding:0 15px;
+
+    border:1px solid var(--blue);
+
+    background:#fff;
+    color:var(--blue-dark);
 
     font-weight:700;
+}
 
+.modal-button.primary{
+    background:var(--blue);
+    color:#fff;
+}
+
+.modal-button.close{
+    border-color:#87969d;
+    color:#394950;
+}
+
+.document-stage{
+    padding:38px 20px 70px;
 }
 
 
-.secondary-button:hover{
+/* =========================================================
+   A4 DOCUMENT
+========================================================= */
 
-    background:
-        var(--blue-light);
+.document-pages{
+    width:210mm;
+    margin:auto;
+}
 
+.a4-page{
+    position:relative;
+
+    width:210mm;
+    min-height:297mm;
+
+    margin:0 auto 28px;
+
+    padding:
+        17mm
+        17mm
+        20mm;
+
+    background:#fff;
+
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,.25);
+
+    color:#151b1f;
+}
+
+.doc-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:25px;
+
+    padding-bottom:11mm;
+
+    border-bottom:2px solid var(--blue);
+}
+
+.doc-logo{
+    width:55mm;
+    max-height:22mm;
+    object-fit:contain;
+    object-position:left top;
+}
+
+.doc-header-right{
+    text-align:right;
+}
+
+.doc-header-right strong{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:var(--blue-dark);
+    font-size:11pt;
+}
+
+.doc-header-right span{
+    display:block;
+
+    color:#59666d;
+    font-size:8.5pt;
+}
+
+.doc-title{
+    margin:10mm 0 8mm;
+}
+
+.doc-title h1{
+    margin:0 0 3mm;
+
+    color:#1c272c;
+
+    font-size:21pt;
+    line-height:1.15;
+}
+
+.doc-title p{
+    margin:0;
+
+    color:#5b686e;
+    font-size:9.5pt;
+}
+
+.doc-section{
+    margin-top:8mm;
+}
+
+.doc-section h2{
+    margin:0 0 4mm;
+
+    padding-bottom:2.5mm;
+
+    border-bottom:1px solid #aebbc1;
+
+    color:var(--blue-dark);
+
+    font-size:12.5pt;
+}
+
+.doc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 10mm;
+}
+
+.doc-row{
+    padding:3mm 0;
+
+    border-bottom:1px solid #e0e5e7;
+}
+
+.doc-row.full{
+    grid-column:1 / -1;
+}
+
+.doc-label{
+    display:block;
+
+    margin-bottom:1mm;
+
+    color:#5d686d;
+
+    font-size:7.8pt;
+    font-weight:700;
+}
+
+.doc-value{
+    min-height:5mm;
+
+    font-size:9.5pt;
+
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+
+.doc-text-block{
+    min-height:25mm;
+
+    padding:4mm;
+
+    border:1px solid #d9e0e3;
+
+    background:#fafbfb;
+
+    font-size:9.5pt;
+    line-height:1.55;
+
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+
+.doc-text-block.compact{
+    min-height:16mm;
+}
+
+.doc-signature{
+    margin-top:13mm;
+
+    padding-top:5mm;
+
+    border-top:1px solid #9ba9af;
+}
+
+.doc-signature strong{
+    display:block;
+
+    margin-bottom:1mm;
+
+    font-size:10pt;
+}
+
+.doc-signature span{
+    display:block;
+
+    color:#526068;
+    font-size:8.5pt;
+}
+
+.doc-page-number{
+    position:absolute;
+
+    right:17mm;
+    bottom:10mm;
+
+    color:#68757b;
+    font-size:8pt;
+}
+
+.doc-footer-left{
+    position:absolute;
+
+    left:17mm;
+    bottom:10mm;
+
+    color:#68757b;
+    font-size:8pt;
 }
 
 
@@ -1071,56 +1109,34 @@ a{
 ========================================================= */
 
 .footer{
-
-    background:
-        var(--footer);
-
+    background:var(--footer);
     color:#fff;
-
 }
 
-
 .footer-inner{
-
     max-width:var(--content);
 
     margin:auto;
 
-    padding:
-        48px 24px;
+    padding:48px 24px;
 
     display:grid;
-
-    grid-template-columns:
-        1.5fr 1fr 1fr;
-
+    grid-template-columns:1.5fr 1fr 1fr;
     gap:45px;
-
 }
-
 
 .footer h3{
-
     margin-top:0;
-
     font-size:18px;
-
 }
-
 
 .footer p{
-
     color:#d3e0e5;
-
     font-size:14px;
-
     line-height:1.65;
-
 }
 
-
 .footer a{
-
     display:block;
 
     width:max-content;
@@ -1130,23 +1146,15 @@ a{
     color:#fff;
 
     text-decoration:none;
-
     font-size:14px;
-
 }
-
 
 .footer a:hover{
-
     text-decoration:underline;
-
 }
 
-
 .footer-bottom{
-
-    padding:
-        18px 24px;
+    padding:18px 24px;
 
     border-top:
         1px solid
@@ -1155,9 +1163,7 @@ a{
     color:#cfdee3;
 
     text-align:center;
-
     font-size:12px;
-
 }
 
 
@@ -1165,26 +1171,44 @@ a{
    RESPONSIVE
 ========================================================= */
 
+@media(max-width:950px){
+
+    .lookup-layout,
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-item:nth-child(3n){
+        border-right:1px solid var(--border);
+    }
+
+    .summary-item:nth-child(2n){
+        border-right:0;
+    }
+
+    .document-item{
+        grid-template-columns:1fr;
+    }
+
+    .document-actions{
+        justify-content:flex-start;
+    }
+
+}
+
+
 @media(max-width:850px){
 
     .navigation-inner{
-
         overflow-x:auto;
-
     }
-
-
-    .details-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
 
     .footer-inner{
-
         grid-template-columns:1fr;
-
     }
 
 }
@@ -1193,104 +1217,194 @@ a{
 @media(max-width:650px){
 
     .header-main{
-
         min-height:85px;
-
-        padding:
-            0 20px;
-
+        padding:0 20px;
     }
-
 
     .logo{
-
         width:170px;
-
     }
-
 
     .header-right{
-
         display:none;
-
     }
-
 
     .navigation-inner{
-
         padding:0 7px;
-
     }
-
 
     .navigation a{
-
-        padding:
-            0 11px;
-
+        flex:none;
+        padding:0 11px;
     }
-
 
     .hero-inner{
-
-        padding:
-            44px 22px 49px;
-
+        padding:43px 21px 47px;
     }
-
 
     .hero h1{
-
         font-size:34px;
-
     }
-
 
     .main-section{
-
-        padding:
-            42px 20px 60px;
-
+        padding:40px 19px 60px;
     }
-
 
     .lookup-panel{
-
         padding:23px;
-
     }
-
 
     .code-row{
-
         display:block;
-
     }
 
-
-    .lookup-button{
-
+    .primary-button{
         width:100%;
-
         margin-top:10px;
-
     }
 
+    .booking-top{
+        display:block;
+    }
+
+    .booking-top .status{
+        margin-top:16px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .summary-item,
+    .summary-item:nth-child(2n),
+    .summary-item:nth-child(3n){
+        margin:0;
+        padding:14px 0;
+
+        border-right:0;
+        border-bottom:1px solid var(--border);
+    }
+
+    .summary-item:last-child{
+        border-bottom:0;
+    }
 
     .detail-row{
-
         grid-template-columns:1fr;
-
         gap:5px;
-
     }
 
+    .document-actions{
+        display:grid;
+    }
 
-    .footer-inner{
+    .document-open,
+    .document-download{
+        width:100%;
+    }
 
-        padding:
-            42px 22px;
+    .modal-actions{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
 
+    .document-modal-header{
+        align-items:flex-start;
+    }
+
+    .document-pages{
+        width:100%;
+    }
+
+    .a4-page{
+        width:100%;
+        min-height:auto;
+
+        padding:24px 20px 60px;
+
+        margin-bottom:20px;
+    }
+
+    .doc-grid{
+        grid-template-columns:1fr;
+    }
+
+    .doc-row.full{
+        grid-column:auto;
+    }
+
+    .doc-header{
+        display:block;
+    }
+
+    .doc-header-right{
+        margin-top:15px;
+        text-align:left;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT / PDF
+========================================================= */
+
+@page{
+    size:A4;
+    margin:0;
+}
+
+@media print{
+
+    body{
+        background:#fff;
+    }
+
+    body *{
+        visibility:hidden !important;
+    }
+
+    #documentModal,
+    #documentModal *{
+        visibility:visible !important;
+    }
+
+    #documentModal{
+        position:absolute;
+        inset:0;
+
+        background:#fff;
+
+        overflow:visible;
+    }
+
+    .document-modal-header{
+        display:none !important;
+    }
+
+    .document-stage{
+        padding:0;
+    }
+
+    .document-pages{
+        width:210mm;
+    }
+
+    .a4-page{
+        width:210mm;
+        min-height:297mm;
+
+        margin:0;
+
+        box-shadow:none;
+
+        page-break-after:always;
+        break-after:page;
+    }
+
+    .a4-page:last-child{
+        page-break-after:auto;
+        break-after:auto;
     }
 
 }
@@ -1302,13 +1416,12 @@ a{
 
 <body>
 
-
 <div class="top-line"></div>
 
 
-<!-- =======================================================
+<!-- =========================================================
      HEADER
-======================================================== -->
+========================================================= -->
 
 <header class="site-header">
 
@@ -1324,7 +1437,6 @@ a{
 
         </a>
 
-
         <div class="header-right">
 
             <a
@@ -1333,7 +1445,6 @@ a{
             >
                 Etusivu
             </a>
-
 
             <a
                 href="opiskeluterveydenhuolto.html"
@@ -1366,7 +1477,10 @@ a{
                 Ajanvaraus
             </a>
 
-            <a href="oma-varaus.html">
+            <a
+                href="oma-varaus.html"
+                class="active"
+            >
                 Oma varaus
             </a>
 
@@ -1377,9 +1491,9 @@ a{
 </header>
 
 
-<!-- =======================================================
+<!-- =========================================================
      BREADCRUMB
-======================================================== -->
+========================================================= -->
 
 <div class="breadcrumb-wrapper">
 
@@ -1404,9 +1518,9 @@ a{
 </div>
 
 
-<!-- =======================================================
+<!-- =========================================================
      HERO
-======================================================== -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1421,9 +1535,9 @@ a{
         </h1>
 
         <p>
-            Tarkastele ajanvarauksesi tietoja
-            syöttämällä varauksen yhteydessä saamasi
-            varauskoodi.
+            Tarkastele ajanvarauksesi tietoja,
+            vastaanoton tilaa ja käyntiin liittyviä
+            julkaistuja asiakirjoja varauskoodillasi.
         </p>
 
     </div>
@@ -1431,63 +1545,84 @@ a{
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      MAIN
-======================================================== -->
+========================================================= -->
 
 <main class="main-section">
 
     <div class="main-inner">
 
 
-        <!-- LOOKUP -->
+        <!-- =================================================
+             LOOKUP
+        ================================================== -->
 
         <section
             id="lookupSection"
-            class="lookup-panel"
+            class="lookup-layout"
         >
 
-            <h2>
-                Hae ajanvaraus
-            </h2>
+            <div class="lookup-panel">
 
-            <p>
-                Syötä varauskoodi täsmälleen siinä
-                muodossa kuin se annettiin ajanvarauksen
-                yhteydessä.
-            </p>
+                <h2>
+                    Hae ajanvaraus
+                </h2>
 
+                <p>
+                    Syötä ajanvarauksen yhteydessä saamasi
+                    varauskoodi. Varauskoodilla voit tarkastella
+                    varauksen tietoja ja mahdollisia julkaistuja
+                    käyntiasiakirjoja.
+                </p>
 
-            <label
-                for="bookingCode"
-                class="form-label"
-            >
-                Varauskoodi
-            </label>
-
-
-            <div class="code-row">
-
-                <input
-                    id="bookingCode"
-                    class="code-input"
-                    type="text"
-                    maxlength="14"
-                    placeholder="XXXX-XXXX-XXXX"
-                    autocomplete="off"
-                    spellcheck="false"
+                <label
+                    for="bookingCode"
+                    class="form-label"
                 >
+                    Varauskoodi
+                </label>
 
+                <div class="code-row">
 
-                <button
-                    id="lookupButton"
-                    class="lookup-button"
-                    type="button"
-                >
-                    Hae varaus
-                </button>
+                    <input
+                        id="bookingCode"
+                        class="code-input"
+                        type="text"
+                        maxlength="14"
+                        placeholder="XXXX-XXXX-XXXX"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+
+                    <button
+                        id="lookupButton"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Hae varaus
+                    </button>
+
+                </div>
 
             </div>
+
+
+            <aside class="lookup-help">
+
+                <h3>
+                    Varauskoodi
+                </h3>
+
+                <p>
+                    Varauskoodi muodostuu kolmesta
+                    neljän merkin osasta. Säilytä koodi,
+                    sillä sitä tarvitaan varauksen
+                    tarkasteluun ja mahdolliseen
+                    perumiseen.
+                </p>
+
+            </aside>
 
         </section>
 
@@ -1498,122 +1633,155 @@ a{
         ></div>
 
 
-        <!-- BOOKING -->
+        <!-- =================================================
+             BOOKING
+        ================================================== -->
 
         <section
             id="bookingArea"
             class="booking-area hidden"
         >
 
-            <header class="booking-heading">
+            <div class="booking-top">
 
-                <h2>
-                    Ajanvarauksen tiedot
-                </h2>
+                <div class="booking-heading">
 
-                <p id="bookingCodeDisplay"></p>
+                    <h2>
+                        Ajanvarauksen tiedot
+                    </h2>
 
-            </header>
+                    <p id="bookingCodeDisplay">
+                    </p>
+
+                </div>
+
+                <div
+                    id="bookingStatus"
+                    class="status"
+                ></div>
+
+            </div>
 
 
-            <div
-                id="bookingStatus"
-                class="status"
-            ></div>
+            <!-- SUMMARY -->
+
+            <section class="summary-card">
+
+                <div class="summary-accent"></div>
+
+                <div class="summary-main">
+
+                    <h3>
+                        Vastaanotto
+                    </h3>
+
+                    <div class="summary-grid">
+
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Päivämäärä
+                            </span>
+
+                            <div
+                                id="summaryDate"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
 
 
-            <div class="details-grid">
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Kellonaika
+                            </span>
+
+                            <div
+                                id="summaryTime"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Palvelu
+                            </span>
+
+                            <div
+                                id="summaryType"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Ammattilainen
+                            </span>
+
+                            <div
+                                id="summaryProfessional"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Toimipiste
+                            </span>
+
+                            <div
+                                id="summaryLocation"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span class="summary-label">
+                                Varauskoodi
+                            </span>
+
+                            <div
+                                id="summaryCode"
+                                class="summary-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="content-grid">
 
                 <div>
-
-
-                    <!-- BOOKING INFORMATION -->
-
-                    <article class="card">
-
-                        <div class="card-header">
-
-                            <h3>
-                                Vastaanotto
-                            </h3>
-
-                        </div>
-
-
-                        <div class="card-body">
-
-                            <div class="detail-row">
-
-                                <div class="detail-label">
-                                    Päivämäärä
-                                </div>
-
-                                <div
-                                    id="appointmentDate"
-                                    class="detail-value"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="detail-row">
-
-                                <div class="detail-label">
-                                    Kellonaika
-                                </div>
-
-                                <div
-                                    id="appointmentTime"
-                                    class="detail-value"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="detail-row">
-
-                                <div class="detail-label">
-                                    Vastaanotto
-                                </div>
-
-                                <div
-                                    id="appointmentType"
-                                    class="detail-value"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="detail-row">
-
-                                <div class="detail-label">
-                                    Ammattilainen
-                                </div>
-
-                                <div
-                                    id="professionalName"
-                                    class="detail-value"
-                                ></div>
-
-                            </div>
-
-
-                            <div class="detail-row">
-
-                                <div class="detail-label">
-                                    Toimipiste
-                                </div>
-
-                                <div
-                                    id="appointmentLocation"
-                                    class="detail-value"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-                    </article>
 
 
                     <!-- STUDENT -->
@@ -1628,7 +1796,6 @@ a{
 
                         </div>
 
-
                         <div class="card-body">
 
                             <div class="detail-row">
@@ -1640,7 +1807,9 @@ a{
                                 <div
                                     id="studentName"
                                     class="detail-value"
-                                ></div>
+                                >
+                                    –
+                                </div>
 
                             </div>
 
@@ -1654,7 +1823,9 @@ a{
                                 <div
                                     id="studentGroup"
                                     class="detail-value"
-                                ></div>
+                                >
+                                    –
+                                </div>
 
                             </div>
 
@@ -1663,118 +1834,109 @@ a{
                     </article>
 
 
-                    <!-- VISIT NOTE -->
+                    <!-- DOCUMENTS -->
 
-                    <section
-                        id="visitNote"
-                        class="visit-note hidden"
-                    >
+                    <section class="documents-card">
 
-                        <header class="visit-note-header">
+                        <div class="documents-header">
 
                             <h2>
-                                Käynnin tiedot
+                                Asiakirjat
                             </h2>
 
                             <p>
-                                Vastaanottokäynnistä
-                                kirjattu yhteenveto.
+                                Tässä näkyvät ajanvaraukseen liittyvät
+                                valmiiksi merkityt ja julkaistut
+                                käyntiasiakirjat.
                             </p>
-
-                        </header>
-
-
-                        <div class="visit-note-body">
-
-
-                            <div
-                                id="visitReasonSection"
-                                class="note-section"
-                            >
-
-                                <span class="note-label">
-                                    Käynnin syy
-                                </span>
-
-                                <p
-                                    id="visitReason"
-                                    class="note-content"
-                                ></p>
-
-                            </div>
-
-
-                            <div
-                                id="visitTextSection"
-                                class="note-section"
-                            >
-
-                                <span class="note-label">
-                                    Käyntimerkintä
-                                </span>
-
-                                <p
-                                    id="visitText"
-                                    class="note-content"
-                                ></p>
-
-                            </div>
-
-
-                            <div
-                                id="followUpSection"
-                                class="note-section"
-                            >
-
-                                <span class="note-label">
-                                    Jatko-ohjeet
-                                </span>
-
-                                <p
-                                    id="followUp"
-                                    class="note-content"
-                                ></p>
-
-                            </div>
-
-
-                            <div
-                                id="noteMeta"
-                                class="note-meta"
-                            ></div>
 
                         </div>
 
-                    </section>
+
+                        <div class="documents-body">
 
 
-                    <!-- NO VISIT NOTE -->
+                            <!-- NO DOCUMENT -->
 
-                    <section
-                        id="noVisitNote"
-                        class="no-note hidden"
-                    >
+                            <div
+                                id="noDocuments"
+                                class="no-documents"
+                            >
 
-                        <h3>
-                            Käyntikirjausta ei ole saatavilla
-                        </h3>
+                                <strong>
+                                    Ei saatavilla olevia asiakirjoja
+                                </strong>
 
-                        <p id="noNoteText">
-                            Vastaanottokäynnistä ei ole vielä
-                            julkaistua kirjausta.
-                        </p>
+                                <p id="noDocumentsText">
+                                    Vastaanottokäynnistä ei ole
+                                    julkaistua käyntiasiakirjaa.
+                                </p>
+
+                            </div>
+
+
+                            <!-- DOCUMENT -->
+
+                            <article
+                                id="visitDocument"
+                                class="document-item hidden"
+                            >
+
+                                <div>
+
+                                    <span class="document-type">
+                                        Opiskeluterveydenhuolto
+                                    </span>
+
+                                    <h3>
+                                        Käyntikirjaus
+                                    </h3>
+
+                                    <div
+                                        id="documentMeta"
+                                        class="document-meta"
+                                    ></div>
+
+                                </div>
+
+
+                                <div class="document-actions">
+
+                                    <button
+                                        id="openDocumentButton"
+                                        class="document-open"
+                                        type="button"
+                                    >
+                                        Avaa asiakirja
+                                    </button>
+
+                                    <button
+                                        id="downloadDocumentButton"
+                                        class="document-download"
+                                        type="button"
+                                    >
+                                        Lataa PDF
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
 
                     </section>
 
                 </div>
 
 
-                <!-- SIDE -->
+                <!-- =================================================
+                     SIDE PANEL
+                ================================================== -->
 
                 <aside class="side-panel">
 
                     <h3>
-                        Ajanvarauksen tiedot
+                        Varauksen yhteenveto
                     </h3>
 
 
@@ -1843,7 +2005,7 @@ a{
             </div>
 
 
-            <div class="new-search">
+            <div class="bottom-actions">
 
                 <button
                     id="newSearchButton"
@@ -1862,9 +2024,606 @@ a{
 </main>
 
 
-<!-- =======================================================
+<!-- =========================================================
+     DOCUMENT MODAL
+========================================================= -->
+
+<div
+    id="documentModal"
+    class="document-modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Käyntiasiakirja"
+>
+
+    <div class="document-modal-header">
+
+        <div class="document-modal-title">
+
+            <strong>
+                Käyntikirjaus
+            </strong>
+
+            <span>
+                Opiskeluterveydenhuolto
+            </span>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="printDocumentButton"
+                class="modal-button primary"
+                type="button"
+            >
+                Lataa / tulosta PDF
+            </button>
+
+            <button
+                id="closeDocumentButton"
+                class="modal-button close"
+                type="button"
+            >
+                Sulje
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="document-stage">
+
+        <div
+            id="documentPages"
+            class="document-pages"
+        >
+
+
+            <!-- =====================================================
+                 PAGE 1
+            ====================================================== -->
+
+            <section class="a4-page">
+
+                <header class="doc-header">
+
+                    <img
+                        src="hyvaks-logo.png"
+                        class="doc-logo"
+                        alt="Keski-Suomen hyvinvointialue"
+                    >
+
+                    <div class="doc-header-right">
+
+                        <strong>
+                            KÄYNTIKIRJAUS
+                        </strong>
+
+                        <span>
+                            Opiskeluterveydenhuolto
+                        </span>
+
+                        <span id="docVersionTop">
+                            Asiakirjaversio 1
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <div class="doc-title">
+
+                    <h1>
+                        Vastaanottokäynnin kirjaus
+                    </h1>
+
+                    <p>
+                        Opiskeluterveydenhuollon käyntiasiakirja
+                    </p>
+
+                </div>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Asiakirjan tiedot
+                    </h2>
+
+                    <div class="doc-grid">
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Asiakirjan tila
+                            </span>
+
+                            <div class="doc-value">
+                                Valmis
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Valmistunut
+                            </span>
+
+                            <div
+                                id="docCompleted"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Varauskoodi
+                            </span>
+
+                            <div
+                                id="docBookingCode"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Asiakirjaversio
+                            </span>
+
+                            <div
+                                id="docVersion"
+                                class="doc-value"
+                            >
+                                1
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Asiakas
+                    </h2>
+
+                    <div class="doc-grid">
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Nimi
+                            </span>
+
+                            <div
+                                id="docStudentName"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Ryhmä
+                            </span>
+
+                            <div
+                                id="docStudentGroup"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Vastaanottokäynti
+                    </h2>
+
+                    <div class="doc-grid">
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Päivämäärä
+                            </span>
+
+                            <div
+                                id="docVisitDate"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Kellonaika
+                            </span>
+
+                            <div
+                                id="docVisitTime"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Palvelu
+                            </span>
+
+                            <div
+                                id="docAppointmentType"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row">
+
+                            <span class="doc-label">
+                                Toimipiste
+                            </span>
+
+                            <div
+                                id="docVisitLocation"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+
+                        <div class="doc-row full">
+
+                            <span class="doc-label">
+                                Vastaanoton ammattilainen / ammattilaiset
+                            </span>
+
+                            <div
+                                id="docProfessionals"
+                                class="doc-value"
+                            >
+                                –
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Käynnin syy
+                    </h2>
+
+                    <div
+                        id="docVisitReason"
+                        class="doc-text-block"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <div class="doc-footer-left">
+                    Keski-Suomen hyvinvointialue
+                </div>
+
+                <div class="doc-page-number">
+                    1 / 3
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 PAGE 2
+            ====================================================== -->
+
+            <section class="a4-page">
+
+                <header class="doc-header">
+
+                    <img
+                        src="hyvaks-logo.png"
+                        class="doc-logo"
+                        alt="Keski-Suomen hyvinvointialue"
+                    >
+
+                    <div class="doc-header-right">
+
+                        <strong>
+                            KÄYNTIKIRJAUS
+                        </strong>
+
+                        <span>
+                            Opiskeluterveydenhuolto
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <div class="doc-title">
+
+                    <h1>
+                        Käynnin sisältö
+                    </h1>
+
+                    <p>
+                        Vastaanottokäynnillä kirjatut tiedot
+                    </p>
+
+                </div>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Taustatiedot
+                    </h2>
+
+                    <div
+                        id="docBackground"
+                        class="doc-text-block"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Havainnot
+                    </h2>
+
+                    <div
+                        id="docObservations"
+                        class="doc-text-block"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Tutkimukset ja mittaukset
+                    </h2>
+
+                    <div
+                        id="docExaminations"
+                        class="doc-text-block"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Toimenpiteet
+                    </h2>
+
+                    <div
+                        id="docProcedures"
+                        class="doc-text-block"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <div class="doc-footer-left">
+                    Keski-Suomen hyvinvointialue
+                </div>
+
+                <div class="doc-page-number">
+                    2 / 3
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 PAGE 3
+            ====================================================== -->
+
+            <section class="a4-page">
+
+                <header class="doc-header">
+
+                    <img
+                        src="hyvaks-logo.png"
+                        class="doc-logo"
+                        alt="Keski-Suomen hyvinvointialue"
+                    >
+
+                    <div class="doc-header-right">
+
+                        <strong>
+                            KÄYNTIKIRJAUS
+                        </strong>
+
+                        <span>
+                            Opiskeluterveydenhuolto
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <div class="doc-title">
+
+                    <h1>
+                        Ohjaus ja jatkosuunnitelma
+                    </h1>
+
+                    <p>
+                        Vastaanottokäynnin jatko-ohjeet
+                    </p>
+
+                </div>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Ohjaus ja neuvonta
+                    </h2>
+
+                    <div
+                        id="docGuidance"
+                        class="doc-text-block compact"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Jatkosuunnitelma
+                    </h2>
+
+                    <div
+                        id="docFollowUp"
+                        class="doc-text-block compact"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Jatko-ohjeet
+                    </h2>
+
+                    <div
+                        id="docFollowUpInstructions"
+                        class="doc-text-block compact"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <section class="doc-section">
+
+                    <h2>
+                        Lisätiedot
+                    </h2>
+
+                    <div
+                        id="docAdditionalInformation"
+                        class="doc-text-block compact"
+                    >
+                        –
+                    </div>
+
+                </section>
+
+
+                <div class="doc-signature">
+
+                    <strong id="docSignatureProfessional">
+                        –
+                    </strong>
+
+                    <span id="docSignatureLocation">
+                        –
+                    </span>
+
+                    <span id="docSignatureCompleted">
+                        –
+                    </span>
+
+                </div>
+
+
+                <div class="doc-footer-left">
+                    Keski-Suomen hyvinvointialue
+                </div>
+
+                <div class="doc-page-number">
+                    3 / 3
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
      FOOTER
-======================================================== -->
+========================================================= -->
 
 <footer class="footer">
 
@@ -1877,9 +2636,8 @@ a{
             </h3>
 
             <p>
-                Sosiaali- ja terveyspalvelut
-                sekä pelastustoimen palvelut
-                Keski-Suomessa.
+                Sosiaali- ja terveyspalvelut sekä
+                pelastustoimen palvelut Keski-Suomessa.
             </p>
 
         </div>
@@ -1928,9 +2686,9 @@ a{
 </footer>
 
 
-<!-- =======================================================
+<!-- =========================================================
      SUPABASE
-======================================================== -->
+========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1944,10 +2702,8 @@ a{
 const SUPABASE_URL =
     'https://bwuybksyoopuejcrlspa.supabase.co';
 
-
 const SUPABASE_KEY =
     'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
-
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1961,131 +2717,122 @@ const supabaseClient =
 ========================================================= */
 
 const bookingCodeInput =
-    document.getElementById(
-        'bookingCode'
-    );
-
+    document.getElementById('bookingCode');
 
 const lookupButton =
-    document.getElementById(
-        'lookupButton'
-    );
-
+    document.getElementById('lookupButton');
 
 const messageBox =
-    document.getElementById(
-        'message'
-    );
-
-
-const bookingArea =
-    document.getElementById(
-        'bookingArea'
-    );
-
+    document.getElementById('message');
 
 const lookupSection =
-    document.getElementById(
-        'lookupSection'
-    );
+    document.getElementById('lookupSection');
 
+const bookingArea =
+    document.getElementById('bookingArea');
 
 const bookingStatus =
-    document.getElementById(
-        'bookingStatus'
-    );
-
+    document.getElementById('bookingStatus');
 
 const bookingCodeDisplay =
-    document.getElementById(
-        'bookingCodeDisplay'
-    );
-
+    document.getElementById('bookingCodeDisplay');
 
 const sideBookingCode =
-    document.getElementById(
-        'sideBookingCode'
-    );
-
+    document.getElementById('sideBookingCode');
 
 const sideStatus =
-    document.getElementById(
-        'sideStatus'
-    );
-
+    document.getElementById('sideStatus');
 
 const cancelArea =
-    document.getElementById(
-        'cancelArea'
-    );
-
+    document.getElementById('cancelArea');
 
 const cancelButton =
-    document.getElementById(
-        'cancelButton'
-    );
-
+    document.getElementById('cancelButton');
 
 const newSearchButton =
-    document.getElementById(
-        'newSearchButton'
-    );
+    document.getElementById('newSearchButton');
 
+const noDocuments =
+    document.getElementById('noDocuments');
 
-const visitNote =
-    document.getElementById(
-        'visitNote'
-    );
+const noDocumentsText =
+    document.getElementById('noDocumentsText');
 
+const visitDocument =
+    document.getElementById('visitDocument');
 
-const noVisitNote =
-    document.getElementById(
-        'noVisitNote'
-    );
+const documentMeta =
+    document.getElementById('documentMeta');
+
+const openDocumentButton =
+    document.getElementById('openDocumentButton');
+
+const downloadDocumentButton =
+    document.getElementById('downloadDocumentButton');
+
+const documentModal =
+    document.getElementById('documentModal');
+
+const closeDocumentButton =
+    document.getElementById('closeDocumentButton');
+
+const printDocumentButton =
+    document.getElementById('printDocumentButton');
 
 
 let currentBookingCode = null;
-
 let currentBooking = null;
 
 
 /* =========================================================
-   CODE FORMATTING
+   HELPERS
 ========================================================= */
+
+function safeText(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        String(value).trim() === ''
+    ){
+        return '–';
+    }
+
+    return String(value).trim();
+
+}
+
 
 function formatBookingCode(value){
 
     let clean =
-        value
-        .toUpperCase()
-        .replace(
-            /[^A-Z0-9]/g,
-            ''
-        )
-        .slice(
-            0,
-            12
-        );
+        String(value || '')
+            .toUpperCase()
+            .replace(
+                /[^A-Z0-9]/g,
+                ''
+            )
+            .slice(
+                0,
+                12
+            );
 
-
-    const parts=[];
-
+    const parts = [];
 
     for(
-        let i=0;
-        i<clean.length;
-        i+=4
+        let i = 0;
+        i < clean.length;
+        i += 4
     ){
 
         parts.push(
             clean.slice(
                 i,
-                i+4
+                i + 4
             )
         );
 
     }
-
 
     return parts.join('-');
 
@@ -2106,7 +2853,7 @@ bookingCodeInput.addEventListener(
 
 
 /* =========================================================
-   DATE FORMAT
+   DATE
 ========================================================= */
 
 function formatDate(value){
@@ -2115,23 +2862,19 @@ function formatDate(value){
         return '–';
     }
 
-
     const parts =
-        value.split('-');
-
+        String(value).split('-');
 
     if(parts.length !== 3){
         return value;
     }
 
-
     const date =
         new Date(
             Number(parts[0]),
-            Number(parts[1])-1,
+            Number(parts[1]) - 1,
             Number(parts[2])
         );
-
 
     return new Intl.DateTimeFormat(
         'fi-FI',
@@ -2146,12 +2889,35 @@ function formatDate(value){
 }
 
 
+function formatDateShort(value){
+
+    if(!value){
+        return '–';
+    }
+
+    const parts =
+        String(value).split('-');
+
+    if(parts.length !== 3){
+        return value;
+    }
+
+    return (
+        Number(parts[2]) +
+        '.' +
+        Number(parts[1]) +
+        '.' +
+        parts[0]
+    );
+
+}
+
+
 function formatTime(value){
 
     if(!value){
         return '';
     }
-
 
     return String(value)
         .slice(0,5)
@@ -2166,10 +2932,16 @@ function formatDateTime(value){
         return '';
     }
 
-
     const date =
         new Date(value);
 
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+        return String(value);
+    }
 
     return new Intl.DateTimeFormat(
         'fi-FI',
@@ -2213,7 +2985,6 @@ function setStatus(status){
     bookingStatus.className =
         'status';
 
-
     if(status === 'booked'){
 
         bookingStatus.classList.add(
@@ -2221,7 +2992,6 @@ function setStatus(status){
         );
 
     }
-
 
     if(status === 'completed'){
 
@@ -2231,7 +3001,6 @@ function setStatus(status){
 
     }
 
-
     if(status === 'cancelled'){
 
         bookingStatus.classList.add(
@@ -2240,10 +3009,8 @@ function setStatus(status){
 
     }
 
-
     bookingStatus.textContent =
         statusText(status);
-
 
     sideStatus.textContent =
         statusText(status);
@@ -2257,17 +3024,16 @@ function setStatus(status){
 
 function showMessage(
     text,
-    error=false
+    error = false
 ){
 
     messageBox.textContent =
         text;
 
-
     messageBox.className =
         error
-        ? 'message error'
-        : 'message';
+            ? 'message error'
+            : 'message';
 
 }
 
@@ -2282,156 +3048,476 @@ function hideMessage(){
 
 
 /* =========================================================
-   VISIT NOTE
+   DOCUMENT DATA
 ========================================================= */
 
-function displayVisitNote(data){
+function getDocumentDate(data){
 
-    const hasCompletedNote =
+    return (
+        data.visit_date ||
+        data.appointment_date ||
+        null
+    );
+
+}
+
+
+function getDocumentStartTime(data){
+
+    return (
+        data.visit_start_time ||
+        data.start_time ||
+        null
+    );
+
+}
+
+
+function getDocumentEndTime(data){
+
+    return (
+        data.visit_end_time ||
+        data.end_time ||
+        null
+    );
+
+}
+
+
+function getDocumentLocation(data){
+
+    return (
+        data.visit_location ||
+        data.location ||
+        '–'
+    );
+
+}
+
+
+function getDocumentProfessionals(data){
+
+    return (
+        data.visit_professionals ||
+        data.professional_name ||
+        '–'
+    );
+
+}
+
+
+/* =========================================================
+   DOCUMENT LIST
+========================================================= */
+
+function displayDocuments(data){
+
+    const hasCompletedDocument =
         data.visit_note_status ===
         'completed';
 
+    if(!hasCompletedDocument){
 
-    if(!hasCompletedNote){
-
-        visitNote.classList.add(
+        visitDocument.classList.add(
             'hidden'
         );
 
-
-        noVisitNote.classList.remove(
+        noDocuments.classList.remove(
             'hidden'
         );
-
 
         if(
             data.booking_status ===
             'booked'
         ){
 
-            document.getElementById(
-                'noNoteText'
-            ).textContent =
-                'Vastaanottokäyntiä ei ole vielä merkitty valmiiksi tai käynnistä ei ole julkaistua kirjausta.';
-
-        }else{
-
-            document.getElementById(
-                'noNoteText'
-            ).textContent =
-                'Tästä ajanvarauksesta ei ole julkaistua käyntikirjausta.';
+            noDocumentsText.textContent =
+                'Vastaanottokäyntiä ei ole vielä merkitty valmiiksi tai käynnistä ei ole julkaistua asiakirjaa.';
 
         }
+        else{
 
+            noDocumentsText.textContent =
+                'Tästä ajanvarauksesta ei ole julkaistua käyntiasiakirjaa.';
+
+        }
 
         return;
 
     }
 
 
-    noVisitNote.classList.add(
+    noDocuments.classList.add(
+        'hidden'
+    );
+
+    visitDocument.classList.remove(
         'hidden'
     );
 
 
-    visitNote.classList.remove(
-        'hidden'
-    );
+    const visitDate =
+        getDocumentDate(data);
+
+    const professional =
+        getDocumentProfessionals(data);
+
+    const completed =
+        data.visit_completed_at ||
+        data.visit_note_updated_at;
 
 
-    const reasonSection =
-        document.getElementById(
-            'visitReasonSection'
-        );
+    let meta = '';
 
+    if(visitDate){
 
-    const textSection =
-        document.getElementById(
-            'visitTextSection'
-        );
+        meta +=
+            formatDateShort(
+                visitDate
+            );
 
+    }
 
-    const followSection =
-        document.getElementById(
-            'followUpSection'
-        );
+    if(professional){
 
+        if(meta){
+            meta += ' · ';
+        }
 
-    if(data.visit_reason){
+        meta += professional;
 
-        reasonSection.classList.remove(
-            'hidden'
-        );
+    }
 
+    if(completed){
 
-        document.getElementById(
-            'visitReason'
-        ).textContent =
-            data.visit_reason;
+        if(meta){
+            meta += '<br>';
+        }
 
-    }else{
-
-        reasonSection.classList.add(
-            'hidden'
-        );
+        meta +=
+            'Julkaistu ' +
+            formatDateTime(completed);
 
     }
 
 
-    if(data.visit_note){
+    documentMeta.innerHTML =
+        meta ||
+        'Julkaistu käyntiasiakirja';
 
-        textSection.classList.remove(
-            'hidden'
-        );
-
-
-        document.getElementById(
-            'visitText'
-        ).textContent =
-            data.visit_note;
-
-    }else{
-
-        textSection.classList.add(
-            'hidden'
-        );
-
-    }
+}
 
 
-    if(data.follow_up){
+/* =========================================================
+   FILL A4 DOCUMENT
+========================================================= */
 
-        followSection.classList.remove(
-            'hidden'
-        );
+function fillDocument(data){
+
+    const visitDate =
+        getDocumentDate(data);
+
+    const visitStart =
+        getDocumentStartTime(data);
+
+    const visitEnd =
+        getDocumentEndTime(data);
+
+    const visitLocation =
+        getDocumentLocation(data);
+
+    const professionals =
+        getDocumentProfessionals(data);
+
+    const completed =
+        data.visit_completed_at ||
+        data.visit_note_updated_at;
+
+    const version =
+        data.document_version ||
+        1;
 
 
-        document.getElementById(
-            'followUp'
-        ).textContent =
-            data.follow_up;
-
-    }else{
-
-        followSection.classList.add(
-            'hidden'
-        );
-
-    }
+    document.getElementById(
+        'docVersionTop'
+    ).textContent =
+        'Asiakirjaversio ' +
+        version;
 
 
-    const updated =
-        formatDateTime(
-            data.visit_note_updated_at
+    document.getElementById(
+        'docVersion'
+    ).textContent =
+        version;
+
+
+    document.getElementById(
+        'docCompleted'
+    ).textContent =
+        completed
+            ? formatDateTime(completed)
+            : '–';
+
+
+    document.getElementById(
+        'docBookingCode'
+    ).textContent =
+        currentBookingCode ||
+        data.booking_code ||
+        '–';
+
+
+    document.getElementById(
+        'docStudentName'
+    ).textContent =
+        safeText(
+            data.student_name
         );
 
 
     document.getElementById(
-        'noteMeta'
+        'docStudentGroup'
     ).textContent =
-        updated
-        ? 'Kirjaus päivitetty ' + updated
-        : 'Kirjaus valmis';
+        safeText(
+            data.student_group
+        );
+
+
+    document.getElementById(
+        'docVisitDate'
+    ).textContent =
+        formatDate(
+            visitDate
+        );
+
+
+    let visitTime = '';
+
+    if(visitStart){
+
+        visitTime +=
+            formatTime(
+                visitStart
+            );
+
+    }
+
+    if(visitEnd){
+
+        if(visitTime){
+            visitTime += '–';
+        }
+
+        visitTime +=
+            formatTime(
+                visitEnd
+            );
+
+    }
+
+
+    document.getElementById(
+        'docVisitTime'
+    ).textContent =
+        visitTime ||
+        '–';
+
+
+    document.getElementById(
+        'docAppointmentType'
+    ).textContent =
+        safeText(
+            data.appointment_type
+        );
+
+
+    document.getElementById(
+        'docVisitLocation'
+    ).textContent =
+        safeText(
+            visitLocation
+        );
+
+
+    document.getElementById(
+        'docProfessionals'
+    ).textContent =
+        safeText(
+            professionals
+        );
+
+
+    document.getElementById(
+        'docVisitReason'
+    ).textContent =
+        safeText(
+            data.visit_reason
+        );
+
+
+    document.getElementById(
+        'docBackground'
+    ).textContent =
+        safeText(
+            data.background_information
+        );
+
+
+    document.getElementById(
+        'docObservations'
+    ).textContent =
+        safeText(
+            data.observations
+        );
+
+
+    document.getElementById(
+        'docExaminations'
+    ).textContent =
+        safeText(
+            data.examinations
+        );
+
+
+    document.getElementById(
+        'docProcedures'
+    ).textContent =
+        safeText(
+            data.procedures
+        );
+
+
+    document.getElementById(
+        'docGuidance'
+    ).textContent =
+        safeText(
+            data.guidance
+        );
+
+
+    document.getElementById(
+        'docFollowUp'
+    ).textContent =
+        safeText(
+            data.follow_up
+        );
+
+
+    document.getElementById(
+        'docFollowUpInstructions'
+    ).textContent =
+        safeText(
+            data.follow_up_instructions
+        );
+
+
+    document.getElementById(
+        'docAdditionalInformation'
+    ).textContent =
+        safeText(
+            data.additional_information
+        );
+
+
+    document.getElementById(
+        'docSignatureProfessional'
+    ).textContent =
+        safeText(
+            professionals
+        );
+
+
+    document.getElementById(
+        'docSignatureLocation'
+    ).textContent =
+        safeText(
+            visitLocation
+        );
+
+
+    document.getElementById(
+        'docSignatureCompleted'
+    ).textContent =
+        completed
+            ? 'Asiakirja valmistunut ' +
+              formatDateTime(completed)
+            : '';
+
+}
+
+
+/* =========================================================
+   OPEN DOCUMENT
+========================================================= */
+
+function openDocument(){
+
+    if(
+        !currentBooking ||
+        currentBooking.visit_note_status !==
+        'completed'
+    ){
+        return;
+    }
+
+    fillDocument(
+        currentBooking
+    );
+
+    documentModal.classList.remove(
+        'hidden'
+    );
+
+    document.body.style.overflow =
+        'hidden';
+
+    documentModal.scrollTop =
+        0;
+
+}
+
+
+/* =========================================================
+   CLOSE DOCUMENT
+========================================================= */
+
+function closeDocument(){
+
+    documentModal.classList.add(
+        'hidden'
+    );
+
+    document.body.style.overflow =
+        '';
+
+}
+
+
+/* =========================================================
+   PDF / PRINT
+========================================================= */
+
+function printDocument(){
+
+    if(
+        !currentBooking ||
+        currentBooking.visit_note_status !==
+        'completed'
+    ){
+        return;
+    }
+
+    fillDocument(
+        currentBooking
+    );
+
+    /*
+        Browserin tulostusikkunassa valitse:
+        "Tallenna PDF-tiedostona".
+        Tulostustyyli on määritelty A4-kokoiseksi.
+    */
+
+    window.print();
 
 }
 
@@ -2450,9 +3536,7 @@ function displayBooking(data){
         'hidden'
     );
 
-
     hideMessage();
-
 
     bookingArea.classList.remove(
         'hidden'
@@ -2473,61 +3557,86 @@ function displayBooking(data){
     );
 
 
-    document.getElementById(
-        'appointmentDate'
-    ).textContent =
+    const appointmentDate =
         formatDate(
             data.appointment_date
         );
 
 
-    document.getElementById(
-        'appointmentTime'
-    ).textContent =
-        formatTime(
-            data.start_time
+    const appointmentTime =
+        (
+            formatTime(
+                data.start_time
+            ) ||
+            '–'
         )
         +
-        '–'
-        +
-        formatTime(
+        (
             data.end_time
+                ? '–' +
+                  formatTime(
+                      data.end_time
+                  )
+                : ''
         );
 
 
     document.getElementById(
-        'appointmentType'
+        'summaryDate'
     ).textContent =
-        data.appointment_type ||
-        '–';
+        appointmentDate;
 
 
     document.getElementById(
-        'professionalName'
+        'summaryTime'
     ).textContent =
-        data.professional_name ||
-        '–';
+        appointmentTime;
 
 
     document.getElementById(
-        'appointmentLocation'
+        'summaryType'
     ).textContent =
-        data.location ||
-        '–';
+        safeText(
+            data.appointment_type
+        );
+
+
+    document.getElementById(
+        'summaryProfessional'
+    ).textContent =
+        safeText(
+            data.professional_name
+        );
+
+
+    document.getElementById(
+        'summaryLocation'
+    ).textContent =
+        safeText(
+            data.location
+        );
+
+
+    document.getElementById(
+        'summaryCode'
+    ).textContent =
+        currentBookingCode;
 
 
     document.getElementById(
         'studentName'
     ).textContent =
-        data.student_name ||
-        '–';
+        safeText(
+            data.student_name
+        );
 
 
     document.getElementById(
         'studentGroup'
     ).textContent =
-        data.student_group ||
-        '–';
+        safeText(
+            data.student_group
+        );
 
 
     cancelArea.classList.toggle(
@@ -2537,7 +3646,7 @@ function displayBooking(data){
     );
 
 
-    displayVisitNote(
+    displayDocuments(
         data
     );
 
@@ -2578,11 +3687,11 @@ async function lookupBooking(){
         code;
 
 
-    lookupButton.disabled=true;
+    lookupButton.disabled =
+        true;
 
     lookupButton.textContent =
         'Haetaan...';
-
 
     hideMessage();
 
@@ -2604,7 +3713,9 @@ async function lookupBooking(){
 
         if(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
 
             throw error;
 
@@ -2638,7 +3749,6 @@ async function lookupBooking(){
             error
         );
 
-
         showMessage(
             'Varauksen tietoja ei voitu hakea. Yritä hetken kuluttua uudelleen.',
             true
@@ -2647,7 +3757,8 @@ async function lookupBooking(){
     }
     finally{
 
-        lookupButton.disabled=false;
+        lookupButton.disabled =
+            false;
 
         lookupButton.textContent =
             'Hae varaus';
@@ -2679,7 +3790,8 @@ async function cancelBooking(){
     }
 
 
-    cancelButton.disabled=true;
+    cancelButton.disabled =
+        true;
 
     cancelButton.textContent =
         'Perutaan...';
@@ -2701,22 +3813,18 @@ async function cancelBooking(){
 
         if(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
 
             throw error;
 
         }
 
 
-        /*
-            Reload details so the status
-            comes directly from database.
-        */
-
         const {
             data,
-            error:
-                reloadError
+            error:reloadError
         } =
         await supabaseClient.rpc(
             'get_booking_details_by_code',
@@ -2751,11 +3859,6 @@ async function cancelBooking(){
         );
 
 
-        messageBox.classList.remove(
-            'hidden'
-        );
-
-
         bookingArea.insertAdjacentElement(
             'beforebegin',
             messageBox
@@ -2769,7 +3872,6 @@ async function cancelBooking(){
             error
         );
 
-
         window.alert(
             'Ajanvarauksen peruminen ei onnistunut. Yritä uudelleen.'
         );
@@ -2777,7 +3879,8 @@ async function cancelBooking(){
     }
     finally{
 
-        cancelButton.disabled=false;
+        cancelButton.disabled =
+            false;
 
         cancelButton.textContent =
             'Peru ajanvaraus';
@@ -2793,9 +3896,14 @@ async function cancelBooking(){
 
 function newSearch(){
 
-    currentBookingCode=null;
+    currentBookingCode =
+        null;
 
-    currentBooking=null;
+    currentBooking =
+        null;
+
+
+    closeDocument();
 
 
     bookingArea.classList.add(
@@ -2803,12 +3911,12 @@ function newSearch(){
     );
 
 
-    visitNote.classList.add(
+    visitDocument.classList.add(
         'hidden'
     );
 
 
-    noVisitNote.classList.add(
+    noDocuments.classList.remove(
         'hidden'
     );
 
@@ -2821,7 +3929,8 @@ function newSearch(){
     );
 
 
-    bookingCodeInput.value='';
+    bookingCodeInput.value =
+        '';
 
 
     lookupSection.scrollIntoView({
@@ -2832,7 +3941,9 @@ function newSearch(){
 
     setTimeout(
         ()=>{
+
             bookingCodeInput.focus();
+
         },
         300
     );
@@ -2854,7 +3965,10 @@ bookingCodeInput.addEventListener(
     'keydown',
     event=>{
 
-        if(event.key === 'Enter'){
+        if(
+            event.key ===
+            'Enter'
+        ){
 
             event.preventDefault();
 
@@ -2875,6 +3989,76 @@ cancelButton.addEventListener(
 newSearchButton.addEventListener(
     'click',
     newSearch
+);
+
+
+openDocumentButton.addEventListener(
+    'click',
+    openDocument
+);
+
+
+downloadDocumentButton.addEventListener(
+    'click',
+    ()=>{
+
+        openDocument();
+
+        setTimeout(
+            printDocument,
+            150
+        );
+
+    }
+);
+
+
+printDocumentButton.addEventListener(
+    'click',
+    printDocument
+);
+
+
+closeDocumentButton.addEventListener(
+    'click',
+    closeDocument
+);
+
+
+documentModal.addEventListener(
+    'click',
+    event=>{
+
+        if(
+            event.target ===
+            documentModal
+        ){
+
+            closeDocument();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    'keydown',
+    event=>{
+
+        if(
+            event.key ===
+            'Escape' &&
+            !documentModal.classList.contains(
+                'hidden'
+            )
+        ){
+
+            closeDocument();
+
+        }
+
+    }
 );
 
 </script>
