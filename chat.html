@@ -532,2558 +532,8 @@ a{
 }
 
 /* =========================================================
-   CHATBOT PAGE
-========================================================= */
-
-.bot-panel{
-    overflow:hidden;
-
-    padding:0;
-}
-
-.bot-header{
-    padding:22px 24px;
-
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    border-bottom:1px solid #dce1e4;
-}
-
-.bot-avatar{
-    width:48px;
-    height:48px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#e3f1f8;
-}
-
-.bot-avatar svg{
-    width:28px;
-    height:28px;
-
-    fill:none;
-    stroke:#1767a3;
-    stroke-width:1.7;
-}
-
-.bot-header h2{
-    margin:0 0 4px;
-
-    font-size:18px;
-}
-
-.bot-header p{
-    margin:0;
-
-    color:#666;
-
-    font-size:12px;
-}
-
-.bot-warning{
-    margin:18px 20px 0;
-    padding:11px 13px;
-
-    border-left:4px solid #1767a3;
-
-    background:#e8f4f9;
-
-    color:#36566a;
-
-    font-size:11px;
-    line-height:1.45;
-}
-
-.messages{
-    height:410px;
-
-    overflow-y:auto;
-
-    padding:22px 20px;
-
-    background:#fafbfb;
-}
-
-.message{
-    margin-bottom:17px;
-
-    display:flex;
-}
-
-.message.user{
-    justify-content:flex-end;
-}
-
-.message-inner{
-    max-width:72%;
-}
-
-.message-name{
-    margin-bottom:4px;
-
-    color:#6f797e;
-
-    font-size:10px;
-}
-
-.message.user .message-name{
-    text-align:right;
-}
-
-.message-bubble{
-    padding:11px 14px;
-
-    border-radius:5px;
-
-    font-size:13px;
-    line-height:1.5;
-
-    white-space:pre-wrap;
-}
-
-.message.bot .message-bubble{
-    border:1px solid #d6e1e6;
-    background:#fff;
-}
-
-.message.user .message-bubble{
-    background:#2e6599;
-    color:#fff;
-}
-
-.message-time{
-    margin-top:4px;
-
-    color:#8a9498;
-
-    font-size:9px;
-}
-
-.message.user .message-time{
-    text-align:right;
-}
-
-.quick-actions{
-    padding:11px 18px;
-
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-
-    border-top:1px solid #e0e4e6;
-
-    background:#fff;
-}
-
-.quick{
-    padding:7px 11px;
-
-    border:1px solid #2e6599;
-    border-radius:17px;
-
-    background:#fff;
-    color:#075a96;
-
-    font-size:11px;
-}
-
-.bot-composer{
-    padding:14px 17px;
-
-    border-top:1px solid #dce1e3;
-
-    background:#fff;
-}
-
-.composer-row{
-    display:flex;
-    align-items:flex-end;
-    gap:9px;
-}
-
-.bot-input{
-    flex:1;
-
-    min-height:47px;
-    max-height:110px;
-
-    resize:none;
-
-    padding:12px;
-
-    border:1px solid #adb7bc;
-    border-radius:4px;
-
-    outline:none;
-
-    font-size:13px;
-}
-
-.bot-input:focus{
-    border-color:#1767a3;
-}
-
-.send{
-    width:48px;
-    height:47px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:0;
-    border-radius:4px;
-
-    background:#2e6599;
-    color:#fff;
-}
-
-.send svg{
-    width:21px;
-    height:21px;
-
-    fill:none;
-    stroke:currentColor;
-    stroke-width:2;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-.bot-note{
-    margin-top:7px;
-
-    color:#747474;
-
-    font-size:9px;
-}
-
-/* =========================================================
-   SIDE DRAWER
-========================================================= */
-
-.drawer-overlay{
-    position:fixed;
-    inset:0;
-
-    z-index:400;
-
-    visibility:hidden;
-    opacity:0;
-
-    background:rgba(0,0,0,.48);
-
-    transition:.2s;
-}
-
-.drawer-overlay.open{
-    visibility:visible;
-    opacity:1;
-}
-
-.drawer{
-    position:absolute;
-
-    top:0;
-    right:0;
-    bottom:0;
-
-    width:min(500px,100%);
-
-    padding:25px 23px;
-
-    overflow-y:auto;
-
-    background:#fff;
-
-    transform:translateX(100%);
-
-    transition:.22s ease;
-}
-
-.drawer-overlay.open .drawer{
-    transform:translateX(0);
-}
-
-.drawer-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    gap:20px;
-
-    margin-bottom:38px;
-}
-
-.drawer-label{
-    font-size:16px;
-    font-weight:700;
-}
-
-.drawer-close{
-    padding:0;
-
-    border:0;
-    background:transparent;
-
-    color:#075a96;
-
-    font-size:14px;
-}
-
-.drawer h2{
-    margin:0 0 4px;
-
-    font-size:23px;
-    line-height:1.12;
-}
-
-.drawer-lead{
-    margin:0 0 23px;
-
-    color:#4f4f4f;
-
-    font-size:19px;
-    font-weight:600;
-    line-height:1.2;
-}
-
-.drawer-description{
-    margin:0 0 28px;
-
-    font-size:14px;
-    line-height:1.55;
-}
-
-.drawer h3{
-    margin:0 0 17px;
-
-    font-size:18px;
-}
-
-/* DRAWER SERVICE */
-
-.drawer-service{
-    width:100%;
-
-    margin-bottom:10px;
-    padding:15px 14px;
-
-    display:grid;
-    grid-template-columns:40px minmax(0,1fr) 20px;
-    gap:10px;
-    align-items:center;
-
-    border:1px solid #d6dadd;
-    border-radius:5px;
-
-    background:#fff;
-
-    text-align:left;
-}
-
-.drawer-service:hover{
-    background:#fafcfd;
-    border-color:#91b3ca;
-}
-
-.drawer-service svg{
-    width:27px;
-    height:27px;
-
-    fill:none;
-    stroke:#1767a3;
-    stroke-width:1.6;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-}
-
-.drawer-service-title{
-    margin-bottom:5px;
-
-    font-size:14px;
-}
-
-.drawer-service-desc{
-    color:#606060;
-
-    font-size:11px;
-    line-height:1.4;
-}
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal-overlay{
-    position:fixed;
-    inset:0;
-
-    z-index:500;
-
-    visibility:hidden;
-    opacity:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:22px;
-
-    background:rgba(0,0,0,.48);
-
-    transition:.18s;
-}
-
-.modal-overlay.open{
-    visibility:visible;
-    opacity:1;
-}
-
-.modal{
-    width:min(640px,100%);
-    max-height:calc(100vh - 45px);
-
-    overflow-y:auto;
-
-    padding:27px;
-
-    border-radius:7px;
-
-    background:#fff;
-
-    box-shadow:0 20px 65px rgba(0,0,0,.27);
-}
-
-.modal-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    gap:20px;
-
-    margin-bottom:20px;
-}
-
-.modal h2{
-    margin:0;
-
-    font-size:22px;
-}
-
-.modal-close{
-    border:0;
-    background:transparent;
-
-    color:#075a96;
-
-    font-size:14px;
-}
-
-/* =========================================================
-   FORM MODAL
-========================================================= */
-
-.form-modal{
-    width:min(920px,100%);
-
-    padding:0;
-}
-
-.form-modal-header{
-    padding:22px 28px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:20px;
-
-    border-bottom:1px solid #dce0e2;
-}
-
-.form-brand{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.form-logo{
-    width:125px;
-    height:auto;
-}
-
-.form-brand-text{
-    padding-left:18px;
-
-    border-left:1px solid #d4d9dc;
-
-    color:#555;
-
-    font-size:13px;
-    line-height:1.4;
-}
-
-.form-body{
-    padding:29px 30px 32px;
-}
-
-.form-eyebrow{
-    margin-bottom:7px;
-
-    color:#1767a3;
-
-    font-size:12px;
-    font-weight:700;
-
-    text-transform:uppercase;
-    letter-spacing:.04em;
-}
-
-.form-body h2{
-    margin:0 0 9px;
-
-    color:#164e7b;
-
-    font-size:27px;
-    line-height:1.15;
-}
-
-.form-intro{
-    margin:0 0 27px;
-
-    color:#535e64;
-
-    font-size:14px;
-    line-height:1.55;
-}
-
-.form-section{
-    margin-top:27px;
-    padding-top:23px;
-
-    border-top:1px solid #dce1e3;
-}
-
-.form-section h3{
-    margin:0 0 17px;
-
-    font-size:18px;
-}
-
-.field{
-    margin-bottom:19px;
-}
-
-.field label,
-.field-label{
-    display:block;
-
-    margin-bottom:7px;
-
-    font-size:13px;
-    font-weight:600;
-}
-
-.required{
-    color:#9c2424;
-}
-
-.field input[type="text"],
-.field input[type="email"],
-.field input[type="tel"],
-.field input[type="number"],
-.field textarea,
-.field select{
-    width:100%;
-
-    padding:10px 11px;
-
-    border:1px solid #aeb8bd;
-    border-radius:3px;
-
-    background:#fff;
-
-    outline:none;
-
-    font-size:13px;
-}
-
-.field textarea{
-    min-height:100px;
-
-    resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-    border-color:#1767a3;
-    box-shadow:0 0 0 1px #1767a3;
-}
-
-.radio-list,
-.check-list{
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-}
-
-.option{
-    display:flex;
-    align-items:flex-start;
-    gap:9px;
-
-    font-size:13px;
-    line-height:1.45;
-}
-
-.option input{
-    margin-top:2px;
-}
-
-.form-info{
-    margin:19px 0;
-
-    padding:12px 14px;
-
-    border-left:4px solid #1767a3;
-
-    background:#e7f3f8;
-
-    color:#34566a;
-
-    font-size:12px;
-    line-height:1.5;
-}
-
-.form-actions{
-    margin-top:29px;
-
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-}
-
-.secondary-button,
-.primary-button{
-    padding:10px 18px;
-
-    border-radius:4px;
-
-    font-size:13px;
-    font-weight:600;
-}
-
-.secondary-button{
-    border:1px solid #1767a3;
-
-    background:#fff;
-    color:#075a96;
-}
-
-.primary-button{
-    border:1px solid #2e6599;
-
-    background:#2e6599;
-    color:#fff;
-}
-
-.form-success{
-    padding:50px 30px;
-
-    text-align:center;
-}
-
-.success-symbol{
-    width:58px;
-    height:58px;
-
-    margin:0 auto 18px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#e3f2e8;
-    color:#34744d;
-
-    font-size:29px;
-}
-
-.form-success h2{
-    margin-bottom:9px;
-
-    color:#164e7b;
-}
-
-.form-success p{
-    margin:0 auto;
-
-    max-width:500px;
-
-    color:#555;
-
-    line-height:1.55;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-    padding:20px;
-
-    text-align:center;
-
-    color:#6b6b6b;
-
-    font-size:11px;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:760px){
-
-    .app{
-        padding-left:0;
-    }
-
-    .sidebar{
-        position:relative;
-
-        width:100%;
-        height:auto;
-
-        padding:13px 15px;
-
-        border-right:0;
-        border-bottom:1px solid #ddd;
-    }
-
-    .logo-link{
-        width:100px;
-
-        margin-bottom:15px;
-    }
-
-    .profile{
-        display:none;
-    }
-
-    .nav{
-        flex-direction:row;
-        overflow-x:auto;
-    }
-
-    .nav-button{
-        width:auto;
-        white-space:nowrap;
-    }
-
-    .hero{
-        min-height:175px;
-    }
-
-    .hero-inner{
-        width:calc(100% - 35px);
-
-        padding:35px 0 55px;
-    }
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    .hero p{
-        font-size:14px;
-    }
-
-    .content-area{
-        min-height:calc(100vh - 175px);
-
-        padding:0 12px 50px;
-    }
-
-    .content{
-        margin-top:-18px;
-    }
-
-    .panel{
-        padding:18px 13px;
-    }
-
-    .service-card{
-        grid-template-columns:32px minmax(0,1fr) 20px;
-    }
-
-    .drawer{
-        width:100%;
-    }
-
-    .message-inner{
-        max-width:88%;
-    }
-
-    .form-modal-header{
-        padding:18px;
-    }
-
-    .form-brand{
-        display:block;
-    }
-
-    .form-logo{
-        width:110px;
-        margin-bottom:10px;
-    }
-
-    .form-brand-text{
-        padding-left:0;
-        border-left:0;
-    }
-
-    .form-body{
-        padding:22px 18px 26px;
-    }
-
-    .form-body h2{
-        font-size:23px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="app">
-
-<!-- =========================================================
-     SIDEBAR
-========================================================= -->
-
-<aside class="sidebar">
-
-    <a href="index.html" class="logo-link">
-        <img
-            src="hyvaks-logo.png"
-            alt="Keski-Suomen hyvinvointialue"
-            class="logo"
-        >
-    </a>
-
-    <div class="profile">
-
-        <div class="profile-avatar">
-            A
-        </div>
-
-        <div>
-            <div class="profile-name">
-                Anonyymi asiakas
-            </div>
-
-            <div class="profile-subtitle">
-                Asioit ilman tunnistautumista
-            </div>
-        </div>
-
-    </div>
-
-    <nav class="nav">
-
-        <!-- DIGIASIOINTI -->
-
-        <button
-            type="button"
-            class="nav-button active"
-            data-view="digital"
-        >
-
-            <svg class="nav-icon" viewBox="0 0 24 24">
-                <path d="M4 5h10a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-4 3v-3H4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"></path>
-                <path d="M17 9h2a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3v2l-3-2h-2"></path>
-            </svg>
-
-            Digiasiointi
-
-        </button>
-
-        <!-- LOMAKKEET -->
-
-        <button
-            type="button"
-            class="nav-button"
-            data-view="forms"
-        >
-
-            <svg class="nav-icon" viewBox="0 0 24 24">
-                <rect x="6" y="3" width="12" height="18" rx="1"></rect>
-                <path d="M9 8h6"></path>
-                <path d="M9 12h6"></path>
-                <path d="M9 16h4"></path>
-            </svg>
-
-            Lomakkeet
-
-        </button>
-
-        <!-- CHATBOT -->
-
-        <button
-            type="button"
-            class="nav-button"
-            data-view="bot"
-        >
-
-            <svg class="nav-icon" viewBox="0 0 24 24">
-                <rect x="4" y="6" width="16" height="12" rx="3"></rect>
-                <path d="M9 11h.01"></path>
-                <path d="M15 11h.01"></path>
-                <path d="M9 15h6"></path>
-                <path d="M12 3v3"></path>
-            </svg>
-
-            Chat-botti
-
-        </button>
-
-    </nav>
-
-</aside>
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main class="main">
-
-    <header class="hero">
-
-        <div class="hero-inner">
-
-            <h1 id="pageTitle">
-                Digiasiointi
-            </h1>
-
-            <p id="pageDescription">
-                Palvelemme sinua terveyteesi ja hyvinvointiisi liittyvissä asioissa.
-            </p>
-
-        </div>
-
-    </header>
-
-    <div class="content-area">
-
-        <div class="content">
-
-<!-- =========================================================
-     DIGIASIOINTI
-========================================================= -->
-
-<section id="digitalView">
-
-    <div class="info-banner" id="videoBanner">
-
-        <div class="info-symbol">
-            i
-        </div>
-
-        <div class="info-main">
-
-            <div class="info-title">
-                Varatulle videovastaanotolle liittyminen
-            </div>
-
-            <button
-                type="button"
-                class="link-button"
-                id="videoInfo"
-            >
-                Lue lisää
-            </button>
-
-        </div>
-
-        <button
-            type="button"
-            class="x-button"
-            id="closeBanner"
-            aria-label="Sulje"
-        ></button>
-
-    </div>
-
-    <!-- AVOIMET -->
-
-    <div class="panel">
-
-        <h2 class="panel-title">
-            Avoimet keskustelut
-        </h2>
-
-        <div class="empty">
-
-            <svg viewBox="0 0 64 64">
-                <path d="M10 11h34a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H27L16 53v-8h-6a6 6 0 0 1-6-6V17a6 6 0 0 1 6-6z"></path>
-                <circle cx="20" cy="28" r="2.5"></circle>
-                <circle cx="29" cy="28" r="2.5"></circle>
-                <circle cx="38" cy="28" r="2.5"></circle>
-            </svg>
-
-            <strong>
-                Ei avoimia keskusteluja
-            </strong>
-
-            <span>
-                Aloita uusi keskustelu valitsemalla yksi alla olevista palveluista
-            </span>
-
-        </div>
-
-    </div>
-
-    <!-- KESKUSTELU -->
-
-    <div class="panel">
-
-        <h2 class="panel-title">
-            Keskustelu
-        </h2>
-
-        <!-- LAPSET NUORET PERHEET -->
-
-        <div class="service-group">
-
-            <h3>
-                Lapset, nuoret ja perheet
-            </h3>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="family-contact"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <circle cx="12" cy="5" r="2"></circle>
-                    <path d="M9 21v-7H7l2-6h6l2 6h-2v7"></path>
-                    <path d="M12 8v13"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Lasten, nuorten ja perheiden kiireetön yhteydenottopyyntö
-                    </div>
-
-                    <div class="card-description">
-                        Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="family-chat"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <path d="M3 5h11a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9l-5 4v-4H3a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"></path>
-                    <path d="M17 9h2a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3v2l-3-2"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Lasten, nuorten ja perheiden chatit
-                    </div>
-
-                    <div class="card-description">
-                        Keskustele ammattilaisen kanssa chatin aukioloaikana, jos asiasi pitää hoitaa samana päivänä.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-        </div>
-
-        <!-- TYÖIKÄISET -->
-
-        <div class="service-group">
-
-            <h3>
-                Työikäiset
-            </h3>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="working-contact"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <rect x="3" y="8" width="18" height="10" rx="2"></rect>
-                    <path d="M7 8V5h10v3"></path>
-                    <path d="M1 18c3 3 19 3 22 0"></path>
-                    <path d="M10 12h4"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Työikäisten kiireetön yhteydenottopyyntö
-                    </div>
-
-                    <div class="card-description">
-                        Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="working-chat"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <path d="M3 5h11a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9l-5 4v-4H3a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"></path>
-                    <path d="M17 9h2a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3v2l-3-2"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Työikäisten chatit
-                    </div>
-
-                    <div class="card-description">
-                        Keskustele ammattilaisen kanssa chatin aukioloaikana, jos asiasi pitää hoitaa samana päivänä.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-        </div>
-
-        <!-- IKÄÄNTYNEET -->
-
-        <div class="service-group">
-
-            <h3>
-                Ikääntyneet
-            </h3>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="senior-contact"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <circle cx="12" cy="7" r="3"></circle>
-                    <path d="M5 21c.7-5 3-8 7-8s6.3 3 7 8"></path>
-                    <path d="M4 15l2-2"></path>
-                    <path d="M20 15l-2-2"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Ikääntyneiden kiireetön yhteydenottopyyntö
-                    </div>
-
-                    <div class="card-description">
-                        Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-            <button
-                class="service-card"
-                type="button"
-                data-drawer="senior-chat"
-            >
-
-                <svg class="card-icon" viewBox="0 0 24 24">
-                    <path d="M3 5h11a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9l-5 4v-4H3a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"></path>
-                    <path d="M17 9h2a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3v2l-3-2"></path>
-                </svg>
-
-                <div>
-                    <div class="card-title">
-                        Ikääntyneiden chatit
-                    </div>
-
-                    <div class="card-description">
-                        Keskustele ammattilaisen kanssa chatin aukioloaikana, jos asiasi pitää hoitaa samana päivänä.
-                    </div>
-                </div>
-
-                <div class="arrow">›</div>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================================
-     LOMAKKEET
-========================================================= -->
-
-<section id="formsView" class="hidden">
-
-    <div class="panel">
-
-        <div class="form-search">
-
-            <input
-                type="search"
-                id="formSearch"
-                placeholder="Etsi lomakkeen nimellä"
-            >
-
-            <svg class="search-icon" viewBox="0 0 24 24">
-                <circle cx="10" cy="10" r="6"></circle>
-                <path d="M15 15l6 6"></path>
-            </svg>
-
-        </div>
-
-        <button
-            type="button"
-            class="service-card form-list-item"
-            data-search="iäkkäiden vammaisten perhehoitajaksi hakevan esitietolomake"
-            data-form="family-care"
-        >
-
-            <svg class="card-icon" viewBox="0 0 24 24">
-                <rect x="6" y="3" width="12" height="18" rx="1"></rect>
-                <path d="M9 8h6"></path>
-                <path d="M9 12h6"></path>
-                <path d="M9 16h4"></path>
-            </svg>
-
-            <div>
-                <div class="card-title">
-                    Iäkkäiden ja/tai vammaisten perhehoitajaksi hakevan esitietolomake
-                </div>
-
-                <div class="card-description">
-                    Vastaa esitietolomakkeeseen hakiessasi perhehoitajaksi
-                </div>
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-        <button
-            type="button"
-            class="service-card form-list-item"
-            data-search="kuntoutustutkimuspoliklinikan seurantakysely"
-            data-form="rehab-followup"
-        >
-
-            <svg class="card-icon" viewBox="0 0 24 24">
-                <rect x="6" y="3" width="12" height="18" rx="1"></rect>
-                <path d="M9 8h6"></path>
-                <path d="M9 12h6"></path>
-                <path d="M9 16h4"></path>
-            </svg>
-
-            <div>
-                <div class="card-title">
-                    Kuntoutustutkimuspoliklinikan SEURANTAKYSELY
-                </div>
-
-                <div class="card-description">
-                    Täytä tämä kysely jos olet ollut kuntoutustutkimuspoliklinikan jaksolla
-                </div>
-            </div>
-
-            <div class="arrow">›</div>
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =========================================================
-     CHATBOT
-========================================================= -->
-
-<section id="botView" class="hidden">
-
-    <div class="panel bot-panel">
-
-        <div class="bot-header">
-
-            <div class="bot-avatar">
-
-                <svg viewBox="0 0 24 24">
-                    <rect x="4" y="6" width="16" height="12" rx="3"></rect>
-                    <path d="M9 11h.01"></path>
-                    <path d="M15 11h.01"></path>
-                    <path d="M9 15h6"></path>
-                    <path d="M12 3v3"></path>
-                </svg>
-
-            </div>
-
-            <div>
-                <h2>
-                    Digitaalinen palveluohjaus
-                </h2>
-
-                <p>
-                    Automaattinen chat-botti
-                </p>
-            </div>
-
-        </div>
-
-        <div class="bot-warning">
-            Chat-botti antaa yleistä palveluohjausta. Se ei korvaa terveydenhuollon ammattilaisen arviota.
-            Älä kirjoita keskusteluun henkilötunnusta, salasanoja tai kirjautumistietoja.
-        </div>
-
-        <div class="messages" id="messages"></div>
-
-        <div class="quick-actions">
-
-            <button class="quick" data-message="Haluan löytää lapsille ja nuorille tarkoitetun palvelun">
-                Lapset, nuoret ja perheet
-            </button>
-
-            <button class="quick" data-message="Tarvitsen työikäisten palveluita">
-                Työikäiset
-            </button>
-
-            <button class="quick" data-message="Tarvitsen ikääntyneiden palveluita">
-                Ikääntyneet
-            </button>
-
-            <button class="quick" data-message="Haluan täyttää lomakkeen">
-                Lomakkeet
-            </button>
-
-        </div>
-
-        <form class="bot-composer" id="botForm">
-
-            <div class="composer-row">
-
-                <textarea
-                    class="bot-input"
-                    id="botInput"
-                    rows="1"
-                    maxlength="1000"
-                    placeholder="Kirjoita viesti..."
-                ></textarea>
-
-                <button class="send" type="submit" aria-label="Lähetä">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 11.5L21 3l-7 18-3-7-8-2.5z"></path>
-                        <path d="M11 14L21 3"></path>
-                    </svg>
-
-                </button>
-
-            </div>
-
-            <div class="bot-note">
-                Hätätilanteessa soita 112.
-            </div>
-
-        </form>
-
-    </div>
-
-</section>
-
-<div class="footer">
-    Digitaaliset palvelut · Keski-Suomen hyvinvointialue
-</div>
-
-</div>
-</div>
-
-</main>
-
-</div>
-
-<!-- =========================================================
-     PALVELUN TIEDOT DRAWER
-========================================================= -->
-
-<div class="drawer-overlay" id="drawerOverlay">
-
-    <aside class="drawer">
-
-        <div class="drawer-top">
-
-            <div class="drawer-label">
-                Palvelun tiedot
-            </div>
-
-            <button
-                type="button"
-                class="drawer-close"
-                id="drawerClose"
-            >
-                Sulje
-            </button>
-
-        </div>
-
-        <h2 id="drawerTitle"></h2>
-
-        <p class="drawer-lead" id="drawerLead"></p>
-
-        <p class="drawer-description" id="drawerDescription"></p>
-
-        <h3 id="drawerServicesHeading">
-            Sinua palvelevat
-        </h3>
-
-        <div id="drawerServices"></div>
-
-    </aside>
-
-</div>
-
-<!-- =========================================================
-     VIDEO MODAL
-========================================================= -->
-
-<div class="modal-overlay" id="videoModal">
-
-    <div class="modal">
-
-        <div class="modal-top">
-
-            <h2>
-                Varatulle videovastaanotolle liittyminen
-            </h2>
-
-            <button
-                class="modal-close"
-                id="videoClose"
-                type="button"
-            >
-                Sulje
-            </button>
-
-        </div>
-
-        <p style="line-height:1.55;margin:0;">
-            Jos olet tulossa varatulle videovastaanotolle, odota rauhassa.
-            Ammattilainen lähettää sinulle viestin, jota painamalla siirryt
-            vastaanotolle kun se alkaa. Keskustelun löydät valikosta
-            Digiasioinnin alta.
-        </p>
-
-    </div>
-
-</div>
-
-<!-- =========================================================
-     LOMAKE MODAL
-========================================================= -->
-
-<div class="modal-overlay" id="formModal">
-
-    <div class="modal form-modal">
-
-        <div class="form-modal-header">
-
-            <div class="form-brand">
-
-                <img
-                    src="hyvaks-logo.png"
-                    alt="Keski-Suomen hyvinvointialue"
-                    class="form-logo"
-                >
-
-                <div class="form-brand-text">
-                    Keski-Suomen hyvinvointialue<br>
-                    Sosiaali- ja terveyspalvelut
-                </div>
-
-            </div>
-
-            <button
-                type="button"
-                class="modal-close"
-                id="formClose"
-            >
-                Sulje
-            </button>
-
-        </div>
-
-        <div id="formContainer"></div>
-
-    </div>
-
-</div>
-
-<script>
-
-/* =========================================================
-   VIEW NAVIGATION
-========================================================= */
-
-const views = {
-    digital: document.getElementById('digitalView'),
-    forms: document.getElementById('formsView'),
-    bot: document.getElementById('botView')
-};
-
-const viewData = {
-    digital: {
-        title:'Digiasiointi',
-        description:'Palvelemme sinua terveyteesi ja hyvinvointiisi liittyvissä asioissa.'
-    },
-
-    forms: {
-        title:'Lomakkeet',
-        description:'Lomakkeet'
-    },
-
-    bot: {
-        title:'Chat-botti',
-        description:'Digitaalinen palveluohjaus'
-    }
-};
-
-const pageTitle =
-    document.getElementById('pageTitle');
-
-const pageDescription =
-    document.getElementById('pageDescription');
-
-document
-    .querySelectorAll('[data-view]')
-    .forEach(button => {
-
-        button.addEventListener('click', () => {
-
-            const target =
-                button.dataset.view;
-
-            Object.values(views)
-                .forEach(view =>
-                    view.classList.add('hidden')
-                );
-
-            views[target]
-                .classList.remove('hidden');
-
-            document
-                .querySelectorAll('[data-view]')
-                .forEach(item =>
-                    item.classList.remove('active')
-                );
-
-            button.classList.add('active');
-
-            pageTitle.textContent =
-                viewData[target].title;
-
-            pageDescription.textContent =
-                viewData[target].description;
-
-            window.scrollTo({
-                top:0,
-                behavior:'smooth'
-            });
-
-        });
-
-    });
-
-/* =========================================================
-   VIDEO INFO
-========================================================= */
-
-const videoModal =
-    document.getElementById('videoModal');
-
-document
-    .getElementById('videoInfo')
-    .addEventListener('click', () => {
-        videoModal.classList.add('open');
-    });
-
-document
-    .getElementById('videoClose')
-    .addEventListener('click', () => {
-        videoModal.classList.remove('open');
-    });
-
-document
-    .getElementById('closeBanner')
-    .addEventListener('click', () => {
-        document
-            .getElementById('videoBanner')
-            .classList.add('hidden');
-    });
-
-/* =========================================================
-   DRAWER DATA
-========================================================= */
-
-const drawerData = {
-
-    "family-contact":{
-        title:"Lasten, nuorten ja perheiden kiireetön yhteydenottopyyntö",
-        lead:"Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.",
-        description:"Valitse alta palvelu, johon haluat jättää kiireettömän yhteydenottopyynnön.",
-        services:[
-            {
-                title:"Perheoikeudelliset palvelut / lastenvalvoja",
-                description:"Vastaamme yhteydenottopyyntöösi 1–5 arkipäivän kuluessa."
-            },
-            {
-                title:"Lapsiperheiden sosiaalipalvelut",
-                description:"Jätä kiireetön yhteydenottopyyntö lapsiperheiden palveluihin."
-            },
-            {
-                title:"Nuorten palvelut",
-                description:"Jätä kiireetön yhteydenottopyyntö nuoren tilanteeseen liittyvässä asiassa."
-            }
-        ]
-    },
-
-    "family-chat":{
-        title:"Lasten, nuorten ja perheiden chatit",
-        lead:"Keskustele ammattilaisen kanssa chatin aukioloaikana.",
-        description:"Valitse alta palvelu, jossa haluat asioida. Chat on tarkoitettu asioihin, jotka on tarpeen hoitaa saman päivän aikana.",
-        services:[
-            {
-                title:"Lapsiperheiden palveluohjaus",
-                description:"Keskustele lapsiperheiden palveluista ammattilaisen kanssa."
-            },
-            {
-                title:"Nuorten palveluohjaus",
-                description:"Keskustele nuorten palveluihin liittyvistä kysymyksistä."
-            }
-        ]
-    },
-
-    "working-contact":{
-        title:"Työikäisten kiireetön yhteydenottopyyntö",
-        lead:"Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.",
-        description:"Valitse alta palvelu, johon haluat jättää kiireettömän yhteydenottopyynnön.",
-        services:[
-            {
-                title:"Sosiaali- ja terveyspalvelujen ohjaus",
-                description:"Jätä kiireetön yhteydenottopyyntö palveluohjausta varten."
-            },
-            {
-                title:"Mielenterveys- ja päihdepalvelut",
-                description:"Jätä kiireetön yhteydenottopyyntö mielenterveyteen tai päihteisiin liittyvässä asiassa."
-            },
-            {
-                title:"Terveyspalvelut",
-                description:"Jätä kiireetön yhteydenottopyyntö terveyteen liittyvässä asiassa."
-            }
-        ]
-    },
-
-    "working-chat":{
-        title:"Työikäisten chatit",
-        lead:"Keskustele ammattilaisen kanssa chatin aukioloaikana.",
-        description:"Valitse alta palvelu, jossa haluat asioida.",
-        services:[
-            {
-                title:"Työikäisten palveluohjaus",
-                description:"Keskustele sosiaali- ja terveyspalveluihin liittyvistä kysymyksistä."
-            },
-            {
-                title:"Terveyspalvelujen chat",
-                description:"Keskustele terveyteen liittyvästä asiasta ammattilaisen kanssa."
-            }
-        ]
-    },
-
-    "senior-contact":{
-        title:"Ikääntyneiden kiireetön yhteydenottopyyntö",
-        lead:"Voit jättää kiireettömän yhteydenottopyynnön ammattilaiselle.",
-        description:"Valitse alta palvelu, johon haluat jättää kiireettömän yhteydenottopyynnön.",
-        services:[
-            {
-                title:"Seniorineuvonta",
-                description:"Jätä kiireetön yhteydenottopyyntö ikääntyneiden palveluihin liittyvässä asiassa."
-            },
-            {
-                title:"Ikääntyneiden palveluohjaus",
-                description:"Saat ohjausta ja neuvontaa palveluiden järjestämiseen liittyvissä asioissa."
-            },
-            {
-                title:"Omaishoidon palvelut",
-                description:"Jätä yhteydenottopyyntö omaishoitoon liittyvässä asiassa."
-            }
-        ]
-    },
-
-    "senior-chat":{
-        title:"Ikääntyneiden chatit",
-        lead:"Keskustele ammattilaisen kanssa chatin aukioloaikana.",
-        description:"Valitse alta palvelu, jossa haluat asioida.",
-        services:[
-            {
-                title:"Seniorineuvonnan chat",
-                description:"Keskustele ikääntyneiden palveluista ammattilaisen kanssa."
-            },
-            {
-                title:"Ikääntyneiden palveluohjaus",
-                description:"Saat chatissa yleistä ohjausta ja neuvontaa palveluihin."
-            }
-        ]
-    }
-
-};
-
-/* =========================================================
-   DRAWER
-========================================================= */
-
-const drawerOverlay =
-    document.getElementById('drawerOverlay');
-
-const drawerTitle =
-    document.getElementById('drawerTitle');
-
-const drawerLead =
-    document.getElementById('drawerLead');
-
-const drawerDescription =
-    document.getElementById('drawerDescription');
-
-const drawerServices =
-    document.getElementById('drawerServices');
-
-function openDrawer(key){
-
-    const data =
-        drawerData[key];
-
-    if(!data){
-        return;
-    }
-
-    drawerTitle.textContent =
-        data.title;
-
-    drawerLead.textContent =
-        data.lead;
-
-    drawerDescription.textContent =
-        data.description;
-
-    drawerServices.innerHTML = '';
-
-    data.services.forEach(service => {
-
-        const button =
-            document.createElement('button');
-
-        button.type =
-            'button';
-
-        button.className =
-            'drawer-service';
-
-        button.innerHTML = `
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="7" r="3"></circle>
-                <path d="M5 21c.7-5 3-8 7-8s6.3 3 7 8"></path>
-            </svg>
-
-            <div>
-                <div class="drawer-service-title">
-                    ${service.title}
-                </div>
-
-                <div class="drawer-service-desc">
-                    ${service.description}
-                </div>
-            </div>
-
-            <div class="arrow">›</div>
-        `;
-
-        button.addEventListener(
-            'click',
-            () => {
-
-                alert(
-                    'Palvelu valittu: ' +
-                    service.title
-                );
-
-            }
-        );
-
-        drawerServices.appendChild(
-            button
-        );
-
-    });
-
-    drawerOverlay.classList.add('open');
-
-}
-
-document
-    .querySelectorAll('[data-drawer]')
-    .forEach(button => {
-
-        button.addEventListener(
-            'click',
-            () => {
-                openDrawer(
-                    button.dataset.drawer
-                );
-            }
-        );
-
-    });
-
-document
-    .getElementById('drawerClose')
-    .addEventListener('click', () => {
-        drawerOverlay.classList.remove('open');
-    });
-
-drawerOverlay.addEventListener(
-    'click',
-    event => {
-
-        if(event.target === drawerOverlay){
-            drawerOverlay.classList.remove('open');
-        }
-
-    }
-);
-
-/* =========================================================
-   FORM SEARCH
-========================================================= */
-
-const formSearch =
-    document.getElementById('formSearch');
-
-formSearch.addEventListener(
-    'input',
-    () => {
-
-        const query =
-            formSearch.value
-                .trim()
-                .toLocaleLowerCase('fi');
-
-        document
-            .querySelectorAll('.form-list-item')
-            .forEach(item => {
-
-                const text =
-                    item.dataset.search
-                        .toLocaleLowerCase('fi');
-
-                item.style.display =
-                    text.includes(query)
-                        ? 'grid'
-                        : 'none';
-
-            });
-
-    }
-);
-
-/* =========================================================
-   FORM TEMPLATES
-========================================================= */
-
-function familyCareForm(){
-
-    return `
-        <form
-            class="form-body"
-            data-form-submit
-        >
-
-            <div class="form-eyebrow">
-                Keski-Suomen hyvinvointialue
-            </div>
-
-            <h2>
-                Iäkkäiden ja/tai vammaisten perhehoitajaksi hakevan esitietolomake
-            </h2>
-
-            <p class="form-intro">
-                Tällä lomakkeella voit antaa esitietoja hakiessasi
-                iäkkäiden ja/tai vammaisten henkilöiden perhehoitajaksi.
-                Täytä pyydetyt tiedot mahdollisimman huolellisesti.
-            </p>
-
-            <div class="form-info">
-                Lomakkeen tiedot käsitellään tässä demoversiossa vain selaimessa.
-                Älä kirjoita lomakkeelle oikeita arkaluonteisia henkilötietoja.
-            </div>
-
-            <section class="form-section">
-
-                <h3>
-                    Hakijan perustiedot
-                </h3>
-
-                <div class="field">
-                    <label>
-                        Nimi
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        required
-                    >
-                </div>
-
-                <div class="field">
-                    <label>
-                        Puhelinnumero
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="tel"
-                        required
-                    >
-                </div>
-
-                <div class="field">
-                    <label>
-                        Sähköpostiosoite
-                    </label>
-
-                    <input type="email">
-                </div>
-
-                <div class="field">
-                    <label>
-                        Asuinkunta
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        required
-                    >
-                </div>
-
-            </section>
-
-            <section class="form-section">
-
-                <h3>
-                    Perhehoitajaksi hakeutuminen
-                </h3>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Millaiseen perhehoitoon olet ensisijaisesti kiinnostunut hakeutumaan?
-                        <span class="required">*</span>
-                    </span>
-
-                    <div class="check-list">
-
-                        <label class="option">
-                            <input type="checkbox">
-                            Iäkkäiden henkilöiden perhehoito
-                        </label>
-
-                        <label class="option">
-                            <input type="checkbox">
-                            Vammaisten henkilöiden perhehoito
-                        </label>
-
-                        <label class="option">
-                            <input type="checkbox">
-                            Lyhytaikainen perhehoito
-                        </label>
-
-                        <label class="option">
-                            <input type="checkbox">
-                            Pitkäaikainen perhehoito
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Onko sinulla aikaisempaa kokemusta hoiva-, sosiaali- tai terveysalalta?
-                    </span>
-
-                    <div class="radio-list">
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="experience"
-                                value="yes"
-                            >
-                            Kyllä
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="experience"
-                                value="no"
-                            >
-                            Ei
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Kerro koulutuksestasi ja mahdollisesta aikaisemmasta kokemuksestasi
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-            </section>
-
-            <section class="form-section">
-
-                <h3>
-                    Perhehoitoon käytettävissä olevat tilat
-                </h3>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Onko kodissasi perhehoitoon soveltuvaa tilaa?
-                    </span>
-
-                    <div class="radio-list">
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="space"
-                            >
-                            Kyllä
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="space"
-                            >
-                            Ei
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="space"
-                            >
-                            En osaa vielä arvioida
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Kuvaile lyhyesti asumisolosuhteitasi ja perhehoitoon käytettävissä olevia tiloja
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-            </section>
-
-            <section class="form-section">
-
-                <h3>
-                    Lisätiedot
-                </h3>
-
-                <div class="field">
-
-                    <label>
-                        Mitä muuta haluaisit kertoa perhehoitajaksi hakeutumisestasi?
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-            </section>
-
-            <div class="form-actions">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    data-close-form
-                >
-                    Peruuta
-                </button>
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                >
-                    Lähetä lomake
-                </button>
-
-            </div>
-
-        </form>
-    `;
-
-}
-
-function rehabForm(){
-
-    return `
-        <form
-            class="form-body"
-            data-form-submit
-        >
-
-            <div class="form-eyebrow">
-                Keski-Suomen hyvinvointialue
-            </div>
-
-            <h2>
-                Kuntoutustutkimuspoliklinikan SEURANTAKYSELY
-            </h2>
-
-            <p class="form-intro">
-                Täytä seurantakysely, jos olet ollut
-                kuntoutustutkimuspoliklinikan jaksolla.
-                Vastauksilla arvioidaan tilanteesi muutosta ja
-                kuntoutuksen jatkotarpeita.
-            </p>
-
-            <div class="form-info">
-                Lomakkeen tiedot käsitellään tässä demoversiossa vain selaimessa.
-                Älä kirjoita lomakkeelle oikeita arkaluonteisia henkilötietoja.
-            </div>
-
-            <section class="form-section">
-
-                <h3>
-                    Perustiedot
-                </h3>
-
-                <div class="field">
-
-                    <label>
-                        Nimi
-                        <span class="required">*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        required
-                    >
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Sähköpostiosoite
-                    </label>
-
-                    <input type="email">
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Puhelinnumero
-                    </label>
-
-                    <input type="tel">
-
-                </div>
-
-            </section>
-
-            <section class="form-section">
-
-                <h3>
-                    Tilanteesi tällä hetkellä
-                </h3>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Miten arvioit toimintakykysi tällä hetkellä?
-                    </span>
-
-                    <select>
-                        <option value="">
-                            Valitse
-                        </option>
-                        <option>
-                            Erittäin hyvä
-                        </option>
-                        <option>
-                            Hyvä
-                        </option>
-                        <option>
-                            Kohtalainen
-                        </option>
-                        <option>
-                            Heikko
-                        </option>
-                        <option>
-                            Erittäin heikko
-                        </option>
-                    </select>
-
-                </div>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Onko tilanteesi muuttunut kuntoutustutkimuspoliklinikan jakson jälkeen?
-                    </span>
-
-                    <div class="radio-list">
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="change"
-                            >
-                            Tilanteeni on parantunut
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="change"
-                            >
-                            Tilanteeni on pysynyt suunnilleen ennallaan
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="change"
-                            >
-                            Tilanteeni on heikentynyt
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Kuvaile mahdollisia muutoksia tilanteessasi
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-            </section>
-
-            <section class="form-section">
-
-                <h3>
-                    Kuntoutus ja jatkosuunnitelma
-                </h3>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Oletko osallistunut sinulle suositeltuun kuntoutukseen tai muihin jatkotoimiin?
-                    </span>
-
-                    <div class="radio-list">
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="rehab"
-                            >
-                            Kyllä
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="rehab"
-                            >
-                            Osittain
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="rehab"
-                            >
-                            En
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Mitkä kuntoutuksen tai jatkohoidon asiat ovat toteutuneet?
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-                <div class="field">
-
-                    <span class="field-label">
-                        Koetko tarvitsevasi tällä hetkellä lisää tukea?
-                    </span>
-
-                    <div class="radio-list">
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="support"
-                            >
-                            Kyllä
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="support"
-                            >
-                            En
-                        </label>
-
-                        <label class="option">
-                            <input
-                                type="radio"
-                                name="support"
-                            >
-                            En osaa sanoa
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="field">
-
-                    <label>
-                        Lisätietoja tilanteestasi
-                    </label>
-
-                    <textarea></textarea>
-
-                </div>
-
-            </section>
-
-            <div class="form-actions">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    data-close-form
-                >
-                    Peruuta
-                </button>
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                >
-                    Lähetä kysely
-                </button>
-
-            </div>
-
-        </form>
-    `;
-
-}
-
-/* =========================================================
-   OPEN FORM
-========================================================= */
-
-const formModal =
-    document.getElementById('formModal');
-
-const formContainer =
-    document.getElementById('formContainer');
-
-document
-    .querySelectorAll('[data-form]')
-    .forEach(button => {
-
-        button.addEventListener(
-            'click',
-            () => {
-
-                const type =
-                    button.dataset.form;
-
-                if(type === 'family-care'){
-                    formContainer.innerHTML =
-                        familyCareForm();
-                }
-
-                if(type === 'rehab-followup'){
-                    formContainer.innerHTML =
-                        rehabForm();
-                }
-
-                bindFormEvents();
-
-                formModal.classList.add('open');
-
-            }
-        );
-
-    });
-
-document
-    .getElementById('formClose')
-    .addEventListener(
-        'click',
-        () => {
-            formModal.classList.remove('open');
-        }
-    );
-
-function bindFormEvents(){
-
-    formContainer
-        .querySelectorAll('[data-close-form]')
-        .forEach(button => {
-
-            button.addEventListener(
-                'click',
-                () => {
-                    formModal.classList.remove('open');
-                }
-            );
-
-        });
-
-    const form =
-        formContainer.querySelector(
-            '[data-form-submit]'
-        );
-
-    if(form){
-
-        form.addEventListener(
-            'submit',
-            event => {
-
-                event.preventDefault();
-
-                formContainer.innerHTML = `
-                    <div class="form-success">
-
-                        <div class="success-symbol">
-                            ✓
-                        </div>
-
-                        <h2>
-                            Lomake on vastaanotettu
-                        </h2>
-
-                        <p>
-                            Kiitos vastauksestasi.
-                            Tässä demoversiossa lomakkeen tietoja
-                            ei tallenneta eikä lähetetä palveluun.
-                        </p>
-
-                        <div class="form-actions" style="justify-content:center;">
-
-                            <button
-                                type="button"
-                                class="primary-button"
-                                onclick="document.getElementById('formModal').classList.remove('open')"
-                            >
-                                Sulje
-                            </button>
-
-                        </div>
-
-                    </div>
-                `;
-
-            }
-        );
-
-    }
-
-}
-
-/* =========================================================
    CHAT BOT
+   ÄLYKKÄÄMPI PAIKALLINEN PALVELUOHJAAJA
 ========================================================= */
 
 const messages =
@@ -3095,8 +545,31 @@ const botForm =
 const botInput =
     document.getElementById('botInput');
 
-let botStarted =
-    false;
+let botStarted = false;
+
+/*
+    Keskustelun kevyt muisti.
+
+    Botti muistaa esimerkiksi:
+    - puhuttiinko lapsesta, nuoresta, työikäisestä tai ikääntyneestä
+    - puhuttiinko mielenterveydestä, terveyspalveluista tai lomakkeesta
+    - kysyikö botti tarkentavan kysymyksen
+*/
+
+const botState = {
+    audience: null,
+    topic: null,
+    urgency: null,
+    pendingQuestion: null,
+    lastIntent: null,
+    lastUserMessage: '',
+    turns: 0
+};
+
+
+/* =========================================================
+   AIKA
+========================================================= */
 
 function getTime(){
 
@@ -3109,6 +582,11 @@ function getTime(){
     ).format(new Date());
 
 }
+
+
+/* =========================================================
+   VIESTIN LISÄÄMINEN
+========================================================= */
 
 function addMessage(
     text,
@@ -3171,6 +649,11 @@ function addMessage(
 
 }
 
+
+/* =========================================================
+   BOTIN KÄYNNISTYS
+========================================================= */
+
 function ensureBotStarted(){
 
     if(botStarted){
@@ -3180,10 +663,14 @@ function ensureBotStarted(){
     botStarted = true;
 
     addMessage(
-        'Hei! Olen digitaalinen palveluohjaaja. Voin auttaa löytämään oikean palvelun tai lomakkeen. Kerro omin sanoin, missä asiassa tarvitset apua.'
+        'Hei! Olen Keski-Suomen hyvinvointialueen digitaalinen palveluohjaaja.\n\n' +
+        'Voin auttaa sinua löytämään tilanteeseesi sopivan palvelun, digiasioinnin tai lomakkeen. ' +
+        'Voit kirjoittaa asiasi omin sanoin – sinun ei tarvitse tietää palvelun nimeä.\n\n' +
+        'Esimerkiksi: ”Tarvitsen apua nuoren mielenterveysasioissa”, ”Mihin otan yhteyttä terveysasiassa?” tai ”Etsin kuntoutuksen seurantakyselyä”.'
     );
 
 }
+
 
 document
     .querySelector('[data-view="bot"]')
@@ -3202,180 +689,1882 @@ document
         }
     );
 
+
+/* =========================================================
+   TEKSTIN NORMALISOINTI
+========================================================= */
+
 function normalize(text){
 
-    return text
+    return String(text || '')
         .toLocaleLowerCase('fi')
         .normalize('NFD')
         .replace(
             /[\u0300-\u036f]/g,
             ''
-        );
+        )
+        .replace(/[.,!?;:()[\]{}"'´`]/g,' ')
+        .replace(/\s+/g,' ')
+        .trim();
 
 }
 
-function contains(text,words){
 
-    return words.some(
+/* =========================================================
+   SANAT JA SAMANKALTAISUUS
+========================================================= */
+
+function words(text){
+
+    return normalize(text)
+        .split(' ')
+        .filter(Boolean);
+
+}
+
+
+function contains(text, searchWords){
+
+    const normalized =
+        normalize(text);
+
+    return searchWords.some(
         word =>
-            text.includes(
+            normalized.includes(
                 normalize(word)
             )
     );
 
 }
 
-function botReply(text){
 
-    const message =
-        normalize(text);
+/*
+    Levenshtein-etäisyys.
 
-    if(
-        contains(
-            message,
-            [
-                'tajuton',
-                'ei hengita',
-                'en saa henkea',
-                'vakava verenvuoto',
-                'halvaus',
-                'rintakipu',
-                'hätätilanne',
-                'hatatilanne'
-            ]
-        )
-    ){
+    Tämän ansiosta botti ymmärtää myös pieniä
+    kirjoitusvirheitä kuten:
 
-        return 'Jos henki tai terveys on välittömässä vaarassa, soita hätänumeroon 112. Älä jää odottamaan vastausta chatissa.';
+    mielenterveydesä
+    terveysasemaaa
+    nuorelle
+    lomaketta
+*/
+
+function levenshtein(a,b){
+
+    a = normalize(a);
+    b = normalize(b);
+
+    if(a === b){
+        return 0;
+    }
+
+    if(!a.length){
+        return b.length;
+    }
+
+    if(!b.length){
+        return a.length;
+    }
+
+    const matrix = [];
+
+    for(let i = 0; i <= b.length; i++){
+        matrix[i] = [i];
+    }
+
+    for(let j = 0; j <= a.length; j++){
+        matrix[0][j] = j;
+    }
+
+    for(let i = 1; i <= b.length; i++){
+
+        for(let j = 1; j <= a.length; j++){
+
+            if(
+                b.charAt(i - 1) ===
+                a.charAt(j - 1)
+            ){
+                matrix[i][j] =
+                    matrix[i - 1][j - 1];
+            }
+            else{
+
+                matrix[i][j] =
+                    Math.min(
+                        matrix[i - 1][j - 1] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j] + 1
+                    );
+
+            }
+
+        }
 
     }
 
+    return matrix[b.length][a.length];
+
+}
+
+
+function fuzzyWordMatch(
+    messageWord,
+    target
+){
+
+    const a =
+        normalize(messageWord);
+
+    const b =
+        normalize(target);
+
+    if(
+        !a ||
+        !b
+    ){
+        return false;
+    }
+
+    if(
+        a.includes(b) ||
+        b.includes(a)
+    ){
+        return true;
+    }
+
+    if(
+        a.length < 5 ||
+        b.length < 5
+    ){
+        return false;
+    }
+
+    const distance =
+        levenshtein(a,b);
+
+    const allowed =
+        Math.max(
+            1,
+            Math.floor(
+                Math.max(
+                    a.length,
+                    b.length
+                ) / 5
+            )
+        );
+
+    return distance <= allowed;
+
+}
+
+
+function fuzzyContains(
+    text,
+    targets
+){
+
+    const messageWords =
+        words(text);
+
+    return targets.some(
+        target =>
+
+            messageWords.some(
+                messageWord =>
+                    fuzzyWordMatch(
+                        messageWord,
+                        target
+                    )
+            )
+
+    );
+
+}
+
+
+function matches(
+    text,
+    targets
+){
+
+    return (
+        contains(
+            text,
+            targets
+        )
+        ||
+        fuzzyContains(
+            text,
+            targets
+        )
+    );
+
+}
+
+
+/* =========================================================
+   TERVEHDYKSET JA YLEISET ILMAUKSET
+========================================================= */
+
+function isGreeting(message){
+
+    const clean =
+        normalize(message);
+
+    const greetings = [
+        'hei',
+        'moi',
+        'moikka',
+        'terve',
+        'heippa',
+        'moro',
+        'morjens',
+        'päivää',
+        'paivaa',
+        'hyvää päivää',
+        'hyvaa paivaa'
+    ];
+
+    return greetings.some(
+        greeting =>
+            clean === normalize(greeting)
+    );
+
+}
+
+
+function isThanks(message){
+
+    return matches(
+        message,
+        [
+            'kiitos',
+            'kiitti',
+            'kiitoksia',
+            'thanks',
+            'thx'
+        ]
+    );
+
+}
+
+
+function isYes(message){
+
+    const clean =
+        normalize(message);
+
+    return [
+        'kyllä',
+        'kylla',
+        'joo',
+        'juu',
+        'jep',
+        'jes',
+        'ok',
+        'okei',
+        'tottakai'
+    ].includes(clean);
+
+}
+
+
+function isNo(message){
+
+    const clean =
+        normalize(message);
+
+    return [
+        'ei',
+        'en',
+        'eip',
+        'eikä',
+        'eika',
+        'en tarvitse',
+        'ei kiitos'
+    ].includes(clean);
+
+}
+
+
+/* =========================================================
+   HÄTÄTILANTEIDEN TUNNISTUS
+========================================================= */
+
+function detectEmergency(message){
+
+    const m =
+        normalize(message);
+
+    const immediate = [
+        'ei hengita',
+        'hengitys pysahtynyt',
+        'hengitys on pysahtynyt',
+        'tajuton',
+        'ei heraa',
+        'ei reagoi',
+        'eloton',
+        'sydanpysahdys',
+        'sydan pysahtyi',
+        'runsas verenvuoto',
+        'vakava verenvuoto',
+        'verta tulee paljon',
+        'tukehtuu',
+        'tukehtuminen',
+        'hukkuminen',
+        'vakava onnettomuus',
+        'hengenvaarassa'
+    ];
+
     if(
         contains(
+            m,
+            immediate
+        )
+    ){
+        return true;
+    }
+
+
+    /*
+        Rintakipu ei yksin aina tarkoita hätätilannetta,
+        joten etsitään myös vakavuuteen viittaavia sanoja.
+    */
+
+    if(
+        contains(
+            m,
+            [
+                'rintakipu',
+                'rintaan sattuu',
+                'puristaa rinnasta'
+            ]
+        )
+        &&
+        contains(
+            m,
+            [
+                'kova',
+                'voimakas',
+                'yhtäkkiä',
+                'yhtakkia',
+                'hengitysvaikeus',
+                'huimaa',
+                'pyörryttää',
+                'pyorryttaa',
+                'kylmä hiki',
+                'kylma hiki'
+            ]
+        )
+    ){
+        return true;
+    }
+
+
+    if(
+        contains(
+            m,
+            [
+                'halvaus',
+                'aivohalvaus'
+            ]
+        )
+    ){
+        return true;
+    }
+
+
+    if(
+        contains(
+            m,
+            [
+                'en saa henkea',
+                'en pysty hengittamaan',
+                'vakava hengitysvaikeus',
+                'hengitys todella vaikeaa'
+            ]
+        )
+    ){
+        return true;
+    }
+
+
+    return false;
+
+}
+
+
+/* =========================================================
+   KOHDEHENKILÖN TUNNISTUS
+========================================================= */
+
+function detectAudience(message){
+
+    if(
+        matches(
             message,
             [
                 'lapsi',
-                'nuori',
-                'perhe',
+                'lapselle',
+                'lapseni',
+                'lapsella',
                 'lasten',
-                'nuorten'
+                'vauva',
+                'vauvalle',
+                'vauvan',
+                'taapero',
+                'perhe',
+                'perheelle',
+                'lapsiperhe'
             ]
         )
     ){
-
-        return 'Lasten, nuorten ja perheiden palveluissa voit valita kiireettömän yhteydenottopyynnön tai chatin. Avaa vasemmalta Digiasiointi ja valitse kohta Lapset, nuoret ja perheet.';
-
+        return 'family';
     }
 
+
     if(
-        contains(
+        matches(
+            message,
+            [
+                'nuori',
+                'nuorelle',
+                'nuorella',
+                'nuoreni',
+                'nuorten',
+                'teini',
+                'teini-ikäinen',
+                'teini-ikainen',
+                'opiskelija',
+                'koululainen'
+            ]
+        )
+    ){
+        return 'family';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'ikääntynyt',
+                'ikaantynyt',
+                'ikäihminen',
+                'ikaihminen',
+                'vanhus',
+                'seniori',
+                'iäkäs',
+                'iakas',
+                'isoäiti',
+                'isoaiti',
+                'isoisä',
+                'isoisa',
+                'vanhemmalleni',
+                'äidilleni',
+                'aidilleni',
+                'isälleni',
+                'isalleni'
+            ]
+        )
+    ){
+        return 'senior';
+    }
+
+
+    if(
+        matches(
             message,
             [
                 'työikäinen',
                 'tyoikainen',
                 'työikäisten',
-                'tyoikaisten'
+                'tyoikaisten',
+                'aikuinen',
+                'aikuiselle'
             ]
         )
     ){
-
-        return 'Työikäisten palveluissa voit jättää kiireettömän yhteydenottopyynnön tai valita chat-palvelun. Löydät ne Digiasiointi-näkymästä.';
-
+        return 'working';
     }
 
+
+    return null;
+
+}
+
+
+/* =========================================================
+   AIHEEN TUNNISTUS
+========================================================= */
+
+function detectTopic(message){
+
     if(
-        contains(
+        matches(
             message,
             [
-                'ikääntynyt',
-                'ikaantynyt',
-                'seniori',
-                'vanhus',
-                'ikääntyneiden'
+                'mielenterveys',
+                'mielenterveyspalvelu',
+                'ahdistus',
+                'ahdistaa',
+                'masennus',
+                'masentunut',
+                'paniikki',
+                'paniikkikohtaus',
+                'jaksaminen',
+                'en jaksa',
+                'psykologi',
+                'psykiatr',
+                'terapia',
+                'kriisi',
+                'alakulo',
+                'stressi',
+                'uupumus'
             ]
         )
     ){
-
-        return 'Ikääntyneiden palveluissa voit jättää kiireettömän yhteydenottopyynnön tai valita chat-palvelun. Löydät ne Digiasiointi-näkymästä.';
-
+        return 'mental';
     }
 
+
     if(
-        contains(
+        matches(
             message,
             [
-                'perhehoitaja',
-                'perhehoitajaksi'
+                'päihde',
+                'paihde',
+                'alkoholi',
+                'huume',
+                'huumeet',
+                'riippuvuus',
+                'päihteet',
+                'paihteet'
             ]
         )
     ){
-
-        return 'Lomakkeista löydät Iäkkäiden ja/tai vammaisten perhehoitajaksi hakevan esitietolomakkeen. Valitse vasemmalta Lomakkeet.';
-
+        return 'substance';
     }
 
+
     if(
-        contains(
+        matches(
             message,
             [
-                'kuntoutus',
-                'seurantakysely',
-                'kuntoutustutkimus'
+                'hammas',
+                'hammashoito',
+                'suun terveys',
+                'hammassärky',
+                'hammassarky',
+                'hammaslääkäri',
+                'hammaslaakari'
             ]
         )
     ){
-
-        return 'Lomakkeista löydät Kuntoutustutkimuspoliklinikan SEURANTAKYSELYN. Valitse vasemmalta Lomakkeet.';
-
+        return 'dental';
     }
 
+
     if(
-        contains(
+        matches(
+            message,
+            [
+                'rokote',
+                'rokotus',
+                'rokotukset',
+                'influenssarokote',
+                'jäykkäkouristus',
+                'jaykkakouristus'
+            ]
+        )
+    ){
+        return 'vaccination';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'ehkäisy',
+                'ehkaisy',
+                'kondomi',
+                'ehkäisypilleri',
+                'ehkaisypilleri',
+                'seksuaaliterveys',
+                'raskaustesti',
+                'raskaana',
+                'raskaus'
+            ]
+        )
+    ){
+        return 'sexual';
+    }
+
+
+    if(
+        matches(
             message,
             [
                 'lomake',
-                'lomakkeet'
+                'lomakkeen',
+                'lomaketta',
+                'lomakkeet',
+                'kysely',
+                'kaavake'
             ]
         )
     ){
-
-        return 'Valitse vasemman reunan Lomakkeet. Siellä ovat perhehoitajaksi hakevan esitietolomake ja kuntoutustutkimuspoliklinikan seurantakysely.';
-
+        return 'form';
     }
+
 
     if(
-        contains(
+        matches(
             message,
             [
-                'hei',
-                'moi',
-                'terve',
-                'moikka'
+                'perhehoitaja',
+                'perhehoitajaksi',
+                'perhehoito'
             ]
         )
     ){
-
-        return 'Hei! Miten voin auttaa? Voit kysyä esimerkiksi lasten ja nuorten, työikäisten tai ikääntyneiden palveluista tai lomakkeista.';
-
+        return 'familycareform';
     }
+
 
     if(
-        contains(
+        matches(
             message,
             [
-                'kiitos',
-                'kiitti'
+                'kuntoutustutkimus',
+                'seurantakysely',
+                'kuntoutuksen seurantakysely',
+                'kuntoutuspoliklinikka'
             ]
         )
     ){
-
-        return 'Ole hyvä. Voinko auttaa vielä jonkin palvelun löytämisessä?';
-
+        return 'rehabform';
     }
 
-    return 'En löytänyt tähän vielä suoraa vastausta. Voin auttaa löytämään lasten, nuorten ja perheiden palveluita, työikäisten palveluita, ikääntyneiden palveluita sekä sähköisiä lomakkeita.';
+
+    if(
+        matches(
+            message,
+            [
+                'sosiaalipalvelu',
+                'sosiaalityö',
+                'sosiaalityo',
+                'sosiaalityöntekijä',
+                'sosiaalityontekija',
+                'toimeentulo',
+                'talousvaikeus',
+                'rahaongelma',
+                'asumisongelma',
+                'palveluohjaus'
+            ]
+        )
+    ){
+        return 'social';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'lääkäri',
+                'laakari',
+                'sairaanhoitaja',
+                'terveydenhoitaja',
+                'terveysasema',
+                'sairas',
+                'oire',
+                'kipu',
+                'kuume',
+                'yskä',
+                'yska',
+                'flunssa',
+                'päänsärky',
+                'paansarky',
+                'vatsakipu',
+                'selkäkipu',
+                'selkakipu',
+                'haava',
+                'ihottuma',
+                'terveys',
+                'terveyspalvelu'
+            ]
+        )
+    ){
+        return 'health';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'ajanvaraus',
+                'ajan varaaminen',
+                'varata aika',
+                'varaan ajan',
+                'vastaanottoaika',
+                'vastaanotolle'
+            ]
+        )
+    ){
+        return 'appointment';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'chat',
+                'chatissa',
+                'chatti',
+                'keskustella ammattilaisen',
+                'ammattilaiselle heti'
+            ]
+        )
+    ){
+        return 'chat';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'yhteydenotto',
+                'yhteydenottopyyntö',
+                'yhteydenottopyynto',
+                'ottaa yhteyttä',
+                'ottaa yhteytta',
+                'yhteyttä',
+                'yhteytta'
+            ]
+        )
+    ){
+        return 'contact';
+    }
+
+
+    return null;
 
 }
+
+
+/* =========================================================
+   KIIREELLISYYDEN TUNNISTUS
+========================================================= */
+
+function detectUrgency(message){
+
+    if(
+        matches(
+            message,
+            [
+                'heti',
+                'nyt',
+                'tänään',
+                'tanaan',
+                'samana päivänä',
+                'samana paivana',
+                'kiireellinen',
+                'kiireesti',
+                'nopeasti'
+            ]
+        )
+    ){
+        return 'same-day';
+    }
+
+
+    if(
+        matches(
+            message,
+            [
+                'ei kiire',
+                'ei ole kiire',
+                'kiireetön',
+                'kiireeton',
+                'myöhemmin',
+                'myohemmin',
+                'yhteydenottopyyntö',
+                'yhteydenottopyynto'
+            ]
+        )
+    ){
+        return 'non-urgent';
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   KESKUSTELUN KONTEKSTIN PÄIVITYS
+========================================================= */
+
+function updateContext(message){
+
+    const audience =
+        detectAudience(message);
+
+    const topic =
+        detectTopic(message);
+
+    const urgency =
+        detectUrgency(message);
+
+    if(audience){
+        botState.audience = audience;
+    }
+
+    if(topic){
+        botState.topic = topic;
+    }
+
+    if(urgency){
+        botState.urgency = urgency;
+    }
+
+    botState.lastUserMessage =
+        message;
+
+    botState.turns++;
+
+}
+
+
+/* =========================================================
+   NÄKYMÄN AVAAMINEN BOTIN KAUTTA
+========================================================= */
+
+function openViewFromBot(view){
+
+    const button =
+        document.querySelector(
+            '[data-view="' + view + '"]'
+        );
+
+    if(button){
+        button.click();
+    }
+
+}
+
+
+/* =========================================================
+   PALVELURYHMÄN NIMI
+========================================================= */
+
+function audienceName(audience){
+
+    if(audience === 'family'){
+        return 'lasten, nuorten ja perheiden';
+    }
+
+    if(audience === 'working'){
+        return 'työikäisten';
+    }
+
+    if(audience === 'senior'){
+        return 'ikääntyneiden';
+    }
+
+    return '';
+}
+
+
+/* =========================================================
+   TARKENTAVA KYSYMYS
+========================================================= */
+
+function askUrgency(){
+
+    botState.pendingQuestion =
+        'urgency';
+
+    return (
+        'Selvä. Onko asia sellainen, että tarvitset yhteyden ammattilaiseen jo tänään, vai sopiiko kiireetön yhteydenottopyyntö?\n\n' +
+        'Voit vastata esimerkiksi ”tänään” tai ”ei ole kiire”.'
+    );
+
+}
+
+
+function askAudience(){
+
+    botState.pendingQuestion =
+        'audience';
+
+    return (
+        'Autan mielelläni. Kenelle palvelua etsit?\n\n' +
+        'Voit vastata esimerkiksi: lapselle tai nuorelle, työikäiselle tai ikääntyneelle.'
+    );
+
+}
+
+
+/* =========================================================
+   AIEMMAN KYSYMYKSEN KÄSITTELY
+========================================================= */
+
+function handlePendingQuestion(message){
+
+    if(
+        botState.pendingQuestion ===
+        'urgency'
+    ){
+
+        const urgency =
+            detectUrgency(message);
+
+        if(urgency){
+
+            botState.urgency =
+                urgency;
+
+            botState.pendingQuestion =
+                null;
+
+            return buildServiceRecommendation();
+
+        }
+
+        if(isYes(message)){
+
+            botState.urgency =
+                'same-day';
+
+            botState.pendingQuestion =
+                null;
+
+            return buildServiceRecommendation();
+
+        }
+
+        if(isNo(message)){
+
+            botState.urgency =
+                'non-urgent';
+
+            botState.pendingQuestion =
+                null;
+
+            return buildServiceRecommendation();
+
+        }
+
+    }
+
+
+    if(
+        botState.pendingQuestion ===
+        'audience'
+    ){
+
+        const audience =
+            detectAudience(message);
+
+        if(audience){
+
+            botState.audience =
+                audience;
+
+            botState.pendingQuestion =
+                null;
+
+            if(
+                !botState.urgency &&
+                (
+                    botState.topic === 'health' ||
+                    botState.topic === 'mental' ||
+                    botState.topic === 'social' ||
+                    botState.topic === 'contact' ||
+                    botState.topic === 'chat'
+                )
+            ){
+                return askUrgency();
+            }
+
+            return buildServiceRecommendation();
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   PALVELUSUOSITUKSEN MUODOSTAMINEN
+========================================================= */
+
+function buildServiceRecommendation(){
+
+    const audience =
+        botState.audience;
+
+    const topic =
+        botState.topic;
+
+    const urgency =
+        botState.urgency;
+
+
+    /*
+        LOMAKKEET
+    */
+
+    if(
+        topic === 'familycareform'
+    ){
+
+        botState.lastIntent =
+            'familycareform';
+
+        return (
+            'Löysin sopivan lomakkeen.\n\n' +
+            'Lomakkeet-näkymässä on ”Iäkkäiden ja/tai vammaisten perhehoitajaksi hakevan esitietolomake”.\n\n' +
+            'Valitse vasemman reunan valikosta Lomakkeet ja avaa kyseinen lomake.'
+        );
+
+    }
+
+
+    if(
+        topic === 'rehabform'
+    ){
+
+        botState.lastIntent =
+            'rehabform';
+
+        return (
+            'Löysin etsimäsi kyselyn.\n\n' +
+            'Lomakkeet-näkymässä on ”Kuntoutustutkimuspoliklinikan SEURANTAKYSELY”. Se on tarkoitettu kuntoutustutkimuspoliklinikan jaksolla olleille.\n\n' +
+            'Valitse vasemmalta Lomakkeet ja avaa seurantakysely.'
+        );
+
+    }
+
+
+    if(
+        topic === 'form'
+    ){
+
+        botState.lastIntent =
+            'forms';
+
+        return (
+            'Lomakkeet löytyvät vasemman reunan Lomakkeet-kohdasta.\n\n' +
+            'Tällä hetkellä palvelussa ovat:\n' +
+            '• Iäkkäiden ja/tai vammaisten perhehoitajaksi hakevan esitietolomake\n' +
+            '• Kuntoutustutkimuspoliklinikan SEURANTAKYSELY\n\n' +
+            'Voit myös kertoa minulle, mitä lomaketta etsit, niin yritän tunnistaa sen.'
+        );
+
+    }
+
+
+    /*
+        MIELENTERVEYS / PÄIHTEET
+    */
+
+    if(
+        topic === 'mental' ||
+        topic === 'substance'
+    ){
+
+        if(!audience){
+            return askAudience();
+        }
+
+
+        if(
+            audience === 'working'
+        ){
+
+            if(!urgency){
+                return askUrgency();
+            }
+
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'working-chat';
+
+                return (
+                    'Koska tarvitset apua saman päivän aikana, Digiasioinnin työikäisten chat-palvelu on tilanteeseesi sopiva asiointitapa.\n\n' +
+                    'Avaa vasemmalta Digiasiointi → Työikäiset → Työikäisten chatit.\n\n' +
+                    'Jos tilanteeseen liittyy välitön hengen tai terveyden vaara, soita 112.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'working-contact';
+
+            return (
+                'Työikäisten kiireettömässä yhteydenottopyynnössä on mielenterveys- ja päihdepalvelujen vaihtoehto.\n\n' +
+                'Avaa Digiasiointi → Työikäiset → Työikäisten kiireetön yhteydenottopyyntö → Mielenterveys- ja päihdepalvelut.'
+            );
+
+        }
+
+
+        if(
+            audience === 'family'
+        ){
+
+            if(!urgency){
+                return askUrgency();
+            }
+
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'family-chat';
+
+                return (
+                    'Jos lapsen tai nuoren asia on tarpeen hoitaa saman päivän aikana, voit aloittaa Digiasioinnin lasten, nuorten ja perheiden chat-palveluista.\n\n' +
+                    'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden chatit → Nuorten palveluohjaus.\n\n' +
+                    'Jos tilanteessa on välitön hengen tai terveyden vaara, soita 112.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'family-contact';
+
+            return (
+                'Kiireettömässä asiassa voit jättää yhteydenottopyynnön lasten, nuorten ja perheiden palveluihin.\n\n' +
+                'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden kiireetön yhteydenottopyyntö → Nuorten palvelut.'
+            );
+
+        }
+
+    }
+
+
+    /*
+        SOSIAALIPALVELUT
+    */
+
+    if(
+        topic === 'social'
+    ){
+
+        if(!audience){
+            return askAudience();
+        }
+
+
+        if(!urgency){
+            return askUrgency();
+        }
+
+
+        if(
+            audience === 'working'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'working-chat';
+
+                return (
+                    'Jos työikäisen sosiaali- tai palveluohjauksen asia pitäisi hoitaa saman päivän aikana, voit käyttää työikäisten chat-palvelua.\n\n' +
+                    'Avaa Digiasiointi → Työikäiset → Työikäisten chatit → Työikäisten palveluohjaus.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'working-contact';
+
+            return (
+                'Kiireettömässä asiassa voit jättää yhteydenottopyynnön sosiaali- ja terveyspalvelujen ohjaukseen.\n\n' +
+                'Avaa Digiasiointi → Työikäiset → Työikäisten kiireetön yhteydenottopyyntö → Sosiaali- ja terveyspalvelujen ohjaus.'
+            );
+
+        }
+
+
+        if(
+            audience === 'senior'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'senior-chat';
+
+                return (
+                    'Ikääntyneiden palveluihin liittyvässä asiassa voit käyttää Seniorineuvonnan chatia tai ikääntyneiden palveluohjausta.\n\n' +
+                    'Avaa Digiasiointi → Ikääntyneet → Ikääntyneiden chatit.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'senior-contact';
+
+            return (
+                'Kiireettömässä asiassa voit jättää yhteydenottopyynnön Seniorineuvontaan tai ikääntyneiden palveluohjaukseen.\n\n' +
+                'Avaa Digiasiointi → Ikääntyneet → Ikääntyneiden kiireetön yhteydenottopyyntö.'
+            );
+
+        }
+
+
+        if(
+            audience === 'family'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'family-chat';
+
+                return (
+                    'Jos lapsen, nuoren tai perheen asia pitäisi hoitaa saman päivän aikana, voit käyttää lasten, nuorten ja perheiden chat-palveluita.\n\n' +
+                    'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden chatit.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'family-contact';
+
+            return (
+                'Kiireettömässä asiassa voit jättää yhteydenottopyynnön lapsiperheiden sosiaalipalveluihin tai nuorten palveluihin.\n\n' +
+                'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden kiireetön yhteydenottopyyntö.'
+            );
+
+        }
+
+    }
+
+
+    /*
+        YLEINEN TERVEYSASIA
+    */
+
+    if(
+        topic === 'health'
+    ){
+
+        if(!audience){
+            return askAudience();
+        }
+
+
+        if(!urgency){
+            return askUrgency();
+        }
+
+
+        if(
+            audience === 'working'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                botState.lastIntent =
+                    'working-chat';
+
+                return (
+                    'Jos terveysasia pitäisi arvioida saman päivän aikana eikä kyse ole hätätilanteesta, voit aloittaa työikäisten Terveyspalvelujen chatista.\n\n' +
+                    'Avaa Digiasiointi → Työikäiset → Työikäisten chatit → Terveyspalvelujen chat.\n\n' +
+                    'Hätätilanteessa soita 112.'
+                );
+
+            }
+
+
+            botState.lastIntent =
+                'working-contact';
+
+            return (
+                'Kiireettömässä terveysasiassa voit jättää yhteydenottopyynnön terveyspalveluihin.\n\n' +
+                'Avaa Digiasiointi → Työikäiset → Työikäisten kiireetön yhteydenottopyyntö → Terveyspalvelut.'
+            );
+
+        }
+
+
+        if(
+            audience === 'family'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                return (
+                    'Jos lapsen tai nuoren asia pitäisi hoitaa saman päivän aikana, voit aloittaa lasten, nuorten ja perheiden chat-palveluista.\n\n' +
+                    'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden chatit.\n\n' +
+                    'Jos kyse on vakavasta tai nopeasti pahenevasta tilanteesta, hakeudu kiireelliseen arvioon. Hätätilanteessa soita 112.'
+                );
+
+            }
+
+
+            return (
+                'Kiireettömässä lapsen tai nuoren asiassa voit aloittaa lasten, nuorten ja perheiden kiireettömästä yhteydenottopyynnöstä.\n\n' +
+                'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden kiireetön yhteydenottopyyntö.'
+            );
+
+        }
+
+
+        if(
+            audience === 'senior'
+        ){
+
+            if(
+                urgency ===
+                'same-day'
+            ){
+
+                return (
+                    'Jos ikääntyneen asia pitäisi hoitaa saman päivän aikana, voit aloittaa ikääntyneiden chat-palveluista.\n\n' +
+                    'Avaa Digiasiointi → Ikääntyneet → Ikääntyneiden chatit.\n\n' +
+                    'Hätätilanteessa soita 112.'
+                );
+
+            }
+
+
+            return (
+                'Kiireettömässä asiassa voit aloittaa ikääntyneiden kiireettömästä yhteydenottopyynnöstä.\n\n' +
+                'Avaa Digiasiointi → Ikääntyneet → Ikääntyneiden kiireetön yhteydenottopyyntö.'
+            );
+
+        }
+
+    }
+
+
+    /*
+        PELKKÄ CHAT- TAI YHTEYDENOTTOPYYNTÖ
+    */
+
+    if(
+        topic === 'chat' ||
+        urgency === 'same-day'
+    ){
+
+        if(!audience){
+            return askAudience();
+        }
+
+
+        if(
+            audience === 'family'
+        ){
+
+            return (
+                'Avaa Digiasiointi → Lapset, nuoret ja perheet → Lasten, nuorten ja perheiden chatit.\n\n' +
+                'Chat on tarkoitettu asioihin, jotka on tarpeen hoitaa saman päivän aikana.'
+            );
+
+        }
+
+
+        if(
+            audience === 'working'
+        ){
+
+            return (
+                'Avaa Digiasiointi → Työikäiset → Työikäisten chatit.\n\n' +
+                'Voit valita siellä työikäisten palveluohjauksen tai terveyspalvelujen chatin.'
+            );
+
+        }
+
+
+        if(
+            audience === 'senior'
+        ){
+
+            return (
+                'Avaa Digiasiointi → Ikääntyneet → Ikääntyneiden chatit.\n\n' +
+                'Voit valita Seniorineuvonnan chatin tai ikääntyneiden palveluohjauksen.'
+            );
+
+        }
+
+    }
+
+
+    if(
+        topic === 'contact' ||
+        urgency === 'non-urgent'
+    ){
+
+        if(!audience){
+            return askAudience();
+        }
+
+
+        return (
+            'Voit jättää kiireettömän yhteydenottopyynnön ' +
+            audienceName(audience) +
+            ' palveluihin.\n\n' +
+            'Avaa vasemmalta Digiasiointi ja valitse ' +
+            (
+                audience === 'family'
+                    ? 'Lapset, nuoret ja perheet.'
+                    :
+                audience === 'working'
+                    ? 'Työikäiset.'
+                    :
+                'Ikääntyneet.'
+            )
+        );
+
+    }
+
+
+    /*
+        PELKKÄ KOHDEHENKILÖ
+    */
+
+    if(audience){
+
+        if(
+            audience === 'family'
+        ){
+
+            return (
+                'Lasten, nuorten ja perheiden palveluissa voit joko jättää kiireettömän yhteydenottopyynnön tai keskustella ammattilaisen kanssa chatissa.\n\n' +
+                'Millaiseen asiaan tarvitset apua? Voit kertoa tilanteesta omin sanoin.'
+            );
+
+        }
+
+
+        if(
+            audience === 'working'
+        ){
+
+            return (
+                'Työikäisten digipalveluissa voit jättää kiireettömän yhteydenottopyynnön tai käyttää chat-palveluita.\n\n' +
+                'Kerro vielä, mihin asiaan tarvitset apua – esimerkiksi terveysasiaan, mielenterveyteen, päihteisiin tai palveluohjaukseen.'
+            );
+
+        }
+
+
+        if(
+            audience === 'senior'
+        ){
+
+            return (
+                'Ikääntyneiden palveluissa ovat käytettävissä kiireettömät yhteydenottopyynnöt sekä chat-palvelut.\n\n' +
+                'Kerro vielä lyhyesti, millaisessa asiassa tarvitset apua.'
+            );
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   ERITYISKYSYMYKSET
+========================================================= */
+
+function specialReply(message){
+
+    /*
+        Mitä botti osaa?
+    */
+
+    if(
+        matches(
+            message,
+            [
+                'mitä osaat',
+                'mita osaat',
+                'miten voit auttaa',
+                'missä voit auttaa',
+                'missa voit auttaa',
+                'mitä voin kysyä',
+                'mita voin kysya'
+            ]
+        )
+    ){
+
+        return (
+            'Voin auttaa erityisesti palvelun löytämisessä.\n\n' +
+            'Voit kertoa minulle esimerkiksi:\n' +
+            '• kenelle palvelua etsit\n' +
+            '• millaisesta terveys- tai sosiaalipalvelun asiasta on kyse\n' +
+            '• tarvitsetko apua tänään vai onko asia kiireetön\n' +
+            '• mitä lomaketta etsit\n\n' +
+            'Sinun ei tarvitse tietää palvelun virallista nimeä.'
+        );
+
+    }
+
+
+    /*
+        Hätätilanne / 112
+    */
+
+    if(
+        matches(
+            message,
+            [
+                '112',
+                'hätänumero',
+                'hatanumero',
+                'milloin soitan 112',
+                'milloin soittaa 112'
+            ]
+        )
+    ){
+
+        return (
+            'Soita hätänumeroon 112, kun henki, terveys, omaisuus tai ympäristö on välittömässä vaarassa tai on syytä epäillä näin olevan.\n\n' +
+            'Jos kyseessä on käynnissä oleva hätätilanne, älä jää odottamaan vastausta chatissa.'
+        );
+
+    }
+
+
+    /*
+        Ajanvaraus
+    */
+
+    if(
+        botState.topic ===
+        'appointment'
+    ){
+
+        return (
+            'Tämän chat-botin tehtävänä on palveluohjaus, eikä se voi tehdä ajanvarausta puolestasi.\n\n' +
+            'Voin kuitenkin auttaa selvittämään, minkä palvelun kautta asia kannattaa aloittaa. Kerro esimerkiksi kenelle aika olisi tulossa ja mihin asiaan tarvitset vastaanottoa.'
+        );
+
+    }
+
+
+    /*
+        Rokotus
+    */
+
+    if(
+        botState.topic ===
+        'vaccination'
+    ){
+
+        return (
+            'Rokotuksiin liittyvissä asioissa oikea asiointikanava riippuu esimerkiksi iästäsi ja siitä, mistä rokotuksesta on kyse.\n\n' +
+            'Kerro vielä, onko kyse esimerkiksi influenssarokotuksesta, muusta rokotuksesta tai rokotustietojen tarkistamisesta, niin voin ohjata asiaa tarkemmin.'
+        );
+
+    }
+
+
+    /*
+        Seksuaaliterveys / ehkäisy
+    */
+
+    if(
+        botState.topic ===
+        'sexual'
+    ){
+
+        return (
+            'Seksuaaliterveyteen, ehkäisyyn tai raskauteen liittyvissä asioissa palvelu riippuu tilanteesta ja iästä.\n\n' +
+            'Voit kertoa hieman tarkemmin, tarvitsetko esimerkiksi ehkäisyneuvontaa, raskaustestiin liittyvää neuvontaa vai muuta palveluohjausta. Älä kirjoita henkilötunnusta tai muita tarpeettomia arkaluonteisia henkilötietoja.'
+        );
+
+    }
+
+
+    /*
+        Hammashoito
+    */
+
+    if(
+        botState.topic ===
+        'dental'
+    ){
+
+        return (
+            'Suun terveydenhuollon asia tunnistettu. Tämän sivun Digiasiointi-näkymässä ei tällä hetkellä ole erillistä hammashoidon palvelua, joten en halua ohjata sinua väärään asiointikanavaan.\n\n' +
+            'Jos kerrot, onko kyse esimerkiksi hammassärystä, ajanvarauksesta vai muusta suun terveyden asiasta, voin antaa yleistä palveluohjausta.'
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   PÄÄVASTAUSLOGIIKKA
+========================================================= */
+
+function botReply(text){
+
+    const message =
+        normalize(text);
+
+
+    /*
+        Tyhjä viesti
+    */
+
+    if(!message){
+
+        return (
+            'Kirjoita viesti, niin yritän auttaa löytämään oikean palvelun.'
+        );
+
+    }
+
+
+    /*
+        Hätätilanne tarkistetaan AINA ensimmäisenä.
+    */
+
+    if(
+        detectEmergency(message)
+    ){
+
+        botState.lastIntent =
+            'emergency';
+
+        botState.pendingQuestion =
+            null;
+
+        return (
+            'Tilanne voi vaatia välitöntä apua.\n\n' +
+            'Soita hätänumeroon 112. Älä jää odottamaan vastausta chatissa.\n\n' +
+            'Jos olet toisen henkilön luona, pysy hänen luonaan ja noudata hätäkeskuksen antamia ohjeita.'
+        );
+
+    }
+
+
+    /*
+        Tervehdys
+    */
+
+    if(
+        isGreeting(message)
+    ){
+
+        return (
+            'Hei! 👋 Miten voin auttaa?\n\n' +
+            'Voit kertoa tilanteestasi aivan omin sanoin. Esimerkiksi ”tarvitsen apua nuoren mielenterveysasiassa” tai ”haluan jättää kiireettömän yhteydenottopyynnön”.'
+        );
+
+    }
+
+
+    /*
+        Kiitos
+    */
+
+    if(
+        isThanks(message)
+    ){
+
+        return (
+            'Ole hyvä! Voit jatkaa kysymällä myös toisesta palvelusta tai kertomalla uuden tilanteen.'
+        );
+
+    }
+
+
+    /*
+        Jos botti kysyi edellisessä viestissä jotakin,
+        yritetään tulkita vastaus keskustelun kontekstissa.
+    */
+
+    const pendingReply =
+        handlePendingQuestion(message);
+
+    if(pendingReply){
+
+        return pendingReply;
+
+    }
+
+
+    /*
+        Päivitetään keskustelun muisti.
+    */
+
+    updateContext(message);
+
+
+    /*
+        Erityiskysymykset
+    */
+
+    const special =
+        specialReply(message);
+
+    if(special){
+
+        return special;
+
+    }
+
+
+    /*
+        Normaali palveluohjaus
+    */
+
+    const recommendation =
+        buildServiceRecommendation();
+
+    if(recommendation){
+
+        return recommendation;
+
+    }
+
+
+    /*
+        "Missä palvelut ovat?"
+    */
+
+    if(
+        matches(
+            message,
+            [
+                'digiasiointi',
+                'digipalvelu',
+                'digitaaliset palvelut',
+                'palvelut',
+                'mistä löydän palvelut',
+                'mista loydan palvelut'
+            ]
+        )
+    ){
+
+        return (
+            'Digiasiointi löytyy vasemman reunan valikosta.\n\n' +
+            'Siellä palvelut on jaettu kolmeen ryhmään:\n' +
+            '• Lapset, nuoret ja perheet\n' +
+            '• Työikäiset\n' +
+            '• Ikääntyneet\n\n' +
+            'Jokaisessa ryhmässä voit tarkastella käytettävissä olevia yhteydenottopyyntöjä ja chat-palveluita.'
+        );
+
+    }
+
+
+    /*
+        Jos viestistä tunnistetaan kysymysmuoto,
+        mutta ei aihetta, botti ei vain sano "en ymmärrä",
+        vaan yrittää kerätä olennaisen tiedon.
+    */
+
+    if(
+        contains(
+            message,
+            [
+                'mihin',
+                'mistä',
+                'mista',
+                'miten',
+                'minne',
+                'kuka',
+                'kenelle',
+                'voinko',
+                'saanko',
+                'tarvitsen',
+                'haluan',
+                'etsin'
+            ]
+        )
+    ){
+
+        botState.pendingQuestion =
+            'audience';
+
+        return (
+            'Yritän löytää sinulle oikean palvelun. Kenelle palvelua etsit?\n\n' +
+            'Voit vastata esimerkiksi ”nuorelle”, ”itselleni / työikäiselle” tai ”ikääntyneelle”. Sen jälkeen voin tarkentaa sopivaa asiointikanavaa.'
+        );
+
+    }
+
+
+    /*
+        Viimeinen fallback.
+
+        Tarkoituksella huomattavasti hyödyllisempi
+        kuin vanhan botin "en löytänyt vastausta".
+    */
+
+    return (
+        'En saanut vielä riittävästi tietoa oikean palvelun valitsemiseksi, mutta voimme selvittää sen yhdessä.\n\n' +
+        'Kerro lyhyesti:\n' +
+        '1. kenelle palvelua etsit ja\n' +
+        '2. millaisesta asiasta on kyse.\n\n' +
+        'Voit kirjoittaa esimerkiksi: ”16-vuotias nuori tarvitsee apua mielenterveysasiassa” tai ”etsin työikäiselle kiireetöntä terveyspalvelua”.'
+    );
+
+}
+
+
+/* =========================================================
+   VIESTIN LÄHETYS
+========================================================= */
 
 function sendBotMessage(text){
 
@@ -3396,19 +2585,41 @@ function sendBotMessage(text){
     botInput.value = '';
     botInput.style.height = 'auto';
 
+
+    /*
+        Pieni kirjoitusviive tekee keskustelusta
+        luonnollisemman tuntuisen.
+    */
+
+    const delay =
+        380 +
+        Math.min(
+            clean.length * 3,
+            420
+        );
+
+
     setTimeout(
         () => {
 
+            const reply =
+                botReply(clean);
+
             addMessage(
-                botReply(clean),
+                reply,
                 'bot'
             );
 
         },
-        450
+        delay
     );
 
 }
+
+
+/* =========================================================
+   LOMAKKEEN LÄHETYS
+========================================================= */
 
 botForm.addEventListener(
     'submit',
@@ -3422,6 +2633,12 @@ botForm.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   ENTER = LÄHETÄ
+   SHIFT + ENTER = UUSI RIVI
+========================================================= */
 
 botInput.addEventListener(
     'keydown',
@@ -3442,11 +2659,17 @@ botInput.addEventListener(
     }
 );
 
+
+/* =========================================================
+   TEKSTIKENTÄN AUTOMAATTINEN KORKEUS
+========================================================= */
+
 botInput.addEventListener(
     'input',
     () => {
 
-        botInput.style.height = 'auto';
+        botInput.style.height =
+            'auto';
 
         botInput.style.height =
             Math.min(
@@ -3456,6 +2679,11 @@ botInput.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   PIKAVALINNAT
+========================================================= */
 
 document
     .querySelectorAll('.quick')
