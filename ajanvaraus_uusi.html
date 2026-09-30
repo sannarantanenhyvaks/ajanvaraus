@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ajanvaraus | Opiskeluterveydenhuolto</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #005eb8;
+    --blue-dark: #003f7d;
+    --blue-light: #eaf4fb;
+    --green: #178447;
+    --green-dark: #106536;
+    --green-light: #e8f5ed;
+    --grey: #66737f;
+    --grey-light: #f2f4f5;
+    --grey-border: #d8dee3;
+    --text: #1b252c;
+    --white: #ffffff;
+    --danger: #b42318;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f7;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.top-line {
+    height: 7px;
+    background: var(--blue);
+}
+
+header {
+    background: white;
+    border-bottom: 1px solid #dce2e6;
+}
+
+.header-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.brand img {
+    max-width: 190px;
+    max-height: 70px;
+    object-fit: contain;
+}
+
+.brand-text {
+    border-left: 1px solid #d5dce0;
+    padding-left: 22px;
+}
+
+.brand-text strong {
+    display: block;
+    font-size: 18px;
+}
+
+.brand-text span {
+    color: #5e6971;
+    font-size: 14px;
+}
+
+.service-label {
+    color: #53616b;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* ==========================================================
+   BREADCRUMB
+========================================================== */
+
+.breadcrumb-wrap {
+    background: white;
+}
+
+.breadcrumb {
+    max-width: 1180px;
+    margin: auto;
+    padding: 10px 24px 16px;
+    font-size: 13px;
+    color: #596771;
+}
+
+.breadcrumb span {
+    color: var(--blue);
+}
+
+/* ==========================================================
+   MAIN
+========================================================== */
+
+main {
+    max-width: 1180px;
+    margin: 34px auto 60px;
+    padding: 0 24px;
+}
+
+.page-heading {
+    margin-bottom: 28px;
+}
+
+.page-heading h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+.page-heading p {
+    max-width: 760px;
+    margin: 0;
+    color: #53616b;
+    font-size: 16px;
+}
+
+.info-box {
+    background: var(--blue-light);
+    border-left: 5px solid var(--blue);
+    padding: 17px 20px;
+    margin-bottom: 26px;
+}
+
+.info-box strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+/* ==========================================================
+   PROGRESS
+========================================================== */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 28px;
+    border: 1px solid var(--grey-border);
+    background: white;
+}
+
+.step {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #68757e;
+    border-right: 1px solid var(--grey-border);
+}
+
+.step:last-child {
+    border-right: 0;
+}
+
+.step.active {
+    background: var(--blue);
+    color: white;
+    font-weight: bold;
+}
+
+.step.done {
+    background: #e9f3f9;
+    color: var(--blue-dark);
+    font-weight: bold;
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card {
+    background: white;
+    border: 1px solid var(--grey-border);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    margin-bottom: 25px;
+}
+
+.card-header {
+    padding: 21px 24px;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.card-header h2 {
+    margin: 0 0 4px;
+    font-size: 21px;
+}
+
+.card-header p {
+    margin: 0;
+    color: #65727b;
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+/* ==========================================================
+   CALENDAR
+========================================================== */
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: minmax(420px, 1.35fr) minmax(290px, .8fr);
+    gap: 28px;
+}
+
+.calendar {
+    border: 1px solid var(--grey-border);
+}
+
+.calendar-header {
+    min-height: 68px;
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    align-items: center;
+    border-bottom: 1px solid var(--grey-border);
+    background: #fafbfb;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.month-button {
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.month-button:hover:not(:disabled) {
+    background: #edf4f8;
+}
+
+.month-button:disabled {
+    color: #bbc2c7;
+    cursor: default;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f3f5f6;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.weekday {
+    padding: 11px 3px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #56636c;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    min-height: 72px;
+    border: 0;
+    border-right: 1px solid #e2e6e8;
+    border-bottom: 1px solid #e2e6e8;
+    background: white;
+    position: relative;
+    cursor: pointer;
+    color: var(--text);
+}
+
+.day:nth-child(7n) {
+    border-right: 0;
+}
+
+.day.empty {
+    background: #fafafa;
+    cursor: default;
+}
+
+.day-number {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.availability-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.day.available {
+    background: #f3fbf6;
+}
+
+.day.available .availability-dot {
+    background: var(--green);
+}
+
+.day.available:hover {
+    background: #e3f5e9;
+    outline: 2px solid var(--green);
+    outline-offset: -2px;
+    z-index: 2;
+}
+
+.day.unavailable {
+    color: #9ca5ab;
+    background: #f2f3f4;
+    cursor: not-allowed;
+}
+
+.day.unavailable .availability-dot {
+    background: #adb5ba;
+}
+
+.day.selected {
+    background: var(--blue) !important;
+    color: white;
+    outline: 3px solid var(--blue-dark);
+    outline-offset: -3px;
+}
+
+.day.selected .availability-dot {
+    background: white;
+}
+
+/* ==========================================================
+   TIMES
+========================================================== */
+
+.times-panel {
+    border: 1px solid var(--grey-border);
+    min-height: 390px;
+}
+
+.times-heading {
+    padding: 18px 20px;
+    background: #f7f8f9;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+.times-heading h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.times-heading p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #64717a;
+}
+
+.times-content {
+    padding: 20px;
+}
+
+.choose-date-message {
+    color: #69767f;
+    font-size: 14px;
+}
+
+.time-button {
+    width: 100%;
+    min-height: 58px;
+    margin-bottom: 11px;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-button .time {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-button .status {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.time-button.free {
+    background: var(--green-light);
+    border: 2px solid var(--green);
+    color: #0c5d31;
+    cursor: pointer;
+}
+
+.time-button.free:hover {
+    background: #d9efdf;
+}
+
+.time-button.free.selected {
+    background: var(--green);
+    color: white;
+}
+
+.time-button.busy {
+    background: #f1f2f3;
+    border: 1px solid #d5dade;
+    color: #929ba1;
+    cursor: not-allowed;
+}
+
+/* ==========================================================
+   LEGEND
+========================================================== */
+
+.legend {
+    margin-top: 18px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #56636c;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.legend-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+.legend-green {
+    background: var(--green-light);
+    border: 1px solid var(--green);
+}
+
+.legend-grey {
+    background: #eeeeef;
+    border: 1px solid #cbd1d5;
+}
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+#detailsCard {
+    display: none;
+}
+
+.selection-summary {
+    background: var(--blue-light);
+    border: 1px solid #c7dfef;
+    padding: 18px 20px;
+    margin-bottom: 25px;
+}
+
+.selection-summary .label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #536b7b;
+    margin-bottom: 4px;
+}
+
+.selection-summary strong {
+    font-size: 18px;
+    color: var(--blue-dark);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.required {
+    color: var(--danger);
+}
+
+input {
+    width: 100%;
+    border: 1px solid #9faab1;
+    border-radius: 3px;
+    min-height: 48px;
+    padding: 10px 12px;
+    background: white;
+}
+
+input:focus {
+    outline: 3px solid rgba(0,94,184,.2);
+    border-color: var(--blue);
+}
+
+.help {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #65727a;
+}
+
+.privacy-box {
+    margin-top: 25px;
+    padding: 17px;
+    border: 1px solid #d8dee2;
+    background: #f7f8f8;
+    font-size: 13px;
+    color: #52606a;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.primary-button {
+    border: 0;
+    background: var(--blue);
+    color: white;
+    font-weight: bold;
+    padding: 14px 26px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: var(--blue-dark);
+}
+
+.primary-button:disabled {
+    background: #9da7ad;
+    cursor: wait;
+}
+
+/* ==========================================================
+   MESSAGES
+========================================================== */
+
+.message {
+    display: none;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    border-left: 5px solid;
+}
+
+.message.error {
+    background: #fff0ef;
+    border-color: #c9342b;
+    color: #76211b;
+}
+
+/* ==========================================================
+   SUCCESS
+========================================================== */
+
+.success-card {
+    display: none;
+}
+
+.success-content {
+    padding: 40px;
+    max-width: 780px;
+    margin: auto;
+}
+
+.success-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.success-icon {
+    width: 68px;
+    height: 68px;
+    margin: auto auto 18px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 40px;
+    line-height: 68px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.success-heading h2 {
+    font-size: 28px;
+    margin: 0 0 8px;
+}
+
+.success-heading p {
+    margin: 0;
+    color: #58656e;
+}
+
+.booking-reference {
+    border: 1px solid var(--grey-border);
+    margin-bottom: 22px;
+}
+
+.booking-reference-heading {
+    padding: 12px 18px;
+    background: #f4f6f7;
+    border-bottom: 1px solid var(--grey-border);
+    color: #58656e;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.booking-reference-content {
+    padding: 18px;
+}
+
+.booking-reference-content strong {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 4px;
+}
+
+.booking-code-box {
+    border: 2px solid var(--blue);
+    background: var(--blue-light);
+    padding: 24px;
+    margin: 25px 0 20px;
+    text-align: center;
+}
+
+.booking-code-label {
+    color: #536b7b;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .06em;
+    font-weight: bold;
+}
+
+.booking-code {
+    display: block;
+    margin: 8px 0 13px;
+    color: var(--blue-dark);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.booking-code-description {
+    max-width: 560px;
+    margin: 0 auto;
+    color: #465761;
+    font-size: 14px;
+}
+
+.copy-button {
+    margin-top: 17px;
+    background: white;
+    border: 1px solid var(--blue);
+    color: var(--blue);
+    padding: 10px 18px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background: #f2f8fc;
+}
+
+.copy-result {
+    min-height: 20px;
+    margin-top: 8px;
+    color: var(--green-dark);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.important-box {
+    border-left: 5px solid #e0a000;
+    background: #fff8e5;
+    padding: 16px 18px;
+    font-size: 13px;
+    color: #5c4a13;
+    margin-bottom: 24px;
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.secondary-button {
+    border: 1px solid var(--blue);
+    background: white;
+    color: var(--blue);
+    font-weight: bold;
+    padding: 12px 21px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.secondary-button:hover {
+    background: var(--blue-light);
+}
+
+/* ==========================================================
+   LOADING
+========================================================== */
+
+#loading {
+    display: none;
+    padding: 40px;
+    text-align: center;
+    color: #63717a;
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer {
+    background: #26343c;
+    color: white;
+    margin-top: 60px;
+}
+
+.footer-inner {
+    max-width: 1180px;
+    margin: auto;
+    padding: 32px 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+footer strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+footer p {
+    margin: 0;
+    color: #d8e0e4;
+    font-size: 13px;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 800px) {
+
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .header-inner,
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .service-label {
+        text-align: left;
+    }
+
+    .day {
+        min-height: 60px;
+    }
+
+    .brand-text {
+        display: none;
+    }
+
+    .success-content {
+        padding: 25px 18px;
+    }
+
+    .booking-code {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    main {
+        padding: 0 12px;
+        margin-top: 22px;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .page-heading h1 {
+        font-size: 27px;
+    }
+
+    .weekday {
+        font-size: 10px;
+    }
+
+    .day {
+        min-height: 52px;
+    }
+
+    .day-number {
+        font-size: 14px;
+    }
+
+    .steps {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-line"></div>
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+            >
+
+            <div class="brand-text">
+                <strong>Opiskeluterveydenhuolto</strong>
+                <span>Muuramen lukio</span>
+            </div>
+
+        </div>
+
+        <div class="service-label">
+            Sähköinen asiointi<br>
+            <strong>Ajanvaraus</strong>
+        </div>
+
+    </div>
+
+    <div class="breadcrumb-wrap">
+
+        <div class="breadcrumb">
+            <span>Opiskeluterveydenhuolto</span>
+            &nbsp;›&nbsp;
+            Ajanvaraus
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-heading">
+
+        <h1>Varaa aika opiskeluterveydenhuoltoon</h1>
+
+        <p>
+            Valitse ensin kalenterista sopiva päivä ja sen jälkeen
+            vapaa vastaanottoaika. Täytä opiskelijan tiedot ajan
+            valitsemisen jälkeen.
+        </p>
+
+    </section>
+
+
+    <div class="info-box">
+
+        <strong>Muuramen lukion opiskeluterveydenhuolto</strong>
+
+        Ajanvaraus terveydenhoitajan vastaanotolle.
+        Kiireellisissä tilanteissa ota yhteyttä terveydenhuoltoon
+        muuta kautta.
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step active" id="step1">
+            1. Valitse aika
+        </div>
+
+        <div class="step" id="step2">
+            2. Opiskelijan tiedot
+        </div>
+
+        <div class="step" id="step3">
+            3. Vahvistus
+        </div>
+
+    </div>
+
+
+    <div id="errorMessage" class="message error"></div>
+
+
+    <!-- ====================================================
+         AJAN VALINTA
+    ===================================================== -->
+
+    <section class="card" id="calendarCard">
+
+        <div class="card-header">
+
+            <h2>Valitse vastaanottoaika</h2>
+
+            <p>
+                Vihreällä merkityillä päivillä on vapaita
+                vastaanottoaikoja.
+            </p>
+
+        </div>
+
+
+        <div id="loading">
+            Ladataan vapaita vastaanottoaikoja...
+        </div>
+
+
+        <div class="card-body" id="calendarContent">
+
+            <div class="booking-layout">
+
+
+                <div>
+
+                    <div class="calendar">
+
+                        <div class="calendar-header">
+
+                            <button
+                                class="month-button"
+                                id="previousMonth"
+                                type="button"
+                                aria-label="Edellinen kuukausi"
+                            >
+                                ‹
+                            </button>
+
+                            <h3 id="monthTitle"></h3>
+
+                            <button
+                                class="month-button"
+                                id="nextMonth"
+                                type="button"
+                                aria-label="Seuraava kuukausi"
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+
+                        <div class="weekdays">
+
+                            <div class="weekday">Ma</div>
+                            <div class="weekday">Ti</div>
+                            <div class="weekday">Ke</div>
+                            <div class="weekday">To</div>
+                            <div class="weekday">Pe</div>
+                            <div class="weekday">La</div>
+                            <div class="weekday">Su</div>
+
+                        </div>
+
+
+                        <div
+                            class="calendar-days"
+                            id="calendarDays"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="legend">
+
+                        <div class="legend-item">
+                            <span class="legend-box legend-green"></span>
+                            Vapaita aikoja
+                        </div>
+
+                        <div class="legend-item">
+                            <span class="legend-box legend-grey"></span>
+                            Ei vapaita aikoja
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="times-panel">
+
+                    <div class="times-heading">
+
+                        <h3>Vastaanottoajat</h3>
+
+                        <p id="selectedDateText">
+                            Valitse päivä kalenterista
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="times-content"
+                        id="timesContent"
+                    >
+
+                        <div class="choose-date-message">
+                            Valitse vihreällä merkitty päivä,
+                            jotta näet päivän vastaanottoajat.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         OPISKELIJAN TIEDOT
+    ===================================================== -->
+
+    <section class="card" id="detailsCard">
+
+        <div class="card-header">
+
+            <h2>Opiskelijan tiedot</h2>
+
+            <p>
+                Tarkista valitsemasi aika ja täytä pyydetyt tiedot.
+            </p>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="selection-summary">
+
+                <span class="label">
+                    Valittu vastaanottoaika
+                </span>
+
+                <strong id="selectedAppointment"></strong>
+
+                <div id="selectedProfessional"></div>
+
+            </div>
+
+
+            <form id="bookingForm">
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="studentName">
+                            Etu- ja sukunimi
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            id="studentName"
+                            type="text"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="studentGroup">
+                            Ryhmä
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            id="studentGroup"
+                            type="text"
+                            placeholder="Esim. 26A"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="studentEmail">
+                            Sähköpostiosoite
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            id="studentEmail"
+                            type="email"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <span class="help">
+                            Anna sähköpostiosoite, josta sinut
+                            tavoittaa tarvittaessa.
+                        </span>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="studentPhone">
+                            Puhelinnumero
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            id="studentPhone"
+                            type="tel"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="field">
+                        <label for="studentPersonalIdentityCode">
+                            Henkilötunnus
+                            <span class="required">*</span>
+                        </label>
+                        <input
+                            id="studentPersonalIdentityCode"
+                            type="text"
+                            inputmode="text"
+                            autocomplete="off"
+                            placeholder="PPKKVVXNNNT"
+                            maxlength="11"
+                            required
+                        >
+                        <span class="help">
+                            Käytä tässä harjoitusversiossa vain kuvitteellista testitunnusta.
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="privacy-box">
+
+                    Antamiasi tietoja käytetään tämän ajanvarauksen
+                    käsittelyyn. Älä kirjoita lomakkeelle
+                    terveydentilaasi koskevia lisätietoja.
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="primary-button"
+                        id="bookingButton"
+                        type="submit"
+                    >
+                        Vahvista ajanvaraus
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         VAHVISTUS
+    ===================================================== -->
+
+    <section
+        class="card success-card"
+        id="successCard"
+    >
+
+        <div class="success-content">
+
+            <div class="success-heading">
+
+                <div class="success-icon">✓</div>
+
+                <h2>Ajanvaraus on vahvistettu</h2>
+
+                <p>
+                    Vastaanottoaika on varattu onnistuneesti.
+                </p>
+
+            </div>
+
+
+            <div class="booking-reference">
+
+                <div class="booking-reference-heading">
+                    Varattu vastaanotto
+                </div>
+
+                <div class="booking-reference-content">
+
+                    <strong id="successDate"></strong>
+
+                    <div id="successDetails"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-code-box">
+
+                <div class="booking-code-label">
+                    Varauskoodisi
+                </div>
+
+                <span
+                    class="booking-code"
+                    id="bookingCode"
+                >
+                    ---- ---- ----
+                </span>
+
+                <p class="booking-code-description">
+                    Säilytä varauskoodi. Tarvitset sitä
+                    ajanvarauksesi tarkasteluun ja peruuttamiseen.
+                </p>
+
+                <button
+                    id="copyCodeButton"
+                    class="copy-button"
+                    type="button"
+                >
+                    Kopioi varauskoodi
+                </button>
+
+                <div
+                    id="copyResult"
+                    class="copy-result"
+                ></div>
+
+            </div>
+
+
+            <div class="important-box">
+
+                <strong>Tärkeää</strong><br>
+
+                Varauskoodi kannattaa tallentaa heti.
+                Koodin avulla voit myöhemmin avata oman
+                ajanvarauksesi.
+
+            </div>
+
+
+            <div class="success-actions">
+
+                <button
+                    id="newBookingButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Tee uusi ajanvaraus
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <strong>Opiskeluterveydenhuolto</strong>
+            <p>Muuramen lukio</p>
+        </div>
+
+        <div>
+            <strong>Keski-Suomen hyvinvointialue</strong>
+            <p>Sähköinen ajanvaraus</p>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script type="module">
+
+import {
+    createClient
+}
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+
+/* ==========================================================
+   SUPABASE
+========================================================== */
+
+const SUPABASE_URL =
+    'https://bwuybksyoopuejcrlspa.supabase.co';
+
+const SUPABASE_KEY =
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+const supabase =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* ==========================================================
+   KALENTERIN ASETUKSET
+========================================================== */
+
+const MIN_DATE = '2026-09-01';
+const MAX_DATE = '2026-11-01';
+
+let currentYear = 2026;
+let currentMonth = 8;
+
+let calendarTimes = [];
+
+let selectedDate = null;
+let selectedSlot = null;
+
+let currentBookingCode = null;
+
+
+/* ==========================================================
+   ELEMENTIT
+========================================================== */
+
+const calendarDays =
+    document.getElementById('calendarDays');
+
+const monthTitle =
+    document.getElementById('monthTitle');
+
+const previousMonth =
+    document.getElementById('previousMonth');
+
+const nextMonth =
+    document.getElementById('nextMonth');
+
+const timesContent =
+    document.getElementById('timesContent');
+
+const selectedDateText =
+    document.getElementById('selectedDateText');
+
+const detailsCard =
+    document.getElementById('detailsCard');
+
+const bookingForm =
+    document.getElementById('bookingForm');
+
+const bookingButton =
+    document.getElementById('bookingButton');
+
+const errorMessage =
+    document.getElementById('errorMessage');
+
+
+/* ==========================================================
+   PÄIVÄMÄÄRÄT
+========================================================== */
+
+function makeDateKey(year, month, day) {
+
+    return (
+        year +
+        '-' +
+        String(month + 1).padStart(2, '0') +
+        '-' +
+        String(day).padStart(2, '0')
+    );
+}
+
+
+function formatFinnishDate(value) {
+
+    const [year, month, day] =
+        value.split('-').map(Number);
+
+    const date =
+        new Date(year, month - 1, day);
+
+    return new Intl.DateTimeFormat(
+        'fi-FI',
+        {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }
+    ).format(date);
+}
+
+
+function capitalize(value) {
+
+    if (!value) return value;
+
+    return (
+        value.charAt(0).toUpperCase() +
+        value.slice(1)
+    );
+}
+
+
+function formatTime(value) {
+
+    return value
+        .substring(0, 5)
+        .replace(':', '.');
+}
+
+
+/* ==========================================================
+   LADATAAN AJAT
+========================================================== */
+
+async function loadTimes() {
+
+    document.getElementById('loading')
+        .style.display = 'block';
+
+    document.getElementById('calendarContent')
+        .style.display = 'none';
+
+
+    const {
+        data,
+        error
+    } = await supabase
+        .from('public_calendar_times')
+        .select(
+            'id,appointment_date,start_time,end_time,appointment_type,professional_name,location,is_available'
+        )
+        .gte(
+            'appointment_date',
+            MIN_DATE
+        )
+        .lte(
+            'appointment_date',
+            MAX_DATE
+        )
+        .order(
+            'appointment_date',
+            { ascending: true }
+        )
+        .order(
+            'start_time',
+            { ascending: true }
+        );
+
+
+    document.getElementById('loading')
+        .style.display = 'none';
+
+    document.getElementById('calendarContent')
+        .style.display = 'block';
+
+
+    if (error) {
+
+        console.error(error);
+
+        showError(
+            'Vastaanottoaikojen lataaminen epäonnistui. ' +
+            'Yritä päivittää sivu.'
+        );
+
+        return;
+    }
+
+
+    calendarTimes = data || [];
+
+    renderCalendar();
+}
+
+
+/* ==========================================================
+   KALENTERI
+========================================================== */
+
+function renderCalendar() {
+
+    const months = [
+        'Tammikuu',
+        'Helmikuu',
+        'Maaliskuu',
+        'Huhtikuu',
+        'Toukokuu',
+        'Kesäkuu',
+        'Heinäkuu',
+        'Elokuu',
+        'Syyskuu',
+        'Lokakuu',
+        'Marraskuu',
+        'Joulukuu'
+    ];
+
+
+    monthTitle.textContent =
+        months[currentMonth] +
+        ' ' +
+        currentYear;
+
+
+    calendarDays.innerHTML = '';
+
+
+    const firstDay =
+        new Date(
+            currentYear,
+            currentMonth,
+            1
+        );
+
+
+    const daysInMonth =
+        new Date(
+            currentYear,
+            currentMonth + 1,
+            0
+        ).getDate();
+
+
+    const offset =
+        (firstDay.getDay() + 6) % 7;
+
+
+    for (
+        let i = 0;
+        i < offset;
+        i++
+    ) {
+
+        const empty =
+            document.createElement('div');
+
+        empty.className =
+            'day empty';
+
+        calendarDays.appendChild(empty);
+    }
+
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+        const key =
+            makeDateKey(
+                currentYear,
+                currentMonth,
+                day
+            );
+
+
+        const button =
+            document.createElement('button');
+
+        button.type = 'button';
+
+
+        const dayTimes =
+            calendarTimes.filter(
+                item =>
+                    item.appointment_date === key
+            );
+
+
+        const hasFree =
+            dayTimes.some(
+                item =>
+                    item.is_available === true
+            );
+
+
+        const inRange =
+            key >= MIN_DATE &&
+            key <= MAX_DATE;
+
+
+        button.innerHTML =
+            '<span class="day-number">' +
+            day +
+            '</span>' +
+            '<span class="availability-dot"></span>';
+
+
+        if (
+            !inRange ||
+            !hasFree
+        ) {
+
+            button.className =
+                'day unavailable';
+
+            button.disabled = true;
+
+        } else {
+
+            button.className =
+                'day available';
+
+            button.addEventListener(
+                'click',
+                () => selectDate(key)
+            );
+        }
+
+
+        if (
+            selectedDate === key
+        ) {
+
+            button.classList.add(
+                'selected'
+            );
+        }
+
+
+        calendarDays.appendChild(
+            button
+        );
+    }
+
+
+    previousMonth.disabled =
+        currentYear === 2026 &&
+        currentMonth === 8;
+
+    nextMonth.disabled =
+        currentYear === 2026 &&
+        currentMonth === 10;
+}
+
+
+/* ==========================================================
+   PÄIVÄN VALINTA
+========================================================== */
+
+function selectDate(date) {
+
+    selectedDate = date;
+    selectedSlot = null;
+
+    detailsCard.style.display =
+        'none';
+
+
+    document.getElementById('step1')
+        .className =
+        'step active';
+
+    document.getElementById('step2')
+        .className =
+        'step';
+
+
+    renderCalendar();
+    renderTimes();
+}
+
+
+/* ==========================================================
+   KELLONAJAT
+========================================================== */
+
+function renderTimes() {
+
+    selectedDateText.textContent =
+        capitalize(
+            formatFinnishDate(
+                selectedDate
+            )
+        );
+
+
+    timesContent.innerHTML = '';
+
+
+    const wantedTimes = [
+        '10:30',
+        '11:30',
+        '12:30'
+    ];
+
+
+    wantedTimes.forEach(
+        wantedTime => {
+
+            const slot =
+                calendarTimes.find(
+                    item =>
+                        item.appointment_date ===
+                            selectedDate &&
+                        item.start_time
+                            .substring(0, 5) ===
+                            wantedTime
+                );
+
+
+            const button =
+                document.createElement(
+                    'button'
+                );
+
+            button.type = 'button';
+
+            button.className =
+                'time-button';
+
+
+            const available =
+                slot &&
+                slot.is_available === true;
+
+
+            button.innerHTML =
+                '<span class="time">' +
+                wantedTime.replace(':', '.') +
+                '</span>' +
+
+                '<span class="status">' +
+                (
+                    available
+                    ? 'Vapaa'
+                    : 'Ei saatavilla'
+                ) +
+                '</span>';
+
+
+            if (available) {
+
+                button.classList.add(
+                    'free'
+                );
+
+
+                button.addEventListener(
+                    'click',
+                    () =>
+                        selectTime(
+                            slot,
+                            button
+                        )
+                );
+
+            } else {
+
+                button.classList.add(
+                    'busy'
+                );
+
+                button.disabled = true;
+            }
+
+
+            timesContent.appendChild(
+                button
+            );
+        }
+    );
+}
+
+
+/* ==========================================================
+   AJAN VALINTA
+========================================================== */
+
+function selectTime(slot, button) {
+
+    selectedSlot = slot;
+
+
+    document
+        .querySelectorAll(
+            '.time-button.free'
+        )
+        .forEach(
+            item =>
+                item.classList.remove(
+                    'selected'
+                )
+        );
+
+
+    button.classList.add(
+        'selected'
+    );
+
+
+    const formattedDate =
+        capitalize(
+            formatFinnishDate(
+                slot.appointment_date
+            )
+        );
+
+
+    document.getElementById(
+        'selectedAppointment'
+    ).textContent =
+        formattedDate +
+        ' klo ' +
+        formatTime(
+            slot.start_time
+        ) +
+        '–' +
+        formatTime(
+            slot.end_time
+        );
+
+
+    document.getElementById(
+        'selectedProfessional'
+    ).textContent =
+        slot.professional_name +
+        ' • ' +
+        slot.location;
+
+
+    detailsCard.style.display =
+        'block';
+
+
+    document.getElementById('step1')
+        .className =
+        'step done';
+
+    document.getElementById('step2')
+        .className =
+        'step active';
+
+
+    setTimeout(
+        () => {
+
+            detailsCard.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+        },
+        100
+    );
+}
+
+
+/* ==========================================================
+   KUUKAUDEN VAIHTO
+========================================================== */
+
+previousMonth.addEventListener(
+    'click',
+    () => {
+
+        if (
+            currentYear === 2026 &&
+            currentMonth === 8
+        ) {
+            return;
+        }
+
+
+        currentMonth--;
+
+
+        if (currentMonth < 0) {
+
+            currentMonth = 11;
+            currentYear--;
+        }
+
+
+        selectedDate = null;
+        selectedSlot = null;
+
+        resetTimePanel();
+
+        renderCalendar();
+    }
+);
+
+
+nextMonth.addEventListener(
+    'click',
+    () => {
+
+        if (
+            currentYear === 2026 &&
+            currentMonth === 10
+        ) {
+            return;
+        }
+
+
+        currentMonth++;
+
+
+        if (currentMonth > 11) {
+
+            currentMonth = 0;
+            currentYear++;
+        }
+
+
+        selectedDate = null;
+        selectedSlot = null;
+
+        resetTimePanel();
+
+        renderCalendar();
+    }
+);
+
+
+function resetTimePanel() {
+
+    selectedDateText.textContent =
+        'Valitse päivä kalenterista';
+
+    timesContent.innerHTML =
+        '<div class="choose-date-message">' +
+        'Valitse vihreällä merkitty päivä, ' +
+        'jotta näet päivän vastaanottoajat.' +
+        '</div>';
+
+    detailsCard.style.display =
+        'none';
+}
+
+
+/* ==========================================================
+   VARAUKSEN TEKEMINEN
+========================================================== */
+
+bookingForm.addEventListener(
+    'submit',
+    async event => {
+
+        event.preventDefault();
+
+        hideError();
+
+
+        if (!selectedSlot) {
+
+            showError(
+                'Valitse ensin vastaanottoaika.'
+            );
+
+            return;
+        }
+
+
+        const studentName =
+            document.getElementById(
+                'studentName'
+            ).value.trim();
+
+
+        const studentGroup =
+            document.getElementById(
+                'studentGroup'
+            ).value.trim();
+
+
+        const studentEmail =
+            document.getElementById(
+                'studentEmail'
+            ).value.trim();
+
+
+        const studentPhone =
+            document.getElementById(
+                'studentPhone'
+            ).value.trim();
+
+
+        const studentPersonalIdentityCode =
+            document.getElementById(
+                'studentPersonalIdentityCode'
+            ).value.trim().toUpperCase();
+
+
+        if (!studentName || !studentGroup || !studentEmail || !studentPhone || !studentPersonalIdentityCode) {
+
+            showError(
+                'Täytä kaikki pakolliset opiskelijan tiedot.'
+            );
+
+            return;
+        }
+
+
+        const personalIdentityCodePattern =
+            /^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])\d{2}[+\-A]\d{3}[0-9A-Y]$/;
+
+        if (!personalIdentityCodePattern.test(studentPersonalIdentityCode)) {
+            showError('Tarkista henkilötunnuksen muoto.');
+            return;
+        }
+
+
+        bookingButton.disabled = true;
+
+        bookingButton.textContent =
+            'Vahvistetaan varausta...';
+
+
+        const {
+            data,
+            error
+        } = await supabase.rpc(
+            'book_appointment',
+            {
+                p_available_time_id:
+                    selectedSlot.id,
+
+                p_student_name:
+                    studentName,
+
+                p_student_group:
+                    studentGroup,
+
+                p_student_email:
+                    studentEmail,
+
+                p_student_phone:
+                    studentPhone,
+
+                p_student_personal_identity_code:
+                    studentPersonalIdentityCode,
+
+                p_appointment_type:
+                    selectedSlot.appointment_type
+            }
+        );
+
+
+        bookingButton.disabled = false;
+
+        bookingButton.textContent =
+            'Vahvista ajanvaraus';
+
+
+        if (error) {
+
+            console.error(error);
+
+            showError(
+                'Ajan varaaminen ei onnistunut. ' +
+                'Valittu aika on voinut juuri varautua. ' +
+                'Valitse toinen vastaanottoaika.'
+            );
+
+            await loadTimes();
+
+            return;
+        }
+
+
+        /*
+           UUSI BOOK_APPOINTMENT PALAUTTAA
+           VARAUSKOODIN SUORAAN.
+        */
+
+        currentBookingCode =
+            String(data || '').trim();
+
+
+        if (!currentBookingCode) {
+
+            console.error(
+                'Varaus onnistui, mutta varauskoodia ei palautunut.'
+            );
+
+            showError(
+                'Ajanvaraus tehtiin, mutta varauskoodin näyttäminen ' +
+                'epäonnistui. Ota yhteyttä opiskeluterveydenhuoltoon.'
+            );
+
+            return;
+        }
+
+
+        showSuccess(
+            currentBookingCode
+        );
+    }
+);
+
+
+/* ==========================================================
+   ONNISTUMINEN
+========================================================== */
+
+function showSuccess(bookingCode) {
+
+    document.getElementById(
+        'calendarCard'
+    ).style.display = 'none';
+
+
+    detailsCard.style.display =
+        'none';
+
+
+    document.getElementById(
+        'successCard'
+    ).style.display = 'block';
+
+
+    document.getElementById('step1')
+        .className =
+        'step done';
+
+    document.getElementById('step2')
+        .className =
+        'step done';
+
+    document.getElementById('step3')
+        .className =
+        'step active';
+
+
+    document.getElementById(
+        'successDate'
+    ).textContent =
+        capitalize(
+            formatFinnishDate(
+                selectedSlot.appointment_date
+            )
+        ) +
+        ' klo ' +
+        formatTime(
+            selectedSlot.start_time
+        ) +
+        '–' +
+        formatTime(
+            selectedSlot.end_time
+        );
+
+
+    document.getElementById(
+        'successDetails'
+    ).textContent =
+        selectedSlot.professional_name +
+        ' • ' +
+        selectedSlot.location;
+
+
+    document.getElementById(
+        'bookingCode'
+    ).textContent =
+        bookingCode;
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+/* ==========================================================
+   VARAUSKOODIN KOPIOINTI
+========================================================== */
+
+document.getElementById(
+    'copyCodeButton'
+).addEventListener(
+    'click',
+    async () => {
+
+        if (!currentBookingCode) {
+            return;
+        }
+
+
+        const result =
+            document.getElementById(
+                'copyResult'
+            );
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                currentBookingCode
+            );
+
+            result.textContent =
+                'Varauskoodi kopioitu.';
+
+        } catch (error) {
+
+            console.error(error);
+
+            result.textContent =
+                'Kopiointi ei onnistunut. Valitse koodi ja kopioi se käsin.';
+        }
+    }
+);
+
+
+/* ==========================================================
+   UUSI VARAUS
+========================================================== */
+
+document.getElementById(
+    'newBookingButton'
+).addEventListener(
+    'click',
+    () => {
+
+        location.reload();
+    }
+);
+
+
+/* ==========================================================
+   VIRHEET
+========================================================== */
+
+function showError(text) {
+
+    errorMessage.textContent = text;
+
+    errorMessage.style.display =
+        'block';
+
+    errorMessage.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+    });
+}
+
+
+function hideError() {
+
+    errorMessage.style.display =
+        'none';
+
+    errorMessage.textContent = '';
+}
+
+
+/* ==========================================================
+   KÄYNNISTYS
+========================================================== */
+
+loadTimes();
+
+</script>
+
+</body>
+</html>
