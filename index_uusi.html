@@ -1,0 +1,3679 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Keski-Suomen hyvinvointialue | hyvaks.fi</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --blue:#286296;
+    --blue-dark:#005596;
+    --blue-hover:#174f7f;
+    --green:#b8d981;
+    --pink:#f8c7c9;
+
+    --news-blue:#c8e8f4;
+    --news-green:#d8ebc5;
+    --news-pink:#f7c6c8;
+
+    --text:#111;
+    --muted:#65747c;
+    --border:#d8e0e4;
+
+    --max-width:1440px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--text);
+    font-family:"Raleway",Arial,sans-serif;
+    font-weight:400;
+    line-height:1.5;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+img{
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
+    background:#fff;
+}
+
+.header-top{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:124px;
+    margin:auto;
+    padding:25px 20px 10px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.logo-link{
+    display:inline-flex;
+    align-items:center;
+}
+
+.logo{
+    display:block;
+    width:245px;
+    max-height:82px;
+    object-fit:contain;
+}
+
+.top-search{
+    width:360px;
+    height:54px;
+
+    display:flex;
+
+    border:2px solid var(--blue-dark);
+    border-radius:30px;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.top-search input{
+    flex:1;
+    min-width:0;
+    border:0;
+    outline:0;
+    padding:0 22px;
+    font-size:15px;
+    font-weight:400;
+}
+
+.top-search button{
+    width:58px;
+    border:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--blue);
+    color:#fff;
+}
+
+.top-search button:hover{
+    background:var(--blue-hover);
+}
+
+.top-search svg{
+    width:23px;
+    height:23px;
+}
+
+.mobile-menu-button{
+    display:none;
+    width:48px;
+    height:48px;
+
+    border:0;
+    background:transparent;
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+}
+
+.mobile-menu-button span{
+    display:block;
+    width:27px;
+    height:2px;
+    background:var(--blue-dark);
+    transition:.2s;
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.main-nav{
+    background:#fff;
+}
+
+.nav-inner{
+    width:100%;
+    max-width:var(--max-width);
+    min-height:67px;
+
+    margin:auto;
+    padding:0 4px;
+
+    display:flex;
+    align-items:stretch;
+
+    border-bottom:1px solid #d8e0e4;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    color:var(--blue-dark);
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:500;
+
+    white-space:nowrap;
+    border-bottom:4px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible{
+    border-bottom-color:var(--blue-dark);
+}
+
+.mobile-search{
+    display:none;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.intro-inner{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:32px 20px 72px;
+}
+
+.page-title{
+    margin:0 0 46px;
+
+    color:var(--blue-dark);
+
+    font-size:28px;
+    line-height:1.25;
+    font-weight:500;
+}
+
+.intro-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(420px,.84fr)
+        minmax(520px,1fr);
+
+    gap:32px;
+    align-items:start;
+}
+
+.intro-text{
+    margin:0 0 18px;
+
+    font-size:16px;
+    line-height:1.6;
+    font-weight:400;
+}
+
+.search-title{
+    margin:18px 0 9px;
+
+    font-size:20px;
+    font-weight:600;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.main-search{
+    height:55px;
+
+    display:flex;
+
+    margin-bottom:30px;
+
+    border:2px solid var(--blue-dark);
+    border-radius:30px;
+
+    overflow:hidden;
+    background:#fff;
+}
+
+.main-search input{
+    flex:1;
+    min-width:0;
+
+    padding:0 22px;
+
+    border:0;
+    outline:0;
+
+    font-size:15px;
+    font-weight:400;
+}
+
+.main-search button{
+    width:58px;
+    border:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--blue);
+    color:#fff;
+}
+
+.main-search button:hover{
+    background:var(--blue-hover);
+}
+
+.main-search svg{
+    width:24px;
+    height:24px;
+}
+
+.search-results{
+    display:none;
+
+    margin-top:-30px;
+    margin-bottom:30px;
+
+    border:1px solid var(--border);
+    border-top:0;
+
+    background:#fff;
+}
+
+.search-results.show{
+    display:block;
+}
+
+.search-result{
+    display:block;
+
+    padding:14px 17px;
+
+    border-bottom:1px solid var(--border);
+
+    text-decoration:none;
+}
+
+.search-result:last-child{
+    border-bottom:0;
+}
+
+.search-result:hover{
+    background:#f3f7f9;
+}
+
+.search-result strong{
+    display:block;
+
+    margin-bottom:2px;
+
+    color:var(--blue-dark);
+}
+
+.search-result small{
+    color:var(--muted);
+}
+
+/* =========================================================
+   SINISET TOIMINTOPAINIKKEET
+========================================================= */
+
+.action-list{
+    display:grid;
+    gap:14px;
+}
+
+.action{
+    min-height:57px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 16px;
+
+    border-radius:4px;
+
+    background:var(--blue);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:700;
+
+    transition:.15s;
+}
+
+.action:hover{
+    background:var(--blue-hover);
+}
+
+.action-text{
+    flex:1;
+}
+
+.action-arrow{
+    width:25px;
+    height:25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #fff;
+    border-radius:50%;
+}
+
+.action-arrow::after{
+    content:"›";
+
+    position:relative;
+    top:-1px;
+
+    font-size:21px;
+    line-height:1;
+}
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-image-box{
+    overflow:hidden;
+    border-radius:5px;
+}
+
+.hero-image{
+    display:block;
+
+    width:100%;
+    height:420px;
+
+    object-fit:cover;
+    object-position:center;
+}
+
+/* =========================================================
+   8 PALVELUA
+========================================================= */
+
+.services{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:25px 20px 82px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    column-gap:52px;
+    row-gap:39px;
+}
+
+.service{
+    min-height:124px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    text-align:center;
+    text-decoration:none;
+
+    color:var(--blue-dark);
+
+    font-size:16px;
+    font-weight:700;
+    line-height:1.4;
+}
+
+.service-circle{
+    width:66px;
+    height:66px;
+
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--green);
+}
+
+.service-circle svg{
+    width:48px;
+    height:48px;
+
+    fill:none;
+    stroke:var(--blue-dark);
+
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.service:hover span{
+    text-decoration:underline;
+}
+
+/* =========================================================
+   NOSTOT
+========================================================= */
+
+.info-highlights{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+    padding:40px 20px 75px;
+}
+
+.info-highlight{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+
+    gap:42px;
+
+    margin-bottom:60px;
+}
+
+.info-highlight:last-child{
+    margin-bottom:0;
+}
+
+.info-highlight.reverse .info-highlight-image{
+    order:2;
+}
+
+.info-highlight.reverse .info-highlight-text{
+    order:1;
+}
+
+.info-highlight-text{
+    padding:20px 0;
+}
+
+.info-highlight-text h2{
+    margin:0 0 18px;
+
+    color:var(--blue-dark);
+
+    font-size:24px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+.info-highlight-text p{
+    max-width:560px;
+
+    margin:0 0 26px;
+
+    font-size:15px;
+    line-height:1.6;
+}
+
+.info-highlight-text a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    color:var(--blue-dark);
+
+    font-size:15px;
+    font-weight:700;
+
+    text-decoration:none;
+}
+
+.info-highlight-text a:hover{
+    text-decoration:underline;
+}
+
+.read-arrow{
+    width:21px;
+    height:21px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid var(--blue-dark);
+    border-radius:50%;
+
+    font-size:19px;
+}
+
+.info-highlight-image{
+    overflow:hidden;
+    border-radius:5px;
+}
+
+.info-highlight-image img{
+    display:block;
+
+    width:100%;
+    height:300px;
+
+    object-fit:cover;
+}
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+.news-section{
+    padding:35px 20px 80px;
+}
+
+.news-grid{
+    width:100%;
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:36px;
+}
+
+.news-column{
+    min-height:610px;
+
+    padding:25px 16px 18px;
+
+    border-radius:6px;
+}
+
+.news-column.main{
+    background:var(--news-blue);
+}
+
+.news-column.latest{
+    background:var(--news-green);
+}
+
+.news-column.events{
+    background:var(--news-pink);
+}
+
+.news-heading{
+    margin:0 8px 22px;
+
+    color:var(--blue-dark);
+
+    font-size:28px;
+    font-weight:500;
+}
+
+.news-content{
+    min-height:515px;
+
+    padding:16px;
+
+    border-radius:5px;
+
+    background:#fff;
+}
+
+.news-item,
+.main-news-item{
+    padding:0 0 20px;
+    margin:0 0 20px;
+
+    border-bottom:1px solid #ddd;
+}
+
+.news-item:last-child,
+.main-news-item:last-child{
+    margin-bottom:0;
+}
+
+.news-item-title{
+    margin:0 0 9px;
+
+    color:var(--blue-dark);
+
+    font-size:17px;
+    line-height:1.25;
+    font-weight:600;
+}
+
+.news-item-date{
+    display:block;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.news-item-text{
+    margin:10px 0 0;
+    font-size:14px;
+}
+
+.main-news-image{
+    display:block;
+
+    width:100%;
+    max-height:230px;
+
+    margin-bottom:15px;
+
+    object-fit:cover;
+}
+
+.news-empty{
+    padding:10px 2px;
+
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.feedback-section{
+    padding:30px 20px 70px;
+}
+
+.feedback-inner{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:85px;
+    align-items:center;
+}
+
+.feedback-left{
+    display:flex;
+    justify-content:center;
+}
+
+.feedback-score{
+    width:400px;
+    max-width:100%;
+
+    text-align:center;
+}
+
+.feedback-area-name{
+    font-size:18px;
+}
+
+.feedback-period{
+    color:#888;
+    font-size:12px;
+}
+
+.nps-gauge{
+    position:relative;
+
+    width:330px;
+    height:205px;
+
+    margin:34px auto 0;
+}
+
+.nps-gauge::before{
+    content:"";
+
+    position:absolute;
+
+    left:20px;
+    top:0;
+
+    width:290px;
+    height:290px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            from 270deg,
+            #ffc4c4 0deg 65deg,
+            #efdda3 65deg 120deg,
+            #b4d67f 120deg 180deg,
+            transparent 180deg 360deg
+        );
+}
+
+.nps-gauge::after{
+    content:"";
+
+    position:absolute;
+
+    left:58px;
+    top:38px;
+
+    width:214px;
+    height:214px;
+
+    border-radius:50%;
+
+    background:#fff;
+}
+
+.nps-gauge-inner{
+    position:absolute;
+    z-index:3;
+
+    left:0;
+    right:0;
+    top:77px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.nps-label{
+    font-size:12px;
+}
+
+.nps-number{
+    margin-top:3px;
+
+    color:#26354a;
+
+    font-size:32px;
+    line-height:1;
+}
+
+.nps-responses{
+    margin-top:12px;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.feedback-content h2{
+    margin:0 0 8px;
+
+    color:var(--blue-dark);
+
+    font-size:24px;
+    font-weight:600;
+}
+
+.feedback-content h3{
+    margin:27px 0 3px;
+
+    font-size:19px;
+    font-weight:600;
+}
+
+.feedback-content p{
+    max-width:550px;
+
+    margin:0 0 16px;
+
+    font-size:15px;
+}
+
+.feedback-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 14px;
+
+    border-radius:4px;
+
+    background:var(--blue);
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:700;
+}
+
+.feedback-button:hover{
+    background:var(--blue-hover);
+}
+
+.feedback-button span{
+    width:18px;
+    height:18px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #fff;
+    border-radius:50%;
+}
+
+.feedback-text-link{
+    color:var(--blue-dark);
+    font-size:14px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:var(--blue);
+    color:#fff;
+}
+
+.footer-main{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:40px 20px 45px;
+
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+
+    gap:100px;
+}
+
+.footer-main h2{
+    margin:0 0 14px;
+    font-size:19px;
+}
+
+.footer-about p{
+    max-width:460px;
+
+    margin:0;
+
+    font-size:13px;
+    line-height:1.65;
+}
+
+.footer-links a{
+    display:block;
+
+    margin:4px 0;
+
+    color:#fff;
+
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-bottom{
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:0 20px 36px;
+}
+
+.footer-line{
+    height:1px;
+
+    margin-bottom:28px;
+
+    background:rgba(255,255,255,.65);
+}
+
+.footer-bottom-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.footer-logo{
+    width:190px;
+    max-height:65px;
+    object-fit:contain;
+}
+
+.socials{
+    display:flex;
+    gap:12px;
+}
+
+.social{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--green);
+    color:var(--blue-dark);
+
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+}
+
+/* =========================================================
+   DIGITAL SERVICES
+========================================================= */
+
+.chat-button{
+    position:fixed;
+    z-index:1000;
+
+    right:30px;
+    bottom:28px;
+
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    border:0;
+    border-radius:50%;
+
+    background:var(--blue-dark);
+    color:#fff;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.18);
+}
+
+.chat-button:hover{
+    background:#00477e;
+}
+
+.chat-button svg{
+    width:31px;
+    height:31px;
+
+    fill:none;
+    stroke:currentColor;
+
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.digital-popup{
+    position:fixed;
+    z-index:999;
+
+    right:30px;
+    bottom:110px;
+
+    width:390px;
+    max-width:calc(100vw - 40px);
+
+    display:none;
+
+    padding:27px;
+
+    border:1px solid #d7dde1;
+    border-radius:6px;
+
+    background:#fff;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.17);
+}
+
+.digital-popup.open{
+    display:block;
+}
+
+.digital-popup-close{
+    position:absolute;
+
+    top:11px;
+    right:13px;
+
+    width:35px;
+    height:35px;
+
+    border:0;
+    background:transparent;
+
+    color:var(--blue-dark);
+
+    font-size:27px;
+}
+
+.digital-popup h2{
+    margin:0 35px 12px 0;
+
+    color:var(--blue-dark);
+
+    font-size:23px;
+}
+
+.digital-popup p{
+    margin:0 0 22px;
+
+    font-size:14px;
+    line-height:1.55;
+}
+
+.digital-popup-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    padding:11px 17px;
+
+    border-radius:25px;
+
+    background:var(--blue);
+    color:#fff;
+
+    text-decoration:none;
+    font-size:14px;
+    font-weight:700;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .intro-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-image{
+        height:auto;
+        max-height:520px;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-highlight{
+        grid-template-columns:1fr;
+    }
+
+    .info-highlight.reverse .info-highlight-image,
+    .info-highlight.reverse .info-highlight-text{
+        order:initial;
+    }
+
+    .news-grid{
+        grid-template-columns:1fr;
+    }
+
+    .news-column,
+    .news-content{
+        min-height:0;
+    }
+
+    .nav-inner{
+        overflow-x:auto;
+    }
+}
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media(max-width:700px){
+
+    .header-top{
+        min-height:82px;
+        padding:12px 18px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .logo{
+        width:180px;
+        max-height:58px;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .mobile-menu-button{
+        display:flex;
+    }
+
+    .main-nav{
+        position:fixed;
+        z-index:2000;
+
+        top:0;
+        right:0;
+        bottom:0;
+
+        width:min(360px,88vw);
+
+        background:#fff;
+
+        transform:translateX(105%);
+        transition:transform .22s ease;
+
+        box-shadow:-8px 0 30px rgba(0,0,0,.16);
+
+        overflow:auto;
+    }
+
+    .main-nav.open{
+        transform:translateX(0);
+    }
+
+    .nav-inner{
+        min-height:100%;
+
+        display:block;
+
+        padding:80px 22px 30px;
+
+        border:0;
+        overflow:visible;
+    }
+
+    .nav-link{
+        min-height:54px;
+
+        display:flex;
+
+        padding:0 4px;
+
+        border-bottom:1px solid var(--border);
+
+        font-size:16px;
+        white-space:normal;
+    }
+
+    .nav-link:hover{
+        border-bottom-color:var(--border);
+    }
+
+    .mobile-nav-close{
+        position:absolute;
+
+        top:18px;
+        right:18px;
+
+        width:44px;
+        height:44px;
+
+        border:0;
+        background:transparent;
+
+        color:var(--blue-dark);
+
+        font-size:34px;
+        line-height:1;
+    }
+
+    .mobile-search{
+        display:flex;
+
+        height:49px;
+
+        margin:18px 0;
+
+        border:2px solid var(--blue-dark);
+        border-radius:25px;
+
+        overflow:hidden;
+    }
+
+    .mobile-search input{
+        flex:1;
+        min-width:0;
+
+        padding:0 15px;
+
+        border:0;
+        outline:0;
+    }
+
+    .mobile-search button{
+        width:52px;
+
+        border:0;
+
+        background:var(--blue);
+        color:#fff;
+
+        font-size:20px;
+    }
+
+    .menu-overlay{
+        position:fixed;
+        z-index:1990;
+
+        inset:0;
+
+        display:none;
+
+        background:rgba(0,0,0,.32);
+    }
+
+    .menu-overlay.show{
+        display:block;
+    }
+
+    .intro-inner{
+        padding:28px 18px 45px;
+    }
+
+    .page-title{
+        margin-bottom:28px;
+
+        font-size:25px;
+        line-height:1.3;
+    }
+
+    .intro-text{
+        font-size:15px;
+    }
+
+    .search-title{
+        font-size:19px;
+    }
+
+    .main-search{
+        height:52px;
+        margin-bottom:23px;
+    }
+
+    .action-list{
+        gap:10px;
+    }
+
+    .action{
+        min-height:56px;
+
+        padding:0 14px;
+
+        font-size:15px;
+    }
+
+    .hero-image-box{
+        margin-top:28px;
+    }
+
+    .hero-image{
+        width:100%;
+        height:240px;
+
+        object-fit:cover;
+    }
+
+    .services{
+        padding:20px 15px 50px;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+
+        column-gap:14px;
+        row-gap:25px;
+    }
+
+    .service{
+        min-height:130px;
+
+        padding:0 4px;
+
+        font-size:14px;
+    }
+
+    .service-circle{
+        width:64px;
+        height:64px;
+
+        margin-bottom:11px;
+    }
+
+    .service-circle svg{
+        width:46px;
+        height:46px;
+    }
+
+    .info-highlights{
+        padding:25px 18px 50px;
+    }
+
+    .info-highlight{
+        display:flex;
+        flex-direction:column;
+
+        gap:0;
+
+        margin-bottom:50px;
+    }
+
+    .info-highlight.reverse .info-highlight-image,
+    .info-highlight.reverse .info-highlight-text{
+        order:initial;
+    }
+
+    .info-highlight-image{
+        width:100%;
+    }
+
+    .info-highlight-image img{
+        height:215px;
+    }
+
+    .info-highlight-text{
+        width:100%;
+        padding:20px 0 0;
+    }
+
+    .info-highlight-text h2{
+        font-size:22px;
+    }
+
+    .news-section{
+        padding:25px 15px 55px;
+    }
+
+    .news-grid{
+        gap:22px;
+    }
+
+    .news-heading{
+        font-size:24px;
+    }
+
+    .feedback-section{
+        padding:20px 18px 55px;
+    }
+
+    .feedback-inner{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .nps-gauge{
+        transform:scale(.88);
+        transform-origin:center top;
+        margin-bottom:-20px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+        gap:35px;
+
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .footer-bottom-row{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .chat-button{
+        right:17px;
+        bottom:17px;
+
+        width:61px;
+        height:61px;
+    }
+
+    .digital-popup{
+        right:15px;
+        bottom:90px;
+
+        width:calc(100vw - 30px);
+    }
+}
+
+
+/* =========================================================
+   EVÄSTEASETUKSET
+   Lisätty alkuperäiseen index.html-tiedostoon.
+========================================================= */
+.cookiebot-launcher{
+    position:fixed;
+    left:12px;
+    bottom:12px;
+    width:46px;
+    height:46px;
+    border:0;
+    border-radius:50%;
+    background:#171717;
+    color:#fff;
+    z-index:99990;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+.cookiebot-launcher:hover{background:#000;}
+.cookiebot-launcher:focus-visible{
+    outline:3px solid #1f55d5;
+    outline-offset:3px;
+}
+.cookiebot-launcher-mark{
+    width:25px;
+    height:25px;
+    border:2px solid #fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:-1px;
+    line-height:1;
+}
+.cookiebot-banner{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:99980;
+    background:#fff;
+    border-top:1px solid #ddd;
+    box-shadow:0 -3px 18px rgba(0,0,0,.08);
+    padding:28px 0 30px;
+}
+.cookiebot-banner.hidden{display:none;}
+.cookiebot-banner-inner{
+    width:min(1510px,calc(100% - 64px));
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:150px minmax(0,1fr) 285px;
+    gap:34px;
+    align-items:center;
+}
+.cookiebot-brand{
+    min-height:120px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+.cookiebot-mini-logo{
+    font-size:9px;
+    line-height:1.05;
+    color:#16548d;
+    font-weight:700;
+    letter-spacing:.02em;
+}
+.cookiebot-mini-logo-shapes{
+    display:flex;
+    align-items:center;
+    margin-bottom:5px;
+}
+.cookiebot-mini-logo-shapes span{
+    width:30px;
+    height:20px;
+    border-radius:12px;
+    display:block;
+    margin-right:-13px;
+}
+.cookiebot-mini-logo-shapes span:nth-child(1){background:#ffd0d1;}
+.cookiebot-mini-logo-shapes span:nth-child(2){background:#2c679c;}
+.cookiebot-mini-logo-shapes span:nth-child(3){background:#b7d879;}
+.cookiebot-usercentrics{
+    color:#111;
+    font-size:12px;
+    line-height:1.05;
+}
+.cookiebot-usercentrics strong{
+    display:block;
+    font-size:22px;
+    letter-spacing:-1.4px;
+}
+.cookiebot-banner-copy h2{
+    margin:0 0 10px;
+    font-size:16px;
+    color:#202020;
+}
+.cookiebot-banner-copy p{
+    margin:0;
+    font-size:15px;
+    line-height:1.6;
+    color:#2b2b2b;
+}
+.cookiebot-toggles{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px 34px;
+    margin-top:28px;
+}
+.cookiebot-toggle-item{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    font-weight:700;
+    font-size:14px;
+    color:#222;
+}
+.cookiebot-switch{
+    position:relative;
+    width:57px;
+    height:31px;
+    border:0;
+    border-radius:18px;
+    background:#c8c8c8;
+    padding:0;
+    cursor:pointer;
+    transition:.18s ease;
+}
+.cookiebot-switch::after{
+    content:"";
+    position:absolute;
+    width:23px;
+    height:23px;
+    left:4px;
+    top:4px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);
+    transition:.18s ease;
+}
+.cookiebot-switch.on{background:#0782c5;}
+.cookiebot-switch.on::after{transform:translateX(26px);}
+.cookiebot-switch.locked{cursor:default;}
+.cookiebot-show-details{
+    border:0;
+    background:none;
+    padding:5px 0;
+    color:#006fb9;
+    font:inherit;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+.cookiebot-show-details::after{
+    content:"›";
+    color:#222;
+    display:inline-block;
+    margin-left:18px;
+    font-size:24px;
+    vertical-align:-2px;
+}
+.cookiebot-actions{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+.cookiebot-action{
+    min-height:48px;
+    border:2px solid #087bc0;
+    background:#fff;
+    color:#161616;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+.cookiebot-action.primary{
+    background:#087bc0;
+    color:#fff;
+}
+.cookiebot-action:hover{filter:brightness(.97);}
+
+.cookiebot-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:99995;
+    background:rgba(0,0,0,.28);
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    padding:18px;
+}
+.cookiebot-backdrop.hidden{display:none;}
+.cookiebot-modal{
+    width:min(430px,calc(100vw - 36px));
+    max-height:calc(100vh - 36px);
+    overflow:auto;
+    background:#fff;
+    border-radius:2px;
+    box-shadow:0 12px 50px rgba(0,0,0,.28);
+    color:#242424;
+}
+.cookiebot-modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px 24px;
+    border-bottom:1px solid #d9d9d9;
+}
+.cookiebot-modal-head h2{
+    margin:0;
+    font-size:16px;
+}
+.cookiebot-close{
+    border:0;
+    background:transparent;
+    width:36px;
+    height:36px;
+    cursor:pointer;
+    position:relative;
+}
+.cookiebot-close::before,
+.cookiebot-close::after{
+    content:"";
+    position:absolute;
+    left:17px;
+    top:7px;
+    width:2px;
+    height:22px;
+    background:#171717;
+}
+.cookiebot-close::before{transform:rotate(45deg);}
+.cookiebot-close::after{transform:rotate(-45deg);}
+.cookiebot-modal-body{padding:24px;}
+.cookiebot-current-title{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+.cookiebot-current-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-height:29px;
+    font-size:15px;
+}
+.cookiebot-current-icon{
+    width:17px;
+    color:#123ee2;
+    font-size:22px;
+    line-height:1;
+    text-align:center;
+}
+.cookiebot-details-button{
+    margin-top:23px;
+    border:0;
+    background:transparent;
+    padding:0;
+    color:#1647dc;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+.cookiebot-details-button::after{
+    content:"⌄";
+    color:#111;
+    margin-left:13px;
+    font-size:19px;
+}
+.cookiebot-details{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid #e3e3e3;
+    font-size:13px;
+    line-height:1.55;
+}
+.cookiebot-details.hidden{display:none;}
+.cookiebot-modal-brand{
+    height:66px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-end;
+    padding:0 24px 17px;
+    border-bottom:1px solid #ddd;
+}
+.cookiebot-modal-brand .cookiebot-usercentrics strong{font-size:20px;}
+.cookiebot-modal-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    padding:16px 24px 20px;
+}
+.cookiebot-modal-actions button{
+    min-height:48px;
+    border:2px solid #173ee0;
+    background:#fff;
+    color:#111;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+.cookiebot-modal-actions .primary{
+    background:#173ee0;
+    color:#fff;
+}
+@media(max-width:900px){
+    .cookiebot-banner-inner{
+        grid-template-columns:1fr;
+        width:min(680px,calc(100% - 34px));
+        gap:18px;
+    }
+    .cookiebot-brand{min-height:auto;flex-direction:row;align-items:center;}
+    .cookiebot-toggles{margin-top:18px;gap:16px 22px;}
+    .cookiebot-actions{display:grid;grid-template-columns:1fr;}
+    .cookiebot-banner{max-height:85vh;overflow:auto;padding:20px 0;}
+}
+@media(max-width:520px){
+    .cookiebot-banner-copy p{font-size:13px;}
+    .cookiebot-toggle-item{font-size:13px;}
+    .cookiebot-modal-actions{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+    <div class="header-top">
+
+        <a href="index.html" class="logo-link">
+            <img
+                src="hyvaks-logo.png"
+                alt="Keski-Suomen hyvinvointialue"
+                class="logo"
+            >
+        </a>
+
+        <form class="top-search" id="topSearchForm">
+            <input
+                id="topSearchInput"
+                type="search"
+                placeholder="Hae sivustolta"
+                aria-label="Hae sivustolta"
+            >
+
+            <button type="submit" aria-label="Hae">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M16.5 16.5L21 21"></path>
+                </svg>
+            </button>
+        </form>
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Avaa valikko"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="main-nav" id="mainNav">
+
+        <button
+            class="mobile-nav-close"
+            id="mobileNavClose"
+            type="button"
+            aria-label="Sulje valikko"
+            style="display:none"
+        >×</button>
+
+        <div class="nav-inner">
+
+            <form class="mobile-search" id="mobileSearchForm">
+                <input
+                    id="mobileSearchInput"
+                    type="search"
+                    placeholder="Hae sivustolta"
+                >
+                <button type="submit">⌕</button>
+            </form>
+
+            <a href="palvelut.html" class="nav-link" data-i18n="navServices">
+                Palvelumme
+            </a>
+
+            <a href="asiointi.html" class="nav-link" data-i18n="navTransactions">
+                Asiointi
+            </a>
+
+            <a href="asiakkaana.html" class="nav-link" data-i18n="navCustomer">
+                Asiakkaana
+            </a>
+
+            <a href="palvelu.html?palvelu=sairaala-nova" class="nav-link">
+                Sairaala Nova
+            </a>
+
+            <a href="hyvinvointisi-tueksi.html" class="nav-link" data-i18n="navWellbeing">
+                Hyvinvointisi tueksi
+            </a>
+
+            <a href="hyvinvointialue.html" class="nav-link" data-i18n="navArea">
+                Hyvinvointialue
+            </a>
+
+            <a href="ajankohtaista.html" class="nav-link" data-i18n="navCurrent">
+                Ajankohtaista
+            </a>
+
+            <a href="tyopaikat.html" class="nav-link" data-i18n="navJobs">
+                Tule työkaveriksi
+            </a>
+
+            <a href="#" class="nav-link" id="languageButton">
+                In English
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<main>
+
+<section id="asiointi">
+
+    <div class="intro-inner">
+
+        <h1 class="page-title" data-i18n="title">
+            Keski-Suomen hyvinvointialue | hyvaks.fi
+        </h1>
+
+        <div class="intro-grid">
+
+            <div>
+
+                <p class="intro-text" data-i18n="intro">
+                    Edistämme keskisuomalaisten hyvinvointia, terveyttä ja turvallisuutta.
+                    Vastaamme sosiaali-, terveys- ja pelastustoimen palveluista Keski-Suomessa.
+                </p>
+
+                <h2 class="search-title" data-i18n="searchService">
+                    Hae palvelua
+                </h2>
+
+                <form class="main-search" id="mainSearchForm">
+
+                    <input
+                        id="mainSearchInput"
+                        type="search"
+                        placeholder="Hae sivustolta"
+                        aria-label="Hae sivustolta"
+                    >
+
+                    <button type="submit" aria-label="Hae">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M16.5 16.5L21 21"></path>
+                        </svg>
+                    </button>
+
+                </form>
+
+                <div id="searchResults" class="search-results"></div>
+
+                <div class="action-list">
+
+                    <a href="digipalvelut.html" class="action">
+                        <span class="action-text" data-i18n="online">
+                            Asioi verkossa
+                        </span>
+                        <span class="action-arrow"></span>
+                    </a>
+
+                    <a href="paivystys.html" class="action">
+                        <span class="action-text" data-i18n="emergency">
+                            Hätätilanteet ja päivystys
+                        </span>
+                        <span class="action-arrow"></span>
+                    </a>
+
+                    <a href="vastaanotto.html" class="action">
+                        <span class="action-text" data-i18n="doctorNurse">
+                            Lääkärin ja hoitajan vastaanotto
+                        </span>
+                        <span class="action-arrow"></span>
+                    </a>
+
+                    <a href="rokotukset.html" class="action">
+                        <span class="action-text" data-i18n="vaccinations">
+                            Influenssa- ja koronarokotukset
+                        </span>
+                        <span class="action-arrow"></span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image-box">
+                <img
+                    src="ensihoito.jpg"
+                    alt="Ensihoidon ammattilaisia"
+                    class="hero-image"
+                >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     8 PALVELUA
+========================================================= -->
+
+<section class="services">
+
+<div class="service-grid">
+
+<!-- PERHEET -->
+<a href="palvelu.html?palvelu=perheet-nuoret-aikuiset" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <path d="M19 13c-5 0-9 4-9 9v7c0 4 3 7 7 7"/>
+    <circle cx="20" cy="20" r="5"/>
+    <path d="M12 49c0-9 3-15 8-15s8 6 8 15"/>
+    <circle cx="39" cy="23" r="5"/>
+    <path d="M31 49c0-9 3-15 8-15s8 6 8 15"/>
+    <path d="M15 13c3-4 9-5 13-1"/>
+</svg>
+</div>
+
+<span data-i18n="service1">
+Perheiden, nuorten ja aikuisten ohjaus ja neuvonta
+</span>
+
+</a>
+
+<!-- SENIORI -->
+<a href="palvelu.html?palvelu=seniorineuvonta" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <circle cx="31" cy="16" r="8"/>
+    <path d="M24 15c3-4 11-5 15-1"/>
+    <path d="M23 15l-3-3"/>
+    <path d="M40 14l4-2"/>
+    <path d="M23 27c-6 4-9 11-9 22"/>
+    <path d="M39 27c6 4 9 11 9 22"/>
+    <path d="M20 50h23"/>
+    <path d="M27 22c2 2 6 2 8 0"/>
+</svg>
+</div>
+
+<span data-i18n="service2">Seniorineuvonta</span>
+
+</a>
+
+<!-- SUUN TERVEYS -->
+<a href="palvelu.html?palvelu=suun-terveydenhuolto" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <rect x="12" y="7" width="40" height="50" rx="2"/>
+    <path d="M16 7v50M48 7v50"/>
+    <path d="M22 16c5-4 8-1 10-1s5-3 10 1c5 5 1 14-1 21-2 7-4 11-7 9-2-2-1-9-2-9s0 7-3 9c-3 2-5-2-7-9-2-7-6-16 0-21z"/>
+</svg>
+</div>
+
+<span data-i18n="service3">Suun terveydenhuolto</span>
+
+</a>
+
+<!-- MIELENTERVEYS -->
+<a href="palvelu.html?palvelu=mielenterveys-riippuvuuspalvelut" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <circle cx="32" cy="26" r="11"/>
+    <path d="M22 23c2-6 7-9 13-8"/>
+    <path d="M26 28c4 3 8 3 12 0"/>
+    <path d="M21 43c3-5 7-8 11-8 5 0 9 3 12 8"/>
+    <rect x="8" y="10" width="10" height="7" rx="1"/>
+    <rect x="45" y="10" width="11" height="7" rx="1"/>
+    <rect x="6" y="25" width="11" height="7" rx="1"/>
+    <rect x="47" y="25" width="11" height="7" rx="1"/>
+    <path d="M11 17l3 4M51 17l-3 4M17 28h4M43 28h4"/>
+</svg>
+</div>
+
+<span data-i18n="service4">
+Mielenterveys- ja riippuvuuspalvelut
+</span>
+
+</a>
+
+<!-- LABORATORIO -->
+<a href="palvelu.html?palvelu=laboratorio" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <path d="M10 9h12M14 9v31c0 7 3 12 6 12s6-5 6-12V9"/>
+    <path d="M29 9h12M33 9v31c0 7 3 12 6 12s6-5 6-12V9"/>
+    <path d="M48 9h9M51 9v31c0 7 2 12 5 12"/>
+    <path d="M14 31h12M33 27h12M51 34h6"/>
+</svg>
+</div>
+
+<span data-i18n="service5">Laboratorio</span>
+
+</a>
+
+<!-- VAMMAISPALVELUT -->
+<a href="palvelu.html?palvelu=vammaisten-palvelut" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <circle cx="32" cy="17" r="9"/>
+    <path d="M27 15c3-3 8-3 11 0"/>
+    <path d="M22 30c-6 5-9 12-9 22"/>
+    <path d="M42 30c6 5 9 12 9 22"/>
+    <path d="M23 34c3 4 6 6 9 6s6-2 9-6"/>
+    <path d="M22 52h20"/>
+    <path d="M24 26c4 4 12 4 16 0"/>
+</svg>
+</div>
+
+<span data-i18n="service6">Vammaisten palvelut</span>
+
+</a>
+
+<!-- NOVA -->
+<a href="palvelu.html?palvelu=sairaala-nova" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <path d="M7 35h10l5-12 7 23 7-17 5 6h16"/>
+    <path d="M11 49h42"/>
+    <path d="M16 49v6M48 49v6"/>
+    <path d="M44 14v10"/>
+    <path d="M39 19h10"/>
+    <path d="M45 8h7v7"/>
+</svg>
+</div>
+
+<span data-i18n="service7">Sairaala Nova</span>
+
+</a>
+
+<!-- PELASTUS -->
+<a href="palvelu.html?palvelu=pelastuslaitos" class="service">
+
+<div class="service-circle">
+<svg viewBox="0 0 64 64">
+    <path d="M7 29h43l7 8v13H7z"/>
+    <path d="M13 29l4-9h25l8 9"/>
+    <path d="M17 20h22"/>
+    <path d="M23 20l3-7M30 20l3-7M37 20l3-7"/>
+    <circle cx="18" cy="50" r="5"/>
+    <circle cx="47" cy="50" r="5"/>
+    <path d="M53 33h4"/>
+</svg>
+</div>
+
+<span data-i18n="service8">Pelastuslaitos</span>
+
+</a>
+
+</div>
+</section>
+
+<!-- =========================================================
+     NOSTOT
+========================================================= -->
+
+<section class="info-highlights">
+
+<article class="info-highlight">
+
+    <div class="info-highlight-image">
+        <img src="suomifi.jpg" alt="">
+    </div>
+
+    <div class="info-highlight-text">
+
+        <h2 data-i18n="suomiTitle">
+            Ota Suomi.fi-viestit käyttöösi
+        </h2>
+
+        <p data-i18n="suomiText">
+            Suomi.fi-viestit on turvallinen tapa vastaanottaa viranomaisten
+            viestejä sähköisesti.
+        </p>
+
+        <a href="suomifi-viestit.html">
+            <span data-i18n="readMore">Lue lisää</span>
+            <span class="read-arrow">›</span>
+        </a>
+
+    </div>
+
+</article>
+
+<article class="info-highlight reverse">
+
+    <div class="info-highlight-image">
+        <img src="huoli-laheisesta.jpg" alt="">
+    </div>
+
+    <div class="info-highlight-text">
+
+        <h2 data-i18n="concernTitle">
+            Onko sinulla huoli läheisestä?
+        </h2>
+
+        <p data-i18n="concernText">
+            Apua ja neuvontaa on saatavilla silloin, kun olet huolissasi
+            läheisesi hyvinvoinnista tai arjessa selviytymisestä.
+        </p>
+
+        <a href="huoli-laheisesta.html">
+            <span data-i18n="readMore">Lue lisää</span>
+            <span class="read-arrow">›</span>
+        </a>
+
+    </div>
+
+</article>
+
+<article class="info-highlight">
+
+    <div class="info-highlight-image">
+        <img src="terveellinen-syksy.jpg" alt="">
+    </div>
+
+    <div class="info-highlight-text">
+
+        <h2 data-i18n="autumnTitle">
+            Hyvinvointia edistävä terveellinen syksy
+        </h2>
+
+        <p data-i18n="autumnText">
+            Pienillä arjen valinnoilla voidaan tukea terveyttä,
+            hyvinvointia ja jaksamista läpi syksyn.
+        </p>
+
+        <a href="terveellinen-syksy.html">
+            <span data-i18n="readMore">Lue lisää</span>
+            <span class="read-arrow">›</span>
+        </a>
+
+    </div>
+
+</article>
+
+</section>
+
+<!-- =========================================================
+     NEWS
+========================================================= -->
+
+<section class="news-section">
+
+<div class="news-grid">
+
+<section class="news-column main">
+
+    <h2 class="news-heading" data-i18n="mainNews">
+        Pääuutiset
+    </h2>
+
+    <div id="mainNews" class="news-content">
+        <div class="news-empty">Ladataan uutisia...</div>
+    </div>
+
+</section>
+
+<section class="news-column latest">
+
+    <h2 class="news-heading" data-i18n="latestNews">
+        Viimeisimmät uutiset
+    </h2>
+
+    <div id="latestNews" class="news-content">
+        <div class="news-empty">Ladataan uutisia...</div>
+    </div>
+
+</section>
+
+<section class="news-column events">
+
+    <h2 class="news-heading" data-i18n="events">
+        Keski-Suomessa tapahtuu
+    </h2>
+
+    <div id="events" class="news-content">
+        <div class="news-empty">Ladataan tapahtumia...</div>
+    </div>
+
+</section>
+
+</div>
+</section>
+
+<!-- =========================================================
+     FEEDBACK
+========================================================= -->
+
+<section class="feedback-section">
+
+<div class="feedback-inner">
+
+<div class="feedback-left">
+
+<div class="feedback-score">
+
+<div class="feedback-area-name">
+    Keski-Suomen hyvinvointialue
+</div>
+
+<div class="feedback-period" data-i18n="customerFeedback">
+    Asiakaspalautteet
+</div>
+
+<div class="nps-gauge">
+
+<div class="nps-gauge-inner">
+
+<span class="nps-label">nps</span>
+
+<strong id="feedbackNps" class="nps-number">–</strong>
+
+<span id="feedbackResponses" class="nps-responses">
+    Ladataan...
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="feedback-content">
+
+<h2 data-i18n="feedbackTitle">
+    Anna meille palautetta
+</h2>
+
+<p data-i18n="feedbackIntro">
+    Kerro meille, miten onnistuimme, jotta voimme palvella sinua jatkossa
+    vielä paremmin.
+</p>
+
+<a href="palaute.html" class="feedback-button">
+    <span data-i18n="giveFeedback">Anna palautetta</span>
+    <span>›</span>
+</a>
+
+<h3 data-i18n="satisfaction">
+    Asiakastyytyväisyys
+</h3>
+
+<p data-i18n="npsText">
+    Keski-Suomen hyvinvointialueella asiakaskokemusta mitataan
+    NPS (Net Promoter Score) -mittarilla.
+</p>
+
+<a href="palaute.html" class="feedback-text-link" data-i18n="feedbackMore">
+    Lisätietoa asiakastyytyväisyydestämme
+</a>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+<div class="footer-main">
+
+<div class="footer-about">
+
+<h2>
+    Keski-Suomen hyvinvointialue
+</h2>
+
+<p data-i18n="footerText">
+    Vastaamme noin 273 000 keskisuomalaisen sosiaali-, terveys- ja
+    pelastustoimen palveluista. Edistämme hyvinvointia, terveyttä ja
+    turvallisuutta Keski-Suomessa vaikuttavasti ja laajalla yhteistyöllä.
+    Haluamme tukea keskisuomalaisten hyvää arkea.
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<h2 data-i18n="shortcuts">
+    Oikopolut
+</h2>
+
+<a href="sairaala-nova.html">Sairaala Nova</a>
+<a href="pelastuslaitos.html" data-i18n="rescue">Pelastuslaitos</a>
+<a href="ostolaskutiedot.html" data-i18n="invoices">Ostolaskutiedot</a>
+<a href="kirjaamo.html" data-i18n="registry">Kirjaamo</a>
+<a href="puhelinvaihde.html" data-i18n="switchboard">Puhelinvaihde</a>
+<a href="tietosuoja.html" data-i18n="privacy">Tietosuoja</a>
+<a href="saavutettavuus.html" data-i18n="accessibility">Saavutettavuusseloste</a>
+<a href="paatoksenteko.html" data-i18n="decision">Päätöksenteko</a>
+<a href="yhteystiedot.html" data-i18n="contact">Yhteystiedot</a>
+<a href="palaute.html" data-i18n="giveFeedback">Anna palautetta</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<div class="footer-line"></div>
+
+<div class="footer-bottom-row">
+
+<img
+    src="hyvaks-logo.png"
+    alt="Keski-Suomen hyvinvointialue"
+    class="footer-logo"
+>
+
+<div class="socials">
+<a href="#" class="social">f</a>
+<a href="#" class="social">X</a>
+<a href="#" class="social">IG</a>
+<a href="#" class="social">YT</a>
+<a href="#" class="social">in</a>
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- =========================================================
+     DIGITAL SERVICES
+========================================================= -->
+
+<button
+    id="chatButton"
+    class="chat-button"
+    type="button"
+    aria-label="Avaa digitaaliset palvelut"
+>
+
+<svg viewBox="0 0 32 32">
+    <path d="M6 7.5h20v14H14l-6 4v-4H6z"></path>
+    <path d="M11 13h10"></path>
+    <path d="M11 17h6"></path>
+</svg>
+
+</button>
+
+<section
+    id="digitalPopup"
+    class="digital-popup"
+    aria-hidden="true"
+>
+
+<button
+    id="digitalPopupClose"
+    class="digital-popup-close"
+    type="button"
+    aria-label="Sulje"
+>×</button>
+
+<h2 data-i18n="digitalTitle">
+    Digitaaliset palvelut
+</h2>
+
+<p data-i18n="digitalText">
+    Keskustele ammattilaisen kanssa chatissa ja täytä
+    terveyspalveluiden lomakkeita digitaalisessa asiointipalvelussa.
+</p>
+
+<a href="digipalvelut.html" class="digital-popup-link">
+    <span data-i18n="goOnline">Siirry asioimaan</span>
+    <span>›</span>
+</a>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    'https://bwuybksyoopuejcrlspa.supabase.co';
+
+const SUPABASE_PUBLIC_KEY =
+    'sb_publishable_XRwcqY98th6cgvzXbl76JA_61BTUsGZ';
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLIC_KEY
+    );
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+let currentLanguage = 'fi';
+
+const translations = {
+
+fi:{
+    navServices:'Palvelumme',
+    navTransactions:'Asiointi',
+    navCustomer:'Asiakkaana',
+    navWellbeing:'Hyvinvointisi tueksi',
+    navArea:'Hyvinvointialue',
+    navCurrent:'Ajankohtaista',
+    navJobs:'Tule työkaveriksi',
+
+    title:'Keski-Suomen hyvinvointialue | hyvaks.fi',
+
+    intro:'Edistämme keskisuomalaisten hyvinvointia, terveyttä ja turvallisuutta. Vastaamme sosiaali-, terveys- ja pelastustoimen palveluista Keski-Suomessa.',
+
+    searchService:'Hae palvelua',
+
+    online:'Asioi verkossa',
+    emergency:'Hätätilanteet ja päivystys',
+    doctorNurse:'Lääkärin ja hoitajan vastaanotto',
+    vaccinations:'Influenssa- ja koronarokotukset',
+
+    service1:'Perheiden, nuorten ja aikuisten ohjaus ja neuvonta',
+    service2:'Seniorineuvonta',
+    service3:'Suun terveydenhuolto',
+    service4:'Mielenterveys- ja riippuvuuspalvelut',
+    service5:'Laboratorio',
+    service6:'Vammaisten palvelut',
+    service7:'Sairaala Nova',
+    service8:'Pelastuslaitos',
+
+    suomiTitle:'Ota Suomi.fi-viestit käyttöösi',
+    suomiText:'Suomi.fi-viestit on turvallinen tapa vastaanottaa viranomaisten viestejä sähköisesti.',
+
+    concernTitle:'Onko sinulla huoli läheisestä?',
+    concernText:'Apua ja neuvontaa on saatavilla silloin, kun olet huolissasi läheisesi hyvinvoinnista tai arjessa selviytymisestä.',
+
+    autumnTitle:'Hyvinvointia edistävä terveellinen syksy',
+    autumnText:'Pienillä arjen valinnoilla voidaan tukea terveyttä, hyvinvointia ja jaksamista läpi syksyn.',
+
+    readMore:'Lue lisää',
+
+    mainNews:'Pääuutiset',
+    latestNews:'Viimeisimmät uutiset',
+    events:'Keski-Suomessa tapahtuu',
+
+    customerFeedback:'Asiakaspalautteet',
+    feedbackTitle:'Anna meille palautetta',
+    feedbackIntro:'Kerro meille, miten onnistuimme, jotta voimme palvella sinua jatkossa vielä paremmin.',
+    giveFeedback:'Anna palautetta',
+    satisfaction:'Asiakastyytyväisyys',
+    npsText:'Keski-Suomen hyvinvointialueella asiakaskokemusta mitataan NPS (Net Promoter Score) -mittarilla.',
+    feedbackMore:'Lisätietoa asiakastyytyväisyydestämme',
+
+    footerText:'Vastaamme noin 273 000 keskisuomalaisen sosiaali-, terveys- ja pelastustoimen palveluista. Edistämme hyvinvointia, terveyttä ja turvallisuutta Keski-Suomessa vaikuttavasti ja laajalla yhteistyöllä. Haluamme tukea keskisuomalaisten hyvää arkea.',
+
+    shortcuts:'Oikopolut',
+    rescue:'Pelastuslaitos',
+    invoices:'Ostolaskutiedot',
+    registry:'Kirjaamo',
+    switchboard:'Puhelinvaihde',
+    privacy:'Tietosuoja',
+    accessibility:'Saavutettavuusseloste',
+    decision:'Päätöksenteko',
+    contact:'Yhteystiedot',
+
+    digitalTitle:'Digitaaliset palvelut',
+    digitalText:'Keskustele ammattilaisen kanssa chatissa ja täytä terveyspalveluiden lomakkeita digitaalisessa asiointipalvelussa.',
+    goOnline:'Siirry asioimaan'
+},
+
+en:{
+    navServices:'Our services',
+    navTransactions:'Online services',
+    navCustomer:'For customers',
+    navWellbeing:'Support for your wellbeing',
+    navArea:'Wellbeing services county',
+    navCurrent:'News and events',
+    navJobs:'Work with us',
+
+    title:'Wellbeing Services County of Central Finland | hyvaks.fi',
+
+    intro:'We promote the wellbeing, health and safety of people in Central Finland. We are responsible for social, health and rescue services in Central Finland.',
+
+    searchService:'Search for a service',
+
+    online:'Online services',
+    emergency:'Emergencies and urgent care',
+    doctorNurse:'Doctor and nurse appointments',
+    vaccinations:'Influenza and COVID-19 vaccinations',
+
+    service1:'Guidance and counselling for families, young people and adults',
+    service2:'Senior counselling',
+    service3:'Oral health care',
+    service4:'Mental health and addiction services',
+    service5:'Laboratory',
+    service6:'Services for people with disabilities',
+    service7:'Nova Hospital',
+    service8:'Rescue services',
+
+    suomiTitle:'Start using Suomi.fi Messages',
+    suomiText:'Suomi.fi Messages is a secure way to receive messages from public authorities electronically.',
+
+    concernTitle:'Are you concerned about someone close to you?',
+    concernText:'Help and guidance are available if you are concerned about the wellbeing of someone close to you or their ability to cope with everyday life.',
+
+    autumnTitle:'A healthy autumn that supports wellbeing',
+    autumnText:'Small everyday choices can support health, wellbeing and energy throughout the autumn.',
+
+    readMore:'Read more',
+
+    mainNews:'Main news',
+    latestNews:'Latest news',
+    events:'Events in Central Finland',
+
+    customerFeedback:'Customer feedback',
+    feedbackTitle:'Give us feedback',
+    feedbackIntro:'Tell us how we did so that we can serve you even better in the future.',
+    giveFeedback:'Give feedback',
+    satisfaction:'Customer satisfaction',
+    npsText:'The Wellbeing Services County of Central Finland measures customer experience using the NPS (Net Promoter Score).',
+    feedbackMore:'More information about customer satisfaction',
+
+    footerText:'We provide social, health and rescue services for approximately 273,000 people in Central Finland. We promote wellbeing, health and safety through effective services and broad cooperation.',
+
+    shortcuts:'Quick links',
+    rescue:'Rescue services',
+    invoices:'Purchase invoice information',
+    registry:'Registry',
+    switchboard:'Telephone switchboard',
+    privacy:'Data protection',
+    accessibility:'Accessibility statement',
+    decision:'Decision-making',
+    contact:'Contact information',
+
+    digitalTitle:'Digital services',
+    digitalText:'Chat with a professional and complete healthcare forms through our digital services.',
+    goOnline:'Go to digital services'
+}
+
+};
+
+function setLanguage(language){
+
+    currentLanguage = language;
+
+    document.documentElement.lang =
+        language;
+
+    document
+        .querySelectorAll('[data-i18n]')
+        .forEach(element => {
+
+            const key =
+                element.dataset.i18n;
+
+            if(translations[language][key]){
+                element.textContent =
+                    translations[language][key];
+            }
+
+        });
+
+    const english =
+        language === 'en';
+
+    document.getElementById('languageButton').textContent =
+        english
+            ? 'Suomeksi'
+            : 'In English';
+
+    const placeholder =
+        english
+            ? 'Search this site'
+            : 'Hae sivustolta';
+
+    mainSearchInput.placeholder = placeholder;
+    topSearchInput.placeholder = placeholder;
+    mobileSearchInput.placeholder = placeholder;
+
+    document.title =
+        english
+            ? 'Wellbeing Services County of Central Finland | hyvaks.fi'
+            : 'Keski-Suomen hyvinvointialue | hyvaks.fi';
+
+}
+
+document
+    .getElementById('languageButton')
+    .addEventListener('click',event => {
+
+        event.preventDefault();
+
+        setLanguage(
+            currentLanguage === 'fi'
+                ? 'en'
+                : 'fi'
+        );
+
+    });
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const mobileMenuButton =
+    document.getElementById('mobileMenuButton');
+
+const mobileNavClose =
+    document.getElementById('mobileNavClose');
+
+const mainNav =
+    document.getElementById('mainNav');
+
+const menuOverlay =
+    document.getElementById('menuOverlay');
+
+function openMenu(){
+
+    mainNav.classList.add('open');
+    menuOverlay.classList.add('show');
+
+    document.body.classList.add('menu-open');
+
+    if(window.innerWidth <= 700){
+        mobileNavClose.style.display = 'block';
+    }
+
+}
+
+function closeMenu(){
+
+    mainNav.classList.remove('open');
+    menuOverlay.classList.remove('show');
+
+    document.body.classList.remove('menu-open');
+
+}
+
+mobileMenuButton.addEventListener('click',openMenu);
+mobileNavClose.addEventListener('click',closeMenu);
+menuOverlay.addEventListener('click',closeMenu);
+
+document.addEventListener('keydown',event => {
+
+    if(event.key === 'Escape'){
+        closeMenu();
+    }
+
+});
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function escapeHtml(value){
+
+    return String(value ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+
+}
+
+const searchData = [
+
+{
+    title:'Digitaaliset palvelut',
+    description:'Asioi verkossa.',
+    url:'digipalvelut.html'
+},
+
+{
+    title:'Opiskeluterveydenhuolto',
+    description:'Opiskelijoiden terveys- ja hyvinvointipalvelut.',
+    url:'opiskeluterveydenhuolto.html'
+},
+
+{
+    title:'Ajanvaraus',
+    description:'Varaa aika vastaanotolle.',
+    url:'ajanvaraus.html'
+},
+
+{
+    title:'Oma varaus',
+    description:'Tarkista ajanvarauksesi.',
+    url:'oma-varaus.html'
+},
+
+{
+    title:'Perheiden, nuorten ja aikuisten ohjaus ja neuvonta',
+    description:'Ohjausta ja neuvontaa.',
+    url:'palvelu.html?palvelu=perheet-nuoret-aikuiset'
+},
+
+{
+    title:'Seniorineuvonta',
+    description:'Ikääntyneiden neuvonta ja ohjaus.',
+    url:'palvelu.html?palvelu=seniorineuvonta'
+},
+
+{
+    title:'Suun terveydenhuolto',
+    description:'Suun ja hampaiden terveyspalvelut.',
+    url:'palvelu.html?palvelu=suun-terveydenhuolto'
+},
+
+{
+    title:'Mielenterveys- ja riippuvuuspalvelut',
+    description:'Mielenterveyden ja riippuvuuksien palvelut.',
+    url:'palvelu.html?palvelu=mielenterveys-riippuvuuspalvelut'
+},
+
+{
+    title:'Laboratorio',
+    description:'Laboratoriopalvelut.',
+    url:'palvelu.html?palvelu=laboratorio'
+},
+
+{
+    title:'Vammaisten palvelut',
+    description:'Vammaisten henkilöiden palvelut.',
+    url:'palvelu.html?palvelu=vammaisten-palvelut'
+},
+
+{
+    title:'Sairaala Nova',
+    description:'Sairaala Novan palvelut.',
+    url:'palvelu.html?palvelu=sairaala-nova'
+},
+
+{
+    title:'Pelastuslaitos',
+    description:'Pelastustoimen palvelut.',
+    url:'palvelu.html?palvelu=pelastuslaitos'
+}
+
+];
+
+const mainSearchForm =
+    document.getElementById('mainSearchForm');
+
+const mainSearchInput =
+    document.getElementById('mainSearchInput');
+
+const topSearchForm =
+    document.getElementById('topSearchForm');
+
+const topSearchInput =
+    document.getElementById('topSearchInput');
+
+const mobileSearchForm =
+    document.getElementById('mobileSearchForm');
+
+const mobileSearchInput =
+    document.getElementById('mobileSearchInput');
+
+const searchResults =
+    document.getElementById('searchResults');
+
+function searchSite(query){
+
+    const clean =
+        query
+            .trim()
+            .toLocaleLowerCase('fi');
+
+    if(!clean){
+
+        searchResults.innerHTML = '';
+        searchResults.classList.remove('show');
+
+        return;
+
+    }
+
+    const matches =
+        searchData.filter(item =>
+            item.title.toLocaleLowerCase('fi').includes(clean)
+            ||
+            item.description.toLocaleLowerCase('fi').includes(clean)
+        );
+
+    if(!matches.length){
+
+        searchResults.innerHTML = `
+            <div class="search-result">
+                <strong>Ei hakutuloksia</strong>
+                <small>Kokeile toista hakusanaa.</small>
+            </div>
+        `;
+
+        searchResults.classList.add('show');
+
+        return;
+
+    }
+
+    searchResults.innerHTML =
+        matches.map(item => `
+
+            <a class="search-result" href="${escapeHtml(item.url)}">
+
+                <strong>
+                    ${escapeHtml(item.title)}
+                </strong>
+
+                <small>
+                    ${escapeHtml(item.description)}
+                </small>
+
+            </a>
+
+        `).join('');
+
+    searchResults.classList.add('show');
+
+}
+
+mainSearchForm.addEventListener('submit',event => {
+
+    event.preventDefault();
+
+    searchSite(mainSearchInput.value);
+
+});
+
+mainSearchInput.addEventListener('input',() => {
+    searchSite(mainSearchInput.value);
+});
+
+topSearchForm.addEventListener('submit',event => {
+
+    event.preventDefault();
+
+    mainSearchInput.value =
+        topSearchInput.value;
+
+    document
+        .getElementById('asiointi')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
+
+    searchSite(topSearchInput.value);
+
+});
+
+mobileSearchForm.addEventListener('submit',event => {
+
+    event.preventDefault();
+
+    mainSearchInput.value =
+        mobileSearchInput.value;
+
+    closeMenu();
+
+    document
+        .getElementById('asiointi')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
+
+    searchSite(mobileSearchInput.value);
+
+});
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+const mainNewsContainer =
+    document.getElementById('mainNews');
+
+const latestNewsContainer =
+    document.getElementById('latestNews');
+
+const eventsContainer =
+    document.getElementById('events');
+
+function formatDate(value){
+
+    if(!value){
+        return '';
+    }
+
+    const date =
+        new Date(value);
+
+    if(Number.isNaN(date.getTime())){
+        return value;
+    }
+
+    return date.toLocaleDateString(
+        currentLanguage === 'en'
+            ? 'en-GB'
+            : 'fi-FI',
+        {
+            day:'numeric',
+            month:'numeric',
+            year:'numeric'
+        }
+    );
+
+}
+
+async function loadNews(){
+
+    try{
+
+        const {data,error} =
+            await supabaseClient
+                .from('site_news')
+                .select(
+                    'id,title,content,category,image_url,event_date,created_at'
+                )
+                .eq('is_published',true)
+                .order('created_at',{
+                    ascending:false
+                });
+
+        if(error){
+            throw error;
+        }
+
+        const rows =
+            data || [];
+
+        renderMainNews(
+            rows.filter(item =>
+                item.category === 'main'
+            )
+        );
+
+        renderLatestNews(
+            rows.filter(item =>
+                item.category === 'latest'
+            )
+        );
+
+        renderEvents(
+            rows.filter(item =>
+                item.category === 'event'
+            )
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            'Uutisten lataus epäonnistui:',
+            error
+        );
+
+        mainNewsContainer.innerHTML =
+            '<div class="news-empty">Pääuutisia ei ole julkaistu.</div>';
+
+        latestNewsContainer.innerHTML =
+            '<div class="news-empty">Uutisia ei ole julkaistu.</div>';
+
+        eventsContainer.innerHTML =
+            '<div class="news-empty">Tapahtumia ei ole julkaistu.</div>';
+
+    }
+
+}
+
+function renderMainNews(items){
+
+    if(!items.length){
+
+        mainNewsContainer.innerHTML =
+            '<div class="news-empty">Pääuutisia ei ole julkaistu.</div>';
+
+        return;
+
+    }
+
+    mainNewsContainer.innerHTML =
+        items
+            .slice(0,4)
+            .map(item => {
+
+                const image =
+                    item.image_url
+                        ? `
+                            <img
+                                src="${escapeHtml(item.image_url)}"
+                                alt=""
+                                class="main-news-image"
+                            >
+                        `
+                        : '';
+
+                const text =
+                    item.content
+                        ? `
+                            <p class="news-item-text">
+                                ${escapeHtml(item.content)}
+                            </p>
+                        `
+                        : '';
+
+                return `
+
+                    <article class="main-news-item">
+
+                        ${image}
+
+                        <h3 class="news-item-title">
+                            ${escapeHtml(item.title)}
+                        </h3>
+
+                        <time class="news-item-date">
+                            ${formatDate(item.created_at)}
+                        </time>
+
+                        ${text}
+
+                    </article>
+
+                `;
+
+            })
+            .join('');
+
+}
+
+function renderLatestNews(items){
+
+    if(!items.length){
+
+        latestNewsContainer.innerHTML =
+            '<div class="news-empty">Uutisia ei ole julkaistu.</div>';
+
+        return;
+
+    }
+
+    latestNewsContainer.innerHTML =
+        items
+            .slice(0,8)
+            .map(item => `
+
+                <article class="news-item">
+
+                    <h3 class="news-item-title">
+                        ${escapeHtml(item.title)}
+                    </h3>
+
+                    <time class="news-item-date">
+                        ${formatDate(item.created_at)}
+                    </time>
+
+                </article>
+
+            `)
+            .join('');
+
+}
+
+function renderEvents(items){
+
+    if(!items.length){
+
+        eventsContainer.innerHTML =
+            '<div class="news-empty">Tapahtumia ei ole julkaistu.</div>';
+
+        return;
+
+    }
+
+    const sorted =
+        [...items].sort(
+            (a,b) =>
+                new Date(a.event_date || a.created_at)
+                -
+                new Date(b.event_date || b.created_at)
+        );
+
+    eventsContainer.innerHTML =
+        sorted
+            .slice(0,8)
+            .map(item => `
+
+                <article class="news-item">
+
+                    <h3 class="news-item-title">
+                        ${escapeHtml(item.title)}
+                    </h3>
+
+                    <time class="news-item-date">
+                        ${formatDate(
+                            item.event_date ||
+                            item.created_at
+                        )}
+                    </time>
+
+                    ${
+                        item.content
+                            ? `
+                                <p class="news-item-text">
+                                    ${escapeHtml(item.content)}
+                                </p>
+                            `
+                            : ''
+                    }
+
+                </article>
+
+            `)
+            .join('');
+
+}
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+async function loadFeedback(){
+
+    const npsElement =
+        document.getElementById('feedbackNps');
+
+    const responsesElement =
+        document.getElementById('feedbackResponses');
+
+    try{
+
+        const {data,error} =
+            await supabaseClient
+                .rpc('get_feedback_statistics');
+
+        if(error){
+            throw error;
+        }
+
+        let statistics =
+            data;
+
+        if(
+            Array.isArray(statistics)
+            &&
+            statistics.length
+        ){
+            statistics =
+                statistics[0];
+        }
+
+        if(!statistics){
+
+            npsElement.textContent = '–';
+
+            responsesElement.textContent =
+                'Ei vielä vastauksia';
+
+            return;
+
+        }
+
+        const responseCount =
+            Number(
+                statistics.response_count
+                ??
+                statistics.responses
+                ??
+                0
+            );
+
+        const nps =
+            statistics.nps_score
+            ??
+            statistics.nps
+            ??
+            null;
+
+        npsElement.textContent =
+            nps === null
+                ? '–'
+                : Math.round(Number(nps));
+
+        responsesElement.textContent =
+            responseCount === 1
+                ? '1 vastaus'
+                : `${responseCount} vastausta`;
+
+    }
+
+    catch(error){
+
+        console.error(
+            'Palautetilastojen lataus epäonnistui:',
+            error
+        );
+
+        npsElement.textContent = '–';
+
+        responsesElement.textContent =
+            'Asiakaspalautteet';
+
+    }
+
+}
+
+/* =========================================================
+   DIGITAL POPUP
+========================================================= */
+
+const chatButton =
+    document.getElementById('chatButton');
+
+const digitalPopup =
+    document.getElementById('digitalPopup');
+
+const digitalPopupClose =
+    document.getElementById('digitalPopupClose');
+
+function openDigitalPopup(){
+
+    digitalPopup.classList.add('open');
+
+    digitalPopup.setAttribute(
+        'aria-hidden',
+        'false'
+    );
+
+}
+
+function closeDigitalPopup(){
+
+    digitalPopup.classList.remove('open');
+
+    digitalPopup.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+}
+
+chatButton.addEventListener('click',() => {
+
+    if(digitalPopup.classList.contains('open')){
+        closeDigitalPopup();
+    }
+    else{
+        openDigitalPopup();
+    }
+
+});
+
+digitalPopupClose.addEventListener(
+    'click',
+    closeDigitalPopup
+);
+
+document.addEventListener('keydown',event => {
+
+    if(event.key === 'Escape'){
+        closeDigitalPopup();
+    }
+
+});
+
+/* =========================================================
+   START
+========================================================= */
+
+loadNews();
+loadFeedback();
+
+</script>
+
+
+<!-- =========================================================
+     EVÄSTEET
+========================================================= -->
+<button class="cookiebot-launcher" id="cookiebotLauncher" type="button" aria-label="Avaa evästeasetukset">
+    <span class="cookiebot-launcher-mark">CO</span>
+</button>
+
+<section class="cookiebot-banner hidden" id="cookiebotBanner" aria-label="Evästevalinnat">
+    <div class="cookiebot-banner-inner">
+        <div class="cookiebot-brand">
+            <div class="cookiebot-mini-logo" aria-hidden="true">
+                <div class="cookiebot-mini-logo-shapes"><span></span><span></span><span></span></div>
+                KESKI-<br>SUOMEN<br>HYVINVOINTI-<br>ALUE
+            </div>
+            <div class="cookiebot-usercentrics" aria-hidden="true">
+                <strong>Cookiebot</strong>
+                by Usercentrics
+            </div>
+        </div>
+
+        <div class="cookiebot-banner-copy">
+            <h2>Tämä sivusto käyttää evästeitä</h2>
+            <p>
+                Käytämme evästeitä tarjotaksemme sisällön ja mainosten räätälöimiseen,
+                sosiaalisen median ominaisuuksien tukemiseen ja kävijämäärämme analysoimiseen.
+                Lisäksi jaamme sosiaalisen median, mainosalan ja analytiikka-alan kumppaneillemme
+                tietoja siitä, miten käytät sivustoamme. Kumppanimme voivat yhdistää näitä tietoja
+                muihin tietoihin, joita olet antanut heille tai joita on kerätty, kun olet käyttänyt heidän palvelujaan.
+            </p>
+
+            <div class="cookiebot-toggles">
+                <div class="cookiebot-toggle-item">
+                    <span>Välttämätön</span>
+                    <button class="cookiebot-switch on locked" type="button" aria-label="Välttämättömät evästeet, aina käytössä" aria-pressed="true"></button>
+                </div>
+                <div class="cookiebot-toggle-item">
+                    <span>Mieltymykset</span>
+                    <button class="cookiebot-switch" type="button" data-cookie-category="preferences" aria-pressed="false"></button>
+                </div>
+                <div class="cookiebot-toggle-item">
+                    <span>Tilastot</span>
+                    <button class="cookiebot-switch" type="button" data-cookie-category="statistics" aria-pressed="false"></button>
+                </div>
+                <div class="cookiebot-toggle-item">
+                    <span>Markkinointi</span>
+                    <button class="cookiebot-switch" type="button" data-cookie-category="marketing" aria-pressed="false"></button>
+                </div>
+                <button class="cookiebot-show-details" id="cookiebotBannerDetails" type="button">Näytä tiedot</button>
+            </div>
+        </div>
+
+        <div class="cookiebot-actions">
+            <button class="cookiebot-action primary" id="cookiebotAllowAll" type="button">Salli kaikki</button>
+            <button class="cookiebot-action" id="cookiebotAllowSelection" type="button">Salli valinta</button>
+            <button class="cookiebot-action" id="cookiebotReject" type="button">Kiellä</button>
+        </div>
+    </div>
+</section>
+
+<div class="cookiebot-backdrop hidden" id="cookiebotBackdrop" role="dialog" aria-modal="true" aria-labelledby="cookiebotTitle">
+    <div class="cookiebot-modal">
+        <div class="cookiebot-modal-head">
+            <h2 id="cookiebotTitle">Evästeasetukset</h2>
+            <button class="cookiebot-close" id="cookiebotClose" type="button" aria-label="Sulje evästeasetukset"></button>
+        </div>
+
+        <div class="cookiebot-modal-body">
+            <div class="cookiebot-current-title">Nykyinen tila</div>
+            <div class="cookiebot-current-row"><span class="cookiebot-current-icon">♙</span><span>Välttämätön</span></div>
+            <div class="cookiebot-current-row"><span class="cookiebot-current-icon" id="cookiePrefState">✓</span><span>Mieltymykset</span></div>
+            <div class="cookiebot-current-row"><span class="cookiebot-current-icon" id="cookieStatState">✓</span><span>Tilastot</span></div>
+            <div class="cookiebot-current-row"><span class="cookiebot-current-icon" id="cookieMarketState">✓</span><span>Markkinointi</span></div>
+
+            <button class="cookiebot-details-button" id="cookiebotModalDetailsButton" type="button">Näytä tiedot</button>
+            <div class="cookiebot-details hidden" id="cookiebotDetails">
+                <strong>Välttämättömät evästeet</strong> tarvitaan sivuston perustoimintoihin.
+                Mieltymys-, tilasto- ja markkinointievästeet otetaan käyttöön vain tekemäsi valinnan mukaisesti.
+                Voit muuttaa suostumustasi milloin tahansa avaamalla evästeasetukset vasemman alakulman painikkeesta.
+            </div>
+        </div>
+
+        <div class="cookiebot-modal-brand">
+            <div class="cookiebot-usercentrics" aria-hidden="true">
+                <strong>Cookiebot</strong>
+                by Usercentrics
+            </div>
+        </div>
+
+        <div class="cookiebot-modal-actions">
+            <button id="cookiebotWithdraw" type="button">Peruuta hyväksyntä</button>
+            <button class="primary" id="cookiebotChangeConsent" type="button">Muuta hyväksyntääsi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+
+/* =========================================================
+   EVÄSTEET
+========================================================= */
+(() => {
+    const STORAGE_KEY = 'hyvaks_cookie_consent_v1';
+
+    const banner = document.getElementById('cookiebotBanner');
+    const launcher = document.getElementById('cookiebotLauncher');
+    const backdrop = document.getElementById('cookiebotBackdrop');
+    const closeButton = document.getElementById('cookiebotClose');
+    const allowAll = document.getElementById('cookiebotAllowAll');
+    const allowSelection = document.getElementById('cookiebotAllowSelection');
+    const reject = document.getElementById('cookiebotReject');
+    const withdraw = document.getElementById('cookiebotWithdraw');
+    const changeConsent = document.getElementById('cookiebotChangeConsent');
+    const bannerDetails = document.getElementById('cookiebotBannerDetails');
+    const modalDetailsButton = document.getElementById('cookiebotModalDetailsButton');
+    const details = document.getElementById('cookiebotDetails');
+
+    const switches = [...document.querySelectorAll('[data-cookie-category]')];
+
+    function emptyConsent(){
+        return {
+            necessary: true,
+            preferences: false,
+            statistics: false,
+            marketing: false
+        };
+    }
+
+    function getConsent(){
+        try{
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if(saved && typeof saved === 'object'){
+                return {
+                    necessary: true,
+                    preferences: !!saved.preferences,
+                    statistics: !!saved.statistics,
+                    marketing: !!saved.marketing
+                };
+            }
+        }catch(e){}
+        return null;
+    }
+
+    function saveConsent(consent){
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            ...consent,
+            updatedAt: new Date().toISOString()
+        }));
+        applyConsent(consent);
+        banner.classList.add('hidden');
+        backdrop.classList.add('hidden');
+    }
+
+    function applyConsent(consent){
+        const current = consent || emptyConsent();
+
+        switches.forEach(button => {
+            const key = button.dataset.cookieCategory;
+            const enabled = !!current[key];
+            button.classList.toggle('on', enabled);
+            button.setAttribute('aria-pressed', String(enabled));
+        });
+
+        document.getElementById('cookiePrefState').textContent = current.preferences ? '✓' : '–';
+        document.getElementById('cookieStatState').textContent = current.statistics ? '✓' : '–';
+        document.getElementById('cookieMarketState').textContent = current.marketing ? '✓' : '–';
+
+        window.HYVAKS_COOKIE_CONSENT = current;
+        document.dispatchEvent(new CustomEvent('hyvaks:cookie-consent', {detail: current}));
+    }
+
+    function selectionFromSwitches(){
+        const consent = emptyConsent();
+        switches.forEach(button => {
+            consent[button.dataset.cookieCategory] = button.classList.contains('on');
+        });
+        return consent;
+    }
+
+    function setSwitches(consent){
+        const current = consent || emptyConsent();
+        switches.forEach(button => {
+            const enabled = !!current[button.dataset.cookieCategory];
+            button.classList.toggle('on', enabled);
+            button.setAttribute('aria-pressed', String(enabled));
+        });
+    }
+
+    function openSettings(){
+        const current = getConsent() || selectionFromSwitches();
+        applyConsent(current);
+        backdrop.classList.remove('hidden');
+        closeButton.focus();
+    }
+
+    function closeSettings(){
+        backdrop.classList.add('hidden');
+    }
+
+    switches.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('on');
+            button.setAttribute('aria-pressed', String(button.classList.contains('on')));
+        });
+    });
+
+    launcher.addEventListener('click', openSettings);
+    closeButton.addEventListener('click', closeSettings);
+
+    backdrop.addEventListener('click', event => {
+        if(event.target === backdrop) closeSettings();
+    });
+
+    document.addEventListener('keydown', event => {
+        if(event.key === 'Escape' && !backdrop.classList.contains('hidden')){
+            closeSettings();
+        }
+    });
+
+    allowAll.addEventListener('click', () => {
+        saveConsent({
+            necessary: true,
+            preferences: true,
+            statistics: true,
+            marketing: true
+        });
+    });
+
+    allowSelection.addEventListener('click', () => {
+        saveConsent(selectionFromSwitches());
+    });
+
+    reject.addEventListener('click', () => {
+        saveConsent(emptyConsent());
+    });
+
+    withdraw.addEventListener('click', () => {
+        saveConsent(emptyConsent());
+    });
+
+    changeConsent.addEventListener('click', () => {
+        closeSettings();
+        const current = getConsent() || emptyConsent();
+        setSwitches(current);
+        banner.classList.remove('hidden');
+    });
+
+    function toggleDetails(){
+        details.classList.toggle('hidden');
+        const open = !details.classList.contains('hidden');
+        modalDetailsButton.textContent = open ? 'Piilota tiedot' : 'Näytä tiedot';
+    }
+
+    modalDetailsButton.addEventListener('click', toggleDetails);
+    bannerDetails.addEventListener('click', openSettings);
+
+    const existing = getConsent();
+    if(existing){
+        applyConsent(existing);
+    }else{
+        setSwitches(emptyConsent());
+        applyConsent(emptyConsent());
+        banner.classList.remove('hidden');
+    }
+})();
+
+</script>
+</body>
+</html>
